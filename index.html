@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F0E17">
+  <meta name="description" content="BibliaQuiz - Aprende la Biblia jugando">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BibliaQuiz">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="icons/icon-96.png">
+  <link rel="manifest" href="manifest.json">
+  <title>BibliaQuiz - Aprende Jugando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=39">
+</head>
+<body>
+
+<div id="splash-screen" class="splash-screen" aria-label="Cargando BibliaQuiz">
+  <div class="splash-logo" aria-hidden="true">📖</div>
+  <div class="splash-title">BibliaQuiz</div>
+  <div class="splash-loading"><span></span><span></span><span></span></div>
+</div>
+
+<div id="offline-banner" class="offline-banner hidden" role="alert">
+  <span>📴 Sin conexión - Modo offline</span>
+</div>
+
+<div class="app-container">
+
+  <div id="home" class="screen active">
+    <header class="app-header">
+      <div class="app-logo">📖</div>
+      <h1 class="app-title">BibliaQuiz</h1>
+      <p class="app-subtitle">✨ Aprende Jugando ✨</p>
+    </header>
+
+    <div id="home-lives-card" class="home-lives-card">
+      <div class="home-lives-left">
+        <span id="home-lives-hearts" class="home-lives-hearts">❤️❤️❤️❤️❤️</span>
+        <span id="home-lives-count" class="home-lives-count">5/5</span>
+      </div>
+      <div id="home-lives-timer-wrap" class="home-lives-timer-wrap hidden">
+        <span class="home-lives-timer-icon">⏱️</span>
+        <span id="home-lives-timer" class="home-lives-timer">00:00</span>
+      </div>
+      <button id="btn-shop" class="home-lives-shop-btn" aria-label="Tienda">🛒 Tienda</button>
+      <button id="btn-about" class="home-lives-shop-btn" aria-label="Acerca de">ℹ️</button>
+    </div>
+
+    <div id="verse-card" class="verse-card">
+      <div class="verse-label">📜 Versículo del día</div>
+      <p id="verse-text" class="verse-text"></p>
+      <p id="verse-ref" class="verse-ref"></p>
+    </div>
+
+    <div id="daily-streak-card" class="streak-card hidden">
+      <div class="streak-card-icon" aria-hidden="true">🔥</div>
+      <div class="streak-card-info">
+        <h4 id="streak-card-title">Racha diaria</h4>
+        <p id="streak-card-desc">¡Juega cada día para mantenerla!</p>
+      </div>
+      <div id="streak-card-days" class="streak-card-days">0</div>
+    </div>
+
+    <button id="btn-daily-challenge" class="daily-challenge-card hidden" aria-label="Desafío diario">
+      <div class="daily-icon" aria-hidden="true">🎯</div>
+      <div class="daily-info">
+        <h4>Desafío del Día</h4>
+        <p id="daily-challenge-desc">10 preguntas únicas cada día</p>
+      </div>
+      <div class="daily-arrow" aria-hidden="true">→</div>
+    </button>
+
+    <div class="menu-grid" role="navigation" aria-label="Menú principal">
+      <button id="btn-play" class="menu-btn play-btn" aria-label="Jugar">
+        <span class="menu-icon" aria-hidden="true">🎮</span>
+        <span class="menu-label">Jugar</span>
+      </button>
+      <button id="btn-challenge" class="menu-btn challenge-btn" aria-label="Contrarreloj">
+        <span class="menu-icon" aria-hidden="true">⏱️</span>
+        <span class="menu-label">Contrarreloj</span>
+      </button>
+      <button id="btn-study" class="menu-btn study-btn" aria-label="Repaso">
+        <span class="menu-icon" aria-hidden="true">📚</span>
+        <span class="menu-label">Repaso</span>
+      </button>
+      <button id="btn-duo" class="menu-btn duo-btn" aria-label="2 Jugadores">
+        <span class="menu-icon" aria-hidden="true">👥</span>
+        <span class="menu-label">2 Jugadores</span>
+      </button>
+      <button id="btn-impostor" class="menu-btn impostor-btn" aria-label="Modo Impostor">
+        <span class="menu-icon" aria-hidden="true">🕵️</span>
+        <span class="menu-label">Impostor</span>
+      </button>
+      <button id="btn-progress" class="menu-btn" aria-label="Progreso">
+        <span class="menu-icon" aria-hidden="true">📊</span>
+        <span class="menu-label">Progreso</span>
+      </button>
+      <button id="btn-settings" class="menu-btn" aria-label="Configuración">
+        <span class="menu-icon" aria-hidden="true">⚙️</span>
+        <span class="menu-label">Ajustes</span>
+      </button>
+      <button id="btn-verse" class="menu-btn" aria-label="Versículos">
+        <span class="menu-icon" aria-hidden="true">✝️</span>
+        <span class="menu-label">Versículos</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="shop" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">🛒 Tienda</h2>
+    </div>
+    <div class="shop-container">
+      <div class="shop-lives-display">
+        <span id="shop-lives-hearts" class="shop-lives-hearts">❤️❤️❤️❤️❤️</span>
+        <span id="shop-lives-text" class="shop-lives-text">5/5 vidas</span>
+      </div>
+      <div class="shop-items">
+        <div class="shop-item" id="shop-buy-1">
+          <div class="shop-item-icon">💖</div>
+          <div class="shop-item-info">
+            <h3>+1 Vida</h3>
+            <p>Recupera una vida al instante</p>
+          </div>
+          <button class="shop-item-btn" data-buy="1">Obtener</button>
+        </div>
+        <div class="shop-item" id="shop-buy-full">
+          <div class="shop-item-icon">💕</div>
+          <div class="shop-item-info">
+            <h3>Vidas Completas</h3>
+            <p>Rellena todas tus vidas al máximo</p>
+          </div>
+          <button class="shop-item-btn" data-buy="full">Obtener</button>
+        </div>
+        <div class="shop-item shop-item-premium" id="shop-buy-infinite">
+          <div class="shop-item-icon">♾️</div>
+          <div class="shop-item-info">
+            <h3>Vidas Infinitas</h3>
+            <p>No pierdes vidas al fallar</p>
+          </div>
+          <button class="shop-item-btn shop-item-btn-premium" data-buy="infinite">
+            <span id="infinite-lives-label">Activar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="difficulty-select" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="category-select">←</button>
+      <h2 class="section-title">🎯 Elige Nivel</h2>
+    </div>
+    <div class="difficulty-list">
+      <div class="difficulty-card" data-difficulty="facil" role="button" tabindex="0">
+        <div class="diff-icon" style="background: #4CAF5022">🌱</div>
+        <div class="diff-info">
+          <h3>Fácil</h3>
+          <p>Preguntas básicas - 10 pts c/u</p>
+        </div>
+      </div>
+      <div class="difficulty-card" data-difficulty="intermedio" role="button" tabindex="0">
+        <div class="diff-icon" style="background: #FF980022">📗</div>
+        <div class="diff-info">
+          <h3>Intermedio</h3>
+          <p>Requiere más conocimiento - 20 pts c/u</p>
+        </div>
+      </div>
+      <div class="difficulty-card" data-difficulty="dificil" role="button" tabindex="0">
+        <div class="diff-icon" style="background: #F4433622">🔥</div>
+        <div class="diff-info">
+          <h3>Difícil</h3>
+          <p>Para estudiosos serios - 30 pts c/u</p>
+        </div>
+      </div>
+      <div class="difficulty-card" data-difficulty="experto" role="button" tabindex="0">
+        <div class="diff-icon" style="background: #9C27B022">👑</div>
+        <div class="diff-info">
+          <h3>Experto</h3>
+          <p>Solo para maestros bíblicos - 50 pts c/u</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="category-select" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">📚 Elige Categoría</h2>
+    </div>
+    <div id="category-grid" class="category-grid"></div>
+  </div>
+
+  <div id="quiz" class="screen">
+    <div class="quiz-top-bar">
+      <div class="quiz-progress-info">
+        <button class="back-btn" data-target="home" style="width:36px;height:36px;font-size:1rem;">←</button>
+        <span id="question-counter" class="question-counter">1/10</span>
+        <span id="quiz-phase-badge" class="quiz-phase-badge">F1</span>
+      </div>
+      <div class="quiz-progress-info">
+        <span id="quiz-lives" class="quiz-lives">❤️ 5</span>
+        <span id="quiz-timer" class="quiz-timer">⏱️ 30</span>
+        <span id="quiz-streak" class="quiz-streak hidden">🔥 0</span>
+        <span id="quiz-points" class="quiz-points">⭐ 0</span>
+      </div>
+    </div>
+    <div class="timer-bar-container">
+      <div id="timer-bar-fill" class="timer-bar-fill" style="width: 100%"></div>
+    </div>
+    <div class="progress-bar-container">
+      <div id="progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+    </div>
+    <div class="question-card">
+      <div id="question-category-tag" class="question-category-tag"></div>
+      <p id="question-text" class="question-text"></p>
+    </div>
+    <div id="options-container" class="options-container"></div>
+    <div id="reference-card" class="reference-card hidden">
+      <span class="ref-icon">📖</span>
+      <span id="ref-text" class="ref-text"></span>
+    </div>
+    <button id="next-btn" class="next-btn hidden">Siguiente →</button>
+
+    <div id="phase-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
+      <div class="phase-card">
+        <div id="phase-icon" class="phase-icon">🎉</div>
+        <h2 id="phase-title" class="phase-title">¡Fase 1 Completada!</h2>
+        <p id="phase-subtitle" class="phase-subtitle hidden"></p>
+        <p id="phase-diff-label" class="phase-diff-label hidden"></p>
+        <div class="phase-stats">
+          <div class="phase-stat">
+            <span id="phase-correct" class="phase-stat-value" style="color:var(--success)">0</span>
+            <span class="phase-stat-label">✓ Correctas</span>
+          </div>
+          <div class="phase-stat">
+            <span id="phase-wrong" class="phase-stat-value" style="color:var(--danger)">0</span>
+            <span class="phase-stat-label">✗ Incorrectas</span>
+          </div>
+          <div class="phase-stat">
+            <span id="phase-points" class="phase-stat-value" style="color:var(--accent)">0</span>
+            <span class="phase-stat-label">⭐ Puntos</span>
+          </div>
+          <div class="phase-stat">
+            <span id="phase-streak" class="phase-stat-value" style="color:var(--primary-light)">0</span>
+            <span class="phase-stat-label">🔥 Racha</span>
+          </div>
+        </div>
+        <div class="phase-actions">
+          <button id="btn-phase-continue" class="btn-primary">Siguiente Fase →</button>
+          <button id="btn-phase-end" class="btn-secondary">Terminar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gameover-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
+      <div class="phase-card gameover-card">
+        <div class="phase-icon">💔</div>
+        <h2 class="gameover-title">¡Se acabaron las vidas!</h2>
+        <p class="gameover-subtitle">Llegaste hasta la Fase <span id="gameover-phase">1</span></p>
+        <div class="phase-stats">
+          <div class="phase-stat">
+            <span id="gameover-correct" class="phase-stat-value" style="color:var(--success)">0</span>
+            <span class="phase-stat-label">✓ Correctas</span>
+          </div>
+          <div class="phase-stat">
+            <span id="gameover-wrong" class="phase-stat-value" style="color:var(--danger)">0</span>
+            <span class="phase-stat-label">✗ Incorrectas</span>
+          </div>
+          <div class="phase-stat">
+            <span id="gameover-points" class="phase-stat-value" style="color:var(--accent)">0</span>
+            <span class="phase-stat-label">⭐ Puntos</span>
+          </div>
+        </div>
+        <div class="gameover-regen">
+          <span id="gameover-regen-text">Próxima vida en: <strong id="gameover-regen-timer">10:00</strong></span>
+        </div>
+        <div class="phase-actions">
+          <button id="btn-watch-ad" class="btn-ad">📺 Ver video por 1 vida</button>
+          <button id="btn-gameover-end" class="btn-secondary">Salir</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="ad-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
+      <div class="phase-card ad-card">
+        <div class="phase-icon">📺</div>
+        <h2 class="phase-title">Espacio publicitario</h2>
+        <p class="ad-description">Gracias por jugar BibliaQuiz</p>
+        <div id="ad-container" class="ad-container">
+          <div class="ad-placeholder">
+            <span>Anuncio</span>
+            <div id="ad-countdown" class="ad-countdown">5</div>
+          </div>
+        </div>
+        <button id="btn-close-ad" class="btn-primary hidden">Continuar →</button>
+      </div>
+    </div>
+
+    <div id="catcomplete-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
+      <div class="phase-card catcomplete-card">
+        <div class="phase-icon">🏆</div>
+        <h2 id="catcomplete-title" class="phase-title">¡Categoría Completada!</h2>
+        <p id="catcomplete-subtitle" class="catcomplete-subtitle"></p>
+        <div id="catcomplete-medals" class="catcomplete-medals"></div>
+        <div class="phase-actions">
+          <button id="btn-catcomplete-ok" class="btn-primary">¡Genial! →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pause" class="screen">
+    <div class="pause-container">
+      <div id="pause-icon" class="pause-icon">⏸️</div>
+      <h2 class="pause-title">¡Tiempo de Descanso!</h2>
+      <p id="pause-motivation" class="pause-motivation">¡Vas muy bien!</p>
+      <div id="pause-streak-display" class="pause-streak"></div>
+      <div class="pause-stats">
+        <div class="pause-stat">
+          <span class="ps-value" style="color:var(--success)" id="pause-correct">0</span>
+          <span class="ps-label">✓ Correctas</span>
+        </div>
+        <div class="pause-stat">
+          <span class="ps-value" style="color:var(--danger)" id="pause-wrong">0</span>
+          <span class="ps-label">✗ Incorrectas</span>
+        </div>
+        <div class="pause-stat">
+          <span class="ps-value" style="color:var(--accent)" id="pause-points">0</span>
+          <span class="ps-label">⭐ Puntos</span>
+        </div>
+        <div class="pause-stat">
+          <span class="ps-value" style="color:var(--primary-light)" id="pause-remaining">0</span>
+          <span class="ps-label">📋 Restantes</span>
+        </div>
+      </div>
+      <div class="pause-verse-card">
+        <p id="pause-verse" class="pv-text"></p>
+        <p id="pause-verse-ref" class="pv-ref"></p>
+      </div>
+      <div class="pause-actions">
+        <button id="pause-continue" class="btn-primary">▶️ Continuar Jugando</button>
+        <button id="pause-quit" class="btn-secondary">Terminar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="results" class="screen">
+    <div class="results-container">
+      <div id="results-icon" class="results-icon">🏆</div>
+      <h2 id="results-title" class="results-title">¡Excelente!</h2>
+      <p id="results-subtitle" class="results-subtitle"></p>
+      <div class="results-stats">
+        <div class="stat-card">
+          <div id="stat-correct" class="stat-value" style="color: var(--success)">0</div>
+          <div class="stat-label">✓ Correctas</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-wrong" class="stat-value" style="color: var(--danger)">0</div>
+          <div class="stat-label">✗ Incorrectas</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-points" class="stat-value" style="color: var(--accent)">0</div>
+          <div class="stat-label">⭐ Puntos</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-level" class="stat-value" style="color: var(--primary-light)">Nv. 1</div>
+          <div class="stat-label">📈 Tu Nivel</div>
+        </div>
+      </div>
+      <div id="new-badges" class="new-badges" style="display:none;">
+        <h3>🎖️ ¡Nuevas Insignias!</h3>
+        <div class="badge-list-horizontal"></div>
+      </div>
+      <div class="results-actions">
+        <button id="btn-share-results" class="btn-share">📤 Compartir</button>
+        <button id="btn-replay-category" class="btn-primary">🔄 Repetir</button>
+        <button id="btn-play-again" class="btn-secondary">📚 Otra Categoría</button>
+        <button id="btn-back-home" class="btn-secondary">🏠 Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="progress" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">📊 Mi Progreso</h2>
+    </div>
+    <div class="progress-overview">
+      <div class="player-card">
+        <div id="progress-avatar" class="player-avatar">👤</div>
+        <h2 id="progress-name" class="player-name">Jugador</h2>
+        <p id="progress-email" class="player-detail"></p>
+        <p id="progress-age" class="player-age"></p>
+        <p id="progress-level" class="player-level">Nivel 1 - Aprendiz</p>
+        <div class="player-xp-bar">
+          <div id="progress-xp-fill" class="player-xp-fill" style="width: 0%"></div>
+        </div>
+        <p id="progress-xp-text" class="player-xp-text">0 / 100 XP</p>
+      </div>
+      <div class="stats-grid">
+        <div class="mini-stat">
+          <div id="stat-total-points" class="ms-value">0</div>
+          <div class="ms-label">⭐ Puntos</div>
+        </div>
+        <div class="mini-stat">
+          <div id="stat-games-played" class="ms-value">0</div>
+          <div class="ms-label">🎮 Partidas</div>
+        </div>
+        <div class="mini-stat">
+          <div id="stat-best-streak" class="ms-value">0</div>
+          <div class="ms-label">🔥 Mejor Racha</div>
+        </div>
+      </div>
+      <div class="accuracy-section">
+        <h3>📈 Porcentaje de Acierto</h3>
+        <div class="accuracy-bar-bg">
+          <div id="accuracy-fill" class="accuracy-bar-fill" style="width: 0%;">0%</div>
+        </div>
+      </div>
+      <div class="accuracy-section">
+        <h3>⚡ Velocidad de Respuesta</h3>
+        <div class="stats-grid">
+          <div class="mini-stat">
+            <div id="stat-avg-speed" class="ms-value">-</div>
+            <div class="ms-label">Promedio</div>
+          </div>
+          <div class="mini-stat">
+            <div id="stat-fast-speed" class="ms-value">-</div>
+            <div class="ms-label">Más Rápida</div>
+          </div>
+          <div class="mini-stat">
+            <div id="stat-slow-speed" class="ms-value">-</div>
+            <div class="ms-label">Más Lenta</div>
+          </div>
+        </div>
+      </div>
+      <div class="badges-section">
+        <h3>🎖️ Insignias</h3>
+        <div id="badges-grid" class="badges-grid"></div>
+      </div>
+      <div class="category-stats-section">
+        <h3>📚 Por Categoría</h3>
+        <div id="category-stats-grid" class="category-stats-grid"></div>
+      </div>
+      <div class="accuracy-section">
+        <h3>📅 Progreso Semanal</h3>
+        <div class="chart-container">
+          <canvas id="progress-chart" width="400" height="200"></canvas>
+        </div>
+      </div>
+      <div class="accuracy-section">
+        <h3>🏅 Mejores Puntuaciones</h3>
+        <div id="leaderboard-list" class="leaderboard-list"></div>
+      </div>
+      <div class="history-section">
+        <h3>📜 Historial</h3>
+        <div id="history-list" class="history-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settings" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">⚙️ Configuración</h2>
+    </div>
+    <div class="settings-list">
+      <div class="setting-item">
+        <label for="setting-name">👤 Tu Nombre</label>
+        <input type="text" id="setting-name" placeholder="Escribe tu nombre" maxlength="30">
+      </div>
+      <div class="setting-item">
+        <label for="setting-email">✉️ Correo</label>
+        <input type="email" id="setting-email" placeholder="tucorreo@ejemplo.com">
+      </div>
+      <div class="setting-item">
+        <label for="setting-age">🎂 Edad</label>
+        <input type="number" id="setting-age" placeholder="Tu edad" min="5" max="120">
+      </div>
+      <div class="setting-item">
+        <label for="setting-gender">⚧️ Género</label>
+        <select id="setting-gender">
+          <option value="">Sin especificar</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label>🖼️ Avatar</label>
+        <div class="avatar-preview-row">
+          <span id="avatar-preview" class="avatar-preview">👤</span>
+          <button id="btn-change-avatar" class="btn-data">Cambiar</button>
+        </div>
+        <div id="avatar-grid" class="avatar-grid hidden"></div>
+      </div>
+      <div class="setting-item">
+        <label for="setting-questions">📋 Preguntas por Partida</label>
+        <select id="setting-questions">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label for="setting-timer">⏱️ Temporizador</label>
+        <select id="setting-timer">
+          <option value="0">Sin límite</option>
+          <option value="15">15 seg</option>
+          <option value="20">20 seg</option>
+          <option value="30" selected>30 seg</option>
+          <option value="45">45 seg</option>
+          <option value="60">60 seg</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <div class="toggle-row">
+          <div><label>🔄 Evitar Repetidas</label></div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-no-repeat" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="setting-item">
+        <div class="toggle-row">
+          <div><label>🔊 Sonido</label></div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-sound" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="setting-item">
+        <div class="toggle-row">
+          <div><label>📳 Vibración</label></div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-vibration" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="setting-item">
+        <div class="toggle-row">
+          <div><label>📜 Versículo Diario</label></div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-verse" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="setting-item">
+        <label>🎨 Tema</label>
+        <div class="theme-selector">
+          <button class="theme-btn" data-theme-val="auto" id="theme-auto">Auto</button>
+          <button class="theme-btn" data-theme-val="dark" id="theme-dark">🌙 Oscuro</button>
+          <button class="theme-btn" data-theme-val="light" id="theme-light">☀️ Claro</button>
+        </div>
+      </div>
+      <div class="setting-item">
+        <div class="toggle-row">
+          <div><label>🔔 Recordatorio</label></div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-notifications">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div class="setting-item">
+        <label>💾 Respaldo</label>
+        <div class="setting-data-actions">
+          <button id="btn-export" class="btn-data">📤 Exportar</button>
+          <button id="btn-import" class="btn-data">📥 Importar</button>
+          <input type="file" id="import-file" accept=".json" style="display:none">
+        </div>
+      </div>
+      <button id="btn-reset" class="btn-danger">🗑️ Borrar Todo</button>
+    </div>
+  </div>
+
+  <div id="study-mode" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">📚 Modo Repaso</h2>
+    </div>
+    <div class="study-container">
+      <div class="study-intro">
+        <div class="study-intro-icon">📖</div>
+        <p>Repasa las preguntas que has fallado.</p>
+      </div>
+      <div id="study-empty" class="empty-state" style="display:none;">
+        <div class="empty-icon">✅</div>
+        <div class="empty-text">¡No tienes preguntas falladas!</div>
+      </div>
+      <div id="study-filters" class="study-filters" style="display:none;">
+        <label>Filtrar:</label>
+        <select id="study-category-filter">
+          <option value="all">Todas</option>
+        </select>
+        <div class="study-count"><span id="study-total-count">0</span> preguntas</div>
+      </div>
+      <div id="study-cards-container" class="study-cards-container"></div>
+    </div>
+  </div>
+
+  <div id="challenge-setup" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">⏱️ Contrarreloj</h2>
+    </div>
+    <div class="challenge-setup-container">
+      <div class="challenge-intro">
+        <div class="challenge-intro-icon">⚡</div>
+        <h3>¿Cuánto sabes bajo presión?</h3>
+        <p>¡Responde antes de que se acabe el tiempo!</p>
+      </div>
+      <div class="challenge-options">
+        <h4>⏰ Duración:</h4>
+        <div class="challenge-time-grid">
+          <button class="challenge-time-btn" data-time="60"><span class="ct-time">1 min</span></button>
+          <button class="challenge-time-btn" data-time="120"><span class="ct-time">2 min</span></button>
+          <button class="challenge-time-btn selected" data-time="180"><span class="ct-time">3 min</span></button>
+          <button class="challenge-time-btn" data-time="300"><span class="ct-time">5 min</span></button>
+        </div>
+        <h4>🎯 Dificultad:</h4>
+        <div class="challenge-diff-grid">
+          <button class="challenge-diff-btn" data-diff="facil">🌱 Fácil</button>
+          <button class="challenge-diff-btn" data-diff="intermedio">📗 Medio</button>
+          <button class="challenge-diff-btn selected" data-diff="dificil">🔥 Difícil</button>
+          <button class="challenge-diff-btn" data-diff="experto">👑 Experto</button>
+          <button class="challenge-diff-btn" data-diff="mixed">🎲 Mix</button>
+        </div>
+      </div>
+      <button id="btn-start-challenge" class="btn-primary challenge-start-btn">🚀 ¡Comenzar!</button>
+      <div id="challenge-best" class="challenge-best" style="display:none;">
+        <span class="cb-icon">🏆</span>
+        <span id="challenge-best-text" class="cb-text">Mejor: 0</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="challenge-quiz" class="screen">
+    <div class="quiz-top-bar">
+      <div class="quiz-progress-info">
+        <button class="back-btn" data-target="home" style="width:36px;height:36px;">←</button>
+        <span id="challenge-counter" class="question-counter">✓ 0</span>
+      </div>
+      <div class="quiz-progress-info">
+        <span id="challenge-global-timer" class="quiz-timer danger">⏱️ 3:00</span>
+        <span id="challenge-streak" class="quiz-streak hidden">🔥 0</span>
+        <span id="challenge-points" class="quiz-points">⭐ 0</span>
+      </div>
+    </div>
+    <div class="timer-bar-container">
+      <div id="challenge-timer-bar" class="timer-bar-fill" style="width: 100%"></div>
+    </div>
+    <div class="question-card">
+      <div id="challenge-category-tag" class="question-category-tag"></div>
+      <p id="challenge-question-text" class="question-text"></p>
+    </div>
+    <div id="challenge-options" class="options-container"></div>
+  </div>
+
+  <div id="challenge-results" class="screen">
+    <div class="results-container">
+      <div id="cr-icon" class="results-icon">🏆</div>
+      <h2 id="cr-title" class="results-title">¡Desafío Completado!</h2>
+      <p id="cr-subtitle" class="results-subtitle"></p>
+      <div class="results-stats">
+        <div class="stat-card">
+          <div id="cr-correct" class="stat-value" style="color: var(--success)">0</div>
+          <div class="stat-label">✓ Correctas</div>
+        </div>
+        <div class="stat-card">
+          <div id="cr-wrong" class="stat-value" style="color: var(--danger)">0</div>
+          <div class="stat-label">✗ Incorrectas</div>
+        </div>
+        <div class="stat-card">
+          <div id="cr-points" class="stat-value" style="color: var(--accent)">0</div>
+          <div class="stat-label">⭐ Puntos</div>
+        </div>
+        <div class="stat-card">
+          <div id="cr-speed" class="stat-value" style="color: var(--primary-light)">0s</div>
+          <div class="stat-label">⚡ Promedio</div>
+        </div>
+      </div>
+      <div id="cr-new-record" class="challenge-new-record" style="display:none;">🎉 ¡NUEVO RÉCORD!</div>
+      <div class="results-actions">
+        <button id="btn-challenge-again" class="btn-primary">🔄 Otro Desafío</button>
+        <button id="btn-challenge-home" class="btn-secondary">🏠 Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="duo-setup" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">👥 2 Jugadores</h2>
+    </div>
+    <div class="duo-setup-container">
+      <div class="duo-intro">
+        <div class="duo-intro-icon">⚔️</div>
+        <h3>¡Compitan cara a cara!</h3>
+      </div>
+      <div class="duo-names">
+        <div class="duo-name-field">
+          <label for="duo-name-1">🔵 Jugador 1</label>
+          <input type="text" id="duo-name-1" maxlength="15" value="Jugador 1">
+        </div>
+        <div class="duo-vs">VS</div>
+        <div class="duo-name-field">
+          <label for="duo-name-2">🔴 Jugador 2</label>
+          <input type="text" id="duo-name-2" maxlength="15" value="Jugador 2">
+        </div>
+      </div>
+      <div class="duo-options">
+        <h4>📋 Preguntas:</h4>
+        <div class="duo-count-grid">
+          <button class="duo-count-btn" data-count="5">5</button>
+          <button class="duo-count-btn selected" data-count="10">10</button>
+          <button class="duo-count-btn" data-count="15">15</button>
+          <button class="duo-count-btn" data-count="20">20</button>
+        </div>
+      </div>
+      <div class="duo-options">
+        <h4>🔄 Turnos:</h4>
+        <div class="duo-mode-grid">
+          <button class="duo-mode-btn selected" data-mode="alternado">Alternado</button>
+          <button class="duo-mode-btn" data-mode="seguido">Seguido</button>
+        </div>
+      </div>
+      <button id="btn-duo-start-cat" class="btn-primary duo-start-btn">📚 Elegir Categoría</button>
+    </div>
+  </div>
+
+  <div id="duo-category" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="duo-setup">←</button>
+      <h2 class="section-title">📚 Categoría</h2>
+    </div>
+    <div id="duo-category-grid" class="category-grid"></div>
+  </div>
+
+  <div id="duo-difficulty" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="duo-category">←</button>
+      <h2 class="section-title">🎯 Nivel</h2>
+    </div>
+    <div class="difficulty-list">
+      <div class="duo-diff-card" data-difficulty="facil">
+        <div class="diff-icon" style="background: #4CAF5022">🌱</div>
+        <div class="diff-info"><h3>Fácil</h3><p>10 pts</p></div>
+      </div>
+      <div class="duo-diff-card" data-difficulty="intermedio">
+        <div class="diff-icon" style="background: #FF980022">📗</div>
+        <div class="diff-info"><h3>Intermedio</h3><p>20 pts</p></div>
+      </div>
+      <div class="duo-diff-card" data-difficulty="dificil">
+        <div class="diff-icon" style="background: #F4433622">🔥</div>
+        <div class="diff-info"><h3>Difícil</h3><p>30 pts</p></div>
+      </div>
+      <div class="duo-diff-card" data-difficulty="experto">
+        <div class="diff-icon" style="background: #9C27B022">👑</div>
+        <div class="diff-info"><h3>Experto</h3><p>50 pts</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="duo-turn" class="screen">
+    <div class="duo-turn-container">
+      <div id="duo-turn-icon" class="duo-turn-icon">🎯</div>
+      <h2 id="duo-turn-title" class="duo-turn-title">Turno de...</h2>
+      <p id="duo-turn-name" class="duo-turn-name">Jugador 1</p>
+      <p class="duo-turn-hint">¡Prepárate!</p>
+      <div class="duo-turn-scores">
+        <div class="duo-ts"><span id="duo-ts-p1-name" class="duo-ts-name">🔵 J1</span><span id="duo-ts-p1-score" class="duo-ts-score">0</span></div>
+        <div class="duo-ts-vs">VS</div>
+        <div class="duo-ts"><span id="duo-ts-p2-name" class="duo-ts-name">🔴 J2</span><span id="duo-ts-p2-score" class="duo-ts-score">0</span></div>
+      </div>
+      <button id="btn-duo-ready" class="btn-primary duo-ready-btn">✓ ¡Listo!</button>
+    </div>
+  </div>
+
+  <div id="duo-quiz" class="screen">
+    <div class="quiz-top-bar">
+      <div class="quiz-progress-info">
+        <span id="duo-quiz-player" class="duo-quiz-player">🔵 J1</span>
+        <span id="duo-quiz-counter" class="question-counter">1/10</span>
+      </div>
+      <div class="quiz-progress-info">
+        <span id="duo-quiz-timer" class="quiz-timer">⏱️ 30</span>
+        <span id="duo-quiz-p1" class="duo-score-pill p1-pill">0</span>
+        <span class="duo-score-vs">vs</span>
+        <span id="duo-quiz-p2" class="duo-score-pill p2-pill">0</span>
+      </div>
+    </div>
+    <div class="timer-bar-container">
+      <div id="duo-timer-bar" class="timer-bar-fill" style="width:100%"></div>
+    </div>
+    <div class="progress-bar-container">
+      <div id="duo-progress-fill" class="progress-bar-fill" style="width:0%"></div>
+    </div>
+    <div class="question-card">
+      <div id="duo-question-cat" class="question-category-tag"></div>
+      <p id="duo-question-text" class="question-text"></p>
+    </div>
+    <div id="duo-options" class="options-container"></div>
+    <div id="duo-ref-card" class="reference-card hidden">
+      <span class="ref-icon">📖</span>
+      <span id="duo-ref-text" class="ref-text"></span>
+    </div>
+  </div>
+
+  <div id="duo-results" class="screen">
+    <div class="results-container">
+      <div id="duo-res-icon" class="results-icon">🏆</div>
+      <h2 id="duo-res-title" class="results-title">¡Tenemos ganador!</h2>
+      <p id="duo-res-subtitle" class="results-subtitle"></p>
+      <div class="duo-res-scoreboard">
+        <div id="duo-res-p1" class="duo-res-player">
+          <div class="duo-res-badge p1-bg">🔵</div>
+          <div id="duo-res-p1-name" class="duo-res-pname">Jugador 1</div>
+          <div id="duo-res-p1-correct" class="duo-res-correct">0 correctas</div>
+          <div id="duo-res-p1-score" class="duo-res-score">0 pts</div>
+        </div>
+        <div class="duo-res-vs">VS</div>
+        <div id="duo-res-p2" class="duo-res-player">
+          <div class="duo-res-badge p2-bg">🔴</div>
+          <div id="duo-res-p2-name" class="duo-res-pname">Jugador 2</div>
+          <div id="duo-res-p2-correct" class="duo-res-correct">0 correctas</div>
+          <div id="duo-res-p2-score" class="duo-res-score">0 pts</div>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button id="btn-duo-again" class="btn-primary">🔄 Revancha</button>
+        <button id="btn-duo-home" class="btn-secondary">🏠 Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="impostor-setup" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">🕵️ Impostor</h2>
+    </div>
+    <div class="impostor-setup-container">
+      <div class="impostor-intro">
+        <div class="impostor-intro-icon">🔍</div>
+        <h3>¿Quién es el Impostor?</h3>
+        <p>Todos reciben una palabra excepto el impostor.</p>
+      </div>
+      <div class="impostor-option">
+        <h4>👥 Jugadores (3-15):</h4>
+        <div class="impostor-players-input">
+          <button class="impostor-player-minus">➖</button>
+          <input type="number" id="impostor-player-count" class="impostor-player-number" min="3" max="15" value="" placeholder="?">
+          <button class="impostor-player-plus">➕</button>
+        </div>
+      </div>
+      <button id="btn-impostor-category" class="btn-primary impostor-start-btn" disabled>📚 Elegir Categoría</button>
+    </div>
+  </div>
+
+  <div id="impostor-category" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="impostor-setup">←</button>
+      <h2 class="section-title">📚 Categoría</h2>
+    </div>
+    <div id="impostor-category-grid" class="category-grid"></div>
+  </div>
+
+  <div id="impostor-deal" class="screen">
+    <div id="impostor-deal-content" class="impostor-deal-container"></div>
+  </div>
+
+  <div id="impostor-discuss" class="screen">
+    <div class="impostor-discuss-container">
+      <div class="impostor-discuss-icon">💬</div>
+      <h2 class="impostor-discuss-title">¡Tiempo de Discusión!</h2>
+      <p class="impostor-discuss-desc">Descubran quién es el impostor.</p>
+      <div class="impostor-discuss-tips">
+        <div class="impostor-tip">🔹 Hagan preguntas sobre la palabra</div>
+        <div class="impostor-tip">🔹 Observen respuestas vagas</div>
+        <div class="impostor-tip">🔹 Voten al impostor</div>
+      </div>
+      <div class="impostor-timer-section">
+        <div class="impostor-discuss-timer" id="impostor-discuss-timer">⏱️ 2:00</div>
+      </div>
+      <div class="impostor-discuss-actions">
+        <button id="btn-impostor-reveal" class="btn-primary">👁️ Revelar</button>
+        <button id="btn-impostor-new" class="btn-secondary">🔄 Nueva Ronda</button>
+        <button id="btn-impostor-home" class="btn-secondary">🏠 Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="impostor-reveal" class="screen">
+    <div class="impostor-reveal-container">
+      <div class="impostor-reveal-icon">🎭</div>
+      <h2 class="impostor-reveal-title">El Impostor era...</h2>
+      <div id="impostor-reveal-player" class="impostor-reveal-player">Jugador 3</div>
+      <div class="impostor-reveal-word-section">
+        <p class="impostor-reveal-label">La palabra era:</p>
+        <div id="impostor-reveal-word" class="impostor-reveal-word">David</div>
+      </div>
+      <div class="impostor-reveal-actions">
+        <button id="btn-impostor-again" class="btn-primary">🔄 Jugar Otra Vez</button>
+        <button id="btn-impostor-back" class="btn-secondary">🏠 Menú</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA ABOUT -->
+  <div id="about" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">ℹ️ Acerca de</h2>
+    </div>
+    <div class="about-container">
+      <div class="about-logo">📖</div>
+      <h1 class="about-title">BibliaQuiz</h1>
+      <p class="about-version">Versión 1.0.0</p>
+      
+      <div class="about-section">
+        <h3>📱 Sobre la App</h3>
+        <p>BibliaQuiz es una aplicación educativa diseñada para ayudarte a aprender y memorizar la Biblia de forma divertida a través de preguntas interactivas.</p>
+      </div>
+      
+      <div class="about-section">
+        <h3>🎮 Características</h3>
+        <ul class="about-features">
+          <li>✓ Más de 1,600 preguntas bíblicas</li>
+          <li>✓ 8 categorías diferentes</li>
+          <li>✓ 4 niveles de dificultad</li>
+          <li>✓ 5 modos de juego</li>
+          <li>✓ 31 insignias por desbloquear</li>
+          <li>✓ Funciona sin conexión</li>
+        </ul>
+      </div>
+      
+      <div class="about-section">
+        <h3>📊 Estadísticas</h3>
+        <div class="about-stats">
+          <div class="about-stat">
+            <span id="about-total-questions" class="about-stat-value">1600+</span>
+            <span class="about-stat-label">Preguntas</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-value">8</span>
+            <span class="about-stat-label">Categorías</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-value">31</span>
+            <span class="about-stat-label">Insignias</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="about-section">
+        <h3>💌 Contacto</h3>
+        <p>¿Tienes sugerencias o encontraste un error? Escríbenos.</p>
+      </div>
+      
+      <div class="about-actions">
+        <button id="btn-privacy" class="btn-secondary">🔒 Política de Privacidad</button>
+        <button id="btn-rate" class="btn-primary">⭐ Valorar App</button>
+      </div>
+      
+      <p class="about-footer">Hecho con ❤️ para la gloria de Dios</p>
+    </div>
+  </div>
+
+  <!-- PANTALLA PRIVACY -->
+  <div id="privacy" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="about">←</button>
+      <h2 class="section-title">🔒 Privacidad</h2>
+    </div>
+    <div class="privacy-container">
+      <h2>Política de Privacidad</h2>
+      <p class="privacy-date">Última actualización: Febrero 2026</p>
+      
+      <div class="privacy-section">
+        <h3>📱 Datos que Recopilamos</h3>
+        <p>BibliaQuiz <strong>NO</strong> recopila ningún dato personal. Toda la información se almacena exclusivamente en tu dispositivo.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>💾 Almacenamiento Local</h3>
+        <p>La app guarda en tu dispositivo:</p>
+        <ul>
+          <li>Tu nombre y avatar (opcional)</li>
+          <li>Progreso del juego y estadísticas</li>
+          <li>Insignias desbloqueadas</li>
+          <li>Preferencias de configuración</li>
+        </ul>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>🌐 Conexión a Internet</h3>
+        <p>La app funciona completamente sin conexión. No enviamos datos a ningún servidor externo.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>🗑️ Eliminar Datos</h3>
+        <p>Puedes borrar todos tus datos en cualquier momento desde Ajustes → Borrar Todo.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>📧 Contacto</h3>
+        <p>Si tienes preguntas sobre esta política, contáctanos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA VERSÍCULOS -->
+  <div id="verses" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h2 class="section-title">✝️ Versículos</h2>
+    </div>
+    <div class="verses-container">
+      <div class="verses-intro">
+        <div class="verses-intro-icon">📖</div>
+        <h3>Versículos para Memorizar</h3>
+        <p>Aprende y guarda versículos bíblicos en tu corazón</p>
+      </div>
+      
+      <div class="verses-filters">
+        <button class="verses-filter-btn active" data-filter="all">Todos</button>
+        <button class="verses-filter-btn" data-filter="favorites">⭐ Favoritos</button>
+        <button class="verses-filter-btn" data-filter="memorized">✓ Memorizados</button>
+      </div>
+      
+      <div id="verses-list" class="verses-list">
+        <!-- Los versículos se cargan dinámicamente -->
+      </div>
+      
+      <div id="verses-empty" class="empty-state hidden">
+        <div class="empty-icon">📭</div>
+        <div class="empty-text">No hay versículos en esta categoría</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="update-banner" class="update-banner hidden" role="alert">
+  <div class="update-banner-content">
+    <span class="update-banner-icon">🔄</span>
+    <span class="update-banner-text">Nueva versión disponible</span>
+    <button id="btn-update-reload" class="btn-update">Actualizar</button>
+    <button id="btn-update-dismiss" class="btn-update-dismiss">✕</button>
+  </div>
+</div>
+
+<div id="install-banner" class="install-banner hidden" role="alert">
+  <div class="install-banner-content">
+    <span class="install-banner-icon">📲</span>
+    <div class="install-banner-text">
+      <strong>Instalar BibliaQuiz</strong>
+    </div>
+    <button id="btn-install" class="btn-install">Instalar</button>
+    <button id="btn-install-dismiss" class="btn-install-dismiss">✕</button>
+  </div>
+</div>
+
+<div id="aria-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+<div id="reset-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <h3>⚠️ ¿Estás seguro?</h3>
+    <p>Se borrará todo tu progreso.</p>
+    <div class="modal-actions">
+      <button id="modal-cancel" class="modal-cancel">Cancelar</button>
+      <button id="modal-confirm" class="modal-confirm">🗑️ Borrar</button>
+    </div>
+  </div>
+</div>
+
+<div id="onboarding-overlay" class="onboarding-overlay hidden" aria-modal="true" role="dialog">
+  <div class="onboarding-container">
+    <div class="onboarding-slides">
+      <div class="onboarding-slide active" data-slide="0">
+        <div class="onboarding-emoji">📖</div>
+        <h2>¡Bienvenido a BibliaQuiz!</h2>
+        <p>Más de 1600 preguntas bíblicas te esperan.</p>
+      </div>
+      <div class="onboarding-slide" data-slide="1">
+        <div class="onboarding-emoji">🎮</div>
+        <h2>Modos de juego</h2>
+        <p>Jugar, Contrarreloj, 2 Jugadores, Impostor, Repaso</p>
+      </div>
+      <div class="onboarding-slide" data-slide="2">
+        <div class="onboarding-emoji">❤️</div>
+        <h2>Vidas y Tienda</h2>
+        <p>5 vidas que se regeneran con el tiempo.</p>
+      </div>
+      <div class="onboarding-slide" data-slide="3">
+        <div class="onboarding-emoji">🏆</div>
+        <h2>¡A jugar!</h2>
+        <p>Gana puntos y desbloquea insignias.</p>
+      </div>
+    </div>
+    <div class="onboarding-dots">
+      <span class="onboarding-dot active" data-dot="0"></span>
+      <span class="onboarding-dot" data-dot="1"></span>
+      <span class="onboarding-dot" data-dot="2"></span>
+      <span class="onboarding-dot" data-dot="3"></span>
+    </div>
+    <div class="onboarding-actions">
+      <button id="onboarding-skip" class="onboarding-btn-skip">Saltar</button>
+      <button id="onboarding-next" class="onboarding-btn-next">Siguiente →</button>
+    </div>
+  </div>
+</div>
+
+<div id="register-overlay" class="register-overlay hidden" aria-modal="true" role="dialog">
+  <div class="register-container">
+    <div class="register-icon">👤</div>
+    <h2 class="register-title">¡Bienvenido!</h2>
+    <p class="register-subtitle">Regístrate para personalizar tu experiencia</p>
+    <div class="register-form">
+      <div class="register-field">
+        <label for="register-name">Nombre</label>
+        <input type="text" id="register-name" placeholder="Tu nombre" maxlength="30">
+      </div>
+      <div class="register-field">
+        <label for="register-email">Correo</label>
+        <input type="email" id="register-email" placeholder="tucorreo@ejemplo.com">
+      </div>
+      <div class="register-row">
+        <div class="register-field register-field-half">
+          <label for="register-age">Edad</label>
+          <input type="number" id="register-age" placeholder="Años" min="5" max="120">
+        </div>
+        <div class="register-field register-field-half">
+          <label for="register-gender">Género</label>
+          <select id="register-gender">
+            <option value="" disabled selected>Seleccionar</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+        </div>
+      </div>
+      <p id="register-error" class="register-error hidden">Completa los campos</p>
+      <button id="register-submit" class="btn-primary register-btn">🚀 ¡Comenzar!</button>
+    </div>
+    <p class="register-privacy">🔒 Tu info se guarda solo en tu dispositivo</p>
+  </div>
+</div>
+
+<script src="js/questions.js?v=39" defer></script>
+<script src="js/definitions.js?v=39" defer></script>
+<script src="js/storage.js?v=39" defer></script>
+<script src="js/app.js?v=39" defer></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+
+</body>
+</html>

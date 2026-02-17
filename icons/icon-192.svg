@@ -1,9 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
-  <rect width="192" height="192" rx="30" fill="#0F0E17"/>
-  <circle cx="96" cy="80" r="50" fill="#6C63FF"/>
-  <line x1="96" y1="55" x2="96" y2="105" stroke="white" stroke-width="7" stroke-linecap="round"/>
-  <line x1="76" y1="72" x2="116" y2="72" stroke="white" stroke-width="7" stroke-linecap="round"/>
-  <path d="M72 90 Q96 82 120 90" stroke="#FFD93D" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <text x="96" y="150" text-anchor="middle" fill="white" font-family="sans-serif" font-size="21" font-weight="bold">BibliaQuiz</text>
-  <text x="96" y="172" text-anchor="middle" fill="#A7A9BE" font-family="sans-serif" font-size="12">Aprende Jugando</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f0e17"/>
+    </linearGradient>
+    <linearGradient id="book" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5a2b"/>
+      <stop offset="100%" style="stop-color:#5c3a1e"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#ff8c00"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="192" height="192" rx="38" fill="url(#bg)"/>
+  
+  <!-- Book -->
+  <rect x="35" y="28" width="122" height="125" rx="8" fill="url(#book)"/>
+  <rect x="35" y="28" width="12" height="125" rx="3" fill="#4a2c17"/>
+  <rect x="47" y="33" width="105" height="115" rx="5" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <rect x="52" y="38" width="95" height="105" rx="4" fill="#fff8e7"/>
+  
+  <!-- Page lines -->
+  <g stroke="#d4c4b0" stroke-width="1.5" opacity="0.5">
+    <line x1="60" y1="52" x2="140" y2="52"/>
+    <line x1="60" y1="66" x2="140" y2="66"/>
+    <line x1="60" y1="80" x2="110" y2="80"/>
+    <line x1="60" y1="110" x2="140" y2="110"/>
+    <line x1="60" y1="124" x2="100" y2="124"/>
+  </g>
+  
+  <!-- Cross -->
+  <rect x="94" y="85" width="8" height="30" rx="2" fill="url(#gold)"/>
+  <rect x="84" y="95" width="28" height="8" rx="2" fill="url(#gold)"/>
+  
+  <!-- Bookmark -->
+  <path d="M135 28 L135 50 L140 42 L145 50 L145 28" fill="#c41e3a"/>
+  
+  <!-- Quiz badge -->
+  <circle cx="150" cy="150" r="28" fill="url(#gold)"/>
+  <circle cx="150" cy="150" r="23" fill="#1a1a2e"/>
+  <text x="150" y="159" font-family="Arial" font-size="28" font-weight="bold" fill="url(#gold)" text-anchor="middle">?</text>
 </svg>

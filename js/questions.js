@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 
 
 
@@ -30,7 +30,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien construyo el arca?",
+    question: "¿Quien construyo el arca?",
 
 
 
@@ -58,7 +58,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer hombre?",
+    question: "¿Quien fue el primer hombre?",
 
 
 
@@ -86,7 +86,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la primera mujer?",
+    question: "¿Quien fue la primera mujer?",
 
 
 
@@ -114,7 +114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien vencio a Goliat?",
+    question: "¿Quien vencio a Goliat?",
 
 
 
@@ -142,7 +142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien libero a Israel de Egipto?",
+    question: "¿Quien libero a Israel de Egipto?",
 
 
 
@@ -170,7 +170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue tragado por un gran pez?",
+    question: "¿Quien fue tragado por un gran pez?",
 
 
 
@@ -194,7 +194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Isaac?",
+    question: "¿Quien fue el padre de Isaac?",
 
 
 
@@ -218,7 +218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien nego a Jesus tres veces?",
+    question: "¿Quien nego a Jesus tres veces?",
 
 
 
@@ -242,7 +242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey mas sabio?",
+    question: "¿Quien fue el rey mas sabio?",
 
 
 
@@ -266,7 +266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue llevado al cielo sin morir?",
+    question: "¿Quien fue llevado al cielo sin morir?",
 
 
 
@@ -290,7 +290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la madre de Jesus?",
+    question: "¿Quien fue la madre de Jesus?",
 
 
 
@@ -314,7 +314,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien bautizo a Jesus?",
+    question: "¿Quien bautizo a Jesus?",
 
 
 
@@ -338,7 +338,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio muchos Salmos?",
+    question: "¿Quien escribio muchos Salmos?",
 
 
 
@@ -362,7 +362,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer rey de Israel?",
+    question: "¿Quien fue el primer rey de Israel?",
 
 
 
@@ -386,7 +386,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien traiciono a Jesus?",
+    question: "¿Quien traiciono a Jesus?",
 
 
 
@@ -410,7 +410,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue hermano de Moises?",
+    question: "¿Quien fue hermano de Moises?",
 
 
 
@@ -434,7 +434,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien interpreto suenos en Egipto?",
+    question: "¿Quien interpreto suenos en Egipto?",
 
 
 
@@ -458,7 +458,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien lucho con un angel?",
+    question: "¿Quien lucho con un angel?",
 
 
 
@@ -482,7 +482,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue conocido por su fuerza?",
+    question: "¿Quien fue conocido por su fuerza?",
 
 
 
@@ -506,7 +506,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan el Bautista?",
+    question: "¿Quien fue el padre de Juan el Bautista?",
 
 
 
@@ -530,7 +530,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien recibio los Diez Mandamientos?",
+    question: "¿Quien recibio los Diez Mandamientos?",
 
 
 
@@ -554,7 +554,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien camino sobre el agua con Jesus?",
+    question: "¿Quien camino sobre el agua con Jesus?",
 
 
 
@@ -578,7 +578,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue amigo de David?",
+    question: "¿Quien fue amigo de David?",
 
 
 
@@ -602,7 +602,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue vendido por sus hermanos?",
+    question: "¿Quien fue vendido por sus hermanos?",
 
 
 
@@ -626,7 +626,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Salomon?",
+    question: "¿Quien fue padre de Salomon?",
 
 
 
@@ -650,7 +650,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien construyo el templo?",
+    question: "¿Quien construyo el templo?",
 
 
 
@@ -674,7 +674,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer martir cristiano?",
+    question: "¿Quien fue el primer martir cristiano?",
 
 
 
@@ -698,7 +698,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue sanado de lepra por Eliseo?",
+    question: "¿Quien fue sanado de lepra por Eliseo?",
 
 
 
@@ -722,7 +722,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue esposa de Abraham?",
+    question: "¿Quien fue esposa de Abraham?",
 
 
 
@@ -746,7 +746,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien nego conocer a Jesus?",
+    question: "¿Quien nego conocer a Jesus?",
 
 
 
@@ -770,7 +770,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer discipulo llamado?",
+    question: "¿Quien fue el primer discipulo llamado?",
 
 
 
@@ -794,7 +794,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue madre de Samuel?",
+    question: "¿Quien fue madre de Samuel?",
 
 
 
@@ -818,7 +818,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue reina y salvo a su pueblo?",
+    question: "¿Quien fue reina y salvo a su pueblo?",
 
 
 
@@ -842,7 +842,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue profeta llevado por un carro de fuego?",
+    question: "¿Quien fue profeta llevado por un carro de fuego?",
 
 
 
@@ -866,7 +866,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue hermano de Esau?",
+    question: "¿Quien fue hermano de Esau?",
 
 
 
@@ -890,7 +890,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio Hechos?",
+    question: "¿Quien escribio Hechos?",
 
 
 
@@ -914,7 +914,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el discipulo amado?",
+    question: "¿Quien fue el discipulo amado?",
 
 
 
@@ -938,7 +938,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Juan el Bautista?",
+    question: "¿Quien fue padre de Juan el Bautista?",
 
 
 
@@ -962,7 +962,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer asesinado en la Biblia?",
+    question: "¿Quien fue el primer asesinado en la Biblia?",
 
 
 
@@ -986,7 +986,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Jacob?",
+    question: "¿Quien fue padre de Jacob?",
 
 
 
@@ -1010,7 +1010,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue madre de Jesus?",
+    question: "¿Quien fue madre de Jesus?",
 
 
 
@@ -1034,7 +1034,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio Apocalipsis?",
+    question: "¿Quien escribio Apocalipsis?",
 
 
 
@@ -1058,7 +1058,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue resucitado por Jesus?",
+    question: "¿Quien fue resucitado por Jesus?",
 
 
 
@@ -1082,7 +1082,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien era recaudador de impuestos?",
+    question: "¿Quien era recaudador de impuestos?",
 
 
 
@@ -1106,7 +1106,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Samuel?",
+    question: "¿Quien fue padre de Samuel?",
 
 
 
@@ -1130,7 +1130,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue profeta en el vientre del pez?",
+    question: "¿Quien fue profeta en el vientre del pez?",
 
 
 
@@ -1154,7 +1154,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Juan?",
+    question: "¿Quien fue padre de Juan?",
 
 
 
@@ -1178,7 +1178,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue esposa de Isaac?",
+    question: "¿Quien fue esposa de Isaac?",
 
 
 
@@ -1202,7 +1202,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de David?",
+    question: "¿Quien fue padre de David?",
 
 
 
@@ -1226,7 +1226,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue hermano de Marta y Maria?",
+    question: "¿Quien fue hermano de Marta y Maria?",
 
 
 
@@ -1254,7 +1254,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el primer libro de la Biblia?",
+    question: "¿Cual es el primer libro de la Biblia?",
 
 
 
@@ -1278,7 +1278,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el ultimo libro de la Biblia?",
+    question: "¿Cual es el ultimo libro de la Biblia?",
 
 
 
@@ -1302,7 +1302,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se encuentra la creacion del mundo?",
+    question: "¿En que libro se encuentra la creacion del mundo?",
 
 
 
@@ -1326,7 +1326,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparecen los Diez Mandamientos?",
+    question: "¿En que libro aparecen los Diez Mandamientos?",
 
 
 
@@ -1350,7 +1350,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene muchos salmos de alabanza?",
+    question: "¿Que libro contiene muchos salmos de alabanza?",
 
 
 
@@ -1374,7 +1374,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla del diluvio?",
+    question: "¿En que libro se habla del diluvio?",
 
 
 
@@ -1398,7 +1398,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro sigue despues de Genesis?",
+    question: "¿Cual libro sigue despues de Genesis?",
 
 
 
@@ -1422,7 +1422,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta la historia de Moises?",
+    question: "¿En que libro esta la historia de Moises?",
 
 
 
@@ -1446,7 +1446,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene proverbios de sabiduria?",
+    question: "¿Que libro contiene proverbios de sabiduria?",
 
 
 
@@ -1470,7 +1470,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece la historia de Job?",
+    question: "¿En que libro aparece la historia de Job?",
 
 
 
@@ -1494,7 +1494,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el primer libro del Nuevo Testamento?",
+    question: "¿Cual es el primer libro del Nuevo Testamento?",
 
 
 
@@ -1518,7 +1518,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro cuenta la vida de Jesus?",
+    question: "¿Cual libro cuenta la vida de Jesus?",
 
 
 
@@ -1542,7 +1542,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro escribio principalmente el apostol Pablo?",
+    question: "¿Que libro escribio principalmente el apostol Pablo?",
 
 
 
@@ -1566,7 +1566,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro estan los Hechos de los Apostoles?",
+    question: "¿En que libro estan los Hechos de los Apostoles?",
 
 
 
@@ -1590,7 +1590,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro contiene el Sermon del Monte?",
+    question: "¿Cual libro contiene el Sermon del Monte?",
 
 
 
@@ -1614,7 +1614,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta el Salmo 23?",
+    question: "¿En que libro esta el Salmo 23?",
 
 
 
@@ -1638,7 +1638,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro habla del amor entre esposos?",
+    question: "¿Cual libro habla del amor entre esposos?",
 
 
 
@@ -1662,7 +1662,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece Noe?",
+    question: "¿En que libro aparece Noe?",
 
 
 
@@ -1686,7 +1686,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro fue escrito por Juan en Patmos?",
+    question: "¿Cual libro fue escrito por Juan en Patmos?",
 
 
 
@@ -1710,7 +1710,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene cartas a iglesias?",
+    question: "¿Que libro contiene cartas a iglesias?",
 
 
 
@@ -1734,7 +1734,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece Abraham?",
+    question: "¿En que libro aparece Abraham?",
 
 
 
@@ -1758,7 +1758,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro habla del exodo de Israel?",
+    question: "¿Cual libro habla del exodo de Israel?",
 
 
 
@@ -1782,7 +1782,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta la historia de Rut?",
+    question: "¿En que libro esta la historia de Rut?",
 
 
 
@@ -1806,7 +1806,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene leyes para Israel?",
+    question: "¿Que libro contiene leyes para Israel?",
 
 
 
@@ -1830,7 +1830,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se narra la conquista de Canaan?",
+    question: "¿En que libro se narra la conquista de Canaan?",
 
 
 
@@ -1854,7 +1854,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro habla de los jueces de Israel?",
+    question: "¿Cual libro habla de los jueces de Israel?",
 
 
 
@@ -1878,7 +1878,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece el rey Saul?",
+    question: "¿En que libro aparece el rey Saul?",
 
 
 
@@ -1902,7 +1902,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra el reinado de David?",
+    question: "¿Que libro narra el reinado de David?",
 
 
 
@@ -1926,7 +1926,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla del rey Salomon?",
+    question: "¿En que libro se habla del rey Salomon?",
 
 
 
@@ -1950,7 +1950,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro cuenta la historia de Ester?",
+    question: "¿Cual libro cuenta la historia de Ester?",
 
 
 
@@ -1974,7 +1974,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se reconstruyo Jerusalen?",
+    question: "¿En que libro se reconstruyo Jerusalen?",
 
 
 
@@ -1998,7 +1998,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla del templo reconstruido?",
+    question: "¿Que libro habla del templo reconstruido?",
 
 
 
@@ -2022,7 +2022,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta el profeta Isaias?",
+    question: "¿En que libro esta el profeta Isaias?",
 
 
 
@@ -2046,7 +2046,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla del profeta Daniel?",
+    question: "¿Que libro habla del profeta Daniel?",
 
 
 
@@ -2070,7 +2070,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece Jonas?",
+    question: "¿En que libro aparece Jonas?",
 
 
 
@@ -2094,7 +2094,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el primer evangelio?",
+    question: "¿Cual es el primer evangelio?",
 
 
 
@@ -2118,7 +2118,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro escribio Lucas?",
+    question: "¿Que libro escribio Lucas?",
 
 
 
@@ -2142,7 +2142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta la conversion de Pablo?",
+    question: "¿En que libro esta la conversion de Pablo?",
 
 
 
@@ -2166,7 +2166,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla de la fe?",
+    question: "¿Que libro habla de la fe?",
 
 
 
@@ -2190,7 +2190,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta 'Todo lo puedo en Cristo'?",
+    question: "¿En que libro esta 'Todo lo puedo en Cristo'?",
 
 
 
@@ -2214,7 +2214,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro escribio Pedro?",
+    question: "¿Que libro escribio Pedro?",
 
 
 
@@ -2238,7 +2238,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta el amor cristiano descrito extensamente?",
+    question: "¿En que libro esta el amor cristiano descrito extensamente?",
 
 
 
@@ -2262,7 +2262,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual libro habla del fruto del Espiritu?",
+    question: "¿Cual libro habla del fruto del Espiritu?",
 
 
 
@@ -2286,7 +2286,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece la epistola de Judas?",
+    question: "¿En que libro aparece la epistola de Judas?",
 
 
 
@@ -2310,7 +2310,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el libro mas corto del Nuevo Testamento?",
+    question: "¿Cual es el libro mas corto del Nuevo Testamento?",
 
 
 
@@ -2334,7 +2334,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro escribio Juan sobre el amor?",
+    question: "¿Que libro escribio Juan sobre el amor?",
 
 
 
@@ -2358,7 +2358,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta la armadura de Dios?",
+    question: "¿En que libro esta la armadura de Dios?",
 
 
 
@@ -2382,7 +2382,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro escribio Santiago?",
+    question: "¿Que libro escribio Santiago?",
 
 
 
@@ -2406,7 +2406,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro esta el 'Padre Nuestro'?",
+    question: "¿En que libro esta el 'Padre Nuestro'?",
 
 
 
@@ -2430,7 +2430,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro cierra la Biblia?",
+    question: "¿Que libro cierra la Biblia?",
 
 
 
@@ -2458,7 +2458,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que construyo Noe por mandato de Dios?",
+    question: "¿Que construyo Noe por mandato de Dios?",
 
 
 
@@ -2482,7 +2482,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento cubrio toda la tierra con agua?",
+    question: "¿Que evento cubrio toda la tierra con agua?",
 
 
 
@@ -2506,7 +2506,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde vivian Adan y Eva?",
+    question: "¿Donde vivian Adan y Eva?",
 
 
 
@@ -2530,7 +2530,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pueblo cruzo el Mar Rojo?",
+    question: "¿Que pueblo cruzo el Mar Rojo?",
 
 
 
@@ -2554,7 +2554,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que cayo del cielo para alimentar a Israel?",
+    question: "¿Que cayo del cielo para alimentar a Israel?",
 
 
 
@@ -2578,7 +2578,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad cayeron sus muros?",
+    question: "¿Que ciudad cayeron sus muros?",
 
 
 
@@ -2602,7 +2602,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que torre quisieron construir hasta el cielo?",
+    question: "¿Que torre quisieron construir hasta el cielo?",
 
 
 
@@ -2626,7 +2626,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que plaga fue la ultima en Egipto?",
+    question: "¿Que plaga fue la ultima en Egipto?",
 
 
 
@@ -2650,7 +2650,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde recibio Moises los mandamientos?",
+    question: "¿Donde recibio Moises los mandamientos?",
 
 
 
@@ -2674,7 +2674,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias cayo mana doble antes del sabado?",
+    question: "¿Cuantos dias cayo mana doble antes del sabado?",
 
 
 
@@ -2698,7 +2698,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal hablo con Balaam?",
+    question: "¿Que animal hablo con Balaam?",
 
 
 
@@ -2722,7 +2722,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien derribo a Goliat?",
+    question: "¿Quien derribo a Goliat?",
 
 
 
@@ -2746,7 +2746,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue destruida con fuego?",
+    question: "¿Que ciudad fue destruida con fuego?",
 
 
 
@@ -2770,7 +2770,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta enfrento a los profetas de Baal?",
+    question: "¿Que profeta enfrento a los profetas de Baal?",
 
 
 
@@ -2794,7 +2794,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde nacio Jesus?",
+    question: "¿Donde nacio Jesus?",
 
 
 
@@ -2818,7 +2818,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que senal guio a los sabios?",
+    question: "¿Que senal guio a los sabios?",
 
 
 
@@ -2842,7 +2842,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que multiplico Jesus?",
+    question: "¿Que multiplico Jesus?",
 
 
 
@@ -2866,7 +2866,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mar calmo Jesus?",
+    question: "¿Que mar calmo Jesus?",
 
 
 
@@ -2890,7 +2890,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que instrumento derribo Jerico?",
+    question: "¿Que instrumento derribo Jerico?",
 
 
 
@@ -2914,7 +2914,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que arca contenia la Ley?",
+    question: "¿Que arca contenia la Ley?",
 
 
 
@@ -2938,7 +2938,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue capital de David?",
+    question: "¿Que ciudad fue capital de David?",
 
 
 
@@ -2962,7 +2962,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias estuvo Jonas en el pez?",
+    question: "¿Cuantos dias estuvo Jonas en el pez?",
 
 
 
@@ -2986,7 +2986,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra la creacion?",
+    question: "¿Que libro narra la creacion?",
 
 
 
@@ -3010,7 +3010,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que plaga convirtio el agua en sangre?",
+    question: "¿Que plaga convirtio el agua en sangre?",
 
 
 
@@ -3034,7 +3034,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde fue crucificado Jesus?",
+    question: "¿Donde fue crucificado Jesus?",
 
 
 
@@ -3058,7 +3058,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pueblo cayo en idolatria con un becerro?",
+    question: "¿Que pueblo cayo en idolatria con un becerro?",
 
 
 
@@ -3082,7 +3082,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey pidio sabiduria?",
+    question: "¿Que rey pidio sabiduria?",
 
 
 
@@ -3106,7 +3106,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llevado al cielo?",
+    question: "¿Que profeta fue llevado al cielo?",
 
 
 
@@ -3130,7 +3130,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mujer salvo a su pueblo?",
+    question: "¿Que mujer salvo a su pueblo?",
 
 
 
@@ -3154,7 +3154,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que apostol camino sobre el agua?",
+    question: "¿Que apostol camino sobre el agua?",
 
 
 
@@ -3178,7 +3178,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde oraba Jesus?",
+    question: "¿Donde oraba Jesus?",
 
 
 
@@ -3202,7 +3202,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue reconstruida por Nehemias?",
+    question: "¿Que ciudad fue reconstruida por Nehemias?",
 
 
 
@@ -3226,7 +3226,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro relata jueces de Israel?",
+    question: "¿Que libro relata jueces de Israel?",
 
 
 
@@ -3250,7 +3250,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey persiguio a David?",
+    question: "¿Que rey persiguio a David?",
 
 
 
@@ -3274,7 +3274,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mar cruzo Moises?",
+    question: "¿Que mar cruzo Moises?",
 
 
 
@@ -3298,7 +3298,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que plaga fueron langostas?",
+    question: "¿Que plaga fueron langostas?",
 
 
 
@@ -3322,7 +3322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro relata el exodo?",
+    question: "¿Que libro relata el exodo?",
 
 
 
@@ -3346,7 +3346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad cayo por obediencia?",
+    question: "¿Que ciudad cayo por obediencia?",
 
 
 
@@ -3370,7 +3370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que apostol escribio Apocalipsis?",
+    question: "¿Que apostol escribio Apocalipsis?",
 
 
 
@@ -3394,7 +3394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal fue sacrificado en Pascua?",
+    question: "¿Que animal fue sacrificado en Pascua?",
 
 
 
@@ -3418,7 +3418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey construyo el templo?",
+    question: "¿Que rey construyo el templo?",
 
 
 
@@ -3442,7 +3442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra el nacimiento de Jesus?",
+    question: "¿Que libro narra el nacimiento de Jesus?",
 
 
 
@@ -3466,7 +3466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rio cruzo Josue?",
+    question: "¿Que rio cruzo Josue?",
 
 
 
@@ -3490,7 +3490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro cuenta la caida de Jerusalen?",
+    question: "¿Que libro cuenta la caida de Jerusalen?",
 
 
 
@@ -3514,7 +3514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo dudo?",
+    question: "¿Que discipulo dudo?",
 
 
 
@@ -3538,7 +3538,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento celebran en Pentecostes?",
+    question: "¿Que evento celebran en Pentecostes?",
 
 
 
@@ -3562,7 +3562,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro relata la iglesia primitiva?",
+    question: "¿Que libro relata la iglesia primitiva?",
 
 
 
@@ -3586,7 +3586,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta cerro el AT?",
+    question: "¿Que profeta cerro el AT?",
 
 
 
@@ -3610,7 +3610,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue destruida junto a Sodoma?",
+    question: "¿Que ciudad fue destruida junto a Sodoma?",
 
 
 
@@ -3634,7 +3634,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento marca la resurreccion?",
+    question: "¿Que evento marca la resurreccion?",
 
 
 
@@ -3662,7 +3662,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad nacio Jesus?",
+    question: "¿En que ciudad nacio Jesus?",
 
 
 
@@ -3686,7 +3686,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar fue acostado Jesus al nacer?",
+    question: "¿En que lugar fue acostado Jesus al nacer?",
 
 
 
@@ -3710,7 +3710,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quienes visitaron al nino Jesus guiados por una estrella?",
+    question: "¿Quienes visitaron al nino Jesus guiados por una estrella?",
 
 
 
@@ -3734,7 +3734,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quienes fueron los primeros en visitar a Jesus recien nacido?",
+    question: "¿Quienes fueron los primeros en visitar a Jesus recien nacido?",
 
 
 
@@ -3758,7 +3758,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba la madre de Jesus?",
+    question: "¿Como se llamaba la madre de Jesus?",
 
 
 
@@ -3782,7 +3782,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el padre terrenal de Jesus?",
+    question: "¿Como se llamaba el padre terrenal de Jesus?",
 
 
 
@@ -3806,7 +3806,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que pais huyo la familia de Jesus para escapar de Herodes?",
+    question: "¿A que pais huyo la familia de Jesus para escapar de Herodes?",
 
 
 
@@ -3830,7 +3830,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey quiso matar al nino Jesus?",
+    question: "¿Que rey quiso matar al nino Jesus?",
 
 
 
@@ -3854,7 +3854,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad crecio Jesus?",
+    question: "¿En que ciudad crecio Jesus?",
 
 
 
@@ -3878,7 +3878,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que rio fue bautizado Jesus?",
+    question: "¿En que rio fue bautizado Jesus?",
 
 
 
@@ -3902,7 +3902,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien bautizo a Jesus?",
+    question: "¿Quien bautizo a Jesus?",
 
 
 
@@ -3926,7 +3926,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que descendio sobre Jesus al ser bautizado?",
+    question: "¿Que descendio sobre Jesus al ser bautizado?",
 
 
 
@@ -3950,7 +3950,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias ayuno Jesus en el desierto?",
+    question: "¿Cuantos dias ayuno Jesus en el desierto?",
 
 
 
@@ -3974,7 +3974,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien tento a Jesus en el desierto?",
+    question: "¿Quien tento a Jesus en el desierto?",
 
 
 
@@ -3998,7 +3998,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos apostoles eligio Jesus?",
+    question: "¿Cuantos apostoles eligio Jesus?",
 
 
 
@@ -4022,7 +4022,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la profesion de Jesus antes de predicar?",
+    question: "¿Cual fue la profesion de Jesus antes de predicar?",
 
 
 
@@ -4046,7 +4046,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual de estos era uno de los 12 apostoles?",
+    question: "¿Cual de estos era uno de los 12 apostoles?",
 
 
 
@@ -4070,7 +4070,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profesion tenian Pedro y Andres antes de seguir a Jesus?",
+    question: "¿Que profesion tenian Pedro y Andres antes de seguir a Jesus?",
 
 
 
@@ -4094,7 +4094,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que famoso sermon predico Jesus en una montana?",
+    question: "¿Que famoso sermon predico Jesus en una montana?",
 
 
 
@@ -4118,7 +4118,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que oracion enseno Jesus a sus discipulos?",
+    question: "¿Que oracion enseno Jesus a sus discipulos?",
 
 
 
@@ -4142,7 +4142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llama la parabola del hijo que regresa a su padre?",
+    question: "¿Como se llama la parabola del hijo que regresa a su padre?",
 
 
 
@@ -4166,7 +4166,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llama la parabola donde un hombre ayuda a un herido en el camino?",
+    question: "¿Como se llama la parabola donde un hombre ayuda a un herido en el camino?",
 
 
 
@@ -4190,7 +4190,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Sobre que animal entro Jesus a Jerusalen el Domingo de Ramos?",
+    question: "¿Sobre que animal entro Jesus a Jerusalen el Domingo de Ramos?",
 
 
 
@@ -4214,7 +4214,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ponian las personas en el camino cuando Jesus entro a Jerusalen?",
+    question: "¿Que ponian las personas en el camino cuando Jesus entro a Jerusalen?",
 
 
 
@@ -4238,7 +4238,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llama la ultima cena que Jesus tuvo con sus discipulos?",
+    question: "¿Como se llama la ultima cena que Jesus tuvo con sus discipulos?",
 
 
 
@@ -4262,7 +4262,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que representaba el pan en la ultima Cena?",
+    question: "¿Que representaba el pan en la ultima Cena?",
 
 
 
@@ -4286,7 +4286,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que representaba el vino en la ultima Cena?",
+    question: "¿Que representaba el vino en la ultima Cena?",
 
 
 
@@ -4310,7 +4310,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien traiciono a Jesus?",
+    question: "¿Quien traiciono a Jesus?",
 
 
 
@@ -4334,7 +4334,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que gesto traiciono Judas a Jesus?",
+    question: "¿Con que gesto traiciono Judas a Jesus?",
 
 
 
@@ -4358,7 +4358,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas monedas de plata recibio Judas por traicionar a Jesus?",
+    question: "¿Cuantas monedas de plata recibio Judas por traicionar a Jesus?",
 
 
 
@@ -4382,7 +4382,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo nego conocer a Jesus tres veces?",
+    question: "¿Que discipulo nego conocer a Jesus tres veces?",
 
 
 
@@ -4406,7 +4406,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que gobernador romano juzgo a Jesus?",
+    question: "¿Que gobernador romano juzgo a Jesus?",
 
 
 
@@ -4430,7 +4430,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar fue crucificado Jesus?",
+    question: "¿En que lugar fue crucificado Jesus?",
 
 
 
@@ -4454,7 +4454,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias despues de morir resucito Jesus?",
+    question: "¿Cuantos dias despues de morir resucito Jesus?",
 
 
 
@@ -4478,7 +4478,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quienes fueron las primeras en descubrir la tumba vacia de Jesus?",
+    question: "¿Quienes fueron las primeras en descubrir la tumba vacia de Jesus?",
 
 
 
@@ -4502,7 +4502,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que encontraron las mujeres al llegar a la tumba de Jesus?",
+    question: "¿Que encontraron las mujeres al llegar a la tumba de Jesus?",
 
 
 
@@ -4526,7 +4526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo dudo de la resurreccion hasta ver a Jesus?",
+    question: "¿Que discipulo dudo de la resurreccion hasta ver a Jesus?",
 
 
 
@@ -4550,7 +4550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento se celebra con la ascension de Jesus al cielo?",
+    question: "¿Que evento se celebra con la ascension de Jesus al cielo?",
 
 
 
@@ -4598,7 +4598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que significa el nombre 'Emmanuel'?",
+    question: "¿Que significa el nombre 'Emmanuel'?",
 
 
 
@@ -4622,7 +4622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que significa el nombre 'Jesus'?",
+    question: "¿Que significa el nombre 'Jesus'?",
 
 
 
@@ -4646,7 +4646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que titulo significa 'Ungido' y se aplica a Jesus?",
+    question: "¿Que titulo significa 'Ungido' y se aplica a Jesus?",
 
 
 
@@ -4670,7 +4670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde oro Jesus la noche antes de ser arrestado?",
+    question: "¿Donde oro Jesus la noche antes de ser arrestado?",
 
 
 
@@ -4694,7 +4694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dijo Jesus que era el mandamiento mas importante?",
+    question: "¿Que dijo Jesus que era el mandamiento mas importante?",
 
 
 
@@ -4718,7 +4718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Jesus dijo: 'Yo soy el camino, la verdad y la...'?",
+    question: "¿Jesus dijo: 'Yo soy el camino, la verdad y la...'?",
 
 
 
@@ -4742,7 +4742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos regalos llevaron los magos al nino Jesus?",
+    question: "¿Cuantos regalos llevaron los magos al nino Jesus?",
 
 
 
@@ -4766,7 +4766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que les guio a los magos hasta donde estaba Jesus?",
+    question: "¿Que les guio a los magos hasta donde estaba Jesus?",
 
 
 
@@ -4790,7 +4790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que edad tenia Jesus cuando fue encontrado ensenando en el templo?",
+    question: "¿Que edad tenia Jesus cuando fue encontrado ensenando en el templo?",
 
 
 
@@ -4814,7 +4814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que parabola Jesus habla de un pastor que busca una oveja perdida?",
+    question: "¿En que parabola Jesus habla de un pastor que busca una oveja perdida?",
 
 
 
@@ -4838,7 +4838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le pusieron a Jesus en la cabeza antes de crucificarlo?",
+    question: "¿Que le pusieron a Jesus en la cabeza antes de crucificarlo?",
 
 
 
@@ -4866,7 +4866,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el primer milagro de Jesus segun el Evangelio de Juan?",
+    question: "¿Cual fue el primer milagro de Jesus segun el Evangelio de Juan?",
 
 
 
@@ -4890,7 +4890,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien resucito Jesus despues de estar 4 dias muerto?",
+    question: "¿A quien resucito Jesus despues de estar 4 dias muerto?",
 
 
 
@@ -4914,7 +4914,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mar dividio Moises para que el pueblo de Israel cruzara?",
+    question: "¿Que mar dividio Moises para que el pueblo de Israel cruzara?",
 
 
 
@@ -4938,7 +4938,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con cuantos panes y peces alimento Jesus a 5,000 personas?",
+    question: "¿Con cuantos panes y peces alimento Jesus a 5,000 personas?",
 
 
 
@@ -4962,7 +4962,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien camino sobre el agua junto a Jesus?",
+    question: "¿Quien camino sobre el agua junto a Jesus?",
 
 
 
@@ -4986,7 +4986,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Jesus para calmar la tempestad en el mar?",
+    question: "¿Que hizo Jesus para calmar la tempestad en el mar?",
 
 
 
@@ -5010,7 +5010,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien sano Jesus de ceguera en Jerico?",
+    question: "¿A quien sano Jesus de ceguera en Jerico?",
 
 
 
@@ -5034,7 +5034,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que aparicion milagrosa vio Moises en el monte Horeb?",
+    question: "¿Que aparicion milagrosa vio Moises en el monte Horeb?",
 
 
 
@@ -5058,7 +5058,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que alimento envio Dios del cielo al pueblo de Israel en el desierto?",
+    question: "¿Que alimento envio Dios del cielo al pueblo de Israel en el desierto?",
 
 
 
@@ -5082,7 +5082,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal se trago a Jonas?",
+    question: "¿Que animal se trago a Jonas?",
 
 
 
@@ -5106,7 +5106,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias estuvo Jonas dentro del gran pez?",
+    question: "¿Cuantos dias estuvo Jonas dentro del gran pez?",
 
 
 
@@ -5130,7 +5130,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que murallas cayeron milagrosamente al marchar el pueblo de Israel alrededor?",
+    question: "¿Que murallas cayeron milagrosamente al marchar el pueblo de Israel alrededor?",
 
 
 
@@ -5154,7 +5154,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que fue protegido Daniel milagrosamente?",
+    question: "¿De que fue protegido Daniel milagrosamente?",
 
 
 
@@ -5178,7 +5178,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quienes fueron arrojados al horno de fuego ardiente y no se quemaron?",
+    question: "¿Quienes fueron arrojados al horno de fuego ardiente y no se quemaron?",
 
 
 
@@ -5202,7 +5202,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta hizo descender fuego del cielo en el monte Carmelo?",
+    question: "¿Que profeta hizo descender fuego del cielo en el monte Carmelo?",
 
 
 
@@ -5226,7 +5226,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como fue llevado Elias al cielo?",
+    question: "¿Como fue llevado Elias al cielo?",
 
 
 
@@ -5250,7 +5250,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rio dividio Eliseo golpeandolo con el manto de Elias?",
+    question: "¿Que rio dividio Eliseo golpeandolo con el manto de Elias?",
 
 
 
@@ -5274,7 +5274,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien resucito Jesus, la hija de un principal de la sinagoga?",
+    question: "¿A quien resucito Jesus, la hija de un principal de la sinagoga?",
 
 
 
@@ -5298,7 +5298,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que enfermedad sano Jesus tocando al enfermo, aunque era considerado impuro?",
+    question: "¿Que enfermedad sano Jesus tocando al enfermo, aunque era considerado impuro?",
 
 
 
@@ -5322,7 +5322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos leprosos sano Jesus de los cuales solo uno volvio a dar gracias?",
+    question: "¿Cuantos leprosos sano Jesus de los cuales solo uno volvio a dar gracias?",
 
 
 
@@ -5346,7 +5346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Jesus en la boda de Cana?",
+    question: "¿Que hizo Jesus en la boda de Cana?",
 
 
 
@@ -5370,7 +5370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien le dijo Jesus 'Toma tu lecho y anda' en el estanque de Betesda?",
+    question: "¿A quien le dijo Jesus 'Toma tu lecho y anda' en el estanque de Betesda?",
 
 
 
@@ -5394,7 +5394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro hizo Jesus con el hombre de la mano seca?",
+    question: "¿Que milagro hizo Jesus con el hombre de la mano seca?",
 
 
 
@@ -5418,7 +5418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que plaga envio Dios como la ultima sobre Egipto?",
+    question: "¿Que plaga envio Dios como la ultima sobre Egipto?",
 
 
 
@@ -5442,7 +5442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De donde saco Moises agua golpeando con su vara?",
+    question: "¿De donde saco Moises agua golpeando con su vara?",
 
 
 
@@ -5466,7 +5466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que convirtio Moises en serpiente delante de Faraon?",
+    question: "¿Que convirtio Moises en serpiente delante de Faraon?",
 
 
 
@@ -5490,7 +5490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue sanada al tocar el borde del manto de Jesus?",
+    question: "¿Quien fue sanada al tocar el borde del manto de Jesus?",
 
 
 
@@ -5514,7 +5514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien sano Jesus de fiebre en la casa de Pedro?",
+    question: "¿A quien sano Jesus de fiebre en la casa de Pedro?",
 
 
 
@@ -5538,7 +5538,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro ocurrio cuando Jesus murio en la cruz?",
+    question: "¿Que milagro ocurrio cuando Jesus murio en la cruz?",
 
 
 
@@ -5562,7 +5562,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el mayor milagro de Jesus segun el cristianismo?",
+    question: "¿Cual es el mayor milagro de Jesus segun el cristianismo?",
 
 
 
@@ -5586,7 +5586,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a la vara de Aaron que confirmo su sacerdocio?",
+    question: "¿Que le sucedio a la vara de Aaron que confirmo su sacerdocio?",
 
 
 
@@ -5610,7 +5610,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal hablo milagrosamente en el Antiguo Testamento?",
+    question: "¿Que animal hablo milagrosamente en el Antiguo Testamento?",
 
 
 
@@ -5634,7 +5634,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Jesus antes de alimentar a los 5,000?",
+    question: "¿Que hizo Jesus antes de alimentar a los 5,000?",
 
 
 
@@ -5658,7 +5658,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas canastas sobraron despues de alimentar a los 5,000?",
+    question: "¿Cuantas canastas sobraron despues de alimentar a los 5,000?",
 
 
 
@@ -5682,7 +5682,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le dijo Jesus al paralitico que bajaron por el techo?",
+    question: "¿Que le dijo Jesus al paralitico que bajaron por el techo?",
 
 
 
@@ -5706,7 +5706,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio en Pentecostes segun el libro de Hechos?",
+    question: "¿Que sucedio en Pentecostes segun el libro de Hechos?",
 
 
 
@@ -5730,7 +5730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hicieron Pedro y Juan con el cojo de la puerta del templo llamada la Hermosa?",
+    question: "¿Que hicieron Pedro y Juan con el cojo de la puerta del templo llamada la Hermosa?",
 
 
 
@@ -5754,7 +5754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como fue liberado Pedro de la carcel segun Hechos?",
+    question: "¿Como fue liberado Pedro de la carcel segun Hechos?",
 
 
 
@@ -5778,7 +5778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien resucito Pedro en Jope?",
+    question: "¿A quien resucito Pedro en Jope?",
 
 
 
@@ -5802,7 +5802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le paso a Pablo cuando fue mordido por una vibora en Malta?",
+    question: "¿Que le paso a Pablo cuando fue mordido por una vibora en Malta?",
 
 
 
@@ -5826,7 +5826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro hizo Eliseo con el aceite de una viuda?",
+    question: "¿Que milagro hizo Eliseo con el aceite de una viuda?",
 
 
 
@@ -5850,7 +5850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien resucito Eliseo, el hijo de una mujer sunamita?",
+    question: "¿A quien resucito Eliseo, el hijo de una mujer sunamita?",
 
 
 
@@ -5874,7 +5874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que enfermedad fue sanada en Naaman al sumergirse en el rio Jordan?",
+    question: "¿Que enfermedad fue sanada en Naaman al sumergirse en el rio Jordan?",
 
 
 
@@ -5898,7 +5898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como alimentaron los cuervos a Elias junto al arroyo de Querit?",
+    question: "¿Como alimentaron los cuervos a Elias junto al arroyo de Querit?",
 
 
 
@@ -5922,7 +5922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro hizo Jesus con el ciego de nacimiento usando lodo?",
+    question: "¿Que milagro hizo Jesus con el ciego de nacimiento usando lodo?",
 
 
 
@@ -5946,7 +5946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Josue pidiendo a Dios que detuviera en Gabaon?",
+    question: "¿Que hizo Josue pidiendo a Dios que detuviera en Gabaon?",
 
 
 
@@ -5970,7 +5970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que se alimento Elias durante 40 dias gracias a un angel?",
+    question: "¿Con que se alimento Elias durante 40 dias gracias a un angel?",
 
 
 
@@ -5994,7 +5994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro ocurrio cuando Jesus toco la oreja del siervo del sumo sacerdote?",
+    question: "¿Que milagro ocurrio cuando Jesus toco la oreja del siervo del sumo sacerdote?",
 
 
 
@@ -6018,7 +6018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que encontro Pedro en la boca de un pez por instruccion de Jesus?",
+    question: "¿Que encontro Pedro en la boca de un pez por instruccion de Jesus?",
 
 
 
@@ -6042,7 +6042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro realizo Jesus al liberar al endemoniado gadareno?",
+    question: "¿Que milagro realizo Jesus al liberar al endemoniado gadareno?",
 
 
 
@@ -6070,7 +6070,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer rey de Israel?",
+    question: "¿Quien fue el primer rey de Israel?",
 
 
 
@@ -6094,7 +6094,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel vencio al gigante Goliat?",
+    question: "¿Que rey de Israel vencio al gigante Goliat?",
 
 
 
@@ -6118,7 +6118,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey construyo el primer templo de Jerusalen?",
+    question: "¿Que rey construyo el primer templo de Jerusalen?",
 
 
 
@@ -6142,7 +6142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le pidio Salomon a Dios cuando comenzo a reinar?",
+    question: "¿Que le pidio Salomon a Dios cuando comenzo a reinar?",
 
 
 
@@ -6166,7 +6166,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que instrumento musical tocaba el rey David?",
+    question: "¿Que instrumento musical tocaba el rey David?",
 
 
 
@@ -6190,7 +6190,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual era la ocupacion de David antes de ser rey?",
+    question: "¿Cual era la ocupacion de David antes de ser rey?",
 
 
 
@@ -6214,7 +6214,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta ungio a Saul como primer rey de Israel?",
+    question: "¿Que profeta ungio a Saul como primer rey de Israel?",
 
 
 
@@ -6238,7 +6238,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue conocido como el mas sabio de todos?",
+    question: "¿Que rey fue conocido como el mas sabio de todos?",
 
 
 
@@ -6262,7 +6262,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que tribu era el rey Saul?",
+    question: "¿De que tribu era el rey Saul?",
 
 
 
@@ -6286,7 +6286,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el hijo de David que reino despues de el?",
+    question: "¿Quien fue el hijo de David que reino despues de el?",
 
 
 
@@ -6310,7 +6310,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad conquisto David para hacerla su capital?",
+    question: "¿Que ciudad conquisto David para hacerla su capital?",
 
 
 
@@ -6334,7 +6334,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que arma vencio David a Goliat?",
+    question: "¿Con que arma vencio David a Goliat?",
 
 
 
@@ -6358,7 +6358,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey dividio el reino de Israel en dos?",
+    question: "¿Que rey dividio el reino de Israel en dos?",
 
 
 
@@ -6382,7 +6382,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa malvada del rey Acab?",
+    question: "¿Quien fue la esposa malvada del rey Acab?",
 
 
 
@@ -6406,7 +6406,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro de la Biblia contiene muchos salmos escritos por el rey David?",
+    question: "¿Que libro de la Biblia contiene muchos salmos escritos por el rey David?",
 
 
 
@@ -6430,7 +6430,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda hizo una gran reforma religiosa y encontro el libro de la Ley?",
+    question: "¿Que rey de Juda hizo una gran reforma religiosa y encontro el libro de la Ley?",
 
 
 
@@ -6454,7 +6454,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas tribus se separaron para formar el reino del norte (Israel)?",
+    question: "¿Cuantas tribus se separaron para formar el reino del norte (Israel)?",
 
 
 
@@ -6478,7 +6478,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pecado cometio David con Betsabe?",
+    question: "¿Que pecado cometio David con Betsabe?",
 
 
 
@@ -6502,7 +6502,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta confronto a David por su pecado con Betsabe?",
+    question: "¿Que profeta confronto a David por su pecado con Betsabe?",
 
 
 
@@ -6526,7 +6526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel adoro a Baal por influencia de su esposa?",
+    question: "¿Que rey de Israel adoro a Baal por influencia de su esposa?",
 
 
 
@@ -6550,7 +6550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hijo de David se rebelo contra el para quitarle el trono?",
+    question: "¿Que hijo de David se rebelo contra el para quitarle el trono?",
 
 
 
@@ -6574,7 +6574,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el primer rey del reino del norte (Israel) tras la division?",
+    question: "¿Cual fue el primer rey del reino del norte (Israel) tras la division?",
 
 
 
@@ -6598,7 +6598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda enfermo y Dios le anadio 15 anos de vida?",
+    question: "¿Que rey de Juda enfermo y Dios le anadio 15 anos de vida?",
 
 
 
@@ -6622,7 +6622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que reina visito a Salomon para comprobar su sabiduria?",
+    question: "¿Que reina visito a Salomon para comprobar su sabiduria?",
 
 
 
@@ -6646,7 +6646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos proverbios se le atribuyen al rey Salomon?",
+    question: "¿Cuantos proverbios se le atribuyen al rey Salomon?",
 
 
 
@@ -6670,7 +6670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ungio a David como rey?",
+    question: "¿Quien ungio a David como rey?",
 
 
 
@@ -6694,7 +6694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad nacio el rey David?",
+    question: "¿En que ciudad nacio el rey David?",
 
 
 
@@ -6718,7 +6718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como murio el rey Saul?",
+    question: "¿Como murio el rey Saul?",
 
 
 
@@ -6742,7 +6742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pidio Dios a Abraham que sacrificara, prefigurando la obediencia de los reyes?",
+    question: "¿Que pidio Dios a Abraham que sacrificara, prefigurando la obediencia de los reyes?",
 
 
 
@@ -6766,7 +6766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey mando construir becerros de oro para que el pueblo no fuera a Jerusalen?",
+    question: "¿Que rey mando construir becerros de oro para que el pueblo no fuera a Jerusalen?",
 
 
 
@@ -6790,7 +6790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien era el mejor amigo de David, hijo del rey Saul?",
+    question: "¿Quien era el mejor amigo de David, hijo del rey Saul?",
 
 
 
@@ -6814,7 +6814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que objeto sagrado llevo David a Jerusalen con gran celebracion?",
+    question: "¿Que objeto sagrado llevo David a Jerusalen con gran celebracion?",
 
 
 
@@ -6838,7 +6838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue el padre de Salomon?",
+    question: "¿Que rey fue el padre de Salomon?",
 
 
 
@@ -6862,7 +6862,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino Salomon sobre Israel?",
+    question: "¿Cuantos anos reino Salomon sobre Israel?",
 
 
 
@@ -6886,7 +6886,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue puesto en el trono a los 8 anos de edad?",
+    question: "¿Que rey de Juda fue puesto en el trono a los 8 anos de edad?",
 
 
 
@@ -6910,7 +6910,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey tuvo 700 esposas y 300 concubinas?",
+    question: "¿Que rey tuvo 700 esposas y 300 concubinas?",
 
 
 
@@ -6934,7 +6934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda destruyo los lugares altos y purifico el templo?",
+    question: "¿Que rey de Juda destruyo los lugares altos y purifico el templo?",
 
 
 
@@ -6958,7 +6958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Contra que pueblo luchaba frecuentemente el rey Saul?",
+    question: "¿Contra que pueblo luchaba frecuentemente el rey Saul?",
 
 
 
@@ -6982,7 +6982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a Salomon al final de su vida por causa de sus esposas extranjeras?",
+    question: "¿Que le sucedio a Salomon al final de su vida por causa de sus esposas extranjeras?",
 
 
 
@@ -7006,7 +7006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta se enfrento a los profetas de Baal en el monte Carmelo durante el reinado de Acab?",
+    question: "¿Que profeta se enfrento a los profetas de Baal en el monte Carmelo durante el reinado de Acab?",
 
 
 
@@ -7030,7 +7030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pecado cometio Saul que hizo que Dios lo rechazara como rey?",
+    question: "¿Que pecado cometio Saul que hizo que Dios lo rechazara como rey?",
 
 
 
@@ -7054,7 +7054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue conocido por su maldad y fue esposo de Jezabel?",
+    question: "¿Que rey de Israel fue conocido por su maldad y fue esposo de Jezabel?",
 
 
 
@@ -7078,7 +7078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro de la Biblia se narra la historia de los reyes de Israel y Juda?",
+    question: "¿En que libro de la Biblia se narra la historia de los reyes de Israel y Juda?",
 
 
 
@@ -7102,7 +7102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien sucedio a Roboam como rey de Juda?",
+    question: "¿Quien sucedio a Roboam como rey de Juda?",
 
 
 
@@ -7126,7 +7126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda confio en Dios y vio la destruccion del ejercito asirio?",
+    question: "¿Que rey de Juda confio en Dios y vio la destruccion del ejercito asirio?",
 
 
 
@@ -7150,7 +7150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De quien era hijo el gigante Goliat segun su pueblo?",
+    question: "¿De quien era hijo el gigante Goliat segun su pueblo?",
 
 
 
@@ -7174,7 +7174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que escribio Salomon ademas de Proverbios?",
+    question: "¿Que escribio Salomon ademas de Proverbios?",
 
 
 
@@ -7198,7 +7198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue llevado cautivo a Babilonia con cadenas y luego se arrepintio?",
+    question: "¿Que rey fue llevado cautivo a Babilonia con cadenas y luego se arrepintio?",
 
 
 
@@ -7222,7 +7222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el ultimo rey de Juda antes del exilio a Babilonia?",
+    question: "¿Quien fue el ultimo rey de Juda antes del exilio a Babilonia?",
 
 
 
@@ -7246,7 +7246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue ungido por el profeta Eliseo para destruir la casa de Acab?",
+    question: "¿Que rey de Israel fue ungido por el profeta Eliseo para destruir la casa de Acab?",
 
 
 
@@ -7274,7 +7274,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue tragado por un gran pez?",
+    question: "¿Que profeta fue tragado por un gran pez?",
 
 
 
@@ -7298,7 +7298,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que ciudad fue enviado Jonas a predicar?",
+    question: "¿A que ciudad fue enviado Jonas a predicar?",
 
 
 
@@ -7322,7 +7322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llevado al cielo en un carro de fuego?",
+    question: "¿Que profeta fue llevado al cielo en un carro de fuego?",
 
 
 
@@ -7346,7 +7346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue lanzado al foso de los leones?",
+    question: "¿Que profeta fue lanzado al foso de los leones?",
 
 
 
@@ -7370,7 +7370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta interpreto los suenos del rey Nabucodonosor?",
+    question: "¿Que profeta interpreto los suenos del rey Nabucodonosor?",
 
 
 
@@ -7394,7 +7394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo la vision de los huesos secos que cobraron vida?",
+    question: "¿Que profeta tuvo la vision de los huesos secos que cobraron vida?",
 
 
 
@@ -7418,7 +7418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta escribio: 'Porque un nino nos es nacido, hijo nos es dado'?",
+    question: "¿Que profeta escribio: 'Porque un nino nos es nacido, hijo nos es dado'?",
 
 
 
@@ -7442,7 +7442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta es conocido como 'el profeta lloron'?",
+    question: "¿Que profeta es conocido como 'el profeta lloron'?",
 
 
 
@@ -7466,7 +7466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta desafio a los profetas de Baal en el monte Carmelo?",
+    question: "¿Que profeta desafio a los profetas de Baal en el monte Carmelo?",
 
 
 
@@ -7490,7 +7490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el discipulo y sucesor del profeta Elias?",
+    question: "¿Quien fue el discipulo y sucesor del profeta Elias?",
 
 
 
@@ -7514,7 +7514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta ungio a David como rey de Israel?",
+    question: "¿Que profeta ungio a David como rey de Israel?",
 
 
 
@@ -7538,7 +7538,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta confronto a David por su pecado con Betsabe?",
+    question: "¿Que profeta confronto a David por su pecado con Betsabe?",
 
 
 
@@ -7562,7 +7562,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta profetizo que el Mesias naceria en Belen?",
+    question: "¿Que profeta profetizo que el Mesias naceria en Belen?",
 
 
 
@@ -7586,7 +7586,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo una vision del trono de Dios con serafines?",
+    question: "¿Que profeta tuvo una vision del trono de Dios con serafines?",
 
 
 
@@ -7610,7 +7610,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llamado por Dios siendo aun muy joven?",
+    question: "¿Que profeta fue llamado por Dios siendo aun muy joven?",
 
 
 
@@ -7634,7 +7634,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias estuvo Jonas dentro del gran pez?",
+    question: "¿Cuantos dias estuvo Jonas dentro del gran pez?",
 
 
 
@@ -7658,7 +7658,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue alimentado por cuervos junto al arroyo de Querit?",
+    question: "¿Que profeta fue alimentado por cuervos junto al arroyo de Querit?",
 
 
 
@@ -7682,7 +7682,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
+    question: "¿Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
 
 
 
@@ -7706,7 +7706,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta sano las aguas amargas de Jerico con sal?",
+    question: "¿Que profeta sano las aguas amargas de Jerico con sal?",
 
 
 
@@ -7730,7 +7730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuales son los cuatro profetas mayores?",
+    question: "¿Cuales son los cuatro profetas mayores?",
 
 
 
@@ -7754,7 +7754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta escribio el libro de Lamentaciones?",
+    question: "¿Que profeta escribio el libro de Lamentaciones?",
 
 
 
@@ -7778,7 +7778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue pastor de ovejas antes de ser llamado por Dios?",
+    question: "¿Que profeta fue pastor de ovejas antes de ser llamado por Dios?",
 
 
 
@@ -7802,7 +7802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que profeta Dios le ordeno casarse con una mujer infiel como simbolo de Israel?",
+    question: "¿A que profeta Dios le ordeno casarse con una mujer infiel como simbolo de Israel?",
 
 
 
@@ -7826,7 +7826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta escribio: 'He aqui que la virgen concebira y dara a luz un hijo'?",
+    question: "¿Que profeta escribio: 'He aqui que la virgen concebira y dara a luz un hijo'?",
 
 
 
@@ -7850,7 +7850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le pidio Eliseo a Elias antes de que este fuera llevado al cielo?",
+    question: "¿Que le pidio Eliseo a Elias antes de que este fuera llevado al cielo?",
 
 
 
@@ -7874,7 +7874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que instrumento se le cayo el manto a Elias cuando fue llevado al cielo?",
+    question: "¿Con que instrumento se le cayo el manto a Elias cuando fue llevado al cielo?",
 
 
 
@@ -7898,7 +7898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta dijo: 'Preparen camino al Senor' como profecia sobre Juan el Bautista?",
+    question: "¿Que profeta dijo: 'Preparen camino al Senor' como profecia sobre Juan el Bautista?",
 
 
 
@@ -7922,7 +7922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tres amigos de Daniel fueron lanzados al horno de fuego ardiente?",
+    question: "¿Que tres amigos de Daniel fueron lanzados al horno de fuego ardiente?",
 
 
 
@@ -7946,7 +7946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio una zarza ardiente que no se consumia?",
+    question: "¿Que profeta vio una zarza ardiente que no se consumia?",
 
 
 
@@ -7970,7 +7970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta es el autor del libro mas largo del Antiguo Testamento?",
+    question: "¿Que profeta es el autor del libro mas largo del Antiguo Testamento?",
 
 
 
@@ -7994,7 +7994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue echado en una cisterna de lodo por predicar la verdad?",
+    question: "¿Que profeta fue echado en una cisterna de lodo por predicar la verdad?",
 
 
 
@@ -8018,7 +8018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta le dijo a Naaman que se lavara siete veces en el rio Jordan?",
+    question: "¿Que profeta le dijo a Naaman que se lavara siete veces en el rio Jordan?",
 
 
 
@@ -8042,7 +8042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que enfermedad fue sanado Naaman al obedecer al profeta Eliseo?",
+    question: "¿De que enfermedad fue sanado Naaman al obedecer al profeta Eliseo?",
 
 
 
@@ -8066,7 +8066,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio una escritura en la pared durante el banquete de Belsasar?",
+    question: "¿Que profeta vio una escritura en la pared durante el banquete de Belsasar?",
 
 
 
@@ -8090,7 +8090,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta huyo de la reina Jezabel y se escondio en una cueva?",
+    question: "¿Que profeta huyo de la reina Jezabel y se escondio en una cueva?",
 
 
 
@@ -8114,7 +8114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta profetizo sobre el valle de los huesos secos que representa la restauracion de Israel?",
+    question: "¿Que profeta profetizo sobre el valle de los huesos secos que representa la restauracion de Israel?",
 
 
 
@@ -8138,7 +8138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el ultimo profeta del Antiguo Testamento?",
+    question: "¿Cual fue el ultimo profeta del Antiguo Testamento?",
 
 
 
@@ -8162,7 +8162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta resucito al hijo de la viuda de Sarepta?",
+    question: "¿Que profeta resucito al hijo de la viuda de Sarepta?",
 
 
 
@@ -8186,7 +8186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta resucito al hijo de la sunamita?",
+    question: "¿Que profeta resucito al hijo de la sunamita?",
 
 
 
@@ -8210,7 +8210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que planta crecio y luego se seco causando enojo a Jonas?",
+    question: "¿Que planta crecio y luego se seco causando enojo a Jonas?",
 
 
 
@@ -8234,7 +8234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta dijo: 'Busquen al Senor y viviran'?",
+    question: "¿Que profeta dijo: 'Busquen al Senor y viviran'?",
 
 
 
@@ -8258,7 +8258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta hablo de la venida del 'Sol de justicia'?",
+    question: "¿Que profeta hablo de la venida del 'Sol de justicia'?",
 
 
 
@@ -8282,7 +8282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profetas animaron al pueblo a reconstruir el templo despues del exilio?",
+    question: "¿Que profetas animaron al pueblo a reconstruir el templo despues del exilio?",
 
 
 
@@ -8306,7 +8306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que tribu era el profeta Samuel?",
+    question: "¿De que tribu era el profeta Samuel?",
 
 
 
@@ -8330,7 +8330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba la madre de Samuel?",
+    question: "¿Como se llamaba la madre de Samuel?",
 
 
 
@@ -8354,7 +8354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llamado por Dios desde antes de nacer?",
+    question: "¿Que profeta fue llamado por Dios desde antes de nacer?",
 
 
 
@@ -8378,7 +8378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta hablo de un nuevo pacto que Dios haria con su pueblo?",
+    question: "¿Que profeta hablo de un nuevo pacto que Dios haria con su pueblo?",
 
 
 
@@ -8402,7 +8402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio cuatro bestias que representaban imperios mundiales?",
+    question: "¿Que profeta vio cuatro bestias que representaban imperios mundiales?",
 
 
 
@@ -8426,7 +8426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta escribio: 'Jehova es mi pastor, nada me faltara'?",
+    question: "¿Que profeta escribio: 'Jehova es mi pastor, nada me faltara'?",
 
 
 
@@ -8450,7 +8450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio que Dios enviaria al profeta Elias antes del dia del Senor?",
+    question: "¿Que profeta anuncio que Dios enviaria al profeta Elias antes del dia del Senor?",
 
 
 
@@ -8478,7 +8478,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio la mayoria de las cartas del Nuevo Testamento?",
+    question: "¿Quien escribio la mayoria de las cartas del Nuevo Testamento?",
 
 
 
@@ -8502,7 +8502,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que ciudad fue dirigida la carta a los Romanos?",
+    question: "¿A que ciudad fue dirigida la carta a los Romanos?",
 
 
 
@@ -8526,7 +8526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es conocido como el 'capitulo del amor' en las cartas de Pablo?",
+    question: "¿Cual es conocido como el 'capitulo del amor' en las cartas de Pablo?",
 
 
 
@@ -8550,7 +8550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que versiculo dice: 'Todo lo puedo en Cristo que me fortalece'?",
+    question: "¿Que versiculo dice: 'Todo lo puedo en Cristo que me fortalece'?",
 
 
 
@@ -8574,7 +8574,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que versiculo dice: 'Porque de tal manera amo Dios al mundo...'?",
+    question: "¿Que versiculo dice: 'Porque de tal manera amo Dios al mundo...'?",
 
 
 
@@ -8598,7 +8598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta de Pablo habla sobre la armadura de Dios?",
+    question: "¿Que carta de Pablo habla sobre la armadura de Dios?",
 
 
 
@@ -8622,7 +8622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cartas escribio Pablo a los Corintios que estan en la Biblia?",
+    question: "¿Cuantas cartas escribio Pablo a los Corintios que estan en la Biblia?",
 
 
 
@@ -8646,7 +8646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que versiculo dice: 'Sabemos que a los que aman a Dios, todas las cosas les ayudan a bien'?",
+    question: "¿Que versiculo dice: 'Sabemos que a los que aman a Dios, todas las cosas les ayudan a bien'?",
 
 
 
@@ -8670,7 +8670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien escribio Pablo las cartas llamadas 'epistolas pastorales'?",
+    question: "¿A quien escribio Pablo las cartas llamadas 'epistolas pastorales'?",
 
 
 
@@ -8694,7 +8694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio la epistola de Santiago?",
+    question: "¿Quien escribio la epistola de Santiago?",
 
 
 
@@ -8718,7 +8718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cartas de Pedro hay en el Nuevo Testamento?",
+    question: "¿Cuantas cartas de Pedro hay en el Nuevo Testamento?",
 
 
 
@@ -8742,7 +8742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cartas del apostol Juan hay en el Nuevo Testamento?",
+    question: "¿Cuantas cartas del apostol Juan hay en el Nuevo Testamento?",
 
 
 
@@ -8766,7 +8766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta de Pablo fue escrita a un dueno de un esclavo llamado Onesimo?",
+    question: "¿Que carta de Pablo fue escrita a un dueno de un esclavo llamado Onesimo?",
 
 
 
@@ -8790,7 +8790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta se encuentra el fruto del Espiritu?",
+    question: "¿En que carta se encuentra el fruto del Espiritu?",
 
 
 
@@ -8814,7 +8814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Romanos 6:23 que es la paga del pecado?",
+    question: "¿Que dice Romanos 6:23 que es la paga del pecado?",
 
 
 
@@ -8838,7 +8838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta habla de que la fe sin obras es muerta?",
+    question: "¿Que carta habla de que la fe sin obras es muerta?",
 
 
 
@@ -8862,7 +8862,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que versiculo dice: 'Por gracia sois salvos por medio de la fe'?",
+    question: "¿Que versiculo dice: 'Por gracia sois salvos por medio de la fe'?",
 
 
 
@@ -8886,7 +8886,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta se describe a Jesus como sumo sacerdote?",
+    question: "¿En que carta se describe a Jesus como sumo sacerdote?",
 
 
 
@@ -8910,7 +8910,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta contiene el capitulo de la fe conocido como 'los heroes de la fe'?",
+    question: "¿Que carta contiene el capitulo de la fe conocido como 'los heroes de la fe'?",
 
 
 
@@ -8934,7 +8934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta de Pablo fue escrita a los creyentes de Filipos?",
+    question: "¿Que carta de Pablo fue escrita a los creyentes de Filipos?",
 
 
 
@@ -8958,7 +8958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta ensena que 'Dios es amor'?",
+    question: "¿Que carta ensena que 'Dios es amor'?",
 
 
 
@@ -8982,7 +8982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta Pablo dice: 'Ya no vivo yo, mas vive Cristo en mi'?",
+    question: "¿En que carta Pablo dice: 'Ya no vivo yo, mas vive Cristo en mi'?",
 
 
 
@@ -9006,7 +9006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta menciona que debemos echar toda nuestra ansiedad sobre Dios?",
+    question: "¿Que carta menciona que debemos echar toda nuestra ansiedad sobre Dios?",
 
 
 
@@ -9030,7 +9030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien esta dirigida la carta a Tito?",
+    question: "¿A quien esta dirigida la carta a Tito?",
 
 
 
@@ -9054,7 +9054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuales son los tres elementos que permanecen segun 1 Corintios 13?",
+    question: "¿Cuales son los tres elementos que permanecen segun 1 Corintios 13?",
 
 
 
@@ -9078,7 +9078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta de Pablo trata principalmente sobre la justificacion por la fe?",
+    question: "¿Que carta de Pablo trata principalmente sobre la justificacion por la fe?",
 
 
 
@@ -9102,7 +9102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dijo Pablo que debemos hacer sin cesar segun 1 Tesalonicenses?",
+    question: "¿Que dijo Pablo que debemos hacer sin cesar segun 1 Tesalonicenses?",
 
 
 
@@ -9126,7 +9126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta dice: 'Toda la Escritura es inspirada por Dios'?",
+    question: "¿Que carta dice: 'Toda la Escritura es inspirada por Dios'?",
 
 
 
@@ -9150,7 +9150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que iglesia Pablo le escribio sobre los problemas de divisiones?",
+    question: "¿A que iglesia Pablo le escribio sobre los problemas de divisiones?",
 
 
 
@@ -9174,7 +9174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta habla del arrebatamiento de los creyentes?",
+    question: "¿Que carta habla del arrebatamiento de los creyentes?",
 
 
 
@@ -9198,7 +9198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cartas escribio Pablo a los Tesalonicenses?",
+    question: "¿Cuantas cartas escribio Pablo a los Tesalonicenses?",
 
 
 
@@ -9222,7 +9222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio la epistola de Judas?",
+    question: "¿Quien escribio la epistola de Judas?",
 
 
 
@@ -9246,7 +9246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta de Pablo enfatiza la supremacia de Cristo sobre toda la creacion?",
+    question: "¿Que carta de Pablo enfatiza la supremacia de Cristo sobre toda la creacion?",
 
 
 
@@ -9270,7 +9270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta Pablo habla sobre los dones espirituales comparandolos con el cuerpo humano?",
+    question: "¿En que carta Pablo habla sobre los dones espirituales comparandolos con el cuerpo humano?",
 
 
 
@@ -9294,7 +9294,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta dice: 'No os unais en yugo desigual con los incredulos'?",
+    question: "¿Que carta dice: 'No os unais en yugo desigual con los incredulos'?",
 
 
 
@@ -9318,7 +9318,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cartas escribio Pablo a Timoteo?",
+    question: "¿Cuantas cartas escribio Pablo a Timoteo?",
 
 
 
@@ -9342,7 +9342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta dice que si confesamos nuestros pecados, Dios es fiel para perdonarnos?",
+    question: "¿Que carta dice que si confesamos nuestros pecados, Dios es fiel para perdonarnos?",
 
 
 
@@ -9366,7 +9366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta se habla de las 'obras de la carne' y el 'fruto del Espiritu'?",
+    question: "¿En que carta se habla de las 'obras de la carne' y el 'fruto del Espiritu'?",
 
 
 
@@ -9390,7 +9390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta fue escrita a los creyentes de Efeso?",
+    question: "¿Que carta fue escrita a los creyentes de Efeso?",
 
 
 
@@ -9414,7 +9414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que versiculo dice: 'No se amolden al mundo actual'?",
+    question: "¿Que versiculo dice: 'No se amolden al mundo actual'?",
 
 
 
@@ -9438,7 +9438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta describe la resurreccion de los muertos en detalle?",
+    question: "¿Que carta describe la resurreccion de los muertos en detalle?",
 
 
 
@@ -9462,7 +9462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien es el autor tradicional de la carta a los Hebreos?",
+    question: "¿Quien es el autor tradicional de la carta a los Hebreos?",
 
 
 
@@ -9486,7 +9486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta dice: 'Dad gracias en todo, porque esta es la voluntad de Dios'?",
+    question: "¿Que carta dice: 'Dad gracias en todo, porque esta es la voluntad de Dios'?",
 
 
 
@@ -9510,7 +9510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta habla sobre la relacion entre esposos comparandola con Cristo y la iglesia?",
+    question: "¿Que carta habla sobre la relacion entre esposos comparandola con Cristo y la iglesia?",
 
 
 
@@ -9534,7 +9534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta aconseja a los creyentes a presentar sus cuerpos como sacrificio vivo?",
+    question: "¿Que carta aconseja a los creyentes a presentar sus cuerpos como sacrificio vivo?",
 
 
 
@@ -9558,7 +9558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta dice: 'Estad siempre gozosos'?",
+    question: "¿Que carta dice: 'Estad siempre gozosos'?",
 
 
 
@@ -9582,7 +9582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta Pablo pide que reciban a Onesimo como hermano?",
+    question: "¿En que carta Pablo pide que reciban a Onesimo como hermano?",
 
 
 
@@ -9606,7 +9606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta habla de que la lengua es un fuego y un mundo de maldad?",
+    question: "¿Que carta habla de que la lengua es un fuego y un mundo de maldad?",
 
 
 
@@ -9630,7 +9630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta dice: 'Si alguno esta en Cristo, nueva criatura es'?",
+    question: "¿Que carta dice: 'Si alguno esta en Cristo, nueva criatura es'?",
 
 
 
@@ -9654,7 +9654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta comienza diciendo: 'Pablo, siervo de Jesucristo, llamado a ser apostol'?",
+    question: "¿Que carta comienza diciendo: 'Pablo, siervo de Jesucristo, llamado a ser apostol'?",
 
 
 
@@ -9686,7 +9686,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Moises?",
+    question: "¿Quien fue el padre de Moises?",
 
 
 
@@ -9710,7 +9710,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa de Isaac?",
+    question: "¿Quien fue la esposa de Isaac?",
 
 
 
@@ -9734,7 +9734,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ayudo a esconder a los espias en Jerico?",
+    question: "¿Quien ayudo a esconder a los espias en Jerico?",
 
 
 
@@ -9758,7 +9758,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el suegro de Moises?",
+    question: "¿Quien fue el suegro de Moises?",
 
 
 
@@ -9782,7 +9782,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien reemplazo a Moises como lider?",
+    question: "¿Quien reemplazo a Moises como lider?",
 
 
 
@@ -9806,7 +9806,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien interpreto los suenos del rey Nabucodonosor?",
+    question: "¿Quien interpreto los suenos del rey Nabucodonosor?",
 
 
 
@@ -9830,7 +9830,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que ungio a David?",
+    question: "¿Quien fue el profeta que ungio a David?",
 
 
 
@@ -9854,7 +9854,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa de Jacob que dio a luz a Jose?",
+    question: "¿Quien fue la esposa de Jacob que dio a luz a Jose?",
 
 
 
@@ -9878,7 +9878,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que persiguio a David?",
+    question: "¿Quien fue el rey que persiguio a David?",
 
 
 
@@ -9902,7 +9902,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la madre de Juan el Bautista?",
+    question: "¿Quien fue la madre de Juan el Bautista?",
 
 
 
@@ -9926,7 +9926,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer juez de Israel?",
+    question: "¿Quien fue el primer juez de Israel?",
 
 
 
@@ -9950,7 +9950,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Salomon?",
+    question: "¿Quien fue el padre de Salomon?",
 
 
 
@@ -9974,7 +9974,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue llamado 'amigo de Dios'?",
+    question: "¿Quien fue llamado 'amigo de Dios'?",
 
 
 
@@ -9998,7 +9998,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa de Booz?",
+    question: "¿Quien fue la esposa de Booz?",
 
 
 
@@ -10022,7 +10022,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que enfrento a Acab?",
+    question: "¿Quien fue el profeta que enfrento a Acab?",
 
 
 
@@ -10046,7 +10046,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan y Santiago?",
+    question: "¿Quien fue el padre de Juan y Santiago?",
 
 
 
@@ -10070,7 +10070,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue conocido como 'el hombre conforme al corazon de Dios'?",
+    question: "¿Quien fue conocido como 'el hombre conforme al corazon de Dios'?",
 
 
 
@@ -10094,7 +10094,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la mujer que juzgo a Israel?",
+    question: "¿Quien fue la mujer que juzgo a Israel?",
 
 
 
@@ -10118,7 +10118,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey mas rico de Israel?",
+    question: "¿Quien fue el rey mas rico de Israel?",
 
 
 
@@ -10142,7 +10142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Samuel?",
+    question: "¿Quien fue el padre de Samuel?",
 
 
 
@@ -10166,7 +10166,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue convertido en el camino a Damasco?",
+    question: "¿Quien fue convertido en el camino a Damasco?",
 
 
 
@@ -10190,7 +10190,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien nego a Jesus antes del gallo cantar?",
+    question: "¿Quien nego a Jesus antes del gallo cantar?",
 
 
 
@@ -10214,7 +10214,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio el libro de Lamentaciones?",
+    question: "¿Quien escribio el libro de Lamentaciones?",
 
 
 
@@ -10238,7 +10238,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta llamado desde nino?",
+    question: "¿Quien fue el profeta llamado desde nino?",
 
 
 
@@ -10262,7 +10262,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Sanson?",
+    question: "¿Quien fue el padre de Sanson?",
 
 
 
@@ -10286,7 +10286,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el gobernador que juzgo a Jesus?",
+    question: "¿Quien fue el gobernador que juzgo a Jesus?",
 
 
 
@@ -10310,7 +10310,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el companero de Pablo en viajes misioneros?",
+    question: "¿Quien fue el companero de Pablo en viajes misioneros?",
 
 
 
@@ -10334,7 +10334,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue resucitado por Pedro?",
+    question: "¿Quien fue resucitado por Pedro?",
 
 
 
@@ -10358,7 +10358,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Isaac?",
+    question: "¿Quien fue el padre de Isaac?",
 
 
 
@@ -10382,7 +10382,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey durante la vida de Jesus?",
+    question: "¿Quien fue el rey durante la vida de Jesus?",
 
 
 
@@ -10406,7 +10406,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la madre de Samuel?",
+    question: "¿Quien fue la madre de Samuel?",
 
 
 
@@ -10430,7 +10430,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio el evangelio mas corto?",
+    question: "¿Quien escribio el evangelio mas corto?",
 
 
 
@@ -10454,7 +10454,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que vio huesos secos?",
+    question: "¿Quien fue el profeta que vio huesos secos?",
 
 
 
@@ -10478,7 +10478,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan el Bautista?",
+    question: "¿Quien fue el padre de Juan el Bautista?",
 
 
 
@@ -10502,7 +10502,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que reconstruyo Jerusalen?",
+    question: "¿Quien fue el rey que reconstruyo Jerusalen?",
 
 
 
@@ -10526,7 +10526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue sanado de ceguera por Jesus?",
+    question: "¿Quien fue sanado de ceguera por Jesus?",
 
 
 
@@ -10550,7 +10550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que hablo con Dios en el monte Horeb?",
+    question: "¿Quien fue el profeta que hablo con Dios en el monte Horeb?",
 
 
 
@@ -10574,7 +10574,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Jacob y Esau?",
+    question: "¿Quien fue padre de Jacob y Esau?",
 
 
 
@@ -10598,7 +10598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer rey ungido por Samuel?",
+    question: "¿Quien fue el primer rey ungido por Samuel?",
 
 
 
@@ -10622,7 +10622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa de David que era hija de Saul?",
+    question: "¿Quien fue la esposa de David que era hija de Saul?",
 
 
 
@@ -10646,7 +10646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio muchas cartas del NT?",
+    question: "¿Quien escribio muchas cartas del NT?",
 
 
 
@@ -10670,7 +10670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan Marcos?",
+    question: "¿Quien fue el padre de Juan Marcos?",
 
 
 
@@ -10694,7 +10694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que huyo a Tarsis?",
+    question: "¿Quien fue el profeta que huyo a Tarsis?",
 
 
 
@@ -10718,7 +10718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que cayo por orgullo?",
+    question: "¿Quien fue el rey que cayo por orgullo?",
 
 
 
@@ -10742,7 +10742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el sacerdote que crio a Samuel?",
+    question: "¿Quien fue el sacerdote que crio a Samuel?",
 
 
 
@@ -10766,7 +10766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer misionero gentil?",
+    question: "¿Quien fue el primer misionero gentil?",
 
 
 
@@ -10790,7 +10790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa de Abraham despues de Sara?",
+    question: "¿Quien fue la esposa de Abraham despues de Sara?",
 
 
 
@@ -10814,7 +10814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que reprendio a David?",
+    question: "¿Quien fue el profeta que reprendio a David?",
 
 
 
@@ -10838,7 +10838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue padre de Jose (esposo de Maria)?",
+    question: "¿Quien fue padre de Jose (esposo de Maria)?",
 
 
 
@@ -10862,7 +10862,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el discipulo que dudo de Jesus resucitado?",
+    question: "¿Quien fue el discipulo que dudo de Jesus resucitado?",
 
 
 
@@ -10890,7 +10890,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se registran las generaciones desde Adan hasta Noe?",
+    question: "¿En que libro se registran las generaciones desde Adan hasta Noe?",
 
 
 
@@ -10914,7 +10914,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro repite gran parte de la ley dada en el desierto?",
+    question: "¿Que libro repite gran parte de la ley dada en el desierto?",
 
 
 
@@ -10938,7 +10938,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se describen los sacrificios del tabernaculo?",
+    question: "¿En que libro se describen los sacrificios del tabernaculo?",
 
 
 
@@ -10962,7 +10962,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra el conteo del pueblo de Israel?",
+    question: "¿Que libro narra el conteo del pueblo de Israel?",
 
 
 
@@ -10986,7 +10986,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece la oracion de Ana?",
+    question: "¿En que libro aparece la oracion de Ana?",
 
 
 
@@ -11010,7 +11010,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro registra la caida del reino del norte?",
+    question: "¿Que libro registra la caida del reino del norte?",
 
 
 
@@ -11034,7 +11034,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se mencionan los valientes de David?",
+    question: "¿En que libro se mencionan los valientes de David?",
 
 
 
@@ -11058,7 +11058,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene listas genealogicas extensas?",
+    question: "¿Que libro contiene listas genealogicas extensas?",
 
 
 
@@ -11082,7 +11082,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se relata el decreto de Ciro?",
+    question: "¿En que libro se relata el decreto de Ciro?",
 
 
 
@@ -11106,7 +11106,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro muestra el lamento por Jerusalen destruida?",
+    question: "¿Que libro muestra el lamento por Jerusalen destruida?",
 
 
 
@@ -11130,7 +11130,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Dios habla desde un torbellino?",
+    question: "¿En que libro Dios habla desde un torbellino?",
 
 
 
@@ -11154,7 +11154,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro inicia con 'Vision de Isaias'?",
+    question: "¿Que libro inicia con 'Vision de Isaias'?",
 
 
 
@@ -11178,7 +11178,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece la vision del valle de huesos secos?",
+    question: "¿En que libro aparece la vision del valle de huesos secos?",
 
 
 
@@ -11202,7 +11202,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro menciona las setenta semanas?",
+    question: "¿Que libro menciona las setenta semanas?",
 
 
 
@@ -11226,7 +11226,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se anuncia el 'Dia del Senor' con langostas?",
+    question: "¿En que libro se anuncia el 'Dia del Senor' con langostas?",
 
 
 
@@ -11250,7 +11250,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene profecias contra Ninive?",
+    question: "¿Que libro contiene profecias contra Ninive?",
 
 
 
@@ -11274,7 +11274,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece 'el justo vivira por fe'?",
+    question: "¿En que libro aparece 'el justo vivira por fe'?",
 
 
 
@@ -11298,7 +11298,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro anuncia la venida del mensajero del Senor?",
+    question: "¿Que libro anuncia la venida del mensajero del Senor?",
 
 
 
@@ -11322,7 +11322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que evangelio esta la genealogia de Jesus desde Abraham?",
+    question: "¿En que evangelio esta la genealogia de Jesus desde Abraham?",
 
 
 
@@ -11346,7 +11346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evangelio presenta a Jesus como el Verbo?",
+    question: "¿Que evangelio presenta a Jesus como el Verbo?",
 
 
 
@@ -11370,7 +11370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Jesus cuenta mas parabolas?",
+    question: "¿En que libro Jesus cuenta mas parabolas?",
 
 
 
@@ -11394,7 +11394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra el concilio de Jerusalen?",
+    question: "¿Que libro narra el concilio de Jerusalen?",
 
 
 
@@ -11418,7 +11418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Pablo explica la justificacion por la fe?",
+    question: "¿En que libro Pablo explica la justificacion por la fe?",
 
 
 
@@ -11442,7 +11442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro corrige abusos en la Cena del Senor?",
+    question: "¿Que libro corrige abusos en la Cena del Senor?",
 
 
 
@@ -11466,7 +11466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla del 'cuerpo de Cristo'?",
+    question: "¿En que libro se habla del 'cuerpo de Cristo'?",
 
 
 
@@ -11490,7 +11490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro destaca el gozo en medio de pruebas?",
+    question: "¿Que libro destaca el gozo en medio de pruebas?",
 
 
 
@@ -11514,7 +11514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona la armadura espiritual completa?",
+    question: "¿En que libro se menciona la armadura espiritual completa?",
 
 
 
@@ -11538,7 +11538,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro enfatiza la supremacia de Cristo?",
+    question: "¿Que libro enfatiza la supremacia de Cristo?",
 
 
 
@@ -11562,7 +11562,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se compara a Jesus con Melquisedec?",
+    question: "¿En que libro se compara a Jesus con Melquisedec?",
 
 
 
@@ -11586,7 +11586,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro ensena que la fe sin obras esta muerta?",
+    question: "¿Que libro ensena que la fe sin obras esta muerta?",
 
 
 
@@ -11610,7 +11610,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se exhorta a resistir al diablo?",
+    question: "¿En que libro se exhorta a resistir al diablo?",
 
 
 
@@ -11634,7 +11634,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla del sufrimiento cristiano?",
+    question: "¿Que libro habla del sufrimiento cristiano?",
 
 
 
@@ -11658,7 +11658,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se advierte contra falsos maestros?",
+    question: "¿En que libro se advierte contra falsos maestros?",
 
 
 
@@ -11682,7 +11682,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro menciona el anticristo?",
+    question: "¿Que libro menciona el anticristo?",
 
 
 
@@ -11706,7 +11706,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Juan recibe visiones celestiales?",
+    question: "¿En que libro Juan recibe visiones celestiales?",
 
 
 
@@ -11730,7 +11730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene cartas a siete iglesias?",
+    question: "¿Que libro contiene cartas a siete iglesias?",
 
 
 
@@ -11754,7 +11754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece el Cordero como figura central?",
+    question: "¿En que libro aparece el Cordero como figura central?",
 
 
 
@@ -11778,7 +11778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla del trono blanco?",
+    question: "¿Que libro habla del trono blanco?",
 
 
 
@@ -11802,7 +11802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se describe la Nueva Jerusalen?",
+    question: "¿En que libro se describe la Nueva Jerusalen?",
 
 
 
@@ -11826,7 +11826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro muestra el inicio de la iglesia?",
+    question: "¿Que libro muestra el inicio de la iglesia?",
 
 
 
@@ -11850,7 +11850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se ensena sobre los dones espirituales?",
+    question: "¿En que libro se ensena sobre los dones espirituales?",
 
 
 
@@ -11874,7 +11874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla del amor como mandamiento nuevo?",
+    question: "¿Que libro habla del amor como mandamiento nuevo?",
 
 
 
@@ -11898,7 +11898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Pablo escribe desde prision?",
+    question: "¿En que libro Pablo escribe desde prision?",
 
 
 
@@ -11922,7 +11922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro trata sobre liderazgo pastoral?",
+    question: "¿Que libro trata sobre liderazgo pastoral?",
 
 
 
@@ -11946,7 +11946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Pablo aconseja a Tito?",
+    question: "¿En que libro Pablo aconseja a Tito?",
 
 
 
@@ -11970,7 +11970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro defiende la sana doctrina?",
+    question: "¿Que libro defiende la sana doctrina?",
 
 
 
@@ -11994,7 +11994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla de Onesimo?",
+    question: "¿En que libro se habla de Onesimo?",
 
 
 
@@ -12018,7 +12018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro exhorta a perseverar hasta el fin?",
+    question: "¿Que libro exhorta a perseverar hasta el fin?",
 
 
 
@@ -12042,7 +12042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona a Enoc?",
+    question: "¿En que libro se menciona a Enoc?",
 
 
 
@@ -12066,7 +12066,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro une profecia, cartas y visiones?",
+    question: "¿Que libro une profecia, cartas y visiones?",
 
 
 
@@ -12094,7 +12094,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino David en Hebron antes de trasladarse a Jerusalen?",
+    question: "¿Cuantos anos reino David en Hebron antes de trasladarse a Jerusalen?",
 
 
 
@@ -12118,7 +12118,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que reforma importante realizo el rey Josias al encontrar el libro de la Ley?",
+    question: "¿Que reforma importante realizo el rey Josias al encontrar el libro de la Ley?",
 
 
 
@@ -12142,7 +12142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey del norte establecio Samaria como capital del reino de Israel?",
+    question: "¿Que rey del norte establecio Samaria como capital del reino de Israel?",
 
 
 
@@ -12166,7 +12166,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pecado especifico cometio Jeroboam I que se convirtio en referencia para los reyes posteriores?",
+    question: "¿Que pecado especifico cometio Jeroboam I que se convirtio en referencia para los reyes posteriores?",
 
 
 
@@ -12190,7 +12190,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda quito los lugares altos y destruyo la serpiente de bronce de Moises?",
+    question: "¿Que rey de Juda quito los lugares altos y destruyo la serpiente de bronce de Moises?",
 
 
 
@@ -12214,7 +12214,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que profeta tuvo el rey Acab frecuentes enfrentamientos?",
+    question: "¿Con que profeta tuvo el rey Acab frecuentes enfrentamientos?",
 
 
 
@@ -12238,7 +12238,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino Salomon sobre todo Israel?",
+    question: "¿Cuantos anos reino Salomon sobre todo Israel?",
 
 
 
@@ -12262,7 +12262,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue herido de lepra por quemar incienso en el templo?",
+    question: "¿Que rey de Juda fue herido de lepra por quemar incienso en el templo?",
 
 
 
@@ -12286,7 +12286,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda hizo alianza con el rey de Israel para pelear en Ramot de Galaad?",
+    question: "¿Que rey de Juda hizo alianza con el rey de Israel para pelear en Ramot de Galaad?",
 
 
 
@@ -12310,7 +12310,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la causa principal de la division del reino despues de Salomon?",
+    question: "¿Cual fue la causa principal de la division del reino despues de Salomon?",
 
 
 
@@ -12334,7 +12334,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel reino solo siete dias antes de suicidarse?",
+    question: "¿Que rey de Israel reino solo siete dias antes de suicidarse?",
 
 
 
@@ -12358,7 +12358,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta ungio a Jehu como rey de Israel para destruir la casa de Acab?",
+    question: "¿Que profeta ungio a Jehu como rey de Israel para destruir la casa de Acab?",
 
 
 
@@ -12382,7 +12382,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue escondido en el templo durante seis anos siendo nino?",
+    question: "¿Que rey de Juda fue escondido en el templo durante seis anos siendo nino?",
 
 
 
@@ -12406,7 +12406,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel expandio las fronteras del reino del norte a su mayor extension?",
+    question: "¿Que rey de Israel expandio las fronteras del reino del norte a su mayor extension?",
 
 
 
@@ -12430,7 +12430,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la reina que usurpo el trono de Juda e intento destruir la descendencia real?",
+    question: "¿Quien fue la reina que usurpo el trono de Juda e intento destruir la descendencia real?",
 
 
 
@@ -12454,7 +12454,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda llevo cautivo al profeta Jeremias a Egipto?",
+    question: "¿Que rey de Juda llevo cautivo al profeta Jeremias a Egipto?",
 
 
 
@@ -12478,7 +12478,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino Asa en Juda haciendo lo recto ante los ojos de Jehova?",
+    question: "¿Cuantos anos reino Asa en Juda haciendo lo recto ante los ojos de Jehova?",
 
 
 
@@ -12502,7 +12502,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda cavo cisternas, tuvo vinas y fue amante de la agricultura?",
+    question: "¿Que rey de Juda cavo cisternas, tuvo vinas y fue amante de la agricultura?",
 
 
 
@@ -12526,7 +12526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pecado cometio el rey Saul que provoco que Dios lo rechazara como rey?",
+    question: "¿Que pecado cometio el rey Saul que provoco que Dios lo rechazara como rey?",
 
 
 
@@ -12550,7 +12550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue asesinado por su propio oficial Zimri?",
+    question: "¿Que rey de Israel fue asesinado por su propio oficial Zimri?",
 
 
 
@@ -12574,7 +12574,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Ezequias cuando recibio la carta amenazante de Senaquerib?",
+    question: "¿Que hizo Ezequias cuando recibio la carta amenazante de Senaquerib?",
 
 
 
@@ -12598,7 +12598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda reino mas tiempo segun la Biblia?",
+    question: "¿Que rey de Juda reino mas tiempo segun la Biblia?",
 
 
 
@@ -12622,7 +12622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel construyo un templo a Baal en Samaria?",
+    question: "¿Que rey de Israel construyo un templo a Baal en Samaria?",
 
 
 
@@ -12646,7 +12646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que edad comenzo Josias a reinar en Juda?",
+    question: "¿A que edad comenzo Josias a reinar en Juda?",
 
 
 
@@ -12670,7 +12670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta reprendio a David por su pecado con Betsabe?",
+    question: "¿Que profeta reprendio a David por su pecado con Betsabe?",
 
 
 
@@ -12694,7 +12694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda mando a sus principes a ensenar la ley en las ciudades?",
+    question: "¿Que rey de Juda mando a sus principes a ensenar la ley en las ciudades?",
 
 
 
@@ -12718,7 +12718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el ultimo rey del reino del norte (Israel) antes de la caida ante Asiria?",
+    question: "¿Cual fue el ultimo rey del reino del norte (Israel) antes de la caida ante Asiria?",
 
 
 
@@ -12742,7 +12742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue llevado cautivo a Babilonia con ganchos y cadenas?",
+    question: "¿Que rey de Juda fue llevado cautivo a Babilonia con ganchos y cadenas?",
 
 
 
@@ -12766,7 +12766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Josias con los huesos de los sacerdotes de los lugares altos?",
+    question: "¿Que hizo Josias con los huesos de los sacerdotes de los lugares altos?",
 
 
 
@@ -12790,7 +12790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue conocido como un guerrero valiente pero hizo lo malo ante Jehova?",
+    question: "¿Que rey de Israel fue conocido como un guerrero valiente pero hizo lo malo ante Jehova?",
 
 
 
@@ -12814,7 +12814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos anadio Dios a la vida de Ezequias cuando oro por sanidad?",
+    question: "¿Cuantos anos anadio Dios a la vida de Ezequias cuando oro por sanidad?",
 
 
 
@@ -12838,7 +12838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda hizo pasar a su hijo por fuego como sacrificio?",
+    question: "¿Que rey de Juda hizo pasar a su hijo por fuego como sacrificio?",
 
 
 
@@ -12862,7 +12862,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que senal dio Dios a Ezequias para confirmar su sanidad?",
+    question: "¿Que senal dio Dios a Ezequias para confirmar su sanidad?",
 
 
 
@@ -12886,7 +12886,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey sucedio a Salomon y causo la division del reino?",
+    question: "¿Que rey sucedio a Salomon y causo la division del reino?",
 
 
 
@@ -12910,7 +12910,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta le dijo a Asa que confiara en Dios en lugar de en el rey de Siria?",
+    question: "¿Que profeta le dijo a Asa que confiara en Dios en lugar de en el rey de Siria?",
 
 
 
@@ -12934,7 +12934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel derroto a Ben-adad rey de Siria tres veces segun la profecia de Eliseo?",
+    question: "¿Que rey de Israel derroto a Ben-adad rey de Siria tres veces segun la profecia de Eliseo?",
 
 
 
@@ -12958,7 +12958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Salomon en su vejez que desagrado a Dios?",
+    question: "¿Que hizo Salomon en su vejez que desagrado a Dios?",
 
 
 
@@ -12982,7 +12982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que vina codicio el rey Acab y Jezabel tramo para obtenerla?",
+    question: "¿Que vina codicio el rey Acab y Jezabel tramo para obtenerla?",
 
 
 
@@ -13006,7 +13006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda organizo cantores y musicos para alabar a Dios antes de la batalla?",
+    question: "¿Que rey de Juda organizo cantores y musicos para alabar a Dios antes de la batalla?",
 
 
 
@@ -13030,7 +13030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas tribus siguieron a Jeroboam cuando se dividio el reino?",
+    question: "¿Cuantas tribus siguieron a Jeroboam cuando se dividio el reino?",
 
 
 
@@ -13054,7 +13054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda restauro el templo usando las ofrendas del pueblo?",
+    question: "¿Que rey de Juda restauro el templo usando las ofrendas del pueblo?",
 
 
 
@@ -13078,7 +13078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ungio a Saul como primer rey de Israel?",
+    question: "¿Quien ungio a Saul como primer rey de Israel?",
 
 
 
@@ -13102,7 +13102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey del norte destruyo completamente el culto a Baal en Israel?",
+    question: "¿Que rey del norte destruyo completamente el culto a Baal en Israel?",
 
 
 
@@ -13126,7 +13126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que batalla murio el rey Saul?",
+    question: "¿En que batalla murio el rey Saul?",
 
 
 
@@ -13150,7 +13150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue contemporaneo del profeta Isaias?",
+    question: "¿Que rey de Juda fue contemporaneo del profeta Isaias?",
 
 
 
@@ -13174,7 +13174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que condicion puso Dios a Salomon para bendecir su reinado?",
+    question: "¿Que condicion puso Dios a Salomon para bendecir su reinado?",
 
 
 
@@ -13198,7 +13198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda cavo el tunel de Siloe para abastecer agua a Jerusalen?",
+    question: "¿Que rey de Juda cavo el tunel de Siloe para abastecer agua a Jerusalen?",
 
 
 
@@ -13222,7 +13222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sacaron los babilonios al rey Sedequias despues de capturarlo?",
+    question: "¿Que le sacaron los babilonios al rey Sedequias despues de capturarlo?",
 
 
 
@@ -13246,7 +13246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda se arrepintio en el cautiverio y Dios lo restauro a su trono?",
+    question: "¿Que rey de Juda se arrepintio en el cautiverio y Dios lo restauro a su trono?",
 
 
 
@@ -13270,7 +13270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que consejero aconsejo a Roboam aumentar la carga sobre el pueblo?",
+    question: "¿Que consejero aconsejo a Roboam aumentar la carga sobre el pueblo?",
 
 
 
@@ -13298,7 +13298,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llamado por Dios cuando era nino mientras dormia en el templo?",
+    question: "¿Que profeta fue llamado por Dios cuando era nino mientras dormia en el templo?",
 
 
 
@@ -13322,7 +13322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Bajo que rey de Juda profetizo Isaias principalmente?",
+    question: "¿Bajo que rey de Juda profetizo Isaias principalmente?",
 
 
 
@@ -13346,7 +13346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue enviado a predicar a Ninive pero huyo hacia Tarsis?",
+    question: "¿Que profeta fue enviado a predicar a Ninive pero huyo hacia Tarsis?",
 
 
 
@@ -13370,7 +13370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que accion simbolica realizo Ezequiel acostandose sobre su lado izquierdo?",
+    question: "¿Que accion simbolica realizo Ezequiel acostandose sobre su lado izquierdo?",
 
 
 
@@ -13394,7 +13394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias debia Ezequiel acostarse sobre su lado izquierdo segun Dios?",
+    question: "¿Cuantos dias debia Ezequiel acostarse sobre su lado izquierdo segun Dios?",
 
 
 
@@ -13418,7 +13418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que profeta Dios le ordeno casarse con una mujer adultera como senal?",
+    question: "¿A que profeta Dios le ordeno casarse con una mujer adultera como senal?",
 
 
 
@@ -13442,7 +13442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba la esposa de Oseas?",
+    question: "¿Como se llamaba la esposa de Oseas?",
 
 
 
@@ -13466,7 +13466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menor hablo especificamente sobre la destruccion de Edom?",
+    question: "¿Que profeta menor hablo especificamente sobre la destruccion de Edom?",
 
 
 
@@ -13490,7 +13490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo la vision de las cuatro bestias que salian del mar?",
+    question: "¿Que profeta tuvo la vision de las cuatro bestias que salian del mar?",
 
 
 
@@ -13514,7 +13514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue arrebatado al cielo en un carro de fuego?",
+    question: "¿Que profeta fue arrebatado al cielo en un carro de fuego?",
 
 
 
@@ -13538,7 +13538,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta recibio el manto de Elias al ser este arrebatado?",
+    question: "¿Que profeta recibio el manto de Elias al ser este arrebatado?",
 
 
 
@@ -13562,7 +13562,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta visito la casa del alfarero por orden de Dios?",
+    question: "¿Que profeta visito la casa del alfarero por orden de Dios?",
 
 
 
@@ -13586,7 +13586,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que vision tuvo Zacarias sobre un candelabro de oro entre dos olivos?",
+    question: "¿Que vision tuvo Zacarias sobre un candelabro de oro entre dos olivos?",
 
 
 
@@ -13610,7 +13610,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta profetizo que el Mesias naceria en Belen?",
+    question: "¿Que profeta profetizo que el Mesias naceria en Belen?",
 
 
 
@@ -13634,7 +13634,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio que una virgen concebiria y daria a luz un hijo llamado Emanuel?",
+    question: "¿Que profeta anuncio que una virgen concebiria y daria a luz un hijo llamado Emanuel?",
 
 
 
@@ -13658,7 +13658,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta describio al Siervo Sufriente en el capitulo 53 de su libro?",
+    question: "¿Que profeta describio al Siervo Sufriente en el capitulo 53 de su libro?",
 
 
 
@@ -13682,7 +13682,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue contemporaneo de Jeremias y profetizo en el exilio babilonico?",
+    question: "¿Que profeta fue contemporaneo de Jeremias y profetizo en el exilio babilonico?",
 
 
 
@@ -13706,7 +13706,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta confronto al rey David por su pecado con Betsabe?",
+    question: "¿Que profeta confronto al rey David por su pecado con Betsabe?",
 
 
 
@@ -13730,7 +13730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta era pastor y cultivador de higos silvestres antes de ser llamado?",
+    question: "¿Que profeta era pastor y cultivador de higos silvestres antes de ser llamado?",
 
 
 
@@ -13754,7 +13754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta hablo del 'Dia del Senor' usando una plaga de langostas como ilustracion?",
+    question: "¿Que profeta hablo del 'Dia del Senor' usando una plaga de langostas como ilustracion?",
 
 
 
@@ -13778,7 +13778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta predijo la caida de Ninive como juicio de Dios?",
+    question: "¿Que profeta predijo la caida de Ninive como juicio de Dios?",
 
 
 
@@ -13802,7 +13802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta cuestiono a Dios sobre por que permitia la injusticia?",
+    question: "¿Que profeta cuestiono a Dios sobre por que permitia la injusticia?",
 
 
 
@@ -13826,7 +13826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En tiempos de que rey reformador profetizo Sofonias?",
+    question: "¿En tiempos de que rey reformador profetizo Sofonias?",
 
 
 
@@ -13850,7 +13850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profetas animaron al pueblo a reconstruir el templo despues del exilio?",
+    question: "¿Que profetas animaron al pueblo a reconstruir el templo despues del exilio?",
 
 
 
@@ -13874,7 +13874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que reprocho Malaquias al pueblo de Israel respecto a los diezmos?",
+    question: "¿Que reprocho Malaquias al pueblo de Israel respecto a los diezmos?",
 
 
 
@@ -13898,7 +13898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue echado en un foso de leones por orar a Dios?",
+    question: "¿Que profeta fue echado en un foso de leones por orar a Dios?",
 
 
 
@@ -13922,7 +13922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta interpreto la escritura en la pared durante el banquete de Belsasar?",
+    question: "¿Que profeta interpreto la escritura en la pared durante el banquete de Belsasar?",
 
 
 
@@ -13946,7 +13946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que significaban las palabras 'Mene, Mene, Tekel, Uparsin' que Daniel interpreto?",
+    question: "¿Que significaban las palabras 'Mene, Mene, Tekel, Uparsin' que Daniel interpreto?",
 
 
 
@@ -13970,7 +13970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que vision tuvo Isaias al ser llamado como profeta en el templo?",
+    question: "¿Que vision tuvo Isaias al ser llamado como profeta en el templo?",
 
 
 
@@ -13994,7 +13994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo el serafin con una brasa del altar cuando Isaias fue llamado?",
+    question: "¿Que hizo el serafin con una brasa del altar cuando Isaias fue llamado?",
 
 
 
@@ -14018,7 +14018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue puesto en una cisterna de lodo por predicar la rendicion ante Babilonia?",
+    question: "¿Que profeta fue puesto en una cisterna de lodo por predicar la rendicion ante Babilonia?",
 
 
 
@@ -14042,7 +14042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien rescato a Jeremias de la cisterna de lodo?",
+    question: "¿Quien rescato a Jeremias de la cisterna de lodo?",
 
 
 
@@ -14066,7 +14066,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo la vision de una vara de almendro como senal del cuidado de Dios?",
+    question: "¿Que profeta tuvo la vision de una vara de almendro como senal del cuidado de Dios?",
 
 
 
@@ -14090,7 +14090,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que accion simbolica realizo Jeremias al comprar un cinto de lino y esconderlo?",
+    question: "¿Que accion simbolica realizo Jeremias al comprar un cinto de lino y esconderlo?",
 
 
 
@@ -14114,7 +14114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos profetizo Jeremias que duraria el cautiverio en Babilonia?",
+    question: "¿Cuantos anos profetizo Jeremias que duraria el cautiverio en Babilonia?",
 
 
 
@@ -14138,7 +14138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio la vision de un rollo que volaba?",
+    question: "¿Que profeta vio la vision de un rollo que volaba?",
 
 
 
@@ -14162,7 +14162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta profetizo la entrada triunfal de Jesus montado sobre un pollino?",
+    question: "¿Que profeta profetizo la entrada triunfal de Jesus montado sobre un pollino?",
 
 
 
@@ -14186,7 +14186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menciono las treinta piezas de plata como precio de traicion?",
+    question: "¿Que profeta menciono las treinta piezas de plata como precio de traicion?",
 
 
 
@@ -14210,7 +14210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo la vision de las cuatro carros tirados por caballos de colores?",
+    question: "¿Que profeta tuvo la vision de las cuatro carros tirados por caballos de colores?",
 
 
 
@@ -14234,7 +14234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menor predico contra la injusticia social y la opresion de los pobres en Israel?",
+    question: "¿Que profeta menor predico contra la injusticia social y la opresion de los pobres en Israel?",
 
 
 
@@ -14258,7 +14258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Desde que lugar fue llamado Amos para profetizar en Israel?",
+    question: "¿Desde que lugar fue llamado Amos para profetizar en Israel?",
 
 
 
@@ -14282,7 +14282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta realizo el milagro de hacer flotar un hacha de hierro en el agua?",
+    question: "¿Que profeta realizo el milagro de hacer flotar un hacha de hierro en el agua?",
 
 
 
@@ -14306,7 +14306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos milagros registrados realizo Eliseo en comparacion con Elias?",
+    question: "¿Cuantos milagros registrados realizo Eliseo en comparacion con Elias?",
 
 
 
@@ -14330,7 +14330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue alimentado por cuervos junto al arroyo de Querit?",
+    question: "¿Que profeta fue alimentado por cuervos junto al arroyo de Querit?",
 
 
 
@@ -14354,7 +14354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que planta crecio sobre Jonas para darle sombra y luego se seco?",
+    question: "¿Que planta crecio sobre Jonas para darle sombra y luego se seco?",
 
 
 
@@ -14378,7 +14378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo la vision de la gloria de Dios junto al rio Quebar?",
+    question: "¿Que profeta tuvo la vision de la gloria de Dios junto al rio Quebar?",
 
 
 
@@ -14402,7 +14402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que accion simbolica realizo Ezequiel al hacer un modelo de Jerusalen en un adobe?",
+    question: "¿Que accion simbolica realizo Ezequiel al hacer un modelo de Jerusalen en un adobe?",
 
 
 
@@ -14426,7 +14426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta describio un templo futuro con medidas detalladas en los ultimos capitulos de su libro?",
+    question: "¿Que profeta describio un templo futuro con medidas detalladas en los ultimos capitulos de su libro?",
 
 
 
@@ -14450,7 +14450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio un nuevo pacto que Dios escribiria en los corazones?",
+    question: "¿Que profeta anuncio un nuevo pacto que Dios escribiria en los corazones?",
 
 
 
@@ -14474,7 +14474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta es considerado el ultimo del Antiguo Testamento antes del periodo intertestamentario?",
+    question: "¿Que profeta es considerado el ultimo del Antiguo Testamento antes del periodo intertestamentario?",
 
 
 
@@ -14502,7 +14502,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Desde que ciudad escribio Pablo la carta a los Filipenses?",
+    question: "¿Desde que ciudad escribio Pablo la carta a los Filipenses?",
 
 
 
@@ -14526,7 +14526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual era el problema principal que Pablo abordo en la carta a los Galatas?",
+    question: "¿Cual era el problema principal que Pablo abordo en la carta a los Galatas?",
 
 
 
@@ -14550,7 +14550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta Pablo explica en detalle la justificacion por la fe?",
+    question: "¿En que carta Pablo explica en detalle la justificacion por la fe?",
 
 
 
@@ -14574,7 +14574,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que problema de divisiones existia en la iglesia de Corinto?",
+    question: "¿Que problema de divisiones existia en la iglesia de Corinto?",
 
 
 
@@ -14598,7 +14598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien estaba dirigida la carta a Filemon?",
+    question: "¿A quien estaba dirigida la carta a Filemon?",
 
 
 
@@ -14622,7 +14622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el tema central de la carta a los Hebreos?",
+    question: "¿Cual es el tema central de la carta a los Hebreos?",
 
 
 
@@ -14646,7 +14646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Pablo sobre los dones espirituales en 1 Corintios 12?",
+    question: "¿Que ensena Pablo sobre los dones espirituales en 1 Corintios 12?",
 
 
 
@@ -14670,7 +14670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Por que razon Pablo escribio la segunda carta a los Corintios?",
+    question: "¿Por que razon Pablo escribio la segunda carta a los Corintios?",
 
 
 
@@ -14694,7 +14694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que metafora usa Pablo en Efesios 6 para describir la vida cristiana?",
+    question: "¿Que metafora usa Pablo en Efesios 6 para describir la vida cristiana?",
 
 
 
@@ -14718,7 +14718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que herejia combatia Pablo en la carta a los Colosenses?",
+    question: "¿Que herejia combatia Pablo en la carta a los Colosenses?",
 
 
 
@@ -14742,7 +14742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tema trata Pablo en 1 Tesalonicenses 4:13-18?",
+    question: "¿Que tema trata Pablo en 1 Tesalonicenses 4:13-18?",
 
 
 
@@ -14766,7 +14766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual carta del NT fue escrita para acompanar a un esclavo fugitivo que regresaba a su amo?",
+    question: "¿Cual carta del NT fue escrita para acompanar a un esclavo fugitivo que regresaba a su amo?",
 
 
 
@@ -14790,7 +14790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el esclavo que Pablo envio de regreso a Filemon?",
+    question: "¿Como se llamaba el esclavo que Pablo envio de regreso a Filemon?",
 
 
 
@@ -14814,7 +14814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Santiago sobre la relacion entre la lengua y la sabiduria?",
+    question: "¿Que ensena Santiago sobre la relacion entre la lengua y la sabiduria?",
 
 
 
@@ -14838,7 +14838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que carta Pablo habla del 'aguijon en la carne' que Dios no le quito?",
+    question: "¿En que carta Pablo habla del 'aguijon en la carne' que Dios no le quito?",
 
 
 
@@ -14862,7 +14862,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que les enseno Pablo a los tesalonicenses sobre el 'hombre de pecado'?",
+    question: "¿Que les enseno Pablo a los tesalonicenses sobre el 'hombre de pecado'?",
 
 
 
@@ -14886,7 +14886,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que significa la palabra 'justificacion' segun Pablo en Romanos?",
+    question: "¿Que significa la palabra 'justificacion' segun Pablo en Romanos?",
 
 
 
@@ -14910,7 +14910,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el famoso himno cristologico que se encuentra en Filipenses 2?",
+    question: "¿Cual es el famoso himno cristologico que se encuentra en Filipenses 2?",
 
 
 
@@ -14934,7 +14934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que instrucciones da Pablo a Timoteo sobre los ancianos de la iglesia?",
+    question: "¿Que instrucciones da Pablo a Timoteo sobre los ancianos de la iglesia?",
 
 
 
@@ -14958,7 +14958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que problema especifico de inmoralidad menciona Pablo en 1 Corintios 5?",
+    question: "¿Que problema especifico de inmoralidad menciona Pablo en 1 Corintios 5?",
 
 
 
@@ -14982,7 +14982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Pedro en su primera carta sobre el sufrimiento?",
+    question: "¿Que ensena Pedro en su primera carta sobre el sufrimiento?",
 
 
 
@@ -15006,7 +15006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Contra que tipo de falsos maestros advierte la segunda carta de Pedro?",
+    question: "¿Contra que tipo de falsos maestros advierte la segunda carta de Pedro?",
 
 
 
@@ -15030,7 +15030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que fruto del Espiritu enumera Pablo en Galatas 5:22-23?",
+    question: "¿Que fruto del Espiritu enumera Pablo en Galatas 5:22-23?",
 
 
 
@@ -15054,7 +15054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Pablo en Romanos 8:28 sobre todas las cosas?",
+    question: "¿Que ensena Pablo en Romanos 8:28 sobre todas las cosas?",
 
 
 
@@ -15078,7 +15078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta del NT fue escrita a una iglesia que Pablo no habia fundado ni visitado?",
+    question: "¿Que carta del NT fue escrita a una iglesia que Pablo no habia fundado ni visitado?",
 
 
 
@@ -15102,7 +15102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que advertencia da Juan en su primera carta sobre el anticristo?",
+    question: "¿Que advertencia da Juan en su primera carta sobre el anticristo?",
 
 
 
@@ -15126,7 +15126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el proposito de la carta de Judas?",
+    question: "¿Cual es el proposito de la carta de Judas?",
 
 
 
@@ -15150,7 +15150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que analogia usa Pablo en 1 Corintios 3 para describir la iglesia?",
+    question: "¿Que analogia usa Pablo en 1 Corintios 3 para describir la iglesia?",
 
 
 
@@ -15174,7 +15174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Pablo en Efesios 2:8-9 sobre la salvacion?",
+    question: "¿Que dice Pablo en Efesios 2:8-9 sobre la salvacion?",
 
 
 
@@ -15198,7 +15198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le pide Pablo a Timoteo en 2 Timoteo 4:13?",
+    question: "¿Que le pide Pablo a Timoteo en 2 Timoteo 4:13?",
 
 
 
@@ -15222,7 +15222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Hebreos 11 sobre la fe?",
+    question: "¿Que ensena Hebreos 11 sobre la fe?",
 
 
 
@@ -15246,7 +15246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que relacion tenia Tito con Pablo segun la carta a Tito?",
+    question: "¿Que relacion tenia Tito con Pablo segun la carta a Tito?",
 
 
 
@@ -15270,7 +15270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que isla dejo Pablo a Tito para organizar las iglesias?",
+    question: "¿En que isla dejo Pablo a Tito para organizar las iglesias?",
 
 
 
@@ -15294,7 +15294,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que problema habia con la cena del Senor en la iglesia de Corinto?",
+    question: "¿Que problema habia con la cena del Senor en la iglesia de Corinto?",
 
 
 
@@ -15318,7 +15318,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Pablo sobre el matrimonio y la solteria en 1 Corintios 7?",
+    question: "¿Que dice Pablo sobre el matrimonio y la solteria en 1 Corintios 7?",
 
 
 
@@ -15342,7 +15342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Pablo en Romanos 12:1-2 sobre la vida cristiana?",
+    question: "¿Que ensena Pablo en Romanos 12:1-2 sobre la vida cristiana?",
 
 
 
@@ -15366,7 +15366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien llevo la carta de Pablo a la iglesia de Roma?",
+    question: "¿Quien llevo la carta de Pablo a la iglesia de Roma?",
 
 
 
@@ -15390,7 +15390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Santiago sobre la oracion del enfermo?",
+    question: "¿Que dice Santiago sobre la oracion del enfermo?",
 
 
 
@@ -15414,7 +15414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que comparacion usa Pablo en Galatas 4 con Sara y Agar?",
+    question: "¿Que comparacion usa Pablo en Galatas 4 con Sara y Agar?",
 
 
 
@@ -15438,7 +15438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Juan que es Dios en 1 Juan 4:8?",
+    question: "¿Que dice Juan que es Dios en 1 Juan 4:8?",
 
 
 
@@ -15462,7 +15462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que consejo da Pablo a los colosenses sobre las relaciones familiares?",
+    question: "¿Que consejo da Pablo a los colosenses sobre las relaciones familiares?",
 
 
 
@@ -15486,7 +15486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Por que razon escribio Pablo la carta a los Galatas con tanta urgencia?",
+    question: "¿Por que razon escribio Pablo la carta a los Galatas con tanta urgencia?",
 
 
 
@@ -15510,7 +15510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Pablo sobre la resurreccion en 1 Corintios 15?",
+    question: "¿Que ensena Pablo sobre la resurreccion en 1 Corintios 15?",
 
 
 
@@ -15534,7 +15534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena la carta a los Hebreos sobre Melquisedec?",
+    question: "¿Que ensena la carta a los Hebreos sobre Melquisedec?",
 
 
 
@@ -15558,7 +15558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mandamiento llama Santiago 'la ley real'?",
+    question: "¿Que mandamiento llama Santiago 'la ley real'?",
 
 
 
@@ -15582,7 +15582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que advertencia da Pablo en 2 Timoteo 3 sobre los ultimos tiempos?",
+    question: "¿Que advertencia da Pablo en 2 Timoteo 3 sobre los ultimos tiempos?",
 
 
 
@@ -15606,7 +15606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imagen usa Pedro para describir a los creyentes en 1 Pedro 2:5?",
+    question: "¿Que imagen usa Pedro para describir a los creyentes en 1 Pedro 2:5?",
 
 
 
@@ -15630,7 +15630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ensena Pablo en Efesios 4 sobre la unidad del cuerpo de Cristo?",
+    question: "¿Que ensena Pablo en Efesios 4 sobre la unidad del cuerpo de Cristo?",
 
 
 
@@ -15654,7 +15654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Pablo sobre la colecta para los santos de Jerusalen en 2 Corintios 8-9?",
+    question: "¿Que dice Pablo sobre la colecta para los santos de Jerusalen en 2 Corintios 8-9?",
 
 
 
@@ -15678,7 +15678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual colaborador abandono a Pablo segun 2 Timoteo 4:10 por amar el mundo presente?",
+    question: "¿Cual colaborador abandono a Pablo segun 2 Timoteo 4:10 por amar el mundo presente?",
 
 
 
@@ -15706,7 +15706,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos estuvo Israel en el desierto?",
+    question: "¿Cuantos anos estuvo Israel en el desierto?",
 
 
 
@@ -15730,7 +15730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien lidero la conquista de Canaan?",
+    question: "¿Quien lidero la conquista de Canaan?",
 
 
 
@@ -15754,7 +15754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey unifico Israel?",
+    question: "¿Que rey unifico Israel?",
 
 
 
@@ -15778,7 +15778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imperio destruyo Jerusalen en 586 a.C.?",
+    question: "¿Que imperio destruyo Jerusalen en 586 a.C.?",
 
 
 
@@ -15802,7 +15802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien reconstruyo los muros de Jerusalen?",
+    question: "¿Quien reconstruyo los muros de Jerusalen?",
 
 
 
@@ -15826,7 +15826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro relata el cautiverio en Babilonia?",
+    question: "¿Que libro relata el cautiverio en Babilonia?",
 
 
 
@@ -15850,7 +15850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio 70 anos de exilio?",
+    question: "¿Que profeta anuncio 70 anos de exilio?",
 
 
 
@@ -15874,7 +15874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue llevado cautivo a Babilonia?",
+    question: "¿Que rey fue llevado cautivo a Babilonia?",
 
 
 
@@ -15898,7 +15898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey permitio el regreso del exilio?",
+    question: "¿Que rey permitio el regreso del exilio?",
 
 
 
@@ -15922,7 +15922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue capital del reino del norte?",
+    question: "¿Que ciudad fue capital del reino del norte?",
 
 
 
@@ -15946,7 +15946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento dividio el reino?",
+    question: "¿Que evento dividio el reino?",
 
 
 
@@ -15970,7 +15970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien lidero el primer regreso del exilio?",
+    question: "¿Quien lidero el primer regreso del exilio?",
 
 
 
@@ -15994,7 +15994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio el valle de huesos?",
+    question: "¿Que profeta vio el valle de huesos?",
 
 
 
@@ -16018,7 +16018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey hizo reformas espirituales?",
+    question: "¿Que rey hizo reformas espirituales?",
 
 
 
@@ -16042,7 +16042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imperio dominaba en tiempos de Jesus?",
+    question: "¿Que imperio dominaba en tiempos de Jesus?",
 
 
 
@@ -16066,7 +16066,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien escribio la mayoria de Proverbios?",
+    question: "¿Quien escribio la mayoria de Proverbios?",
 
 
 
@@ -16090,7 +16090,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue destruida por Asiria?",
+    question: "¿Que ciudad fue destruida por Asiria?",
 
 
 
@@ -16114,7 +16114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue deportado con Daniel?",
+    question: "¿Quien fue deportado con Daniel?",
 
 
 
@@ -16138,7 +16138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra el retorno del exilio?",
+    question: "¿Que libro narra el retorno del exilio?",
 
 
 
@@ -16162,7 +16162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue librado de Senaquerib?",
+    question: "¿Que rey fue librado de Senaquerib?",
 
 
 
@@ -16186,7 +16186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue contemporaneo de Jeremias?",
+    question: "¿Que profeta fue contemporaneo de Jeremias?",
 
 
 
@@ -16210,7 +16210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro relata el ministerio de Eliseo?",
+    question: "¿Que libro relata el ministerio de Eliseo?",
 
 
 
@@ -16234,7 +16234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento marco el inicio de la iglesia?",
+    question: "¿Que evento marco el inicio de la iglesia?",
 
 
 
@@ -16258,7 +16258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey perdio el reino por idolatria?",
+    question: "¿Que rey perdio el reino por idolatria?",
 
 
 
@@ -16282,7 +16282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue reconstruida primero tras el exilio?",
+    question: "¿Que ciudad fue reconstruida primero tras el exilio?",
 
 
 
@@ -16306,7 +16306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta reprendio a David?",
+    question: "¿Que profeta reprendio a David?",
 
 
 
@@ -16330,7 +16330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro cubre desde Saul hasta Salomon?",
+    question: "¿Que libro cubre desde Saul hasta Salomon?",
 
 
 
@@ -16354,7 +16354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imperio sucedio a Babilonia?",
+    question: "¿Que imperio sucedio a Babilonia?",
 
 
 
@@ -16378,7 +16378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey persa apoyo el templo?",
+    question: "¿Que rey persa apoyo el templo?",
 
 
 
@@ -16402,7 +16402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro relata el reinado de David?",
+    question: "¿Que libro relata el reinado de David?",
 
 
 
@@ -16426,7 +16426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue destruida en el ano 70 d.C.?",
+    question: "¿Que ciudad fue destruida en el ano 70 d.C.?",
 
 
 
@@ -16450,7 +16450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que concilio aparece en Hechos 15?",
+    question: "¿Que concilio aparece en Hechos 15?",
 
 
 
@@ -16474,7 +16474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el primer martir?",
+    question: "¿Quien fue el primer martir?",
 
 
 
@@ -16498,7 +16498,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue castigado con lepra?",
+    question: "¿Que rey fue castigado con lepra?",
 
 
 
@@ -16522,7 +16522,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio destruccion a Ninive?",
+    question: "¿Que profeta anuncio destruccion a Ninive?",
 
 
 
@@ -16546,7 +16546,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey fue llevado encadenado a Babilonia?",
+    question: "¿Que rey fue llevado encadenado a Babilonia?",
 
 
 
@@ -16570,7 +16570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro describe la creacion detallada?",
+    question: "¿Que libro describe la creacion detallada?",
 
 
 
@@ -16594,7 +16594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que apostol lidero la iglesia primitiva?",
+    question: "¿Que apostol lidero la iglesia primitiva?",
 
 
 
@@ -16618,7 +16618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue centro misionero?",
+    question: "¿Que ciudad fue centro misionero?",
 
 
 
@@ -16642,7 +16642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra la reina Ester?",
+    question: "¿Que libro narra la reina Ester?",
 
 
 
@@ -16666,7 +16666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llevado al exilio?",
+    question: "¿Que profeta fue llevado al exilio?",
 
 
 
@@ -16690,7 +16690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey destruyo el altar de Betel?",
+    question: "¿Que rey destruyo el altar de Betel?",
 
 
 
@@ -16714,7 +16714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro narra el ministerio de Samuel?",
+    question: "¿Que libro narra el ministerio de Samuel?",
 
 
 
@@ -16738,7 +16738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imperio controlaba Palestina en Hechos?",
+    question: "¿Que imperio controlaba Palestina en Hechos?",
 
 
 
@@ -16762,7 +16762,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla del cautiverio?",
+    question: "¿Que libro habla del cautiverio?",
 
 
 
@@ -16786,7 +16786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey permitio reedificar el templo?",
+    question: "¿Que rey permitio reedificar el templo?",
 
 
 
@@ -16810,7 +16810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento marco el fin del reino del norte?",
+    question: "¿Que evento marco el fin del reino del norte?",
 
 
 
@@ -16834,7 +16834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vivio durante el exilio?",
+    question: "¿Que profeta vivio durante el exilio?",
 
 
 
@@ -16858,7 +16858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta AT y NT?",
+    question: "¿Que libro conecta AT y NT?",
 
 
 
@@ -16882,7 +16882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey restauro la adoracion verdadera?",
+    question: "¿Que rey restauro la adoracion verdadera?",
 
 
 
@@ -16910,7 +16910,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad se celebraron las bodas donde Jesus convirtio el agua en vino?",
+    question: "¿En que ciudad se celebraron las bodas donde Jesus convirtio el agua en vino?",
 
 
 
@@ -16934,7 +16934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas tinajas de agua mando Jesus llenar en las bodas de Cana?",
+    question: "¿Cuantas tinajas de agua mando Jesus llenar en las bodas de Cana?",
 
 
 
@@ -16958,7 +16958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dijo Jesus que era mas dificil que un camello pasara por el ojo de una aguja?",
+    question: "¿Que dijo Jesus que era mas dificil que un camello pasara por el ojo de una aguja?",
 
 
 
@@ -16982,7 +16982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la primera bienaventuranza del Sermon del Monte?",
+    question: "¿Cual fue la primera bienaventuranza del Sermon del Monte?",
 
 
 
@@ -17006,7 +17006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que monte predico Jesus el Sermon del Monte?",
+    question: "¿En que monte predico Jesus el Sermon del Monte?",
 
 
 
@@ -17030,7 +17030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien le dijo Jesus 'Tu eres Pedro, y sobre esta roca edificare mi iglesia'?",
+    question: "¿A quien le dijo Jesus 'Tu eres Pedro, y sobre esta roca edificare mi iglesia'?",
 
 
 
@@ -17054,7 +17054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo camino sobre el agua hacia Jesus y luego comenzo a hundirse?",
+    question: "¿Que discipulo camino sobre el agua hacia Jesus y luego comenzo a hundirse?",
 
 
 
@@ -17078,7 +17078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos panes y peces habia antes de la alimentacion de los cinco mil?",
+    question: "¿Cuantos panes y peces habia antes de la alimentacion de los cinco mil?",
 
 
 
@@ -17102,7 +17102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ofrecio los cinco panes y dos peces en la alimentacion de los cinco mil?",
+    question: "¿Quien ofrecio los cinco panes y dos peces en la alimentacion de los cinco mil?",
 
 
 
@@ -17126,7 +17126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas canastas sobraron despues de alimentar a los cuatro mil?",
+    question: "¿Cuantas canastas sobraron despues de alimentar a los cuatro mil?",
 
 
 
@@ -17150,7 +17150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que parabola Jesus habla de un hombre que siembra buena semilla pero un enemigo siembra cizana?",
+    question: "¿En que parabola Jesus habla de un hombre que siembra buena semilla pero un enemigo siembra cizana?",
 
 
 
@@ -17174,7 +17174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que representa la semilla que cae en buena tierra en la parabola del sembrador?",
+    question: "¿Que representa la semilla que cae en buena tierra en la parabola del sembrador?",
 
 
 
@@ -17198,7 +17198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos talentos recibio el siervo que los enterro en la parabola de los talentos?",
+    question: "¿Cuantos talentos recibio el siervo que los enterro en la parabola de los talentos?",
 
 
 
@@ -17246,7 +17246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pidio la madre de los hijos de Zebedeo a Jesus?",
+    question: "¿Que pidio la madre de los hijos de Zebedeo a Jesus?",
 
 
 
@@ -17270,7 +17270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo dijo 'Senor mio, y Dios mio' al ver a Jesus resucitado?",
+    question: "¿Que discipulo dijo 'Senor mio, y Dios mio' al ver a Jesus resucitado?",
 
 
 
@@ -17294,7 +17294,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias despues de su resurreccion ascendio Jesus al cielo?",
+    question: "¿Cuantos dias despues de su resurreccion ascendio Jesus al cielo?",
 
 
 
@@ -17318,7 +17318,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar ascendio Jesus al cielo?",
+    question: "¿En que lugar ascendio Jesus al cielo?",
 
 
 
@@ -17342,7 +17342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le dijo Jesus a Nicodemo sobre nacer de nuevo?",
+    question: "¿Que le dijo Jesus a Nicodemo sobre nacer de nuevo?",
 
 
 
@@ -17366,7 +17366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad Jesus hablo con la mujer samaritana junto al pozo?",
+    question: "¿En que ciudad Jesus hablo con la mujer samaritana junto al pozo?",
 
 
 
@@ -17390,7 +17390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le ofrecio Jesus a la mujer samaritana en el pozo de Jacob?",
+    question: "¿Que le ofrecio Jesus a la mujer samaritana en el pozo de Jacob?",
 
 
 
@@ -17414,7 +17414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ungio los pies de Jesus con perfume costoso y los seco con sus cabellos?",
+    question: "¿Quien ungio los pies de Jesus con perfume costoso y los seco con sus cabellos?",
 
 
 
@@ -17438,7 +17438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo se quejo del gasto del perfume con que ungieron a Jesus?",
+    question: "¿Que discipulo se quejo del gasto del perfume con que ungieron a Jesus?",
 
 
 
@@ -17462,7 +17462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que jardin oro Jesus antes de ser arrestado?",
+    question: "¿En que jardin oro Jesus antes de ser arrestado?",
 
 
 
@@ -17486,7 +17486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces oro Jesus en Getsemani antes de ser arrestado?",
+    question: "¿Cuantas veces oro Jesus en Getsemani antes de ser arrestado?",
 
 
 
@@ -17510,7 +17510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que senal identifico Judas a Jesus ante los soldados?",
+    question: "¿Con que senal identifico Judas a Jesus ante los soldados?",
 
 
 
@@ -17534,7 +17534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas monedas de plata recibio Judas por entregar a Jesus?",
+    question: "¿Cuantas monedas de plata recibio Judas por entregar a Jesus?",
 
 
 
@@ -17558,7 +17558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo corto la oreja de un siervo del sumo sacerdote al arrestar a Jesus?",
+    question: "¿Que discipulo corto la oreja de un siervo del sumo sacerdote al arrestar a Jesus?",
 
 
 
@@ -17582,7 +17582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el siervo del sumo sacerdote a quien Pedro le corto la oreja?",
+    question: "¿Como se llamaba el siervo del sumo sacerdote a quien Pedro le corto la oreja?",
 
 
 
@@ -17606,7 +17606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces nego Pedro conocer a Jesus?",
+    question: "¿Cuantas veces nego Pedro conocer a Jesus?",
 
 
 
@@ -17630,7 +17630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal canto despues de que Pedro nego a Jesus por tercera vez?",
+    question: "¿Que animal canto despues de que Pedro nego a Jesus por tercera vez?",
 
 
 
@@ -17654,7 +17654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Ante que gobernador romano fue juzgado Jesus?",
+    question: "¿Ante que gobernador romano fue juzgado Jesus?",
 
 
 
@@ -17678,7 +17678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien libero Pilato en lugar de Jesus por peticion del pueblo?",
+    question: "¿A quien libero Pilato en lugar de Jesus por peticion del pueblo?",
 
 
 
@@ -17702,7 +17702,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que inscripcion fue colocada sobre la cruz de Jesus?",
+    question: "¿Que inscripcion fue colocada sobre la cruz de Jesus?",
 
 
 
@@ -17726,7 +17726,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio con el velo del templo cuando Jesus murio?",
+    question: "¿Que sucedio con el velo del templo cuando Jesus murio?",
 
 
 
@@ -17750,7 +17750,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien pidio el cuerpo de Jesus a Pilato para sepultarlo?",
+    question: "¿Quien pidio el cuerpo de Jesus a Pilato para sepultarlo?",
 
 
 
@@ -17774,7 +17774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la primera persona en ver a Jesus resucitado?",
+    question: "¿Quien fue la primera persona en ver a Jesus resucitado?",
 
 
 
@@ -17798,7 +17798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hicieron los discipulos de Emaus cuando reconocieron a Jesus resucitado?",
+    question: "¿Que hicieron los discipulos de Emaus cuando reconocieron a Jesus resucitado?",
 
 
 
@@ -17822,7 +17822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos discipulos iban camino a Emaus cuando Jesus se les aparecio?",
+    question: "¿Cuantos discipulos iban camino a Emaus cuando Jesus se les aparecio?",
 
 
 
@@ -17846,7 +17846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le pidio Jesus resucitado a Pedro tres veces junto al mar de Tiberias?",
+    question: "¿Que le pidio Jesus resucitado a Pedro tres veces junto al mar de Tiberias?",
 
 
 
@@ -17870,7 +17870,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que enseno Jesus sobre la oracion en el Sermon del Monte?",
+    question: "¿Que enseno Jesus sobre la oracion en el Sermon del Monte?",
 
 
 
@@ -17894,7 +17894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que parabola Jesus habla de diez virgenes esperando al esposo?",
+    question: "¿En que parabola Jesus habla de diez virgenes esperando al esposo?",
 
 
 
@@ -17918,7 +17918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas virgenes prudentes y cuantas insensatas habia en la parabola?",
+    question: "¿Cuantas virgenes prudentes y cuantas insensatas habia en la parabola?",
 
 
 
@@ -17942,7 +17942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que impuesto pago Jesus con una moneda encontrada en la boca de un pez?",
+    question: "¿Que impuesto pago Jesus con una moneda encontrada en la boca de un pez?",
 
 
 
@@ -17966,7 +17966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad vivia Zaqueo, el publicano que subio a un arbol para ver a Jesus?",
+    question: "¿En que ciudad vivia Zaqueo, el publicano que subio a un arbol para ver a Jesus?",
 
 
 
@@ -17990,7 +17990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que tipo de arbol se subio Zaqueo para ver a Jesus?",
+    question: "¿A que tipo de arbol se subio Zaqueo para ver a Jesus?",
 
 
 
@@ -18014,7 +18014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que accion realizo Jesus al entrar al templo durante la Semana de la Pasion?",
+    question: "¿Que accion realizo Jesus al entrar al templo durante la Semana de la Pasion?",
 
 
 
@@ -18038,7 +18038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Sobre que animal entro Jesus triunfalmente a Jerusalen?",
+    question: "¿Sobre que animal entro Jesus triunfalmente a Jerusalen?",
 
 
 
@@ -18062,7 +18062,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que gritaba la multitud cuando Jesus entro a Jerusalen el Domingo de Ramos?",
+    question: "¿Que gritaba la multitud cuando Jesus entro a Jerusalen el Domingo de Ramos?",
 
 
 
@@ -18086,7 +18086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que les lavo Jesus a sus discipulos durante la ultima cena como ejemplo de servicio?",
+    question: "¿Que les lavo Jesus a sus discipulos durante la ultima cena como ejemplo de servicio?",
 
 
 
@@ -18114,7 +18114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas canastas sobraron despues de alimentar a los 5,000?",
+    question: "¿Cuantas canastas sobraron despues de alimentar a los 5,000?",
 
 
 
@@ -18138,7 +18138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas canastas sobraron despues de alimentar a los 4,000?",
+    question: "¿Cuantas canastas sobraron despues de alimentar a los 4,000?",
 
 
 
@@ -18162,7 +18162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le ordeno Jesus al leproso despues de sanarlo segun Marcos?",
+    question: "¿Que le ordeno Jesus al leproso despues de sanarlo segun Marcos?",
 
 
 
@@ -18186,7 +18186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo la mujer con flujo de sangre para ser sanada?",
+    question: "¿Que hizo la mujer con flujo de sangre para ser sanada?",
 
 
 
@@ -18210,7 +18210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos llevaba enfermo el paralitico del estanque de Betesda?",
+    question: "¿Cuantos anos llevaba enfermo el paralitico del estanque de Betesda?",
 
 
 
@@ -18234,7 +18234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que instruccion le dio Jesus al ciego de nacimiento para completar su sanidad?",
+    question: "¿Que instruccion le dio Jesus al ciego de nacimiento para completar su sanidad?",
 
 
 
@@ -18258,7 +18258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias llevaba muerto Lazaro cuando Jesus llego a Betania?",
+    question: "¿Cuantos dias llevaba muerto Lazaro cuando Jesus llego a Betania?",
 
 
 
@@ -18282,7 +18282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien le dijo a Jesus 'Si hubieras estado aqui, mi hermano no habria muerto'?",
+    question: "¿Quien le dijo a Jesus 'Si hubieras estado aqui, mi hermano no habria muerto'?",
 
 
 
@@ -18306,7 +18306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad Jesus resucito al hijo de una viuda?",
+    question: "¿En que ciudad Jesus resucito al hijo de una viuda?",
 
 
 
@@ -18330,7 +18330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba la hija de Jairo que Jesus resucito?",
+    question: "¿Como se llamaba la hija de Jairo que Jesus resucito?",
 
 
 
@@ -18354,7 +18354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que edad tenia la hija de Jairo cuando fue resucitada?",
+    question: "¿Que edad tenia la hija de Jairo cuando fue resucitada?",
 
 
 
@@ -18378,7 +18378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le dijo Jesus a la hija de Jairo para resucitarla?",
+    question: "¿Que le dijo Jesus a la hija de Jairo para resucitarla?",
 
 
 
@@ -18402,7 +18402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que boda Jesus convirtio el agua en vino?",
+    question: "¿En que boda Jesus convirtio el agua en vino?",
 
 
 
@@ -18426,7 +18426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas tinajas de agua se usaron en el milagro de las bodas de Cana?",
+    question: "¿Cuantas tinajas de agua se usaron en el milagro de las bodas de Cana?",
 
 
 
@@ -18450,7 +18450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
+    question: "¿Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
 
 
 
@@ -18474,7 +18474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta resucito al hijo de la sunamita?",
+    question: "¿Que profeta resucito al hijo de la sunamita?",
 
 
 
@@ -18498,7 +18498,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta resucito al hijo de la viuda de Sarepta?",
+    question: "¿Que profeta resucito al hijo de la viuda de Sarepta?",
 
 
 
@@ -18522,7 +18522,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que metodo uso Jesus para sanar al ciego de Betsaida?",
+    question: "¿Que metodo uso Jesus para sanar al ciego de Betsaida?",
 
 
 
@@ -18546,7 +18546,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces impuso Jesus las manos al ciego de Betsaida para sanarlo completamente?",
+    question: "¿Cuantas veces impuso Jesus las manos al ciego de Betsaida para sanarlo completamente?",
 
 
 
@@ -18570,7 +18570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lago calmo Jesus la tempestad?",
+    question: "¿En que lago calmo Jesus la tempestad?",
 
 
 
@@ -18594,7 +18594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hacia Jesus cuando se desato la tempestad en el mar?",
+    question: "¿Que hacia Jesus cuando se desato la tempestad en el mar?",
 
 
 
@@ -18618,7 +18618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el endemoniado gadareno que Jesus libero?",
+    question: "¿Como se llamaba el endemoniado gadareno que Jesus libero?",
 
 
 
@@ -18642,7 +18642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que animales entraron los demonios del endemoniado gadareno?",
+    question: "¿A que animales entraron los demonios del endemoniado gadareno?",
 
 
 
@@ -18666,7 +18666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos cerdos se ahogaron cuando los demonios entraron en ellos?",
+    question: "¿Cuantos cerdos se ahogaron cuando los demonios entraron en ellos?",
 
 
 
@@ -18690,7 +18690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo camino sobre el agua hacia Jesus?",
+    question: "¿Que discipulo camino sobre el agua hacia Jesus?",
 
 
 
@@ -18714,7 +18714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que causo que Pedro comenzara a hundirse al caminar sobre el agua?",
+    question: "¿Que causo que Pedro comenzara a hundirse al caminar sobre el agua?",
 
 
 
@@ -18738,7 +18738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que encontro Pedro en la boca de un pez por instruccion de Jesus?",
+    question: "¿Que encontro Pedro en la boca de un pez por instruccion de Jesus?",
 
 
 
@@ -18762,7 +18762,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Para que sirvio la moneda que Pedro encontro en el pez?",
+    question: "¿Para que sirvio la moneda que Pedro encontro en el pez?",
 
 
 
@@ -18786,7 +18786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le paso a la higuera que Jesus maldijo?",
+    question: "¿Que le paso a la higuera que Jesus maldijo?",
 
 
 
@@ -18810,7 +18810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A cuantos leprosos sano Jesus que iban camino a Jerusalen?",
+    question: "¿A cuantos leprosos sano Jesus que iban camino a Jerusalen?",
 
 
 
@@ -18834,7 +18834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos de los diez leprosos regresaron a dar gracias a Jesus?",
+    question: "¿Cuantos de los diez leprosos regresaron a dar gracias a Jesus?",
 
 
 
@@ -18858,7 +18858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que nacionalidad era el leproso que regreso a agradecer a Jesus?",
+    question: "¿De que nacionalidad era el leproso que regreso a agradecer a Jesus?",
 
 
 
@@ -18882,7 +18882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que parte del cuerpo le fue restaurada al hombre en la sinagoga?",
+    question: "¿Que parte del cuerpo le fue restaurada al hombre en la sinagoga?",
 
 
 
@@ -18906,7 +18906,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que dia de la semana sano Jesus al hombre de la mano seca?",
+    question: "¿En que dia de la semana sano Jesus al hombre de la mano seca?",
 
 
 
@@ -18930,7 +18930,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien sano Jesus cortandole la oreja que Pedro le habia cortado?",
+    question: "¿A quien sano Jesus cortandole la oreja que Pedro le habia cortado?",
 
 
 
@@ -18954,7 +18954,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que apostol sano a un cojo en la puerta del templo llamada la Hermosa?",
+    question: "¿Que apostol sano a un cojo en la puerta del templo llamada la Hermosa?",
 
 
 
@@ -18978,7 +18978,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le dijo Pedro al cojo de la puerta la Hermosa antes de sanarlo?",
+    question: "¿Que le dijo Pedro al cojo de la puerta la Hermosa antes de sanarlo?",
 
 
 
@@ -19002,7 +19002,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien resucito Pedro en Jope?",
+    question: "¿A quien resucito Pedro en Jope?",
 
 
 
@@ -19026,7 +19026,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que joven resucito Pablo despues de caer de una ventana en Troas?",
+    question: "¿Que joven resucito Pablo despues de caer de una ventana en Troas?",
 
 
 
@@ -19050,7 +19050,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Desde que piso cayo Eutico antes de ser resucitado por Pablo?",
+    question: "¿Desde que piso cayo Eutico antes de ser resucitado por Pablo?",
 
 
 
@@ -19074,7 +19074,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que plaga envio Dios como la decima plaga sobre Egipto?",
+    question: "¿Que plaga envio Dios como la decima plaga sobre Egipto?",
 
 
 
@@ -19098,7 +19098,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro ocurrio cuando los israelitas cruzaron el Mar Rojo?",
+    question: "¿Que milagro ocurrio cuando los israelitas cruzaron el Mar Rojo?",
 
 
 
@@ -19122,7 +19122,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que alimento envio Dios del cielo para alimentar a Israel en el desierto?",
+    question: "¿Que alimento envio Dios del cielo para alimentar a Israel en el desierto?",
 
 
 
@@ -19146,7 +19146,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De donde saco Moises agua para el pueblo en el desierto?",
+    question: "¿De donde saco Moises agua para el pueblo en el desierto?",
 
 
 
@@ -19170,7 +19170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro hizo Eliseo con las aguas de Jerico?",
+    question: "¿Que milagro hizo Eliseo con las aguas de Jerico?",
 
 
 
@@ -19194,7 +19194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a Naaman al sumergirse siete veces en el Jordan?",
+    question: "¿Que le sucedio a Naaman al sumergirse siete veces en el Jordan?",
 
 
 
@@ -19218,7 +19218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta le indico a Naaman que se lavara en el Jordan?",
+    question: "¿Que profeta le indico a Naaman que se lavara en el Jordan?",
 
 
 
@@ -19242,7 +19242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro realizo Jesus con la suegra de Pedro?",
+    question: "¿Que milagro realizo Jesus con la suegra de Pedro?",
 
 
 
@@ -19266,7 +19266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio inmediatamente despues de que Jesus sano a la suegra de Pedro?",
+    question: "¿Que sucedio inmediatamente despues de que Jesus sano a la suegra de Pedro?",
 
 
 
@@ -19290,7 +19290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro hizo Jesus en la pesca cuando Pedro no habia atrapado nada toda la noche?",
+    question: "¿Que milagro hizo Jesus en la pesca cuando Pedro no habia atrapado nada toda la noche?",
 
 
 
@@ -19322,7 +19322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece por primera vez la palabra 'pacto'?",
+    question: "¿En que libro aparece por primera vez la palabra 'pacto'?",
 
 
 
@@ -19346,7 +19346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro registra el pacto con Finees?",
+    question: "¿Que libro registra el pacto con Finees?",
 
 
 
@@ -19370,7 +19370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona la serpiente de bronce?",
+    question: "¿En que libro se menciona la serpiente de bronce?",
 
 
 
@@ -19394,7 +19394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro detalla la bendicion de Jacob a sus hijos?",
+    question: "¿Que libro detalla la bendicion de Jacob a sus hijos?",
 
 
 
@@ -19418,7 +19418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece el cantico de Moises despues del Mar Rojo?",
+    question: "¿En que libro aparece el cantico de Moises despues del Mar Rojo?",
 
 
 
@@ -19442,7 +19442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro registra la rebelion de Core?",
+    question: "¿Que libro registra la rebelion de Core?",
 
 
 
@@ -19466,7 +19466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se detalla la division de la tierra por tribus?",
+    question: "¿En que libro se detalla la division de la tierra por tribus?",
 
 
 
@@ -19490,7 +19490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene la oracion de dedicacion del templo?",
+    question: "¿Que libro contiene la oracion de dedicacion del templo?",
 
 
 
@@ -19514,7 +19514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona a Hulda la profetisa?",
+    question: "¿En que libro se menciona a Hulda la profetisa?",
 
 
 
@@ -19538,7 +19538,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro registra el hallazgo del libro de la ley en tiempos de Josias?",
+    question: "¿Que libro registra el hallazgo del libro de la ley en tiempos de Josias?",
 
 
 
@@ -19562,7 +19562,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece la vision del trono con serafines?",
+    question: "¿En que libro aparece la vision del trono con serafines?",
 
 
 
@@ -19586,7 +19586,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene el 'siervo sufriente'?",
+    question: "¿Que libro contiene el 'siervo sufriente'?",
 
 
 
@@ -19610,7 +19610,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se describen ruedas llenas de ojos?",
+    question: "¿En que libro se describen ruedas llenas de ojos?",
 
 
 
@@ -19634,7 +19634,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro registra el ayuno de Ninive?",
+    question: "¿Que libro registra el ayuno de Ninive?",
 
 
 
@@ -19658,7 +19658,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece 'aunque la higuera no florezca'?",
+    question: "¿En que libro aparece 'aunque la higuera no florezca'?",
 
 
 
@@ -19682,7 +19682,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene visiones del sumo sacerdote Josue?",
+    question: "¿Que libro contiene visiones del sumo sacerdote Josue?",
 
 
 
@@ -19706,7 +19706,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se promete un nuevo pacto?",
+    question: "¿En que libro se promete un nuevo pacto?",
 
 
 
@@ -19730,7 +19730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro menciona al 'Renuevo'?",
+    question: "¿Que libro menciona al 'Renuevo'?",
 
 
 
@@ -19754,7 +19754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que evangelio Jesus es presentado como Rey?",
+    question: "¿En que evangelio Jesus es presentado como Rey?",
 
 
 
@@ -19778,7 +19778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evangelio destaca a Jesus como Siervo?",
+    question: "¿Que evangelio destaca a Jesus como Siervo?",
 
 
 
@@ -19802,7 +19802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece la transfiguracion primero?",
+    question: "¿En que libro aparece la transfiguracion primero?",
 
 
 
@@ -19826,7 +19826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro registra el discurso en Pentecostes?",
+    question: "¿Que libro registra el discurso en Pentecostes?",
 
 
 
@@ -19850,7 +19850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Pablo cita mas el Antiguo Testamento?",
+    question: "¿En que libro Pablo cita mas el Antiguo Testamento?",
 
 
 
@@ -19874,7 +19874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro explica el ministerio de la reconciliacion?",
+    question: "¿Que libro explica el ministerio de la reconciliacion?",
 
 
 
@@ -19898,7 +19898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla del 'aguijon en la carne'?",
+    question: "¿En que libro se habla del 'aguijon en la carne'?",
 
 
 
@@ -19922,7 +19922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro combate el legalismo judio?",
+    question: "¿Que libro combate el legalismo judio?",
 
 
 
@@ -19946,7 +19946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro Pablo explica la predestinacion?",
+    question: "¿En que libro Pablo explica la predestinacion?",
 
 
 
@@ -19970,7 +19970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro enfatiza la ciudadania celestial?",
+    question: "¿Que libro enfatiza la ciudadania celestial?",
 
 
 
@@ -19994,7 +19994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se presenta a Cristo como sumo sacerdote eterno?",
+    question: "¿En que libro se presenta a Cristo como sumo sacerdote eterno?",
 
 
 
@@ -20018,7 +20018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro exhorta a contender por la fe?",
+    question: "¿Que libro exhorta a contender por la fe?",
 
 
 
@@ -20042,7 +20042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona a Balaam como ejemplo negativo?",
+    question: "¿En que libro se menciona a Balaam como ejemplo negativo?",
 
 
 
@@ -20066,7 +20066,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro habla de cielos nuevos y tierra nueva?",
+    question: "¿Que libro habla de cielos nuevos y tierra nueva?",
 
 
 
@@ -20090,7 +20090,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece Gog y Magog?",
+    question: "¿En que libro aparece Gog y Magog?",
 
 
 
@@ -20114,7 +20114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene las trompetas del juicio?",
+    question: "¿Que libro contiene las trompetas del juicio?",
 
 
 
@@ -20138,7 +20138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se describe el lago de fuego?",
+    question: "¿En que libro se describe el lago de fuego?",
 
 
 
@@ -20162,7 +20162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro muestra a Cristo con ojos como llama?",
+    question: "¿Que libro muestra a Cristo con ojos como llama?",
 
 
 
@@ -20186,7 +20186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla del arrebatamiento?",
+    question: "¿En que libro se habla del arrebatamiento?",
 
 
 
@@ -20210,7 +20210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene la profecia del hombre de pecado?",
+    question: "¿Que libro contiene la profecia del hombre de pecado?",
 
 
 
@@ -20234,7 +20234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se exhorta a guardar el buen deposito?",
+    question: "¿En que libro se exhorta a guardar el buen deposito?",
 
 
 
@@ -20258,7 +20258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta a Cristo como Pastor supremo?",
+    question: "¿Que libro presenta a Cristo como Pastor supremo?",
 
 
 
@@ -20282,7 +20282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona la segunda muerte?",
+    question: "¿En que libro se menciona la segunda muerte?",
 
 
 
@@ -20306,7 +20306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro describe la bestia del mar?",
+    question: "¿Que libro describe la bestia del mar?",
 
 
 
@@ -20330,7 +20330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se habla del rollo sellado?",
+    question: "¿En que libro se habla del rollo sellado?",
 
 
 
@@ -20354,7 +20354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene las siete bienaventuranzas profeticas?",
+    question: "¿Que libro contiene las siete bienaventuranzas profeticas?",
 
 
 
@@ -20378,7 +20378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se menciona al 'testigo fiel y verdadero'?",
+    question: "¿En que libro se menciona al 'testigo fiel y verdadero'?",
 
 
 
@@ -20402,7 +20402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta Genesis con Apocalipsis tematicamente?",
+    question: "¿Que libro conecta Genesis con Apocalipsis tematicamente?",
 
 
 
@@ -20426,7 +20426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se cita a Enoc profetizando?",
+    question: "¿En que libro se cita a Enoc profetizando?",
 
 
 
@@ -20450,7 +20450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro enfatiza el reposo espiritual?",
+    question: "¿Que libro enfatiza el reposo espiritual?",
 
 
 
@@ -20474,7 +20474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se presenta el misterio revelado a los gentiles?",
+    question: "¿En que libro se presenta el misterio revelado a los gentiles?",
 
 
 
@@ -20498,7 +20498,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro une historia, profecia y escatologia?",
+    question: "¿Que libro une historia, profecia y escatologia?",
 
 
 
@@ -20526,7 +20526,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Samuel?",
+    question: "¿Quien fue el padre del profeta Samuel?",
 
 
 
@@ -20550,7 +20550,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la esposa de Moises?",
+    question: "¿Quien fue la esposa de Moises?",
 
 
 
@@ -20574,7 +20574,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que mando a matar a los ninos en Belen?",
+    question: "¿Quien fue el rey que mando a matar a los ninos en Belen?",
 
 
 
@@ -20598,7 +20598,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan el Bautista?",
+    question: "¿Quien fue el padre de Juan el Bautista?",
 
 
 
@@ -20622,7 +20622,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el hijo mayor de Jacob?",
+    question: "¿Quien fue el hijo mayor de Jacob?",
 
 
 
@@ -20646,7 +20646,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ayudo a David contra Goliat?",
+    question: "¿Quien ayudo a David contra Goliat?",
 
 
 
@@ -20670,7 +20670,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que ungio a Saul?",
+    question: "¿Quien fue el profeta que ungio a Saul?",
 
 
 
@@ -20694,7 +20694,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el hijo de David que se rebelo contra el?",
+    question: "¿Quien fue el hijo de David que se rebelo contra el?",
 
 
 
@@ -20718,7 +20718,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que escribio Proverbios?",
+    question: "¿Quien fue el rey que escribio Proverbios?",
 
 
 
@@ -20742,7 +20742,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el esposo de Maria?",
+    question: "¿Quien fue el esposo de Maria?",
 
 
 
@@ -20766,7 +20766,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta mayor que vio el trono de Dios?",
+    question: "¿Quien fue el profeta mayor que vio el trono de Dios?",
 
 
 
@@ -20790,7 +20790,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan y Santiago?",
+    question: "¿Quien fue el padre de Juan y Santiago?",
 
 
 
@@ -20814,7 +20814,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que consulto a una adivina en Endor?",
+    question: "¿Quien fue el rey que consulto a una adivina en Endor?",
 
 
 
@@ -20838,7 +20838,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que sucedio a Elias?",
+    question: "¿Quien fue el profeta que sucedio a Elias?",
 
 
 
@@ -20862,7 +20862,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el general sanado de lepra?",
+    question: "¿Quien fue el general sanado de lepra?",
 
 
 
@@ -20886,7 +20886,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que pidio sabiduria a Dios?",
+    question: "¿Quien fue el rey que pidio sabiduria a Dios?",
 
 
 
@@ -20910,7 +20910,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que escribio Lamentaciones?",
+    question: "¿Quien fue el profeta que escribio Lamentaciones?",
 
 
 
@@ -20934,7 +20934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Gedeon?",
+    question: "¿Quien fue el padre de Gedeon?",
 
 
 
@@ -20958,7 +20958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que destruyo Jerusalen?",
+    question: "¿Quien fue el rey que destruyo Jerusalen?",
 
 
 
@@ -20982,7 +20982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el discipulo reemplazado por Matias?",
+    question: "¿Quien fue el discipulo reemplazado por Matias?",
 
 
 
@@ -21006,7 +21006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que enfermo por orgullo?",
+    question: "¿Quien fue el rey que enfermo por orgullo?",
 
 
 
@@ -21030,7 +21030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Betsabe?",
+    question: "¿Quien fue el padre de Betsabe?",
 
 
 
@@ -21054,7 +21054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que se humillo tras oir la Ley?",
+    question: "¿Quien fue el rey que se humillo tras oir la Ley?",
 
 
 
@@ -21078,7 +21078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta enviado a Ninive?",
+    question: "¿Quien fue el profeta enviado a Ninive?",
 
 
 
@@ -21102,7 +21102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que vio escritura en la pared?",
+    question: "¿Quien fue el rey que vio escritura en la pared?",
 
 
 
@@ -21126,7 +21126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Jeremias?",
+    question: "¿Quien fue el padre del profeta Jeremias?",
 
 
 
@@ -21150,7 +21150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que quemo el rollo de Jeremias?",
+    question: "¿Quien fue el rey que quemo el rollo de Jeremias?",
 
 
 
@@ -21174,7 +21174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el sumo sacerdote cuando Jesus fue juzgado?",
+    question: "¿Quien fue el sumo sacerdote cuando Jesus fue juzgado?",
 
 
 
@@ -21198,7 +21198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Eliseo?",
+    question: "¿Quien fue el padre de Eliseo?",
 
 
 
@@ -21222,7 +21222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta contemporaneo de Daniel?",
+    question: "¿Quien fue el profeta contemporaneo de Daniel?",
 
 
 
@@ -21246,7 +21246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Jonatan?",
+    question: "¿Quien fue el padre de Jonatan?",
 
 
 
@@ -21270,7 +21270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que hizo altares a dioses extranjeros?",
+    question: "¿Quien fue el rey que hizo altares a dioses extranjeros?",
 
 
 
@@ -21294,7 +21294,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que caso con una mujer infiel?",
+    question: "¿Quien fue el profeta que caso con una mujer infiel?",
 
 
 
@@ -21318,7 +21318,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Juan Marcos?",
+    question: "¿Quien fue el padre de Juan Marcos?",
 
 
 
@@ -21342,7 +21342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que reconstruyo el templo?",
+    question: "¿Quien fue el rey que reconstruyo el templo?",
 
 
 
@@ -21366,7 +21366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que tuvo 700 esposas?",
+    question: "¿Quien fue el rey que tuvo 700 esposas?",
 
 
 
@@ -21390,7 +21390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Absalon?",
+    question: "¿Quien fue el padre de Absalon?",
 
 
 
@@ -21414,7 +21414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que vio ruedas dentro de ruedas?",
+    question: "¿Quien fue el profeta que vio ruedas dentro de ruedas?",
 
 
 
@@ -21438,7 +21438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que pidio ayuda a Egipto?",
+    question: "¿Quien fue el rey que pidio ayuda a Egipto?",
 
 
 
@@ -21462,7 +21462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Roboam?",
+    question: "¿Quien fue el padre de Roboam?",
 
 
 
@@ -21486,7 +21486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el juez que hizo un voto imprudente?",
+    question: "¿Quien fue el juez que hizo un voto imprudente?",
 
 
 
@@ -21510,7 +21510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que mostro tesoros a Babilonia?",
+    question: "¿Quien fue el rey que mostro tesoros a Babilonia?",
 
 
 
@@ -21534,7 +21534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Oseas?",
+    question: "¿Quien fue el padre del profeta Oseas?",
 
 
 
@@ -21558,7 +21558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que reino mas tiempo en Juda?",
+    question: "¿Quien fue el rey que reino mas tiempo en Juda?",
 
 
 
@@ -21582,7 +21582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que desafio a 450 profetas?",
+    question: "¿Quien fue el profeta que desafio a 450 profetas?",
 
 
 
@@ -21606,7 +21606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Natanael (Bartolome)?",
+    question: "¿Quien fue el padre de Natanael (Bartolome)?",
 
 
 
@@ -21630,7 +21630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que lloro por su hijo Absalon?",
+    question: "¿Quien fue el rey que lloro por su hijo Absalon?",
 
 
 
@@ -21654,7 +21654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que perdio el reino por desobedecer?",
+    question: "¿Quien fue el rey que perdio el reino por desobedecer?",
 
 
 
@@ -21678,7 +21678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que anuncio el nacimiento de Juan?",
+    question: "¿Quien fue el profeta que anuncio el nacimiento de Juan?",
 
 
 
@@ -21702,7 +21702,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el apostol que escribio mas libros del NT?",
+    question: "¿Quien fue el apostol que escribio mas libros del NT?",
 
 
 
@@ -21730,7 +21730,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel reino solo 7 dias antes de suicidarse?",
+    question: "¿Que rey de Israel reino solo 7 dias antes de suicidarse?",
 
 
 
@@ -21754,7 +21754,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien disputo el trono de Israel con Omri tras la muerte de Zimri?",
+    question: "¿Quien disputo el trono de Israel con Omri tras la muerte de Zimri?",
 
 
 
@@ -21778,7 +21778,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue asesinado por Baasa mientras sitiaba Gibeton?",
+    question: "¿Que rey de Israel fue asesinado por Baasa mientras sitiaba Gibeton?",
 
 
 
@@ -21802,7 +21802,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue herido por sus siervos y murio en Milo?",
+    question: "¿Que rey de Juda fue herido por sus siervos y murio en Milo?",
 
 
 
@@ -21826,7 +21826,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino Omri en Israel?",
+    question: "¿Cuantos anos reino Omri en Israel?",
 
 
 
@@ -21850,7 +21850,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue llevado cautivo a Babilonia con garfios?",
+    question: "¿Que rey de Juda fue llevado cautivo a Babilonia con garfios?",
 
 
 
@@ -21874,7 +21874,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel hizo alianza con Ben-adad de Siria contra Baasa?",
+    question: "¿Que rey de Israel hizo alianza con Ben-adad de Siria contra Baasa?",
 
 
 
@@ -21898,7 +21898,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del rey Josafat de Juda?",
+    question: "¿Quien fue el padre del rey Josafat de Juda?",
 
 
 
@@ -21922,7 +21922,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue asesinado por Salum despues de reinar 6 meses?",
+    question: "¿Que rey de Israel fue asesinado por Salum despues de reinar 6 meses?",
 
 
 
@@ -21946,7 +21946,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda tenia 8 anos cuando comenzo a reinar?",
+    question: "¿Que rey de Juda tenia 8 anos cuando comenzo a reinar?",
 
 
 
@@ -21970,7 +21970,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel pago tributo a Tiglat-pileser III de Asiria con mil talentos de plata?",
+    question: "¿Que rey de Israel pago tributo a Tiglat-pileser III de Asiria con mil talentos de plata?",
 
 
 
@@ -21994,7 +21994,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue azotado con lepra por quemar incienso en el templo?",
+    question: "¿Que rey de Juda fue azotado con lepra por quemar incienso en el templo?",
 
 
 
@@ -22018,7 +22018,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fundo Omri como nueva capital de Israel?",
+    question: "¿Que ciudad fundo Omri como nueva capital de Israel?",
 
 
 
@@ -22042,7 +22042,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda quito los lugares altos e hizo la reforma mas completa?",
+    question: "¿Que rey de Juda quito los lugares altos e hizo la reforma mas completa?",
 
 
 
@@ -22066,7 +22066,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue el ultimo de la dinastia de Jehu?",
+    question: "¿Que rey de Israel fue el ultimo de la dinastia de Jehu?",
 
 
 
@@ -22090,7 +22090,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda sacrifico a su hijo pasandolo por fuego?",
+    question: "¿Que rey de Juda sacrifico a su hijo pasandolo por fuego?",
 
 
 
@@ -22114,7 +22114,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino Manases en Jerusalen, siendo el reinado mas largo de Juda?",
+    question: "¿Cuantos anos reino Manases en Jerusalen, siendo el reinado mas largo de Juda?",
 
 
 
@@ -22138,7 +22138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel derroto a Amasias de Juda y derribo parte del muro de Jerusalen?",
+    question: "¿Que rey de Israel derroto a Amasias de Juda y derribo parte del muro de Jerusalen?",
 
 
 
@@ -22162,7 +22162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que rey de Juda le sacaron los ojos los babilonios despues de matar a sus hijos?",
+    question: "¿A que rey de Juda le sacaron los ojos los babilonios despues de matar a sus hijos?",
 
 
 
@@ -22186,7 +22186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel recibio la evaluacion de que hizo lo malo mas que todos los que fueron antes de el?",
+    question: "¿Que rey de Israel recibio la evaluacion de que hizo lo malo mas que todos los que fueron antes de el?",
 
 
 
@@ -22210,7 +22210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue asesinado por sus siervos en su cama?",
+    question: "¿Que rey de Juda fue asesinado por sus siervos en su cama?",
 
 
 
@@ -22234,7 +22234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel envio a su esposa disfrazada a consultar al profeta Ahias?",
+    question: "¿Que rey de Israel envio a su esposa disfrazada a consultar al profeta Ahias?",
 
 
 
@@ -22258,7 +22258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que faraon mato al rey Josias en la batalla de Meguido?",
+    question: "¿Que faraon mato al rey Josias en la batalla de Meguido?",
 
 
 
@@ -22282,7 +22282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda construyo el estanque y el acueducto que llevaba agua a Jerusalen?",
+    question: "¿Que rey de Juda construyo el estanque y el acueducto que llevaba agua a Jerusalen?",
 
 
 
@@ -22306,7 +22306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue asesinado por Peka hijo de Remalias?",
+    question: "¿Que rey de Israel fue asesinado por Peka hijo de Remalias?",
 
 
 
@@ -22330,7 +22330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evaluacion teologica recibieron todos los reyes del reino del norte (Israel)?",
+    question: "¿Que evaluacion teologica recibieron todos los reyes del reino del norte (Israel)?",
 
 
 
@@ -22354,7 +22354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel reino 41 anos, el mas largo del reino del norte?",
+    question: "¿Que rey de Israel reino 41 anos, el mas largo del reino del norte?",
 
 
 
@@ -22378,7 +22378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue la unica mujer que reino en Juda usurpando el trono?",
+    question: "¿Quien fue la unica mujer que reino en Juda usurpando el trono?",
 
 
 
@@ -22402,7 +22402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda pidio ayuda a Asiria en lugar de confiar en Dios contra Siria e Israel?",
+    question: "¿Que rey de Juda pidio ayuda a Asiria en lugar de confiar en Dios contra Siria e Israel?",
 
 
 
@@ -22426,7 +22426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos reyes tuvo el reino del norte (Israel) desde Jeroboam I hasta Oseas?",
+    question: "¿Cuantos reyes tuvo el reino del norte (Israel) desde Jeroboam I hasta Oseas?",
 
 
 
@@ -22450,7 +22450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue sepultado en un huerto y no en los sepulcros reales?",
+    question: "¿Que rey de Juda fue sepultado en un huerto y no en los sepulcros reales?",
 
 
 
@@ -22474,7 +22474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel capturo Elot y la restituyo a Siria?",
+    question: "¿Que rey de Israel capturo Elot y la restituyo a Siria?",
 
 
 
@@ -22498,7 +22498,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que rey asirio pago tributo Oseas, ultimo rey de Israel, antes de rebelarse?",
+    question: "¿A que rey asirio pago tributo Oseas, ultimo rey de Israel, antes de rebelarse?",
 
 
 
@@ -22522,7 +22522,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda elimino la serpiente de bronce que Moises habia hecho?",
+    question: "¿Que rey de Juda elimino la serpiente de bronce que Moises habia hecho?",
 
 
 
@@ -22546,7 +22546,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hijo de Salomon causo la division del reino por su dureza?",
+    question: "¿Que hijo de Salomon causo la division del reino por su dureza?",
 
 
 
@@ -22570,7 +22570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda reino solo 3 meses antes de ser deportado a Egipto por el faraon Necao?",
+    question: "¿Que rey de Juda reino solo 3 meses antes de ser deportado a Egipto por el faraon Necao?",
 
 
 
@@ -22594,7 +22594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta ungio a Jehu como rey de Israel para destruir la casa de Acab?",
+    question: "¿Que profeta ungio a Jehu como rey de Israel para destruir la casa de Acab?",
 
 
 
@@ -22618,7 +22618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue comparado favorablemente con David sin reservas?",
+    question: "¿Que rey de Juda fue comparado favorablemente con David sin reservas?",
 
 
 
@@ -22642,7 +22642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel erigio los becerros de oro en Dan y Bet-el?",
+    question: "¿Que rey de Israel erigio los becerros de oro en Dan y Bet-el?",
 
 
 
@@ -22666,7 +22666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ano cayo Samaria ante Asiria, terminando el reino del norte?",
+    question: "¿En que ano cayo Samaria ante Asiria, terminando el reino del norte?",
 
 
 
@@ -22690,7 +22690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda envio embajadores a mostrar todos sus tesoros a los babilonios?",
+    question: "¿Que rey de Juda envio embajadores a mostrar todos sus tesoros a los babilonios?",
 
 
 
@@ -22714,7 +22714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que oficial de Ela, rey de Israel, lo asesino mientras estaba borracho en casa de Arsa?",
+    question: "¿Que oficial de Ela, rey de Israel, lo asesino mientras estaba borracho en casa de Arsa?",
 
 
 
@@ -22738,7 +22738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue puesto en el trono por el pueblo de la tierra tras el asesinato de Amon?",
+    question: "¿Que rey de Juda fue puesto en el trono por el pueblo de la tierra tras el asesinato de Amon?",
 
 
 
@@ -22762,7 +22762,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hijo de Acab reino dos anos e hizo lo malo, cayendo por la ventana de su aposento?",
+    question: "¿Que hijo de Acab reino dos anos e hizo lo malo, cayendo por la ventana de su aposento?",
 
 
 
@@ -22786,7 +22786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos reyes de Juda recibieron la evaluacion de que hicieron lo recto ante Jehova?",
+    question: "¿Cuantos reyes de Juda recibieron la evaluacion de que hicieron lo recto ante Jehova?",
 
 
 
@@ -22810,7 +22810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey asirio sitio Jerusalen en tiempos de Ezequias y su ejercito fue destruido por un angel?",
+    question: "¿Que rey asirio sitio Jerusalen en tiempos de Ezequias y su ejercito fue destruido por un angel?",
 
 
 
@@ -22834,7 +22834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda reino junto con su padre Uzias debido a la lepra de este?",
+    question: "¿Que rey de Juda reino junto con su padre Uzias debido a la lepra de este?",
 
 
 
@@ -22858,7 +22858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue el primero de la dinastia de Omri?",
+    question: "¿Que rey de Israel fue el primero de la dinastia de Omri?",
 
 
 
@@ -22882,7 +22882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey babilonico libero a Joaquin de la carcel y le dio un lugar en su mesa?",
+    question: "¿Que rey babilonico libero a Joaquin de la carcel y le dio un lugar en su mesa?",
 
 
 
@@ -22906,7 +22906,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda hizo lo malo y reino solo 2 anos antes de ser asesinado por sus siervos?",
+    question: "¿Que rey de Juda hizo lo malo y reino solo 2 anos antes de ser asesinado por sus siervos?",
 
 
 
@@ -22934,7 +22934,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta se caso con una mujer infiel llamada Gomer por orden de Dios?",
+    question: "¿Que profeta se caso con una mujer infiel llamada Gomer por orden de Dios?",
 
 
 
@@ -22958,7 +22958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio un rollo volante de veinte codos de largo y diez de ancho?",
+    question: "¿Que profeta vio un rollo volante de veinte codos de largo y diez de ancho?",
 
 
 
@@ -22982,7 +22982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Durante el reinado de que rey comenzo Isaias su ministerio profetico?",
+    question: "¿Durante el reinado de que rey comenzo Isaias su ministerio profetico?",
 
 
 
@@ -23006,7 +23006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que cisterna fue arrojado Jeremias por orden de los principes?",
+    question: "¿En que cisterna fue arrojado Jeremias por orden de los principes?",
 
 
 
@@ -23030,7 +23030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue arrebatado por el Espiritu despues de bautizar al eunuco etiope?",
+    question: "¿Que profeta fue arrebatado por el Espiritu despues de bautizar al eunuco etiope?",
 
 
 
@@ -23054,7 +23054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta recibio la orden de cocinar su comida usando estiercol de vaca como combustible?",
+    question: "¿Que profeta recibio la orden de cocinar su comida usando estiercol de vaca como combustible?",
 
 
 
@@ -23078,7 +23078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que profeta le fue prohibido llorar la muerte de su esposa?",
+    question: "¿A que profeta le fue prohibido llorar la muerte de su esposa?",
 
 
 
@@ -23102,7 +23102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menciono el valle de los huesos secos?",
+    question: "¿Que profeta menciono el valle de los huesos secos?",
 
 
 
@@ -23126,7 +23126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias estuvo Ezequiel acostado sobre su lado izquierdo para cargar la iniquidad de Israel?",
+    question: "¿Cuantos dias estuvo Ezequiel acostado sobre su lado izquierdo para cargar la iniquidad de Israel?",
 
 
 
@@ -23150,7 +23150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta del Antiguo Testamento predijo que el Mesias naceria en Belen?",
+    question: "¿Que profeta del Antiguo Testamento predijo que el Mesias naceria en Belen?",
 
 
 
@@ -23174,7 +23174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue contemporaneo de Jeremias y profetizo a los exiliados en Babilonia?",
+    question: "¿Que profeta fue contemporaneo de Jeremias y profetizo a los exiliados en Babilonia?",
 
 
 
@@ -23198,7 +23198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que arbol uso Amos como simbolo de su oficio antes de ser profeta?",
+    question: "¿Que arbol uso Amos como simbolo de su oficio antes de ser profeta?",
 
 
 
@@ -23222,7 +23222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio que Dios deseaba misericordia y no sacrificio?",
+    question: "¿Que profeta anuncio que Dios deseaba misericordia y no sacrificio?",
 
 
 
@@ -23246,7 +23246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En la vision de Isaias en el templo, cuantas alas tenia cada serafin?",
+    question: "¿En la vision de Isaias en el templo, cuantas alas tenia cada serafin?",
 
 
 
@@ -23270,7 +23270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue llamado a profetizar contra Ninive y la ciudad se arrepintio?",
+    question: "¿Que profeta fue llamado a profetizar contra Ninive y la ciudad se arrepintio?",
 
 
 
@@ -23294,7 +23294,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta escribio especificamente contra Edom?",
+    question: "¿Que profeta escribio especificamente contra Edom?",
 
 
 
@@ -23318,7 +23318,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta proclamo: 'El justo por su fe vivira'?",
+    question: "¿Que profeta proclamo: 'El justo por su fe vivira'?",
 
 
 
@@ -23342,7 +23342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el nombre del padre de Isaias segun el libro profetico?",
+    question: "¿Cual fue el nombre del padre de Isaias segun el libro profetico?",
 
 
 
@@ -23366,7 +23366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo una vision de cuatro carros que salian de entre dos montes de bronce?",
+    question: "¿Que profeta tuvo una vision de cuatro carros que salian de entre dos montes de bronce?",
 
 
 
@@ -23390,7 +23390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta predijo la destruccion de Ninive con gran detalle poetico?",
+    question: "¿Que profeta predijo la destruccion de Ninive con gran detalle poetico?",
 
 
 
@@ -23414,7 +23414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre simbolico le puso Oseas a su hija, que significa 'no compadecida'?",
+    question: "¿Que nombre simbolico le puso Oseas a su hija, que significa 'no compadecida'?",
 
 
 
@@ -23438,7 +23438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta camino desnudo y descalzo durante tres anos como senal contra Egipto y Etiopia?",
+    question: "¿Que profeta camino desnudo y descalzo durante tres anos como senal contra Egipto y Etiopia?",
 
 
 
@@ -23462,7 +23462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que vision tuvo Amos que representaba el juicio inminente sobre Israel?",
+    question: "¿Que vision tuvo Amos que representaba el juicio inminente sobre Israel?",
 
 
 
@@ -23486,7 +23486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos capitulos tiene el libro de Isaias?",
+    question: "¿Cuantos capitulos tiene el libro de Isaias?",
 
 
 
@@ -23510,7 +23510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue puesto dentro de un cepo por el sacerdote Pasur?",
+    question: "¿Que profeta fue puesto dentro de un cepo por el sacerdote Pasur?",
 
 
 
@@ -23534,7 +23534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que rio tuvo Ezequiel su primera vision de la gloria de Dios?",
+    question: "¿En que rio tuvo Ezequiel su primera vision de la gloria de Dios?",
 
 
 
@@ -23558,7 +23558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menciono las 'setenta semanas' como profecia mesianica?",
+    question: "¿Que profeta menciono las 'setenta semanas' como profecia mesianica?",
 
 
 
@@ -23582,7 +23582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que profeta alimentaron los cuervos junto al arroyo de Querit?",
+    question: "¿A que profeta alimentaron los cuervos junto al arroyo de Querit?",
 
 
 
@@ -23606,7 +23606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
+    question: "¿Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
 
 
 
@@ -23630,7 +23630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos profetas de Baal fueron desafiados por Elias en el monte Carmelo?",
+    question: "¿Cuantos profetas de Baal fueron desafiados por Elias en el monte Carmelo?",
 
 
 
@@ -23654,7 +23654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta uso un yugo de madera sobre su cuello como senal profetica?",
+    question: "¿Que profeta uso un yugo de madera sobre su cuello como senal profetica?",
 
 
 
@@ -23678,7 +23678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que falso profeta rompio el yugo de madera del cuello de Jeremias?",
+    question: "¿Que falso profeta rompio el yugo de madera del cuello de Jeremias?",
 
 
 
@@ -23702,7 +23702,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue lanzado al mar durante una tormenta por los marineros?",
+    question: "¿Que profeta fue lanzado al mar durante una tormenta por los marineros?",
 
 
 
@@ -23726,7 +23726,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que planta crecio para dar sombra a Jonas y luego se seco?",
+    question: "¿Que planta crecio para dar sombra a Jonas y luego se seco?",
 
 
 
@@ -23750,7 +23750,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta tuvo una vision de un candelabro de oro con siete lamparas y dos olivos?",
+    question: "¿Que profeta tuvo una vision de un candelabro de oro con siete lamparas y dos olivos?",
 
 
 
@@ -23774,7 +23774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta anuncio que Dios enviaria al profeta Elias antes del dia grande y terrible de Jehova?",
+    question: "¿Que profeta anuncio que Dios enviaria al profeta Elias antes del dia grande y terrible de Jehova?",
 
 
 
@@ -23798,7 +23798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que profeta se le ordeno comprar un campo en Anatot durante el asedio de Jerusalen?",
+    question: "¿A que profeta se le ordeno comprar un campo en Anatot durante el asedio de Jerusalen?",
 
 
 
@@ -23822,7 +23822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el secretario (escriba) de Jeremias que escribia sus profecias?",
+    question: "¿Quien fue el secretario (escriba) de Jeremias que escribia sus profecias?",
 
 
 
@@ -23846,7 +23846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey quemo el rollo de las profecias de Jeremias columna por columna?",
+    question: "¿Que rey quemo el rollo de las profecias de Jeremias columna por columna?",
 
 
 
@@ -23870,7 +23870,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta describio a Tiro como una ciudad que seria arrojada al mar?",
+    question: "¿Que profeta describio a Tiro como una ciudad que seria arrojada al mar?",
 
 
 
@@ -23894,7 +23894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que capitulo de Isaias se encuentra el cantico del Siervo Sufriente que describe al Mesias?",
+    question: "¿En que capitulo de Isaias se encuentra el cantico del Siervo Sufriente que describe al Mesias?",
 
 
 
@@ -23918,7 +23918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta recibio instrucciones de medir el templo con una cana de medir?",
+    question: "¿Que profeta recibio instrucciones de medir el templo con una cana de medir?",
 
 
 
@@ -23942,7 +23942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta profetizo que el Mesias entraria en Jerusalen montado sobre un pollino?",
+    question: "¿Que profeta profetizo que el Mesias entraria en Jerusalen montado sobre un pollino?",
 
 
 
@@ -23966,7 +23966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta hablo del 'Dia de Jehova' como dia de tinieblas y no de luz?",
+    question: "¿Que profeta hablo del 'Dia de Jehova' como dia de tinieblas y no de luz?",
 
 
 
@@ -23990,7 +23990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que profeta Dios le mostro una vision de langostas que devoraban la tierra?",
+    question: "¿A que profeta Dios le mostro una vision de langostas que devoraban la tierra?",
 
 
 
@@ -24014,7 +24014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta insto al pueblo a reconstruir el templo despues del exilio babilonico?",
+    question: "¿Que profeta insto al pueblo a reconstruir el templo despues del exilio babilonico?",
 
 
 
@@ -24038,7 +24038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Junto a que profeta sirvio Hageo para motivar la reconstruccion del templo?",
+    question: "¿Junto a que profeta sirvio Hageo para motivar la reconstruccion del templo?",
 
 
 
@@ -24062,7 +24062,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta vio la gloria de Dios salir del templo por el oriente?",
+    question: "¿Que profeta vio la gloria de Dios salir del templo por el oriente?",
 
 
 
@@ -24086,7 +24086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre simbolico dio Isaias a su hijo que significa 'el despojo se apresura, la presa se precipita'?",
+    question: "¿Que nombre simbolico dio Isaias a su hijo que significa 'el despojo se apresura, la presa se precipita'?",
 
 
 
@@ -24110,7 +24110,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue sacado de la cisterna por Ebed-melec, un etiope?",
+    question: "¿Que profeta fue sacado de la cisterna por Ebed-melec, un etiope?",
 
 
 
@@ -24138,7 +24138,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Desde que ciudad escribio Pablo la carta a los Filipenses?",
+    question: "¿Desde que ciudad escribio Pablo la carta a los Filipenses?",
 
 
 
@@ -24162,7 +24162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta del NT tiene un solo capitulo y trata sobre un esclavo fugitivo llamado Onesimo?",
+    question: "¿Que carta del NT tiene un solo capitulo y trata sobre un esclavo fugitivo llamado Onesimo?",
 
 
 
@@ -24186,7 +24186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Por que se considera debatida la autoria de la carta a los Hebreos?",
+    question: "¿Por que se considera debatida la autoria de la carta a los Hebreos?",
 
 
 
@@ -24210,7 +24210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que falsa ensenanza combatia Pablo en la carta a los Colosenses?",
+    question: "¿Que falsa ensenanza combatia Pablo en la carta a los Colosenses?",
 
 
 
@@ -24234,7 +24234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el himno cristologico que Pablo cita en Filipenses sobre la kenosis de Cristo?",
+    question: "¿Cual es el himno cristologico que Pablo cita en Filipenses sobre la kenosis de Cristo?",
 
 
 
@@ -24258,7 +24258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien llama Pablo 'verdadero companero' (syzygos) en Filipenses?",
+    question: "¿A quien llama Pablo 'verdadero companero' (syzygos) en Filipenses?",
 
 
 
@@ -24282,7 +24282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dos mujeres estaban en conflicto en la iglesia de Filipos segun Pablo?",
+    question: "¿Que dos mujeres estaban en conflicto en la iglesia de Filipos segun Pablo?",
 
 
 
@@ -24306,7 +24306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que concepto teologico central desarrolla Pablo en Romanos capitulos 9 al 11?",
+    question: "¿Que concepto teologico central desarrolla Pablo en Romanos capitulos 9 al 11?",
 
 
 
@@ -24330,7 +24330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que personaje del AT usa Pablo en Romanos 4 como ejemplo de justificacion por fe?",
+    question: "¿Que personaje del AT usa Pablo en Romanos 4 como ejemplo de justificacion por fe?",
 
 
 
@@ -24354,7 +24354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta del AT cita Pablo en Romanos 1:17 para fundamentar la justificacion por fe?",
+    question: "¿Que profeta del AT cita Pablo en Romanos 1:17 para fundamentar la justificacion por fe?",
 
 
 
@@ -24378,7 +24378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mujer menciona Pablo como diaconisa de la iglesia de Cencrea en Romanos 16?",
+    question: "¿Que mujer menciona Pablo como diaconisa de la iglesia de Cencrea en Romanos 16?",
 
 
 
@@ -24402,7 +24402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que problema especifico de la iglesia de Corinto trata Pablo en 1 Corintios 5?",
+    question: "¿Que problema especifico de la iglesia de Corinto trata Pablo en 1 Corintios 5?",
 
 
 
@@ -24426,7 +24426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cartas escribio Pablo a los corintios segun las evidencias internas del NT?",
+    question: "¿Cuantas cartas escribio Pablo a los corintios segun las evidencias internas del NT?",
 
 
 
@@ -24450,7 +24450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que capitulo de 1 Corintios es conocido como 'el capitulo del amor'?",
+    question: "¿Que capitulo de 1 Corintios es conocido como 'el capitulo del amor'?",
 
 
 
@@ -24474,7 +24474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que argumento central presenta Pablo en 1 Corintios 15 sobre la resurreccion?",
+    question: "¿Que argumento central presenta Pablo en 1 Corintios 15 sobre la resurreccion?",
 
 
 
@@ -24498,7 +24498,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que expresion aramea usa Pablo al final de 1 Corintios que significa 'Senor nuestro, ven'?",
+    question: "¿Que expresion aramea usa Pablo al final de 1 Corintios que significa 'Senor nuestro, ven'?",
 
 
 
@@ -24522,7 +24522,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que metafora usa Pablo en 2 Corintios 4:7 para describir a los creyentes que portan el evangelio?",
+    question: "¿Que metafora usa Pablo en 2 Corintios 4:7 para describir a los creyentes que portan el evangelio?",
 
 
 
@@ -24546,7 +24546,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que 'aguijon en la carne' menciona Pablo en 2 Corintios 12?",
+    question: "¿Que 'aguijon en la carne' menciona Pablo en 2 Corintios 12?",
 
 
 
@@ -24570,7 +24570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual era el principal error doctrinal que Pablo combatia en Galatas?",
+    question: "¿Cual era el principal error doctrinal que Pablo combatia en Galatas?",
 
 
 
@@ -24594,7 +24594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien confronto Pablo 'cara a cara' en Antioquia segun Galatas 2?",
+    question: "¿A quien confronto Pablo 'cara a cara' en Antioquia segun Galatas 2?",
 
 
 
@@ -24618,7 +24618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que alegoria del AT utiliza Pablo en Galatas 4 para ilustrar la ley y la gracia?",
+    question: "¿Que alegoria del AT utiliza Pablo en Galatas 4 para ilustrar la ley y la gracia?",
 
 
 
@@ -24642,7 +24642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que concepto teologico introduce Pablo en Efesios 1:10 sobre el plan eterno de Dios?",
+    question: "¿Que concepto teologico introduce Pablo en Efesios 1:10 sobre el plan eterno de Dios?",
 
 
 
@@ -24666,7 +24666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas piezas componen la armadura de Dios descrita en Efesios 6?",
+    question: "¿Cuantas piezas componen la armadura de Dios descrita en Efesios 6?",
 
 
 
@@ -24690,7 +24690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que carta de Pablo fue probablemente una carta circular enviada a varias iglesias?",
+    question: "¿Que carta de Pablo fue probablemente una carta circular enviada a varias iglesias?",
 
 
 
@@ -24714,7 +24714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien llevo la carta a los Colosenses y la carta a Filemon?",
+    question: "¿Quien llevo la carta a los Colosenses y la carta a Filemon?",
 
 
 
@@ -24738,7 +24738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que error escatologico corrige Pablo en 2 Tesalonicenses 2?",
+    question: "¿Que error escatologico corrige Pablo en 2 Tesalonicenses 2?",
 
 
 
@@ -24762,7 +24762,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que figura escatologica menciona Pablo en 2 Tesalonicenses 2 que debe manifestarse antes del fin?",
+    question: "¿Que figura escatologica menciona Pablo en 2 Tesalonicenses 2 que debe manifestarse antes del fin?",
 
 
 
@@ -24786,7 +24786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que imagen describe Pablo la venida del Senor en 1 Tesalonicenses 4:16-17?",
+    question: "¿Con que imagen describe Pablo la venida del Senor en 1 Tesalonicenses 4:16-17?",
 
 
 
@@ -24810,7 +24810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuales son las tres cartas llamadas 'Epistolas Pastorales'?",
+    question: "¿Cuales son las tres cartas llamadas 'Epistolas Pastorales'?",
 
 
 
@@ -24834,7 +24834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que requisitos para los obispos establece Pablo en 1 Timoteo 3?",
+    question: "¿Que requisitos para los obispos establece Pablo en 1 Timoteo 3?",
 
 
 
@@ -24858,7 +24858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que declaracion hace Pablo sobre la Escritura en 2 Timoteo 3:16?",
+    question: "¿Que declaracion hace Pablo sobre la Escritura en 2 Timoteo 3:16?",
 
 
 
@@ -24882,7 +24882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que personajes menciona Pablo en 2 Timoteo 3:8 como opositores de Moises?",
+    question: "¿Que personajes menciona Pablo en 2 Timoteo 3:8 como opositores de Moises?",
 
 
 
@@ -24906,7 +24906,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que colaborador abandono a Pablo 'amando este mundo' segun 2 Timoteo?",
+    question: "¿Que colaborador abandono a Pablo 'amando este mundo' segun 2 Timoteo?",
 
 
 
@@ -24930,7 +24930,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sacerdocio superior al levitico presenta la carta a los Hebreos?",
+    question: "¿Que sacerdocio superior al levitico presenta la carta a los Hebreos?",
 
 
 
@@ -24954,7 +24954,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que capitulo de Hebreos es conocido como 'el salon de la fe' por listar heroes de la fe del AT?",
+    question: "¿Que capitulo de Hebreos es conocido como 'el salon de la fe' por listar heroes de la fe del AT?",
 
 
 
@@ -24978,7 +24978,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que advertencia severa da Hebreos 6:4-6 respecto a quienes han recibido la fe?",
+    question: "¿Que advertencia severa da Hebreos 6:4-6 respecto a quienes han recibido la fe?",
 
 
 
@@ -25002,7 +25002,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que definicion de fe da el autor de Hebreos en 11:1?",
+    question: "¿Que definicion de fe da el autor de Hebreos en 11:1?",
 
 
 
@@ -25026,7 +25026,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que relacion establece Santiago entre la fe y las obras?",
+    question: "¿Que relacion establece Santiago entre la fe y las obras?",
 
 
 
@@ -25050,7 +25050,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que personaje del AT usa Santiago como ejemplo de fe manifestada en obras?",
+    question: "¿Que personaje del AT usa Santiago como ejemplo de fe manifestada en obras?",
 
 
 
@@ -25074,7 +25074,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que instruccion da Santiago respecto a los enfermos en la iglesia?",
+    question: "¿Que instruccion da Santiago respecto a los enfermos en la iglesia?",
 
 
 
@@ -25098,7 +25098,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que concepto usa Pedro en 1 Pedro 2:9 para describir a los creyentes?",
+    question: "¿Que concepto usa Pedro en 1 Pedro 2:9 para describir a los creyentes?",
 
 
 
@@ -25122,7 +25122,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pasaje dificil de 1 Pedro 3:19 menciona que Cristo predico a los 'espiritus encarcelados'?",
+    question: "¿Que pasaje dificil de 1 Pedro 3:19 menciona que Cristo predico a los 'espiritus encarcelados'?",
 
 
 
@@ -25146,7 +25146,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que falsos maestros denuncia Pedro en 2 Pedro 2 comparandolos con personajes del AT?",
+    question: "¿Que falsos maestros denuncia Pedro en 2 Pedro 2 comparandolos con personajes del AT?",
 
 
 
@@ -25170,7 +25170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dice Pedro en 2 Pedro 3:8 sobre el tiempo de Dios?",
+    question: "¿Que dice Pedro en 2 Pedro 3:8 sobre el tiempo de Dios?",
 
 
 
@@ -25194,7 +25194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que prueba propone Juan en 1 Juan 4:2-3 para discernir el espiritu de verdad del de error?",
+    question: "¿Que prueba propone Juan en 1 Juan 4:2-3 para discernir el espiritu de verdad del de error?",
 
 
 
@@ -25218,7 +25218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que herejia cristologica combate Juan en sus epistolas?",
+    question: "¿Que herejia cristologica combate Juan en sus epistolas?",
 
 
 
@@ -25242,7 +25242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien denuncia Juan en 3 Juan por no recibir a los hermanos y expulsar de la iglesia a quienes lo hacian?",
+    question: "¿A quien denuncia Juan en 3 Juan por no recibir a los hermanos y expulsar de la iglesia a quienes lo hacian?",
 
 
 
@@ -25266,7 +25266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro apocrifo cita Judas en su epistola sobre la disputa por el cuerpo de Moises?",
+    question: "¿Que libro apocrifo cita Judas en su epistola sobre la disputa por el cuerpo de Moises?",
 
 
 
@@ -25290,7 +25290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profecia de Enoc cita la epistola de Judas?",
+    question: "¿Que profecia de Enoc cita la epistola de Judas?",
 
 
 
@@ -25314,7 +25314,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que grupo de cartas de Pablo se conoce como 'epistolas de la cautividad'?",
+    question: "¿Que grupo de cartas de Pablo se conoce como 'epistolas de la cautividad'?",
 
 
 
@@ -25342,7 +25342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces marcho Israel alrededor de Jerico el septimo dia?",
+    question: "¿Cuantas veces marcho Israel alrededor de Jerico el septimo dia?",
 
 
 
@@ -25366,7 +25366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que angel anuncio el nacimiento de Jesus a Maria?",
+    question: "¿Que angel anuncio el nacimiento de Jesus a Maria?",
 
 
 
@@ -25390,7 +25390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos vago Israel por el desierto?",
+    question: "¿Cuantos anos vago Israel por el desierto?",
 
 
 
@@ -25414,7 +25414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pacto hizo Dios con Abraham sobre la tierra?",
+    question: "¿Que pacto hizo Dios con Abraham sobre la tierra?",
 
 
 
@@ -25438,7 +25438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino David en Hebron antes de Jerusalen?",
+    question: "¿Cuantos anos reino David en Hebron antes de Jerusalen?",
 
 
 
@@ -25462,7 +25462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nacion deporto al reino del norte?",
+    question: "¿Que nacion deporto al reino del norte?",
 
 
 
@@ -25486,7 +25486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas tribus formaron el reino del norte?",
+    question: "¿Cuantas tribus formaron el reino del norte?",
 
 
 
@@ -25510,7 +25510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pecado cometio Acan tras la conquista de Jerico?",
+    question: "¿Que pecado cometio Acan tras la conquista de Jerico?",
 
 
 
@@ -25534,7 +25534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien engano a Israel haciendose pasar por extranjeros lejanos?",
+    question: "¿Quien engano a Israel haciendose pasar por extranjeros lejanos?",
 
 
 
@@ -25558,7 +25558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey dividio el reino de Israel?",
+    question: "¿Que rey dividio el reino de Israel?",
 
 
 
@@ -25582,7 +25582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas deportaciones principales hubo a Babilonia?",
+    question: "¿Cuantas deportaciones principales hubo a Babilonia?",
 
 
 
@@ -25606,7 +25606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que fiesta celebraba Israel al cruzar a Canaan?",
+    question: "¿Que fiesta celebraba Israel al cruzar a Canaan?",
 
 
 
@@ -25630,7 +25630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rio se detuvo para que Israel cruzara?",
+    question: "¿Que rio se detuvo para que Israel cruzara?",
 
 
 
@@ -25654,7 +25654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que batalla el sol se detuvo?",
+    question: "¿En que batalla el sol se detuvo?",
 
 
 
@@ -25678,7 +25678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Gedeon con los 300 guerreros?",
+    question: "¿Que hizo Gedeon con los 300 guerreros?",
 
 
 
@@ -25702,7 +25702,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos guerreros quedaron con Gedeon al final?",
+    question: "¿Cuantos guerreros quedaron con Gedeon al final?",
 
 
 
@@ -25726,7 +25726,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue destruida tras la derrota inicial de Israel por el pecado de Acan?",
+    question: "¿Que ciudad fue destruida tras la derrota inicial de Israel por el pecado de Acan?",
 
 
 
@@ -25750,7 +25750,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue asesinado en Meguido?",
+    question: "¿Que rey de Juda fue asesinado en Meguido?",
 
 
 
@@ -25774,7 +25774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien reconstruyo el templo tras el exilio?",
+    question: "¿Quien reconstruyo el templo tras el exilio?",
 
 
 
@@ -25798,7 +25798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos duro el cautiverio babilonico?",
+    question: "¿Cuantos anos duro el cautiverio babilonico?",
 
 
 
@@ -25822,7 +25822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que reina intento destruir la descendencia real de Juda?",
+    question: "¿Que reina intento destruir la descendencia real de Juda?",
 
 
 
@@ -25846,7 +25846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta confronto a los profetas de Baal en el Carmelo?",
+    question: "¿Que profeta confronto a los profetas de Baal en el Carmelo?",
 
 
 
@@ -25870,7 +25870,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien financio la reconstruccion del templo segun Esdras?",
+    question: "¿Quien financio la reconstruccion del templo segun Esdras?",
 
 
 
@@ -25894,7 +25894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas piedras tomo Josue del Jordan como memorial?",
+    question: "¿Cuantas piedras tomo Josue del Jordan como memorial?",
 
 
 
@@ -25918,7 +25918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento provoco la dispersion de lenguas?",
+    question: "¿Que evento provoco la dispersion de lenguas?",
 
 
 
@@ -25942,7 +25942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el ultimo juez antes de la monarquia?",
+    question: "¿Quien fue el ultimo juez antes de la monarquia?",
 
 
 
@@ -25966,7 +25966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Rajab con el cordon escarlata?",
+    question: "¿Que hizo Rajab con el cordon escarlata?",
 
 
 
@@ -25990,7 +25990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos espias dieron un informe negativo?",
+    question: "¿Cuantos espias dieron un informe negativo?",
 
 
 
@@ -26014,7 +26014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Moab oprimio a Israel 18 anos?",
+    question: "¿Que rey de Moab oprimio a Israel 18 anos?",
 
 
 
@@ -26038,7 +26038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien mato al rey Eglon?",
+    question: "¿Quien mato al rey Eglon?",
 
 
 
@@ -26062,7 +26062,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que acontecio en el monte Carmelo?",
+    question: "¿Que acontecio en el monte Carmelo?",
 
 
 
@@ -26086,7 +26086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos hombres lucharon contra Sisara bajo Debora?",
+    question: "¿Cuantos hombres lucharon contra Sisara bajo Debora?",
 
 
 
@@ -26110,7 +26110,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mujer mato a Sisara con una estaca?",
+    question: "¿Que mujer mato a Sisara con una estaca?",
 
 
 
@@ -26134,7 +26134,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos de paz hubo tras la victoria de Debora?",
+    question: "¿Cuantos anos de paz hubo tras la victoria de Debora?",
 
 
 
@@ -26158,7 +26158,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pecado provoco el diluvio?",
+    question: "¿Que pecado provoco el diluvio?",
 
 
 
@@ -26182,7 +26182,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas personas se salvaron en el arca?",
+    question: "¿Cuantas personas se salvaron en el arca?",
 
 
 
@@ -26206,7 +26206,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que senal dio Dios despues del diluvio?",
+    question: "¿Que senal dio Dios despues del diluvio?",
 
 
 
@@ -26230,7 +26230,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que edad murio Moises?",
+    question: "¿A que edad murio Moises?",
 
 
 
@@ -26254,7 +26254,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Donde murio Moises?",
+    question: "¿Donde murio Moises?",
 
 
 
@@ -26278,7 +26278,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Josue tras cruzar el Jordan?",
+    question: "¿Que hizo Josue tras cruzar el Jordan?",
 
 
 
@@ -26302,7 +26302,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tribu no recibio herencia territorial?",
+    question: "¿Que tribu no recibio herencia territorial?",
 
 
 
@@ -26326,7 +26326,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imperio conquisto Babilonia?",
+    question: "¿Que imperio conquisto Babilonia?",
 
 
 
@@ -26350,7 +26350,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien leyo la ley al pueblo tras el regreso del exilio?",
+    question: "¿Quien leyo la ley al pueblo tras el regreso del exilio?",
 
 
 
@@ -26374,7 +26374,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que conspiracion frustro Ester?",
+    question: "¿Que conspiracion frustro Ester?",
 
 
 
@@ -26398,7 +26398,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien planeo el exterminio de los judios en Persia?",
+    question: "¿Quien planeo el exterminio de los judios en Persia?",
 
 
 
@@ -26422,7 +26422,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que fiesta celebra la liberacion narrada en Ester?",
+    question: "¿Que fiesta celebra la liberacion narrada en Ester?",
 
 
 
@@ -26446,7 +26446,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias ayuno Ester antes de ir ante el rey?",
+    question: "¿Cuantos dias ayuno Ester antes de ir ante el rey?",
 
 
 
@@ -26470,7 +26470,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio en el dia de Pentecostes segun Hechos?",
+    question: "¿Que sucedio en el dia de Pentecostes segun Hechos?",
 
 
 
@@ -26494,7 +26494,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos se convirtieron en el primer sermon de Pedro?",
+    question: "¿Cuantos se convirtieron en el primer sermon de Pedro?",
 
 
 
@@ -26518,7 +26518,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que persecucion disperso a la iglesia primitiva?",
+    question: "¿Que persecucion disperso a la iglesia primitiva?",
 
 
 
@@ -26546,7 +26546,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias ayuno Jesus en el desierto antes de ser tentado por Satanas?",
+    question: "¿Cuantos dias ayuno Jesus en el desierto antes de ser tentado por Satanas?",
 
 
 
@@ -26570,7 +26570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que edad fue encontrado Jesus ensenando en el templo de Jerusalen?",
+    question: "¿A que edad fue encontrado Jesus ensenando en el templo de Jerusalen?",
 
 
 
@@ -26594,7 +26594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que rio fue bautizado Jesus por Juan el Bautista?",
+    question: "¿En que rio fue bautizado Jesus por Juan el Bautista?",
 
 
 
@@ -26618,7 +26618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la primera tentacion que Satanas le hizo a Jesus en el desierto?",
+    question: "¿Cual fue la primera tentacion que Satanas le hizo a Jesus en el desierto?",
 
 
 
@@ -26642,7 +26642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad Jesus realizo su primer milagro convirtiendo agua en vino?",
+    question: "¿En que ciudad Jesus realizo su primer milagro convirtiendo agua en vino?",
 
 
 
@@ -26666,7 +26666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta del Antiguo Testamento profetizo que Jesus naceria en Belen?",
+    question: "¿Que profeta del Antiguo Testamento profetizo que Jesus naceria en Belen?",
 
 
 
@@ -26690,7 +26690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que discipulo le dijo Jesus 'sobre esta roca edificare mi iglesia'?",
+    question: "¿A que discipulo le dijo Jesus 'sobre esta roca edificare mi iglesia'?",
 
 
 
@@ -26714,7 +26714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que monte subio Jesus para la Transfiguracion segun la tradicion?",
+    question: "¿Que monte subio Jesus para la Transfiguracion segun la tradicion?",
 
 
 
@@ -26738,7 +26738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con quienes hablo Jesus durante la Transfiguracion?",
+    question: "¿Con quienes hablo Jesus durante la Transfiguracion?",
 
 
 
@@ -26762,7 +26762,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces nego Pedro a Jesus antes de que cantara el gallo?",
+    question: "¿Cuantas veces nego Pedro a Jesus antes de que cantara el gallo?",
 
 
 
@@ -26786,7 +26786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas piezas de plata recibio Judas por traicionar a Jesus?",
+    question: "¿Cuantas piezas de plata recibio Judas por traicionar a Jesus?",
 
 
 
@@ -26810,7 +26810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que jardin oro Jesus antes de ser arrestado?",
+    question: "¿En que jardin oro Jesus antes de ser arrestado?",
 
 
 
@@ -26834,7 +26834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que gobernador romano se lavo las manos declarandose inocente de la sangre de Jesus?",
+    question: "¿Que gobernador romano se lavo las manos declarandose inocente de la sangre de Jesus?",
 
 
 
@@ -26858,7 +26858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ayudo a Jesus a cargar la cruz camino al Calvario?",
+    question: "¿Quien ayudo a Jesus a cargar la cruz camino al Calvario?",
 
 
 
@@ -26882,7 +26882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar especifico fue crucificado Jesus?",
+    question: "¿En que lugar especifico fue crucificado Jesus?",
 
 
 
@@ -26906,7 +26906,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias despues de su resurreccion ascendio Jesus al cielo?",
+    question: "¿Cuantos dias despues de su resurreccion ascendio Jesus al cielo?",
 
 
 
@@ -26930,7 +26930,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dijo Jesus desde la cruz que cumplio la profecia del Salmo 22?",
+    question: "¿Que dijo Jesus desde la cruz que cumplio la profecia del Salmo 22?",
 
 
 
@@ -26954,7 +26954,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que ciudad iban los dos discipulos cuando Jesus resucitado camino con ellos?",
+    question: "¿A que ciudad iban los dos discipulos cuando Jesus resucitado camino con ellos?",
 
 
 
@@ -26978,7 +26978,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo pidio ver las marcas de los clavos para creer en la resurreccion?",
+    question: "¿Que discipulo pidio ver las marcas de los clavos para creer en la resurreccion?",
 
 
 
@@ -27002,7 +27002,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre profetico de Jesus significa 'Dios con nosotros'?",
+    question: "¿Que nombre profetico de Jesus significa 'Dios con nosotros'?",
 
 
 
@@ -27026,7 +27026,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que pais huyo la familia de Jesus para escapar de Herodes?",
+    question: "¿A que pais huyo la familia de Jesus para escapar de Herodes?",
 
 
 
@@ -27050,7 +27050,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que parabola cuenta sobre un hombre que sembro buena semilla pero su enemigo sembro cizana?",
+    question: "¿Que parabola cuenta sobre un hombre que sembro buena semilla pero su enemigo sembro cizana?",
 
 
 
@@ -27074,7 +27074,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos canastos sobraron tras la alimentacion de los cinco mil?",
+    question: "¿Cuantos canastos sobraron tras la alimentacion de los cinco mil?",
 
 
 
@@ -27098,7 +27098,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que impuesto pago Jesus con una moneda encontrada en la boca de un pez?",
+    question: "¿Que impuesto pago Jesus con una moneda encontrada en la boca de un pez?",
 
 
 
@@ -27122,7 +27122,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces dijo Jesus que debemos perdonar a nuestro hermano?",
+    question: "¿Cuantas veces dijo Jesus que debemos perdonar a nuestro hermano?",
 
 
 
@@ -27146,7 +27146,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mujer ungio los pies de Jesus con perfume costoso y los seco con su cabello?",
+    question: "¿Que mujer ungio los pies de Jesus con perfume costoso y los seco con su cabello?",
 
 
 
@@ -27170,7 +27170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que arbol maldijo Jesus porque no tenia fruto?",
+    question: "¿Que arbol maldijo Jesus porque no tenia fruto?",
 
 
 
@@ -27194,7 +27194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rito establecio Jesus durante la ultima Cena?",
+    question: "¿Que rito establecio Jesus durante la ultima Cena?",
 
 
 
@@ -27218,7 +27218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que Evangelio Jesus lava los pies de sus discipulos?",
+    question: "¿En que Evangelio Jesus lava los pies de sus discipulos?",
 
 
 
@@ -27242,7 +27242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A quien dijo Jesus 'De cierto te digo que hoy estaras conmigo en el paraiso'?",
+    question: "¿A quien dijo Jesus 'De cierto te digo que hoy estaras conmigo en el paraiso'?",
 
 
 
@@ -27266,7 +27266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien pidio el cuerpo de Jesus a Pilato para sepultarlo?",
+    question: "¿Quien pidio el cuerpo de Jesus a Pilato para sepultarlo?",
 
 
 
@@ -27290,7 +27290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profecia de Isaias habla del siervo sufriente que fue herido por nuestras rebeliones?",
+    question: "¿Que profecia de Isaias habla del siervo sufriente que fue herido por nuestras rebeliones?",
 
 
 
@@ -27314,7 +27314,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el primer mandamiento segun Jesus cuando se lo preguntaron?",
+    question: "¿Cual fue el primer mandamiento segun Jesus cuando se lo preguntaron?",
 
 
 
@@ -27338,7 +27338,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le dijo Jesus a Nicodemo sobre nacer de nuevo?",
+    question: "¿Que le dijo Jesus a Nicodemo sobre nacer de nuevo?",
 
 
 
@@ -27362,7 +27362,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad vivio Jesus la mayor parte de su ministerio publico?",
+    question: "¿En que ciudad vivio Jesus la mayor parte de su ministerio publico?",
 
 
 
@@ -27386,7 +27386,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pregunto Pilato a la multitud sobre Jesus y Barrabas?",
+    question: "¿Que pregunto Pilato a la multitud sobre Jesus y Barrabas?",
 
 
 
@@ -27410,7 +27410,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que senal se produjo en el templo cuando Jesus murio en la cruz?",
+    question: "¿Que senal se produjo en el templo cuando Jesus murio en la cruz?",
 
 
 
@@ -27434,7 +27434,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos discipulos estaban presentes en la Transfiguracion de Jesus?",
+    question: "¿Cuantos discipulos estaban presentes en la Transfiguracion de Jesus?",
 
 
 
@@ -27458,7 +27458,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que parabola ensena sobre diez virgenes esperando al esposo?",
+    question: "¿Que parabola ensena sobre diez virgenes esperando al esposo?",
 
 
 
@@ -27482,7 +27482,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que mujer gentil le dijo Jesus que su fe era grande al sanar a su hija?",
+    question: "¿A que mujer gentil le dijo Jesus que su fe era grande al sanar a su hija?",
 
 
 
@@ -27506,7 +27506,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que declaro Jesus ser en Juan 6:35?",
+    question: "¿Que declaro Jesus ser en Juan 6:35?",
 
 
 
@@ -27530,7 +27530,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar predico Jesus el Sermon del Monte?",
+    question: "¿En que lugar predico Jesus el Sermon del Monte?",
 
 
 
@@ -27554,7 +27554,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo camino sobre el agua hacia Jesus pero comenzo a hundirse?",
+    question: "¿Que discipulo camino sobre el agua hacia Jesus pero comenzo a hundirse?",
 
 
 
@@ -27578,7 +27578,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profecia de Zacarias se cumplio cuando Jesus entro en Jerusalen montado en un burro?",
+    question: "¿Que profecia de Zacarias se cumplio cuando Jesus entro en Jerusalen montado en un burro?",
 
 
 
@@ -27602,7 +27602,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le dijo Jesus a la mujer samaritana junto al pozo de Jacob?",
+    question: "¿Que le dijo Jesus a la mujer samaritana junto al pozo de Jacob?",
 
 
 
@@ -27626,7 +27626,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dijo Jesus que representaba el pan en la ultima Cena?",
+    question: "¿Que dijo Jesus que representaba el pan en la ultima Cena?",
 
 
 
@@ -27650,7 +27650,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual de los Evangelios narra la visita de los magos de oriente al nino Jesus?",
+    question: "¿Cual de los Evangelios narra la visita de los magos de oriente al nino Jesus?",
 
 
 
@@ -27674,7 +27674,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que dijo Jesus a sus discipulos que seria la senal de su segunda venida?",
+    question: "¿Que dijo Jesus a sus discipulos que seria la senal de su segunda venida?",
 
 
 
@@ -27698,7 +27698,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien era el sumo sacerdote que interrogo a Jesus la noche de su arresto?",
+    question: "¿Quien era el sumo sacerdote que interrogo a Jesus la noche de su arresto?",
 
 
 
@@ -27722,7 +27722,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que declaracion 'Yo soy' hizo Jesus en Juan 11:25?",
+    question: "¿Que declaracion 'Yo soy' hizo Jesus en Juan 11:25?",
 
 
 
@@ -27750,7 +27750,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos panes y peces uso Jesus para alimentar a los 4,000?",
+    question: "¿Cuantos panes y peces uso Jesus para alimentar a los 4,000?",
 
 
 
@@ -27774,7 +27774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas canastas sobraron despues de alimentar a los 5,000?",
+    question: "¿Cuantas canastas sobraron despues de alimentar a los 5,000?",
 
 
 
@@ -27798,7 +27798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tipo de canastas sobraron tras alimentar a los 4,000 a diferencia de los 5,000?",
+    question: "¿Que tipo de canastas sobraron tras alimentar a los 4,000 a diferencia de los 5,000?",
 
 
 
@@ -27822,7 +27822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Jesus antes de sanar al sordomudo en Decapolis?",
+    question: "¿Que hizo Jesus antes de sanar al sordomudo en Decapolis?",
 
 
 
@@ -27846,7 +27846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que palabra aramea dijo Jesus al sanar al sordomudo?",
+    question: "¿Que palabra aramea dijo Jesus al sanar al sordomudo?",
 
 
 
@@ -27870,7 +27870,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad Eliseo sano las aguas echando sal en el manantial?",
+    question: "¿En que ciudad Eliseo sano las aguas echando sal en el manantial?",
 
 
 
@@ -27894,7 +27894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio cuando el cadaver de un hombre toco los huesos de Eliseo?",
+    question: "¿Que sucedio cuando el cadaver de un hombre toco los huesos de Eliseo?",
 
 
 
@@ -27918,7 +27918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces se zambullo Naaman en el Jordan para ser sanado de lepra?",
+    question: "¿Cuantas veces se zambullo Naaman en el Jordan para ser sanado de lepra?",
 
 
 
@@ -27942,7 +27942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta le indico a Naaman que se lavara en el Jordan?",
+    question: "¿Que profeta le indico a Naaman que se lavara en el Jordan?",
 
 
 
@@ -27966,7 +27966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a Giezi, el siervo de Eliseo, por su codicia con Naaman?",
+    question: "¿Que le sucedio a Giezi, el siervo de Eliseo, por su codicia con Naaman?",
 
 
 
@@ -27990,7 +27990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que uso Eliseo para purificar la olla de comida envenenada?",
+    question: "¿Que uso Eliseo para purificar la olla de comida envenenada?",
 
 
 
@@ -28014,7 +28014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces estornudo el hijo de la sunamita al ser resucitado por Eliseo?",
+    question: "¿Cuantas veces estornudo el hijo de la sunamita al ser resucitado por Eliseo?",
 
 
 
@@ -28038,7 +28038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que estanque Jesus sano al paralitico que habia estado enfermo 38 anos?",
+    question: "¿En que estanque Jesus sano al paralitico que habia estado enfermo 38 anos?",
 
 
 
@@ -28062,7 +28062,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos llevaba enfermo el paralitico del estanque de Betesda?",
+    question: "¿Cuantos anos llevaba enfermo el paralitico del estanque de Betesda?",
 
 
 
@@ -28086,7 +28086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hizo Jesus con barro para sanar al ciego de nacimiento?",
+    question: "¿Que hizo Jesus con barro para sanar al ciego de nacimiento?",
 
 
 
@@ -28110,7 +28110,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que piscina debia lavarse el ciego de nacimiento sanado por Jesus?",
+    question: "¿En que piscina debia lavarse el ciego de nacimiento sanado por Jesus?",
 
 
 
@@ -28134,7 +28134,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias llevaba muerto Lazaro cuando Jesus llego a Betania?",
+    question: "¿Cuantos dias llevaba muerto Lazaro cuando Jesus llego a Betania?",
 
 
 
@@ -28158,7 +28158,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la primera senal milagrosa de Jesus segun el Evangelio de Juan?",
+    question: "¿Cual fue la primera senal milagrosa de Jesus segun el Evangelio de Juan?",
 
 
 
@@ -28182,7 +28182,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que boda realizo Jesus su primer milagro?",
+    question: "¿En que boda realizo Jesus su primer milagro?",
 
 
 
@@ -28206,7 +28206,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas tinajas de agua convirtio Jesus en vino en Cana?",
+    question: "¿Cuantas tinajas de agua convirtio Jesus en vino en Cana?",
 
 
 
@@ -28230,7 +28230,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que capacidad tenia cada tinaja en las bodas de Cana?",
+    question: "¿Que capacidad tenia cada tinaja en las bodas de Cana?",
 
 
 
@@ -28254,7 +28254,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que apostol camino sobre el agua junto con Jesus?",
+    question: "¿Que apostol camino sobre el agua junto con Jesus?",
 
 
 
@@ -28278,7 +28278,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pidio Pedro a Jesus antes de caminar sobre el agua?",
+    question: "¿Que pidio Pedro a Jesus antes de caminar sobre el agua?",
 
 
 
@@ -28302,7 +28302,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que parte del cuerpo le corto Pedro al siervo del sumo sacerdote, y como respondio Jesus?",
+    question: "¿Que parte del cuerpo le corto Pedro al siervo del sumo sacerdote, y como respondio Jesus?",
 
 
 
@@ -28326,7 +28326,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el siervo del sumo sacerdote cuya oreja corto Pedro?",
+    question: "¿Como se llamaba el siervo del sumo sacerdote cuya oreja corto Pedro?",
 
 
 
@@ -28350,7 +28350,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos endemoniados gadarenos sano Jesus segun el Evangelio de Mateo?",
+    question: "¿Cuantos endemoniados gadarenos sano Jesus segun el Evangelio de Mateo?",
 
 
 
@@ -28374,7 +28374,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba la legion de demonios que poseia al endemoniado gadareno?",
+    question: "¿Como se llamaba la legion de demonios que poseia al endemoniado gadareno?",
 
 
 
@@ -28398,7 +28398,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A donde pidieron los demonios de Legion que Jesus los enviara?",
+    question: "¿A donde pidieron los demonios de Legion que Jesus los enviara?",
 
 
 
@@ -28422,7 +28422,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos cerdos se ahogaron cuando los demonios entraron en ellos en Gadara?",
+    question: "¿Cuantos cerdos se ahogaron cuando los demonios entraron en ellos en Gadara?",
 
 
 
@@ -28446,7 +28446,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos llevaba enferma la mujer con flujo de sangre que toco el manto de Jesus?",
+    question: "¿Cuantos anos llevaba enferma la mujer con flujo de sangre que toco el manto de Jesus?",
 
 
 
@@ -28470,7 +28470,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que parte del vestido de Jesus toco la mujer con flujo de sangre?",
+    question: "¿Que parte del vestido de Jesus toco la mujer con flujo de sangre?",
 
 
 
@@ -28494,7 +28494,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos leprosos sano Jesus de los cuales solo uno volvio a dar gracias?",
+    question: "¿Cuantos leprosos sano Jesus de los cuales solo uno volvio a dar gracias?",
 
 
 
@@ -28518,7 +28518,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que nacionalidad era el leproso que regreso a agradecer a Jesus?",
+    question: "¿De que nacionalidad era el leproso que regreso a agradecer a Jesus?",
 
 
 
@@ -28542,7 +28542,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad Elias resucito al hijo de la viuda?",
+    question: "¿En que ciudad Elias resucito al hijo de la viuda?",
 
 
 
@@ -28566,7 +28566,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces se tendio Elias sobre el hijo muerto de la viuda de Sarepta?",
+    question: "¿Cuantas veces se tendio Elias sobre el hijo muerto de la viuda de Sarepta?",
 
 
 
@@ -28590,7 +28590,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro realizo Eliseo con veinte panes de cebada?",
+    question: "¿Que milagro realizo Eliseo con veinte panes de cebada?",
 
 
 
@@ -28614,7 +28614,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que instrumento uso Moises para endulzar las aguas amargas de Mara?",
+    question: "¿Que instrumento uso Moises para endulzar las aguas amargas de Mara?",
 
 
 
@@ -28638,7 +28638,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a la mano de Moises cuando la metio en su seno ante la zarza ardiente?",
+    question: "¿Que le sucedio a la mano de Moises cuando la metio en su seno ante la zarza ardiente?",
 
 
 
@@ -28662,7 +28662,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que plaga de Egipto los magos de Faraon no pudieron imitar?",
+    question: "¿Que plaga de Egipto los magos de Faraon no pudieron imitar?",
 
 
 
@@ -28686,7 +28686,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la ultima plaga de Egipto antes de la muerte de los primogenitos?",
+    question: "¿Cual fue la ultima plaga de Egipto antes de la muerte de los primogenitos?",
 
 
 
@@ -28710,7 +28710,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias duraron las tinieblas sobre Egipto en la novena plaga?",
+    question: "¿Cuantos dias duraron las tinieblas sobre Egipto en la novena plaga?",
 
 
 
@@ -28734,7 +28734,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue resucitado por el apostol Pedro en Jope?",
+    question: "¿Quien fue resucitado por el apostol Pedro en Jope?",
 
 
 
@@ -28758,7 +28758,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que joven cayo de una ventana y murio mientras Pablo predicaba, pero fue resucitado?",
+    question: "¿Que joven cayo de una ventana y murio mientras Pablo predicaba, pero fue resucitado?",
 
 
 
@@ -28782,7 +28782,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Desde que piso cayo Eutico mientras Pablo predicaba en Troas?",
+    question: "¿Desde que piso cayo Eutico mientras Pablo predicaba en Troas?",
 
 
 
@@ -28806,7 +28806,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro realizo la vara de Aaron ante Faraon?",
+    question: "¿Que milagro realizo la vara de Aaron ante Faraon?",
 
 
 
@@ -28830,7 +28830,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que produjo la vara de Aaron al florecer en el tabernaculo?",
+    question: "¿Que produjo la vara de Aaron al florecer en el tabernaculo?",
 
 
 
@@ -28854,7 +28854,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio al altar cuando el profeta de Juda profetizo contra Jeroboam?",
+    question: "¿Que le sucedio al altar cuando el profeta de Juda profetizo contra Jeroboam?",
 
 
 
@@ -28878,7 +28878,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le paso a la mano de Jeroboam cuando la extendio contra el profeta de Juda?",
+    question: "¿Que le paso a la mano de Jeroboam cuando la extendio contra el profeta de Juda?",
 
 
 
@@ -28902,7 +28902,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que hijo de la sunamita resucito Eliseo y que envio primero?",
+    question: "¿A que hijo de la sunamita resucito Eliseo y que envio primero?",
 
 
 
@@ -28926,7 +28926,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal mordio a Pablo en la isla de Malta sin causarle dano?",
+    question: "¿Que animal mordio a Pablo en la isla de Malta sin causarle dano?",
 
 
 
@@ -28958,7 +28958,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se presenta por primera vez el concepto del 'Redentor' (Goel)?",
+    question: "¿En que libro se presenta por primera vez el concepto del 'Redentor' (Goel)?",
 
 
 
@@ -28982,7 +28982,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta el pacto abrahamico con la ley mosaica?",
+    question: "¿Que libro conecta el pacto abrahamico con la ley mosaica?",
 
 
 
@@ -29006,7 +29006,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se revela progresivamente el concepto de resurreccion corporal?",
+    question: "¿En que libro se revela progresivamente el concepto de resurreccion corporal?",
 
 
 
@@ -29030,7 +29030,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta el primer 'tipo' claro de sacrificio sustitutorio?",
+    question: "¿Que libro presenta el primer 'tipo' claro de sacrificio sustitutorio?",
 
 
 
@@ -29054,7 +29054,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se desarrolla la teologia del 'remanente fiel'?",
+    question: "¿En que libro se desarrolla la teologia del 'remanente fiel'?",
 
 
 
@@ -29078,7 +29078,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro une sacerdocio y realeza en una sola figura?",
+    question: "¿Que libro une sacerdocio y realeza en una sola figura?",
 
 
 
@@ -29102,7 +29102,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se establece el patron biblico del pacto matrimonial?",
+    question: "¿En que libro se establece el patron biblico del pacto matrimonial?",
 
 
 
@@ -29126,7 +29126,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro contiene el himno cristologico mas antiguo registrado?",
+    question: "¿Que libro contiene el himno cristologico mas antiguo registrado?",
 
 
 
@@ -29150,7 +29150,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se formula con mayor claridad la doctrina de la expiacion?",
+    question: "¿En que libro se formula con mayor claridad la doctrina de la expiacion?",
 
 
 
@@ -29174,7 +29174,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta a Cristo como cumplimiento del sistema levitico?",
+    question: "¿Que libro presenta a Cristo como cumplimiento del sistema levitico?",
 
 
 
@@ -29198,7 +29198,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro aparece el concepto de 'nuevo corazon'?",
+    question: "¿En que libro aparece el concepto de 'nuevo corazon'?",
 
 
 
@@ -29222,7 +29222,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro muestra el conflicto entre soberania divina y libre albedrio?",
+    question: "¿Que libro muestra el conflicto entre soberania divina y libre albedrio?",
 
 
 
@@ -29246,7 +29246,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se anticipa el Nuevo Pacto con mayor detalle?",
+    question: "¿En que libro se anticipa el Nuevo Pacto con mayor detalle?",
 
 
 
@@ -29270,7 +29270,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta la teologia del 'siervo sufriente' como figura mesianica?",
+    question: "¿Que libro presenta la teologia del 'siervo sufriente' como figura mesianica?",
 
 
 
@@ -29294,7 +29294,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se desarrolla el concepto de 'sabiduria personificada'?",
+    question: "¿En que libro se desarrolla el concepto de 'sabiduria personificada'?",
 
 
 
@@ -29318,7 +29318,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro confronta directamente el problema del sufrimiento justo?",
+    question: "¿Que libro confronta directamente el problema del sufrimiento justo?",
 
 
 
@@ -29342,7 +29342,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se revela la union mistica entre Cristo y la Iglesia?",
+    question: "¿En que libro se revela la union mistica entre Cristo y la Iglesia?",
 
 
 
@@ -29366,7 +29366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta la creacion original con la nueva creacion?",
+    question: "¿Que libro conecta la creacion original con la nueva creacion?",
 
 
 
@@ -29390,7 +29390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se expone la doctrina de la justificacion forense?",
+    question: "¿En que libro se expone la doctrina de la justificacion forense?",
 
 
 
@@ -29414,7 +29414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro desarrolla el concepto del 'misterio revelado'?",
+    question: "¿Que libro desarrolla el concepto del 'misterio revelado'?",
 
 
 
@@ -29438,7 +29438,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se presenta la tipologia del segundo Adan?",
+    question: "¿En que libro se presenta la tipologia del segundo Adan?",
 
 
 
@@ -29462,7 +29462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro muestra la relacion entre ley, gracia y fe?",
+    question: "¿Que libro muestra la relacion entre ley, gracia y fe?",
 
 
 
@@ -29486,7 +29486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se formula una escatologia sistematica?",
+    question: "¿En que libro se formula una escatologia sistematica?",
 
 
 
@@ -29510,7 +29510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta el Reino de Dios en parabolas progresivas?",
+    question: "¿Que libro presenta el Reino de Dios en parabolas progresivas?",
 
 
 
@@ -29534,7 +29534,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se enfatiza la etica del Reino?",
+    question: "¿En que libro se enfatiza la etica del Reino?",
 
 
 
@@ -29558,7 +29558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta la alta cristologia mas explicita?",
+    question: "¿Que libro presenta la alta cristologia mas explicita?",
 
 
 
@@ -29582,7 +29582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se revela la identidad mesianica por senales?",
+    question: "¿En que libro se revela la identidad mesianica por senales?",
 
 
 
@@ -29606,7 +29606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta Pentecostes con Joel?",
+    question: "¿Que libro conecta Pentecostes con Joel?",
 
 
 
@@ -29630,7 +29630,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se sistematiza la doctrina del Espiritu Santo?",
+    question: "¿En que libro se sistematiza la doctrina del Espiritu Santo?",
 
 
 
@@ -29654,7 +29654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro desarrolla la perseverancia de los santos?",
+    question: "¿Que libro desarrolla la perseverancia de los santos?",
 
 
 
@@ -29678,7 +29678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se presenta la teologia del exilio espiritual?",
+    question: "¿En que libro se presenta la teologia del exilio espiritual?",
 
 
 
@@ -29702,7 +29702,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro expone la guerra espiritual cosmica?",
+    question: "¿Que libro expone la guerra espiritual cosmica?",
 
 
 
@@ -29726,7 +29726,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se articula la mision a los gentiles?",
+    question: "¿En que libro se articula la mision a los gentiles?",
 
 
 
@@ -29750,7 +29750,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro desarrolla el liderazgo apostolico pastoral?",
+    question: "¿Que libro desarrolla el liderazgo apostolico pastoral?",
 
 
 
@@ -29774,7 +29774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se muestra la intercesion celestial de Cristo?",
+    question: "¿En que libro se muestra la intercesion celestial de Cristo?",
 
 
 
@@ -29798,7 +29798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta la escatologia inaugurada ('ya, pero todavia no')?",
+    question: "¿Que libro presenta la escatologia inaugurada ('ya, pero todavia no')?",
 
 
 
@@ -29822,7 +29822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se describe la apostasia final con detalle?",
+    question: "¿En que libro se describe la apostasia final con detalle?",
 
 
 
@@ -29846,7 +29846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta creacion, caida y redencion en poesia?",
+    question: "¿Que libro conecta creacion, caida y redencion en poesia?",
 
 
 
@@ -29870,7 +29870,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se presenta la teologia del pacto eterno?",
+    question: "¿En que libro se presenta la teologia del pacto eterno?",
 
 
 
@@ -29894,7 +29894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro articula la esperanza escatologica comunitaria?",
+    question: "¿Que libro articula la esperanza escatologica comunitaria?",
 
 
 
@@ -29918,7 +29918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se define la santificacion progresiva?",
+    question: "¿En que libro se define la santificacion progresiva?",
 
 
 
@@ -29942,7 +29942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta la teologia del discipulado radical?",
+    question: "¿Que libro presenta la teologia del discipulado radical?",
 
 
 
@@ -29966,7 +29966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se conecta la fe con obras en equilibrio?",
+    question: "¿En que libro se conecta la fe con obras en equilibrio?",
 
 
 
@@ -29990,7 +29990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro muestra la autoridad apostolica defendida?",
+    question: "¿Que libro muestra la autoridad apostolica defendida?",
 
 
 
@@ -30014,7 +30014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se articula la comunion trinitaria?",
+    question: "¿En que libro se articula la comunion trinitaria?",
 
 
 
@@ -30038,7 +30038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro presenta el testimonio triple: Espiritu, agua y sangre?",
+    question: "¿Que libro presenta el testimonio triple: Espiritu, agua y sangre?",
 
 
 
@@ -30062,7 +30062,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro se expone la teologia del amor perfecto?",
+    question: "¿En que libro se expone la teologia del amor perfecto?",
 
 
 
@@ -30086,7 +30086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro conecta angeles, juicio y apostasia?",
+    question: "¿Que libro conecta angeles, juicio y apostasia?",
 
 
 
@@ -30110,7 +30110,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que libro culmina la narrativa biblica de redencion?",
+    question: "¿En que libro culmina la narrativa biblica de redencion?",
 
 
 
@@ -30134,7 +30134,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro une Genesis, Evangelios y Escatologia en un solo arco teologico?",
+    question: "¿Que libro une Genesis, Evangelios y Escatologia en un solo arco teologico?",
 
 
 
@@ -30162,7 +30162,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Agar?",
+    question: "¿Quien fue el padre de Agar?",
 
 
 
@@ -30186,7 +30186,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue contemporaneo de Ageo?",
+    question: "¿Que profeta fue contemporaneo de Ageo?",
 
 
 
@@ -30210,7 +30210,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del rey Joacaz?",
+    question: "¿Quien fue el padre del rey Joacaz?",
 
 
 
@@ -30234,7 +30234,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Gedalias, gobernador de Juda?",
+    question: "¿Quien fue el padre de Gedalias, gobernador de Juda?",
 
 
 
@@ -30258,7 +30258,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que deporto a Israel a Asiria?",
+    question: "¿Quien fue el rey que deporto a Israel a Asiria?",
 
 
 
@@ -30282,7 +30282,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que reprendio a Jeroboam I?",
+    question: "¿Quien fue el profeta que reprendio a Jeroboam I?",
 
 
 
@@ -30306,7 +30306,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Joel?",
+    question: "¿Quien fue el padre del profeta Joel?",
 
 
 
@@ -30330,7 +30330,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el sumo sacerdote durante el reinado de David?",
+    question: "¿Quien fue el sumo sacerdote durante el reinado de David?",
 
 
 
@@ -30354,7 +30354,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que reino cuando cayo Samaria?",
+    question: "¿Quien fue el rey que reino cuando cayo Samaria?",
 
 
 
@@ -30378,7 +30378,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que anuncio el nacimiento de Ciro?",
+    question: "¿Quien fue el profeta que anuncio el nacimiento de Ciro?",
 
 
 
@@ -30402,7 +30402,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Matatias (padre de Judas Macabeo)?",
+    question: "¿Quien fue el padre de Matatias (padre de Judas Macabeo)?",
 
 
 
@@ -30426,7 +30426,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que tomo a Sara por esposa?",
+    question: "¿Quien fue el rey que tomo a Sara por esposa?",
 
 
 
@@ -30450,7 +30450,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Husai el arquita?",
+    question: "¿Quien fue el padre de Husai el arquita?",
 
 
 
@@ -30474,7 +30474,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el gobernador persa que apoyo a Nehemias?",
+    question: "¿Quien fue el gobernador persa que apoyo a Nehemias?",
 
 
 
@@ -30498,7 +30498,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que hablo contra Ninive junto con Jonas?",
+    question: "¿Quien fue el profeta que hablo contra Ninive junto con Jonas?",
 
 
 
@@ -30522,7 +30522,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Jabez?",
+    question: "¿Quien fue el padre de Jabez?",
 
 
 
@@ -30546,7 +30546,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que mando escribir cronicas reales?",
+    question: "¿Quien fue el rey que mando escribir cronicas reales?",
 
 
 
@@ -30570,7 +30570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Sofonias?",
+    question: "¿Quien fue el padre del profeta Sofonias?",
 
 
 
@@ -30594,7 +30594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el oficial que protegio a Jeremias?",
+    question: "¿Quien fue el oficial que protegio a Jeremias?",
 
 
 
@@ -30618,7 +30618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Gedeon segun Jueces?",
+    question: "¿Quien fue el padre de Gedeon segun Jueces?",
 
 
 
@@ -30642,7 +30642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que hablo con Dario?",
+    question: "¿Quien fue el profeta que hablo con Dario?",
 
 
 
@@ -30666,7 +30666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Simon Pedro?",
+    question: "¿Quien fue el padre de Simon Pedro?",
 
 
 
@@ -30690,7 +30690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el sacerdote que encontro el libro de la Ley?",
+    question: "¿Quien fue el sacerdote que encontro el libro de la Ley?",
 
 
 
@@ -30714,7 +30714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Malaquias?",
+    question: "¿Quien fue el padre del profeta Malaquias?",
 
 
 
@@ -30738,7 +30738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que destruyo el altar de Betel?",
+    question: "¿Quien fue el rey que destruyo el altar de Betel?",
 
 
 
@@ -30762,7 +30762,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Baruc?",
+    question: "¿Quien fue el padre de Baruc?",
 
 
 
@@ -30786,7 +30786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el general que mato a Amasa?",
+    question: "¿Quien fue el general que mato a Amasa?",
 
 
 
@@ -30810,7 +30810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Abdias?",
+    question: "¿Quien fue el padre del profeta Abdias?",
 
 
 
@@ -30834,7 +30834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que reino cuando nacio Moises?",
+    question: "¿Quien fue el rey que reino cuando nacio Moises?",
 
 
 
@@ -30858,7 +30858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Miqueas?",
+    question: "¿Quien fue el padre del profeta Miqueas?",
 
 
 
@@ -30882,7 +30882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Eliseo?",
+    question: "¿Quien fue el padre de Eliseo?",
 
 
 
@@ -30906,7 +30906,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que permitio volver del exilio?",
+    question: "¿Quien fue el rey que permitio volver del exilio?",
 
 
 
@@ -30930,7 +30930,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Nahum?",
+    question: "¿Quien fue el padre del profeta Nahum?",
 
 
 
@@ -30954,7 +30954,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el escriba que ayudo a Jeremias?",
+    question: "¿Quien fue el escriba que ayudo a Jeremias?",
 
 
 
@@ -30978,7 +30978,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Booz?",
+    question: "¿Quien fue el padre de Booz?",
 
 
 
@@ -31002,7 +31002,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que perdio la razon por orgullo?",
+    question: "¿Quien fue el rey que perdio la razon por orgullo?",
 
 
 
@@ -31026,7 +31026,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Samuel segun 1 Samuel?",
+    question: "¿Quien fue el padre de Samuel segun 1 Samuel?",
 
 
 
@@ -31050,7 +31050,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que anuncio 70 anos de cautiverio?",
+    question: "¿Quien fue el profeta que anuncio 70 anos de cautiverio?",
 
 
 
@@ -31074,7 +31074,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del rey Asa?",
+    question: "¿Quien fue el padre del rey Asa?",
 
 
 
@@ -31098,7 +31098,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Jonatan hijo de Saul?",
+    question: "¿Quien fue el padre de Jonatan hijo de Saul?",
 
 
 
@@ -31122,7 +31122,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Jehu?",
+    question: "¿Quien fue el padre de Jehu?",
 
 
 
@@ -31146,7 +31146,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que edifico Samaria?",
+    question: "¿Quien fue el rey que edifico Samaria?",
 
 
 
@@ -31170,7 +31170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Habacuc?",
+    question: "¿Quien fue el padre del profeta Habacuc?",
 
 
 
@@ -31194,7 +31194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el rey que consulto a Isaias?",
+    question: "¿Quien fue el rey que consulto a Isaias?",
 
 
 
@@ -31218,7 +31218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Obed?",
+    question: "¿Quien fue el padre de Obed?",
 
 
 
@@ -31242,7 +31242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Sadoc?",
+    question: "¿Quien fue el padre de Sadoc?",
 
 
 
@@ -31266,7 +31266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el profeta que reprendio a Acab por Nabot?",
+    question: "¿Quien fue el profeta que reprendio a Acab por Nabot?",
 
 
 
@@ -31290,7 +31290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del rey Joas de Juda?",
+    question: "¿Quien fue el padre del rey Joas de Juda?",
 
 
 
@@ -31314,7 +31314,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre de Timoteo?",
+    question: "¿Quien fue el padre de Timoteo?",
 
 
 
@@ -31338,7 +31338,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el padre del profeta Ageo?",
+    question: "¿Quien fue el padre del profeta Ageo?",
 
 
 
@@ -31366,7 +31366,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias reino Zimri sobre Israel antes de suicidarse en el palacio en llamas?",
+    question: "¿Cuantos dias reino Zimri sobre Israel antes de suicidarse en el palacio en llamas?",
 
 
 
@@ -31390,7 +31390,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue co-regente con su padre Uzias debido a la lepra de este?",
+    question: "¿Que rey de Juda fue co-regente con su padre Uzias debido a la lepra de este?",
 
 
 
@@ -31414,7 +31414,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos talentos de plata pago Omri por el monte de Samaria a Semer?",
+    question: "¿Cuantos talentos de plata pago Omri por el monte de Samaria a Semer?",
 
 
 
@@ -31462,7 +31462,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue herido por sus siervos en la casa de Milo, en la bajada de Sila?",
+    question: "¿Que rey de Juda fue herido por sus siervos en la casa de Milo, en la bajada de Sila?",
 
 
 
@@ -31486,7 +31486,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel reino solo un mes antes de ser asesinado por Salum hijo de Jabes?",
+    question: "¿Que rey de Israel reino solo un mes antes de ser asesinado por Salum hijo de Jabes?",
 
 
 
@@ -31510,7 +31510,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos talentos de plata pago Manahem al rey Pul (Tiglat-pileser III) de Asiria?",
+    question: "¿Cuantos talentos de plata pago Manahem al rey Pul (Tiglat-pileser III) de Asiria?",
 
 
 
@@ -31558,7 +31558,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que edad tenia Josias cuando comenzo a reinar segun 2 Reyes 22:1?",
+    question: "¿Que edad tenia Josias cuando comenzo a reinar segun 2 Reyes 22:1?",
 
 
 
@@ -31582,7 +31582,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la formula de evaluacion de Abias/Abiam rey de Juda segun 1 Reyes 15:3?",
+    question: "¿Cual fue la formula de evaluacion de Abias/Abiam rey de Juda segun 1 Reyes 15:3?",
 
 
 
@@ -31606,7 +31606,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda quito a su propia madre Maaca del cargo de reina madre por haber hecho una imagen de Asera?",
+    question: "¿Que rey de Juda quito a su propia madre Maaca del cargo de reina madre por haber hecho una imagen de Asera?",
 
 
 
@@ -31654,7 +31654,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue asesinado por Peka hijo de Remalias junto con Argob y Arie en el palacio de Samaria?",
+    question: "¿Que rey de Israel fue asesinado por Peka hijo de Remalias junto con Argob y Arie en el palacio de Samaria?",
 
 
 
@@ -31678,7 +31678,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos duro exactamente el reinado de Jeroboam II sobre Israel?",
+    question: "¿Cuantos anos duro exactamente el reinado de Jeroboam II sobre Israel?",
 
 
 
@@ -31726,7 +31726,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue llevado cautivo a Babilonia con garfios y cadenas de bronce, segun 2 Cronicas 33:11?",
+    question: "¿Que rey de Juda fue llevado cautivo a Babilonia con garfios y cadenas de bronce, segun 2 Cronicas 33:11?",
 
 
 
@@ -31750,7 +31750,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el nombre del rey de Egipto que capturo y mato a Josias en Meguido?",
+    question: "¿Cual es el nombre del rey de Egipto que capturo y mato a Josias en Meguido?",
 
 
 
@@ -31774,7 +31774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que diferencia existe entre 2 Samuel 24:9 y 1 Cronicas 21:5 respecto al censo de David en cuanto al numero de Israel?",
+    question: "¿Que diferencia existe entre 2 Samuel 24:9 y 1 Cronicas 21:5 respecto al censo de David en cuanto al numero de Israel?",
 
 
 
@@ -31798,7 +31798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda reino solo tres meses antes de ser depuesto por el faraon Necao?",
+    question: "¿Que rey de Juda reino solo tres meses antes de ser depuesto por el faraon Necao?",
 
 
 
@@ -31822,7 +31822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre le puso el faraon Necao a Eliaquim hijo de Josias cuando lo hizo rey?",
+    question: "¿Que nombre le puso el faraon Necao a Eliaquim hijo de Josias cuando lo hizo rey?",
 
 
 
@@ -31846,7 +31846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre le cambio Nabucodonosor a Matanias cuando lo puso por rey en Juda?",
+    question: "¿Que nombre le cambio Nabucodonosor a Matanias cuando lo puso por rey en Juda?",
 
 
 
@@ -31894,7 +31894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos tardo Salomon en construir su propio palacio segun 1 Reyes 7:1?",
+    question: "¿Cuantos anos tardo Salomon en construir su propio palacio segun 1 Reyes 7:1?",
 
 
 
@@ -31918,7 +31918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel edifico Peniel y Siquem segun 1 Reyes 12?",
+    question: "¿Que rey de Israel edifico Peniel y Siquem segun 1 Reyes 12?",
 
 
 
@@ -31942,7 +31942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos talentos de oro traian anualmente a Salomon segun 1 Reyes 10:14?",
+    question: "¿Cuantos talentos de oro traian anualmente a Salomon segun 1 Reyes 10:14?",
 
 
 
@@ -31966,7 +31966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ano del reinado de Salomon comenzo la construccion del templo, segun 1 Reyes 6:1?",
+    question: "¿En que ano del reinado de Salomon comenzo la construccion del templo, segun 1 Reyes 6:1?",
 
 
 
@@ -31990,7 +31990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey asirio deporto a las diez tribus del norte segun 2 Reyes 17:6?",
+    question: "¿Que rey asirio deporto a las diez tribus del norte segun 2 Reyes 17:6?",
 
 
 
@@ -32014,7 +32014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hijo de Salomon fue su sucesor en el trono segun 1 Reyes 11:43?",
+    question: "¿Que hijo de Salomon fue su sucesor en el trono segun 1 Reyes 11:43?",
 
 
 
@@ -32038,7 +32038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien mato a Ela hijo de Baasa mientras este estaba ebrio en casa de Arsa en Tirsa?",
+    question: "¿Quien mato a Ela hijo de Baasa mientras este estaba ebrio en casa de Arsa en Tirsa?",
 
 
 
@@ -32086,7 +32086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda cavo la piscina y el acueducto que traia agua a la ciudad segun 2 Reyes 20:20?",
+    question: "¿Que rey de Juda cavo la piscina y el acueducto que traia agua a la ciudad segun 2 Reyes 20:20?",
 
 
 
@@ -32110,7 +32110,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos hijos engendro Roboam segun 2 Cronicas 11:21?",
+    question: "¿Cuantos hijos engendro Roboam segun 2 Cronicas 11:21?",
 
 
 
@@ -32134,7 +32134,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda fue asesinado por sus siervos en venganza por la muerte de Zacarias hijo del sacerdote Joiada?",
+    question: "¿Que rey de Juda fue asesinado por sus siervos en venganza por la muerte de Zacarias hijo del sacerdote Joiada?",
 
 
 
@@ -32158,7 +32158,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos reino Manases en Jerusalen segun 2 Reyes 21:1?",
+    question: "¿Cuantos anos reino Manases en Jerusalen segun 2 Reyes 21:1?",
 
 
 
@@ -32182,7 +32182,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel consulto a Baal-zebub, dios de Ecron, tras caer por la ventana de su aposento?",
+    question: "¿Que rey de Israel consulto a Baal-zebub, dios de Ecron, tras caer por la ventana de su aposento?",
 
 
 
@@ -32206,7 +32206,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda reino a los siete anos de edad segun 2 Reyes 11:21?",
+    question: "¿Que rey de Juda reino a los siete anos de edad segun 2 Reyes 11:21?",
 
 
 
@@ -32230,7 +32230,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que oficial de Baasa cumplio la profecia de Jehu hijo de Hanani al exterminar toda la casa de Baasa?",
+    question: "¿Que oficial de Baasa cumplio la profecia de Jehu hijo de Hanani al exterminar toda la casa de Baasa?",
 
 
 
@@ -32278,7 +32278,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tributo impuso el faraon Necao a la tierra de Juda segun 2 Reyes 23:33?",
+    question: "¿Que tributo impuso el faraon Necao a la tierra de Juda segun 2 Reyes 23:33?",
 
 
 
@@ -32302,7 +32302,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas ciudades de almacenaje edifico Salomon segun 2 Cronicas 8:4-6?",
+    question: "¿Cuantas ciudades de almacenaje edifico Salomon segun 2 Cronicas 8:4-6?",
 
 
 
@@ -32326,7 +32326,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta le dijo a Jeroboam I que Dios le daria diez tribus rasgando su capa nueva en doce pedazos?",
+    question: "¿Que profeta le dijo a Jeroboam I que Dios le daria diez tribus rasgando su capa nueva en doce pedazos?",
 
 
 
@@ -32350,7 +32350,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Juda hizo pasar a su hijo por fuego, practico la adivinacion y consulto a encantadores segun 2 Reyes 21:6?",
+    question: "¿Que rey de Juda hizo pasar a su hijo por fuego, practico la adivinacion y consulto a encantadores segun 2 Reyes 21:6?",
 
 
 
@@ -32374,7 +32374,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Israel fue caracterizado con la frase 'anduvo en el camino de Jeroboam hijo de Nabat' mas frecuentemente en 1 y 2 Reyes?",
+    question: "¿Que rey de Israel fue caracterizado con la frase 'anduvo en el camino de Jeroboam hijo de Nabat' mas frecuentemente en 1 y 2 Reyes?",
 
 
 
@@ -32398,7 +32398,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas naves de Tarsis intento construir Josafat que se rompieron en Ezion-geber?",
+    question: "¿Cuantas naves de Tarsis intento construir Josafat que se rompieron en Ezion-geber?",
 
 
 
@@ -32422,7 +32422,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que rey de Tiro hizo Salomon un pacto para recibir madera de cedro y cipres?",
+    question: "¿Con que rey de Tiro hizo Salomon un pacto para recibir madera de cedro y cipres?",
 
 
 
@@ -32446,7 +32446,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta reprendio a Josafat por haberse aliado con Ocozias rey de Israel, segun 2 Cronicas 20:37?",
+    question: "¿Que profeta reprendio a Josafat por haberse aliado con Ocozias rey de Israel, segun 2 Cronicas 20:37?",
 
 
 
@@ -32494,7 +32494,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sumo sacerdote escondio a Joas de nino durante seis anos de la usurpacion de Atalia?",
+    question: "¿Que sumo sacerdote escondio a Joas de nino durante seis anos de la usurpacion de Atalia?",
 
 
 
@@ -32518,7 +32518,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey de Asiria envio al Rabsaces a amenazar a Ezequias con un discurso ante los muros de Jerusalen?",
+    question: "¿Que rey de Asiria envio al Rabsaces a amenazar a Ezequias con un discurso ante los muros de Jerusalen?",
 
 
 
@@ -32542,7 +32542,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey babilonico libero a Joaquin de la carcel y le dio un puesto de honor en el ano 37 del cautiverio?",
+    question: "¿Que rey babilonico libero a Joaquin de la carcel y le dio un puesto de honor en el ano 37 del cautiverio?",
 
 
 
@@ -32570,7 +32570,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el termino hebreo que Isaias usa para referirse a la 'virgen' en su profecia mesianica de Isaias 7:14?",
+    question: "¿Cual es el termino hebreo que Isaias usa para referirse a la 'virgen' en su profecia mesianica de Isaias 7:14?",
 
 
 
@@ -32594,7 +32594,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ano aproximado recibio Ezequiel su vision inaugural del trono-carroza de Dios junto al rio Quebar?",
+    question: "¿En que ano aproximado recibio Ezequiel su vision inaugural del trono-carroza de Dios junto al rio Quebar?",
 
 
 
@@ -32618,7 +32618,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas alas tenia cada serafin en la vision de Isaias en el templo?",
+    question: "¿Cuantas alas tenia cada serafin en la vision de Isaias en el templo?",
 
 
 
@@ -32642,7 +32642,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias permanecio Ezequiel acostado sobre su lado izquierdo para cargar simbolicamente la iniquidad de Israel?",
+    question: "¿Cuantos dias permanecio Ezequiel acostado sobre su lado izquierdo para cargar simbolicamente la iniquidad de Israel?",
 
 
 
@@ -32666,7 +32666,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual era el nombre de la esposa de Oseas, a quien Dios le ordeno tomar como simbolo del amor divino por Israel infiel?",
+    question: "¿Cual era el nombre de la esposa de Oseas, a quien Dios le ordeno tomar como simbolo del amor divino por Israel infiel?",
 
 
 
@@ -32690,7 +32690,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta fue arrebatado por el Espiritu y transportado entre el cielo y la tierra en una vision, tomado por un mechon de su cabello?",
+    question: "¿Que profeta fue arrebatado por el Espiritu y transportado entre el cielo y la tierra en una vision, tomado por un mechon de su cabello?",
 
 
 
@@ -32714,7 +32714,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos cuernos vio el profeta Zacarias en su primera vision nocturna?",
+    question: "¿Cuantos cuernos vio el profeta Zacarias en su primera vision nocturna?",
 
 
 
@@ -32738,7 +32738,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menciona especificamente a Bet-el-sar-eser y Regem-melec como emisarios enviados a consultar a los sacerdotes?",
+    question: "¿Que profeta menciona especificamente a Bet-el-sar-eser y Regem-melec como emisarios enviados a consultar a los sacerdotes?",
 
 
 
@@ -32786,7 +32786,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias profetizo Daniel que pasarian desde la supresion del sacrificio continuo hasta la abominacion desoladora?",
+    question: "¿Cuantos dias profetizo Daniel que pasarian desde la supresion del sacrificio continuo hasta la abominacion desoladora?",
 
 
 
@@ -32810,7 +32810,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que rey de Juda profetizo Isaias que la sombra del reloj de sol de Acaz retrocederia diez grados como senal?",
+    question: "¿A que rey de Juda profetizo Isaias que la sombra del reloj de sol de Acaz retrocederia diez grados como senal?",
 
 
 
@@ -32834,7 +32834,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el nombre del valle que Ezequiel describe lleno de huesos secos que volvieron a la vida?",
+    question: "¿Cual es el nombre del valle que Ezequiel describe lleno de huesos secos que volvieron a la vida?",
 
 
 
@@ -32858,7 +32858,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menor contiene unicamente 21 versiculos, siendo el libro mas corto del Antiguo Testamento?",
+    question: "¿Que profeta menor contiene unicamente 21 versiculos, siendo el libro mas corto del Antiguo Testamento?",
 
 
 
@@ -32882,7 +32882,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Contra que nacion esta dirigida exclusivamente la profecia de Abdias?",
+    question: "¿Contra que nacion esta dirigida exclusivamente la profecia de Abdias?",
 
 
 
@@ -32906,7 +32906,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas semanas de anos (semanas profeticas) menciona Daniel en su famosa profecia de las 'setenta semanas'?",
+    question: "¿Cuantas semanas de anos (semanas profeticas) menciona Daniel en su famosa profecia de las 'setenta semanas'?",
 
 
 
@@ -32930,7 +32930,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre simbolico le puso Oseas a su hija, que significa 'no compadecida'?",
+    question: "¿Que nombre simbolico le puso Oseas a su hija, que significa 'no compadecida'?",
 
 
 
@@ -32954,7 +32954,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En cual capitulo de Isaias se encuentra el cantico de la vina, una parabola sobre el juicio de Juda?",
+    question: "¿En cual capitulo de Isaias se encuentra el cantico de la vina, una parabola sobre el juicio de Juda?",
 
 
 
@@ -32978,7 +32978,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta uso la imagen de un plomo de albanil (plomada) como simbolo de juicio contra Israel?",
+    question: "¿Que profeta uso la imagen de un plomo de albanil (plomada) como simbolo de juicio contra Israel?",
 
 
 
@@ -33002,7 +33002,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos jinetes aparecen en la primera vision de Zacarias entre los mirtos?",
+    question: "¿Cuantos jinetes aparecen en la primera vision de Zacarias entre los mirtos?",
 
 
 
@@ -33026,7 +33026,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual era la profesion de Amos antes de ser llamado como profeta?",
+    question: "¿Cual era la profesion de Amos antes de ser llamado como profeta?",
 
 
 
@@ -33050,7 +33050,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta describe a Ninive como 'la ciudad sanguinaria, toda llena de mentira y de rapina'?",
+    question: "¿Que profeta describe a Ninive como 'la ciudad sanguinaria, toda llena de mentira y de rapina'?",
 
 
 
@@ -33074,7 +33074,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas visiones nocturnas tuvo Zacarias en total, segun los capitulos 1 al 6 de su libro?",
+    question: "¿Cuantas visiones nocturnas tuvo Zacarias en total, segun los capitulos 1 al 6 de su libro?",
 
 
 
@@ -33098,7 +33098,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que nombre simbolico llamo Isaias a su hijo para profetizar la inminente caida de Damasco y Samaria?",
+    question: "¿Con que nombre simbolico llamo Isaias a su hijo para profetizar la inminente caida de Damasco y Samaria?",
 
 
 
@@ -33122,7 +33122,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que criatura marina especifica menciona Jonas en su oracion desde el vientre del gran pez?",
+    question: "¿Que criatura marina especifica menciona Jonas en su oracion desde el vientre del gran pez?",
 
 
 
@@ -33146,7 +33146,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos capitulos tiene el libro de Isaias y en que dos grandes secciones se divide comunmente?",
+    question: "¿Cuantos capitulos tiene el libro de Isaias y en que dos grandes secciones se divide comunmente?",
 
 
 
@@ -33170,7 +33170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rey estaba en el trono cuando Isaias recibio su llamado profetico en el ano en que murio el rey Uzias?",
+    question: "¿Que rey estaba en el trono cuando Isaias recibio su llamado profetico en el ano en que murio el rey Uzias?",
 
 
 
@@ -33194,7 +33194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rio menciona Ezequiel que fluia del umbral del templo en su vision del templo restaurado?",
+    question: "¿Que rio menciona Ezequiel que fluia del umbral del templo en su vision del templo restaurado?",
 
 
 
@@ -33218,7 +33218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ano del reinado de Dario termino la reconstruccion del segundo templo, segun la profecia de Hageo?",
+    question: "¿En que ano del reinado de Dario termino la reconstruccion del segundo templo, segun la profecia de Hageo?",
 
 
 
@@ -33242,7 +33242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que piedra preciosa se menciona como parte de la descripcion del rey de Tiro en la lamentacion de Ezequiel 28?",
+    question: "¿Que piedra preciosa se menciona como parte de la descripcion del rey de Tiro en la lamentacion de Ezequiel 28?",
 
 
 
@@ -33266,7 +33266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos candeleros de oro y cuantos olivos vio Zacarias en su quinta vision?",
+    question: "¿Cuantos candeleros de oro y cuantos olivos vio Zacarias en su quinta vision?",
 
 
 
@@ -33290,7 +33290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue el sumo sacerdote al que Zacarias vio con vestiduras viles ante el angel de Jehova?",
+    question: "¿Quien fue el sumo sacerdote al que Zacarias vio con vestiduras viles ante el angel de Jehova?",
 
 
 
@@ -33314,7 +33314,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas plagas o calamidades enumera Joel en el capitulo 1 como etapas de la devastacion de la tierra?",
+    question: "¿Cuantas plagas o calamidades enumera Joel en el capitulo 1 como etapas de la devastacion de la tierra?",
 
 
 
@@ -33338,7 +33338,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta compara a Dios con un esposo que compra de vuelta a su esposa infiel por quince siclos de plata y un homer y medio de cebada?",
+    question: "¿Que profeta compara a Dios con un esposo que compra de vuelta a su esposa infiel por quince siclos de plata y un homer y medio de cebada?",
 
 
 
@@ -33362,7 +33362,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal usa Miqueas como metafora de Israel, al decir que el remanente sera 'como leon entre las bestias de la selva'?",
+    question: "¿Que animal usa Miqueas como metafora de Israel, al decir que el remanente sera 'como leon entre las bestias de la selva'?",
 
 
 
@@ -33386,7 +33386,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas naciones extranjeras condena Amos en sus oraculos de juicio antes de dirigirse a Israel y Juda?",
+    question: "¿Cuantas naciones extranjeras condena Amos en sus oraculos de juicio antes de dirigirse a Israel y Juda?",
 
 
 
@@ -33410,7 +33410,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que planta crecio sobre la cabeza de Jonas para darle sombra y luego fue destruida por un gusano?",
+    question: "¿Que planta crecio sobre la cabeza de Jonas para darle sombra y luego fue destruida por un gusano?",
 
 
 
@@ -33434,7 +33434,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que montana menciona Zacarias que se partira en dos cuando Jehova ponga sus pies sobre ella en el dia final?",
+    question: "¿Que montana menciona Zacarias que se partira en dos cuando Jehova ponga sus pies sobre ella en el dia final?",
 
 
 
@@ -33458,7 +33458,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que metal precioso Malaquias compara el proceso de purificacion que Dios hara con los hijos de Levi?",
+    question: "¿Con que metal precioso Malaquias compara el proceso de purificacion que Dios hara con los hijos de Levi?",
 
 
 
@@ -33482,7 +33482,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre recibe la imagen enorme compuesta de cuatro metales que Nabucodonosor vio en su sueno interpretado por Daniel?",
+    question: "¿Que nombre recibe la imagen enorme compuesta de cuatro metales que Nabucodonosor vio en su sueno interpretado por Daniel?",
 
 
 
@@ -33506,7 +33506,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias estuvo Ezequiel acostado sobre su lado derecho para llevar simbolicamente la iniquidad de Juda?",
+    question: "¿Cuantos dias estuvo Ezequiel acostado sobre su lado derecho para llevar simbolicamente la iniquidad de Juda?",
 
 
 
@@ -33530,7 +33530,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta describe a cuatro herreros que vinieron a espantar y derribar los cuernos de las naciones?",
+    question: "¿Que profeta describe a cuatro herreros que vinieron a espantar y derribar los cuernos de las naciones?",
 
 
 
@@ -33554,7 +33554,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que titulo mesianico usa Isaias 9:6 que se traduce como 'Padre Eterno' en espanol?",
+    question: "¿Que titulo mesianico usa Isaias 9:6 que se traduce como 'Padre Eterno' en espanol?",
 
 
 
@@ -33578,7 +33578,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que nombre llama Jeremias al futuro rey justo del linaje de David: 'Jehova, justicia nuestra'?",
+    question: "¿Con que nombre llama Jeremias al futuro rey justo del linaje de David: 'Jehova, justicia nuestra'?",
 
 
 
@@ -33602,7 +33602,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos capitulos componen las Lamentaciones de Jeremias y que estructura poetica predomina?",
+    question: "¿Cuantos capitulos componen las Lamentaciones de Jeremias y que estructura poetica predomina?",
 
 
 
@@ -33626,7 +33626,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas medidas tenia el codo largo (codo real) que uso Ezequiel en sus mediciones del templo futuro?",
+    question: "¿Cuantas medidas tenia el codo largo (codo real) que uso Ezequiel en sus mediciones del templo futuro?",
 
 
 
@@ -33650,7 +33650,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta menciona el 'Dia de Jehova' como un dia de tinieblas y no de luz, oscuridad y no resplandor?",
+    question: "¿Que profeta menciona el 'Dia de Jehova' como un dia de tinieblas y no de luz, oscuridad y no resplandor?",
 
 
 
@@ -33674,7 +33674,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que precio exacto de traicion profetiza Zacarias que seria pagado por el pastor rechazado?",
+    question: "¿Que precio exacto de traicion profetiza Zacarias que seria pagado por el pastor rechazado?",
 
 
 
@@ -33698,7 +33698,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que alfarero envio Dios a Jeremias para ensenarle una leccion sobre la soberania divina sobre las naciones?",
+    question: "¿A que alfarero envio Dios a Jeremias para ensenarle una leccion sobre la soberania divina sobre las naciones?",
 
 
 
@@ -33722,7 +33722,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos profetizo Isaias que tardaria en caer la gloria de Moab, siendo reducida a nada con todo su gran gentio?",
+    question: "¿Cuantos anos profetizo Isaias que tardaria en caer la gloria de Moab, siendo reducida a nada con todo su gran gentio?",
 
 
 
@@ -33746,7 +33746,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre simbolico dio Oseas a su tercer hijo, que significa 'no pueblo mio', representando el rechazo temporal de Israel?",
+    question: "¿Que nombre simbolico dio Oseas a su tercer hijo, que significa 'no pueblo mio', representando el rechazo temporal de Israel?",
 
 
 
@@ -33774,7 +33774,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en Romanos 1:18 para describir la 'impiedad' que provoca la ira de Dios?",
+    question: "¿Que termino griego usa Pablo en Romanos 1:18 para describir la 'impiedad' que provoca la ira de Dios?",
 
 
 
@@ -33798,7 +33798,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que epistola del NT contiene la expresion griega 'logos tou staurou' (palabra de la cruz)?",
+    question: "¿Que epistola del NT contiene la expresion griega 'logos tou staurou' (palabra de la cruz)?",
 
 
 
@@ -33822,7 +33822,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces menciona Pablo al personaje Tiquico en sus epistolas como portador de cartas?",
+    question: "¿Cuantas veces menciona Pablo al personaje Tiquico en sus epistolas como portador de cartas?",
 
 
 
@@ -33846,7 +33846,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que texto del AT cita Pablo en Romanos 10:13 como fundamento de la salvacion universal?",
+    question: "¿Que texto del AT cita Pablo en Romanos 10:13 como fundamento de la salvacion universal?",
 
 
 
@@ -33870,7 +33870,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que palabra griega hapax legomenon aparece en Efesios 4:14 traducida como 'estratagema' o 'astucia enganosa'?",
+    question: "¿Que palabra griega hapax legomenon aparece en Efesios 4:14 traducida como 'estratagema' o 'astucia enganosa'?",
 
 
 
@@ -33894,7 +33894,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que argumento principal usan los eruditos para cuestionar la autoria paulina de las Epistolas pastorales?",
+    question: "¿Que argumento principal usan los eruditos para cuestionar la autoria paulina de las Epistolas pastorales?",
 
 
 
@@ -33918,7 +33918,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en Romanos 12:1 traducido como 'culto racional' o 'adoracion espiritual'?",
+    question: "¿Que termino griego usa Pablo en Romanos 12:1 traducido como 'culto racional' o 'adoracion espiritual'?",
 
 
 
@@ -33942,7 +33942,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que persona mencionada en 3 Juan es criticada por amar 'ser el primero' en la iglesia?",
+    question: "¿Que persona mencionada en 3 Juan es criticada por amar 'ser el primero' en la iglesia?",
 
 
 
@@ -33966,7 +33966,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que recurso literario emplea Pablo en 1 Corintios 13 al personificar al amor con quince verbos?",
+    question: "¿Que recurso literario emplea Pablo en 1 Corintios 13 al personificar al amor con quince verbos?",
 
 
 
@@ -33990,7 +33990,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que texto del AT cita el autor de Hebreos en 10:5-7 para explicar la encarnacion de Cristo como ofrenda superior?",
+    question: "¿Que texto del AT cita el autor de Hebreos en 10:5-7 para explicar la encarnacion de Cristo como ofrenda superior?",
 
 
 
@@ -34014,7 +34014,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en 2 Tesalonicenses 2:3 para referirse a la 'apostasia' o 'rebelion' antes del dia del Senor?",
+    question: "¿Que termino griego usa Pablo en 2 Tesalonicenses 2:3 para referirse a la 'apostasia' o 'rebelion' antes del dia del Senor?",
 
 
 
@@ -34038,7 +34038,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que epistola aparece el hapax legomenon 'theopneustos' (inspirada por Dios) referido a la Escritura?",
+    question: "¿En que epistola aparece el hapax legomenon 'theopneustos' (inspirada por Dios) referido a la Escritura?",
 
 
 
@@ -34062,7 +34062,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre propio menciona Pablo en Romanos 16:23 como 'tesorero de la ciudad' (oikonomos tos poleos)?",
+    question: "¿Que nombre propio menciona Pablo en Romanos 16:23 como 'tesorero de la ciudad' (oikonomos tos poleos)?",
 
 
 
@@ -34086,7 +34086,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que concepto teologico griego expresa Pablo en Romanos 6:6 con 'ho palaios homon anthropos'?",
+    question: "¿Que concepto teologico griego expresa Pablo en Romanos 6:6 con 'ho palaios homon anthropos'?",
 
 
 
@@ -34110,7 +34110,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que cita textual de Isaias 59:20-21 usa Pablo en Romanos 11:26-27 respecto a la salvacion futura de Israel?",
+    question: "¿Que cita textual de Isaias 59:20-21 usa Pablo en Romanos 11:26-27 respecto a la salvacion futura de Israel?",
 
 
 
@@ -34134,7 +34134,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que epistola del NT aparece la expresion griega 'antitypon' (antitipo) referida al bautismo?",
+    question: "¿En que epistola del NT aparece la expresion griega 'antitypon' (antitipo) referida al bautismo?",
 
 
 
@@ -34158,7 +34158,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que persona envio Pablo de regreso a Filipos porque estaba gravemente enfermo y los filipenses lo supieron?",
+    question: "¿Que persona envio Pablo de regreso a Filipos porque estaba gravemente enfermo y los filipenses lo supieron?",
 
 
 
@@ -34182,7 +34182,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa el autor de Hebreos en 6:4 para describir a los que han sido 'iluminados'?",
+    question: "¿Que termino griego usa el autor de Hebreos en 6:4 para describir a los que han sido 'iluminados'?",
 
 
 
@@ -34206,7 +34206,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que catalogo de vicios en Galatas 5:19-21 Pablo designa con la expresion griega 'erga tos sarkos'?",
+    question: "¿Que catalogo de vicios en Galatas 5:19-21 Pablo designa con la expresion griega 'erga tos sarkos'?",
 
 
 
@@ -34230,7 +34230,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que debate textual rodea a 1 Juan 5:7-8 (Comma Johanneum) en la critica textual?",
+    question: "¿Que debate textual rodea a 1 Juan 5:7-8 (Comma Johanneum) en la critica textual?",
 
 
 
@@ -34254,7 +34254,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que hapax legomenon del NT usa Pablo en Filipenses 4:8 traducido como 'amable' o 'digno de amor'?",
+    question: "¿Que hapax legomenon del NT usa Pablo en Filipenses 4:8 traducido como 'amable' o 'digno de amor'?",
 
 
 
@@ -34278,7 +34278,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Desde que ciudad envio Pablo a Tercio como amanuense que escribio la carta a los Romanos?",
+    question: "¿Desde que ciudad envio Pablo a Tercio como amanuense que escribio la carta a los Romanos?",
 
 
 
@@ -34302,7 +34302,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que expresion griega usa Pablo en Galatas 2:20 que resume la mistica paulina: 'zo de ouketi ego, zo de en emoi...'?",
+    question: "¿Que expresion griega usa Pablo en Galatas 2:20 que resume la mistica paulina: 'zo de ouketi ego, zo de en emoi...'?",
 
 
 
@@ -34326,7 +34326,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro del AT cita extensamente el autor de Hebreos en el capitulo 3 para advertir contra la incredulidad?",
+    question: "¿Que libro del AT cita extensamente el autor de Hebreos en el capitulo 3 para advertir contra la incredulidad?",
 
 
 
@@ -34350,7 +34350,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino tecnico griego aparece en 1 Corintios 16:22 como formula aramea transliterada que significa 'Senor nuestro, ven'?",
+    question: "¿Que termino tecnico griego aparece en 1 Corintios 16:22 como formula aramea transliterada que significa 'Senor nuestro, ven'?",
 
 
 
@@ -34374,7 +34374,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que dos personas entrego Pablo a Satanas 'para que aprendan a no blasfemar' segun 1 Timoteo?",
+    question: "¿A que dos personas entrego Pablo a Satanas 'para que aprendan a no blasfemar' segun 1 Timoteo?",
 
 
 
@@ -34398,7 +34398,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que texto de Deuteronomio 25:4 cita Pablo en 1 Corintios 9:9 para defender el derecho del obrero a su salario?",
+    question: "¿Que texto de Deuteronomio 25:4 cita Pablo en 1 Corintios 9:9 para defender el derecho del obrero a su salario?",
 
 
 
@@ -34422,7 +34422,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en 2 Corintios 3:18 para describir la transformacion progresiva del creyente 'de gloria en gloria'?",
+    question: "¿Que termino griego usa Pablo en 2 Corintios 3:18 para describir la transformacion progresiva del creyente 'de gloria en gloria'?",
 
 
 
@@ -34446,7 +34446,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que epistola Pablo utiliza la metafora del atleta, el soldado y el labrador como tres imagenes del ministerio cristiano?",
+    question: "¿En que epistola Pablo utiliza la metafora del atleta, el soldado y el labrador como tres imagenes del ministerio cristiano?",
 
 
 
@@ -34470,7 +34470,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que expresion griega hapax legomenon usa el autor de Hebreos en 12:1 traducida como 'nube de testigos'?",
+    question: "¿Que expresion griega hapax legomenon usa el autor de Hebreos en 12:1 traducida como 'nube de testigos'?",
 
 
 
@@ -34494,7 +34494,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual de las siete epistolas generales (catolicas) es la mas breve del NT con solo 13 versiculos?",
+    question: "¿Cual de las siete epistolas generales (catolicas) es la mas breve del NT con solo 13 versiculos?",
 
 
 
@@ -34518,7 +34518,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pedro en 2 Pedro 1:16 traducido como 'fabulas artificiosamente inventadas' al defender la veracidad apostolica?",
+    question: "¿Que termino griego usa Pedro en 2 Pedro 1:16 traducido como 'fabulas artificiosamente inventadas' al defender la veracidad apostolica?",
 
 
 
@@ -34542,7 +34542,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pasaje de Jeremias 31:31-34 cita extensamente el autor de Hebreos como la profecia del nuevo pacto?",
+    question: "¿Que pasaje de Jeremias 31:31-34 cita extensamente el autor de Hebreos como la profecia del nuevo pacto?",
 
 
 
@@ -34566,7 +34566,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que disputa menciona Judas entre el arcangel Miguel y el diablo respecto al cuerpo de Moises?",
+    question: "¿Que disputa menciona Judas entre el arcangel Miguel y el diablo respecto al cuerpo de Moises?",
 
 
 
@@ -34590,7 +34590,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que expresion griega usa Pablo en Efesios 2:14 para llamar a Cristo 'nuestra paz' que derribo el muro de separacion?",
+    question: "¿Que expresion griega usa Pablo en Efesios 2:14 para llamar a Cristo 'nuestra paz' que derribo el muro de separacion?",
 
 
 
@@ -34614,7 +34614,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que persona mencionada en Colosenses 4:17 recibio la instruccion de 'cumplir el ministerio que recibiste en el Senor'?",
+    question: "¿Que persona mencionada en Colosenses 4:17 recibio la instruccion de 'cumplir el ministerio que recibiste en el Senor'?",
 
 
 
@@ -34638,7 +34638,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en Romanos 8:26 para describir los gemidos 'inexpresables' del Espiritu al interceder?",
+    question: "¿Que termino griego usa Pablo en Romanos 8:26 para describir los gemidos 'inexpresables' del Espiritu al interceder?",
 
 
 
@@ -34662,7 +34662,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que particularidad literaria distingue a Filemon como la unica carta paulina dirigida principalmente a un individuo sobre un asunto privado?",
+    question: "¿Que particularidad literaria distingue a Filemon como la unica carta paulina dirigida principalmente a un individuo sobre un asunto privado?",
 
 
 
@@ -34686,7 +34686,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que cita de Genesis 15:6 usa Pablo tanto en Romanos 4:3 como en Galatas 3:6 para argumentar la justificacion por fe?",
+    question: "¿Que cita de Genesis 15:6 usa Pablo tanto en Romanos 4:3 como en Galatas 3:6 para argumentar la justificacion por fe?",
 
 
 
@@ -34710,7 +34710,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego emplea Pablo en Colosenses 2:9 para expresar que en Cristo habita 'toda la plenitud de la Deidad corporalmente'?",
+    question: "¿Que termino griego emplea Pablo en Colosenses 2:9 para expresar que en Cristo habita 'toda la plenitud de la Deidad corporalmente'?",
 
 
 
@@ -34734,7 +34734,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que peculiaridad tiene 2 Juan al ser la unica epistola del NT dirigida a una 'senora elegida' (eklekto kyria)?",
+    question: "¿Que peculiaridad tiene 2 Juan al ser la unica epistola del NT dirigida a una 'senora elegida' (eklekto kyria)?",
 
 
 
@@ -34758,7 +34758,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que texto de Isaias 28:16 cita Pablo en Romanos 9:33 combinandolo con Isaias 8:14 para hablar de Cristo como piedra de tropiezo?",
+    question: "¿Que texto de Isaias 28:16 cita Pablo en Romanos 9:33 combinandolo con Isaias 8:14 para hablar de Cristo como piedra de tropiezo?",
 
 
 
@@ -34782,7 +34782,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que expresion griega usa Santiago en 2:19 de forma ironica al decir que 'tambien los demonios creen y tiemblan'?",
+    question: "¿Que expresion griega usa Santiago en 2:19 de forma ironica al decir que 'tambien los demonios creen y tiemblan'?",
 
 
 
@@ -34806,7 +34806,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que estructura retorica clasica de diatriba (dialogo con interlocutor ficticio) emplea Pablo extensamente en Romanos?",
+    question: "¿Que estructura retorica clasica de diatriba (dialogo con interlocutor ficticio) emplea Pablo extensamente en Romanos?",
 
 
 
@@ -34830,7 +34830,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego tecnico usa Pablo en Galatas 1:15 cuando dice que Dios lo 'aparto' desde el vientre, evocando la vocacion profetica?",
+    question: "¿Que termino griego tecnico usa Pablo en Galatas 1:15 cuando dice que Dios lo 'aparto' desde el vientre, evocando la vocacion profetica?",
 
 
 
@@ -34854,7 +34854,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que persona menciona Pablo en 1 Corintios 1:14-16 como uno de los pocos que el personalmente bautizo en Corinto?",
+    question: "¿Que persona menciona Pablo en 1 Corintios 1:14-16 como uno de los pocos que el personalmente bautizo en Corinto?",
 
 
 
@@ -34878,7 +34878,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en 1 Tesalonicenses 4:15 traducido como 'palabra del Senor' (logos kyriou) para fundamentar la ensenanza sobre la parusia?",
+    question: "¿Que termino griego usa Pablo en 1 Tesalonicenses 4:15 traducido como 'palabra del Senor' (logos kyriou) para fundamentar la ensenanza sobre la parusia?",
 
 
 
@@ -34902,7 +34902,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que peculiaridad tiene Hebreos entre las epistolas del NT en cuanto a su estructura introductoria?",
+    question: "¿Que peculiaridad tiene Hebreos entre las epistolas del NT en cuanto a su estructura introductoria?",
 
 
 
@@ -34926,7 +34926,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Pablo en Efesios 6:12 para 'potestades' o 'autoridades' espirituales malignas en las regiones celestes?",
+    question: "¿Que termino griego usa Pablo en Efesios 6:12 para 'potestades' o 'autoridades' espirituales malignas en las regiones celestes?",
 
 
 
@@ -34950,7 +34950,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que cita directa de Habacuc 2:3-4 usa el autor de Hebreos en 10:37-38 para exhortar a la perseverancia?",
+    question: "¿Que cita directa de Habacuc 2:3-4 usa el autor de Hebreos en 10:37-38 para exhortar a la perseverancia?",
 
 
 
@@ -34978,7 +34978,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien era Rahab y que papel tuvo en la conquista de Jerico?",
+    question: "¿Quien era Rahab y que papel tuvo en la conquista de Jerico?",
 
 
 
@@ -35002,7 +35002,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la senal que Gedeon pidio a Dios con el vellon?",
+    question: "¿Cual fue la senal que Gedeon pidio a Dios con el vellon?",
 
 
 
@@ -35026,7 +35026,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que pacto hizo Dios con Noe y cual fue su senal?",
+    question: "¿Que pacto hizo Dios con Noe y cual fue su senal?",
 
 
 
@@ -35050,7 +35050,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que consistio el pacto de las partes con Abraham?",
+    question: "¿En que consistio el pacto de las partes con Abraham?",
 
 
 
@@ -35074,7 +35074,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos transcurrieron entre Abraham y el exodo?",
+    question: "¿Cuantos anos transcurrieron entre Abraham y el exodo?",
 
 
 
@@ -35098,7 +35098,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento historico marca Genesis 3:15 (protoevangelio)?",
+    question: "¿Que evento historico marca Genesis 3:15 (protoevangelio)?",
 
 
 
@@ -35122,7 +35122,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la estrategia militar de Josue contra Hai?",
+    question: "¿Cual fue la estrategia militar de Josue contra Hai?",
 
 
 
@@ -35146,7 +35146,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Por que Moises no entro a la tierra prometida?",
+    question: "¿Por que Moises no entro a la tierra prometida?",
 
 
 
@@ -35170,7 +35170,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento marca el fin de la era de los jueces?",
+    question: "¿Que evento marca el fin de la era de los jueces?",
 
 
 
@@ -35194,7 +35194,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos goberno Salomon?",
+    question: "¿Cuantos anos goberno Salomon?",
 
 
 
@@ -35218,7 +35218,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que causo la division del reino tras Salomon?",
+    question: "¿Que causo la division del reino tras Salomon?",
 
 
 
@@ -35242,7 +35242,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ano cayo el reino del norte (Samaria)?",
+    question: "¿En que ano cayo el reino del norte (Samaria)?",
 
 
 
@@ -35266,7 +35266,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ano cayo Jerusalen ante Babilonia?",
+    question: "¿En que ano cayo Jerusalen ante Babilonia?",
 
 
 
@@ -35290,7 +35290,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que decreto de Ciro permitio el regreso de los judios?",
+    question: "¿Que decreto de Ciro permitio el regreso de los judios?",
 
 
 
@@ -35314,7 +35314,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos regresaron en la primera oleada con Zorobabel?",
+    question: "¿Cuantos regresaron en la primera oleada con Zorobabel?",
 
 
 
@@ -35338,7 +35338,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos tardo la reconstruccion del segundo templo?",
+    question: "¿Cuantos anos tardo la reconstruccion del segundo templo?",
 
 
 
@@ -35362,7 +35362,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que papel jugo el profeta Ageo en la reconstruccion?",
+    question: "¿Que papel jugo el profeta Ageo en la reconstruccion?",
 
 
 
@@ -35386,7 +35386,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias completo Nehemias la reconstruccion del muro?",
+    question: "¿Cuantos dias completo Nehemias la reconstruccion del muro?",
 
 
 
@@ -35410,7 +35410,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que significado teologico tiene el exodo para Israel?",
+    question: "¿Que significado teologico tiene el exodo para Israel?",
 
 
 
@@ -35434,7 +35434,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas estaciones del desierto se registran en Numeros 33?",
+    question: "¿Cuantas estaciones del desierto se registran en Numeros 33?",
 
 
 
@@ -35458,7 +35458,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio en Cades-barnea?",
+    question: "¿Que sucedio en Cades-barnea?",
 
 
 
@@ -35482,7 +35482,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que alianza hizo Josafat que fue reprochada por Dios?",
+    question: "¿Que alianza hizo Josafat que fue reprochada por Dios?",
 
 
 
@@ -35506,7 +35506,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que reforma religiosa hizo Ezequias?",
+    question: "¿Que reforma religiosa hizo Ezequias?",
 
 
 
@@ -35530,7 +35530,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que destruyo Ezequias que Moises habia hecho?",
+    question: "¿Que destruyo Ezequias que Moises habia hecho?",
 
 
 
@@ -35554,7 +35554,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos soldados asirios murio por el angel del Senor?",
+    question: "¿Cuantos soldados asirios murio por el angel del Senor?",
 
 
 
@@ -35578,7 +35578,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que contexto historico profetizo Habacuc?",
+    question: "¿En que contexto historico profetizo Habacuc?",
 
 
 
@@ -35602,7 +35602,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que vision tuvo Nabucodonosor sobre los imperios?",
+    question: "¿Que vision tuvo Nabucodonosor sobre los imperios?",
 
 
 
@@ -35626,7 +35626,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que representaba la piedra que destruyo la estatua en Daniel 2?",
+    question: "¿Que representaba la piedra que destruyo la estatua en Daniel 2?",
 
 
 
@@ -35650,7 +35650,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que fiesta judia prefigura la muerte de Cristo?",
+    question: "¿Que fiesta judia prefigura la muerte de Cristo?",
 
 
 
@@ -35674,7 +35674,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento conecta la ofrenda de Isaac con la cruz?",
+    question: "¿Que evento conecta la ofrenda de Isaac con la cruz?",
 
 
 
@@ -35698,7 +35698,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos anos de silencio profetico hubo entre AT y NT?",
+    question: "¿Cuantos anos de silencio profetico hubo entre AT y NT?",
 
 
 
@@ -35722,7 +35722,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que imperio dominaba durante el periodo intertestamentario?",
+    question: "¿Que imperio dominaba durante el periodo intertestamentario?",
 
 
 
@@ -35746,7 +35746,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que revuelta judia ocurrio entre AT y NT?",
+    question: "¿Que revuelta judia ocurrio entre AT y NT?",
 
 
 
@@ -35770,7 +35770,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que fiesta celebra la revuelta macabea?",
+    question: "¿Que fiesta celebra la revuelta macabea?",
 
 
 
@@ -35794,7 +35794,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profecia de Daniel senala las 70 semanas?",
+    question: "¿Que profecia de Daniel senala las 70 semanas?",
 
 
 
@@ -35818,7 +35818,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que evento historico cumple Isaias 44:28?",
+    question: "¿Que evento historico cumple Isaias 44:28?",
 
 
 
@@ -35842,7 +35842,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas generaciones lista Mateo de Abraham a Cristo?",
+    question: "¿Cuantas generaciones lista Mateo de Abraham a Cristo?",
 
 
 
@@ -35866,7 +35866,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que censo provoco el viaje a Belen?",
+    question: "¿Que censo provoco el viaje a Belen?",
 
 
 
@@ -35890,7 +35890,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que masacre ordeno Herodes y cuantos ninos murieron aproximadamente?",
+    question: "¿Que masacre ordeno Herodes y cuantos ninos murieron aproximadamente?",
 
 
 
@@ -35914,7 +35914,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que paralelo tipologico hay entre Jose (AT) y Cristo?",
+    question: "¿Que paralelo tipologico hay entre Jose (AT) y Cristo?",
 
 
 
@@ -35938,7 +35938,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que significado tiene el cruce del Mar Rojo tipologicamente?",
+    question: "¿Que significado tiene el cruce del Mar Rojo tipologicamente?",
 
 
 
@@ -35962,7 +35962,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que ciudad fue destruida por no arrepentirse pese a la predicacion de Jonas?",
+    question: "¿Que ciudad fue destruida por no arrepentirse pese a la predicacion de Jonas?",
 
 
 
@@ -35986,7 +35986,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que acontecimiento de Hechos 10 marco la entrada de gentiles a la iglesia?",
+    question: "¿Que acontecimiento de Hechos 10 marco la entrada de gentiles a la iglesia?",
 
 
 
@@ -36010,7 +36010,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos viajes misioneros realizo Pablo segun Hechos?",
+    question: "¿Cuantos viajes misioneros realizo Pablo segun Hechos?",
 
 
 
@@ -36034,7 +36034,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que provoco el concilio de Jerusalen en Hechos 15?",
+    question: "¿Que provoco el concilio de Jerusalen en Hechos 15?",
 
 
 
@@ -36058,7 +36058,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como llego Pablo a Roma?",
+    question: "¿Como llego Pablo a Roma?",
 
 
 
@@ -36082,7 +36082,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que naufragio sufrio Pablo camino a Roma?",
+    question: "¿Que naufragio sufrio Pablo camino a Roma?",
 
 
 
@@ -36106,7 +36106,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que relacion hay entre el tabernaculo y Cristo segun Hebreos?",
+    question: "¿Que relacion hay entre el tabernaculo y Cristo segun Hebreos?",
 
 
 
@@ -36134,7 +36134,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Juan 1:1 para referirse a Jesus como 'Verbo'?",
+    question: "¿Que termino griego usa Juan 1:1 para referirse a Jesus como 'Verbo'?",
 
 
 
@@ -36158,7 +36158,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre aparece en la genealogia de Jesus en Lucas pero NO en la de Mateo, como hijo de David?",
+    question: "¿Que nombre aparece en la genealogia de Jesus en Lucas pero NO en la de Mateo, como hijo de David?",
 
 
 
@@ -36182,7 +36182,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas generaciones menciona Mateo desde Abraham hasta Cristo en total?",
+    question: "¿Cuantas generaciones menciona Mateo desde Abraham hasta Cristo en total?",
 
 
 
@@ -36206,7 +36206,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta es citado en Mateo 2:15 con la frase 'De Egipto llame a mi hijo'?",
+    question: "¿Que profeta es citado en Mateo 2:15 con la frase 'De Egipto llame a mi hijo'?",
 
 
 
@@ -36230,7 +36230,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A que edad fue Jesus presentado en el templo segun la ley de Moises, y quien lo reconocio como el Mesias ademas de Ana?",
+    question: "¿A que edad fue Jesus presentado en el templo segun la ley de Moises, y quien lo reconocio como el Mesias ademas de Ana?",
 
 
 
@@ -36254,7 +36254,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el unico evangelio que narra la visita de Jesus al templo a los 12 anos?",
+    question: "¿Cual es el unico evangelio que narra la visita de Jesus al templo a los 12 anos?",
 
 
 
@@ -36278,7 +36278,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tipo de amor expresa el termino griego 'agape' que Jesus uso en Juan 13:34?",
+    question: "¿Que tipo de amor expresa el termino griego 'agape' que Jesus uso en Juan 13:34?",
 
 
 
@@ -36302,7 +36302,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que evangelio exclusivamente aparece la parabola del buen samaritano?",
+    question: "¿En que evangelio exclusivamente aparece la parabola del buen samaritano?",
 
 
 
@@ -36326,7 +36326,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el suegro de Pedro, cuya suegra fue sanada por Jesus segun la tradicion, y en que ciudad vivian?",
+    question: "¿Como se llamaba el suegro de Pedro, cuya suegra fue sanada por Jesus segun la tradicion, y en que ciudad vivian?",
 
 
 
@@ -36350,7 +36350,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es la primera senal (milagro) de Jesus segun el Evangelio de Juan?",
+    question: "¿Cual es la primera senal (milagro) de Jesus segun el Evangelio de Juan?",
 
 
 
@@ -36374,7 +36374,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo le dijo a Jesus: 'Senor, muestranos al Padre y nos basta'?",
+    question: "¿Que discipulo le dijo a Jesus: 'Senor, muestranos al Padre y nos basta'?",
 
 
 
@@ -36398,7 +36398,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces purifico Jesus el templo segun los evangelios, y en que evangelio se narra la primera purificacion?",
+    question: "¿Cuantas veces purifico Jesus el templo segun los evangelios, y en que evangelio se narra la primera purificacion?",
 
 
 
@@ -36422,7 +36422,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llama el estanque en Jerusalen donde Jesus sano al paralitico que llevaba 38 anos enfermo?",
+    question: "¿Como se llama el estanque en Jerusalen donde Jesus sano al paralitico que llevaba 38 anos enfermo?",
 
 
 
@@ -36446,7 +36446,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego para 'otro Consolador' usa Jesus en Juan 14:16, indicando 'otro de la misma clase'?",
+    question: "¿Que termino griego para 'otro Consolador' usa Jesus en Juan 14:16, indicando 'otro de la misma clase'?",
 
 
 
@@ -36470,7 +36470,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que dia de la semana de la Pasion maldijo Jesus la higuera segun Marcos?",
+    question: "¿En que dia de la semana de la Pasion maldijo Jesus la higuera segun Marcos?",
 
 
 
@@ -36494,7 +36494,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas palabras (declaraciones) pronuncio Jesus desde la cruz segun los cuatro evangelios combinados?",
+    question: "¿Cuantas palabras (declaraciones) pronuncio Jesus desde la cruz segun los cuatro evangelios combinados?",
 
 
 
@@ -36518,7 +36518,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre recibe en griego la inscripcion colocada sobre la cruz de Jesus?",
+    question: "¿Que nombre recibe en griego la inscripcion colocada sobre la cruz de Jesus?",
 
 
 
@@ -36542,7 +36542,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien era el padre de los apostoles Santiago y Juan, hijos de Zebedeo?",
+    question: "¿Quien era el padre de los apostoles Santiago y Juan, hijos de Zebedeo?",
 
 
 
@@ -36566,7 +36566,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo era recaudador de impuestos antes de seguir a Jesus, y con que otro nombre se le conoce?",
+    question: "¿Que discipulo era recaudador de impuestos antes de seguir a Jesus, y con que otro nombre se le conoce?",
 
 
 
@@ -36590,7 +36590,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que evangelio Jesus dice 'Yo soy el pan de vida' como parte de los siete 'Yo soy' joanicos?",
+    question: "¿En que evangelio Jesus dice 'Yo soy el pan de vida' como parte de los siete 'Yo soy' joanicos?",
 
 
 
@@ -36614,7 +36614,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos 'ayes' pronuncio Jesus contra los escribas y fariseos en Mateo 23?",
+    question: "¿Cuantos 'ayes' pronuncio Jesus contra los escribas y fariseos en Mateo 23?",
 
 
 
@@ -36638,7 +36638,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaba el siervo del sumo sacerdote a quien Pedro le corto la oreja?",
+    question: "¿Como se llamaba el siervo del sumo sacerdote a quien Pedro le corto la oreja?",
 
 
 
@@ -36662,7 +36662,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que mujer ungio los pies de Jesus con perfume de nardo puro segun Juan 12?",
+    question: "¿Que mujer ungio los pies de Jesus con perfume de nardo puro segun Juan 12?",
 
 
 
@@ -36686,7 +36686,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos denarios dijo Judas que se podrian haber obtenido por el perfume derramado sobre Jesus?",
+    question: "¿Cuantos denarios dijo Judas que se podrian haber obtenido por el perfume derramado sobre Jesus?",
 
 
 
@@ -36710,7 +36710,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que monte fue transfigurado Jesus segun la tradicion, y que dos personajes aparecieron con el?",
+    question: "¿En que monte fue transfigurado Jesus segun la tradicion, y que dos personajes aparecieron con el?",
 
 
 
@@ -36734,7 +36734,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el precio exacto que los principales sacerdotes pagaron a Judas por traicionar a Jesus?",
+    question: "¿Cual fue el precio exacto que los principales sacerdotes pagaron a Judas por traicionar a Jesus?",
 
 
 
@@ -36758,7 +36758,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que campo se compro con el dinero que Judas devolvio, y que nombre recibio?",
+    question: "¿Que campo se compro con el dinero que Judas devolvio, y que nombre recibio?",
 
 
 
@@ -36782,7 +36782,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego usa Marcos para describir la hora en que Jesus fue crucificado ('hora tercera')?",
+    question: "¿Que termino griego usa Marcos para describir la hora en que Jesus fue crucificado ('hora tercera')?",
 
 
 
@@ -36806,7 +36806,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien ayudo a Jesus a cargar la cruz camino al Calvario segun los sinopticos?",
+    question: "¿Quien ayudo a Jesus a cargar la cruz camino al Calvario segun los sinopticos?",
 
 
 
@@ -36830,7 +36830,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Como se llamaban los dos hijos de Simon de Cirene mencionados en Marcos?",
+    question: "¿Como se llamaban los dos hijos de Simon de Cirene mencionados en Marcos?",
 
 
 
@@ -36854,7 +36854,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que palabra aramea grito Jesus desde la cruz que significa 'Dios mio, Dios mio, ?por que me has desamparado?'?",
+    question: "¿Que palabra aramea grito Jesus desde la cruz que significa 'Dios mio, Dios mio, ?por que me has desamparado?'?",
 
 
 
@@ -36878,7 +36878,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que miembro del Sanedrin pidio el cuerpo de Jesus a Pilato para sepultarlo?",
+    question: "¿Que miembro del Sanedrin pidio el cuerpo de Jesus a Pilato para sepultarlo?",
 
 
 
@@ -36902,7 +36902,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que trajo Nicodemo para preparar el cuerpo de Jesus segun Juan 19:39?",
+    question: "¿Que trajo Nicodemo para preparar el cuerpo de Jesus segun Juan 19:39?",
 
 
 
@@ -36926,7 +36926,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el unico evangelio que registra la caida de Jesus con gotas de sangre (hematohidrosis) en Getsemani?",
+    question: "¿Cual es el unico evangelio que registra la caida de Jesus con gotas de sangre (hematohidrosis) en Getsemani?",
 
 
 
@@ -36950,7 +36950,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos panes y peces uso Jesus en la alimentacion de los 4,000?",
+    question: "¿Cuantos panes y peces uso Jesus en la alimentacion de los 4,000?",
 
 
 
@@ -36974,7 +36974,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas canastas sobraron en la alimentacion de los 5,000 y cuantas en la de los 4,000?",
+    question: "¿Cuantas canastas sobraron en la alimentacion de los 5,000 y cuantas en la de los 4,000?",
 
 
 
@@ -36998,7 +36998,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo camino sobre el agua hacia Jesus y luego comenzo a hundirse?",
+    question: "¿Que discipulo camino sobre el agua hacia Jesus y luego comenzo a hundirse?",
 
 
 
@@ -37022,7 +37022,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que ciudad Jesus resucito al hijo unico de una viuda, evento narrado solo por Lucas?",
+    question: "¿En que ciudad Jesus resucito al hijo unico de una viuda, evento narrado solo por Lucas?",
 
 
 
@@ -37046,7 +37046,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual era el nombre del gobernador romano que interrogo a Jesus y no hallo culpa en el?",
+    question: "¿Cual era el nombre del gobernador romano que interrogo a Jesus y no hallo culpa en el?",
 
 
 
@@ -37070,7 +37070,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Ante que otro gobernante fue enviado Jesus por Pilato durante su juicio, porque era galileo?",
+    question: "¿Ante que otro gobernante fue enviado Jesus por Pilato durante su juicio, porque era galileo?",
 
 
 
@@ -37094,7 +37094,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que velo se rasgo en dos cuando Jesus murio, y en que direccion se rasgo?",
+    question: "¿Que velo se rasgo en dos cuando Jesus murio, y en que direccion se rasgo?",
 
 
 
@@ -37118,7 +37118,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es la unica parabola que aparece en los tres evangelios sinopticos?",
+    question: "¿Cual es la unica parabola que aparece en los tres evangelios sinopticos?",
 
 
 
@@ -37142,7 +37142,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que palabra aramea uso Jesus que significa 'Padre' en sentido intimo, registrada en Marcos 14:36?",
+    question: "¿Que palabra aramea uso Jesus que significa 'Padre' en sentido intimo, registrada en Marcos 14:36?",
 
 
 
@@ -37166,7 +37166,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo no estaba presente cuando Jesus resucitado se aparecio por primera vez a los discipulos reunidos?",
+    question: "¿Que discipulo no estaba presente cuando Jesus resucitado se aparecio por primera vez a los discipulos reunidos?",
 
 
 
@@ -37190,7 +37190,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias permanecio Jesus en la tierra despues de su resurreccion antes de ascender?",
+    question: "¿Cuantos dias permanecio Jesus en la tierra despues de su resurreccion antes de ascender?",
 
 
 
@@ -37214,7 +37214,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar ascendio Jesus al cielo segun el relato de Lucas?",
+    question: "¿En que lugar ascendio Jesus al cielo segun el relato de Lucas?",
 
 
 
@@ -37238,7 +37238,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profetisa anciana reconocio al nino Jesus en el templo y hablaba de el a todos los que esperaban la redencion?",
+    question: "¿Que profetisa anciana reconocio al nino Jesus en el templo y hablaba de el a todos los que esperaban la redencion?",
 
 
 
@@ -37262,7 +37262,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?De que tribu era la profetisa Ana que vio al nino Jesus en el templo?",
+    question: "¿De que tribu era la profetisa Ana que vio al nino Jesus en el templo?",
 
 
 
@@ -37286,7 +37286,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que termino griego se usa en Juan 21:15-17 donde Jesus pregunta a Pedro si lo ama, cambiando entre 'agapao' y 'phileo'?",
+    question: "¿Que termino griego se usa en Juan 21:15-17 donde Jesus pregunta a Pedro si lo ama, cambiando entre 'agapao' y 'phileo'?",
 
 
 
@@ -37310,7 +37310,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos discipulos estaban pescando cuando Jesus resucitado se les aparecio junto al mar de Tiberias segun Juan 21?",
+    question: "¿Cuantos discipulos estaban pescando cuando Jesus resucitado se les aparecio junto al mar de Tiberias segun Juan 21?",
 
 
 
@@ -37338,7 +37338,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas metretas (medidas) cabian aproximadamente en cada una de las seis tinajas de piedra en las bodas de Cana?",
+    question: "¿Cuantas metretas (medidas) cabian aproximadamente en cada una de las seis tinajas de piedra en las bodas de Cana?",
 
 
 
@@ -37362,7 +37362,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces estornudo el hijo de la sunamita al ser resucitado por Eliseo segun 2 Reyes 4?",
+    question: "¿Cuantas veces estornudo el hijo de la sunamita al ser resucitado por Eliseo segun 2 Reyes 4?",
 
 
 
@@ -37386,7 +37386,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que rio golpeo Elias con su manto para dividir sus aguas antes de ser arrebatado al cielo?",
+    question: "¿Que rio golpeo Elias con su manto para dividir sus aguas antes de ser arrebatado al cielo?",
 
 
 
@@ -37434,7 +37434,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la tercera plaga que Dios envio sobre Egipto mediante Aaron?",
+    question: "¿Cual fue la tercera plaga que Dios envio sobre Egipto mediante Aaron?",
 
 
 
@@ -37458,7 +37458,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias duro la plaga de tinieblas sobre Egipto?",
+    question: "¿Cuantos dias duro la plaga de tinieblas sobre Egipto?",
 
 
 
@@ -37482,7 +37482,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que animal hablo con voz humana para reprender la locura del profeta Balaam?",
+    question: "¿Que animal hablo con voz humana para reprender la locura del profeta Balaam?",
 
 
 
@@ -37506,7 +37506,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces rodearon los israelitas la ciudad de Jerico el septimo dia antes de que cayeran sus muros?",
+    question: "¿Cuantas veces rodearon los israelitas la ciudad de Jerico el septimo dia antes de que cayeran sus muros?",
 
 
 
@@ -37530,7 +37530,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a la estatua de Dagon la segunda vez que amanecio junto al Arca del Pacto en su templo?",
+    question: "¿Que le sucedio a la estatua de Dagon la segunda vez que amanecio junto al Arca del Pacto en su templo?",
 
 
 
@@ -37554,7 +37554,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que alimentaron los cuervos a Elias junto al arroyo de Querit segun 1 Reyes 17?",
+    question: "¿Con que alimentaron los cuervos a Elias junto al arroyo de Querit segun 1 Reyes 17?",
 
 
 
@@ -37578,7 +37578,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces mando Elias a su criado a mirar hacia el mar antes de que apareciera la nube que anunciaba lluvia?",
+    question: "¿Cuantas veces mando Elias a su criado a mirar hacia el mar antes de que apareciera la nube que anunciaba lluvia?",
 
 
 
@@ -37602,7 +37602,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que forma tenia la pequena nube que vio el criado de Elias emerger del mar antes de la gran lluvia?",
+    question: "¿Que forma tenia la pequena nube que vio el criado de Elias emerger del mar antes de la gran lluvia?",
 
 
 
@@ -37626,7 +37626,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos panes de cebada uso Eliseo para alimentar milagrosamente a cien hombres?",
+    question: "¿Cuantos panes de cebada uso Eliseo para alimentar milagrosamente a cien hombres?",
 
 
 
@@ -37650,7 +37650,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que profeta oro para que su siervo pudiera ver los carros de fuego y caballos celestiales que los rodeaban en Dotan?",
+    question: "¿Que profeta oro para que su siervo pudiera ver los carros de fuego y caballos celestiales que los rodeaban en Dotan?",
 
 
 
@@ -37674,7 +37674,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que plaga castigo Dios a los filisteos de Asdod por retener el Arca del Pacto?",
+    question: "¿Con que plaga castigo Dios a los filisteos de Asdod por retener el Arca del Pacto?",
 
 
 
@@ -37698,7 +37698,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Sobre que ciudad detuvo Josue el sol y sobre cual valle detuvo la luna durante la batalla contra los amorreos?",
+    question: "¿Sobre que ciudad detuvo Josue el sol y sobre cual valle detuvo la luna durante la batalla contra los amorreos?",
 
 
 
@@ -37722,7 +37722,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos hombres selectos uso Gedeon para derrotar a los madianitas despues de la reduccion milagrosa de su ejercito?",
+    question: "¿Cuantos hombres selectos uso Gedeon para derrotar a los madianitas despues de la reduccion milagrosa de su ejercito?",
 
 
 
@@ -37746,7 +37746,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tres objetos llevaban los 300 hombres de Gedeon al atacar el campamento madianita?",
+    question: "¿Que tres objetos llevaban los 300 hombres de Gedeon al atacar el campamento madianita?",
 
 
 
@@ -37770,7 +37770,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que lugar broto agua milagrosamente para saciar la sed de Sanson despues de matar a mil filisteos?",
+    question: "¿En que lugar broto agua milagrosamente para saciar la sed de Sanson despues de matar a mil filisteos?",
 
 
 
@@ -37794,7 +37794,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos filisteos aproximadamente mato Sanson al derrumbar el templo de Dagon sobre si mismo?",
+    question: "¿Cuantos filisteos aproximadamente mato Sanson al derrumbar el templo de Dagon sobre si mismo?",
 
 
 
@@ -37818,7 +37818,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que echo Moises a las aguas amargas de Mara para que se endulzaran?",
+    question: "¿Que echo Moises a las aguas amargas de Mara para que se endulzaran?",
 
 
 
@@ -37842,7 +37842,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas fuentes de agua y palmeras habia en el oasis de Elim donde acamparon los israelitas?",
+    question: "¿Cuantas fuentes de agua y palmeras habia en el oasis de Elim donde acamparon los israelitas?",
 
 
 
@@ -37866,7 +37866,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Con que plaga hirio Dios al rey Uzias cuando intento quemar incienso en el templo, funcion reservada a los sacerdotes?",
+    question: "¿Con que plaga hirio Dios al rey Uzias cuando intento quemar incienso en el templo, funcion reservada a los sacerdotes?",
 
 
 
@@ -37890,7 +37890,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que le sucedio a la mano del rey Jeroboam cuando senalo al profeta que denunciaba el altar de Bet-el?",
+    question: "¿Que le sucedio a la mano del rey Jeroboam cuando senalo al profeta que denunciaba el altar de Bet-el?",
 
 
 
@@ -37914,7 +37914,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En cual de los evangelios se narra exclusivamente la resurreccion del hijo de la viuda de Nain?",
+    question: "¿En cual de los evangelios se narra exclusivamente la resurreccion del hijo de la viuda de Nain?",
 
 
 
@@ -37938,7 +37938,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que detalle unico registra el Evangelio de Juan sobre la sanidad del ciego de nacimiento que no aparece en los sinopticos?",
+    question: "¿Que detalle unico registra el Evangelio de Juan sobre la sanidad del ciego de nacimiento que no aparece en los sinopticos?",
 
 
 
@@ -37962,7 +37962,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos enfermos sano Jesus junto al estanque de Betesda segun el relato de Juan 5?",
+    question: "¿Cuantos enfermos sano Jesus junto al estanque de Betesda segun el relato de Juan 5?",
 
 
 
@@ -37986,7 +37986,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que tipo de semilla comparo Jesus con la fe capaz de mover un monte?",
+    question: "¿Que tipo de semilla comparo Jesus con la fe capaz de mover un monte?",
 
 
 
@@ -38010,7 +38010,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que discipulo camino brevemente sobre el agua hacia Jesus antes de hundirse por dudar?",
+    question: "¿Que discipulo camino brevemente sobre el agua hacia Jesus antes de hundirse por dudar?",
 
 
 
@@ -38034,7 +38034,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En cuales evangelios se narra que Jesus sano al siervo de un centurion a distancia, sin verlo ni tocarlo?",
+    question: "¿En cuales evangelios se narra que Jesus sano al siervo de un centurion a distancia, sin verlo ni tocarlo?",
 
 
 
@@ -38058,7 +38058,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue la primera senal milagrosa que hizo Moises ante Faraon segun Exodo 7?",
+    question: "¿Cual fue la primera senal milagrosa que hizo Moises ante Faraon segun Exodo 7?",
 
 
 
@@ -38082,7 +38082,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sucedio con las varas de los magos de Egipto cuando tambien se convirtieron en serpientes ante Faraon?",
+    question: "¿Que sucedio con las varas de los magos de Egipto cuando tambien se convirtieron en serpientes ante Faraon?",
 
 
 
@@ -38106,7 +38106,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas piedras lisas tomo David del arroyo para enfrentar al gigante Goliat?",
+    question: "¿Cuantas piedras lisas tomo David del arroyo para enfrentar al gigante Goliat?",
 
 
 
@@ -38130,7 +38130,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que parte del cuerpo golpeo la piedra lanzada por David a Goliat?",
+    question: "¿En que parte del cuerpo golpeo la piedra lanzada por David a Goliat?",
 
 
 
@@ -38154,7 +38154,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que echo Eliseo en un plato nuevo para purificar las aguas contaminadas de Jerico?",
+    question: "¿Que echo Eliseo en un plato nuevo para purificar las aguas contaminadas de Jerico?",
 
 
 
@@ -38178,7 +38178,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que alimento preparo un angel para Elias cuando huia de Jezabel, y cuanto tiempo le sustento?",
+    question: "¿Que alimento preparo un angel para Elias cuando huia de Jezabel, y cuanto tiempo le sustento?",
 
 
 
@@ -38202,7 +38202,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?A cuantos profetas falsos desafio Elias en total en el Monte Carmelo, sumando los de Baal y los de Asera?",
+    question: "¿A cuantos profetas falsos desafio Elias en total en el Monte Carmelo, sumando los de Baal y los de Asera?",
 
 
 
@@ -38226,7 +38226,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas veces ordeno Elias que derramaran agua sobre el sacrificio y la lena antes de que cayera fuego del cielo en el Carmelo?",
+    question: "¿Cuantas veces ordeno Elias que derramaran agua sobre el sacrificio y la lena antes de que cayera fuego del cielo en el Carmelo?",
 
 
 
@@ -38250,7 +38250,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro ocurrio con la puerta de hierro de la prision cuando un angel libero a Pedro en Hechos 12?",
+    question: "¿Que milagro ocurrio con la puerta de hierro de la prision cuando un angel libero a Pedro en Hechos 12?",
 
 
 
@@ -38274,7 +38274,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas cadenas ataban a Pedro cuando el angel lo libero de la carcel de Herodes?",
+    question: "¿Cuantas cadenas ataban a Pedro cuando el angel lo libero de la carcel de Herodes?",
 
 
 
@@ -38298,7 +38298,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos dias estuvo ciego Saulo de Tarso despues de su encuentro con Cristo en el camino a Damasco?",
+    question: "¿Cuantos dias estuvo ciego Saulo de Tarso despues de su encuentro con Cristo en el camino a Damasco?",
 
 
 
@@ -38322,7 +38322,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Quien fue enviado por Dios a Damasco para devolver la vista a Saulo e imponerle las manos?",
+    question: "¿Quien fue enviado por Dios a Damasco para devolver la vista a Saulo e imponerle las manos?",
 
 
 
@@ -38346,7 +38346,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que fenomeno sobrenatural ocurrio a medianoche cuando Pablo y Silas cantaban himnos en la carcel de Filipos?",
+    question: "¿Que fenomeno sobrenatural ocurrio a medianoche cuando Pablo y Silas cantaban himnos en la carcel de Filipos?",
 
 
 
@@ -38370,7 +38370,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que objetos personales de Pablo eran llevados a los enfermos y estos sanaban segun Hechos 19?",
+    question: "¿Que objetos personales de Pablo eran llevados a los enfermos y estos sanaban segun Hechos 19?",
 
 
 
@@ -38394,7 +38394,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que nombre tenia el mago que quedo ciego temporalmente por oponerse a Pablo y Bernabe en Pafos, Chipre?",
+    question: "¿Que nombre tenia el mago que quedo ciego temporalmente por oponerse a Pablo y Bernabe en Pafos, Chipre?",
 
 
 
@@ -38418,7 +38418,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas personas en total iban en el barco que naufrago con Pablo rumbo a Roma, y todas sobrevivieron?",
+    question: "¿Cuantas personas en total iban en el barco que naufrago con Pablo rumbo a Roma, y todas sobrevivieron?",
 
 
 
@@ -38442,7 +38442,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que milagro realizo Josue con las aguas del rio Jordan de manera semejante al cruce del Mar Rojo?",
+    question: "¿Que milagro realizo Josue con las aguas del rio Jordan de manera semejante al cruce del Mar Rojo?",
 
 
 
@@ -38466,7 +38466,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas piedras tomaron los israelitas del Jordan como memorial despues de cruzar en seco?",
+    question: "¿Cuantas piedras tomaron los israelitas del Jordan como memorial despues de cruzar en seco?",
 
 
 
@@ -38490,7 +38490,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que sabor tenia el mana que Dios envio del cielo a los israelitas en el desierto segun Exodo 16?",
+    question: "¿Que sabor tenia el mana que Dios envio del cielo a los israelitas en el desierto segun Exodo 16?",
 
 
 
@@ -38514,7 +38514,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?En que monte se detuvo el arca de Noe despues del diluvio segun Genesis 8?",
+    question: "¿En que monte se detuvo el arca de Noe despues del diluvio segun Genesis 8?",
 
 
 
@@ -38542,7 +38542,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Que libro del AT no menciona el nombre de Dios?",
+    question: "¿Que libro del AT no menciona el nombre de Dios?",
 
 
 
@@ -38566,7 +38566,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantos capitulos tiene el libro de los Salmos?",
+    question: "¿Cuantos capitulos tiene el libro de los Salmos?",
 
 
 
@@ -38590,7 +38590,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual es el libro mas corto del Antiguo Testamento?",
+    question: "¿Cual es el libro mas corto del Antiguo Testamento?",
 
 
 
@@ -38614,7 +38614,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cuantas bienaventuranzas enseno Jesus en el Sermon del Monte?",
+    question: "¿Cuantas bienaventuranzas enseno Jesus en el Sermon del Monte?",
 
 
 
@@ -38638,7 +38638,7 @@ const QUESTIONS_DB = [
 
 
 
-    question: "?Cual fue el primer martir cristiano?",
+    question: "¿Cual fue el primer martir cristiano?",
 
 
 
@@ -38650,6 +38650,632 @@ const QUESTIONS_DB = [
 
 
 
+  },
+
+  // ===================== PREGUNTAS ADICIONALES (2000+) =====================
+
+  // --- Personajes Adicionales ---
+  {
+    id: 2000, difficulty: "facil", category: "personajes",
+    question: "¿Quién fue el padre de Salomón?",
+    options: ["Saúl", "David", "Salomón", "Abraham"],
+    correct: 1, reference: "2 Samuel 12:24"
+  },
+  {
+    id: 2001, difficulty: "facil", category: "personajes",
+    question: "¿Quién era el hermano de Moisés?",
+    options: ["Josué", "Aarón", "Caleb", "Faraón"],
+    correct: 1, reference: "Éxodo 4:14"
+  },
+  {
+    id: 2002, difficulty: "facil", category: "personajes",
+    question: "¿Quién traicionó a Jesús con un beso?",
+    options: ["Pedro", "Juan", "Judas", "Tomás"],
+    correct: 2, reference: "Mateo 26:48-49"
+  },
+  {
+    id: 2003, difficulty: "facil", category: "personajes",
+    question: "¿Quién fue arrojado al foso de los leones?",
+    options: ["Elías", "Daniel", "Jonás", "Isaías"],
+    correct: 1, reference: "Daniel 6:16"
+  },
+  {
+    id: 2004, difficulty: "facil", category: "personajes",
+    question: "¿Quién fue el primer rey de Israel?",
+    options: ["David", "Saúl", "Salomón", "Samuel"],
+    correct: 1, reference: "1 Samuel 10:1"
+  },
+  {
+    id: 2005, difficulty: "medio", category: "personajes",
+    question: "¿Quién fue el profeta que confrontó a Acab?",
+    options: ["Eliseo", "Elías", "Isaías", "Jeremías"],
+    correct: 1, reference: "1 Reyes 18:1"
+  },
+  {
+    id: 2006, difficulty: "medio", category: "personajes",
+    question: "¿Quién fue la esposa de Isaac?",
+    options: ["Raquel", "Rebeca", "Lea", "Sara"],
+    correct: 1, reference: "Génesis 24:67"
+  },
+  {
+    id: 2007, difficulty: "medio", category: "personajes",
+    question: "¿Cuántos hijos tuvo Jacob?",
+    options: ["10", "11", "12", "13"],
+    correct: 2, reference: "Génesis 35:22"
+  },
+  {
+    id: 2008, difficulty: "medio", category: "personajes",
+    question: "¿Quién fue vendido por sus hermanos como esclavo?",
+    options: ["Benjamín", "Rubén", "José", "Judá"],
+    correct: 2, reference: "Génesis 37:28"
+  },
+  {
+    id: 2009, difficulty: "medio", category: "personajes",
+    question: "¿Quién era el padre de Juan el Bautista?",
+    options: ["José", "Zacarías", "Simeón", "Elías"],
+    correct: 1, reference: "Lucas 1:13"
+  },
+  {
+    id: 2010, difficulty: "dificil", category: "personajes",
+    question: "¿Quién era Melquisedec?",
+    options: ["Rey de Sodoma", "Rey de Salem y sacerdote", "Profeta de Egipto", "Ángel del Señor"],
+    correct: 1, reference: "Génesis 14:18"
+  },
+  {
+    id: 2011, difficulty: "dificil", category: "personajes",
+    question: "¿Quién era el suegro de Moisés?",
+    options: ["Jetro", "Labán", "Faraón", "Aarón"],
+    correct: 0, reference: "Éxodo 3:1"
+  },
+  {
+    id: 2012, difficulty: "dificil", category: "personajes",
+    question: "¿Qué rey tuvo un sueño con una estatua de diferentes metales?",
+    options: ["Salomón", "Nabucodonosor", "Darío", "Ciro"],
+    correct: 1, reference: "Daniel 2:31-33"
+  },
+  {
+    id: 2013, difficulty: "experto", category: "personajes",
+    question: "¿Quién fue Onesíforo?",
+    options: ["Un apóstol en Roma", "Un amigo fiel de Pablo", "El primer obispo de Éfeso", "Un mártir en Corinto"],
+    correct: 1, reference: "2 Timoteo 1:16-18"
+  },
+  {
+    id: 2014, difficulty: "experto", category: "personajes",
+    question: "¿Quién era Filemón en las cartas de Pablo?",
+    options: ["Un esclavo convertido", "Un líder de iglesia que tenía un esclavo", "Un apóstol enviado a Asia", "El gobernador de Colosas"],
+    correct: 1, reference: "Filemón 1:1-2"
+  },
+
+  // --- Historias Adicionales ---
+  {
+    id: 2015, difficulty: "facil", category: "historias",
+    question: "¿Qué hizo Jesús en la boda de Caná?",
+    options: ["Sanó a un enfermo", "Convirtió agua en vino", "Multiplicó panes", "Caminó sobre el agua"],
+    correct: 1, reference: "Juan 2:1-11"
+  },
+  {
+    id: 2016, difficulty: "facil", category: "historias",
+    question: "¿Con qué mató David a Goliat?",
+    options: ["Una espada", "Una lanza", "Una honda y una piedra", "Un arco y flecha"],
+    correct: 2, reference: "1 Samuel 17:49"
+  },
+  {
+    id: 2017, difficulty: "facil", category: "historias",
+    question: "¿Cuántos días y noches estuvo Jonás en el vientre del pez?",
+    options: ["1", "2", "3", "7"],
+    correct: 2, reference: "Jonás 1:17"
+  },
+  {
+    id: 2018, difficulty: "facil", category: "historias",
+    question: "¿Qué construyó Noé por mandato de Dios?",
+    options: ["Una torre", "Un arca", "Un templo", "Una ciudad"],
+    correct: 1, reference: "Génesis 6:14"
+  },
+  {
+    id: 2019, difficulty: "medio", category: "historias",
+    question: "¿Qué plagas envió Dios sobre Egipto?",
+    options: ["5", "7", "10", "12"],
+    correct: 2, reference: "Éxodo 7-12"
+  },
+  {
+    id: 2020, difficulty: "medio", category: "historias",
+    question: "¿Quién liberó a los israelitas de Egipto?",
+    options: ["Abraham", "José", "Moisés", "Josué"],
+    correct: 2, reference: "Éxodo 3:10"
+  },
+  {
+    id: 2021, difficulty: "medio", category: "historias",
+    question: "¿Cómo cruzaron los israelitas el Mar Rojo?",
+    options: ["En botes", "Dios dividió las aguas", "Nadaron", "Construyeron un puente"],
+    correct: 1, reference: "Éxodo 14:21-22"
+  },
+  {
+    id: 2022, difficulty: "dificil", category: "historias",
+    question: "¿Cuántos años vagó Israel por el desierto?",
+    options: ["20", "30", "40", "50"],
+    correct: 2, reference: "Números 14:33"
+  },
+  {
+    id: 2023, difficulty: "dificil", category: "historias",
+    question: "¿Qué murallas cayeron después de que Israel marchó alrededor?",
+    options: ["Babilonia", "Jericó", "Jerusalén", "Nínive"],
+    correct: 1, reference: "Josué 6:20"
+  },
+  {
+    id: 2024, difficulty: "experto", category: "historias",
+    question: "¿Cuántos espías envió Moisés a Canaán?",
+    options: ["7", "10", "12", "40"],
+    correct: 2, reference: "Números 13:1-16"
+  },
+
+  // --- Lugares Adicionales ---
+  {
+    id: 2025, difficulty: "facil", category: "lugares",
+    question: "¿En qué ciudad nació Jesús?",
+    options: ["Nazaret", "Belén", "Jerusalén", "Capernaum"],
+    correct: 1, reference: "Mateo 2:1"
+  },
+  {
+    id: 2026, difficulty: "facil", category: "lugares",
+    question: "¿Dónde fue crucificado Jesús?",
+    options: ["Monte Sinaí", "Getsemaní", "Gólgota", "Monte de los Olivos"],
+    correct: 2, reference: "Mateo 27:33"
+  },
+  {
+    id: 2027, difficulty: "facil", category: "lugares",
+    question: "¿A qué ciudad fue enviado Jonás a predicar?",
+    options: ["Babilonia", "Tarsis", "Nínive", "Jerusalén"],
+    correct: 2, reference: "Jonás 1:2"
+  },
+  {
+    id: 2028, difficulty: "medio", category: "lugares",
+    question: "¿En qué monte recibió Moisés los Diez Mandamientos?",
+    options: ["Monte Carmelo", "Monte Sinaí", "Monte Moriah", "Monte Tabor"],
+    correct: 1, reference: "Éxodo 19:20"
+  },
+  {
+    id: 2029, difficulty: "medio", category: "lugares",
+    question: "¿Qué río cruzó Israel para entrar a la Tierra Prometida?",
+    options: ["Éufrates", "Nilo", "Jordán", "Tigris"],
+    correct: 2, reference: "Josué 3:17"
+  },
+  {
+    id: 2030, difficulty: "dificil", category: "lugares",
+    question: "¿En qué isla fue exiliado Juan cuando escribió Apocalipsis?",
+    options: ["Creta", "Chipre", "Patmos", "Malta"],
+    correct: 2, reference: "Apocalipsis 1:9"
+  },
+  {
+    id: 2031, difficulty: "experto", category: "lugares",
+    question: "¿Dónde estaba el huerto donde Adán y Eva vivieron?",
+    options: ["Edén", "Getsemaní", "Canaán", "Sinaí"],
+    correct: 0, reference: "Génesis 2:8"
+  },
+
+  // --- Versículos Adicionales ---
+  {
+    id: 2032, difficulty: "facil", category: "versiculos",
+    question: "¿Cuál versículo dice: 'Yo soy el camino, la verdad y la vida'?",
+    options: ["Juan 3:16", "Juan 14:6", "Romanos 8:28", "Salmo 23:1"],
+    correct: 1, reference: "Juan 14:6"
+  },
+  {
+    id: 2033, difficulty: "facil", category: "versiculos",
+    question: "¿En qué libro está el Padre Nuestro?",
+    options: ["Marcos", "Lucas", "Mateo", "Juan"],
+    correct: 2, reference: "Mateo 6:9-13"
+  },
+  {
+    id: 2034, difficulty: "medio", category: "versiculos",
+    question: "¿Qué salmo comienza con 'El Señor es mi pastor'?",
+    options: ["Salmo 1", "Salmo 23", "Salmo 91", "Salmo 119"],
+    correct: 1, reference: "Salmo 23:1"
+  },
+  {
+    id: 2035, difficulty: "medio", category: "versiculos",
+    question: "¿Qué libro dice 'Todo tiene su tiempo'?",
+    options: ["Proverbios", "Eclesiastés", "Job", "Salmos"],
+    correct: 1, reference: "Eclesiastés 3:1"
+  },
+  {
+    id: 2036, difficulty: "dificil", category: "versiculos",
+    question: "¿Dónde está 'El amor es paciente, es bondadoso'?",
+    options: ["Romanos 12", "1 Corintios 13", "Gálatas 5", "Efesios 4"],
+    correct: 1, reference: "1 Corintios 13:4"
+  },
+
+  // --- Enseñanzas de Jesús Adicionales ---
+  {
+    id: 2037, difficulty: "facil", category: "ensenanzas",
+    question: "¿Cuál es el mandamiento más importante según Jesús?",
+    options: ["No robar", "Amar a Dios sobre todo", "Honrar a los padres", "No mentir"],
+    correct: 1, reference: "Mateo 22:37-38"
+  },
+  {
+    id: 2038, difficulty: "facil", category: "ensenanzas",
+    question: "¿Cuántas veces debemos perdonar según Jesús?",
+    options: ["7 veces", "70 veces 7", "100 veces", "3 veces"],
+    correct: 1, reference: "Mateo 18:22"
+  },
+  {
+    id: 2039, difficulty: "medio", category: "ensenanzas",
+    question: "¿Qué enseñó Jesús sobre los tesoros?",
+    options: ["Acumularlos en la tierra", "Guardarlos en el cielo", "Compartirlos equitativamente", "Invertirlos sabiamente"],
+    correct: 1, reference: "Mateo 6:19-20"
+  },
+  {
+    id: 2040, difficulty: "dificil", category: "ensenanzas",
+    question: "¿Qué dijo Jesús sobre el sábado?",
+    options: ["Es día de descanso absoluto", "El sábado fue hecho para el hombre", "No se puede hacer nada", "Es el día más sagrado"],
+    correct: 1, reference: "Marcos 2:27"
+  },
+
+  // --- Parábolas Adicionales ---
+  {
+    id: 2041, difficulty: "facil", category: "parabolas",
+    question: "¿Qué representa la semilla en la parábola del sembrador?",
+    options: ["El dinero", "La Palabra de Dios", "Los milagros", "El bautismo"],
+    correct: 1, reference: "Mateo 13:19"
+  },
+  {
+    id: 2042, difficulty: "facil", category: "parabolas",
+    question: "¿Cuántos talentos recibió el siervo que escondió el suyo?",
+    options: ["1", "2", "5", "10"],
+    correct: 0, reference: "Mateo 25:18"
+  },
+  {
+    id: 2043, difficulty: "medio", category: "parabolas",
+    question: "¿Qué hizo el padre cuando volvió el hijo pródigo?",
+    options: ["Lo rechazó", "Lo castigó", "Lo abrazó y celebró", "Lo ignoró"],
+    correct: 2, reference: "Lucas 15:20-24"
+  },
+  {
+    id: 2044, difficulty: "dificil", category: "parabolas",
+    question: "¿Qué representa la levadura en la parábola del reino?",
+    options: ["El pecado", "El poder expansivo del reino", "La maldad", "Los fariseos"],
+    correct: 1, reference: "Mateo 13:33"
+  },
+
+  // --- Milagros Adicionales ---
+  {
+    id: 2045, difficulty: "facil", category: "milagros",
+    question: "¿Cuántos panes usó Jesús para alimentar a 5000?",
+    options: ["3", "5", "7", "12"],
+    correct: 1, reference: "Mateo 14:17"
+  },
+  {
+    id: 2046, difficulty: "facil", category: "milagros",
+    question: "¿Qué enfermo sanó Jesús en el estanque de Betesda?",
+    options: ["Un ciego", "Un paralítico", "Un leproso", "Un sordo"],
+    correct: 1, reference: "Juan 5:5-9"
+  },
+  {
+    id: 2047, difficulty: "medio", category: "milagros",
+    question: "¿Cuántos años llevaba enfermo el hombre del estanque?",
+    options: ["18 años", "30 años", "38 años", "40 años"],
+    correct: 2, reference: "Juan 5:5"
+  },
+  {
+    id: 2048, difficulty: "dificil", category: "milagros",
+    question: "¿A quién resucitó Jesús después de 4 días muerto?",
+    options: ["La hija de Jairo", "El hijo de la viuda", "Lázaro", "Tabita"],
+    correct: 2, reference: "Juan 11:39-44"
+  },
+
+  // --- Cartas Adicionales ---
+  {
+    id: 2049, difficulty: "facil", category: "cartas",
+    question: "¿Quién escribió la mayoría de las cartas del Nuevo Testamento?",
+    options: ["Pedro", "Juan", "Pablo", "Santiago"],
+    correct: 2, reference: "La tradición atribuye 13 cartas a Pablo"
+  },
+  {
+    id: 2050, difficulty: "medio", category: "cartas",
+    question: "¿A qué iglesia escribió Pablo sobre el amor en el capítulo 13?",
+    options: ["Roma", "Corinto", "Éfeso", "Filipos"],
+    correct: 1, reference: "1 Corintios 13"
+  },
+  {
+    id: 2051, difficulty: "dificil", category: "cartas",
+    question: "¿Qué carta habla sobre la fe sin obras?",
+    options: ["Romanos", "Gálatas", "Santiago", "Hebreos"],
+    correct: 2, reference: "Santiago 2:17"
+  },
+  {
+    id: 2052, difficulty: "experto", category: "cartas",
+    question: "¿Qué carta es conocida como 'el evangelio de Pablo'?",
+    options: ["Gálatas", "Romanos", "Efesios", "Filipenses"],
+    correct: 1, reference: "Romanos presenta la teología sistemática de Pablo"
+  },
+
+  // --- Más preguntas variadas ---
+  {
+    id: 2053, difficulty: "facil", category: "personajes",
+    question: "¿Quién negó a Jesús tres veces?",
+    options: ["Judas", "Pedro", "Juan", "Tomás"],
+    correct: 1, reference: "Mateo 26:69-75"
+  },
+  {
+    id: 2054, difficulty: "facil", category: "personajes",
+    question: "¿Quién dudó de la resurrección de Jesús?",
+    options: ["Pedro", "Santiago", "Tomás", "Juan"],
+    correct: 2, reference: "Juan 20:24-25"
+  },
+  {
+    id: 2055, difficulty: "facil", category: "historias",
+    question: "¿Qué animal habló en la historia de Balaam?",
+    options: ["Un perro", "Un burro", "Un caballo", "Un camello"],
+    correct: 1, reference: "Números 22:28"
+  },
+  {
+    id: 2056, difficulty: "medio", category: "historias",
+    question: "¿Qué reina visitó a Salomón para probar su sabiduría?",
+    options: ["Reina de Tarsis", "Reina de Sabá", "Reina Ester", "Reina Jezabel"],
+    correct: 1, reference: "1 Reyes 10:1"
+  },
+  {
+    id: 2057, difficulty: "medio", category: "lugares",
+    question: "¿Dónde vivió Jesús durante su infancia?",
+    options: ["Belén", "Jerusalén", "Nazaret", "Capernaum"],
+    correct: 2, reference: "Mateo 2:23"
+  },
+  {
+    id: 2058, difficulty: "dificil", category: "lugares",
+    question: "¿En qué ciudad predicó Pablo en el Areópago?",
+    options: ["Roma", "Corinto", "Éfeso", "Atenas"],
+    correct: 3, reference: "Hechos 17:22"
+  },
+  {
+    id: 2059, difficulty: "facil", category: "milagros",
+    question: "¿Qué discípulo caminó sobre el agua con Jesús?",
+    options: ["Juan", "Pedro", "Santiago", "Andrés"],
+    correct: 1, reference: "Mateo 14:29"
+  },
+  {
+    id: 2060, difficulty: "medio", category: "milagros",
+    question: "¿Cuántos leprosos sanó Jesús que solo uno regresó a dar gracias?",
+    options: ["5", "7", "10", "12"],
+    correct: 2, reference: "Lucas 17:12-17"
+  },
+  {
+    id: 2061, difficulty: "facil", category: "ensenanzas",
+    question: "¿Qué dijo Jesús que debemos hacer con nuestros enemigos?",
+    options: ["Ignorarlos", "Amarlos", "Evitarlos", "Castigarlos"],
+    correct: 1, reference: "Mateo 5:44"
+  },
+  {
+    id: 2062, difficulty: "medio", category: "ensenanzas",
+    question: "¿Qué es más difícil que entre un rico en el reino de Dios?",
+    options: ["Que un barco navegue", "Que un camello pase por el ojo de una aguja", "Que llueva en el desierto", "Que un pez vuele"],
+    correct: 1, reference: "Mateo 19:24"
+  },
+  {
+    id: 2063, difficulty: "facil", category: "versiculos",
+    question: "¿Qué número de versículo es 'Todo lo puedo en Cristo'?",
+    options: ["Romanos 8:28", "Juan 3:16", "Filipenses 4:13", "Salmo 23:1"],
+    correct: 2, reference: "Filipenses 4:13"
+  },
+  {
+    id: 2064, difficulty: "medio", category: "versiculos",
+    question: "¿Dónde dice 'El Señor es mi luz y mi salvación'?",
+    options: ["Salmo 23", "Salmo 27", "Salmo 91", "Salmo 119"],
+    correct: 1, reference: "Salmo 27:1"
+  },
+  {
+    id: 2065, difficulty: "facil", category: "parabolas",
+    question: "¿Sobre qué fundamento construyó el hombre sabio?",
+    options: ["Arena", "Roca", "Madera", "Hierro"],
+    correct: 1, reference: "Mateo 7:24"
+  },
+  {
+    id: 2066, difficulty: "medio", category: "parabolas",
+    question: "¿Qué buscó la mujer que perdió una moneda?",
+    options: ["Un denario", "Una dracma", "Un talento", "Un siclo"],
+    correct: 1, reference: "Lucas 15:8"
+  },
+  {
+    id: 2067, difficulty: "dificil", category: "historias",
+    question: "¿Quién interpretó el sueño de Faraón sobre las vacas?",
+    options: ["Moisés", "Daniel", "José", "Aarón"],
+    correct: 2, reference: "Génesis 41:25-32"
+  },
+  {
+    id: 2068, difficulty: "experto", category: "personajes",
+    question: "¿Quién era Gamaliel?",
+    options: ["Un apóstol", "Un fariseo maestro de Pablo", "Un rey de Israel", "Un profeta menor"],
+    correct: 1, reference: "Hechos 22:3"
+  },
+  {
+    id: 2069, difficulty: "facil", category: "personajes",
+    question: "¿Quién escribió el libro de Apocalipsis?",
+    options: ["Pablo", "Pedro", "Juan", "Santiago"],
+    correct: 2, reference: "Apocalipsis 1:1"
+  },
+  {
+    id: 2070, difficulty: "medio", category: "cartas",
+    question: "¿A quién llamó Pablo 'mi verdadero hijo en la fe'?",
+    options: ["Tito", "Timoteo", "Filemón", "Lucas"],
+    correct: 1, reference: "1 Timoteo 1:2"
+  },
+  {
+    id: 2071, difficulty: "facil", category: "historias",
+    question: "¿Qué hizo Jesús antes de ser crucificado en el huerto?",
+    options: ["Predicó", "Oró", "Sanó enfermos", "Enseñó"],
+    correct: 1, reference: "Mateo 26:36-44"
+  },
+  {
+    id: 2072, difficulty: "medio", category: "milagros",
+    question: "¿Qué hijo de la viuda resucitó Elías?",
+    options: ["En Belén", "En Jerusalén", "En Sarepta", "En Samaria"],
+    correct: 2, reference: "1 Reyes 17:17-24"
+  },
+  {
+    id: 2073, difficulty: "dificil", category: "cartas",
+    question: "¿Qué carta menciona la armadura de Dios?",
+    options: ["Romanos", "Colosenses", "Efesios", "Filipenses"],
+    correct: 2, reference: "Efesios 6:10-18"
+  },
+  {
+    id: 2074, difficulty: "facil", category: "lugares",
+    question: "¿En qué jardín oró Jesús antes de ser arrestado?",
+    options: ["Edén", "Getsemaní", "Huerto del rey", "Monte Sion"],
+    correct: 1, reference: "Mateo 26:36"
+  },
+  {
+    id: 2075, difficulty: "medio", category: "personajes",
+    question: "¿Quién era Bernabé?",
+    options: ["Un apóstol original", "Compañero de Pablo", "Un fariseo", "Un rey"],
+    correct: 1, reference: "Hechos 13:2"
+  },
+  {
+    id: 2076, difficulty: "facil", category: "ensenanzas",
+    question: "¿Qué dijo Jesús que es la sal que pierde su sabor?",
+    options: ["Útil para cocinar", "Para nada sirve", "Para conservar", "Para curar"],
+    correct: 1, reference: "Mateo 5:13"
+  },
+  {
+    id: 2077, difficulty: "dificil", category: "versiculos",
+    question: "¿Dónde dice 'Mas el fruto del Espíritu es amor, gozo, paz...'?",
+    options: ["Romanos 8", "1 Corintios 13", "Gálatas 5", "Efesios 4"],
+    correct: 2, reference: "Gálatas 5:22"
+  },
+  {
+    id: 2078, difficulty: "facil", category: "historias",
+    question: "¿Cuántos días duró el diluvio de Noé?",
+    options: ["7 días", "40 días", "100 días", "1 año"],
+    correct: 1, reference: "Génesis 7:12"
+  },
+  {
+    id: 2079, difficulty: "medio", category: "parabolas",
+    question: "¿Qué semilla es la más pequeña pero crece muy grande?",
+    options: ["Trigo", "Mostaza", "Cizaña", "Cebada"],
+    correct: 1, reference: "Mateo 13:31-32"
+  },
+  {
+    id: 2080, difficulty: "experto", category: "historias",
+    question: "¿Cuántos años reinó David en Israel?",
+    options: ["30", "33", "40", "45"],
+    correct: 2, reference: "2 Samuel 5:4"
+  },
+  {
+    id: 2081, difficulty: "facil", category: "personajes",
+    question: "¿Quién fue el discípulo amado de Jesús?",
+    options: ["Pedro", "Juan", "Santiago", "Andrés"],
+    correct: 1, reference: "Juan 21:20"
+  },
+  {
+    id: 2082, difficulty: "medio", category: "lugares",
+    question: "¿Dónde fue bautizado Jesús?",
+    options: ["Mar de Galilea", "Río Jordán", "Mar Muerto", "Río Éufrates"],
+    correct: 1, reference: "Mateo 3:13"
+  },
+  {
+    id: 2083, difficulty: "dificil", category: "personajes",
+    question: "¿Quién fue el profeta que ungió a David como rey?",
+    options: ["Elías", "Eliseo", "Samuel", "Natán"],
+    correct: 2, reference: "1 Samuel 16:13"
+  },
+  {
+    id: 2084, difficulty: "facil", category: "milagros",
+    question: "¿A qué ciego sanó Jesús en Jericó?",
+    options: ["Lázaro", "Bartimeo", "Zaqueo", "Simón"],
+    correct: 1, reference: "Marcos 10:46-52"
+  },
+  {
+    id: 2085, difficulty: "medio", category: "cartas",
+    question: "¿Qué carta fue escrita a un esclavo fugitivo?",
+    options: ["Tito", "Filemón", "Timoteo", "Hebreos"],
+    correct: 1, reference: "Filemón 1:10-16"
+  },
+  {
+    id: 2086, difficulty: "facil", category: "ensenanzas",
+    question: "¿Cómo llamó Jesús a sus discípulos?",
+    options: ["Siervos", "Amigos", "Esclavos", "Hijos"],
+    correct: 1, reference: "Juan 15:15"
+  },
+  {
+    id: 2087, difficulty: "dificil", category: "historias",
+    question: "¿Cuántos jueces tuvo Israel según el libro de Jueces?",
+    options: ["10", "12", "14", "15"],
+    correct: 1, reference: "Jueces 2-16"
+  },
+  {
+    id: 2088, difficulty: "facil", category: "versiculos",
+    question: "¿Qué libro comienza con 'En el principio creó Dios...'?",
+    options: ["Juan", "Génesis", "Éxodo", "Salmos"],
+    correct: 1, reference: "Génesis 1:1"
+  },
+  {
+    id: 2089, difficulty: "medio", category: "personajes",
+    question: "¿Quién fue el ángel que anunció a María el nacimiento de Jesús?",
+    options: ["Miguel", "Gabriel", "Rafael", "Uriel"],
+    correct: 1, reference: "Lucas 1:26"
+  },
+  {
+    id: 2090, difficulty: "experto", category: "cartas",
+    question: "¿Qué carta advierte contra los falsos maestros que niegan la venida de Cristo?",
+    options: ["1 Juan", "2 Pedro", "Judas", "1 Tesalonicenses"],
+    correct: 1, reference: "2 Pedro 3:3-4"
+  },
+  {
+    id: 2091, difficulty: "facil", category: "parabolas",
+    question: "¿Qué perdió la oveja perdida según la parábola?",
+    options: ["Su lana", "Su camino", "Su pastor", "Su rebaño"],
+    correct: 1, reference: "Lucas 15:4"
+  },
+  {
+    id: 2092, difficulty: "medio", category: "milagros",
+    question: "¿Qué enfermedad sanó Jesús tocando el oído de Malco?",
+    options: ["Sordera", "Le restauró la oreja cortada", "Ceguera", "Mudez"],
+    correct: 1, reference: "Lucas 22:51"
+  },
+  {
+    id: 2093, difficulty: "facil", category: "lugares",
+    question: "¿Dónde estaba el templo de Jerusalén?",
+    options: ["Monte Sinaí", "Monte Moriah", "Monte Carmelo", "Monte Tabor"],
+    correct: 1, reference: "2 Crónicas 3:1"
+  },
+  {
+    id: 2094, difficulty: "dificil", category: "personajes",
+    question: "¿Quién fue Nicodemo?",
+    options: ["Un publicano", "Un fariseo que visitó a Jesús de noche", "Un centurión", "Un discípulo"],
+    correct: 1, reference: "Juan 3:1-2"
+  },
+  {
+    id: 2095, difficulty: "facil", category: "historias",
+    question: "¿Qué comió Jesús después de resucitar con sus discípulos?",
+    options: ["Pan y vino", "Pescado asado", "Cordero", "Frutas"],
+    correct: 1, reference: "Lucas 24:42-43"
+  },
+  {
+    id: 2096, difficulty: "medio", category: "ensenanzas",
+    question: "¿Cuáles son las dos tablas de la ley?",
+    options: ["Fe y obras", "Amor a Dios y amor al prójimo", "Oración y ayuno", "Gracia y verdad"],
+    correct: 1, reference: "Mateo 22:37-40"
+  },
+  {
+    id: 2097, difficulty: "experto", category: "versiculos",
+    question: "¿Dónde está el versículo más corto de la Biblia en español?",
+    options: ["1 Tesalonicenses 5:16", "Juan 11:35", "Job 3:2", "Éxodo 20:15"],
+    correct: 1, reference: "Juan 11:35 - Jesús lloró"
+  },
+  {
+    id: 2098, difficulty: "facil", category: "cartas",
+    question: "¿Cuál es el tema principal de Romanos?",
+    options: ["El amor", "La justificación por fe", "Los dones", "El fin del mundo"],
+    correct: 1, reference: "Romanos 1:17"
+  },
+  {
+    id: 2099, difficulty: "medio", category: "historias",
+    question: "¿Qué ángel luchó con Jacob toda la noche?",
+    options: ["Miguel", "Gabriel", "El Ángel del Señor", "Rafael"],
+    correct: 2, reference: "Génesis 32:24-30"
+  },
+  {
+    id: 2100, difficulty: "facil", category: "personajes",
+    question: "¿Quién fue María Magdalena?",
+    options: ["La madre de Jesús", "Una mujer de quien Jesús echó demonios", "La esposa de Pedro", "Una profetisa"],
+    correct: 1, reference: "Lucas 8:2"
   }
 
 
@@ -39128,6 +39754,7 @@ window.IMPOSTOR_WORDS = IMPOSTOR_WORDS;
 
 
 window.QUESTIONS_DB = QUESTIONS_DB;
+
 
 
 

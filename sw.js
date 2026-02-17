@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliaquiz-v42';
+const CACHE_NAME = 'bibliaquiz-v45';
 const ASSETS = [
   './',
   './index.html',
@@ -6,6 +6,9 @@ const ASSETS = [
   './js/questions.js',
   './js/definitions.js',
   './js/storage.js',
+  './js/billing.js',
+  './js/ads.js',
+  './js/notifications.js',
   './js/app.js',
   './manifest.json',
   './icons/icon-72.png',
@@ -21,7 +24,7 @@ const ASSETS = [
 ];
 
 // Files that should always fetch fresh from network
-const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js'];
+const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js', 'billing.js', 'ads.js', 'notifications.js'];
 
 // Install - cache all essential assets
 self.addEventListener('install', event => {
@@ -78,4 +81,65 @@ self.addEventListener('fetch', event => {
       })
     );
   }
+});
+
+// Push Notification - mostrar notificación cuando llegue del servidor
+self.addEventListener('push', event => {
+  let data = {
+    title: '📖 BibliaQuiz',
+    body: '¡Tienes un nuevo desafío esperándote!',
+    icon: '/icons/icon-192.png',
+    badge: '/icons/icon-96.png'
+  };
+
+  if (event.data) {
+    try {
+      data = { ...data, ...event.data.json() };
+    } catch (e) {
+      data.body = event.data.text();
+    }
+  }
+
+  event.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: data.icon,
+      badge: data.badge,
+      vibrate: [200, 100, 200],
+      tag: 'bibliaquiz-push',
+      renotify: true,
+      data: { url: data.url || '/' },
+      actions: [
+        { action: 'open', title: '🎮 Jugar' },
+        { action: 'dismiss', title: '❌ Cerrar' }
+      ]
+    })
+  );
+});
+
+// Notification Click - manejar click en notificación
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+
+  if (event.action === 'dismiss') {
+    return;
+  }
+
+  const urlToOpen = event.notification.data?.url || '/';
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
+      // Si ya hay una ventana abierta, enfocarla
+      for (const client of clientList) {
+        if (client.url.includes(self.location.origin) && 'focus' in client) {
+          client.postMessage({ type: 'notification-click', action: event.action });
+          return client.focus();
+        }
+      }
+      // Si no hay ventana, abrir una nueva
+      if (clients.openWindow) {
+        return clients.openWindow(urlToOpen);
+      }
+    })
+  );
 });

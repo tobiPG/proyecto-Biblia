@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnPrivacy) {
     btnPrivacy.addEventListener('click', () => App.showScreen('privacy'));
   }
+  // Botón Términos de Uso
+  const btnTerms = document.getElementById('btn-terms');
+  if (btnTerms) {
+    btnTerms.addEventListener('click', () => App.showScreen('terms'));
+  }
   // Botón Valorar App
   const btnRate = document.getElementById('btn-rate');
   if (btnRate) {
@@ -364,7 +369,8 @@ const App = {
       this.showScreen('settings');
     });
     document.getElementById('btn-verse').addEventListener('click', () => {
-      this.showNewVerse();
+      this.renderVerses();
+      this.showScreen('verses');
     });
     // Study mode
     document.getElementById('btn-study').addEventListener('click', () => {
@@ -533,12 +539,25 @@ const App = {
       this.renderShop();
       this.showScreen('shop');
     });
-    // Shop buy buttons
-    document.querySelectorAll('.shop-item-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const action = btn.dataset.buy;
-        this.handleShopBuy(action);
-      });
+    // Shop buy buttons (delegación de eventos para botones dinámicos)
+    document.querySelector('.shop-container').addEventListener('click', (e) => {
+      const btn = e.target.closest('.shop-item-btn');
+      if (btn) {
+        const productId = btn.dataset.buy;
+        this.handleShopBuy(productId);
+      }
+    });
+    // Restaurar compras
+    document.getElementById('btn-restore-purchases').addEventListener('click', () => {
+      this.handleRestorePurchases();
+    });
+    // Gestionar suscripción
+    document.getElementById('btn-manage-subscription').addEventListener('click', () => {
+      this.handleManageSubscription();
+    });
+    // Escuchar eventos de compra
+    window.addEventListener('billing:purchase', (e) => {
+      this.onPurchaseComplete(e.detail);
     });
     // Back buttons
     document.querySelectorAll('.back-btn').forEach(btn => {
@@ -652,6 +671,10 @@ const App = {
     document.getElementById('btn-share-results').addEventListener('click', () => {
       this.shareResults();
     });
+    // Share as image
+    document.getElementById('btn-share-image')?.addEventListener('click', () => {
+      this.shareResultsAsImage();
+    });
     // Export / Import
     document.getElementById('btn-export').addEventListener('click', () => {
       this.exportData();
@@ -675,6 +698,13 @@ const App = {
       this.renderSettings();
       this.showScreen('home');
       this.renderHome();
+    });
+    // Promo code redeem
+    document.getElementById('btn-redeem-code')?.addEventListener('click', () => {
+      this.redeemPromoCode();
+    });
+    document.getElementById('promo-code')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') this.redeemPromoCode();
     });
     // Settings changes
     document.getElementById('setting-name').addEventListener('change', (e) => {
@@ -761,11 +791,48 @@ const App = {
         this.requestNotificationPermission();
       } else {
         Storage.saveNotifEnabled(false);
+        document.getElementById('notif-time-setting').classList.add('hidden');
+        if (typeof PushNotifications !== 'undefined') {
+          PushNotifications.setDailyReminder(false);
+        }
       }
     });
+    // Notification time change
+    const notifTimeInput = document.getElementById('setting-notif-time');
+    if (notifTimeInput) {
+      notifTimeInput.addEventListener('change', (e) => {
+        const [hour, minute] = e.target.value.split(':').map(Number);
+        if (typeof PushNotifications !== 'undefined') {
+          PushNotifications.setDailyReminder(true, hour, minute);
+        }
+        this.showToast(`⏰ Recordatorio programado a las ${e.target.value}`);
+      });
+    }
+    // Streak notification toggle
+    const streakNotifToggle = document.getElementById('setting-streak-notif');
+    if (streakNotifToggle) {
+      streakNotifToggle.addEventListener('change', (e) => {
+        if (typeof PushNotifications !== 'undefined') {
+          PushNotifications.setStreakReminder(e.target.checked);
+        }
+        Storage.saveStreakNotifEnabled(e.target.checked);
+      });
+    }
     // Daily challenge
     document.getElementById('btn-daily-challenge').addEventListener('click', () => {
       this.startDailyChallenge();
+    });
+    // Verse favorite button
+    document.getElementById('btn-verse-favorite')?.addEventListener('click', () => {
+      this.toggleCurrentVerseFavorite();
+    });
+    // New verse button
+    document.getElementById('btn-verse-new')?.addEventListener('click', () => {
+      this.showNewVerse();
+    });
+    // View favorites button
+    document.getElementById('btn-view-favorites')?.addEventListener('click', () => {
+      this.showScreen('verses');
     });
   },
   // === HOME ===
@@ -790,18 +857,165 @@ const App = {
   showDailyVerse() {
     // Mostrar siempre el primer versiculo para evitar vacios
     const verse = DAILY_VERSES[0];
+    this.currentVerse = verse;
     document.getElementById('verse-text').textContent = `"${verse.text}"`;
     document.getElementById('verse-ref').textContent = ` ${verse.ref}`;
+    this.updateVerseFavoriteButton();
   },
   showNewVerse() {
     const verse = DAILY_VERSES[Math.floor(Math.random() * DAILY_VERSES.length)];
+    this.currentVerse = verse;
     document.getElementById('verse-text').textContent = `"${verse.text}"`;
     document.getElementById('verse-ref').textContent = ` ${verse.ref}`;
+    this.updateVerseFavoriteButton();
     const card = document.getElementById('verse-card');
     card.style.display = 'block';
     card.style.animation = 'none';
     card.offsetHeight; // trigger reflow
     card.style.animation = 'slideUp 0.4s ease';
+  },
+  updateVerseFavoriteButton() {
+    const btn = document.getElementById('btn-verse-favorite');
+    if (!btn || !this.currentVerse) return;
+    const isFav = Storage.isFavoriteVerse(this.currentVerse.text);
+    btn.textContent = isFav ? '❤️' : '🤍';
+    btn.classList.toggle('is-favorite', isFav);
+  },
+  toggleCurrentVerseFavorite() {
+    if (!this.currentVerse) return;
+    
+    const isFav = Storage.isFavoriteVerse(this.currentVerse.text);
+    if (isFav) {
+      Storage.removeFavoriteVerse(this.currentVerse.text);
+      this.showToast('💔 Versículo eliminado de favoritos');
+    } else {
+      Storage.addFavoriteVerse(this.currentVerse);
+      this.showToast('❤️ Versículo guardado en favoritos');
+    }
+    this.updateVerseFavoriteButton();
+  },
+  // === PANTALLA VERSÍCULOS ===
+  versesFilter: 'all',
+  renderVerses() {
+    const container = document.getElementById('verses-list');
+    const emptyState = document.getElementById('verses-empty');
+    if (!container) return;
+    
+    // Bind filter buttons
+    document.querySelectorAll('.verses-filter-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.verses-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.versesFilter = btn.dataset.filter;
+        this.renderVersesList();
+      };
+    });
+    
+    this.renderVersesList();
+  },
+  renderVersesList() {
+    const container = document.getElementById('verses-list');
+    const emptyState = document.getElementById('verses-empty');
+    const favorites = Storage.getFavoriteVerses();
+    
+    let versesToShow = [];
+    
+    if (this.versesFilter === 'all') {
+      // Show all verses from DAILY_VERSES, marking favorites
+      versesToShow = DAILY_VERSES.map(verse => {
+        const fav = favorites.find(f => f.text === verse.text);
+        return {
+          ...verse,
+          isFavorite: !!fav,
+          memorized: fav?.memorized || false,
+          savedAt: fav?.savedAt
+        };
+      });
+    } else if (this.versesFilter === 'favorites') {
+      versesToShow = favorites.map(f => ({
+        ...f,
+        isFavorite: true
+      }));
+    } else if (this.versesFilter === 'memorized') {
+      versesToShow = favorites.filter(f => f.memorized).map(f => ({
+        ...f,
+        isFavorite: true
+      }));
+    }
+    
+    if (versesToShow.length === 0) {
+      container.innerHTML = '';
+      emptyState?.classList.remove('hidden');
+      return;
+    }
+    
+    emptyState?.classList.add('hidden');
+    
+    container.innerHTML = versesToShow.map((verse, idx) => `
+      <div class="verse-item ${verse.memorized ? 'memorized' : ''}" data-idx="${idx}">
+        <div class="verse-item-content">
+          <p class="verse-item-text">"${escapeHTML(verse.text)}"</p>
+          <p class="verse-item-ref">${escapeHTML(verse.ref)}</p>
+        </div>
+        <div class="verse-item-actions">
+          <button class="verse-item-btn ${verse.isFavorite ? 'active' : ''}" data-action="favorite" data-text="${escapeHTML(verse.text)}" data-ref="${escapeHTML(verse.ref)}" aria-label="${verse.isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}">
+            ${verse.isFavorite ? '❤️' : '🤍'}
+          </button>
+          ${verse.isFavorite ? `
+            <button class="verse-item-btn ${verse.memorized ? 'active' : ''}" data-action="memorize" data-text="${escapeHTML(verse.text)}" aria-label="${verse.memorized ? 'Desmarcar memorizado' : 'Marcar como memorizado'}">
+              ${verse.memorized ? '✅' : '📝'}
+            </button>
+          ` : ''}
+          <button class="verse-item-btn" data-action="share" data-text="${escapeHTML(verse.text)}" data-ref="${escapeHTML(verse.ref)}" aria-label="Compartir versículo">
+            📤
+          </button>
+        </div>
+      </div>
+    `).join('');
+    
+    // Bind actions
+    container.querySelectorAll('.verse-item-btn').forEach(btn => {
+      btn.onclick = () => {
+        const action = btn.dataset.action;
+        const text = btn.dataset.text;
+        const ref = btn.dataset.ref;
+        
+        if (action === 'favorite') {
+          const isFav = Storage.isFavoriteVerse(text);
+          if (isFav) {
+            Storage.removeFavoriteVerse(text);
+            this.showToast('💔 Eliminado de favoritos');
+          } else {
+            Storage.addFavoriteVerse({ text, ref });
+            this.showToast('❤️ Agregado a favoritos');
+          }
+          this.renderVersesList();
+        } else if (action === 'memorize') {
+          const isNowMemorized = Storage.toggleMemorizedVerse(text);
+          this.showToast(isNowMemorized ? '✅ Marcado como memorizado' : '📝 Desmarcado');
+          this.renderVersesList();
+        } else if (action === 'share') {
+          this.shareVerse(text, ref);
+        }
+      };
+    });
+  },
+  shareVerse(text, ref) {
+    const shareText = `"${text}" - ${ref}\n\n📖 BibliaQuiz App`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'Versículo Bíblico',
+        text: shareText
+      }).catch(() => {});
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard?.writeText(shareText).then(() => {
+        this.showToast('📋 Versículo copiado al portapapeles');
+      }).catch(() => {
+        this.showToast('No se pudo copiar', 'error');
+      });
+    }
   },
   // === CATEGORIAS ===
   renderCategories() {
@@ -1269,8 +1483,9 @@ const App = {
     return this.difficultyOrder[idx];
   },
   startNextPhase() {
-    // Mostrar anuncio cada 2 fases completadas
-    if (this.currentPhase % 2 === 0) {
+    // Mostrar anuncio cada 2 fases completadas (solo si no es premium)
+    const canShowAds = typeof Billing === 'undefined' || Billing.canShowAds();
+    if (this.currentPhase % 2 === 0 && canShowAds) {
       document.getElementById('phase-overlay').classList.add('hidden');
       this.showAdOverlay(() => {
         this._doStartNextPhase();
@@ -1482,16 +1697,24 @@ const App = {
     }
     // Update infinite button label
     const label = document.getElementById('infinite-lives-label');
-    const btn = label.closest('.shop-item-btn');
-    if (this.infiniteLives) {
-      label.textContent = 'Desactivar';
-      btn.classList.add('active');
-    } else {
-      label.textContent = 'Activar';
-      btn.classList.remove('active');
+    const btn = label ? label.closest('.shop-item-btn') : null;
+    if (btn) {
+      if (this.infiniteLives) {
+        label.textContent = 'Desactivar';
+        btn.classList.add('active');
+      } else {
+        label.textContent = 'Activar';
+        btn.classList.remove('active');
+      }
     }
   },
   handleShopBuy(action) {
+    // Nueva lógica de compra usando Billing
+    if (typeof Billing !== 'undefined') {
+      this.handleShopBuyNew(action);
+      return;
+    }
+    // Fallback legacy
     if (action === '1') {
       if (this.lives >= this.maxLives) {
         this.showToast('❤️ Ya tienes todas las vidas', 'info');
@@ -1524,6 +1747,159 @@ const App = {
     this.renderLives();
     this.renderHomeLives();
   },
+  
+  // === NUEVAS FUNCIONES DE BILLING ===
+  async handleShopBuyNew(productId) {
+    if (!productId) return;
+    
+    // Mapear IDs antiguos a nuevos
+    const productMap = {
+      '1': 'life_1',
+      'full': 'life_full',
+      'infinite': 'premium_monthly'
+    };
+    
+    const mappedId = productMap[productId] || productId;
+    
+    // Verificar si ya tiene vidas completas para productos de vidas
+    if (mappedId === 'life_1' || mappedId === 'life_full') {
+      if (this.lives >= this.maxLives && !Billing.isPremium) {
+        this.showToast('❤️ Ya tienes todas las vidas', 'info');
+        return;
+      }
+    }
+    
+    // Iniciar compra
+    this.showToast('🛒 Procesando...', 'info');
+    
+    const result = await Billing.purchase(mappedId);
+    
+    if (result.success) {
+      console.log('[Shop] Compra exitosa:', result.purchase);
+    } else if (result.error !== 'cancelled') {
+      this.showToast('❌ Error: ' + result.error, 'error');
+    }
+  },
+  
+  onPurchaseComplete(purchase) {
+    switch (purchase.productId) {
+      case 'life_1':
+        this.lives = Math.min(this.maxLives, this.lives + 1);
+        this.saveLivesState();
+        this.playSound('correct');
+        this.showToast('❤️ +1 vida obtenida');
+        break;
+        
+      case 'life_full':
+        this.lives = this.maxLives;
+        this.saveLivesState();
+        this.playSound('correct');
+        this.showToast('💕 ¡Vidas al máximo!');
+        break;
+        
+      case 'premium_monthly':
+      case 'premium_yearly':
+        this.infiniteLives = true;
+        this.saveInfiniteLives();
+        this.playSound('complete');
+        this.showToast('👑 ¡Bienvenido a Premium!');
+        const stats = Storage.getStats();
+        stats.isPremium = true;
+        stats.premiumDate = new Date().toISOString();
+        Storage.saveStats(stats);
+        break;
+        
+      case 'remove_ads':
+        this.playSound('complete');
+        this.showToast('🚫 ¡Anuncios eliminados!');
+        break;
+    }
+    
+    this.renderShop();
+    this.renderLives();
+    this.renderHomeLives();
+  },
+  
+  async handleRestorePurchases() {
+    this.showToast('🔄 Restaurando compras...', 'info');
+    
+    try {
+      const purchases = await Billing.restorePurchases();
+      
+      if (purchases.length > 0) {
+        Billing.checkPremiumStatus();
+        
+        if (Billing.isPremium) {
+          this.infiniteLives = true;
+          this.saveInfiniteLives();
+        }
+        
+        this.renderShop();
+        this.showToast('✅ Compras restauradas: ' + purchases.length);
+      } else {
+        this.showToast('ℹ️ No hay compras para restaurar', 'info');
+      }
+    } catch (e) {
+      this.showToast('❌ Error al restaurar', 'error');
+    }
+  },
+  
+  async handleManageSubscription() {
+    const result = await this.showConfirmModal(
+      '⚙️ Gestionar Suscripción',
+      '¿Qué deseas hacer con tu suscripción Premium?',
+      'Cancelar Suscripción',
+      'Volver'
+    );
+    
+    if (result) {
+      const cancelResult = await Billing.cancelSubscription();
+      if (cancelResult.success) {
+        this.showToast('📋 ' + cancelResult.message);
+        this.renderShop();
+      } else {
+        this.showToast('❌ ' + cancelResult.error, 'error');
+      }
+    }
+  },
+  
+  showConfirmModal(title, message, confirmText, cancelText) {
+    return new Promise((resolve) => {
+      const modal = document.getElementById('reset-modal');
+      const modalTitle = modal.querySelector('h3');
+      const modalMsg = modal.querySelector('p');
+      const confirmBtn = document.getElementById('modal-confirm');
+      const cancelBtn = document.getElementById('modal-cancel');
+      
+      modalTitle.textContent = title;
+      modalMsg.textContent = message;
+      confirmBtn.textContent = confirmText;
+      cancelBtn.textContent = cancelText;
+      
+      modal.classList.remove('hidden');
+      
+      const handleConfirm = () => {
+        modal.classList.add('hidden');
+        cleanup();
+        resolve(true);
+      };
+      
+      const handleCancel = () => {
+        modal.classList.add('hidden');
+        cleanup();
+        resolve(false);
+      };
+      
+      const cleanup = () => {
+        confirmBtn.removeEventListener('click', handleConfirm);
+        cancelBtn.removeEventListener('click', handleCancel);
+      };
+      
+      confirmBtn.addEventListener('click', handleConfirm);
+      cancelBtn.addEventListener('click', handleCancel);
+    });
+  },
+  
   showNoLivesScreen() {
     // Mostrar el game over overlay como pantalla de "sin vidas"
     document.getElementById('gameover-phase').textContent = '-';
@@ -1607,6 +1983,13 @@ const App = {
   },
   // ========== ANUNCIOS ==========
   showAdOverlay(onComplete) {
+    // Si el usuario es premium, no mostrar anuncios
+    const canShowAds = typeof Billing === 'undefined' || Billing.canShowAds();
+    if (!canShowAds) {
+      if (onComplete) onComplete();
+      return;
+    }
+    
     this._adCallback = onComplete;
     const overlay = document.getElementById('ad-overlay');
     const closeBtn = document.getElementById('btn-close-ad');
@@ -1984,7 +2367,25 @@ const App = {
     // Theme 3-way
     this.updateThemeButtons(Storage.getTheme());
     // Notifications
-    document.getElementById('setting-notifications').checked = Storage.getNotifEnabled();
+    const notifEnabled = Storage.getNotifEnabled();
+    document.getElementById('setting-notifications').checked = notifEnabled;
+    
+    // Show/hide notification time input based on permission status
+    const notifTimeSettingEl = document.getElementById('notif-time-setting');
+    if (notifTimeSettingEl) {
+      if (notifEnabled && Notification.permission === 'granted') {
+        notifTimeSettingEl.classList.remove('hidden');
+        document.getElementById('setting-notif-time').value = Storage.getNotifTime();
+      } else {
+        notifTimeSettingEl.classList.add('hidden');
+      }
+    }
+    
+    // Streak notification toggle
+    const streakNotifToggle = document.getElementById('setting-streak-notif');
+    if (streakNotifToggle) {
+      streakNotifToggle.checked = Storage.getStreakNotifEnabled();
+    }
   },
   loadSettings() {
     // Just ensure defaults exist
@@ -2861,6 +3262,182 @@ const App = {
     }
   },
   // ============================================================
+  // COMPARTIR COMO IMAGEN
+  // ============================================================
+  async shareResultsAsImage() {
+    const total = this.currentQuestions.length;
+    const percentage = Math.round((this.sessionCorrect / total) * 100);
+    const cat = CATEGORIES[this.selectedCategory];
+    const catName = cat ? cat.name : this.selectedCategory;
+    const player = Storage.getPlayer();
+    
+    // Create canvas
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 600;
+    canvas.height = 400;
+    
+    // Background gradient
+    const gradient = ctx.createLinearGradient(0, 0, 600, 400);
+    gradient.addColorStop(0, '#1a1a2e');
+    gradient.addColorStop(1, '#16213e');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 600, 400);
+    
+    // Border decoration
+    ctx.strokeStyle = '#6C63FF';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(10, 10, 580, 380);
+    
+    // Header
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 32px Nunito, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('📖 BibliaQuiz', 300, 55);
+    
+    // Score circle
+    ctx.beginPath();
+    ctx.arc(300, 150, 55, 0, Math.PI * 2);
+    let scoreColor = '#FF6584';
+    if (percentage >= 80) scoreColor = '#4CAF50';
+    else if (percentage >= 60) scoreColor = '#6C63FF';
+    else if (percentage >= 40) scoreColor = '#FFC107';
+    ctx.fillStyle = scoreColor;
+    ctx.fill();
+    
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 36px Nunito, sans-serif';
+    ctx.fillText(`${percentage}%`, 300, 162);
+    
+    // Stats row
+    ctx.font = '20px Nunito, sans-serif';
+    ctx.fillStyle = '#E0E0E0';
+    ctx.fillText(`✓ ${this.sessionCorrect} correctas · ✗ ${this.sessionWrong} incorrectas`, 300, 230);
+    ctx.fillText(`⭐ ${this.sessionPoints} puntos`, 300, 260);
+    
+    // Category
+    ctx.font = '18px Nunito, sans-serif';
+    ctx.fillStyle = '#6C63FF';
+    ctx.fillText(`${cat?.icon || '📚'} ${catName}`, 300, 300);
+    
+    // Player info
+    ctx.font = '16px Nunito, sans-serif';
+    ctx.fillStyle = '#888';
+    ctx.fillText(`${player.avatar} ${player.name} · Nivel ${player.level}`, 300, 330);
+    
+    // Call to action
+    ctx.font = 'italic 14px Nunito, sans-serif';
+    ctx.fillStyle = '#666';
+    ctx.fillText('¡Descarga BibliaQuiz y pon a prueba tu conocimiento!', 300, 370);
+    
+    // Convert to blob and share
+    try {
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      const file = new File([blob], 'bibliaquiz-resultado.png', { type: 'image/png' });
+      
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          title: 'Mi resultado en BibliaQuiz',
+          text: `¡Obtuve ${percentage}% en BibliaQuiz!`,
+          files: [file]
+        });
+      } else {
+        // Fallback: download image
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'bibliaquiz-resultado.png';
+        a.click();
+        URL.revokeObjectURL(url);
+        this.showToast('📥 Imagen descargada');
+      }
+    } catch (e) {
+      console.error('[Share] Error sharing image:', e);
+      this.shareResults(); // Fallback to text
+    }
+  },
+  // ============================================================
+  // CÓDIGOS PROMOCIONALES
+  // ============================================================
+  PROMO_CODES: {
+    // Códigos válidos y sus beneficios
+    'VIDASINFINITAS': { type: 'infinite_lives', description: 'Vidas Infinitas' },
+    'BIBLIAQUIZ2026': { type: 'infinite_lives', description: 'Vidas Infinitas' },
+    'GODMODE': { type: 'infinite_lives', description: 'Vidas Infinitas' },
+    'PREMIUM30': { type: 'premium_days', days: 30, description: '30 días Premium' },
+    'BIENVENIDO': { type: 'lives', amount: 5, description: '5 vidas extra' }
+  },
+  
+  redeemPromoCode() {
+    const input = document.getElementById('promo-code');
+    const resultEl = document.getElementById('promo-code-result');
+    if (!input || !resultEl) return;
+    
+    const code = input.value.trim().toUpperCase();
+    resultEl.classList.remove('hidden', 'success', 'error');
+    
+    if (!code) {
+      resultEl.textContent = '❌ Ingresa un código';
+      resultEl.classList.add('error');
+      return;
+    }
+    
+    // Verificar si el código ya fue usado
+    const usedCodes = JSON.parse(localStorage.getItem('bq_used_promo_codes') || '[]');
+    if (usedCodes.includes(code)) {
+      resultEl.textContent = '⚠️ Este código ya fue canjeado';
+      resultEl.classList.add('error');
+      return;
+    }
+    
+    // Buscar el código
+    const promo = this.PROMO_CODES[code];
+    if (!promo) {
+      resultEl.textContent = '❌ Código inválido';
+      resultEl.classList.add('error');
+      return;
+    }
+    
+    // Aplicar beneficio
+    let message = '';
+    switch (promo.type) {
+      case 'infinite_lives':
+        this.infiniteLives = true;
+        this.saveInfiniteLives();
+        this.renderHomeLives();
+        message = `✅ ¡${promo.description} activadas!`;
+        break;
+        
+      case 'premium_days':
+        // Agregar días premium
+        const currentExpiry = localStorage.getItem('bq_premium_expiry');
+        const now = Date.now();
+        const baseDate = currentExpiry ? Math.max(parseInt(currentExpiry), now) : now;
+        const newExpiry = baseDate + (promo.days * 24 * 60 * 60 * 1000);
+        localStorage.setItem('bq_premium_expiry', newExpiry.toString());
+        message = `✅ ¡${promo.description} agregados!`;
+        break;
+        
+      case 'lives':
+        this.lives = Math.min(this.lives + promo.amount, this.maxLives);
+        this.saveLives();
+        this.renderHomeLives();
+        message = `✅ ¡${promo.description} agregadas!`;
+        break;
+    }
+    
+    // Marcar código como usado
+    usedCodes.push(code);
+    localStorage.setItem('bq_used_promo_codes', JSON.stringify(usedCodes));
+    
+    // Mostrar resultado
+    resultEl.textContent = message;
+    resultEl.classList.add('success');
+    input.value = '';
+    
+    this.showToast(message);
+  },
+  // ============================================================
   // EXPORT / IMPORT DATA
   // ============================================================
   exportData() {
@@ -3187,17 +3764,38 @@ const App = {
       document.getElementById('setting-notifications').checked = false;
       return;
     }
-    Notification.requestPermission().then(perm => {
-      if (perm === 'granted') {
-        Storage.saveNotifEnabled(true);
-        this.scheduleDailyReminder();
-        this.showToast('🔔 ¡Recordatorios activados!');
-      } else {
-        Storage.saveNotifEnabled(false);
-        document.getElementById('setting-notifications').checked = false;
-        this.showToast('Permiso denegado para notificaciones', 'error');
-      }
-    });
+
+    // Usar el módulo PushNotifications si está disponible
+    if (typeof PushNotifications !== 'undefined') {
+      PushNotifications.requestPermission().then(result => {
+        if (result.success) {
+          Storage.saveNotifEnabled(true);
+          document.getElementById('notif-time-setting').classList.remove('hidden');
+          PushNotifications.setDailyReminder(true, 9, 0);
+          this.showToast('🔔 ¡Recordatorios activados!');
+        } else {
+          Storage.saveNotifEnabled(false);
+          document.getElementById('setting-notifications').checked = false;
+          document.getElementById('notif-time-setting').classList.add('hidden');
+          this.showToast('Permiso denegado para notificaciones', 'error');
+        }
+      });
+    } else {
+      // Fallback al método anterior
+      Notification.requestPermission().then(perm => {
+        if (perm === 'granted') {
+          Storage.saveNotifEnabled(true);
+          document.getElementById('notif-time-setting').classList.remove('hidden');
+          this.scheduleDailyReminder();
+          this.showToast('🔔 ¡Recordatorios activados!');
+        } else {
+          Storage.saveNotifEnabled(false);
+          document.getElementById('setting-notifications').checked = false;
+          document.getElementById('notif-time-setting').classList.add('hidden');
+          this.showToast('Permiso denegado para notificaciones', 'error');
+        }
+      });
+    }
   },
   scheduleDailyReminder() {
     // Clear any existing reminder
@@ -3248,15 +3846,16 @@ const App = {
     }).join('');
   },
   // ============================================================
-  // PROGRESS CHART (canvas bar chart)
+  // PROGRESS CHART (canvas bar chart - weekly progress)
   // ============================================================
   renderProgressChart() {
     const canvas = document.getElementById('progress-chart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const history = Storage.getHistory();
-    // Take last 10 games (reversed to chronological)
-    const recent = history.slice(0, 10).reverse();
+    
+    // Get weekly stats (last 7 days)
+    const weeklyData = Storage.getWeeklyStats();
+    
     // Set actual canvas size for sharp rendering
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
@@ -3266,63 +3865,145 @@ const App = {
     const W = rect.width;
     const H = rect.height;
     ctx.clearRect(0, 0, W, H);
-    if (recent.length < 2) {
-      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#888';
-      ctx.font = '13px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('Juega al menos 2 partidas para ver el grafico', W / 2, H / 2);
-      return;
-    }
-    const padL = 36, padR = 12, padT = 16, padB = 28;
-    const chartW = W - padL - padR;
-    const chartH = H - padT - padB;
-    const n = recent.length;
-    const barGroupW = chartW / n;
+    
     // Get theme colors
     const cs = getComputedStyle(document.documentElement);
     const primaryColor = cs.getPropertyValue('--primary').trim() || '#6C63FF';
     const accentColor = cs.getPropertyValue('--accent').trim() || '#FF6584';
+    const successColor = cs.getPropertyValue('--success').trim() || '#4CAF50';
     const gridColor = cs.getPropertyValue('--text-secondary').trim() || '#555';
     const textColor = cs.getPropertyValue('--text-secondary').trim() || '#888';
+    const bgColor = cs.getPropertyValue('--bg-card').trim() || '#1a1a2e';
+    
+    // Check if there's any data
+    const totalGames = weeklyData.reduce((sum, d) => sum + d.games, 0);
+    if (totalGames === 0) {
+      ctx.fillStyle = textColor;
+      ctx.font = '13px Nunito, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Juega partidas para ver tu progreso semanal', W / 2, H / 2 - 10);
+      ctx.font = '11px Nunito, sans-serif';
+      ctx.fillText('📊 Aquí verás tus estadísticas diarias', W / 2, H / 2 + 15);
+      return;
+    }
+    
+    const padL = 40, padR = 16, padT = 30, padB = 45;
+    const chartW = W - padL - padR;
+    const chartH = H - padT - padB;
+    const n = weeklyData.length;
+    const barGroupW = chartW / n;
+    
+    // Find max values for scaling
+    const maxGames = Math.max(...weeklyData.map(d => d.games), 1);
+    const maxPoints = Math.max(...weeklyData.map(d => d.points), 10);
+    
     // Draw Y axis guides
-    ctx.strokeStyle = gridColor + '33';
-    ctx.lineWidth = 0.5;
-    for (let pct = 0; pct <= 100; pct += 25) {
-      const y = padT + chartH - (chartH * pct / 100);
+    ctx.strokeStyle = gridColor + '22';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const y = padT + (chartH * i / 4);
       ctx.beginPath();
+      ctx.setLineDash([3, 3]);
       ctx.moveTo(padL, y);
       ctx.lineTo(W - padR, y);
       ctx.stroke();
-      ctx.fillStyle = textColor;
-      ctx.font = '10px sans-serif';
-      ctx.textAlign = 'right';
-      ctx.fillText(`${pct}`, padL - 4, y + 3);
+      ctx.setLineDash([]);
     }
-    // Draw bars
-    recent.forEach((game, i) => {
-      const acc = game.total > 0 ? (game.correct / game.total) * 100 : 0;
-      const ptsNorm = Math.min(game.points / 10, 100); // normalize points (divide by 10, cap at 100)
-      const x = padL + i * barGroupW;
-      const bw = barGroupW * 0.3;
-      const gap = barGroupW * 0.08;
-      // Accuracy bar
-      const h1 = (chartH * acc) / 100;
-      ctx.fillStyle = primaryColor;
+    
+    // Draw bars for each day
+    weeklyData.forEach((day, i) => {
+      const x = padL + i * barGroupW + barGroupW * 0.1;
+      const barW = barGroupW * 0.8;
+      
+      // Background bar (empty state)
+      const bgHeight = chartH;
+      ctx.fillStyle = gridColor + '15';
       ctx.beginPath();
-      ctx.roundRect(x + gap, padT + chartH - h1, bw, h1, [3, 3, 0, 0]);
+      ctx.roundRect(x, padT, barW, bgHeight, 6);
       ctx.fill();
-      // Points bar
-      const h2 = (chartH * ptsNorm) / 100;
-      ctx.fillStyle = accentColor;
-      ctx.beginPath();
-      ctx.roundRect(x + gap + bw + 2, padT + chartH - h2, bw, h2, [3, 3, 0, 0]);
-      ctx.fill();
-      // X label (game number)
+      
+      if (day.games > 0) {
+        // Calculate bar height based on accuracy (0-100%)
+        const accHeight = (chartH * day.accuracy) / 100;
+        
+        // Gradient based on accuracy
+        const gradient = ctx.createLinearGradient(x, padT + chartH - accHeight, x, padT + chartH);
+        if (day.accuracy >= 80) {
+          gradient.addColorStop(0, successColor);
+          gradient.addColorStop(1, successColor + '88');
+        } else if (day.accuracy >= 50) {
+          gradient.addColorStop(0, primaryColor);
+          gradient.addColorStop(1, primaryColor + '88');
+        } else {
+          gradient.addColorStop(0, accentColor);
+          gradient.addColorStop(1, accentColor + '88');
+        }
+        
+        // Draw accuracy bar
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.roundRect(x, padT + chartH - accHeight, barW, accHeight, [6, 6, 0, 0]);
+        ctx.fill();
+        
+        // Draw accuracy percentage on top of bar
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 11px Nunito, sans-serif';
+        ctx.textAlign = 'center';
+        if (accHeight > 25) {
+          ctx.fillText(`${day.accuracy}%`, x + barW / 2, padT + chartH - accHeight + 16);
+        } else if (accHeight > 0) {
+          ctx.fillStyle = textColor;
+          ctx.fillText(`${day.accuracy}%`, x + barW / 2, padT + chartH - accHeight - 5);
+        }
+        
+        // Draw games count below percentage
+        if (accHeight > 40) {
+          ctx.fillStyle = '#fff';
+          ctx.font = '10px Nunito, sans-serif';
+          ctx.fillText(`🎮 ${day.games}`, x + barW / 2, padT + chartH - accHeight + 32);
+        }
+      }
+      
+      // X-axis: Day label
       ctx.fillStyle = textColor;
-      ctx.font = '10px sans-serif';
+      ctx.font = '11px Nunito, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(`${i + 1}`, x + barGroupW / 2, H - 6);
+      ctx.fillText(day.label, x + barW / 2, H - 24);
+      
+      // Date below day
+      ctx.font = '9px Nunito, sans-serif';
+      ctx.fillText(day.date, x + barW / 2, H - 10);
     });
+    
+    // Draw legend
+    ctx.font = '10px Nunito, sans-serif';
+    ctx.textAlign = 'left';
+    
+    // Legend: Accuracy color guide
+    const legendY = 12;
+    ctx.fillStyle = successColor;
+    ctx.fillRect(padL, legendY - 6, 8, 8);
+    ctx.fillStyle = textColor;
+    ctx.fillText('≥80%', padL + 12, legendY);
+    
+    ctx.fillStyle = primaryColor;
+    ctx.fillRect(padL + 50, legendY - 6, 8, 8);
+    ctx.fillStyle = textColor;
+    ctx.fillText('50-79%', padL + 62, legendY);
+    
+    ctx.fillStyle = accentColor;
+    ctx.fillRect(padL + 115, legendY - 6, 8, 8);
+    ctx.fillStyle = textColor;
+    ctx.fillText('<50%', padL + 127, legendY);
+    
+    // Total week stats
+    const totalCorrect = weeklyData.reduce((s, d) => s + d.correct, 0);
+    const totalQuestions = weeklyData.reduce((s, d) => s + d.total, 0);
+    const weekAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+    
+    ctx.textAlign = 'right';
+    ctx.fillStyle = textColor;
+    ctx.fillText(`Semana: ${weekAccuracy}% (${totalGames} partidas)`, W - padR, legendY);
   },
   // ============================================================
   // TOAST NOTIFICATION

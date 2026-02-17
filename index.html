@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=39">
+  <link rel="stylesheet" href="css/styles.css?v=40">
 </head>
 <body>
 
@@ -52,9 +52,16 @@
     </div>
 
     <div id="verse-card" class="verse-card">
-      <div class="verse-label">📜 Versículo del día</div>
+      <div class="verse-header">
+        <div class="verse-label">📜 Versículo del día</div>
+        <div class="verse-actions">
+          <button id="btn-verse-favorite" class="verse-action-btn" aria-label="Guardar versículo">🤍</button>
+          <button id="btn-verse-new" class="verse-action-btn" aria-label="Nuevo versículo">🔄</button>
+        </div>
+      </div>
       <p id="verse-text" class="verse-text"></p>
       <p id="verse-ref" class="verse-ref"></p>
+      <button id="btn-view-favorites" class="verse-favorites-link">📚 Ver versículos guardados</button>
     </div>
 
     <div id="daily-streak-card" class="streak-card hidden">
@@ -117,37 +124,110 @@
       <h2 class="section-title">🛒 Tienda</h2>
     </div>
     <div class="shop-container">
+      <!-- Estado actual de vidas -->
       <div class="shop-lives-display">
         <span id="shop-lives-hearts" class="shop-lives-hearts">❤️❤️❤️❤️❤️</span>
         <span id="shop-lives-text" class="shop-lives-text">5/5 vidas</span>
       </div>
-      <div class="shop-items">
-        <div class="shop-item" id="shop-buy-1">
-          <div class="shop-item-icon">💖</div>
-          <div class="shop-item-info">
-            <h3>+1 Vida</h3>
-            <p>Recupera una vida al instante</p>
-          </div>
-          <button class="shop-item-btn" data-buy="1">Obtener</button>
+
+      <!-- Estado Premium -->
+      <div id="shop-premium-status" class="shop-premium-status hidden">
+        <div class="premium-status-icon">👑</div>
+        <div class="premium-status-info">
+          <h4>Usuario Premium</h4>
+          <p id="premium-status-text">Vidas infinitas + Sin anuncios</p>
         </div>
-        <div class="shop-item" id="shop-buy-full">
-          <div class="shop-item-icon">💕</div>
-          <div class="shop-item-info">
-            <h3>Vidas Completas</h3>
-            <p>Rellena todas tus vidas al máximo</p>
+      </div>
+
+      <!-- Sección: Vidas -->
+      <div class="shop-section">
+        <h3 class="shop-section-title">❤️ Vidas</h3>
+        <div class="shop-items">
+          <div class="shop-item" id="shop-buy-1" data-product="life_1">
+            <div class="shop-item-icon">💖</div>
+            <div class="shop-item-info">
+              <h3>+1 Vida</h3>
+              <p>Recupera una vida al instante</p>
+            </div>
+            <button class="shop-item-btn" data-buy="life_1">
+              <span class="shop-price">$0.99</span>
+            </button>
           </div>
-          <button class="shop-item-btn" data-buy="full">Obtener</button>
-        </div>
-        <div class="shop-item shop-item-premium" id="shop-buy-infinite">
-          <div class="shop-item-icon">♾️</div>
-          <div class="shop-item-info">
-            <h3>Vidas Infinitas</h3>
-            <p>No pierdes vidas al fallar</p>
+          <div class="shop-item" id="shop-buy-full" data-product="life_full">
+            <div class="shop-item-icon">💕</div>
+            <div class="shop-item-info">
+              <h3>Vidas Completas</h3>
+              <p>Rellena todas tus vidas al máximo</p>
+            </div>
+            <button class="shop-item-btn" data-buy="life_full">
+              <span class="shop-price">$1.99</span>
+            </button>
           </div>
-          <button class="shop-item-btn shop-item-btn-premium" data-buy="infinite">
-            <span id="infinite-lives-label">Activar</span>
-          </button>
         </div>
+      </div>
+
+      <!-- Sección: Premium -->
+      <div class="shop-section">
+        <h3 class="shop-section-title">👑 Premium</h3>
+        <div class="shop-items">
+          <div class="shop-item shop-item-premium shop-item-highlight" id="shop-premium-monthly" data-product="premium_monthly">
+            <div class="shop-item-badge">Popular</div>
+            <div class="shop-item-icon">👑</div>
+            <div class="shop-item-info">
+              <h3>Premium Mensual</h3>
+              <p>Vidas infinitas + Sin anuncios</p>
+            </div>
+            <button class="shop-item-btn shop-item-btn-premium" data-buy="premium_monthly">
+              <span class="shop-price">$2.99</span>
+              <span class="shop-period">/mes</span>
+            </button>
+          </div>
+          <div class="shop-item shop-item-premium" id="shop-premium-yearly" data-product="premium_yearly">
+            <div class="shop-item-badge shop-item-badge-save">Ahorra 40%</div>
+            <div class="shop-item-icon">💎</div>
+            <div class="shop-item-info">
+              <h3>Premium Anual</h3>
+              <p>Vidas infinitas + Sin anuncios por 1 año</p>
+            </div>
+            <button class="shop-item-btn shop-item-btn-premium" data-buy="premium_yearly">
+              <span class="shop-price">$19.99</span>
+              <span class="shop-period">/año</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Sin Anuncios -->
+      <div class="shop-section" id="shop-section-ads">
+        <h3 class="shop-section-title">🚫 Sin Anuncios</h3>
+        <div class="shop-items">
+          <div class="shop-item" id="shop-remove-ads" data-product="remove_ads">
+            <div class="shop-item-icon">🚫</div>
+            <div class="shop-item-info">
+              <h3>Quitar Anuncios</h3>
+              <p>Elimina los anuncios para siempre</p>
+            </div>
+            <button class="shop-item-btn" data-buy="remove_ads">
+              <span class="shop-price">$4.99</span>
+              <span class="shop-once">una vez</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurar compras -->
+      <div class="shop-restore">
+        <button id="btn-restore-purchases" class="shop-restore-btn">
+          🔄 Restaurar compras anteriores
+        </button>
+      </div>
+
+      <!-- Info legal -->
+      <div class="shop-legal">
+        <p>Las suscripciones se renuevan automáticamente. Puedes cancelar en cualquier momento.</p>
+        <button id="btn-manage-subscription" class="shop-manage-btn hidden">
+          ⚙️ Gestionar suscripción
+        </button>
       </div>
     </div>
   </div>
@@ -380,6 +460,7 @@
       </div>
       <div class="results-actions">
         <button id="btn-share-results" class="btn-share">📤 Compartir</button>
+        <button id="btn-share-image" class="btn-share btn-share-image">🖼️ Como Imagen</button>
         <button id="btn-replay-category" class="btn-primary">🔄 Repetir</button>
         <button id="btn-play-again" class="btn-secondary">📚 Otra Categoría</button>
         <button id="btn-back-home" class="btn-secondary">🏠 Menú</button>
@@ -568,9 +649,22 @@
       </div>
       <div class="setting-item">
         <div class="toggle-row">
-          <div><label>🔔 Recordatorio</label></div>
+          <div><label>🔔 Recordatorio Diario</label><p class="setting-desc">Recibe un recordatorio para jugar</p></div>
           <label class="toggle-switch">
             <input type="checkbox" id="setting-notifications">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+      <div id="notif-time-setting" class="setting-item hidden">
+        <label for="setting-notif-time">⏰ Hora del Recordatorio</label>
+        <input type="time" id="setting-notif-time" value="09:00">
+      </div>
+      <div class="setting-item">
+        <div class="toggle-row">
+          <div><label>🔥 Alerta de Racha</label><p class="setting-desc">Aviso nocturno si no has jugado</p></div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="setting-streak-notif" checked>
             <span class="toggle-slider"></span>
           </label>
         </div>
@@ -582,6 +676,15 @@
           <button id="btn-import" class="btn-data">📥 Importar</button>
           <input type="file" id="import-file" accept=".json" style="display:none">
         </div>
+      </div>
+      <div class="setting-item">
+        <label>🎁 Código Promocional</label>
+        <p class="setting-desc">Ingresa un código para desbloquear beneficios</p>
+        <div class="promo-code-input">
+          <input type="text" id="promo-code" placeholder="Ingresa tu código" maxlength="20">
+          <button id="btn-redeem-code" class="btn-promo">Canjear</button>
+        </div>
+        <p id="promo-code-result" class="promo-result hidden"></p>
       </div>
       <button id="btn-reset" class="btn-danger">🗑️ Borrar Todo</button>
     </div>
@@ -972,6 +1075,7 @@
       
       <div class="about-actions">
         <button id="btn-privacy" class="btn-secondary">🔒 Política de Privacidad</button>
+        <button id="btn-terms" class="btn-secondary">📜 Términos de Uso</button>
         <button id="btn-rate" class="btn-primary">⭐ Valorar App</button>
       </div>
       
@@ -1018,6 +1122,58 @@
       <div class="privacy-section">
         <h3>📧 Contacto</h3>
         <p>Si tienes preguntas sobre esta política, contáctanos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA TÉRMINOS DE USO -->
+  <div id="terms" class="screen">
+    <div class="section-header">
+      <button class="back-btn" data-target="about">←</button>
+      <h2 class="section-title">📜 Términos de Uso</h2>
+    </div>
+    <div class="privacy-container">
+      <h2>Términos y Condiciones</h2>
+      <p class="privacy-date">Última actualización: Febrero 2026</p>
+      
+      <div class="privacy-section">
+        <h3>1. Aceptación</h3>
+        <p>Al usar BibliaQuiz, aceptas estos términos. Si no estás de acuerdo, por favor no uses la aplicación.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>2. Uso de la Aplicación</h3>
+        <p>BibliaQuiz es una herramienta educativa gratuita diseñada para ayudar a los usuarios a aprender sobre la Biblia. Debes usar la app de manera responsable y respetuosa.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>3. Contenido</h3>
+        <p>Las preguntas y respuestas están basadas en la Biblia. El contenido es solo educativo y no reemplaza el estudio bíblico personal o la guía pastoral.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>4. Compras dentro de la App</h3>
+        <p>Algunas funciones premium pueden requerir pago. Las compras son finales y no reembolsables, excepto donde lo requiera la ley.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>5. Propiedad Intelectual</h3>
+        <p>Todo el contenido de BibliaQuiz (diseño, código, preguntas) es propiedad del desarrollador. No está permitida su reproducción sin autorización.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>6. Limitación de Responsabilidad</h3>
+        <p>BibliaQuiz se proporciona "tal cual". No garantizamos que la app esté libre de errores o interrupciones.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>7. Modificaciones</h3>
+        <p>Podemos actualizar estos términos en cualquier momento. El uso continuado de la app implica la aceptación de los nuevos términos.</p>
+      </div>
+      
+      <div class="privacy-section">
+        <h3>8. Contacto</h3>
+        <p>Para cualquier consulta sobre estos términos, contáctanos.</p>
       </div>
     </div>
   </div>
@@ -1159,10 +1315,13 @@
   </div>
 </div>
 
-<script src="js/questions.js?v=39" defer></script>
-<script src="js/definitions.js?v=39" defer></script>
-<script src="js/storage.js?v=39" defer></script>
-<script src="js/app.js?v=39" defer></script>
+<script src="js/questions.js?v=41" defer></script>
+<script src="js/definitions.js?v=41" defer></script>
+<script src="js/storage.js?v=41" defer></script>
+<script src="js/billing.js?v=41" defer></script>
+<script src="js/ads.js?v=41" defer></script>
+<script src="js/notifications.js?v=41" defer></script>
+<script src="js/app.js?v=41" defer></script>
 
 <script>
   if ('serviceWorker' in navigator) {

@@ -1,9 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="80" fill="#0F0E17"/>
-  <circle cx="256" cy="210" r="130" fill="#6C63FF"/>
-  <line x1="256" y1="145" x2="256" y2="275" stroke="white" stroke-width="18" stroke-linecap="round"/>
-  <line x1="204" y1="190" x2="308" y2="190" stroke="white" stroke-width="18" stroke-linecap="round"/>
-  <path d="M192 240 Q256 216 320 240" stroke="#FFD93D" stroke-width="10" fill="none" stroke-linecap="round"/>
-  <text x="256" y="400" text-anchor="middle" fill="white" font-family="sans-serif" font-size="56" font-weight="bold">BibliaQuiz</text>
-  <text x="256" y="455" text-anchor="middle" fill="#A7A9BE" font-family="sans-serif" font-size="30">Aprende Jugando</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f0e17"/>
+    </linearGradient>
+    <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5a2b"/>
+      <stop offset="50%" style="stop-color:#6b4423"/>
+      <stop offset="100%" style="stop-color:#5c3a1e"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="50%" style="stop-color:#ffb347"/>
+      <stop offset="100%" style="stop-color:#ff8c00"/>
+    </linearGradient>
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8e7"/>
+      <stop offset="100%" style="stop-color:#f5e6d3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative cross pattern in background -->
+  <g opacity="0.08">
+    <line x1="256" y1="40" x2="256" y2="472" stroke="#ffd700" stroke-width="2"/>
+    <line x1="40" y1="256" x2="472" y2="256" stroke="#ffd700" stroke-width="2"/>
+  </g>
+  
+  <!-- Book/Bible shape -->
+  <g filter="url(#shadow)">
+    <!-- Book cover -->
+    <path d="M100 100 Q100 80 120 80 L392 80 Q412 80 412 100 L412 380 Q412 400 392 400 L120 400 Q100 400 100 380 Z" fill="url(#bookGrad)"/>
+    
+    <!-- Book spine -->
+    <rect x="100" y="80" width="28" height="320" rx="6" fill="#4a2c17"/>
+    
+    <!-- Gold border decoration -->
+    <rect x="128" y="90" width="274" height="300" rx="10" fill="none" stroke="url(#goldGrad)" stroke-width="5"/>
+    
+    <!-- Inner page area -->
+    <rect x="140" y="102" width="250" height="276" rx="6" fill="url(#pageGrad)"/>
+    
+    <!-- Page lines -->
+    <g stroke="#d4c4b0" stroke-width="2" opacity="0.5">
+      <line x1="160" y1="135" x2="370" y2="135"/>
+      <line x1="160" y1="165" x2="370" y2="165"/>
+      <line x1="160" y1="195" x2="300" y2="195"/>
+      <line x1="160" y1="290" x2="370" y2="290"/>
+      <line x1="160" y1="320" x2="370" y2="320"/>
+      <line x1="160" y1="350" x2="280" y2="350"/>
+    </g>
+    
+    <!-- Cross on book -->
+    <g filter="url(#glow)">
+      <rect x="253" y="210" width="20" height="75" rx="4" fill="url(#goldGrad)"/>
+      <rect x="230" y="233" width="66" height="20" rx="4" fill="url(#goldGrad)"/>
+    </g>
+    
+    <!-- Bookmark ribbon -->
+    <path d="M355 80 L355 140 L367 122 L379 140 L379 80" fill="#c41e3a"/>
+  </g>
+  
+  <!-- Quiz badge/bubble -->
+  <g filter="url(#shadow)">
+    <circle cx="400" cy="400" r="70" fill="url(#goldGrad)"/>
+    <circle cx="400" cy="400" r="58" fill="#1a1a2e"/>
+    
+    <!-- Question mark -->
+    <text x="400" y="422" font-family="Arial, sans-serif" font-size="70" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle">?</text>
+  </g>
+  
+  <!-- Sparkles -->
+  <g fill="#ffd700" opacity="0.9">
+    <path d="M75 55 L80 70 L95 70 L83 80 L88 95 L75 85 L62 95 L67 80 L55 70 L70 70 Z"/>
+    <path d="M435 55 L439 66 L450 66 L441 73 L445 84 L435 77 L425 84 L429 73 L420 66 L431 66 Z"/>
+    <path d="M85 430 L88 438 L96 438 L90 443 L93 451 L85 446 L77 451 L80 443 L74 438 L82 438 Z"/>
+  </g>
 </svg>

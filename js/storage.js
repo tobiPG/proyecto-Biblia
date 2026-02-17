@@ -133,6 +133,54 @@ const Storage = {
   getChallengeRecords() { this.initVersioning(); return this._parse(this.KEYS.CHALLENGE, {}); },
   getCategoryStats() { this.initVersioning(); return this._parse(this.KEYS.CATEGORY_STATS, {}); },
 
+  // Get weekly stats - returns array of 7 days with aggregated stats
+  getWeeklyStats() {
+    const history = this.getHistory();
+    const days = [];
+    const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    
+    // Get dates for last 7 days
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate() - i);
+      
+      const nextDate = new Date(date);
+      nextDate.setDate(nextDate.getDate() + 1);
+      
+      // Filter games from this day
+      const dayGames = history.filter(game => {
+        if (!game.date) return false;
+        const gameDate = new Date(game.date);
+        return gameDate >= date && gameDate < nextDate;
+      });
+      
+      // Calculate aggregated stats for this day
+      let totalCorrect = 0;
+      let totalQuestions = 0;
+      let totalPoints = 0;
+      let gamesPlayed = dayGames.length;
+      
+      dayGames.forEach(game => {
+        totalCorrect += game.correct || 0;
+        totalQuestions += game.total || 0;
+        totalPoints += game.points || 0;
+      });
+      
+      days.push({
+        label: dayNames[date.getDay()],
+        date: date.toLocaleDateString('es', { day: '2-digit', month: 'short' }),
+        games: gamesPlayed,
+        correct: totalCorrect,
+        total: totalQuestions,
+        points: totalPoints,
+        accuracy: totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0
+      });
+    }
+    
+    return days;
+  },
+
   // --- SET ---
   savePlayer(player) { this._save(this.KEYS.PLAYER, player); },
   saveStats(stats) { this._save(this.KEYS.STATS, stats); },
@@ -310,5 +358,85 @@ const Storage = {
   saveNotifEnabled(val) {
     try { localStorage.setItem('bibliaquiz_notif', val ? 'true' : 'false'); }
     catch(e) {}
+  },
+  getStreakNotifEnabled() {
+    try { 
+      const val = localStorage.getItem('bibliaquiz_streak_notif');
+      return val === null ? true : val === 'true'; // default true
+    }
+    catch(e) { return true; }
+  },
+  saveStreakNotifEnabled(val) {
+    try { localStorage.setItem('bibliaquiz_streak_notif', val ? 'true' : 'false'); }
+    catch(e) {}
+  },
+  getNotifTime() {
+    try { 
+      const saved = localStorage.getItem('bibliaquiz_notif_time');
+      return saved || '09:00';
+    }
+    catch(e) { return '09:00'; }
+  },
+  saveNotifTime(time) {
+    try { localStorage.setItem('bibliaquiz_notif_time', time); }
+    catch(e) {}
+  },
+
+  // --- FAVORITE VERSES ---
+  getFavoriteVerses() {
+    try {
+      const saved = localStorage.getItem('bibliaquiz_favorite_verses');
+      return saved ? JSON.parse(saved) : [];
+    }
+    catch(e) { return []; }
+  },
+  
+  saveFavoriteVerses(verses) {
+    try { localStorage.setItem('bibliaquiz_favorite_verses', JSON.stringify(verses)); }
+    catch(e) {}
+  },
+  
+  addFavoriteVerse(verse) {
+    const favorites = this.getFavoriteVerses();
+    // Check if already exists (by text to avoid duplicates)
+    const exists = favorites.some(v => v.text === verse.text);
+    if (!exists) {
+      favorites.unshift({
+        ...verse,
+        savedAt: new Date().toISOString(),
+        memorized: false
+      });
+      this.saveFavoriteVerses(favorites);
+      return true;
+    }
+    return false;
+  },
+  
+  removeFavoriteVerse(verseText) {
+    const favorites = this.getFavoriteVerses();
+    const filtered = favorites.filter(v => v.text !== verseText);
+    this.saveFavoriteVerses(filtered);
+  },
+  
+  isFavoriteVerse(verseText) {
+    const favorites = this.getFavoriteVerses();
+    return favorites.some(v => v.text === verseText);
+  },
+  
+  toggleMemorizedVerse(verseText) {
+    const favorites = this.getFavoriteVerses();
+    const verse = favorites.find(v => v.text === verseText);
+    if (verse) {
+      verse.memorized = !verse.memorized;
+      verse.memorizedAt = verse.memorized ? new Date().toISOString() : null;
+      this.saveFavoriteVerses(favorites);
+      return verse.memorized;
+    }
+    return false;
+  },
+  
+  getMemorizedCount() {
+    const favorites = this.getFavoriteVerses();
+    return favorites.filter(v => v.memorized).length;
   }
 };

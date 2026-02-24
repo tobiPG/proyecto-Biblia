@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliaquiz-v45';
+const CACHE_NAME = 'bibliaquiz-v88';
 const ASSETS = [
   './',
   './index.html',
@@ -9,7 +9,11 @@ const ASSETS = [
   './js/billing.js',
   './js/ads.js',
   './js/notifications.js',
+  './js/ranked.js',
   './js/app.js',
+  './js/seasons.js',
+  './js/firebase.js',
+  './js/social.js',
   './manifest.json',
   './icons/icon-72.png',
   './icons/icon-96.png',
@@ -24,7 +28,7 @@ const ASSETS = [
 ];
 
 // Files that should always fetch fresh from network
-const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js', 'billing.js', 'ads.js', 'notifications.js'];
+const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js'];
 
 // Install - cache all essential assets
 self.addEventListener('install', event => {
@@ -53,6 +57,13 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
+  
+  // Ignorar requests de extensiones de Chrome y otros esquemas no soportados
+  if (!url.protocol.startsWith('http')) return;
+  
+  // Ignorar requests externos (solo cachear nuestro dominio)
+  if (url.origin !== location.origin) return;
+  
   const isNetworkFirst = NETWORK_FIRST.some(f => url.pathname.endsWith(f));
 
   if (isNetworkFirst) {

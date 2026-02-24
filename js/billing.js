@@ -53,6 +53,47 @@ const Billing = {
       currency: 'USD',
       type: 'non-consumable',
       icon: '🚫'
+    },
+    // Paquetes de monedas
+    'coins_500': {
+      id: 'coins_500',
+      name: '500 Monedas',
+      description: 'Paquete inicial de monedas',
+      price: 0.99,
+      currency: 'USD',
+      type: 'consumable',
+      icon: '🪙',
+      coins: 500
+    },
+    'coins_1500': {
+      id: 'coins_1500',
+      name: '1,500 Monedas',
+      description: 'Mejor valor (+10% bonus)',
+      price: 2.49,
+      currency: 'USD',
+      type: 'consumable',
+      icon: '💰',
+      coins: 1650
+    },
+    'coins_5000': {
+      id: 'coins_5000',
+      name: '5,000 Monedas',
+      description: 'Paquete popular (+25% bonus)',
+      price: 6.99,
+      currency: 'USD',
+      type: 'consumable',
+      icon: '💎',
+      coins: 6250
+    },
+    'coins_12000': {
+      id: 'coins_12000',
+      name: '12,000 Monedas',
+      description: 'Mega paquete (+40% bonus)',
+      price: 14.99,
+      currency: 'USD',
+      type: 'consumable',
+      icon: '👑',
+      coins: 16800
     }
   },
 

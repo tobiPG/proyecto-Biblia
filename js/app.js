@@ -4,22 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnAbout) {
     btnAbout.addEventListener('click', () => App.showScreen('about'));
   }
-  // Botón Política de Privacidad
+  // Bot�n Poltica de Privacidad
   const btnPrivacy = document.getElementById('btn-privacy');
   if (btnPrivacy) {
     btnPrivacy.addEventListener('click', () => App.showScreen('privacy'));
   }
-  // Botón Términos de Uso
+  // Bot�n T�rminos de Uso
   const btnTerms = document.getElementById('btn-terms');
   if (btnTerms) {
     btnTerms.addEventListener('click', () => App.showScreen('terms'));
   }
-  // Botón Valorar App
+  // Bot�n Valorar App
   const btnRate = document.getElementById('btn-rate');
   if (btnRate) {
     btnRate.addEventListener('click', () => {
       // Abrir enlace de valoración (placeholder - cambiar por URL real de la tienda)
-      App.showToast('🌟 ¡Gracias por tu apoyo!');
+      App.showToast('\u{2B50} ¡Gracias por tu apoyo!');
     });
   }
 });
@@ -78,7 +78,7 @@ const App = {
   lifeRegenInterval: null,
   homeLivesTimerInterval: null,
   // Orden de dificultades para progresion
-  difficultyOrder: ['facil', 'medio', 'dificil', 'experto'],
+  difficultyOrder: ['facil', 'intermedio', 'dificil', 'experto'],
   // Estado del juego
   currentScreen: 'home',
   selectedCategory: null,
@@ -91,6 +91,10 @@ const App = {
   sessionCorrect: 0,
   sessionWrong: 0,
   sessionPoints: 0,
+  // Sistema de monedas
+  sessionCoins: 0,
+  coinMultiplier: 1,
+  phaseHadError: false,
   currentPhase: 1,
   phaseCorrect: 0,
   phaseWrong: 0,
@@ -101,7 +105,7 @@ const App = {
   timerInterval: null,
   timerSeconds: 0,
   timerMax: 0,
-  // Challenge mode
+  // Challenge mode (contrarreloj)
   challengeTime: 180,
   challengeDifficulty: 'dificil',
   challengeQuestions: [],
@@ -117,6 +121,10 @@ const App = {
   challengeAutoAdvance: null,
   challengeAnswerTimes: [],
   challengeQuestionStart: 0,
+  // Social challenge mode (reto contra amigo)
+  isSocialChallenge: false,
+  socialChallengeData: null,
+  socialChallengeStartTime: null,
   duoPlayer1: 'Jugador 1',
   duoPlayer2: 'Jugador 2',
   duoQuestionsPerPlayer: 10,
@@ -150,6 +158,8 @@ const App = {
   sessionBestStreak: 0,
   isDailyChallenge: false,
   deferredInstallPrompt: null,
+  // Contador de comodines usados en la partida actual (max 1 por partida)
+  sessionPowerupsUsed: 0,
   // --- Metodos ---
   renderSettings() {
     const container = document.getElementById('settings-container');
@@ -213,32 +223,42 @@ const App = {
   // --- Inicializacion ---
   init() {
     console.log('[BibliaQuiz] Init started');
-    // --- Versionado/migracion de datos ---
-    if (typeof Storage.initVersioning === 'function') {
-      Storage.initVersioning();
+    try {
+      // --- Versionado/migracion de datos ---
+      if (typeof Storage.initVersioning === 'function') {
+        Storage.initVersioning();
+      }
+      this.bindEvents();
+      console.log('[BibliaQuiz] Events bound');
+      this.loadLives();
+      this.loadInfiniteLives();
+      this.startLifeRegen();
+      this.startHomeLivesTimer();
+      this.initTheme();
+      this.checkRegistration();
+      // Onboarding only after registration is complete
+      if (Storage.isRegistered()) {
+        this.showScreen('home');
+        this.renderHome();
+        this.loadSettings();
+        this.initOnboarding();
+      }
+      this.initOfflineDetection();
+      this.initKeyboard();
+      this.initDailyStreak();
+      this.renderDailyChallengeCard();
+      this.initNotifications();
+      try {
+        this.initPowerupListeners();
+        this.updatePowerupsDisplay();
+      } catch (e) {
+        console.warn('[BibliaQuiz] Error inicializando powerups:', e);
+      }
+      this.initInstallPrompt();
+      this.handleUrlShortcuts();
+    } catch (e) {
+      console.error('[BibliaQuiz] Error fatal en init:', e);
     }
-    this.bindEvents();
-    console.log('[BibliaQuiz] Events bound');
-    this.loadLives();
-    this.loadInfiniteLives();
-    this.startLifeRegen();
-    this.startHomeLivesTimer();
-    this.initTheme();
-    this.checkRegistration();
-    // Onboarding only after registration is complete
-    if (Storage.isRegistered()) {
-      this.showScreen('home');
-      this.renderHome();
-      this.loadSettings();
-      this.initOnboarding();
-    }
-    this.initOfflineDetection();
-    this.initKeyboard();
-    this.initDailyStreak();
-    this.renderDailyChallengeCard();
-    this.initNotifications();
-    this.initInstallPrompt();
-    this.handleUrlShortcuts();
     this.hideSplash();
   },
   // === ONBOARDING ===
@@ -258,7 +278,7 @@ const App = {
       slides[idx].classList.add('active');
       dots[idx].classList.add('active');
       current = idx;
-      nextBtn.textContent = idx === slides.length - 1 ? '¡Empezar!' : 'Siguiente ';
+      nextBtn.textContent = idx === slides.length - 1 ? '�Empezar!' : 'Siguiente ';
     };
     nextBtn.addEventListener('click', () => {
       if (current < slides.length - 1) {
@@ -325,7 +345,7 @@ const App = {
         this.renderHome();
         this.loadSettings();
         this.initOnboarding();
-        this.showToast(`¡Bienvenido, ${name}! `);
+        this.showToast(`Bienvenido, ${name}! `);
       }, 400);
     });
     // Enter key support
@@ -539,19 +559,88 @@ const App = {
       this.renderShop();
       this.showScreen('shop');
     });
-    // Shop buy buttons (delegación de eventos para botones dinámicos)
-    document.querySelector('.shop-container').addEventListener('click', (e) => {
-      const btn = e.target.closest('.shop-item-btn');
-      if (btn) {
-        const productId = btn.dataset.buy;
-        this.handleShopBuy(productId);
+    // Ranked button
+    document.getElementById('btn-ranked').addEventListener('click', () => {
+      this.openRankedScreen();
+    });
+    // Cancel ranked search
+    document.getElementById('btn-cancel-search')?.addEventListener('click', () => {
+      if (window.Ranked) {
+        window.Ranked.cancelSearch();
       }
     });
+    // Ranked result buttons
+    document.getElementById('btn-ranked-play-again')?.addEventListener('click', () => {
+      document.getElementById('ranked-result-overlay').classList.add('hidden');
+      this.showScreen('ranked');
+    });
+    document.getElementById('btn-ranked-done')?.addEventListener('click', () => {
+      document.getElementById('ranked-result-overlay').classList.add('hidden');
+      this.showScreen('home');
+    });
+    // Ranked tabs
+    document.getElementById('tab-ranked-play')?.addEventListener('click', () => {
+      document.getElementById('tab-ranked-play').classList.add('active');
+      document.getElementById('tab-ranked-leaderboard').classList.remove('active');
+      document.getElementById('ranked-play-content').classList.remove('hidden');
+      document.getElementById('ranked-leaderboard-content').classList.add('hidden');
+    });
+    document.getElementById('tab-ranked-leaderboard')?.addEventListener('click', () => {
+      document.getElementById('tab-ranked-leaderboard').classList.add('active');
+      document.getElementById('tab-ranked-play').classList.remove('active');
+      document.getElementById('ranked-leaderboard-content').classList.remove('hidden');
+      document.getElementById('ranked-play-content').classList.add('hidden');
+      this.loadRankedLeaderboard();
+    });
+    // Leaderboard category change
+    document.getElementById('leaderboard-category-select')?.addEventListener('change', () => {
+      this.loadRankedLeaderboard();
+    });
+    // Ver todos los rangos
+    document.getElementById('btn-view-ranks')?.addEventListener('click', () => {
+      this.showRanksOverview();
+    });
+    document.getElementById('btn-close-ranks')?.addEventListener('click', () => {
+      const overlay = document.getElementById('ranks-overview-overlay');
+      overlay.classList.add('hidden');
+      overlay.style.display = 'none';
+    });
+    // Cerrar overlay al hacer clic fuera
+    document.getElementById('ranks-overview-overlay')?.addEventListener('click', (e) => {
+      if (e.target.id === 'ranks-overview-overlay') {
+        const overlay = e.target;
+        overlay.classList.add('hidden');
+        overlay.style.display = 'none';
+      }
+    });
+    // Shop buy buttons (delegaci�n de eventos para botones din�micos)
+    const shopContainer = document.querySelector('.shop-container');
+    if (shopContainer) {
+      shopContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.shop-item-btn');
+        if (btn) {
+          const productId = btn.dataset.buy;
+          this.handleShopBuy(productId);
+        }
+        // Botones de canje de monedas por vidas
+        const redeemBtn = e.target.closest('.redeem-life-btn');
+        if (redeemBtn) {
+          const amount = parseInt(redeemBtn.dataset.redeem);
+          this.redeemCoinsForLife(amount);
+        }
+        // Botones de compra de potenciadores
+        const powerupBtn = e.target.closest('.powerup-buy-btn');
+        if (powerupBtn) {
+          const powerupId = powerupBtn.dataset.buyPowerup;
+          this.buyPowerup(powerupId);
+        }
+      });
+    }
     // Restaurar compras
     document.getElementById('btn-restore-purchases').addEventListener('click', () => {
       this.handleRestorePurchases();
     });
-    // Gestionar suscripción
+    // Gestionar suscripcin
     document.getElementById('btn-manage-subscription').addEventListener('click', () => {
       this.handleManageSubscription();
     });
@@ -805,7 +894,7 @@ const App = {
         if (typeof PushNotifications !== 'undefined') {
           PushNotifications.setDailyReminder(true, hour, minute);
         }
-        this.showToast(`⏰ Recordatorio programado a las ${e.target.value}`);
+        this.showToast(`? Recordatorio programado a las ${e.target.value}`);
       });
     }
     // Streak notification toggle
@@ -849,10 +938,12 @@ const App = {
     const player = Storage.getPlayer();
     const subtitle = document.querySelector('.app-subtitle');
     if (subtitle) {
-      subtitle.textContent = `!Hola, ${player.name}! · Nivel ${player.level}`;
+      subtitle.textContent = `!Hola, ${player.name}!  Nivel ${player.level}`;
     }
     // Update home lives card
     this.renderHomeLives();
+    // Update coins display
+    this.updateCoinsDisplay();
   },
   showDailyVerse() {
     // Mostrar siempre el primer versiculo para evitar vacios
@@ -878,7 +969,7 @@ const App = {
     const btn = document.getElementById('btn-verse-favorite');
     if (!btn || !this.currentVerse) return;
     const isFav = Storage.isFavoriteVerse(this.currentVerse.text);
-    btn.textContent = isFav ? '❤️' : '🤍';
+    btn.textContent = isFav ? '\u{2764}\u{FE0F}' : '\u{1F90D}';
     btn.classList.toggle('is-favorite', isFav);
   },
   toggleCurrentVerseFavorite() {
@@ -887,14 +978,14 @@ const App = {
     const isFav = Storage.isFavoriteVerse(this.currentVerse.text);
     if (isFav) {
       Storage.removeFavoriteVerse(this.currentVerse.text);
-      this.showToast('💔 Versículo eliminado de favoritos');
+      this.showToast('\u{1F494} Versículo eliminado de favoritos');
     } else {
       Storage.addFavoriteVerse(this.currentVerse);
-      this.showToast('❤️ Versículo guardado en favoritos');
+      this.showToast('\u{2764}\u{FE0F} Versículo guardado en favoritos');
     }
     this.updateVerseFavoriteButton();
   },
-  // === PANTALLA VERSÍCULOS ===
+  // === PANTALLA VERS�CULOS ===
   versesFilter: 'all',
   renderVerses() {
     const container = document.getElementById('verses-list');
@@ -959,15 +1050,15 @@ const App = {
         </div>
         <div class="verse-item-actions">
           <button class="verse-item-btn ${verse.isFavorite ? 'active' : ''}" data-action="favorite" data-text="${escapeHTML(verse.text)}" data-ref="${escapeHTML(verse.ref)}" aria-label="${verse.isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}">
-            ${verse.isFavorite ? '❤️' : '🤍'}
+            ${verse.isFavorite ? '\u{2764}\u{FE0F}' : '\u{1F90D}'}
           </button>
           ${verse.isFavorite ? `
             <button class="verse-item-btn ${verse.memorized ? 'active' : ''}" data-action="memorize" data-text="${escapeHTML(verse.text)}" aria-label="${verse.memorized ? 'Desmarcar memorizado' : 'Marcar como memorizado'}">
-              ${verse.memorized ? '✅' : '📝'}
+              ${verse.memorized ? '\u{2705}' : '\u{1F7E6}'}
             </button>
           ` : ''}
           <button class="verse-item-btn" data-action="share" data-text="${escapeHTML(verse.text)}" data-ref="${escapeHTML(verse.ref)}" aria-label="Compartir versículo">
-            📤
+            \u{1F4E4}
           </button>
         </div>
       </div>
@@ -984,15 +1075,15 @@ const App = {
           const isFav = Storage.isFavoriteVerse(text);
           if (isFav) {
             Storage.removeFavoriteVerse(text);
-            this.showToast('💔 Eliminado de favoritos');
+            this.showToast('\u{1F494} Eliminado de favoritos');
           } else {
             Storage.addFavoriteVerse({ text, ref });
-            this.showToast('❤️ Agregado a favoritos');
+            this.showToast('\u{2764}\u{FE0F} Agregado a favoritos');
           }
           this.renderVersesList();
         } else if (action === 'memorize') {
           const isNowMemorized = Storage.toggleMemorizedVerse(text);
-          this.showToast(isNowMemorized ? '✅ Marcado como memorizado' : '📝 Desmarcado');
+          this.showToast(isNowMemorized ? '\u{2705} Marcado como memorizado' : '\u{1F7E6} Desmarcado');
           this.renderVersesList();
         } else if (action === 'share') {
           this.shareVerse(text, ref);
@@ -1001,17 +1092,17 @@ const App = {
     });
   },
   shareVerse(text, ref) {
-    const shareText = `"${text}" - ${ref}\n\n📖 BibliaQuiz App`;
+    const shareText = `"${text}" - ${ref}\n\n\u{271D}\u{FE0F} BibliaQuiz App`;
     
     if (navigator.share) {
       navigator.share({
-        title: 'Versículo Bíblico',
+        title: 'Versculo Biblico',
         text: shareText
       }).catch(() => {});
     } else {
       // Fallback: copy to clipboard
       navigator.clipboard?.writeText(shareText).then(() => {
-        this.showToast('📋 Versículo copiado al portapapeles');
+        this.showToast('?? Versiculo copiado al portapapeles');
       }).catch(() => {
         this.showToast('No se pudo copiar', 'error');
       });
@@ -1077,6 +1168,11 @@ const App = {
     this.sessionCorrect = 0;
     this.sessionWrong = 0;
     this.sessionPoints = 0;
+    // Inicializar monedas de sesi�n
+    this.sessionCoins = 0;
+    const coinsData = Storage.getCoins();
+    this.coinMultiplier = coinsData.multiplier || 1;
+    this.phaseHadError = false;
     this.timerMax = settings.timerSeconds || 0;
     this.currentPhase = 1;
     this.phaseCorrect = 0;
@@ -1086,6 +1182,8 @@ const App = {
     this.activeDifficulty = this.selectedDifficulty;
     this.categoryExhausted = false;
     this.diffCompletedInSession = [];
+    // Reset contador de comodines (max 1 por partida)
+    this.sessionPowerupsUsed = 0;
     // Cargar vidas
     this.loadLives();
     // Impedir jugar con 0 vidas (salvo infinitas)
@@ -1110,9 +1208,797 @@ const App = {
     this.renderLives();
     this.renderQuestion();
   },
+  
+  // Iniciar modo reto social (contra amigo)
+  startChallengeMode(challengeData) {
+    console.log('[App] ========== INICIANDO RETO SOCIAL ==========');
+    console.log('[App] challengeData:', challengeData);
+    
+    if (!challengeData) {
+      console.error('[App] ERROR: challengeData es null/undefined');
+      return;
+    }
+    
+    this.isSocialChallenge = true;
+    this.socialChallengeData = challengeData;
+    this.socialChallengeStartTime = Date.now();
+    
+    // Configurar categor�a del reto
+    const category = challengeData.category === 'random' ? 'aleatorio' : challengeData.category;
+    this.selectedCategory = category;
+    console.log('[App] Categor�a:', category);
+    
+    // Configurar dificultad del reto
+    const difficulty = challengeData.difficulty === 'random' ? null : challengeData.difficulty;
+    this.selectedDifficulty = difficulty || 'intermedio';
+    
+    // ============================================
+    // USAR LAS MISMAS PREGUNTAS PARA AMBOS JUGADORES
+    // ============================================
+    const numQuestions = challengeData.questionsCount || 10;
+    
+    // Si el reto tiene questionIds, usar exactamente esas preguntas
+    if (challengeData.questionIds && challengeData.questionIds.length > 0) {
+      console.log('[App] Usando preguntas del reto:', challengeData.questionIds);
+      console.log('[App] Total preguntas en DB:', QUESTIONS_DB ? QUESTIONS_DB.length : 0);
+      
+      // Buscar las preguntas por ID en el orden correcto
+      this.currentQuestions = [];
+      for (const qId of challengeData.questionIds) {
+        // Convertir a nmero por si viene como string de Firebase
+        const numId = typeof qId === 'string' ? parseInt(qId, 10) : qId;
+        const question = QUESTIONS_DB.find(q => q.id === numId);
+        console.log('[App] Buscando ID:', qId, '(numId:', numId, ') encontrada:', !!question);
+        if (question) {
+          this.currentQuestions.push(question);
+        }
+      }
+      
+      // Si faltan preguntas (por si acaso), completar con aleatorias
+      if (this.currentQuestions.length < numQuestions) {
+        console.warn('[BibliaQuiz] Faltan preguntas, completando...');
+        const existingIds = this.currentQuestions.map(q => q.id);
+        const extraQuestions = QUESTIONS_DB
+          .filter(q => !existingIds.includes(q.id))
+          .sort(() => Math.random() - 0.5)
+          .slice(0, numQuestions - this.currentQuestions.length);
+        this.currentQuestions = this.currentQuestions.concat(extraQuestions);
+      }
+    } else {
+      // Fallback: generar preguntas aleatorias (para retos antiguos sin questionIds)
+      console.log('[BibliaQuiz] Reto sin questionIds, generando aleatorias');
+      
+      // Filtrar preguntas por categora
+      let pool = [...QUESTIONS_DB];
+      if (category !== 'aleatorio') {
+        pool = pool.filter(q => q.category === category);
+      }
+      
+      // Filtrar por dificultad si no es random
+      if (difficulty && difficulty !== 'random') {
+        pool = pool.filter(q => q.difficulty === difficulty);
+      }
+      
+      // Si no hay suficientes preguntas, usar todas las disponibles
+      if (pool.length < numQuestions) {
+        pool = [...QUESTIONS_DB];
+        if (category !== 'aleatorio') {
+          pool = pool.filter(q => q.category === category);
+        }
+      }
+      
+      // Mezclar y tomar las preguntas del reto
+      pool = this.shuffle(pool);
+      this.currentQuestions = pool.slice(0, numQuestions);
+    }
+    
+    console.log('[App] Preguntas cargadas:', this.currentQuestions.length);
+    console.log('[App] Primera pregunta:', this.currentQuestions[0] ? this.currentQuestions[0].question : 'NO HAY');
+    
+    // Si no hay preguntas, error
+    if (this.currentQuestions.length === 0) {
+      console.error('[App] ERROR: No se cargaron preguntas!');
+      alert('Error: No se pudieron cargar las preguntas del reto');
+      return;
+    }
+    
+    // Reset estado
+    this.currentQuestionIndex = 0;
+    this.currentStreak = 0;
+    this.sessionBestStreak = 0;
+    this.sessionCorrect = 0;
+    this.sessionWrong = 0;
+    this.sessionPoints = 0;
+    this.sessionCoins = 0;
+    this.coinMultiplier = 1;
+    this.phaseHadError = false;
+    this.currentPhase = 1;
+    this.phaseCorrect = 0;
+    this.phaseWrong = 0;
+    this.answered = false;
+    this.sessionPowerupsUsed = 0;
+    
+    // Configurar timer
+    const settings = Storage.getSettings();
+    this.timerMax = settings.timerSeconds || 30;
+    
+    // No usar vidas en modo reto
+    this.infiniteLives = true;
+    
+    // Mostrar pantalla de quiz
+    document.getElementById('phase-overlay').classList.add('hidden');
+    document.getElementById('gameover-overlay').classList.add('hidden');
+    document.getElementById('ad-overlay').classList.add('hidden');
+    this.showScreen('quiz');
+    this.renderQuestion();
+    
+    // Mostrar indicador de reto con info
+    const categoryNames = {
+      'aleatorio': 'Aleatorio',
+      'antiguo-testamento': 'AT',
+      'nuevo-testamento': 'NT',
+      'personajes': 'Personajes',
+      'lugares': 'Lugares',
+      'milagros': 'Milagros',
+      'parabolas': 'Parabolas',
+      'profetas': 'Profetas',
+      'reyes': 'Reyes',
+      'salmos-proverbios': 'Salmos'
+    };
+    const difficultyNames = {
+      'facil': '??',
+      'intermedio': '??',
+      'dificil': '??',
+      'experto': '?'
+    };
+    const catName = categoryNames[category] || category;
+    const diffIcon = difficultyNames[difficulty] || '??';
+    this.showToast(`?? Reto: ${numQuestions}P � ${catName} ${diffIcon}`, 'info');
+  },
+  
+  // ============================================
+  // MOSTRAR RESULTADOS DEL RETO SOCIAL
+  // ============================================
+  async showChallengeResults() {
+    console.log('[App] Mostrando resultados del reto social');
+    
+    const timeSpent = Math.floor((Date.now() - this.socialChallengeStartTime) / 1000);
+    const score = this.sessionPoints;
+    const correctAnswers = this.sessionCorrect;
+    const challengeId = this.socialChallengeData.id;
+    
+    // Mostrar el overlay de resultados
+    const overlay = document.getElementById('challenge-result-overlay');
+    overlay.classList.remove('hidden');
+    
+    // Mostrar mis resultados
+    document.getElementById('my-challenge-score').textContent = score;
+    document.getElementById('my-challenge-correct').textContent = `${correctAnswers} ?`;
+    document.getElementById('my-challenge-time').textContent = `${timeSpent}s ??`;
+    
+    // Nombre del oponente
+    const isCreator = this.socialChallengeData.creatorId === window.Firebase?.currentUser?.uid;
+    const opponentName = isCreator ? this.socialChallengeData.opponentName : this.socialChallengeData.creatorName;
+    document.getElementById('opponent-name').textContent = opponentName || 'Oponente';
+    
+    // Mostrar estado de espera
+    document.getElementById('opponent-score-value').textContent = '--';
+    document.getElementById('opponent-waiting').classList.remove('hidden');
+    document.getElementById('opponent-challenge-correct').textContent = '-- ?';
+    document.getElementById('opponent-challenge-time').textContent = '-- ??';
+    document.getElementById('challenge-status-message').classList.remove('hidden');
+    document.getElementById('challenge-status-message').classList.remove('completed');
+    document.getElementById('challenge-result-title').textContent = '�Reto Completado!';
+    document.getElementById('challenge-result-subtitle').textContent = '';
+    document.getElementById('challenge-result-icon').textContent = '??';
+    
+    // Enviar resultado a Firebase
+    try {
+      const result = await window.Firebase.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
+      console.log('[App] Resultado enviado:', result);
+      
+      if (result.success && result.completed) {
+        // Ambos terminaron - mostrar comparaci�n
+        this.showChallengeComparison(result, score, timeSpent, correctAnswers);
+      } else {
+        // Esperando al oponente - escuchar cambios
+        this.listenForOpponentResult(challengeId, score, timeSpent, correctAnswers);
+      }
+    } catch (error) {
+      console.error('[App] Error enviando resultado:', error);
+      document.getElementById('challenge-status-message').innerHTML = 
+        '<span style="color: var(--danger)">Error al enviar resultado</span>';
+    }
+    
+    // Limpiar estado del reto
+    this.isSocialChallenge = false;
+    this.socialChallengeData = null;
+    this.socialChallengeStartTime = null;
+    this.infiniteLives = false;
+    
+    // Event listener para el bot�n de salir
+    const btnDone = document.getElementById('btn-challenge-done');
+    btnDone.onclick = () => {
+      overlay.classList.add('hidden');
+      if (this._challengeUnsubscribe) {
+        this._challengeUnsubscribe();
+        this._challengeUnsubscribe = null;
+      }
+      this.showScreen('home');
+    };
+  },
+  
+  // Escuchar cuando el oponente termine
+  listenForOpponentResult(challengeId, myScore, myTime, myCorrect) {
+    // Limpiar listener anterior si existe
+    if (this._challengeUnsubscribe) {
+      this._challengeUnsubscribe();
+    }
+    
+    this._challengeUnsubscribe = window.Firebase.subscribeToChallenge(challengeId, (challenge) => {
+      console.log('[App] Actualizaci�n del reto:', challenge);
+      
+      // Verificar si ambos han terminado
+      const iAmCreator = challenge.creatorId === window.Firebase?.currentUser?.uid;
+      const opponentScore = iAmCreator ? challenge.opponentScore : challenge.creatorScore;
+      const opponentTime = iAmCreator ? challenge.opponentTime : challenge.creatorTime;
+      const opponentCorrect = iAmCreator ? challenge.opponentCorrect : challenge.creatorCorrect;
+      
+      if (opponentScore !== null && opponentScore !== undefined) {
+        // El oponente termin� - mostrar comparaci�n
+        const result = {
+          completed: true,
+          winner: challenge.winner,
+          myScore: myScore,
+          opponentScore: opponentScore,
+          myTime: myTime,
+          opponentTime: opponentTime
+        };
+        this.showChallengeComparison(result, myScore, myTime, myCorrect, opponentCorrect);
+        
+        // Cancelar listener
+        if (this._challengeUnsubscribe) {
+          this._challengeUnsubscribe();
+          this._challengeUnsubscribe = null;
+        }
+      }
+    });
+  },
+  
+  // Mostrar comparaci�n de resultados
+  showChallengeComparison(result, myScore, myTime, myCorrect, opponentCorrect) {
+    console.log('[App] Mostrando comparaci�n:', result);
+    
+    // Ocultar estado de espera
+    document.getElementById('opponent-waiting').classList.add('hidden');
+    document.getElementById('challenge-status-message').classList.add('hidden');
+    
+    // Mostrar resultados del oponente
+    document.getElementById('opponent-score-value').textContent = result.opponentScore;
+    document.getElementById('opponent-challenge-correct').textContent = `${opponentCorrect ?? '--'} ?`;
+    document.getElementById('opponent-challenge-time').textContent = `${result.opponentTime ?? '--'}s ??`;
+    
+    // Determinar ganador y aplicar estilos
+    const myCard = document.querySelector('.challenge-player.me');
+    const opponentCard = document.querySelector('.challenge-player.opponent');
+    
+    myCard.classList.remove('winner', 'loser');
+    opponentCard.classList.remove('winner', 'loser');
+    
+    const iWon = result.winner === window.Firebase?.currentUser?.uid;
+    const isTie = result.winner === 'tie';
+    
+    if (isTie) {
+      document.getElementById('challenge-result-icon').textContent = '??';
+      document.getElementById('challenge-result-title').textContent = '�Empate!';
+      document.getElementById('challenge-result-subtitle').textContent = 'Ambos jugaron igual de bien';
+      document.getElementById('challenge-vs-text').textContent = '=';
+    } else if (iWon) {
+      document.getElementById('challenge-result-icon').textContent = '??';
+      document.getElementById('challenge-result-title').textContent = '�Ganaste!';
+      document.getElementById('challenge-result-subtitle').textContent = '�Felicitaciones!';
+      myCard.classList.add('winner');
+      opponentCard.classList.add('loser');
+    } else {
+      document.getElementById('challenge-result-icon').textContent = '??';
+      document.getElementById('challenge-result-title').textContent = 'Perdiste';
+      document.getElementById('challenge-result-subtitle').textContent = '�Int�ntalo de nuevo!';
+      myCard.classList.add('loser');
+      opponentCard.classList.add('winner');
+    }
+    
+    // Sonido
+    this.playSound(iWon || isTie ? 'phase' : 'wrong');
+  },
+
+  // Finalizar reto social
+  async finishSocialChallenge() {
+    if (!this.isSocialChallenge || !this.socialChallengeData) return;
+    
+    const timeSpent = Math.floor((Date.now() - this.socialChallengeStartTime) / 1000);
+    const score = this.sessionPoints; // Usar puntos totales, no solo correctas
+    const correctAnswers = this.sessionCorrect;
+    
+    // Guardar referencia al reto antes de limpiarlo
+    const challengeData = { ...this.socialChallengeData };
+    
+    // Limpiar estado de reto
+    this.isSocialChallenge = false;
+    this.socialChallengeData = null;
+    this.socialChallengeStartTime = null;
+    this.infiniteLives = false;
+    
+    // Enviar resultado a Firebase
+    if (window.Social) {
+      // Guardar el reto actual en Social para mostrar resultados
+      Social.currentChallenge = challengeData;
+      await Social.finishChallenge(score, timeSpent, correctAnswers);
+    }
+  },
+
+  // ============================================
+  // SISTEMA RANKED
+  // ============================================
+
+  // Abrir pantalla de ranked
+  async openRankedScreen() {
+    if (!window.Firebase?.currentUser) {
+      this.showToast('Debes iniciar sesi�n para jugar Ranked', 'error');
+      if (window.Social) {
+        Social.openSocialModal();
+      }
+      return;
+    }
+    
+    await this.loadRankedData();
+    this.showScreen('ranked');
+  },
+
+  // Cargar datos de ranked
+  async loadRankedData() {
+    if (!window.Ranked) return;
+    
+    // Cargar mis rankings de todas las categor�as
+    const myRankings = await window.Ranked.getMyRankings();
+    this.cachedRankings = myRankings; // Guardar para uso en showRanksOverview
+    
+    // Obtener el ranking m�s alto para mostrar en el header
+    let totalTrophies = 0;
+    let highestRank = window.RANKS[0];
+    
+    for (const cat of window.RANKED_CATEGORIES) {
+      const ranking = myRankings[cat.id] || { trophies: 0 };
+      totalTrophies += ranking.trophies;
+      const rank = window.Ranked.getRankByTrophies(ranking.trophies);
+      if (rank.minTrophies > highestRank.minTrophies) {
+        highestRank = rank;
+      }
+    }
+    
+    // Actualizar header con el total de trofeos y el rango correspondiente
+    const displayRank = window.Ranked.getRankByTrophies(totalTrophies);
+    const nextRank = window.RANKS.find(r => r.minTrophies > totalTrophies) || displayRank;
+    
+    document.getElementById('ranked-my-rank-icon').textContent = displayRank.icon;
+    document.getElementById('ranked-my-rank-name').textContent = displayRank.name;
+    document.getElementById('ranked-my-rank-name').style.color = displayRank.color;
+    document.getElementById('ranked-my-trophies').textContent = totalTrophies;
+    
+    // Actualizar info del siguiente rango
+    document.getElementById('ranked-next-rank-name').textContent = nextRank.name;
+    document.getElementById('ranked-next-trophies').textContent = `(${nextRank.minTrophies} ` + String.fromCodePoint(0x1F3C6) + `)`;
+    
+    const progress = window.Ranked.getRankProgress(totalTrophies);
+    document.getElementById('ranked-my-progress-bar').style.width = progress + '%';
+    
+    // Texto de progreso
+    const progressText = document.getElementById('ranked-progress-text');
+    if (progressText) {
+      progressText.textContent = `${totalTrophies} / ${displayRank.maxTrophies === Infinity ? '8' : displayRank.maxTrophies}`;
+    }
+    
+    // Renderizar grid de categor�as
+    this.renderRankedCategories(myRankings);
+  },
+
+  // Renderizar categoras de ranked
+  renderRankedCategories(myRankings) {
+    const grid = document.getElementById('ranked-categories-grid');
+    if (!grid || !window.RANKED_CATEGORIES) return;
+    
+    grid.innerHTML = window.RANKED_CATEGORIES.map(cat => {
+      const ranking = myRankings[cat.id] || { trophies: 0 };
+      const rank = window.Ranked.getRankByTrophies(ranking.trophies);
+      
+      return `
+        <div class="ranked-category-card" data-category="${cat.id}">
+          <span class="ranked-category-icon">${cat.icon}</span>
+          <span class="ranked-category-name">${cat.name}</span>
+          <div class="ranked-category-trophies">
+            <span>${ranking.trophies} ` + String.fromCodePoint(0x1F3C6) + `</span>
+          </div>
+          <span class="ranked-category-rank" style="color: ${rank.color}">${rank.icon} ${rank.name}</span>
+        </div>
+      `;
+    }).join('');
+    
+    // Event listeners para cada categor�a
+    grid.querySelectorAll('.ranked-category-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const category = card.dataset.category;
+        this.startRankedSearch(category);
+      });
+    });
+  },
+
+  // Iniciar bsqueda de partida ranked
+  async startRankedSearch(category) {
+    if (!window.Ranked) {
+      this.showToast('Sistema ranked no disponible', 'error');
+      return;
+    }
+    
+    await window.Ranked.searchMatch(category);
+  },
+
+  // Mostrar overlay de todos los rangos
+  showRanksOverview() {
+    const overlay = document.getElementById('ranks-overview-overlay');
+    if (!overlay || !window.RANKS) return;
+    
+    // Obtener trofeos actuales
+    const myRankings = this.cachedRankings || {};
+    let totalTrophies = 0;
+    for (const cat of (window.RANKED_CATEGORIES || [])) {
+      const ranking = myRankings[cat.id] || { trophies: 0 };
+      totalTrophies += ranking.trophies;
+    }
+    
+    const currentRank = window.Ranked.getRankByTrophies(totalTrophies);
+    
+    // Actualizar encabezado del overlay
+    document.getElementById('overview-current-icon').textContent = currentRank.icon;
+    document.getElementById('overview-current-name').textContent = currentRank.name;
+    document.getElementById('overview-current-name').style.color = currentRank.color;
+    document.getElementById('overview-current-trophies').textContent = 
+      `${totalTrophies} / ${currentRank.maxTrophies === Infinity ? '8' : currentRank.maxTrophies} ` + String.fromCodePoint(0x1F3C6);
+    
+    // Renderizar lista de rangos
+    const ranksList = document.getElementById('ranks-list');
+    ranksList.innerHTML = window.RANKS.map(rank => {
+      const isCurrent = rank.id === currentRank.id;
+      const isAchieved = totalTrophies >= rank.minTrophies;
+      
+      return `
+        <div class="rank-item ${isCurrent ? 'current' : ''} ${isAchieved ? 'achieved' : 'locked'}">
+          <span class="rank-icon">${rank.icon}</span>
+          <div class="rank-info">
+            <span class="rank-name" style="color: ${rank.color}">${rank.name}</span>
+            <span class="rank-trophies">${rank.minTrophies}${rank.maxTrophies === Infinity ? '+' : ' - ' + rank.maxTrophies} ` + String.fromCodePoint(0x1F3C6) + `</span>
+          </div>
+          ${isCurrent ? '<span class="rank-current-badge">? Actual</span>' : ''}
+        </div>
+      `;
+    }).join('');
+    
+    overlay.style.display = 'flex';
+    overlay.classList.remove('hidden');
+  },
+
+  // Iniciar modo ranked (llamado por Ranked.js)
+  startRankedMode(matchData) {
+    console.log('[App] Iniciando partida ranked:', matchData);
+    
+    this.isRankedMatch = true;
+    this.rankedMatchData = matchData;
+    this.rankedMatchStartTime = Date.now();
+    this.rankedPowerupsUsed = 0; // Reset contador de comodines (legacy)
+    this.sessionPowerupsUsed = 0; // Reset contador global de comodines
+    
+    // Configurar categoria
+    this.selectedCategory = matchData.category;
+    
+    // Cargar preguntas del match
+    const numQuestions = matchData.questionIds.length;
+    this.currentQuestions = [];
+    
+    for (const qId of matchData.questionIds) {
+      const numId = typeof qId === 'string' ? parseInt(qId, 10) : qId;
+      const question = QUESTIONS_DB.find(q => q.id === numId);
+      if (question) {
+        this.currentQuestions.push(question);
+      }
+    }
+    
+    console.log('[App] Preguntas ranked cargadas:', this.currentQuestions.length);
+    
+    if (this.currentQuestions.length === 0) {
+      this.showToast('Error cargando preguntas', 'error');
+      return;
+    }
+    
+    // Reset estado
+    this.currentQuestionIndex = 0;
+    this.currentStreak = 0;
+    this.sessionBestStreak = 0;
+    this.sessionCorrect = 0;
+    this.sessionWrong = 0;
+    this.sessionPoints = 0;
+    this.sessionCoins = 0;
+    this.coinMultiplier = 1;
+    this.phaseHadError = false;
+    this.currentPhase = 1;
+    this.phaseCorrect = 0;
+    this.phaseWrong = 0;
+    this.answered = false;
+    this.infiniteLives = true; // Sin vidas en ranked
+    
+    // Configurar timer - 8 segundos para ranked
+    this.timerMax = window.RANKED_CONFIG?.questionTime || 8;
+    
+    // Mostrar pantalla de quiz
+    document.getElementById('phase-overlay').classList.add('hidden');
+    document.getElementById('gameover-overlay').classList.add('hidden');
+    document.getElementById('ad-overlay').classList.add('hidden');
+    this.showScreen('quiz');
+    this.renderQuestion();
+    
+    // Mostrar indicador de ranked
+    this.showToast(`?? Ranked: ${matchData.category} vs ${matchData.opponent?.userName || 'Oponente'}`, 'info');
+  },
+
+  // Mostrar resultados de partida ranked
+  async showRankedResults() {
+    console.log('[App] Mostrando resultados ranked');
+    
+    const timeSpent = Math.floor((Date.now() - this.rankedMatchStartTime) / 1000);
+    const score = this.sessionPoints;
+    const correctAnswers = this.sessionCorrect;
+    const matchId = this.rankedMatchData.id;
+    const category = this.rankedMatchData.category;
+    
+    // Mostrar overlay
+    const overlay = document.getElementById('ranked-result-overlay');
+    overlay.classList.remove('hidden');
+    
+    // Mostrar mis resultados
+    document.getElementById('ranked-my-score').textContent = score;
+    document.getElementById('ranked-opponent-name').textContent = this.rankedMatchData.opponent?.userName || 'Oponente';
+    document.getElementById('ranked-opponent-score').textContent = '--';
+    document.getElementById('ranked-status-message').classList.remove('hidden');
+    document.getElementById('ranked-result-title').textContent = '�Partida Terminada!';
+    document.getElementById('ranked-result-subtitle').textContent = '';
+    document.getElementById('ranked-result-icon').textContent = '??';
+    
+    // Ocultar cambio de trofeos hasta tener resultado final
+    document.getElementById('ranked-trophy-change').style.display = 'none';
+    
+    // Enviar resultado
+    try {
+      const result = await window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers);
+      console.log('[App] Resultado ranked enviado:', result);
+      
+      if (result.success && result.completed) {
+        this.showRankedComparison(result, category);
+      } else {
+        // Esperar al oponente
+        this.listenForRankedOpponent(matchId, score, timeSpent, correctAnswers, category);
+      }
+    } catch (error) {
+      console.error('[App] Error enviando resultado ranked:', error);
+      document.getElementById('ranked-status-message').innerHTML = 
+        '<span style="color: var(--danger)">Error al enviar resultado</span>';
+    }
+    
+    // Limpiar estado
+    this.isRankedMatch = false;
+    this.rankedMatchData = null;
+    this.rankedMatchStartTime = null;
+    this.infiniteLives = false;
+    
+    // Botones
+    document.getElementById('btn-ranked-done').onclick = () => {
+      overlay.classList.add('hidden');
+      if (this._rankedUnsubscribe) {
+        this._rankedUnsubscribe();
+        this._rankedUnsubscribe = null;
+      }
+      this.showScreen('home');
+    };
+    
+    document.getElementById('btn-ranked-play-again').onclick = () => {
+      overlay.classList.add('hidden');
+      if (this._rankedUnsubscribe) {
+        this._rankedUnsubscribe();
+        this._rankedUnsubscribe = null;
+      }
+      this.showScreen('ranked');
+      this.loadRankedData();
+    };
+  },
+
+  // Escuchar resultado del oponente en ranked
+  listenForRankedOpponent(matchId, myScore, myTime, myCorrect, category) {
+    if (this._rankedUnsubscribe) {
+      this._rankedUnsubscribe();
+    }
+    
+    this._rankedUnsubscribe = window.Ranked.subscribeToMatch(matchId, async (match) => {
+      console.log('[App] Actualizacion match ranked:', match);
+      
+      const iAmPlayer1 = match.player1Id === window.Firebase?.currentUser?.uid;
+      const opponentScore = iAmPlayer1 ? match.player2Score : match.player1Score;
+      
+      if (opponentScore !== null && opponentScore !== undefined) {
+        // El oponente termin - actualizar MIS trofeos tambi�n
+        if (match.status === 'completed' && match.winner) {
+          console.log('[App] Partida completada, actualizando mis trofeos...');
+          await window.Ranked.updateTrophies(category, match.winner, iAmPlayer1, match);
+        }
+        
+        const result = {
+          completed: true,
+          winner: match.winner,
+          myScore: myScore,
+          opponentScore: opponentScore,
+          myTime: myTime,
+          opponentTime: iAmPlayer1 ? match.player2Time : match.player1Time
+        };
+        
+        this.showRankedComparison(result, category);
+        
+        if (this._rankedUnsubscribe) {
+          this._rankedUnsubscribe();
+          this._rankedUnsubscribe = null;
+        }
+      }
+    });
+  },
+
+  // Mostrar comparacion de resultados ranked
+  async showRankedComparison(result, category) {
+    console.log('[App] Mostrando comparacion ranked:', result);
+    
+    // Ocultar estado de espera
+    document.getElementById('ranked-status-message').classList.add('hidden');
+    
+    // Mostrar score del oponente
+    document.getElementById('ranked-opponent-score').textContent = result.opponentScore;
+    
+    // Determinar ganador
+    const iWon = result.winner === window.Firebase?.currentUser?.uid;
+    const isTie = result.winner === 'tie';
+    
+    // Actualizar UI
+    const myCard = document.querySelector('#ranked-result-overlay .challenge-player.me');
+    const opponentCard = document.querySelector('#ranked-result-overlay .challenge-player.opponent');
+    
+    myCard?.classList.remove('winner', 'loser');
+    opponentCard?.classList.remove('winner', 'loser');
+    
+    if (isTie) {
+      document.getElementById('ranked-result-icon').textContent = '??';
+      document.getElementById('ranked-result-title').textContent = '�Empate!';
+      document.getElementById('ranked-result-subtitle').textContent = 'Ambos jugaron igual';
+      myCard?.classList.add('winner');
+      opponentCard?.classList.add('winner');
+    } else if (iWon) {
+      document.getElementById('ranked-result-icon').textContent = '??';
+      document.getElementById('ranked-result-title').textContent = '�Victoria!';
+      document.getElementById('ranked-result-subtitle').textContent = '�Excelente!';
+      myCard?.classList.add('winner');
+      opponentCard?.classList.add('loser');
+    } else {
+      document.getElementById('ranked-result-icon').textContent = '??';
+      document.getElementById('ranked-result-title').textContent = 'Derrota';
+      document.getElementById('ranked-result-subtitle').textContent = '�Sigue intentando!';
+      myCard?.classList.add('loser');
+      opponentCard?.classList.add('winner');
+    }
+    
+    // Mostrar cambio de trofeos
+    const trophyChange = document.getElementById('ranked-trophy-change');
+    trophyChange.style.display = 'flex';
+    
+    // Obtener ranking actual para mostrar el cambio
+    const myRanking = await window.Ranked.getCategoryRanking(category);
+    const oldTrophies = myRanking?.trophies || 0;
+    
+    let change = 0;
+    if (iWon) change = window.RANKED_CONFIG.trophiesWin;
+    else if (isTie) change = window.RANKED_CONFIG.trophiesTie;
+    else change = -window.RANKED_CONFIG.trophiesLose;
+    
+    // Nota: los trofeos ya se actualizaron en submitResult, as� que mostramos los valores calculados
+    const displayOld = Math.max(0, oldTrophies - change);
+    
+    document.getElementById('ranked-trophy-old').textContent = displayOld;
+    document.getElementById('ranked-trophy-new').textContent = oldTrophies;
+    
+    const diffEl = document.getElementById('ranked-trophy-diff');
+    diffEl.textContent = change >= 0 ? `+${change}` : change;
+    diffEl.className = 'trophy-diff ' + (change > 0 ? 'positive' : change < 0 ? 'negative' : 'neutral');
+    
+    // Sonido
+    this.playSound(iWon || isTie ? 'phase' : 'wrong');
+  },
+
+  // Cargar leaderboard
+  async loadRankedLeaderboard() {
+    if (!window.Ranked) return;
+    
+    const category = document.getElementById('leaderboard-category-select')?.value || 'personajes';
+    const allCategories = ['personajes', 'lugares', 'eventos', 'profetas', 'reyes', 'milagros', 'parabolas', 'salmos-proverbios'];
+    
+    // Obtener trofeos del usuario para mostrar su rango
+    const myUserId = window.Firebase?.currentUser?.uid;
+    let myTrophies = 0;
+    
+    if (myUserId) {
+      if (category === 'aleatorio') {
+        // Sumar trofeos de todas las categor�as
+        for (const cat of allCategories) {
+          const doc = await window.Firebase.db
+            .collection('users').doc(myUserId)
+            .collection('rankings').doc(cat).get();
+          if (doc.exists) {
+            myTrophies += doc.data().trophies || 0;
+          }
+        }
+      } else {
+        const myRankingDoc = await window.Firebase.db
+          .collection('users').doc(myUserId)
+          .collection('rankings').doc(category).get();
+        if (myRankingDoc.exists) {
+          myTrophies = myRankingDoc.data().trophies || 0;
+        }
+      }
+    }
+    
+    // Mostrar el rango actual en el t�tulo
+    const myRank = window.Ranked.getRankByTrophies(myTrophies);
+    const rankTitleEl = document.getElementById('leaderboard-current-rank');
+    if (rankTitleEl) {
+      rankTitleEl.textContent = `${myRank.icon} ${myRank.name}`;
+    }
+    
+    const leaderboard = await window.Ranked.getLeaderboard(category);
+    
+    const list = document.getElementById('leaderboard-list');
+    if (!list) return;
+    
+    list.innerHTML = leaderboard.map((player, index) => {
+      const position = index + 1;
+      const posClass = position === 1 ? 'gold' : position === 2 ? 'silver' : position === 3 ? 'bronze' : '';
+      const isMe = player.userId === myUserId;
+      
+      return `
+        <div class="leaderboard-item ${isMe ? 'me' : ''}">
+          <span class="leaderboard-position ${posClass}">${position}</span>
+          <span class="leaderboard-name">${player.name}</span>
+          <div class="leaderboard-trophies">
+            <span>${player.trophies}</span>
+            <span>??</span>
+          </div>
+          <span class="leaderboard-stats">${player.wins}W ${player.losses}L</span>
+        </div>
+      `;
+    }).join('');
+    
+    if (leaderboard.length === 0) {
+      list.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No hay jugadores en este rango</p>';
+    }
+  },
+  
   renderQuestion() {
+    console.log('[App] renderQuestion - index:', this.currentQuestionIndex, 'total:', this.currentQuestions?.length);
     const q = this.currentQuestions[this.currentQuestionIndex];
-    if (!q) return;
+    if (!q) {
+      console.error('[App] ERROR: No hay pregunta en el �ndice', this.currentQuestionIndex);
+      console.log('[App] currentQuestions:', this.currentQuestions);
+      return;
+    }
+    console.log('[App] Mostrando pregunta:', q.question?.substring(0, 50) + '...');
     this.answered = false;
     // Scroll al tope para preguntas largas
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1120,7 +2006,7 @@ const App = {
     const current = this.currentQuestionIndex + 1;
     // Update top bar
     document.getElementById('question-counter').textContent = `${current}/${total}`;
-    document.getElementById('quiz-points').textContent = ` ${this.sessionPoints}`;
+    document.getElementById('quiz-points').textContent = `� ${this.sessionPoints}`;
     // Phase badge
     const diffInfo = DIFFICULTIES[this.activeDifficulty || this.selectedDifficulty];
     const phaseBadge = document.getElementById('quiz-phase-badge');
@@ -1187,21 +2073,29 @@ const App = {
     }
     timerEl.classList.remove('hidden');
     timerBarContainer.classList.remove('hidden');
-    this.timerSeconds = this.timerMax;
-    timerEl.textContent = `T: ${this.timerSeconds}`;
+    
+    // Aplicar tiempo extra si el potenciador est� activo (+10 segundos)
+    let extraTime = 0;
+    if (typeof SeasonSystem !== 'undefined' && SeasonSystem.hasExtraTimeActive()) {
+      extraTime = 10;
+    }
+    const effectiveMax = this.timerMax + extraTime;
+    
+    this.timerSeconds = effectiveMax;
+    timerEl.textContent = `?? ${this.timerSeconds}`;
     timerEl.className = 'quiz-timer';
     timerBar.style.width = '100%';
     timerBar.className = 'timer-bar-fill';
     this.timerInterval = setInterval(() => {
       this.timerSeconds--;
-      const percent = (this.timerSeconds / this.timerMax) * 100;
-      timerEl.textContent = `T: ${this.timerSeconds}`;
+      const percent = (this.timerSeconds / effectiveMax) * 100;
+      timerEl.textContent = `?? ${this.timerSeconds}`;
       timerBar.style.width = `${percent}%`;
       // Color changes
-      if (this.timerSeconds <= this.timerMax * 0.25) {
+      if (this.timerSeconds <= effectiveMax * 0.25) {
         timerEl.className = 'quiz-timer danger';
         timerBar.className = 'timer-bar-fill danger';
-      } else if (this.timerSeconds <= this.timerMax * 0.5) {
+      } else if (this.timerSeconds <= effectiveMax * 0.5) {
         timerEl.className = 'quiz-timer warning';
         timerBar.className = 'timer-bar-fill warning';
       }
@@ -1261,10 +2155,10 @@ const App = {
     Storage.addWrongAnswer(q.id, -1);
     // Show time's up message
     const timerEl = document.getElementById('quiz-timer');
-    timerEl.textContent = 'T: ¡Tiempo!';
+    timerEl.textContent = 'T: �Tiempo!';
     timerEl.className = 'quiz-timer danger';
     // Show reference
-    document.getElementById('ref-text').innerHTML = `<strong>T: ¡Se acabó el tiempo!</strong>  ${q.reference}`;
+    document.getElementById('ref-text').innerHTML = `<strong>T: �Se acab� el tiempo!</strong>  ${q.reference}`;
     document.getElementById('reference-card').classList.remove('hidden');
     // Show next button
     const nextBtn = document.getElementById('next-btn');
@@ -1333,6 +2227,30 @@ const App = {
     if (this.currentStreak > this.sessionBestStreak) {
       this.sessionBestStreak = this.currentStreak;
     }
+    
+    // === SISTEMA DE MONEDAS ===
+    // Monedas base seg�n dificultad (reducido si multiplicador >= 3 para equilibrio)
+    let baseCoins = { facil: 5, medio: 8, intermedio: 8, dificil: 12, experto: 20 }[this.activeDifficulty] || 5;
+    // Reducir monedas base si el multiplicador es alto (equilibrio econ�mico)
+    if (this.coinMultiplier >= 3) {
+      baseCoins = Math.ceil(baseCoins * 0.6); // 40% menos monedas base con x3+
+    }
+    let coinsEarned = Math.floor(baseCoins * this.coinMultiplier);
+    
+    // Aplicar potenciador de monedas dobles
+    if (typeof SeasonSystem !== 'undefined' && SeasonSystem.hasDoubleCoinsActive()) {
+      coinsEarned *= 2;
+    }
+    
+    this.sessionCoins += coinsEarned;
+    const updatedCoins = Storage.addCoins(coinsEarned);
+    // Sincronizar monedas con Firebase
+    if (window.Firebase?.currentUser) {
+      window.Firebase.syncCoinsToCloud(updatedCoins);
+    }
+    // Actualizar UI de monedas
+    this.updateCoinsDisplay();
+    
     // Speed bonus (if timer is active)
     let speedBonus = 0;
     if (this.timerMax > 0 && this.timerSeconds > 0) {
@@ -1358,6 +2276,8 @@ const App = {
         this.showStreakPopup(this.currentStreak);
       }
     }
+    // A�adir monedas al popup
+    popupText += ` ??${coinsEarned}`;
     // Show point popup
     this.showPointPopup(popupText);
     // Update streak display
@@ -1366,7 +2286,7 @@ const App = {
       streakEl.textContent = ` ${this.currentStreak}`;
       streakEl.classList.remove('hidden');
     }
-    document.getElementById('quiz-points').textContent = ` ${this.sessionPoints}`;
+    document.getElementById('quiz-points').textContent = `� ${this.sessionPoints}`;
     // Sound & Vibrate (variable vibration based on streak)
     this.playSound('correct');
     if (this.currentStreak >= 10) {
@@ -1382,19 +2302,24 @@ const App = {
     this.sessionWrong++;
     this.phaseWrong++;
     this.currentStreak = 0;
+    this.phaseHadError = true; // Marcar error en la fase para el multiplicador
     document.getElementById('quiz-streak').classList.add('hidden');
-    // Quitar una vida (salvo si tiene vidas infinitas)
-    if (!this.infiniteLives) {
+    // Quitar una vida (salvo si tiene vidas infinitas o escudo activo)
+    const hasShield = typeof SeasonSystem !== 'undefined' && SeasonSystem.hasShieldActive();
+    if (!this.infiniteLives && !hasShield) {
       this.lives--;
       if (this.lives < 0) this.lives = 0;
       this.saveLivesState();
+      this.animateLifeLost();
+    } else if (hasShield) {
+      // Mostrar efecto visual de escudo protegiendo
+      this.showShieldProtectionEffect();
     }
     this.renderLives();
-    this.animateLifeLost();
     // Sound & Vibrate
     this.playSound('wrong');
     this.vibrate([100, 50, 100]);
-    this.announce(`Incorrecto. ${this.infiniteLives ? 'Vidas infinitas activas.' : `Te quedan ${this.lives} vida${this.lives !== 1 ? 's' : ''}.`}`);
+    this.announce(`Incorrecto. ${this.infiniteLives ? 'Vidas infinitas activas.' : hasShield ? 'Escudo activo - vida protegida.' : `Te quedan ${this.lives} vida${this.lives !== 1 ? 's' : ''}.`}`);
   },
   nextQuestion() {
     // Verificar si se acabaron las vidas (no aplica con infinitas)
@@ -1414,6 +2339,12 @@ const App = {
   showPhaseComplete() {
     this.stopTimer();
     this.playSound('phase');
+    
+    // === ACTUALIZAR MULTIPLICADOR DE MONEDAS ===
+    const phasePerfect = !this.phaseHadError && this.phaseCorrect === this.currentQuestions.length;
+    const newMultiplier = Storage.updateCoinMultiplier(phasePerfect);
+    this.coinMultiplier = newMultiplier;
+    
     // If daily challenge, save completion and show different UI
     if (this.isDailyChallenge) {
       const today = new Date().toISOString().split('T')[0];
@@ -1426,34 +2357,88 @@ const App = {
       // Render daily card as completed
       this.renderDailyChallengeCard();
     }
+    
+    // ============================================
+    // RETO SOCIAL - Mostrar pantalla de resultados
+    // ============================================
+    if (this.isSocialChallenge && this.socialChallengeData) {
+      this.showChallengeResults();
+      return; // No mostrar el overlay normal de fase
+    }
+    
+    // ============================================
+    // PARTIDA RANKED - Mostrar resultados ranked
+    // ============================================
+    if (this.isRankedMatch && this.rankedMatchData) {
+      this.showRankedResults();
+      return; // No mostrar el overlay normal de fase
+    }
+    
     const percentage = this.currentQuestions.length > 0
       ? Math.round((this.phaseCorrect / this.currentQuestions.length) * 100) : 0;
     let icon;
-    if (percentage === 100) icon = '🏆';
-    else if (percentage >= 80) icon = '🌟';
-    else if (percentage >= 60) icon = '😊';
-    else if (percentage >= 40) icon = '📖';
-    else icon = '💪';
+    if (percentage === 100) icon = '??';
+    else if (percentage >= 80) icon = '??';
+    else if (percentage >= 60) icon = '??';
+    else if (percentage >= 40) icon = '??';
+    else icon = '??';
     document.getElementById('phase-icon').textContent = icon;
     document.getElementById('phase-title').textContent = `Fase ${this.currentPhase} Completada`;
     document.getElementById('phase-correct').textContent = this.phaseCorrect;
     document.getElementById('phase-wrong').textContent = this.phaseWrong;
     document.getElementById('phase-points').textContent = this.sessionPoints;
     document.getElementById('phase-streak').textContent = this.currentStreak;
+    
+    // Mostrar info de monedas y multiplicador
+    const phaseCoinsEl = document.getElementById('phase-coins');
+    const phaseMultiplierEl = document.getElementById('phase-multiplier');
+    if (phaseCoinsEl) {
+      phaseCoinsEl.textContent = this.sessionCoins;
+    }
+    if (phaseMultiplierEl) {
+      phaseMultiplierEl.textContent = `x${newMultiplier}`;
+      phaseMultiplierEl.className = `phase-multiplier-badge mult-${newMultiplier}`;
+      if (phasePerfect && newMultiplier > 1) {
+        phaseMultiplierEl.classList.add('multiplier-up');
+      }
+    }
+    
     // Determinar si la proxima fase sube de dificultad
     const nextPhase = this.currentPhase + 1;
     const nextDiff = this.getDifficultyForPhase(nextPhase);
     const subtitleEl = document.getElementById('phase-subtitle');
     const diffLabelEl = document.getElementById('phase-diff-label');
-    if (nextDiff !== this.activeDifficulty && !this.categoryExhausted) {
-      const diffInfo = DIFFICULTIES[nextDiff];
-      subtitleEl.textContent = `!Aumento de Dificultad!`;
-      diffLabelEl.textContent = `${diffInfo.icon} Siguiente: ${diffInfo.name}`;
-      diffLabelEl.style.color = diffInfo.color;
+    
+    // Mostrar info del multiplicador si es perfecto
+    if (phasePerfect && newMultiplier > 1) {
+      subtitleEl.textContent = `�Fase Perfecta! ?? Multiplicador x${newMultiplier}`;
       subtitleEl.classList.remove('hidden');
-      diffLabelEl.classList.remove('hidden');
+      if (nextDiff !== this.activeDifficulty && !this.categoryExhausted) {
+        const diffInfo = DIFFICULTIES[nextDiff];
+        if (diffInfo) {
+          diffLabelEl.textContent = `${diffInfo.icon} Siguiente: ${diffInfo.name}`;
+          diffLabelEl.style.color = diffInfo.color;
+          diffLabelEl.classList.remove('hidden');
+        } else {
+          diffLabelEl.classList.add('hidden');
+        }
+      } else {
+        diffLabelEl.classList.add('hidden');
+      }
+    } else if (nextDiff !== this.activeDifficulty && !this.categoryExhausted) {
+      const diffInfo = DIFFICULTIES[nextDiff];
+      if (diffInfo) {
+        subtitleEl.textContent = `!Aumento de Dificultad!`;
+        diffLabelEl.textContent = `${diffInfo.icon} Siguiente: ${diffInfo.name}`;
+        diffLabelEl.style.color = diffInfo.color;
+        subtitleEl.classList.remove('hidden');
+        diffLabelEl.classList.remove('hidden');
+      } else {
+        subtitleEl.classList.add('hidden');
+        diffLabelEl.classList.add('hidden');
+      }
     } else if (this.categoryExhausted) {
-      subtitleEl.textContent = '🎉 !Categoria completada!';
+      subtitleEl.textContent = '?? !Categoria completada!';
       diffLabelEl.textContent = 'Se mezclaran preguntas de todas las categorias';
       diffLabelEl.style.color = 'var(--accent)';
       subtitleEl.classList.remove('hidden');
@@ -1498,6 +2483,7 @@ const App = {
     this.currentPhase++;
     this.phaseCorrect = 0;
     this.phaseWrong = 0;
+    this.phaseHadError = false; // Resetear para la nueva fase
     this.cleanOverlayTraps();
     // Determinar la dificultad para esta fase
     const newDiff = this.getDifficultyForPhase(this.currentPhase);
@@ -1594,20 +2580,348 @@ const App = {
     const livesEl = document.getElementById('quiz-lives');
     if (!livesEl) return;
     if (this.infiniteLives) {
-      livesEl.textContent = '';
+      livesEl.textContent = '�';
       return;
     }
     let hearts = '';
     for (let i = 0; i < this.maxLives; i++) {
-      hearts += i < this.lives ? '❤️' : '🖤';
+      hearts += i < this.lives ? '??' : '??';
     }
     livesEl.textContent = hearts;
+  },
+  // ========== SISTEMA DE MONEDAS ==========
+  updateCoinsDisplay() {
+    const coins = Storage.getCoins();
+    // Actualizar todos los displays de monedas
+    const homeCoinsEl = document.getElementById('home-coins-count');
+    const shopCoinsEl = document.getElementById('shop-coins-count');
+    const quizCoinsValueEl = document.querySelector('#quiz-coins .quiz-coins-value');
+    
+    if (homeCoinsEl) homeCoinsEl.textContent = coins.total;
+    if (shopCoinsEl) shopCoinsEl.textContent = coins.total;
+    if (quizCoinsValueEl) quizCoinsValueEl.textContent = this.sessionCoins;
+    
+    // Actualizar multiplicador en UI
+    const multiplierBadge = document.getElementById('coin-multiplier-badge');
+    if (multiplierBadge) {
+      multiplierBadge.textContent = `x${coins.multiplier}`;
+      multiplierBadge.className = `coin-multiplier-badge mult-${coins.multiplier}`;
+    }
+    
+    // Actualizar botones de canje en tienda
+    this.updateRedeemButtons();
+  },
+  updateRedeemButtons() {
+    const coins = Storage.getCoins();
+    // Costos de vidas en monedas
+    const costs = { 1: 50, 3: 120, 5: 180 };
+    
+    Object.keys(costs).forEach(lives => {
+      const btn = document.getElementById(`redeem-${lives}-life`);
+      if (btn) {
+        const cost = costs[lives];
+        btn.disabled = coins.total < cost || (this.lives >= this.maxLives && parseInt(lives) === 1);
+        const costEl = btn.querySelector('.redeem-cost');
+        if (costEl) costEl.textContent = cost;
+      }
+    });
+  },
+  redeemCoinsForLife(amount) {
+    const costs = { 1: 50, 3: 120, 5: 180 };
+    const cost = costs[amount];
+    
+    if (!cost) return false;
+    
+    const coins = Storage.getCoins();
+    if (coins.total < cost) {
+      this.showToast('? No tienes suficientes monedas');
+      return false;
+    }
+    
+    // Verificar que no exceda el maximo de vidas
+    const livesToAdd = Math.min(amount, this.maxLives - this.lives);
+    if (livesToAdd <= 0) {
+      this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas');
+      return false;
+    }
+    
+    // Gastar monedas
+    if (Storage.spendCoins(cost)) {
+      // Sincronizar con Firebase
+      if (window.Firebase?.currentUser) {
+        window.Firebase.syncCoinsToCloud(Storage.getCoins());
+      }
+      this.lives = Math.min(this.lives + livesToAdd, this.maxLives);
+      this.saveLivesState();
+      this.renderLives();
+      this.renderHomeLives();
+      this.updateCoinsDisplay();
+      this.playSound('correct');
+      this.showToast(`? +${livesToAdd} vida${livesToAdd > 1 ? 's' : ''} canjeada${livesToAdd > 1 ? 's' : ''}`);
+      return true;
+    }
+    return false;
   },
   animateLifeLost() {
     const livesEl = document.getElementById('quiz-lives');
     if (!livesEl) return;
     livesEl.classList.add('life-lost-shake');
     setTimeout(() => livesEl.classList.remove('life-lost-shake'), 600);
+  },
+  // ========== SISTEMA DE POTENCIADORES ==========
+  buyPowerup(powerupId) {
+    if (typeof SeasonSystem === 'undefined') {
+      this.showToast('? Sistema no disponible');
+      return;
+    }
+    const result = SeasonSystem.buyPowerup(powerupId);
+    if (result.success) {
+      this.playSound('correct');
+      this.showToast(`? ${result.message || 'Compra exitosa'}`);
+      this.updateCoinsDisplay();
+      this.updatePowerupsDisplay();
+      // Sincronizar con Firebase
+      if (window.Firebase?.currentUser) {
+        window.Firebase.syncCoinsToCloud(Storage.getCoins());
+      }
+    } else {
+      this.playSound('wrong');
+      this.showToast(`? ${result.error || 'Error en la compra'}`);
+    }
+  },
+  updatePowerupsDisplay() {
+    try {
+      if (typeof SeasonSystem === 'undefined') return;
+      const inventory = SeasonSystem.getPowerups();
+      // Actualizar tienda
+      ['shield', 'reveal', 'doubleCoins', 'extraTime', 'fiftyFifty'].forEach(id => {
+        const el = document.getElementById(`owned-${id}`);
+        if (el) el.textContent = inventory[id] || 0;
+        // Actualizar contadores en quiz
+        const quizEl = document.getElementById(`quiz-${id}-count`);
+        if (quizEl) quizEl.textContent = inventory[id] || 0;
+      });
+      // Actualizar botones de uso en quiz
+      this.updateQuizPowerupButtons();
+      // Mostrar potenciadores activos en tienda
+      this.renderActivePowerups();
+      // Actualizar indicador de escudo
+      this.updateShieldIndicator();
+    } catch (e) {
+      console.warn('[BibliaQuiz] Error en updatePowerupsDisplay:', e);
+    }
+  },
+  updateQuizPowerupButtons() {
+    if (typeof SeasonSystem === 'undefined') return;
+    const inventory = SeasonSystem.getPowerups();
+    
+    // En modo ranked, verificar si ya se us� el comod�n permitido
+    const rankedLimitReached = this.isRankedMatch && this.rankedPowerupsUsed >= 1;
+    
+    ['shield', 'reveal', 'doubleCoins', 'extraTime', 'fiftyFifty'].forEach(id => {
+      const btn = document.getElementById(`use-${id}`);
+      if (btn) {
+        const count = inventory[id] || 0;
+        // Deshabilitar si no tiene o si alcanz� l�mite en ranked
+        btn.disabled = count <= 0 || rankedLimitReached;
+        
+        // Agregar indicador de l�mite ranked
+        if (this.isRankedMatch) {
+          btn.title = rankedLimitReached ? 'Ya usaste tu comod�n en esta partida' : `${btn.title} (1 por partida)`;
+        }
+        
+        // Marcar activos
+        if (id === 'shield' && SeasonSystem.hasShieldActive()) {
+          btn.classList.add('active');
+        } else if (id === 'doubleCoins' && SeasonSystem.hasDoubleCoinsActive()) {
+          btn.classList.add('active');
+        } else if (id === 'extraTime' && SeasonSystem.hasExtraTimeActive()) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      }
+    });
+  },
+  renderActivePowerups() {
+    const container = document.getElementById('active-powerups-list');
+    const box = document.getElementById('active-powerups-display');
+    if (!container || !box) return;
+    
+    const activePowerups = [];
+    if (typeof SeasonSystem !== 'undefined') {
+      if (SeasonSystem.hasShieldActive()) {
+        const remaining = SeasonSystem.getShieldRemainingTime();
+        activePowerups.push({ id: 'shield', name: 'Escudo Divino', icon: '???', time: remaining });
+      }
+      if (SeasonSystem.hasDoubleCoinsActive()) {
+        const remaining = SeasonSystem.getDoubleCoinsRemainingTime();
+        activePowerups.push({ id: 'doubleCoins', name: 'Doble Monedas', icon: '??', time: remaining });
+      }
+      if (SeasonSystem.hasExtraTimeActive()) {
+        const remaining = SeasonSystem.getExtraTimeRemainingTime();
+        activePowerups.push({ id: 'extraTime', name: 'Tiempo Extra', icon: '??', time: remaining });
+      }
+    }
+    
+    if (activePowerups.length === 0) {
+      box.classList.add('hidden');
+      return;
+    }
+    
+    box.classList.remove('hidden');
+    container.innerHTML = activePowerups.map(p => {
+      const mins = Math.floor(p.time / 60000);
+      const secs = Math.floor((p.time % 60000) / 1000);
+      const timeStr = `${mins}:${secs.toString().padStart(2, '0')}`;
+      const expiring = p.time < 60000 ? 'expiring' : '';
+      return `
+        <div class="active-powerup-item">
+          <span class="active-powerup-icon">${p.icon}</span>
+          <div class="active-powerup-info">
+            <span class="active-powerup-name">${p.name}</span>
+            <span class="active-powerup-timer ${expiring}">${timeStr}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  },
+  updateShieldIndicator() {
+    const indicator = document.getElementById('shield-active-indicator');
+    if (!indicator) return;
+    
+    if (typeof SeasonSystem !== 'undefined' && SeasonSystem.hasShieldActive()) {
+      const remaining = SeasonSystem.getShieldRemainingTime();
+      const mins = Math.floor(remaining / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+      document.getElementById('shield-timer-text').textContent = `Escudo: ${mins}:${secs.toString().padStart(2, '0')}`;
+      indicator.classList.remove('hidden');
+    } else {
+      indicator.classList.add('hidden');
+    }
+  },
+  usePowerup(powerupId) {
+    if (typeof SeasonSystem === 'undefined') return;
+    
+    // Restriccion: maximo 1 comodin por partida en CUALQUIER modo
+    if (this.sessionPowerupsUsed >= 1) {
+      this.showToast(String.fromCodePoint(0x26A0) + ' Solo puedes usar 1 comodin por partida');
+      return;
+    }
+    
+    // Para powerups de uso instant�neo
+    if (powerupId === 'reveal') {
+      this.useRevealPowerup();
+      return;
+    }
+    if (powerupId === 'fiftyFifty') {
+      this.useFiftyFiftyPowerup();
+      return;
+    }
+    
+    // Para powerups con duracion
+    const result = SeasonSystem.activatePowerup(powerupId);
+    if (result.success) {
+      // Contar uso de comodin en esta partida
+      this.sessionPowerupsUsed = (this.sessionPowerupsUsed || 0) + 1;
+      this.playSound('correct');
+      this.showToast(`? ${result.message}`);
+      this.updatePowerupsDisplay();
+    } else {       
+      this.showToast(`? ${result.message}`);
+    }
+  },
+  useRevealPowerup() {
+    if (typeof SeasonSystem === 'undefined') return;
+    
+    // Restriccion: max 1 comodin por partida
+    if (this.sessionPowerupsUsed >= 1) {
+      this.showToast(String.fromCodePoint(0x26A0) + ' Solo puedes usar 1 comodin por partida');
+      return;
+    }
+    
+    const inventory = SeasonSystem.getPowerups();
+    if (!inventory.reveal || inventory.reveal <= 0) {
+      this.showToast('? No tienes Revelaci�n disponible');
+      return;
+    }
+    
+    // Consumir el powerup
+    SeasonSystem.consumePowerup('reveal');
+    
+    // Contar uso de comodin
+    this.sessionPowerupsUsed = (this.sessionPowerupsUsed || 0) + 1;
+    
+    // Mostrar la respuesta correcta
+    const currentQ = this.currentQuestions[this.currentQuestionIndex];
+    if (currentQ) {
+      const buttons = document.querySelectorAll('.option-btn');
+      buttons.forEach(btn => {
+        if (btn.dataset.answer === currentQ.answer) {
+          btn.classList.add('reveal-highlight');
+          btn.style.border = '3px solid var(--success)';
+          btn.style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.5)';
+        }
+      });
+      this.showToast('??? �Respuesta revelada!');
+      this.playSound('correct');
+    }
+    this.updatePowerupsDisplay();
+  },
+  useFiftyFiftyPowerup() {
+    if (typeof SeasonSystem === 'undefined') return;
+    
+    // Restriccion: max 1 comodin por partida
+    if (this.sessionPowerupsUsed >= 1) {
+      this.showToast(String.fromCodePoint(0x26A0) + ' Solo puedes usar 1 comodin por partida');
+      return;
+    }
+    
+    const inventory = SeasonSystem.getPowerups();
+    if (!inventory.fiftyFifty || inventory.fiftyFifty <= 0) {
+      this.showToast('? No tienes 50:50 disponible');
+      return;
+    }
+    
+    const currentQ = this.currentQuestions[this.currentQuestionIndex];
+    if (!currentQ) return;
+    
+    // Consumir el powerup
+    SeasonSystem.consumePowerup('fiftyFifty');
+    
+    // Contar uso de comodin
+    this.sessionPowerupsUsed = (this.sessionPowerupsUsed || 0) + 1;
+    
+    // Obtener opciones incorrectas
+    const buttons = Array.from(document.querySelectorAll('.option-btn'));
+    const wrongButtons = buttons.filter(btn => btn.dataset.answer !== currentQ.answer && !btn.disabled);
+    
+    // Eliminar 2 opciones incorrectas aleatorias
+    const toRemove = this.shuffleArray([...wrongButtons]).slice(0, 2);
+    toRemove.forEach(btn => {
+      btn.disabled = true;
+      btn.style.opacity = '0.3';
+      btn.style.textDecoration = 'line-through';
+    });
+    
+    this.showToast('?? �2 respuestas eliminadas!');
+    this.playSound('correct');
+    this.updatePowerupsDisplay();
+  },
+  initPowerupListeners() {
+    // Listeners para usar potenciadores en quiz
+    const powerupBtns = document.querySelectorAll('.quiz-powerup-btn');
+    powerupBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const powerupId = btn.dataset.powerup;
+        this.usePowerup(powerupId);
+      });
+    });
+    
+    // Actualizar displays cada segundo para timers
+    setInterval(() => {
+      this.updatePowerupsDisplay();
+    }, 1000);
   },
   // ========== HOME LIVES DISPLAY + TIMER ==========
   loadInfiniteLives() {
@@ -1622,8 +2936,11 @@ const App = {
     const timerWrap = document.getElementById('home-lives-timer-wrap');
     const card = document.getElementById('home-lives-card');
     if (!heartsEl) return;
+    const heartFull = String.fromCodePoint(0x2764); // ❤
+    const heartEmpty = String.fromCodePoint(0x1F5A4); // 🖤
+    const infinitySymbol = String.fromCodePoint(0x221E); // ∞
     if (this.infiniteLives) {
-      heartsEl.textContent = '♾️';
+      heartsEl.textContent = infinitySymbol;
       countEl.textContent = 'Infinitas';
       timerWrap.classList.add('hidden');
       card.classList.add('infinite-active');
@@ -1632,7 +2949,7 @@ const App = {
     card.classList.remove('infinite-active');
     let hearts = '';
     for (let i = 0; i < this.maxLives; i++) {
-      hearts += i < this.lives ? '❤️' : '🖤';
+      hearts += i < this.lives ? heartFull : heartEmpty;
     }
     heartsEl.textContent = hearts;
     countEl.textContent = `${this.lives}/${this.maxLives}`;
@@ -1684,13 +3001,16 @@ const App = {
     // Update lives display
     const heartsEl = document.getElementById('shop-lives-hearts');
     const textEl = document.getElementById('shop-lives-text');
+    const heartFull = String.fromCodePoint(0x2764); // ❤
+    const heartEmpty = String.fromCodePoint(0x1F5A4); // 🖤
+    const infinitySymbol = String.fromCodePoint(0x221E); // ∞
     if (this.infiniteLives) {
-      heartsEl.textContent = '';
+      heartsEl.textContent = infinitySymbol;
       textEl.textContent = 'Vidas infinitas activas';
     } else {
       let hearts = '';
       for (let i = 0; i < this.maxLives; i++) {
-        hearts += i < this.lives ? '❤️' : '🖤';
+        hearts += i < this.lives ? heartFull : heartEmpty;
       }
       heartsEl.textContent = hearts;
       textEl.textContent = `${this.lives}/${this.maxLives} vidas`;
@@ -1707,9 +3027,18 @@ const App = {
         btn.classList.remove('active');
       }
     }
+    // Actualizar display de monedas
+    this.updateCoinsDisplay();
+    // Actualizar multiplicador en tienda
+    const shopMultBadge = document.getElementById('shop-multiplier-badge');
+    if (shopMultBadge) {
+      const coins = Storage.getCoins();
+      shopMultBadge.textContent = `x${coins.multiplier}`;
+      shopMultBadge.className = `coin-multiplier-badge mult-${coins.multiplier}`;
+    }
   },
   handleShopBuy(action) {
-    // Nueva lógica de compra usando Billing
+    // Nueva l�gica de compra usando Billing
     if (typeof Billing !== 'undefined') {
       this.handleShopBuyNew(action);
       return;
@@ -1717,28 +3046,28 @@ const App = {
     // Fallback legacy
     if (action === '1') {
       if (this.lives >= this.maxLives) {
-        this.showToast('❤️ Ya tienes todas las vidas', 'info');
+        this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas', 'info');
         return;
       }
       this.lives = Math.min(this.maxLives, this.lives + 1);
       this.saveLivesState();
       this.playSound('correct');
-      this.showToast('❤️ +1 vida obtenida');
+      this.showToast(String.fromCodePoint(0x2764) + ' +1 vida obtenida');
     } else if (action === 'full') {
       if (this.lives >= this.maxLives) {
-        this.showToast('❤️ Ya tienes todas las vidas', 'info');
+        this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas', 'info');
         return;
       }
       this.lives = this.maxLives;
       this.saveLivesState();
       this.playSound('correct');
-      this.showToast('💕 ¡Vidas al máximo!');
+      this.showToast(String.fromCodePoint(0x2764) + ' Vidas al maximo!');
     } else if (action === 'infinite') {
       this.infiniteLives = !this.infiniteLives;
       this.saveInfiniteLives();
       if (this.infiniteLives) {
         this.playSound('correct');
-        this.showToast(' !Vidas infinitas activadas!');
+        this.showToast(String.fromCodePoint(0x221E) + ' Vidas infinitas activadas!');
       } else {
         this.showToast('Vidas infinitas desactivadas');
       }
@@ -1764,20 +3093,20 @@ const App = {
     // Verificar si ya tiene vidas completas para productos de vidas
     if (mappedId === 'life_1' || mappedId === 'life_full') {
       if (this.lives >= this.maxLives && !Billing.isPremium) {
-        this.showToast('❤️ Ya tienes todas las vidas', 'info');
+        this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas', 'info');
         return;
       }
     }
     
     // Iniciar compra
-    this.showToast('🛒 Procesando...', 'info');
+    this.showToast('?? Procesando...', 'info');
     
     const result = await Billing.purchase(mappedId);
     
     if (result.success) {
       console.log('[Shop] Compra exitosa:', result.purchase);
     } else if (result.error !== 'cancelled') {
-      this.showToast('❌ Error: ' + result.error, 'error');
+      this.showToast('? Error: ' + result.error, 'error');
     }
   },
   
@@ -1787,14 +3116,14 @@ const App = {
         this.lives = Math.min(this.maxLives, this.lives + 1);
         this.saveLivesState();
         this.playSound('correct');
-        this.showToast('❤️ +1 vida obtenida');
+        this.showToast('?? +1 vida obtenida');
         break;
         
       case 'life_full':
         this.lives = this.maxLives;
         this.saveLivesState();
         this.playSound('correct');
-        this.showToast('💕 ¡Vidas al máximo!');
+        this.showToast('Vidas al máximo!');
         break;
         
       case 'premium_monthly':
@@ -1802,7 +3131,7 @@ const App = {
         this.infiniteLives = true;
         this.saveInfiniteLives();
         this.playSound('complete');
-        this.showToast('👑 ¡Bienvenido a Premium!');
+        this.showToast(' Bienvenido a Premium!');
         const stats = Storage.getStats();
         stats.isPremium = true;
         stats.premiumDate = new Date().toISOString();
@@ -1811,7 +3140,48 @@ const App = {
         
       case 'remove_ads':
         this.playSound('complete');
-        this.showToast('🚫 ¡Anuncios eliminados!');
+        this.showToast('Anuncios eliminados!');
+        break;
+      
+      // Paquetes de monedas
+      case 'coins_500':
+        Storage.addCoins(500);
+        this.updateCoinsDisplay();
+        this.playSound('correct');
+        this.showToast('?? +500 monedas');
+        if (window.Firebase?.currentUser) {
+          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        }
+        break;
+        
+      case 'coins_1500':
+        Storage.addCoins(1650); // 1500 + 10% bonus
+        this.updateCoinsDisplay();
+        this.playSound('correct');
+        this.showToast('?? +1,650 monedas (+10% bonus)');
+        if (window.Firebase?.currentUser) {
+          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        }
+        break;
+        
+      case 'coins_5000':
+        Storage.addCoins(6250); // 5000 + 25% bonus
+        this.updateCoinsDisplay();
+        this.playSound('complete');
+        this.showToast('?? +6,250 monedas (+25% bonus)');
+        if (window.Firebase?.currentUser) {
+          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        }
+        break;
+        
+      case 'coins_12000':
+        Storage.addCoins(16800); // 12000 + 40% bonus
+        this.updateCoinsDisplay();
+        this.playSound('complete');
+        this.showToast('?? +16,800 monedas (+40% bonus)');
+        if (window.Firebase?.currentUser) {
+          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        }
         break;
     }
     
@@ -1821,7 +3191,7 @@ const App = {
   },
   
   async handleRestorePurchases() {
-    this.showToast('🔄 Restaurando compras...', 'info');
+    this.showToast(' Restaurando compras...', 'info');
     
     try {
       const purchases = await Billing.restorePurchases();
@@ -1835,30 +3205,30 @@ const App = {
         }
         
         this.renderShop();
-        this.showToast('✅ Compras restauradas: ' + purchases.length);
+        this.showToast(' Compras restauradas: ' + purchases.length);
       } else {
-        this.showToast('ℹ️ No hay compras para restaurar', 'info');
+        this.showToast(' No hay compras para restaurar', 'info');
       }
     } catch (e) {
-      this.showToast('❌ Error al restaurar', 'error');
+      this.showToast(' Error al restaurar', 'error');
     }
   },
   
   async handleManageSubscription() {
     const result = await this.showConfirmModal(
-      '⚙️ Gestionar Suscripción',
-      '¿Qué deseas hacer con tu suscripción Premium?',
-      'Cancelar Suscripción',
+      '?? Gestionar Suscripcion',
+      '�Qu� deseas hacer con tu suscripcion Premium?',
+      'Cancelar Suscripcion',
       'Volver'
     );
     
     if (result) {
       const cancelResult = await Billing.cancelSubscription();
       if (cancelResult.success) {
-        this.showToast('📋 ' + cancelResult.message);
+        this.showToast('?? ' + cancelResult.message);
         this.renderShop();
       } else {
-        this.showToast('❌ ' + cancelResult.error, 'error');
+        this.showToast('? ' + cancelResult.error, 'error');
       }
     }
   },
@@ -2088,7 +3458,7 @@ const App = {
     const subtitleEl = document.getElementById('catcomplete-subtitle');
     const medalsEl = document.getElementById('catcomplete-medals');
     if (allFour) {
-      titleEl.textContent = `  !${catInfo.name} Completado!`;
+      titleEl.textContent = ` !${catInfo.name} Completado!`;
       subtitleEl.textContent = '!Has completado las 4 dificultades!';
     } else {
       titleEl.textContent = `${catInfo.icon} ${catInfo.name}`;
@@ -2105,7 +3475,7 @@ const App = {
       const medal = document.createElement('div');
       medal.className = `catcomplete-medal ${isDone ? 'earned' : 'locked'} ${isNew ? 'new-medal' : ''}`;
       medal.innerHTML = `
-        <span class="medal-icon">${isDone ? '🏅' : '🔒'}</span>
+        <span class="medal-icon">${isDone ? '??' : '??'}</span>
         <span class="medal-name" style="color: ${isDone ? diffInfo.color : '#666'}">${diffInfo.icon} ${diffInfo.name}</span>
       `;
       medalsEl.appendChild(medal);
@@ -2124,13 +3494,13 @@ const App = {
     // Mensaje motivador
     let motivation, icon;
     if (percentage >= 90) {
-      icon = '💯'; motivation = '!Increible! Vas como un verdadero sabio biblico.';
+      icon = '??'; motivation = '!Increible! Vas como un verdadero sabio biblico.';
     } else if (percentage >= 70) {
-      icon = '🌟'; motivation = '!Muy bien! Tu conocimiento brilla con fuerza.';
+      icon = '??'; motivation = '!Muy bien! Tu conocimiento brilla con fuerza.';
     } else if (percentage >= 50) {
-      icon = '😊'; motivation = '!Sigue adelante! La Palabra de Dios te guia.';
+      icon = '??'; motivation = '!Sigue adelante! La Palabra de Dios te guia.';
     } else {
-      icon = '💪'; motivation = '!No te rindas! Cada pregunta es una oportunidad de aprender.';
+      icon = '??'; motivation = '!No te rindas! Cada pregunta es una oportunidad de aprender.';
     }
     document.getElementById('pause-icon').textContent = icon;
     document.getElementById('pause-motivation').textContent = motivation;
@@ -2205,6 +3575,26 @@ const App = {
       points: this.sessionPoints,
       streak: this.currentStreak
     });
+    
+    // Sincronizar con Firebase
+    if (window.FirebaseService && FirebaseService.isReady) {
+      FirebaseService.updateStats({
+        points: this.sessionPoints,
+        correct: this.sessionCorrect,
+        games: 1,
+        streak: this.sessionBestStreak
+      }).catch(err => console.error('Error sincronizando stats:', err));
+      
+      // Sincronizar progreso completo (incluyendo monedas)
+      FirebaseService.syncProgressToCloud()
+        .catch(err => console.error('Error sincronizando progreso:', err));
+    }
+    
+    // Si es reto social, enviar resultado
+    if (this.isSocialChallenge) {
+      this.finishSocialChallenge();
+    }
+    
     // Check badges
     const newBadges = Storage.checkNewBadges();
     // Render results
@@ -2223,15 +3613,15 @@ const App = {
     // Icon & title based on score
     let icon, title, subtitle;
     if (percentage === 100) {
-      icon = '🎉'; title = '!PERFECTO!'; subtitle = '!No has fallado ninguna!';
+      icon = '??'; title = '!PERFECTO!'; subtitle = '!No has fallado ninguna!';
     } else if (percentage >= 80) {
-      icon = '🌟'; title = '!Excelente!'; subtitle = '!Conoces muy bien la Biblia!';
+      icon = '??'; title = '!Excelente!'; subtitle = '!Conoces muy bien la Biblia!';
     } else if (percentage >= 60) {
-      icon = '😊'; title = '!Bien hecho!'; subtitle = 'Sigue estudiando la Palabra';
+      icon = '??'; title = '!Bien hecho!'; subtitle = 'Sigue estudiando la Palabra';
     } else if (percentage >= 40) {
-      icon = '📚'; title = 'Puedes mejorar'; subtitle = 'No te rindas, sigue aprendiendo';
+      icon = '??'; title = 'Puedes mejorar'; subtitle = 'No te rindas, sigue aprendiendo';
     } else {
-      icon = '📖'; title = 'A estudiar'; subtitle = 'La Palabra de Dios es tu guia';
+      icon = '??'; title = 'A estudiar'; subtitle = 'La Palabra de Dios es tu guia';
     }
     document.getElementById('results-icon').textContent = icon;
     document.getElementById('results-title').textContent = title;
@@ -2263,7 +3653,7 @@ const App = {
     document.getElementById('progress-name').textContent = player.name;
     document.getElementById('progress-email').textContent = player.email ? ` ${player.email}` : '';
     document.getElementById('progress-age').textContent = player.age ? ` ${player.age} anos` : '';
-    document.getElementById('progress-level').textContent = `Nivel ${player.level}· ${this.getLevelTitle(player.level)}`;
+    document.getElementById('progress-level').textContent = `Nivel ${player.level}� ${this.getLevelTitle(player.level)}`;
     const xpPercent = player.xpToNext > 0 ? (player.xp / player.xpToNext) * 100 : 0;
     document.getElementById('progress-xp-fill').style.width = `${xpPercent}%`;
     document.getElementById('progress-xp-text').textContent = `${player.xp} / ${player.xpToNext} XP`;
@@ -2408,6 +3798,14 @@ const App = {
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1000);
   },
+  showShieldProtectionEffect() {
+    const popup = document.createElement('div');
+    popup.className = 'point-popup shield-protection';
+    popup.textContent = '??? Protegido';
+    popup.style.color = '#4CAF50';
+    document.body.appendChild(popup);
+    setTimeout(() => popup.remove(), 1200);
+  },
   showConfetti() {
     const container = document.createElement('div');
     container.className = 'confetti-container';
@@ -2506,11 +3904,11 @@ const App = {
         </div>
         <div class="study-card-question">${escapeHTML(q.question)}</div>
         <div class="study-card-answer">
-          <span class="sca-icon">✓</span>
+          <span class="sca-icon">?</span>
           <span class="sca-text">${escapeHTML(correctAnswer)}</span>
         </div>
         <div class="study-card-wrong">
-          <span class="scw-icon">✗</span>
+          <span class="scw-icon">?</span>
           <span class="scw-text">Tu respuesta: ${escapeHTML(userWrongAnswer)}</span>
         </div>
         <div class="study-card-ref"> ${escapeHTML(q.reference)}</div>
@@ -2536,7 +3934,7 @@ const App = {
     if (catKeys.every(k => !catStats[k])) {
       grid.innerHTML = `
         <div class="empty-state" style="padding:16px;">
-          <div class="empty-icon"> </div>
+          <div class="empty-icon">�</div>
           <div class="empty-text">Juega partidas para ver tus estadisticas por categoria</div>
         </div>
       `;
@@ -2595,7 +3993,7 @@ const App = {
     const bestText = document.getElementById('challenge-best-text');
     if (record) {
       bestEl.style.display = 'block';
-      bestText.textContent = `Mejor: ${record.correct} correctas · ${record.points} pts`;
+      bestText.textContent = `Mejor: ${record.correct} correctas � ${record.points} pts`;
     } else {
       bestEl.style.display = 'none';
     }
@@ -2619,6 +4017,8 @@ const App = {
     this.challengeSecondsLeft = this.challengeTime;
     this.challengeAnswerTimes = [];
     this.challengeAnswered = false;
+    // Reset contador de comodines (max 1 por partida)
+    this.sessionPowerupsUsed = 0;
     this.showScreen('challenge-quiz');
     this.renderChallengeQuestion();
     this.startChallengeGlobalTimer();
@@ -2676,7 +4076,7 @@ const App = {
     // Counter
     document.getElementById('challenge-counter').textContent = ` ${this.challengeCorrect + this.challengeWrong}`;
     // Points
-    document.getElementById('challenge-points').textContent = ` ${this.challengePoints}`;
+    document.getElementById('challenge-points').textContent = `� ${this.challengePoints}`;
     // Streak
     const streakEl = document.getElementById('challenge-streak');
     if (this.challengeStreak >= 3) {
@@ -2755,7 +4155,7 @@ const App = {
       Storage.addWrongAnswer(q.id, index);
     }
     // Update display
-    document.getElementById('challenge-points').textContent = ` ${this.challengePoints}`;
+    document.getElementById('challenge-points').textContent = `� ${this.challengePoints}`;
     document.getElementById('challenge-counter').textContent = ` ${this.challengeCorrect + this.challengeWrong}`;
     const streakEl = document.getElementById('challenge-streak');
     if (this.challengeStreak >= 3) {
@@ -2816,15 +4216,15 @@ const App = {
     const pct = total > 0 ? Math.round((this.challengeCorrect / total) * 100) : 0;
     let icon, title, subtitle;
     if (this.challengeCorrect >= 20) {
-      icon = '🏆'; title = '!INCREIBLE!'; subtitle = `${this.challengeCorrect} respuestas correctas  !Eres imparable!`;
+      icon = '??'; title = '!INCREIBLE!'; subtitle = `${this.challengeCorrect} respuestas correctas  !Eres imparable!`;
     } else if (this.challengeCorrect >= 15) {
-      icon = '🌟'; title = '!Excelente!'; subtitle = `${this.challengeCorrect} correctas  !Gran desempeno!`;
+      icon = '??'; title = '!Excelente!'; subtitle = `${this.challengeCorrect} correctas  !Gran desempeno!`;
     } else if (this.challengeCorrect >= 10) {
-      icon = '😊'; title = '!Bien hecho!'; subtitle = `${this.challengeCorrect} correctas  !Sigue mejorando!`;
+      icon = '??'; title = '!Bien hecho!'; subtitle = `${this.challengeCorrect} correctas  !Sigue mejorando!`;
     } else if (this.challengeCorrect >= 5) {
-      icon = '💪'; title = '!Buen intento!'; subtitle = `${this.challengeCorrect} correctas  !Puedes mas!`;
+      icon = '??'; title = '!Buen intento!'; subtitle = `${this.challengeCorrect} correctas  !Puedes mas!`;
     } else {
-      icon = '📖'; title = 'A practicar'; subtitle = `${this.challengeCorrect} correctas  !No te rindas!`;
+      icon = '??'; title = 'A practicar'; subtitle = `${this.challengeCorrect} correctas  !No te rindas!`;
     }
     document.getElementById('cr-icon').textContent = icon;
     document.getElementById('cr-title').textContent = title;
@@ -2901,6 +4301,7 @@ const App = {
       '| Modo:', this.duoTurnMode,
       '| Preguntas P1:', this.duoP1Questions.length, '| Preguntas P2:', this.duoP2Questions.length);
     // Reset state
+    this.sessionPowerupsUsed = 0; // Reset contador de comodines
     this.duoCurrentPlayer = 1;
     this.duoP1Index = 0;
     this.duoP2Index = 0;
@@ -3044,9 +4445,9 @@ const App = {
       this.duoP2Wrong++;
     }
     const timerEl = document.getElementById('duo-quiz-timer');
-    timerEl.textContent = 'T: ¡Tiempo!';
+    timerEl.textContent = 'T: �Tiempo!';
     timerEl.className = 'quiz-timer danger';
-    document.getElementById('duo-ref-text').innerHTML = `<strong>T: ¡Se acabó el tiempo!</strong>  ${q.reference}`;
+    document.getElementById('duo-ref-text').innerHTML = `<strong>T: �Se acab� el tiempo!</strong>  ${q.reference}`;
     document.getElementById('duo-ref-card').classList.remove('hidden');
     this.vibrate([100, 50, 100]);
     // Auto-advance after 2 seconds
@@ -3152,29 +4553,30 @@ const App = {
   endDuo() {
     this.stopDuoTimer();
     let icon, title, subtitle;
+    const trophy = String.fromCodePoint(0x1F3C6);
+    const handshake = String.fromCodePoint(0x1F91D);
     if (this.duoP1Points > this.duoP2Points) {
-      icon = 'Ââ ';
-      title = `!${this.duoPlayer1} gana!`;
-      subtitle = `${this.duoP1Points} vs ${this.duoP2Points} puntos`;
+      icon = trophy;
+      title = String.fromCodePoint(0xA1) + this.duoPlayer1 + ' gana!';
+      subtitle = this.duoP1Points + ' vs ' + this.duoP2Points + ' puntos';
     } else if (this.duoP2Points > this.duoP1Points) {
-      icon = 'Ââ ';
-      title = `!${this.duoPlayer2} gana!`;
-      subtitle = `${this.duoP2Points} vs ${this.duoP1Points} puntos`;
+      icon = trophy;
+      title = String.fromCodePoint(0xA1) + this.duoPlayer2 + ' gana!';
+      subtitle = this.duoP2Points + ' vs ' + this.duoP1Points + ' puntos';
     } else {
-      icon = '📖';
-      title = '!Empate!';
-      subtitle = `Ambos con ${this.duoP1Points} puntos`;
+      icon = handshake;
+      title = String.fromCodePoint(0xA1) + 'Empate!';
+      subtitle = 'Ambos con ' + this.duoP1Points + ' puntos';
     }
     document.getElementById('duo-res-icon').textContent = icon;
     document.getElementById('duo-res-title').textContent = title;
     document.getElementById('duo-res-subtitle').textContent = subtitle;
     document.getElementById('duo-res-p1-name').textContent = this.duoPlayer1;
-    document.getElementById('duo-res-p1-correct').textContent = `${this.duoP1Correct} correctas`;
-    document.getElementById('duo-res-p1-score').textContent = `${this.duoP1Points} pts`;
+    document.getElementById('duo-res-p1-correct').textContent = this.duoP1Correct + ' correctas';
+    document.getElementById('duo-res-p1-score').textContent = this.duoP1Points + ' pts';
     document.getElementById('duo-res-p2-name').textContent = this.duoPlayer2;
-    document.getElementById('duo-res-p2-correct').textContent = `${this.duoP2Correct} correctas`;
-    document.getElementById('duo-res-p2-score').textContent = `${this.duoP2Points} pts`;
-    // Highlight winner
+    document.getElementById('duo-res-p2-correct').textContent = this.duoP2Correct + ' correctas';
+    document.getElementById('duo-res-p2-score').textContent = this.duoP2Points + ' pts';
     const p1Card = document.getElementById('duo-res-p1');
     const p2Card = document.getElementById('duo-res-p2');
     p1Card.classList.remove('winner');
@@ -3247,15 +4649,15 @@ const App = {
     const catName = cat ? cat.name : this.selectedCategory;
     const text = ` BibliaQuiz - !${percentage}% de aciertos!\n` +
       ` ${this.sessionCorrect}/${total} correctas\n` +
-      ` ${this.sessionPoints} puntos\n` +
+      `� ${this.sessionPoints} puntos\n` +
       ` Categoria: ${catName}\n` +
-      `  Fase: ${this.currentPhase}\n` +
+      `� Fase: ${this.currentPhase}\n` +
       `!Pon a prueba tu conocimiento biblico!`;
     if (navigator.share) {
       navigator.share({ title: 'BibliaQuiz', text }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text).then(() => {
-        this.showToast('📋 Resultado copiado al portapapeles', 'success');
+        this.showToast('?? Resultado copiado al portapapeles', 'success');
       }).catch(() => {
         this.showToast('No se pudo copiar', 'error');
       });
@@ -3293,7 +4695,7 @@ const App = {
     ctx.fillStyle = '#fff';
     ctx.font = 'bold 32px Nunito, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('📖 BibliaQuiz', 300, 55);
+    ctx.fillText('?? BibliaQuiz', 300, 55);
     
     // Score circle
     ctx.beginPath();
@@ -3312,23 +4714,23 @@ const App = {
     // Stats row
     ctx.font = '20px Nunito, sans-serif';
     ctx.fillStyle = '#E0E0E0';
-    ctx.fillText(`✓ ${this.sessionCorrect} correctas · ✗ ${this.sessionWrong} incorrectas`, 300, 230);
-    ctx.fillText(`⭐ ${this.sessionPoints} puntos`, 300, 260);
+    ctx.fillText(`? ${this.sessionCorrect} correctas � ? ${this.sessionWrong} incorrectas`, 300, 230);
+    ctx.fillText(`? ${this.sessionPoints} puntos`, 300, 260);
     
     // Category
     ctx.font = '18px Nunito, sans-serif';
     ctx.fillStyle = '#6C63FF';
-    ctx.fillText(`${cat?.icon || '📚'} ${catName}`, 300, 300);
+    ctx.fillText(`${cat?.icon || '??'} ${catName}`, 300, 300);
     
     // Player info
     ctx.font = '16px Nunito, sans-serif';
     ctx.fillStyle = '#888';
-    ctx.fillText(`${player.avatar} ${player.name} · Nivel ${player.level}`, 300, 330);
+    ctx.fillText(`${player.avatar} ${player.name} � Nivel ${player.level}`, 300, 330);
     
     // Call to action
     ctx.font = 'italic 14px Nunito, sans-serif';
     ctx.fillStyle = '#666';
-    ctx.fillText('¡Descarga BibliaQuiz y pon a prueba tu conocimiento!', 300, 370);
+    ctx.fillText('�Descarga BibliaQuiz y pon a prueba tu conocimiento!', 300, 370);
     
     // Convert to blob and share
     try {
@@ -3338,7 +4740,7 @@ const App = {
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           title: 'Mi resultado en BibliaQuiz',
-          text: `¡Obtuve ${percentage}% en BibliaQuiz!`,
+          text: `�Obtuve ${percentage}% en BibliaQuiz!`,
           files: [file]
         });
       } else {
@@ -3349,7 +4751,7 @@ const App = {
         a.download = 'bibliaquiz-resultado.png';
         a.click();
         URL.revokeObjectURL(url);
-        this.showToast('📥 Imagen descargada');
+        this.showToast('?? Imagen descargada');
       }
     } catch (e) {
       console.error('[Share] Error sharing image:', e);
@@ -3357,14 +4759,14 @@ const App = {
     }
   },
   // ============================================================
-  // CÓDIGOS PROMOCIONALES
+  // C�DIGOS PROMOCIONALES
   // ============================================================
   PROMO_CODES: {
-    // Códigos válidos y sus beneficios
+    // C�digos v�lidos y sus beneficios
     'VIDASINFINITAS': { type: 'infinite_lives', description: 'Vidas Infinitas' },
     'BIBLIAQUIZ2026': { type: 'infinite_lives', description: 'Vidas Infinitas' },
     'GODMODE': { type: 'infinite_lives', description: 'Vidas Infinitas' },
-    'PREMIUM30': { type: 'premium_days', days: 30, description: '30 días Premium' },
+    'PREMIUM30': { type: 'premium_days', days: 30, description: '30 d�as Premium' },
     'BIENVENIDO': { type: 'lives', amount: 5, description: '5 vidas extra' }
   },
   
@@ -3377,23 +4779,23 @@ const App = {
     resultEl.classList.remove('hidden', 'success', 'error');
     
     if (!code) {
-      resultEl.textContent = '❌ Ingresa un código';
+      resultEl.textContent = '? Ingresa un c�digo';
       resultEl.classList.add('error');
       return;
     }
     
-    // Verificar si el código ya fue usado
+    // Verificar si el c�digo ya fue usado
     const usedCodes = JSON.parse(localStorage.getItem('bq_used_promo_codes') || '[]');
     if (usedCodes.includes(code)) {
-      resultEl.textContent = '⚠️ Este código ya fue canjeado';
+      resultEl.textContent = '?? Este c�digo ya fue canjeado';
       resultEl.classList.add('error');
       return;
     }
     
-    // Buscar el código
+    // Buscar el c�digo
     const promo = this.PROMO_CODES[code];
     if (!promo) {
-      resultEl.textContent = '❌ Código inválido';
+      resultEl.textContent = '? C�digo inv�lido';
       resultEl.classList.add('error');
       return;
     }
@@ -3405,28 +4807,28 @@ const App = {
         this.infiniteLives = true;
         this.saveInfiniteLives();
         this.renderHomeLives();
-        message = `✅ ¡${promo.description} activadas!`;
+        message = `? �${promo.description} activadas!`;
         break;
         
       case 'premium_days':
-        // Agregar días premium
+        // Agregar d�as premium
         const currentExpiry = localStorage.getItem('bq_premium_expiry');
         const now = Date.now();
         const baseDate = currentExpiry ? Math.max(parseInt(currentExpiry), now) : now;
         const newExpiry = baseDate + (promo.days * 24 * 60 * 60 * 1000);
         localStorage.setItem('bq_premium_expiry', newExpiry.toString());
-        message = `✅ ¡${promo.description} agregados!`;
+        message = `? �${promo.description} agregados!`;
         break;
         
       case 'lives':
         this.lives = Math.min(this.lives + promo.amount, this.maxLives);
         this.saveLives();
         this.renderHomeLives();
-        message = `✅ ¡${promo.description} agregadas!`;
+        message = `? �${promo.description} agregadas!`;
         break;
     }
     
-    // Marcar código como usado
+    // Marcar c�digo como usado
     usedCodes.push(code);
     localStorage.setItem('bq_used_promo_codes', JSON.stringify(usedCodes));
     
@@ -3458,7 +4860,7 @@ const App = {
     a.download = `bibliaquiz-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    this.showToast('💾 Respaldo exportado correctamente', 'success');
+    this.showToast('?? Respaldo exportado correctamente', 'success');
   },
   importData(event) {
     const file = event.target.files[0];
@@ -3625,9 +5027,9 @@ const App = {
     card.classList.remove('hidden');
     document.getElementById('streak-card-days').textContent = streak.days;
     if (streak.days >= 30) {
-      document.getElementById('streak-card-title').textContent = '  !Racha legendaria!';
+      document.getElementById('streak-card-title').textContent = '� !Racha legendaria!';
     } else if (streak.days >= 7) {
-      document.getElementById('streak-card-title').textContent = ' !Gran racha semanal!';
+      document.getElementById('streak-card-title').textContent = '� !Gran racha semanal!';
     } else {
       document.getElementById('streak-card-title').textContent = ' Racha diaria';
     }
@@ -3647,7 +5049,7 @@ const App = {
     if (challenge.date === today && challenge.completed) {
       btn.classList.add('completed');
       document.getElementById('daily-challenge-desc').textContent =
-        ` Completado · ${challenge.score} pts`;
+        ` Completado � ${challenge.score} pts`;
     } else {
       document.getElementById('daily-challenge-desc').textContent =
         '10 preguntas unicas cada dia';
@@ -3657,13 +5059,13 @@ const App = {
     const challenge = Storage.getDailyChallenge();
     const today = new Date().toISOString().split('T')[0];
     if (challenge.date === today && challenge.completed) {
-      this.showToast('✅ Ya completaste el desafío de hoy');
+      this.showToast('? Ya completaste el desaf�o de hoy');
       return;
     }
     // Verificar vidas antes de iniciar
     this.loadLives();
     if (!this.infiniteLives && this.lives <= 0) {
-      this.showToast('💔 No tienes vidas. Espera a que se regeneren', 'error');
+      this.showToast('?? No tienes vidas. Espera a que se regeneren', 'error');
       return;
     }
     // Seed-based daily question selection
@@ -3765,14 +5167,14 @@ const App = {
       return;
     }
 
-    // Usar el módulo PushNotifications si está disponible
+    // Usar el m�dulo PushNotifications si est� disponible
     if (typeof PushNotifications !== 'undefined') {
       PushNotifications.requestPermission().then(result => {
         if (result.success) {
           Storage.saveNotifEnabled(true);
           document.getElementById('notif-time-setting').classList.remove('hidden');
           PushNotifications.setDailyReminder(true, 9, 0);
-          this.showToast('🔔 ¡Recordatorios activados!');
+          this.showToast('?? �Recordatorios activados!');
         } else {
           Storage.saveNotifEnabled(false);
           document.getElementById('setting-notifications').checked = false;
@@ -3781,13 +5183,13 @@ const App = {
         }
       });
     } else {
-      // Fallback al método anterior
+      // Fallback al m�todo anterior
       Notification.requestPermission().then(perm => {
         if (perm === 'granted') {
           Storage.saveNotifEnabled(true);
           document.getElementById('notif-time-setting').classList.remove('hidden');
           this.scheduleDailyReminder();
-          this.showToast('🔔 ¡Recordatorios activados!');
+          this.showToast('?? �Recordatorios activados!');
         } else {
           Storage.saveNotifEnabled(false);
           document.getElementById('setting-notifications').checked = false;
@@ -3828,7 +5230,7 @@ const App = {
       container.innerHTML = '<div class="leaderboard-empty">Juega partidas para llenar el ranking</div>';
       return;
     }
-    const medals = ['🥇', '🥈', '🥉'];
+    const medals = ['??', '??', '??'];
     container.innerHTML = lb.slice(0, 10).map((entry, i) => {
       const rank = medals[i] || `${i + 1}`;
       const d = entry.date ? new Date(entry.date).toLocaleDateString('es', { day: '2-digit', month: 'short' }) : '';
@@ -3883,7 +5285,7 @@ const App = {
       ctx.textAlign = 'center';
       ctx.fillText('Juega partidas para ver tu progreso semanal', W / 2, H / 2 - 10);
       ctx.font = '11px Nunito, sans-serif';
-      ctx.fillText('📊 Aquí verás tus estadísticas diarias', W / 2, H / 2 + 15);
+      ctx.fillText('?? Aqu� ver�s tus estad�sticas diarias', W / 2, H / 2 + 15);
       return;
     }
     
@@ -3960,7 +5362,7 @@ const App = {
         if (accHeight > 40) {
           ctx.fillStyle = '#fff';
           ctx.font = '10px Nunito, sans-serif';
-          ctx.fillText(`🎮 ${day.games}`, x + barW / 2, padT + chartH - accHeight + 32);
+          ctx.fillText(`?? ${day.games}`, x + barW / 2, padT + chartH - accHeight + 32);
         }
       }
       
@@ -3984,7 +5386,7 @@ const App = {
     ctx.fillStyle = successColor;
     ctx.fillRect(padL, legendY - 6, 8, 8);
     ctx.fillStyle = textColor;
-    ctx.fillText('≥80%', padL + 12, legendY);
+    ctx.fillText('=80%', padL + 12, legendY);
     
     ctx.fillStyle = primaryColor;
     ctx.fillRect(padL + 50, legendY - 6, 8, 8);
@@ -4035,7 +5437,7 @@ const App = {
       this.deferredInstallPrompt.prompt();
       const { outcome } = await this.deferredInstallPrompt.userChoice;
       if (outcome === 'accepted') {
-        this.showToast('📲 ¡App instalada!');
+        this.showToast('?? �App instalada!');
       }
       this.deferredInstallPrompt = null;
       document.getElementById('install-banner')?.classList.add('hidden');
@@ -4090,15 +5492,15 @@ const App = {
     grid.innerHTML = '';
     // Las categorias de palabras del impostor (no incluir 'aleatorio' como categoria separada)
     const impostorCats = {
-      personajes: { name: "Personajes", icon: "🧑‍🤝‍🧑", color: "#4CAF50" },
-      libros: { name: "Libros", icon: "📚", color: "#2196F3" },
-      historias: { name: "Historias", icon: "📜", color: "#FF9800" },
-      reyes: { name: "Reyes", icon: "👑", color: "#9C27B0" },
-      profetas: { name: "Profetas", icon: "🔮", color: "#F44336" },
-      vida_jesus: { name: "Vida de Jesus", icon: "✝️", color: "#E91E63" },
-      milagros: { name: "Milagros", icon: "✨", color: "#00BCD4" },
-      cartas: { name: "Cartas", icon: "💌", color: "#795548" },
-      aleatorio: { name: "Aleatorio", icon: "🎲", color: "#607D8B" }
+      personajes: { name: "Personajes", icon: String.fromCodePoint(0x1F465), color: "#4CAF50" },
+      libros: { name: "Libros", icon: String.fromCodePoint(0x1F4DA), color: "#2196F3" },
+      historias: { name: "Historias", icon: String.fromCodePoint(0x1F4D6), color: "#FF9800" },
+      reyes: { name: "Reyes", icon: String.fromCodePoint(0x1F451), color: "#9C27B0" },
+      profetas: { name: "Profetas", icon: String.fromCodePoint(0x1F64F), color: "#F44336" },
+      vida_jesus: { name: "Vida de Jesus", icon: String.fromCodePoint(0x271D), color: "#E91E63" },
+      milagros: { name: "Milagros", icon: String.fromCodePoint(0x2728), color: "#00BCD4" },
+      cartas: { name: "Cartas", icon: String.fromCodePoint(0x1F4DC), color: "#795548" },
+      aleatorio: { name: "Aleatorio", icon: String.fromCodePoint(0x1F3B2), color: "#607D8B" }
     };
     Object.entries(impostorCats).forEach(([key, cat]) => {
       const card = document.createElement('div');
@@ -4136,12 +5538,12 @@ const App = {
     const total = this.impostorPlayers;
     container.innerHTML = `
       <div class="impostor-deal-waiting">
-        <div class="impostor-deal-waiting-icon">iv>
+        <div class="impostor-deal-waiting-icon">\u{1F464}</div>
         <h3>Jugador ${playerNum}</h3>
         <p>Solo el Jugador ${playerNum} debe ver la pantalla</p>
       </div>
       <div class="impostor-deal-progress">Jugador ${playerNum} de ${total}</div>
-      <button class="btn-impostor-ready"> Ver mi palabra</button>
+      <button class="btn-impostor-ready">\u{1F441} Ver mi palabra</button>
     `;
     container.querySelector('.btn-impostor-ready').addEventListener('click', () => {
       this.showImpostorWord();
@@ -4155,9 +5557,9 @@ const App = {
       container.innerHTML = `
         <div class="impostor-deal-word-display">
           <div class="impostor-deal-word-label">Jugador ${playerNum}, tu rol es:</div>
-          <div class="impostor-deal-word is-impostor"> !ERES EL IMPOSTOR!</div>
-          <p class="impostor-deal-memorize">No conoces la palabra. !Disimula!</p>
-          <button class="btn-impostor-seen"> Entendido, pasar</button>
+          <div class="impostor-deal-word is-impostor">\u{1F47A} ERES EL IMPOSTOR!</div>
+          <p class="impostor-deal-memorize">No conoces la palabra. Disimula!</p>
+          <button class="btn-impostor-seen">\u{2705} Entendido, pasar</button>
         </div>
       `;
     } else {
@@ -4166,7 +5568,7 @@ const App = {
           <div class="impostor-deal-word-label">Jugador ${playerNum}, tu palabra es:</div>
           <div class="impostor-deal-word">${escapeHTML(this.impostorWord)}</div>
           <p class="impostor-deal-memorize">Memoriza la palabra y pasa el dispositivo</p>
-          <button class="btn-impostor-seen"> Ya la vi, pasar</button>
+          <button class="btn-impostor-seen">\u{1F440} Ya la vi, pasar</button>
         </div>
       `;
     }
@@ -4204,7 +5606,7 @@ const App = {
     // Colores de alerta
     timerEl.classList.remove('warning', 'danger');
     if (this.impostorDiscussSeconds <= 0) {
-      timerEl.textContent = 'T: ¡Tiempo!';
+      timerEl.textContent = 'T: �Tiempo!';
       timerEl.classList.add('danger');
     } else if (this.impostorDiscussSeconds <= 15) {
       timerEl.classList.add('danger');
@@ -4303,5 +5705,9 @@ const App = {
     });
   }
 };
+
+// Hacer App accesible globalmente
+window.App = App;
+
 // --- Iniciar App ---
 document.addEventListener('DOMContentLoaded', () => App.init());

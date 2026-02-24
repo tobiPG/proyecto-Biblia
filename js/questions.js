@@ -29698,30 +29698,6 @@ const QUESTIONS_DB = [
 
 
 
-    id: 431, difficulty: "experto", category: "libros",
-
-
-
-    question: "¿Que libro expone la guerra espiritual cosmica?",
-
-
-
-    options: ["Efesios", "Daniel", "Tito", "Judas"],
-
-
-
-    correct: 0, reference: "Efesios 6:10-18"
-
-
-
-  },
-
-
-
-  {
-
-
-
     id: 432, difficulty: "experto", category: "libros",
 
 
@@ -33722,11 +33698,11 @@ const QUESTIONS_DB = [
 
 
 
-    question: "¿Cuantos anos profetizo Isaias que tardaria en caer la gloria de Moab, siendo reducida a nada con todo su gran gentio?",
+    question: "¿Cuantos años profetizo Isaias que tardaria en caer la gloria de Moab, siendo reducida a nada con todo su gran gentio?",
 
 
 
-    options: ["Siete anos", "Tres anos", "Cinco anos", "Un ano"],
+    options: ["Siete años", "Tres años", "Cinco años", "Un año"],
 
 
 

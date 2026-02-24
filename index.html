@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=40">
+  <link rel="stylesheet" href="css/styles.css?v=62">
 </head>
 <body>
 
@@ -27,6 +27,25 @@
 
 <div id="offline-banner" class="offline-banner hidden" role="alert">
   <span>📴 Sin conexión - Modo offline</span>
+</div>
+
+<!-- Banner de notificación de reto en tiempo real -->
+<div id="challenge-notification" class="challenge-notification hidden">
+  <div class="challenge-notif-content">
+    <div class="challenge-notif-icon">⚔️</div>
+    <div class="challenge-notif-info">
+      <span class="challenge-notif-title">¡Nuevo Reto!</span>
+      <span id="challenge-notif-from" class="challenge-notif-from">De: Jugador</span>
+      <span id="challenge-notif-details" class="challenge-notif-details">10P • Aleatorio</span>
+    </div>
+    <div class="challenge-notif-actions">
+      <button id="btn-notif-accept" class="btn-notif-accept">✓ Aceptar</button>
+      <button id="btn-notif-reject" class="btn-notif-reject">✕</button>
+    </div>
+  </div>
+  <div class="challenge-notif-timer">
+    <div id="challenge-notif-timer-bar" class="challenge-notif-timer-bar"></div>
+  </div>
 </div>
 
 <div class="app-container">
@@ -43,12 +62,30 @@
         <span id="home-lives-hearts" class="home-lives-hearts">❤️❤️❤️❤️❤️</span>
         <span id="home-lives-count" class="home-lives-count">5/5</span>
       </div>
+      <div class="home-coins-display">
+        <div class="coin-icon-wrapper">
+          <img src="icons/coin.png" alt="moneda" class="home-coins-icon">
+        </div>
+        <span id="home-coins-count" class="home-coins-count">0</span>
+        <span id="coin-multiplier-badge" class="coin-multiplier-badge mult-1">x1</span>
+      </div>
       <div id="home-lives-timer-wrap" class="home-lives-timer-wrap hidden">
         <span class="home-lives-timer-icon">⏱️</span>
         <span id="home-lives-timer" class="home-lives-timer">00:00</span>
       </div>
       <button id="btn-shop" class="home-lives-shop-btn" aria-label="Tienda">🛒 Tienda</button>
+      <button id="btn-ranked" class="home-lives-shop-btn ranked-btn" aria-label="Ranked">⚔️ Ranked</button>
+      <button id="btn-social" class="home-lives-shop-btn social-btn" aria-label="Social">
+        🏆 Social
+        <span id="social-notification-badge" class="notification-badge hidden">0</span>
+      </button>
       <button id="btn-about" class="home-lives-shop-btn" aria-label="Acerca de">ℹ️</button>
+    </div>
+
+    <!-- Banner de inicio de sesión para usuarios que ya tienen cuenta -->
+    <div id="login-prompt-banner" class="login-prompt-banner hidden">
+      <span class="login-prompt-text">¿Ya tienes cuenta?</span>
+      <button id="btn-quick-signin" class="btn-quick-signin">🔑 Iniciar sesión con Google</button>
     </div>
 
     <div id="verse-card" class="verse-card">
@@ -130,6 +167,161 @@
         <span id="shop-lives-text" class="shop-lives-text">5/5 vidas</span>
       </div>
 
+      <!-- Estado de Monedas -->
+      <div class="shop-coins-display">
+        <div class="shop-coins-balance">
+          <div class="shop-coin-icon-wrapper">
+            <img src="icons/coin.png" alt="moneda" class="shop-coins-icon">
+          </div>
+          <span id="shop-coins-count" class="shop-coins-count">0</span>
+          <span class="shop-coins-label">monedas</span>
+        </div>
+        <div class="shop-multiplier-info">
+          <span>Multiplicador actual:</span>
+          <span id="shop-multiplier-badge" class="coin-multiplier-badge mult-1">x1</span>
+        </div>
+      </div>
+
+      <!-- Sección: Canjear Monedas por Vidas -->
+      <div class="shop-section">
+        <h3 class="shop-section-title"><span class="section-coin-wrapper"><img src="icons/coin.png" alt="" class="section-coin-icon"></span> Canjear Monedas</h3>
+        <p class="shop-section-desc">Usa tus monedas para obtener vidas extra</p>
+        <div class="shop-items">
+          <div class="shop-item redeem-item" id="redeem-1-life">
+            <div class="shop-item-icon">💖</div>
+            <div class="shop-item-info">
+              <h3>+1 Vida</h3>
+              <p>Canjea por una vida</p>
+            </div>
+            <button class="redeem-life-btn" data-redeem="1">
+              <span class="redeem-cost">50</span>
+              <span class="redeem-icon-wrapper"><img src="icons/coin.png" alt="" class="redeem-icon"></span>
+            </button>
+          </div>
+          <div class="shop-item redeem-item" id="redeem-3-life">
+            <div class="shop-item-icon">💕</div>
+            <div class="shop-item-info">
+              <h3>+3 Vidas</h3>
+              <p>Mejor valor</p>
+            </div>
+            <button class="redeem-life-btn" data-redeem="3">
+              <span class="redeem-cost">120</span>
+              <span class="redeem-icon-wrapper"><img src="icons/coin.png" alt="" class="redeem-icon"></span>
+            </button>
+          </div>
+          <div class="shop-item redeem-item" id="redeem-5-life">
+            <div class="shop-item-icon">❤️‍🔥</div>
+            <div class="shop-item-info">
+              <h3>Vidas Completas</h3>
+              <p>Rellena todas tus vidas</p>
+            </div>
+            <button class="redeem-life-btn" data-redeem="5">
+              <span class="redeem-cost">180</span>
+              <span class="redeem-icon-wrapper"><img src="icons/coin.png" alt="" class="redeem-icon"></span>
+            </button>
+          </div>
+        </div>
+        <div class="multiplier-info-box">
+          <h4>💡 Sistema de Multiplicador</h4>
+          <p>Completa fases sin errores (10 preguntas perfectas) para aumentar tu multiplicador:</p>
+          <ul>
+            <li><span class="mult-badge mult-1">x1</span> Base</li>
+            <li><span class="mult-badge mult-2">x2</span> 1 fase perfecta</li>
+            <li><span class="mult-badge mult-3">x3</span> 2 fases perfectas</li>
+            <li><span class="mult-badge mult-4">x4</span> 3+ fases perfectas (máx)</li>
+          </ul>
+          <p class="balance-note">⚖️ Con x3 o más, las monedas base se reducen para equilibrar la economía.</p>
+        </div>
+      </div>
+
+      <!-- Sección: Potenciadores -->
+      <div class="shop-section">
+        <h3 class="shop-section-title">⚡ Potenciadores</h3>
+        <p class="shop-section-desc">Compra items especiales con tus monedas</p>
+        <div class="shop-items powerup-items">
+          <!-- Escudo Divino -->
+          <div class="shop-item powerup-item" id="powerup-shield" data-powerup="shield">
+            <div class="shop-item-icon">🛡️</div>
+            <div class="shop-item-info">
+              <h3>Escudo Divino</h3>
+              <p>5 min de inmunidad - no pierdes vidas</p>
+            </div>
+            <div class="powerup-inventory">
+              <span class="powerup-owned">Tienes: <span id="owned-shield">0</span></span>
+            </div>
+            <button class="powerup-buy-btn" data-buy-powerup="shield">
+              <span class="powerup-cost">500</span>
+              <span class="powerup-coin-wrapper"><img src="icons/coin.png" alt="" class="powerup-coin-icon"></span>
+            </button>
+          </div>
+          <!-- Revelación -->
+          <div class="shop-item powerup-item" id="powerup-reveal" data-powerup="reveal">
+            <div class="shop-item-icon">👁️</div>
+            <div class="shop-item-info">
+              <h3>Revelación</h3>
+              <p>Muestra la respuesta correcta</p>
+            </div>
+            <div class="powerup-inventory">
+              <span class="powerup-owned">Tienes: <span id="owned-reveal">0</span></span>
+            </div>
+            <button class="powerup-buy-btn" data-buy-powerup="reveal">
+              <span class="powerup-cost">200</span>
+              <span class="powerup-coin-wrapper"><img src="icons/coin.png" alt="" class="powerup-coin-icon"></span>
+            </button>
+          </div>
+          <!-- Doble Monedas -->
+          <div class="shop-item powerup-item" id="powerup-doubleCoins" data-powerup="doubleCoins">
+            <div class="shop-item-icon">💰</div>
+            <div class="shop-item-info">
+              <h3>Doble Monedas</h3>
+              <p>10 min de ganancias x2</p>
+            </div>
+            <div class="powerup-inventory">
+              <span class="powerup-owned">Tienes: <span id="owned-doubleCoins">0</span></span>
+            </div>
+            <button class="powerup-buy-btn" data-buy-powerup="doubleCoins">
+              <span class="powerup-cost">300</span>
+              <span class="powerup-coin-wrapper"><img src="icons/coin.png" alt="" class="powerup-coin-icon"></span>
+            </button>
+          </div>
+          <!-- Tiempo Extra -->
+          <div class="shop-item powerup-item" id="powerup-extraTime" data-powerup="extraTime">
+            <div class="shop-item-icon">⏱️</div>
+            <div class="shop-item-info">
+              <h3>Tiempo Extra</h3>
+              <p>+10 seg por pregunta (15 min)</p>
+            </div>
+            <div class="powerup-inventory">
+              <span class="powerup-owned">Tienes: <span id="owned-extraTime">0</span></span>
+            </div>
+            <button class="powerup-buy-btn" data-buy-powerup="extraTime">
+              <span class="powerup-cost">150</span>
+              <span class="powerup-coin-wrapper"><img src="icons/coin.png" alt="" class="powerup-coin-icon"></span>
+            </button>
+          </div>
+          <!-- 50:50 -->
+          <div class="shop-item powerup-item" id="powerup-fiftyFifty" data-powerup="fiftyFifty">
+            <div class="shop-item-icon">✂️</div>
+            <div class="shop-item-info">
+              <h3>50:50</h3>
+              <p>Elimina 2 respuestas incorrectas</p>
+            </div>
+            <div class="powerup-inventory">
+              <span class="powerup-owned">Tienes: <span id="owned-fiftyFifty">0</span></span>
+            </div>
+            <button class="powerup-buy-btn" data-buy-powerup="fiftyFifty">
+              <span class="powerup-cost">100</span>
+              <span class="powerup-coin-wrapper"><img src="icons/coin.png" alt="" class="powerup-coin-icon"></span>
+            </button>
+          </div>
+        </div>
+        <!-- Potenciadores activos -->
+        <div id="active-powerups-display" class="active-powerups-box hidden">
+          <h4>🔥 Potenciadores Activos</h4>
+          <div id="active-powerups-list" class="active-powerups-list"></div>
+        </div>
+      </div>
+
       <!-- Estado Premium -->
       <div id="shop-premium-status" class="shop-premium-status hidden">
         <div class="premium-status-icon">👑</div>
@@ -161,6 +353,57 @@
             </div>
             <button class="shop-item-btn" data-buy="life_full">
               <span class="shop-price">$1.99</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección: Comprar Monedas -->
+      <div class="shop-section">
+        <h3 class="shop-section-title"><span class="section-coin-wrapper"><img src="icons/coin.png" alt="" class="section-coin-icon"></span> Comprar Monedas</h3>
+        <p class="shop-section-desc">Obtén monedas para potenciadores y más</p>
+        <div class="shop-items coin-packs">
+          <div class="shop-item coin-pack" id="shop-coins-500" data-product="coins_500">
+            <div class="shop-item-icon">🪙</div>
+            <div class="shop-item-info">
+              <h3>500 Monedas</h3>
+              <p>Paquete inicial</p>
+            </div>
+            <button class="shop-item-btn" data-buy="coins_500">
+              <span class="shop-price">$0.99</span>
+            </button>
+          </div>
+          <div class="shop-item coin-pack" id="shop-coins-1500" data-product="coins_1500">
+            <div class="shop-item-badge shop-item-badge-save">+10%</div>
+            <div class="shop-item-icon">💰</div>
+            <div class="shop-item-info">
+              <h3>1,500 Monedas</h3>
+              <p>Mejor valor</p>
+            </div>
+            <button class="shop-item-btn" data-buy="coins_1500">
+              <span class="shop-price">$2.49</span>
+            </button>
+          </div>
+          <div class="shop-item coin-pack shop-item-highlight" id="shop-coins-5000" data-product="coins_5000">
+            <div class="shop-item-badge">Popular</div>
+            <div class="shop-item-icon">💎</div>
+            <div class="shop-item-info">
+              <h3>5,000 Monedas</h3>
+              <p>+25% extra</p>
+            </div>
+            <button class="shop-item-btn" data-buy="coins_5000">
+              <span class="shop-price">$6.99</span>
+            </button>
+          </div>
+          <div class="shop-item coin-pack" id="shop-coins-12000" data-product="coins_12000">
+            <div class="shop-item-badge shop-item-badge-save">+40%</div>
+            <div class="shop-item-icon">👑</div>
+            <div class="shop-item-info">
+              <h3>12,000 Monedas</h3>
+              <p>Mega paquete</p>
+            </div>
+            <button class="shop-item-btn" data-buy="coins_12000">
+              <span class="shop-price">$14.99</span>
             </button>
           </div>
         </div>
@@ -289,6 +532,7 @@
         <span id="quiz-timer" class="quiz-timer">⏱️ 30</span>
         <span id="quiz-streak" class="quiz-streak hidden">🔥 0</span>
         <span id="quiz-points" class="quiz-points">⭐ 0</span>
+        <span id="quiz-coins" class="quiz-coins"><span class="quiz-coin-wrapper"><img src="icons/coin.png" alt="" class="quiz-coins-icon"></span> <span class="quiz-coins-value">0</span></span>
       </div>
     </div>
     <div class="timer-bar-container">
@@ -296,6 +540,29 @@
     </div>
     <div class="progress-bar-container">
       <div id="progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+    </div>
+    <!-- Botones de potenciadores en quiz -->
+    <div id="quiz-powerups" class="quiz-powerups">
+      <button class="quiz-powerup-btn" id="use-shield" data-powerup="shield" title="Escudo Divino - Inmunidad 5 min">
+        <span class="quiz-powerup-icon">🛡️</span>
+        <span class="quiz-powerup-count">x<span id="quiz-shield-count">0</span></span>
+      </button>
+      <button class="quiz-powerup-btn" id="use-reveal" data-powerup="reveal" title="Revelación - Ver respuesta correcta">
+        <span class="quiz-powerup-icon">👁️</span>
+        <span class="quiz-powerup-count">x<span id="quiz-reveal-count">0</span></span>
+      </button>
+      <button class="quiz-powerup-btn" id="use-fiftyFifty" data-powerup="fiftyFifty" title="50:50 - Eliminar 2 incorrectas">
+        <span class="quiz-powerup-icon">✂️</span>
+        <span class="quiz-powerup-count">x<span id="quiz-fiftyFifty-count">0</span></span>
+      </button>
+      <button class="quiz-powerup-btn" id="use-extraTime" data-powerup="extraTime" title="Tiempo Extra +10s por pregunta">
+        <span class="quiz-powerup-icon">⏱️</span>
+        <span class="quiz-powerup-count">x<span id="quiz-extraTime-count">0</span></span>
+      </button>
+      <button class="quiz-powerup-btn" id="use-doubleCoins" data-powerup="doubleCoins" title="Doble Monedas 10 min">
+        <span class="quiz-powerup-icon">💰</span>
+        <span class="quiz-powerup-count">x<span id="quiz-doubleCoins-count">0</span></span>
+      </button>
     </div>
     <div class="question-card">
       <div id="question-category-tag" class="question-category-tag"></div>
@@ -330,6 +597,14 @@
           <div class="phase-stat">
             <span id="phase-streak" class="phase-stat-value" style="color:var(--primary-light)">0</span>
             <span class="phase-stat-label">🔥 Racha</span>
+          </div>
+          <div class="phase-stat">
+            <span id="phase-coins" class="phase-stat-value" style="color:#FFD700">0</span>
+            <span class="phase-stat-label"><span class="stat-coin-wrapper"><img src="icons/coin.png" alt="" class="stat-coin-icon"></span> Monedas</span>
+          </div>
+          <div class="phase-stat">
+            <span id="phase-multiplier" class="phase-multiplier-badge mult-1">x1</span>
+            <span class="phase-stat-label">📈 Multiplicador</span>
           </div>
         </div>
         <div class="phase-actions">
@@ -380,6 +655,53 @@
           </div>
         </div>
         <button id="btn-close-ad" class="btn-primary hidden">Continuar →</button>
+      </div>
+    </div>
+
+    <!-- Overlay de Resultados del Reto Social -->
+    <div id="challenge-result-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
+      <div class="phase-card challenge-result-card">
+        <div id="challenge-result-icon" class="phase-icon">⚔️</div>
+        <h2 id="challenge-result-title" class="phase-title">Resultados del Reto</h2>
+        <p id="challenge-result-subtitle" class="phase-subtitle"></p>
+        
+        <!-- Comparación de jugadores -->
+        <div class="challenge-comparison">
+          <div class="challenge-player me">
+            <div class="player-avatar">🙋</div>
+            <div class="player-name">Tú</div>
+            <div id="my-challenge-score" class="player-score">0</div>
+            <div class="player-label">puntos</div>
+            <div id="my-challenge-correct" class="player-detail">0 ✓</div>
+            <div id="my-challenge-time" class="player-detail">0s ⏱️</div>
+          </div>
+          
+          <div class="challenge-vs">
+            <span id="challenge-vs-text">VS</span>
+          </div>
+          
+          <div class="challenge-player opponent">
+            <div class="player-avatar">👤</div>
+            <div id="opponent-name" class="player-name">Oponente</div>
+            <div id="opponent-challenge-score" class="player-score">
+              <span id="opponent-score-value">--</span>
+              <span id="opponent-waiting" class="waiting-text hidden">Esperando...</span>
+            </div>
+            <div class="player-label">puntos</div>
+            <div id="opponent-challenge-correct" class="player-detail">-- ✓</div>
+            <div id="opponent-challenge-time" class="player-detail">-- ⏱️</div>
+          </div>
+        </div>
+        
+        <!-- Estado del reto -->
+        <div id="challenge-status-message" class="challenge-status">
+          <div class="loading-spinner"></div>
+          <span>Esperando a que tu oponente termine...</span>
+        </div>
+        
+        <div class="phase-actions">
+          <button id="btn-challenge-done" class="btn-primary">Volver al Inicio</button>
+        </div>
       </div>
     </div>
 
@@ -1208,6 +1530,75 @@
     </div>
   </div>
 
+  <!-- ========== PANTALLA RANKED ========== -->
+  <div id="ranked" class="screen">
+    <header class="screen-header">
+      <button class="back-btn" data-target="home">←</button>
+      <h1>⚔️ Ranked</h1>
+      <div class="header-spacer"></div>
+    </header>
+    
+    <!-- Mi rango actual -->
+    <div class="ranked-my-stats">
+      <div id="ranked-my-rank-icon" class="ranked-rank-big">🥉</div>
+      <div class="ranked-my-info">
+        <span id="ranked-my-rank-name" class="ranked-rank-name">Bronce III</span>
+        <div class="ranked-trophies-row">
+          <span id="ranked-my-trophies">0</span>
+          <span class="trophy-icon">🏆</span>
+        </div>
+        <div class="ranked-next-rank">
+          <span class="ranked-next-label">Siguiente:</span>
+          <span id="ranked-next-rank-name">Bronce II</span>
+          <span id="ranked-next-trophies">(100 🏆)</span>
+        </div>
+      </div>
+      <button id="btn-view-ranks" class="btn-view-ranks">📊 Ver Rangos</button>
+    </div>
+    <div id="ranked-my-progress-container" class="ranked-progress-container">
+      <div id="ranked-my-progress-bar" class="ranked-progress-bar" style="width: 0%"></div>
+      <span id="ranked-progress-text" class="ranked-progress-text">0 / 100</span>
+    </div>
+    
+    <!-- Tabs -->
+    <div class="ranked-tabs">
+      <button id="tab-ranked-play" class="ranked-tab active">Jugar</button>
+      <button id="tab-ranked-leaderboard" class="ranked-tab">Clasificación</button>
+    </div>
+    
+    <!-- Tab Jugar: Selección de categoría -->
+    <div id="ranked-play-content" class="ranked-content">
+      <p class="ranked-description">Elige una categoría para jugar ranked:</p>
+      <div id="ranked-categories-grid" class="ranked-categories-grid">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+    
+    <!-- Tab Leaderboard -->
+    <div id="ranked-leaderboard-content" class="ranked-content hidden">
+      <div class="leaderboard-category-select">
+        <label>Categoría:</label>
+        <select id="leaderboard-category-select">
+          <option value="personajes">Personajes</option>
+          <option value="lugares">Lugares</option>
+          <option value="eventos">Eventos</option>
+          <option value="profetas">Profetas</option>
+          <option value="reyes">Reyes</option>
+          <option value="milagros">Milagros</option>
+          <option value="parabolas">Parábolas</option>
+          <option value="salmos-proverbios">Salmos</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
+      </div>
+      <div id="leaderboard-rank-title" class="leaderboard-rank-title">
+        Clasificación: <span id="leaderboard-current-rank">Cargando...</span>
+      </div>
+      <div id="leaderboard-list" class="leaderboard-list">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div id="update-banner" class="update-banner hidden" role="alert">
@@ -1315,13 +1706,288 @@
   </div>
 </div>
 
-<script src="js/questions.js?v=41" defer></script>
-<script src="js/definitions.js?v=41" defer></script>
-<script src="js/storage.js?v=41" defer></script>
-<script src="js/billing.js?v=41" defer></script>
-<script src="js/ads.js?v=41" defer></script>
-<script src="js/notifications.js?v=41" defer></script>
-<script src="js/app.js?v=41" defer></script>
+<!-- Pantalla Social -->
+<div id="social-screen" class="screen-overlay hidden" onclick="if(event.target === this) this.classList.add('hidden')">
+  <div class="social-container">
+    <header class="social-header">
+      <button id="btn-close-social" style="width:40px;height:40px;border-radius:50%;background:#e74c3c;border:none;color:white;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;" onclick="event.stopPropagation();document.getElementById('social-screen').classList.add('hidden')">✕</button>
+      <h2 class="social-title">🏆 Social</h2>
+    </header>
+
+    <!-- Mi perfil -->
+    <div class="my-profile-card">
+      <div id="my-avatar" class="my-avatar">
+        <span class="my-avatar-placeholder">J</span>
+      </div>
+      <div class="my-profile-info">
+        <span id="my-display-name" class="my-name">Jugador</span>
+        <div class="my-code-row">
+          <span class="my-code-label">Mi código:</span>
+          <span id="my-friend-code" class="my-code">------</span>
+          <button id="btn-copy-code" class="btn-copy-code" title="Copiar código">📋</button>
+        </div>
+      </div>
+      <div class="my-profile-actions">
+        <button id="btn-change-name" class="btn-profile-action">✏️</button>
+        <button id="btn-link-google" class="btn-profile-action btn-google">🔗 Vincular</button>
+        <button id="btn-signin-google" class="btn-profile-action btn-google btn-signin hidden">🔑 Iniciar sesión</button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="social-tabs">
+      <button class="social-tab active" data-tab="leaderboard">
+        🏅 Clasificación
+      </button>
+      <button class="social-tab" data-tab="friends">
+        👥 Amigos
+        <span id="friends-badge" class="tab-badge hidden">0</span>
+      </button>
+      <button class="social-tab" data-tab="challenges">
+        ⚔️ Retos
+        <span id="challenges-badge" class="tab-badge hidden">0</span>
+      </button>
+    </div>
+
+    <!-- Tab: Clasificación -->
+    <div id="tab-leaderboard" class="social-tab-content">
+      <div id="leaderboard-list" class="leaderboard-list">
+        <div class="loading-spinner">Cargando...</div>
+      </div>
+    </div>
+
+    <!-- Tab: Amigos -->
+    <div id="tab-friends" class="social-tab-content hidden">
+      <!-- Buscar amigo -->
+      <div class="add-friend-section">
+        <h4 class="section-subtitle">Agregar amigo</h4>
+        <div class="friend-search-row">
+          <input type="text" id="input-friend-code" class="input-friend-code" placeholder="Código de amigo" maxlength="6">
+          <button id="btn-search-friend" class="btn-search-friend">Buscar</button>
+        </div>
+        <div id="friend-search-result" class="friend-search-result hidden"></div>
+      </div>
+
+      <!-- Solicitudes pendientes -->
+      <div id="friend-requests-list" class="friend-requests-list hidden"></div>
+
+      <!-- Lista de amigos -->
+      <div id="friends-list" class="friends-list">
+        <div class="loading-spinner">Cargando...</div>
+      </div>
+    </div>
+
+    <!-- Tab: Retos -->
+    <div id="tab-challenges" class="social-tab-content hidden">
+      <div id="pending-challenges" class="pending-challenges">
+        <div class="loading-spinner">Cargando...</div>
+      </div>
+      <div id="my-challenges" class="my-challenges"></div>
+    </div>
+    
+    <!-- Botón Volver grande -->
+    <button onclick="document.getElementById('social-screen').classList.add('hidden')" style="width:100%;padding:16px;margin-top:20px;background:#e74c3c;border:none;border-radius:12px;color:white;font-size:1.1rem;font-weight:bold;cursor:pointer;">
+      ← Volver al Juego
+    </button>
+  </div>
+</div>
+
+<!-- Modal Configurar Reto -->
+<div id="challenge-config-modal" class="modal-overlay hidden">
+  <div class="modal-content challenge-config-content">
+    <h3 class="modal-title">⚔️ Configurar Reto</h3>
+    <p id="challenge-opponent-text" class="challenge-opponent-text">Retar a: <strong>Amigo</strong></p>
+    
+    <div class="config-section">
+      <label class="config-label">📚 Categoría</label>
+      <select id="challenge-category" class="config-select">
+        <option value="random">🎲 Aleatorio (todas)</option>
+        <option value="antiguo-testamento">📜 Antiguo Testamento</option>
+        <option value="nuevo-testamento">✝️ Nuevo Testamento</option>
+        <option value="personajes">👤 Personajes Bíblicos</option>
+        <option value="lugares">🗺️ Lugares Bíblicos</option>
+        <option value="milagros">✨ Milagros</option>
+        <option value="parabolas">📖 Parábolas</option>
+        <option value="profetas">🔮 Profetas</option>
+        <option value="reyes">👑 Reyes</option>
+        <option value="salmos-proverbios">🎵 Salmos y Proverbios</option>
+      </select>
+    </div>
+    
+    <div class="config-section">
+      <label class="config-label">📊 Dificultad</label>
+      <select id="challenge-difficulty" class="config-select">
+        <option value="random">🎲 Aleatorio (todas)</option>
+        <option value="facil">🟢 Fácil</option>
+        <option value="intermedio">🟡 Intermedio</option>
+        <option value="dificil">🔴 Difícil</option>
+        <option value="experto">⚫ Experto</option>
+      </select>
+    </div>
+    
+    <div class="config-section">
+      <label class="config-label">❓ Cantidad de Preguntas</label>
+      <select id="challenge-questions-count" class="config-select">
+        <option value="5">5 preguntas (rápido)</option>
+        <option value="10" selected>10 preguntas (normal)</option>
+        <option value="15">15 preguntas (largo)</option>
+        <option value="20">20 preguntas (maratón)</option>
+      </select>
+    </div>
+    
+    <div class="modal-actions">
+      <button id="btn-cancel-challenge" class="btn-cancel">Cancelar</button>
+      <button id="btn-send-challenge" class="btn-confirm">⚔️ Enviar Reto</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Resultados Reto -->
+<div id="challenge-results-modal" class="modal-overlay hidden">
+  <div class="modal-content challenge-results-content">
+    <div id="challenge-winner-banner" class="winner-banner">
+      <span class="winner-emoji">🏆</span>
+      <h3 id="challenge-winner-text" class="winner-text">¡Ganaste!</h3>
+    </div>
+    
+    <div class="results-comparison">
+      <div class="result-player result-me">
+        <span class="result-label">Tú</span>
+        <span id="result-my-score" class="result-score">0</span>
+        <span class="result-sublabel">puntos</span>
+      </div>
+      <div class="result-vs">VS</div>
+      <div class="result-player result-opponent">
+        <span id="result-opponent-name" class="result-label">Oponente</span>
+        <span id="result-opponent-score" class="result-score">0</span>
+        <span class="result-sublabel">puntos</span>
+      </div>
+    </div>
+    
+    <div class="results-details">
+      <p id="result-category-text">Categoría: Aleatorio</p>
+      <p id="result-difficulty-text">Dificultad: Normal</p>
+    </div>
+    
+    <div class="post-challenge-actions">
+      <button id="btn-rematch" class="btn-rematch">🔄 Revancha</button>
+      <button id="btn-new-challenge" class="btn-new-challenge">⚙️ Cambiar Config</button>
+      <button id="btn-close-results" class="btn-close-results">✓ Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay de búsqueda de partida -->
+<div id="ranked-search-overlay" class="phase-overlay hidden">
+  <div class="phase-card ranked-search-card">
+    <div class="ranked-search-spinner"></div>
+    <h2>Buscando oponente...</h2>
+    <div class="ranked-search-info">
+      <div id="ranked-search-rank" class="ranked-search-rank">🥉 Bronce III</div>
+      <div id="ranked-search-trophies" class="ranked-search-trophies">0 🏆</div>
+    </div>
+    <div class="ranked-search-status">
+      <span>Rango de búsqueda: </span>
+      <span id="ranked-search-range">±100 trofeos</span>
+    </div>
+    <div class="ranked-search-time">
+      <span>Tiempo: </span>
+      <span id="ranked-search-time">0s</span>
+    </div>
+    <button id="btn-cancel-search" class="btn-secondary">Cancelar</button>
+  </div>
+</div>
+
+<!-- Overlay de resultados ranked -->
+<div id="ranked-result-overlay" class="phase-overlay hidden">
+  <div class="phase-card ranked-result-card">
+    <div id="ranked-result-icon" class="phase-icon">⚔️</div>
+    <h2 id="ranked-result-title">¡Partida Terminada!</h2>
+    <p id="ranked-result-subtitle" class="phase-subtitle"></p>
+    
+    <!-- Comparación -->
+    <div class="challenge-comparison">
+      <div class="challenge-player me">
+        <div class="player-avatar">🙋</div>
+        <div class="player-name">Tú</div>
+        <div id="ranked-my-score" class="player-score">0</div>
+        <div class="player-label">puntos</div>
+      </div>
+      <div class="challenge-vs">VS</div>
+      <div class="challenge-player opponent">
+        <div class="player-avatar">👤</div>
+        <div id="ranked-opponent-name" class="player-name">Oponente</div>
+        <div id="ranked-opponent-score" class="player-score">--</div>
+        <div class="player-label">puntos</div>
+      </div>
+    </div>
+    
+    <!-- Cambio de trofeos -->
+    <div id="ranked-trophy-change" class="ranked-trophy-change">
+      <span id="ranked-trophy-old">0</span>
+      <span class="trophy-arrow">→</span>
+      <span id="ranked-trophy-new">0</span>
+      <span class="trophy-icon">🏆</span>
+      <span id="ranked-trophy-diff" class="trophy-diff">+30</span>
+    </div>
+    
+    <div id="ranked-status-message" class="challenge-status hidden">
+      <div class="loading-spinner"></div>
+      <span>Esperando a que tu oponente termine...</span>
+    </div>
+    
+    <div class="phase-actions">
+      <button id="btn-ranked-play-again" class="btn-primary">Jugar otra vez</button>
+      <button id="btn-ranked-done" class="btn-secondary">Volver</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/ranked.js?v=2" defer></script>
+
+<!-- Overlay de todos los rangos -->
+<div id="ranks-overview-overlay" class="phase-overlay hidden" style="display: none;">
+  <div class="phase-card ranks-overview-card">
+    <button id="btn-close-ranks" class="close-overlay-btn">×</button>
+    <h2 class="ranks-title">🏆 Sistema de Rangos</h2>
+    <p class="ranks-subtitle">Sube de rango ganando partidas ranked</p>
+    
+    <div class="current-rank-display">
+      <span id="overview-current-icon" class="current-rank-icon">🥉</span>
+      <div class="current-rank-info">
+        <span id="overview-current-name" class="current-rank-name">Bronce III</span>
+        <span id="overview-current-trophies" class="current-rank-trophies">0 / 100 🏆</span>
+      </div>
+    </div>
+    
+    <div id="ranks-list" class="ranks-list">
+      <!-- Generado dinámicamente -->
+    </div>
+    
+    <div class="ranks-legend">
+      <div class="legend-item"><span class="legend-win">✔</span> Victoria: +30</div>
+      <div class="legend-item"><span class="legend-tie">●</span> Empate: +5</div>
+      <div class="legend-item"><span class="legend-lose">✖</span> Derrota: -20 (o -5 si <200)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Indicador de escudo activo -->
+<div id="shield-active-indicator" class="shield-active-indicator hidden">
+  <span>🛡️</span>
+  <span id="shield-timer-text">Escudo: 5:00</span>
+</div>
+
+<script src="js/firebase.js?v=68" defer></script>
+<script src="js/social.js?v=65" defer></script>
+<script src="js/questions.js?v=51" defer></script>
+<script src="js/definitions.js?v=51" defer></script>
+<script src="js/storage.js?v=51" defer></script>
+<script src="js/billing.js?v=52" defer></script>
+<script src="js/seasons.js?v=4" defer></script>
+<script src="js/ads.js?v=51" defer></script>
+<script src="js/notifications.js?v=51" defer></script>
+<script src="js/app.js?v=88" defer></script>
 
 <script>
   if ('serviceWorker' in navigator) {

@@ -50,7 +50,8 @@ const Storage = {
     DAILY_STREAK: 'bibliaquiz_dailystreak',
     DAILY_CHALLENGE: 'bibliaquiz_dailychallenge',
     SPEED_STATS: 'bibliaquiz_speedstats',
-    LEADERBOARD: 'bibliaquiz_leaderboard'
+    LEADERBOARD: 'bibliaquiz_leaderboard',
+    COINS: 'bibliaquiz_coins'
   },
 
   // Safe JSON parse helper
@@ -438,5 +439,69 @@ const Storage = {
   getMemorizedCount() {
     const favorites = this.getFavoriteVerses();
     return favorites.filter(v => v.memorized).length;
+  },
+
+  // --- SISTEMA DE MONEDAS ---
+  getCoins() {
+    this.initVersioning();
+    return this._parse(this.KEYS.COINS, { 
+      total: 0, 
+      earned: 0, 
+      spent: 0,
+      multiplier: 1,
+      perfectStreakPhases: 0 // Fases consecutivas sin errores
+    });
+  },
+  
+  saveCoins(coinsData) { 
+    this._save(this.KEYS.COINS, coinsData); 
+  },
+  
+  addCoins(amount) {
+    const coins = this.getCoins();
+    coins.total += amount;
+    coins.earned += amount;
+    this.saveCoins(coins);
+    return coins;
+  },
+  
+  spendCoins(amount) {
+    const coins = this.getCoins();
+    if (coins.total >= amount) {
+      coins.total -= amount;
+      coins.spent += amount;
+      this.saveCoins(coins);
+      return true;
+    }
+    return false;
+  },
+  
+  // Actualizar multiplicador basado en fases perfectas
+  updateCoinMultiplier(phasePerfect) {
+    const coins = this.getCoins();
+    if (phasePerfect) {
+      coins.perfectStreakPhases++;
+      // Calcular nuevo multiplicador (máx x4)
+      if (coins.perfectStreakPhases >= 3) {
+        coins.multiplier = 4;
+      } else if (coins.perfectStreakPhases >= 2) {
+        coins.multiplier = 3;
+      } else if (coins.perfectStreakPhases >= 1) {
+        coins.multiplier = 2;
+      }
+    } else {
+      // Resetear si falla
+      coins.perfectStreakPhases = 0;
+      coins.multiplier = 1;
+    }
+    this.saveCoins(coins);
+    return coins.multiplier;
+  },
+  
+  resetCoinMultiplier() {
+    const coins = this.getCoins();
+    coins.perfectStreakPhases = 0;
+    coins.multiplier = 1;
+    this.saveCoins(coins);
   }
 };

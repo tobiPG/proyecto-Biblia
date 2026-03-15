@@ -1,4 +1,167 @@
-﻿// --- Boton Acerca de ---
+﻿// ============================================================
+// 🔐 VERIFICACIÓN DE LOGIN OBLIGATORIO - SE EJECUTA PRIMERO
+// ============================================================
+(function() {
+  const hasToken = localStorage.getItem('backend_token');
+  if (!hasToken) {
+    console.log('[BibliaQuiz] ⚠️ SIN TOKEN - Login obligatorio');
+    
+    // Esperar a que el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+      // Crear overlay de login obligatorio
+      const loginOverlay = document.createElement('div');
+      loginOverlay.id = 'mandatory-login-overlay';
+      loginOverlay.innerHTML = `
+        <div style="background: linear-gradient(135deg, #1a1626 0%, #2d2640 100%); padding: 30px; border-radius: 20px; border: 2px solid #ff6b6b; max-width: 400px; width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+          <h2 style="color: white; text-align: center; margin-bottom: 20px; font-size: 1.5rem;">🔐 Inicia sesión para continuar</h2>
+          <p style="color: #aaa; text-align: center; margin-bottom: 20px;">Tu progreso se guardará en la nube</p>
+          
+          <div id="mandatory-login-form">
+            <input type="email" id="mandatory-email" placeholder="Correo electrónico" style="width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 2px solid #333; background: #1a1a2e; color: white; font-size: 16px; box-sizing: border-box;">
+            <input type="password" id="mandatory-password" placeholder="Contraseña" style="width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 2px solid #333; background: #1a1a2e; color: white; font-size: 16px; box-sizing: border-box;">
+            <button id="mandatory-login-btn" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px;">🔑 Iniciar Sesión</button>
+          </div>
+          
+          <div id="mandatory-register-form" style="display: none;">
+            <input type="email" id="mandatory-reg-email" placeholder="Correo electrónico" style="width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 2px solid #333; background: #1a1a2e; color: white; font-size: 16px; box-sizing: border-box;">
+            <input type="password" id="mandatory-reg-password" placeholder="Contraseña (mín. 6 caracteres)" style="width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 2px solid #333; background: #1a1a2e; color: white; font-size: 16px; box-sizing: border-box;">
+            <input type="text" id="mandatory-reg-name" placeholder="Nombre (opcional)" style="width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 2px solid #333; background: #1a1a2e; color: white; font-size: 16px; box-sizing: border-box;">
+            <button id="mandatory-register-btn" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #ff6b6b, #ee5a5a); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px;">📝 Crear Cuenta</button>
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <span id="toggle-text" style="color: #888;">¿No tienes cuenta?</span>
+            <button id="toggle-form-btn" style="background: none; border: none; color: #4ecdc4; cursor: pointer; font-weight: bold; margin-left: 5px;">Registrarse</button>
+          </div>
+          
+          <div id="mandatory-error" style="color: #ff6b6b; text-align: center; margin-top: 15px; display: none;"></div>
+          <div id="mandatory-loading" style="color: #4ecdc4; text-align: center; margin-top: 15px; display: none;">⏳ Procesando...</div>
+        </div>
+      `;
+      loginOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 14, 23, 0.98); display: flex; align-items: center; justify-content: center; z-index: 999999;';
+      document.body.appendChild(loginOverlay);
+      
+      // Toggle entre login y registro
+      document.getElementById('toggle-form-btn').addEventListener('click', function() {
+        const loginForm = document.getElementById('mandatory-login-form');
+        const registerForm = document.getElementById('mandatory-register-form');
+        const toggleText = document.getElementById('toggle-text');
+        const toggleBtn = document.getElementById('toggle-form-btn');
+        
+        if (loginForm.style.display !== 'none') {
+          loginForm.style.display = 'none';
+          registerForm.style.display = 'block';
+          toggleText.textContent = '¿Ya tienes cuenta?';
+          toggleBtn.textContent = 'Iniciar Sesión';
+        } else {
+          loginForm.style.display = 'block';
+          registerForm.style.display = 'none';
+          toggleText.textContent = '¿No tienes cuenta?';
+          toggleBtn.textContent = 'Registrarse';
+        }
+      });
+      
+      // Login
+      document.getElementById('mandatory-login-btn').addEventListener('click', async function() {
+        const email = document.getElementById('mandatory-email').value.trim();
+        const password = document.getElementById('mandatory-password').value;
+        const errorDiv = document.getElementById('mandatory-error');
+        const loadingDiv = document.getElementById('mandatory-loading');
+        
+        if (!email || !password) {
+          errorDiv.textContent = 'Por favor completa todos los campos';
+          errorDiv.style.display = 'block';
+          return;
+        }
+        
+        errorDiv.style.display = 'none';
+        loadingDiv.style.display = 'block';
+        
+        try {
+          const response = await fetch('http://localhost:3001/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+          });
+          
+          const data = await response.json();
+          
+          if (response.ok && data.token) {
+            localStorage.setItem('backend_token', data.token);
+            localStorage.setItem('backend_user', JSON.stringify(data.user));
+            location.reload();
+          } else {
+            errorDiv.textContent = data.message || 'Error al iniciar sesión';
+            errorDiv.style.display = 'block';
+          }
+        } catch (err) {
+          errorDiv.textContent = 'Error de conexión. Verifica que el servidor esté activo.';
+          errorDiv.style.display = 'block';
+        }
+        
+        loadingDiv.style.display = 'none';
+      });
+      
+      // Registro
+      document.getElementById('mandatory-register-btn').addEventListener('click', async function() {
+        const email = document.getElementById('mandatory-reg-email').value.trim();
+        const password = document.getElementById('mandatory-reg-password').value;
+        const name = document.getElementById('mandatory-reg-name').value.trim() || 'Jugador';
+        const errorDiv = document.getElementById('mandatory-error');
+        const loadingDiv = document.getElementById('mandatory-loading');
+        
+        if (!email || !password) {
+          errorDiv.textContent = 'Por favor completa email y contraseña';
+          errorDiv.style.display = 'block';
+          return;
+        }
+        
+        if (password.length < 6) {
+          errorDiv.textContent = 'La contraseña debe tener al menos 6 caracteres';
+          errorDiv.style.display = 'block';
+          return;
+        }
+        
+        errorDiv.style.display = 'none';
+        loadingDiv.style.display = 'block';
+        
+        try {
+          const response = await fetch('http://localhost:3001/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password, displayName: name })
+          });
+          
+          const data = await response.json();
+          
+          if (response.ok && data.token) {
+            localStorage.setItem('backend_token', data.token);
+            localStorage.setItem('backend_user', JSON.stringify(data.user));
+            location.reload();
+          } else {
+            errorDiv.textContent = data.message || 'Error al crear cuenta';
+            errorDiv.style.display = 'block';
+          }
+        } catch (err) {
+          errorDiv.textContent = 'Error de conexión. Verifica que el servidor esté activo.';
+          errorDiv.style.display = 'block';
+        }
+        
+        loadingDiv.style.display = 'none';
+      });
+      
+      // Enter para enviar
+      document.getElementById('mandatory-email').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') document.getElementById('mandatory-login-btn').click();
+      });
+      document.getElementById('mandatory-password').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') document.getElementById('mandatory-login-btn').click();
+      });
+    });
+  }
+})();
+
+// --- Boton Acerca de ---
 document.addEventListener('DOMContentLoaded', () => {
   const btnAbout = document.getElementById('btn-about');
   if (btnAbout) {
@@ -235,14 +398,24 @@ const App = {
       this.startLifeRegen();
       this.startHomeLivesTimer();
       this.initTheme();
-      this.checkRegistration();
-      // Onboarding only after registration is complete
-      if (Storage.isRegistered()) {
-        this.showScreen('home');
-        this.renderHome();
-        this.loadSettings();
-        this.initOnboarding();
+      
+      // 🔐 VERIFICACIÓN INMEDIATA DE AUTENTICACIÓN
+      // Si no hay token, forzar login y NO mostrar home
+      const hasToken = localStorage.getItem('backend_token');
+      if (!hasToken) {
+        console.log('[BibliaQuiz] ⚠️ Sin token - forzando login obligatorio');
+        this.forceShowLoginModal();
+        // NO continuar con renderHome
+      } else {
+        // Solo mostrar home si hay token
+        if (Storage.isRegistered()) {
+          this.showScreen('home');
+          this.renderHome();
+          this.loadSettings();
+          this.initOnboarding();
+        }
       }
+      
       this.initOfflineDetection();
       this.initKeyboard();
       this.initDailyStreak();
@@ -260,6 +433,139 @@ const App = {
       console.error('[BibliaQuiz] Error fatal en init:', e);
     }
     this.hideSplash();
+  },
+  
+  // 🔐 Forzar modal de login inmediatamente
+  forceShowLoginModal() {
+    console.log('[BibliaQuiz] 🔐 Forzando modal de login...');
+    
+    // Ocultar todas las pantallas
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    
+    // Mostrar el modal de login con máxima prioridad
+    const modal = document.getElementById('login-prompt-banner');
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.style.cssText = `
+        display: flex !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 99999 !important;
+        background: rgba(15, 14, 23, 0.98) !important;
+        align-items: center !important;
+        justify-content: center !important;
+      `;
+      
+      // Asegurar que el contenido interno sea visible
+      const content = modal.querySelector('.login-prompt-content');
+      if (content) {
+        content.style.cssText = `
+          background: linear-gradient(135deg, #1a1626 0%, #2d2640 100%) !important;
+          padding: 30px !important;
+          border-radius: 20px !important;
+          border: 2px solid #ff6b6b !important;
+          max-width: 400px !important;
+          width: 90% !important;
+        `;
+      }
+      
+      // Actualizar título (es h3, no h2)
+      const title = modal.querySelector('.login-prompt-title');
+      if (title) {
+        title.textContent = '🔐 Inicia sesión para continuar';
+        title.style.cssText = 'color: white !important; text-align: center !important; margin-bottom: 20px !important;';
+      }
+      
+      // Ocultar botón de cerrar - login es obligatorio
+      const closeBtn = modal.querySelector('.btn-close-login');
+      if (closeBtn) {
+        closeBtn.style.display = 'none';
+      }
+      
+      console.log('[BibliaQuiz] ✅ Modal de login forzado visible');
+    } else {
+      console.error('[BibliaQuiz] ❌ No se encontró #login-prompt-banner');
+      // Fallback: crear un modal simple si no existe
+      this.createEmergencyLoginModal();
+    }
+  },
+  
+  // Crear modal de emergencia si el principal no existe
+  createEmergencyLoginModal() {
+    const overlay = document.createElement('div');
+    overlay.id = 'emergency-login';
+    overlay.innerHTML = `
+      <div style="background: #1a1626; padding: 30px; border-radius: 20px; border: 2px solid #ff6b6b; max-width: 400px; width: 90%;">
+        <h2 style="color: white; text-align: center;">🔐 Inicia sesión</h2>
+        <input type="email" id="emergency-email" placeholder="Correo" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none;">
+        <input type="password" id="emergency-password" placeholder="Contraseña" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none;">
+        <button onclick="BackendService.login(document.getElementById('emergency-email').value, document.getElementById('emergency-password').value).then(() => location.reload())" style="width: 100%; padding: 15px; background: #4ecdc4; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;">Entrar</button>
+      </div>
+    `;
+    overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: center; z-index: 99999;';
+    document.body.appendChild(overlay);
+  },
+  
+  // 🆕 Verificación de autenticación obligatoria (LLAMADA DESDE backend.js)
+  checkAuthenticationRequired() {
+    console.log('[BibliaQuiz] 🔍 Verificando autenticación...');
+    const token = localStorage.getItem('backend_token');
+    const hasBackendAuth = BackendService && BackendService.token;
+    
+    console.log(`[BibliaQuiz] Token localStorage: ${token ? 'SÍ' : 'NO'}`);
+    console.log(`[BibliaQuiz] BackendService.token: ${hasBackendAuth ? 'SÍ' : 'NO'}`);
+    
+    if (!token && !hasBackendAuth) {
+      console.log('[BibliaQuiz] ⚠️ NO AUTENTICADO - Mostrando login obligatorio');
+      
+      // Ocultar todo excepto el login
+      document.getElementById('home-screen')?.classList.add('hidden');
+      document.getElementById('main-container')?.classList.add('hidden');
+      
+      // Mostrar pantalla de login
+      this.showScreen('login');
+      this.showAuthModalForcedLogin();
+      
+      return false;
+    }
+    
+    console.log('[BibliaQuiz] ✅ Usuario autenticado verificado');
+    return true;
+  },
+  
+  // 🆕 Mostrar modal de login obligatorio
+  showAuthModalForcedLogin() {
+    const modalEl = document.getElementById('login-prompt-banner');
+    if (modalEl) {
+      console.log('[BibliaQuiz] 📱 Mostrando modal de login obligatorio');
+      modalEl.classList.remove('hidden');
+      modalEl.style.display = 'flex';
+      const title = document.querySelector('#login-prompt-banner h2');
+      if (title) {
+        title.textContent = '🔐 Se requiere iniciar sesión';
+      }
+    } else {
+      console.warn('[BibliaQuiz] ⚠️ Modal #login-prompt-banner no encontrado en DOM');
+    }
+  },
+
+  // 🆕 Verificar si el usuario está autenticado
+  isUserAuthenticated() {
+    // Verificar token en BackendService
+    if (BackendService && BackendService.token && BackendService.currentUser) {
+      return true;
+    }
+    
+    // Verificar token en localStorage como fallback
+    const token = localStorage.getItem('backend_token');
+    if (token) {
+      return true;
+    }
+    
+    return false;
   },
   // === ONBOARDING ===
   initOnboarding() {
@@ -1138,6 +1444,18 @@ const App = {
   },
   // === JUEGO ===
   startGame() {
+    // 🔐 VERIFICACIÓN DE AUTENTICACIÓN OBLIGATORIA
+    if (!this.isUserAuthenticated()) {
+      console.log('[BibliaQuiz] ❌ Acceso denegado - Usuario no autenticado');
+      this.showToast('🔒 Debes iniciar sesión para jugar');
+      this.showScreen('login');
+      setTimeout(() => {
+        const modal = document.getElementById('login-prompt-banner');
+        if (modal) modal.classList.remove('hidden');
+      }, 300);
+      return;
+    }
+    
     // Filter questions
     let pool = QUESTIONS_DB.filter(q => q.difficulty === this.selectedDifficulty);
     if (this.selectedCategory && this.selectedCategory !== 'aleatorio') {
@@ -3590,6 +3908,18 @@ const App = {
         .catch(err => console.error('Error sincronizando progreso:', err));
     }
     
+    // 🆕 Sincronizar con BackendService (MongoDB)
+    if (window.BackendService && BackendService.token) {
+      console.log('[BibliaQuiz] 💾 Sincronizando progreso a MongoDB...');
+      BackendService.syncFullProgress()
+        .then(success => {
+          if (success) {
+            console.log('[BibliaQuiz] ✅ Progreso guardado en MongoDB');
+          }
+        })
+        .catch(err => console.error('[BibliaQuiz] Error sincronizando a MongoDB:', err));
+    }
+    
     // Si es reto social, enviar resultado
     if (this.isSocialChallenge) {
       this.finishSocialChallenge();
@@ -3738,8 +4068,45 @@ const App = {
   renderSettings() {
     const player = Storage.getPlayer();
     const settings = Storage.getSettings();
-    document.getElementById('setting-name').value = player.name;
-    document.getElementById('setting-email').value = player.email || '';
+    
+    // 🔐 Cargar datos del usuario autenticado desde BackendService
+    let userName = player.name;
+    let userEmail = player.email || '';
+    
+    // Intentar obtener datos del backend (MongoDB)
+    const backendUser = localStorage.getItem('backend_user');
+    if (backendUser) {
+      try {
+        const user = JSON.parse(backendUser);
+        userName = user.displayName || user.email?.split('@')[0] || userName;
+        userEmail = user.email || userEmail;
+        console.log('[BibliaQuiz] Cargando datos de usuario autenticado:', userEmail);
+      } catch (e) {
+        console.warn('[BibliaQuiz] Error parseando backend_user:', e);
+      }
+    }
+    
+    // También verificar BackendService directamente
+    if (typeof BackendService !== 'undefined' && BackendService.currentUser) {
+      userName = BackendService.currentUser.displayName || BackendService.currentUser.email?.split('@')[0] || userName;
+      userEmail = BackendService.currentUser.email || userEmail;
+    }
+    
+    document.getElementById('setting-name').value = userName;
+    document.getElementById('setting-email').value = userEmail;
+    
+    // Si hay usuario autenticado, el email es de solo lectura
+    const emailInput = document.getElementById('setting-email');
+    if (backendUser || (typeof BackendService !== 'undefined' && BackendService.currentUser)) {
+      emailInput.readOnly = true;
+      emailInput.style.opacity = '0.7';
+      emailInput.title = 'Email de tu cuenta (no se puede cambiar aquí)';
+    } else {
+      emailInput.readOnly = false;
+      emailInput.style.opacity = '1';
+      emailInput.title = '';
+    }
+    
     document.getElementById('setting-age').value = player.age || '';
     document.getElementById('setting-gender').value = player.gender || '';
     document.getElementById('setting-questions').value = settings.questionsPerGame;
@@ -5056,6 +5423,18 @@ const App = {
     }
   },
   startDailyChallenge() {
+    // VERIFICACIÓN DE AUTENTICACIÓN OBLIGATORIA
+    if (!this.isUserAuthenticated()) {
+      console.log('[BibliaQuiz] Acceso denegado - Usuario no autenticado');
+      this.showToast('Debes iniciar sesión para jugar');
+      this.showScreen('login');
+      setTimeout(() => {
+        const modal = document.getElementById('login-prompt-banner');
+        if (modal) modal.classList.remove('hidden');
+      }, 300);
+      return;
+    }
+    
     const challenge = Storage.getDailyChallenge();
     const today = new Date().toISOString().split('T')[0];
     if (challenge.date === today && challenge.completed) {

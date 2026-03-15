@@ -9,3 +9,18 @@ Thumbs.db
 # Temporary files
 *.log
 *.tmp
+
+# Dependencies
+node_modules/
+
+# Environment variables (IMPORTANTE - contiene credenciales)
+.env
+.env.local
+.env.production
+backend/.env
+backend/.env.local
+backend/.env.production
+
+# Build outputs
+dist/
+build/

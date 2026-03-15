@@ -1,0 +1,26 @@
+# ============================================
+# 🚂 RAILWAY - Configuración de Despliegue
+# ============================================
+#
+# PASOS PARA DESPLEGAR:
+# 1. Crear cuenta en https://railway.app
+# 2. Conectar tu repositorio de GitHub
+# 3. Crear nuevo proyecto
+# 4. Variables de entorno se configuran en el dashboard
+#
+# VARIABLES DE ENTORNO NECESARIAS:
+# - MONGODB_URI
+# - JWT_SECRET
+# - CORS_ORIGIN
+# - NODE_ENV=production
+
+[build]
+builder = "nixpacks"
+buildCommand = "npm install"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3

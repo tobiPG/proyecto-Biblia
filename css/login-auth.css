@@ -1,0 +1,326 @@
+/* Estilos para el banner de login actualizado */
+
+.login-prompt-banner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #0F0E17 0%, #1a1626 100%);
+  border: 2px solid #ff6b6b;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  z-index: 10000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  animation: slideInModal 0.3s ease-out;
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.login-prompt-banner.hidden {
+  display: none;
+}
+
+.login-prompt-content {
+  position: relative;
+}
+
+.login-prompt-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.login-form-container.hidden {
+  display: none;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 15px;
+  background: #1a1626;
+  border: 2px solid #3a3847;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.3s;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  background: #2a2630;
+}
+
+.login-input::placeholder {
+  color: #8a8a9a;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px 15px;
+  background: linear-gradient(135deg, #ff6b6b, #ff8888);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 5px;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-login:active {
+  transform: translateY(0);
+}
+
+.login-form-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #3a3847;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.btn-toggle-form {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.btn-toggle-form:hover {
+  color: #ff8888;
+  text-decoration: underline;
+}
+
+.login-error {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid #ff6b6b;
+  color: #ff6b6b;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-error.hidden {
+  display: none;
+}
+
+.btn-close-login {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #ff6b6b;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-close-login:hover {
+  background: #ff8888;
+  transform: scale(1.1);
+}
+
+/* Estilos para botones de perfil */
+.btn-password,
+.btn-logout {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  transition: all 0.3s;
+}
+
+.btn-password:hover,
+.btn-logout:hover {
+  background: linear-gradient(135deg, #5ee5da, #52b89f);
+  transform: translateY(-2px);
+}
+
+.btn-logout {
+  background: linear-gradient(135deg, #ff6b6b, #ff8888) !important;
+}
+
+.btn-logout:hover {
+  background: linear-gradient(135deg, #ff8888, #ff9999) !important;
+}
+
+/* Modal para cambiar contraseña */
+.password-change-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #0F0E17 0%, #1a1626 100%);
+  border: 2px solid #4ecdc4;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  z-index: 10000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.password-change-modal.hidden {
+  display: none;
+}
+
+.password-modal-title {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.password-modal-input {
+  width: 100%;
+  padding: 12px 15px;
+  background: #1a1626;
+  border: 2px solid #3a3847;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+.password-modal-input:focus {
+  outline: none;
+  border-color: #4ecdc4;
+  background: #2a2630;
+}
+
+.password-modal-input::placeholder {
+  color: #8a8a9a;
+}
+
+.password-modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-confirm-password,
+.btn-cancel-password {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-confirm-password {
+  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  color: #fff;
+}
+
+.btn-confirm-password:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+}
+
+.btn-cancel-password {
+  background: #3a3847;
+  color: #fff;
+}
+
+.btn-cancel-password:hover {
+  background: #4a4a57;
+}
+
+.password-modal-error {
+  color: #ff6b6b;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  display: none;
+}
+
+.password-modal-error.show {
+  display: block;
+}
+
+/* Pantalla de login a pantalla completa (cuando no está autenticado) */
+body:has(#main-content[style*="display: none"]) {
+  background: linear-gradient(135deg, #0F0E17 0%, #1a1626 100%);
+}
+
+.login-prompt-banner[style*="position: fixed"][style*="z-index: 9999"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100% !important;
+  transform: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #0F0E17 0%, #1a1626 100%) !important;
+}
+
+.login-prompt-banner[style*="position: fixed"][style*="z-index: 9999"] .login-prompt-content {
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  background: rgba(26, 22, 38, 0.95);
+  border: 2px solid #ff6b6b;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.login-prompt-banner[style*="position: fixed"][style*="z-index: 9999"] .login-prompt-title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+}
+
+.login-prompt-banner[style*="position: fixed"][style*="z-index: 9999"] .btn-close-login {
+  display: none;
+}
+

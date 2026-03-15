@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset BibliaQuiz</title>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: #16213e;
+            border-radius: 20px;
+            max-width: 400px;
+        }
+        h1 { color: #ff6b6b; }
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover { background: #ee5a5a; }
+        .success { color: #4ecdc4; margin-top: 20px; }
+        pre { 
+            background: #0f0f23; 
+            padding: 15px; 
+            border-radius: 10px; 
+            text-align: left;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Reset BibliaQuiz</h1>
+        <p>Esta página limpia todos los datos locales para probar el login obligatorio.</p>
+        
+        <button onclick="resetAll()">🗑️ Limpiar Todo y Recargar</button>
+        
+        <div id="status"></div>
+        
+        <h3>Datos actuales:</h3>
+        <pre id="data"></pre>
+    </div>
+
+    <script>
+        function showData() {
+            const data = {
+                backend_token: localStorage.getItem('backend_token') ? 'EXISTS' : 'NULL',
+                bibliaquiz_player: localStorage.getItem('bibliaquiz_player') ? 'EXISTS' : 'NULL',
+                bibliaquiz_stats: localStorage.getItem('bibliaquiz_stats') ? 'EXISTS' : 'NULL',
+                bibliaquiz_registered: localStorage.getItem('bibliaquiz_registered'),
+                allKeys: Object.keys(localStorage).filter(k => k.includes('biblia') || k.includes('backend'))
+            };
+            document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+        }
+        
+        function resetAll() {
+            // Limpiar todo lo relacionado con BibliaQuiz
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && (key.includes('biblia') || key.includes('backend') || key.includes('Backend'))) {
+                    keysToRemove.push(key);
+                }
+            }
+            
+            keysToRemove.forEach(key => {
+                console.log('Removing:', key);
+                localStorage.removeItem(key);
+            });
+            
+            document.getElementById('status').innerHTML = `
+                <p class="success">✅ Eliminadas ${keysToRemove.length} claves:</p>
+                <pre>${keysToRemove.join('\n')}</pre>
+                <p>Redirigiendo en 2 segundos...</p>
+            `;
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+        
+        showData();
+    </script>
+</body>
+</html>

@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=62">
+  <link rel="stylesheet" href="css/login-auth.css?v=1">
 </head>
 <body>
 
@@ -48,7 +49,7 @@
   </div>
 </div>
 
-<div class="app-container">
+<div id="main-content" class="app-container">
 
   <div id="home" class="screen active">
     <header class="app-header">
@@ -84,8 +85,30 @@
 
     <!-- Banner de inicio de sesión para usuarios que ya tienen cuenta -->
     <div id="login-prompt-banner" class="login-prompt-banner hidden">
-      <span class="login-prompt-text">¿Ya tienes cuenta?</span>
-      <button id="btn-quick-signin" class="btn-quick-signin">🔑 Iniciar sesión con Google</button>
+      <div class="login-prompt-content">
+        <h3 class="login-prompt-title">¿Ya tienes cuenta?</h3>
+        
+        <div id="login-form-container" class="login-form-container">
+          <input type="email" id="login-email" class="login-input" placeholder="Correo electrónico" />
+          <input type="password" id="login-password" class="login-input" placeholder="Contraseña" />
+          <button id="btn-login" class="btn-login">🔑 Iniciar sesión</button>
+        </div>
+        
+        <div id="register-form-container" class="login-form-container hidden">
+          <input type="email" id="register-email" class="login-input" placeholder="Correo electrónico" />
+          <input type="password" id="register-password" class="login-input" placeholder="Contraseña" />
+          <input type="text" id="register-name" class="login-input" placeholder="Nombre de usuario (opcional)" />
+          <button id="btn-register" class="btn-login">📝 Crear cuenta</button>
+        </div>
+        
+        <div class="login-form-toggle">
+          <span id="toggle-form-text">¿No tienes cuenta?</span>
+          <button id="btn-toggle-form" class="btn-toggle-form">Registrarse</button>
+        </div>
+        
+        <div id="login-error" class="login-error hidden"></div>
+        <button id="btn-close-login" class="btn-close-login">✕</button>
+      </div>
     </div>
 
     <div id="verse-card" class="verse-card">
@@ -1009,6 +1032,17 @@
         <p id="promo-code-result" class="promo-result hidden"></p>
       </div>
       <button id="btn-reset" class="btn-danger">🗑️ Borrar Todo</button>
+      
+      <!-- Sección de Cuenta -->
+      <div class="setting-section-title">
+        <h3>🔐 Mi Cuenta</h3>
+      </div>
+      <div class="setting-item">
+        <div class="account-buttons">
+          <button id="btn-change-password-settings" class="btn-account">🔐 Cambiar contraseña</button>
+          <button id="btn-logout-settings" class="btn-account">🚪 Cerrar sesión</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1728,9 +1762,7 @@
         </div>
       </div>
       <div class="my-profile-actions">
-        <button id="btn-change-name" class="btn-profile-action">✏️</button>
-        <button id="btn-link-google" class="btn-profile-action btn-google">🔗 Vincular</button>
-        <button id="btn-signin-google" class="btn-profile-action btn-google btn-signin hidden">🔑 Iniciar sesión</button>
+        <button id="btn-go-settings" class="btn-profile-action" title="Ir a Configuración" style="background: #4ecdc4;">⚙️</button>
       </div>
     </div>
 
@@ -1978,7 +2010,8 @@
   <span id="shield-timer-text">Escudo: 5:00</span>
 </div>
 
-<script src="js/firebase.js?v=68" defer></script>
+<script src="js/backend.js?v=1" defer></script>
+<script src="js/auth.js?v=1" defer></script>
 <script src="js/social.js?v=65" defer></script>
 <script src="js/questions.js?v=51" defer></script>
 <script src="js/definitions.js?v=51" defer></script>

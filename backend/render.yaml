@@ -1,0 +1,39 @@
+# ============================================
+# 🚀 RENDER.COM - Configuración de Despliegue
+# ============================================
+# 
+# PASOS PARA DESPLEGAR:
+# 1. Crear cuenta en https://render.com
+# 2. Conectar tu repositorio de GitHub
+# 3. Crear "New Web Service"
+# 4. Seleccionar el directorio backend/
+# 5. Render detectará este archivo automáticamente
+#
+# VARIABLES DE ENTORNO (configurar en dashboard):
+# - MONGODB_URI: tu conexión a MongoDB Atlas
+# - JWT_SECRET: una clave larga y segura (mínimo 32 caracteres)
+# - CORS_ORIGIN: URL de tu frontend (ej: https://bibliaquiz.vercel.app)
+# - NODE_ENV: production
+
+services:
+  - type: web
+    name: bibliaquiz-api
+    env: node
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false

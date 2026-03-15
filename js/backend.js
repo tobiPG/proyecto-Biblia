@@ -467,9 +467,39 @@ window.BackendService = {
     }
   },
 
-  // Crear un reto
+  // Crear un reto (genera questionIds automáticamente para que ambos jugadores tengan las mismas preguntas)
   async createChallenge(friendId, category, difficulty, questionsCount, questionIds) {
     try {
+      // Si no se proporcionan questionIds, generarlos automáticamente
+      let finalQuestionIds = questionIds || [];
+      
+      if (finalQuestionIds.length === 0 && window.QUESTIONS_DB) {
+        const numQuestions = questionsCount || 10;
+        let pool = [...QUESTIONS_DB];
+        
+        // Filtrar por categoría si no es aleatorio
+        if (category && category !== 'random' && category !== 'aleatorio') {
+          pool = pool.filter(q => q.category === category);
+        }
+        
+        // Filtrar por dificultad si no es aleatorio
+        if (difficulty && difficulty !== 'random') {
+          pool = pool.filter(q => q.difficulty === difficulty);
+        }
+        
+        // Si no hay suficientes preguntas con esos filtros, usar todas
+        if (pool.length < numQuestions) {
+          pool = [...QUESTIONS_DB];
+        }
+        
+        // Seleccionar preguntas aleatorias
+        const shuffled = pool.sort(() => Math.random() - 0.5);
+        const selected = shuffled.slice(0, numQuestions);
+        finalQuestionIds = selected.map(q => q.id);
+        
+        console.log(`[Backend] Generados ${finalQuestionIds.length} questionIds para el reto`);
+      }
+      
       const response = await fetch(`${API_BASE_URL}/challenges`, {
         method: 'POST',
         headers: {
@@ -481,7 +511,7 @@ window.BackendService = {
           category,
           difficulty,
           questionsCount: questionsCount || 10,
-          questionIds: questionIds || []
+          questionIds: finalQuestionIds
         })
       });
       

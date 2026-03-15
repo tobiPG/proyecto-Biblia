@@ -19,10 +19,10 @@ window.Social = {
   async init() {
     if (this.isInitialized) return;
     
-    // Esperar a que Firebase esté listo con timeout
-    const firebaseReady = await this.waitForFirebase();
-    if (!firebaseReady) {
-      console.warn('[Social] Inicializando sin Firebase completo');
+    // Esperar a que Backend esté listo con timeout
+    const BackendReady = await this.waitForBackend();
+    if (!BackendReady) {
+      console.warn('[Social] Inicializando sin Backend completo');
     }
     
     this.setupEventListeners();
@@ -42,8 +42,8 @@ window.Social = {
     this.updateLoginBanner();
     
     // Escuchar cambios de autenticación
-    if (window.FirebaseService) {
-      FirebaseService.onEvent('auth', (data) => {
+    if (window.BackendService) {
+      BackendService.onEvent('auth', (data) => {
         this.updateLoginBanner();
       });
     }
@@ -54,10 +54,10 @@ window.Social = {
   // ============================================
   
   setupRealtimeListeners() {
-    if (!window.FirebaseService) return;
+    if (!window.BackendService) return;
     
     // Cuando llega un NUEVO RETO
-    FirebaseService.onEvent('newChallenge', (challenge) => {
+    BackendService.onEvent('newChallenge', (challenge) => {
       console.log('[Social] ¡Nuevo reto recibido!', challenge);
       this.showChallengeNotification(challenge);
       // Vibrar si es posible
@@ -69,7 +69,7 @@ window.Social = {
     });
     
     // Cuando MI RETO fue aceptado
-    FirebaseService.onEvent('challengeAccepted', (challenge) => {
+    BackendService.onEvent('challengeAccepted', (challenge) => {
       console.log('[Social] ¡Tu reto fue aceptado!', challenge);
       
       // Si estoy en medio de un quiz, solo mostrar toast, no el prompt
@@ -85,7 +85,7 @@ window.Social = {
     });
     
     // Cuando el OPONENTE ya jugó (soy el creador)
-    FirebaseService.onEvent('opponentPlayed', (challenge) => {
+    BackendService.onEvent('opponentPlayed', (challenge) => {
       console.log('[Social] El oponente ya jugó. Mi turno.', challenge);
       
       // IMPORTANTE: Si ya estoy jugando este reto, NO interrumpir
@@ -100,7 +100,7 @@ window.Social = {
     });
     
     // Cuando el CREADOR ya jugó (soy el oponente)
-    FirebaseService.onEvent('creatorPlayed', (challenge) => {
+    BackendService.onEvent('creatorPlayed', (challenge) => {
       console.log('[Social] El creador ya jugó. Mi turno.', challenge);
       
       // IMPORTANTE: Si ya estoy jugando este reto, NO interrumpir
@@ -115,7 +115,7 @@ window.Social = {
     });
     
     // Cuando el RETO se completó
-    FirebaseService.onEvent('challengeCompleted', (challenge) => {
+    BackendService.onEvent('challengeCompleted', (challenge) => {
       console.log('[Social] ¡Reto completado!', challenge);
       
       // IMPORTANTE: Si estoy en la pantalla de resultados del reto, no hacer nada extra
@@ -127,7 +127,7 @@ window.Social = {
       }
       
       // Mostrar resultados si no estamos ya en el modal
-      const myId = FirebaseService.currentUser?.uid;
+      const myId = BackendService.currentUser?.uid;
       const isWinner = challenge.winner === myId;
       const isTie = challenge.winner === 'tie';
       
@@ -239,8 +239,8 @@ window.Social = {
     
     this.showToast('⚔️ ¡Reto aceptado! Preparando partida...', 'success');
     
-    // Aceptar el reto en Firebase
-    const acceptResult = await FirebaseService.acceptChallenge(challenge.id);
+    // Aceptar el reto en Backend
+    const acceptResult = await BackendService.acceptChallenge(challenge.id);
     console.log('[Social] Resultado de aceptar reto:', acceptResult);
     
     if (!acceptResult.success) {
@@ -273,7 +273,7 @@ window.Social = {
     console.log('[Social] questionIds:', challenge.questionIds);
 
     // Guardar oponente para posible revancha
-    const isCreator = challenge.creatorId === FirebaseService.currentUser?.uid;
+    const isCreator = challenge.creatorId === BackendService.currentUser?.uid;
     this.lastChallengeOpponent = {
       friendId: isCreator ? challenge.opponentId : challenge.creatorId,
       friendName: isCreator ? challenge.opponentName : challenge.creatorName
@@ -300,9 +300,9 @@ window.Social = {
     const challenge = this.pendingNotification;
     this.hideChallengeNotification();
     
-    // Solo rechazar en Firebase si es un reto NUEVO pendiente, no un "play prompt"
+    // Solo rechazar en Backend si es un reto NUEVO pendiente, no un "play prompt"
     if (!this.pendingPlayPrompt && challenge.status === 'pending') {
-      await FirebaseService.rejectChallenge(challenge.id);
+      await BackendService.rejectChallenge(challenge.id);
       this.showToast('Reto rechazado', 'info');
     } else {
       this.showToast('Puedes jugar el reto más tarde', 'info');
@@ -312,7 +312,7 @@ window.Social = {
   
   // Mostrar prompt para jugar un reto (NO BLOQUEANTE)
   showPlayPrompt(challenge, reason) {
-    const myId = FirebaseService.currentUser?.uid;
+    const myId = BackendService.currentUser?.uid;
     const isCreator = challenge.creatorId === myId;
     const opponentName = isCreator ? challenge.opponentName : challenge.creatorName;
     
@@ -388,7 +388,7 @@ window.Social = {
     const banner = document.getElementById('login-prompt-banner');
     if (!banner) return;
     
-    const profile = FirebaseService.userProfile;
+    const profile = BackendService.userProfile;
     
     if (profile && profile.isAnonymous) {
       // Usuario anónimo - mostrar banner
@@ -399,38 +399,38 @@ window.Social = {
     }
   },
 
-  // Esperar a que Firebase esté listo (con timeout y reintentos)
-  async waitForFirebase(maxWaitMs = 20000) {
+  // Esperar a que Backend esté listo (con timeout y reintentos)
+  async waitForBackend(maxWaitMs = 20000) {
     const startTime = Date.now();
     
     return new Promise((resolve, reject) => {
       const check = async () => {
-        // Verificar si Firebase está listo
-        if (window.FirebaseService && FirebaseService.isReady && FirebaseService.currentUser) {
-          console.log('[Social] Firebase listo');
+        // Verificar si Backend está listo
+        if (window.BackendService && BackendService.isReady && BackendService.currentUser) {
+          console.log('[Social] Backend listo');
           resolve(true);
           return;
         }
         
         // Verificar timeout
         if (Date.now() - startTime > maxWaitMs) {
-          console.warn('[Social] Timeout esperando Firebase, intentando forzar conexión...');
+          console.warn('[Social] Timeout esperando Backend, intentando inicializar...');
           
-          // Intentar reinicializar Firebase
-          if (window.FirebaseService) {
+          // Intentar reinicializar Backend
+          if (window.BackendService) {
             try {
-              const success = await FirebaseService.ensureConnection();
-              if (success) {
-                console.log('[Social] Firebase reconectado exitosamente');
+              const success = await BackendService.init();
+              if (success && BackendService.currentUser) {
+                console.log('[Social] Backend inicializado exitosamente');
                 resolve(true);
                 return;
               }
             } catch (e) {
-              console.error('[Social] Error reconectando Firebase:', e);
+              console.error('[Social] Error inicializando Backend:', e);
             }
           }
           
-          console.error('[Social] No se pudo conectar a Firebase');
+          console.error('[Social] No se pudo conectar al Backend');
           resolve(false);
           return;
         }
@@ -543,11 +543,11 @@ window.Social = {
 
     screen.classList.remove('hidden');
     
-    // Esperar a que Firebase esté listo
-    if (!FirebaseService.isReady || !FirebaseService.currentUser) {
-      console.log('[Social] Esperando a Firebase...');
-      const firebaseReady = await this.waitForFirebase();
-      if (!firebaseReady) {
+    // Esperar a que Backend esté listo
+    if (!BackendService.isReady || !BackendService.currentUser) {
+      console.log('[Social] Esperando a Backend...');
+      const BackendReady = await this.waitForBackend();
+      if (!BackendReady) {
         this.showToast('Error de conexión. Intenta de nuevo.', 'error');
         return;
       }
@@ -555,9 +555,9 @@ window.Social = {
     
     // Forzar recarga del perfil desde Firestore para estar seguros
     try {
-      if (FirebaseService.currentUser) {
-        await FirebaseService.reloadProfile();
-        console.log('[Social] Perfil recargado:', FirebaseService.userProfile);
+      if (BackendService.currentUser) {
+        await BackendService.reloadProfile();
+        console.log('[Social] Perfil recargado:', BackendService.userProfile);
       }
     } catch (e) {
       console.error('[Social] Error recargando perfil:', e);
@@ -620,7 +620,7 @@ window.Social = {
     console.log('[Social] Cargando leaderboard...');
 
     try {
-      const leaderboard = await FirebaseService.getLeaderboard(50);
+      const leaderboard = await BackendService.getLeaderboard(50);
       console.log('[Social] Leaderboard recibido:', leaderboard);
       this.cachedLeaderboard = leaderboard;
       
@@ -629,7 +629,7 @@ window.Social = {
         return;
       }
 
-      const myId = FirebaseService.currentUser?.uid;
+      const myId = BackendService.currentUser?.uid;
       let myRank = leaderboard.findIndex(u => u.id === myId) + 1;
 
       container.innerHTML = leaderboard.map((user, index) => {
@@ -680,9 +680,9 @@ window.Social = {
 
     container.innerHTML = '<div class="loading-spinner">Cargando...</div>';
 
-    // Verificar que Firebase esté listo y el perfil cargado
-    if (!FirebaseService.isReady || !FirebaseService.userProfile) {
-      console.log('[Social] Esperando a Firebase...');
+    // Verificar que Backend esté listo y el perfil cargado
+    if (!BackendService.isReady || !BackendService.userProfile) {
+      console.log('[Social] Esperando a Backend...');
       container.innerHTML = '<p class="empty-friends">Cargando perfil...</p>';
       return;
     }
@@ -690,11 +690,11 @@ window.Social = {
     try {
       // IMPORTANTE: Recargar perfil desde Firestore para ver cambios recientes
       // (por ejemplo, si alguien aceptó nuestra solicitud de amistad)
-      await FirebaseService.reloadProfile();
-      console.log('[Social] Perfil recargado, amigos:', FirebaseService.userProfile?.friends?.length || 0);
+      await BackendService.reloadProfile();
+      console.log('[Social] Perfil recargado, amigos:', BackendService.userProfile?.friends?.length || 0);
 
       // Cargar solicitudes pendientes
-      const pendingRequests = await FirebaseService.getPendingRequests();
+      const pendingRequests = await BackendService.getPendingRequests();
       if (requestsContainer) {
         if (pendingRequests.length > 0) {
           requestsContainer.innerHTML = `
@@ -725,7 +725,7 @@ window.Social = {
       }
 
       // Cargar amigos
-      const friends = await FirebaseService.getFriendsList();
+      const friends = await BackendService.getFriendsList();
       this.cachedFriends = friends;
 
       if (friends.length === 0) {
@@ -776,8 +776,8 @@ window.Social = {
     
     if (!pendingContainer || !myContainer) return;
 
-    // Verificar que Firebase esté listo
-    if (!FirebaseService.isReady || !FirebaseService.currentUser) {
+    // Verificar que Backend esté listo
+    if (!BackendService.isReady || !BackendService.currentUser) {
       pendingContainer.innerHTML = '<p class="empty-challenges">Cargando...</p>';
       return;
     }
@@ -809,12 +809,12 @@ window.Social = {
       // ====================================
       // 1. Retos recibidos pendientes de aceptar
       // ====================================
-      const pendingChallenges = await FirebaseService.getPendingChallenges();
+      const pendingChallenges = await BackendService.getPendingChallenges();
       
       // ====================================
       // 2. Retos recibidos activos (ya acepté, debo jugar o ver resultados)
       // ====================================
-      const activeReceivedChallenges = await FirebaseService.getActiveReceivedChallenges();
+      const activeReceivedChallenges = await BackendService.getActiveReceivedChallenges();
       
       // Renderizar retos recibidos
       let pendingHTML = '';
@@ -877,7 +877,7 @@ window.Social = {
       // ====================================
       // 3. Mis retos enviados
       // ====================================
-      const myChallenges = await FirebaseService.getMyChallenges();
+      const myChallenges = await BackendService.getMyChallenges();
       
       let myHTML = '';
       
@@ -891,7 +891,7 @@ window.Social = {
             const catName = categoryNames[challenge.category] || challenge.category;
             const diffIcon = difficultyIcons[challenge.difficulty] || '🎲';
             const isTie = challenge.winner === 'tie';
-            const isCreator = challenge.creatorId === FirebaseService.currentUser?.uid;
+            const isCreator = challenge.creatorId === BackendService.currentUser?.uid;
             
             // Determinar si necesito jugar (soy creador y no he jugado)
             const needToPlay = challenge.status === 'active' && isCreator && challenge.creatorScore === null;
@@ -906,8 +906,8 @@ window.Social = {
                 ${challenge.status === 'completed' ? `
                   <div class="challenge-result">
                     <span class="result-score">${challenge.creatorScore || 0} - ${challenge.opponentScore || 0}</span>
-                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === FirebaseService.currentUser?.uid ? 'won' : 'lost')}">
-                      ${isTie ? '🤝 Empate' : (challenge.winner === FirebaseService.currentUser?.uid ? '🏆 Ganaste' : '😔 Perdiste')}
+                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === BackendService.currentUser?.uid ? 'won' : 'lost')}">
+                      ${isTie ? '🤝 Empate' : (challenge.winner === BackendService.currentUser?.uid ? '🏆 Ganaste' : '😔 Perdiste')}
                     </span>
                   </div>
                 ` : needToPlay ? `
@@ -939,8 +939,8 @@ window.Social = {
                 ${challenge.status === 'completed' ? `
                   <div class="challenge-result">
                     <span class="result-score">${challenge.creatorScore || 0} - ${challenge.opponentScore || 0}</span>
-                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === FirebaseService.currentUser?.uid ? 'won' : 'lost')}">
-                      ${isTie ? '🤝 Empate' : (challenge.winner === FirebaseService.currentUser?.uid ? '🏆 Ganaste' : '😔 Perdiste')}
+                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === BackendService.currentUser?.uid ? 'won' : 'lost')}">
+                      ${isTie ? '🤝 Empate' : (challenge.winner === BackendService.currentUser?.uid ? '🏆 Ganaste' : '😔 Perdiste')}
                     </span>
                   </div>
                 ` : ''}
@@ -960,7 +960,7 @@ window.Social = {
 
   // Obtener estado del reto
   getChallengeStatus(challenge) {
-    const myId = FirebaseService.currentUser?.uid;
+    const myId = BackendService.currentUser?.uid;
     const isCreator = challenge.creatorId === myId;
     
     switch (challenge.status) {
@@ -1004,7 +1004,7 @@ window.Social = {
     }
 
     // Verificar que no sea mi propio código
-    if (code === FirebaseService.userProfile?.friendCode) {
+    if (code === BackendService.userProfile?.friendCode) {
       this.showToast('No puedes agregarte a ti mismo', 'error');
       return;
     }
@@ -1013,7 +1013,7 @@ window.Social = {
     resultContainer.classList.remove('hidden');
 
     try {
-      const user = await FirebaseService.findUserByCode(code);
+      const user = await BackendService.findUserByCode(code);
       
       if (!user) {
         resultContainer.innerHTML = '<p class="search-error">No se encontró ningún usuario con ese código</p>';
@@ -1021,8 +1021,8 @@ window.Social = {
       }
 
       // Verificar si ya es amigo
-      const isAlreadyFriend = FirebaseService.userProfile?.friends?.includes(user.id);
-      const hasPendingRequest = FirebaseService.userProfile?.sentRequests?.includes(user.id);
+      const isAlreadyFriend = BackendService.userProfile?.friends?.includes(user.id);
+      const hasPendingRequest = BackendService.userProfile?.sentRequests?.includes(user.id);
 
       resultContainer.innerHTML = `
         <div class="search-result-item">
@@ -1053,7 +1053,7 @@ window.Social = {
 
   // Enviar solicitud de amistad
   async sendFriendRequest(userId) {
-    const result = await FirebaseService.sendFriendRequest(userId);
+    const result = await BackendService.sendFriendRequest(userId);
     
     if (result.success) {
       this.showToast('Solicitud enviada', 'success');
@@ -1072,7 +1072,7 @@ window.Social = {
 
   // Aceptar solicitud de amistad
   async acceptFriendRequest(userId) {
-    const result = await FirebaseService.acceptFriendRequest(userId);
+    const result = await BackendService.acceptFriendRequest(userId);
     
     if (result.success) {
       this.showToast('Amigo agregado', 'success');
@@ -1085,7 +1085,7 @@ window.Social = {
 
   // Rechazar solicitud de amistad
   async rejectFriendRequest(userId) {
-    const result = await FirebaseService.rejectFriendRequest(userId);
+    const result = await BackendService.rejectFriendRequest(userId);
     
     if (result.success) {
       this.loadFriends();
@@ -1099,7 +1099,7 @@ window.Social = {
   async removeFriend(friendId) {
     if (!confirm('¿Estás seguro de eliminar a este amigo?')) return;
     
-    const result = await FirebaseService.removeFriend(friendId);
+    const result = await BackendService.removeFriend(friendId);
     
     if (result.success) {
       this.showToast('Amigo eliminado', 'success');
@@ -1111,7 +1111,7 @@ window.Social = {
 
   // Copiar mi código de amigo
   copyMyCode() {
-    const code = FirebaseService.userProfile?.friendCode;
+    const code = BackendService.userProfile?.friendCode;
     if (!code) return;
 
     navigator.clipboard.writeText(code).then(() => {
@@ -1128,80 +1128,40 @@ window.Social = {
     });
   },
 
-  // Vincular con Google
+  // Vincular cuenta (redireccionar a login/registro)
   async linkWithGoogle() {
-    this.showToast('Redirigiendo a Google...', 'info');
-    const result = await FirebaseService.linkWithGoogle();
-    
-    // Con redirect, la página se recargará, este código solo se ejecuta si hay error
-    if (!result.success && !result.pending) {
-      this.showToast(result.error || 'Error al vincular cuenta', 'error');
+    // Con el nuevo backend, se usa login con email/password
+    if (window.Auth && typeof Auth.showLoginScreen === 'function') {
+      Auth.showLoginScreen();
+    } else {
+      this.showToast('Por favor, regístrate con email y contraseña', 'info');
     }
   },
 
-  // Iniciar sesión con Google (para usuarios que ya tienen cuenta registrada)
+  // Iniciar sesión (redireccionar a login)
   async signInWithGoogle() {
-    this.showToast('Redirigiendo a Google...', 'info');
-    const result = await FirebaseService.signInWithGoogle();
-    
-    // Con redirect, la página se recargará, este código solo se ejecuta si hay error
-    if (!result.success && !result.pending) {
-      this.showToast(result.error || 'Error al iniciar sesión', 'error');
+    // Con el nuevo backend, se usa login con email/password
+    if (window.Auth && typeof Auth.showLoginScreen === 'function') {
+      Auth.showLoginScreen();
+    } else {
+      this.showToast('Por favor, inicia sesión con tu email', 'info');
     }
   },
   
-  // Procesar resultados de redirect (login/vincular con Google)
+  // Procesar resultados de redirect (ya no es necesario con email/password)
   async processRedirectResults() {
-    if (!window.FirebaseService) return;
-    
-    try {
-      // Procesar resultado de vincular cuenta
-      const linkResult = await FirebaseService.processLinkResult();
-      if (linkResult) {
-        if (linkResult.success) {
-          this.showToast(linkResult.message || 'Cuenta vinculada con Google', 'success');
-          
-          // Recargar perfil y datos
-          await FirebaseService.reloadProfile(true);
-          
-          this.updateUserInfo();
-          await this.loadLeaderboard();
-          await this.loadFriends();
-        } else {
-          this.showToast(linkResult.error || 'Error al vincular cuenta', 'error');
-        }
-        return;
-      }
-      
-      // Procesar resultado de login
-      const signInResult = await FirebaseService.processSignInResult();
-      if (signInResult) {
-        if (signInResult.success) {
-          this.showToast('¡Bienvenido de vuelta!', 'success');
-          
-          // IMPORTANTE: Recargar perfil forzando sincronización desde la nube
-          await FirebaseService.reloadProfile(true);
-          
-          this.updateUserInfo();
-          await this.loadLeaderboard();
-          await this.loadFriends();
-          await this.loadChallenges();
-        } else {
-          this.showToast(signInResult.error || 'Error al iniciar sesión', 'error');
-        }
-      }
-    } catch (e) {
-      console.error('[Social] Error procesando redirect:', e);
-    }
+    // Este método ya no es necesario con el nuevo backend
+    // Se mantiene vacío para compatibilidad
+    return;
   },
 
   // Cambiar nombre de usuario
   async changeDisplayName() {
-    const currentName = FirebaseService.userProfile?.displayName || '';
+    const currentName = BackendService.userProfile?.displayName || '';
     const newName = prompt('Ingresa tu nuevo nombre:', currentName);
     
     if (newName && newName.trim() && newName !== currentName) {
-      const success = await FirebaseService.updateDisplayName(newName);
+      const success = await BackendService.updateDisplayName(newName);
       
       if (success) {
         this.showToast('Nombre actualizado', 'success');
@@ -1214,7 +1174,7 @@ window.Social = {
 
   // Actualizar info del usuario en la UI
   updateUserInfo() {
-    const profile = FirebaseService.userProfile;
+    const profile = BackendService.userProfile;
     console.log('[Social] updateUserInfo llamado, perfil:', profile);
     
     if (!profile) {
@@ -1312,7 +1272,7 @@ window.Social = {
     btnSend.textContent = 'Enviando...';
     btnSend.disabled = true;
 
-    const result = await FirebaseService.createChallenge(friendId, category, difficulty, questionsCount);
+    const result = await BackendService.createChallenge(friendId, category, difficulty, questionsCount);
     
     btnSend.textContent = originalText;
     btnSend.disabled = false;
@@ -1329,7 +1289,7 @@ window.Social = {
 
   // Aceptar reto
   async acceptChallenge(challengeId) {
-    const result = await FirebaseService.acceptChallenge(challengeId);
+    const result = await BackendService.acceptChallenge(challengeId);
     
     if (result.success) {
       this.showToast('Reto aceptado', 'success');
@@ -1342,7 +1302,7 @@ window.Social = {
 
   // Rechazar reto
   async rejectChallenge(challengeId) {
-    const result = await FirebaseService.rejectChallenge(challengeId);
+    const result = await BackendService.rejectChallenge(challengeId);
     
     if (result.success) {
       this.loadChallenges();
@@ -1358,7 +1318,7 @@ window.Social = {
     console.log('[Social] challengeId:', challengeId);
     
     // Guardar el reto actual
-    this.currentChallenge = await FirebaseService.getChallenge(challengeId);
+    this.currentChallenge = await BackendService.getChallenge(challengeId);
     console.log('[Social] Challenge obtenido:', this.currentChallenge);
     
     if (!this.currentChallenge) {
@@ -1371,7 +1331,7 @@ window.Social = {
     console.log('[Social] questionIds:', this.currentChallenge.questionIds);
 
     // Guardar oponente para posible revancha
-    const isCreator = this.currentChallenge.creatorId === FirebaseService.currentUser?.uid;
+    const isCreator = this.currentChallenge.creatorId === BackendService.currentUser?.uid;
     this.lastChallengeOpponent = {
       friendId: isCreator ? this.currentChallenge.opponentId : this.currentChallenge.creatorId,
       friendName: isCreator ? this.currentChallenge.opponentName : this.currentChallenge.creatorName
@@ -1396,7 +1356,7 @@ window.Social = {
   async finishChallenge(score, timeSpent, correctAnswers = 0) {
     if (!this.currentChallenge) return;
 
-    const result = await FirebaseService.submitChallengeResult(
+    const result = await BackendService.submitChallengeResult(
       this.currentChallenge.id,
       score,
       timeSpent,
@@ -1420,7 +1380,7 @@ window.Social = {
     const modal = document.getElementById('challenge-results-modal');
     if (!modal) return;
 
-    const isWinner = result.winner === FirebaseService.currentUser?.uid;
+    const isWinner = result.winner === BackendService.currentUser?.uid;
     const isTie = result.winner === 'tie';
     
     // Banner del ganador
@@ -1517,7 +1477,7 @@ window.Social = {
     const difficulty = lastConfig.difficulty || 'random';
     const questionsCount = lastConfig.questionsCount || 10;
 
-    const result = await FirebaseService.createChallenge(friendId, category, difficulty, questionsCount);
+    const result = await BackendService.createChallenge(friendId, category, difficulty, questionsCount);
     
     if (result.success) {
       this.showToast(`¡Revancha enviada a ${friendName}!`, 'success');
@@ -1540,12 +1500,12 @@ window.Social = {
 
   // Actualizar badges de notificaciones
   async updateNotificationBadges() {
-    if (!FirebaseService.isReady) return;
+    if (!BackendService.isReady) return;
 
     // Recargar perfil para obtener solicitudes actuales
-    await FirebaseService.reloadProfile();
+    await BackendService.reloadProfile();
 
-    const friendRequests = FirebaseService.userProfile?.friendRequests?.length || 0;
+    const friendRequests = BackendService.userProfile?.friendRequests?.length || 0;
     
     // Badge en botón social principal (en home)
     const socialBadge = document.getElementById('social-notification-badge');
@@ -1571,7 +1531,7 @@ window.Social = {
 
     // Contar retos pendientes
     try {
-      const pendingChallenges = await FirebaseService.getPendingChallenges();
+      const pendingChallenges = await BackendService.getPendingChallenges();
       const challengeBadge = document.getElementById('challenges-badge');
       const totalPending = pendingChallenges.length;
       
@@ -1641,8 +1601,10 @@ window.Social = {
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-  // Esperar un poco para que Firebase se inicialice primero
+  // Esperar un poco para que Backend se inicialice primero
   setTimeout(() => {
     Social.init();
   }, 500);
 });
+
+

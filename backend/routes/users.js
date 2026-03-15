@@ -305,9 +305,22 @@ router.get('/friends', authMiddleware, async (req, res) => {
     }
     
     const friends = await User.find({ uid: { $in: req.user.friends || [] } })
-      .select('uid displayName photoURL totalPoints level totalGames');
+      .select('uid displayName photoURL totalPoints level totalGames friendCode');
     
-    res.json(friends.sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0)));
+    // Mapear uid a id para el frontend
+    const mappedFriends = friends
+      .sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0))
+      .map(f => ({
+        id: f.uid,
+        displayName: f.displayName,
+        photoURL: f.photoURL,
+        totalPoints: f.totalPoints,
+        level: f.level,
+        totalGames: f.totalGames,
+        friendCode: f.friendCode
+      }));
+    
+    res.json(mappedFriends);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -321,9 +334,19 @@ router.get('/friend-requests', authMiddleware, async (req, res) => {
     }
     
     const requesters = await User.find({ uid: { $in: req.user.friendRequests || [] } })
-      .select('uid displayName photoURL totalPoints level');
+      .select('uid displayName photoURL totalPoints level friendCode');
     
-    res.json(requesters);
+    // Mapear uid a id para el frontend
+    const mappedRequesters = requesters.map(r => ({
+      id: r.uid,
+      displayName: r.displayName,
+      photoURL: r.photoURL,
+      totalPoints: r.totalPoints,
+      level: r.level,
+      friendCode: r.friendCode
+    }));
+    
+    res.json(mappedRequesters);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

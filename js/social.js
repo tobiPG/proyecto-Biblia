@@ -1053,7 +1053,9 @@ window.Social = {
 
   // Enviar solicitud de amistad
   async sendFriendRequest(userId) {
+    console.log('[Social] Enviando solicitud de amistad a:', userId);
     const result = await BackendService.sendFriendRequest(userId);
+    console.log('[Social] Resultado de enviar solicitud:', result);
     
     if (result.success) {
       this.showToast('Solicitud enviada', 'success');
@@ -1065,6 +1067,8 @@ window.Social = {
           btn.outerHTML = '<span class="sr-status pending">⏳ Solicitud enviada</span>';
         }
       }
+      // Recargar perfil para actualizar sentRequests
+      await BackendService.reloadProfile();
     } else {
       this.showToast(result.error || 'Error al enviar solicitud', 'error');
     }
@@ -1072,11 +1076,19 @@ window.Social = {
 
   // Aceptar solicitud de amistad
   async acceptFriendRequest(userId) {
+    console.log('[Social] Aceptando solicitud de amistad de:', userId);
     const result = await BackendService.acceptFriendRequest(userId);
-    
+    console.log('[Social] Resultado de aceptar solicitud:', result);
     if (result.success) {
-      this.showToast('Amigo agregado', 'success');
-      this.loadFriends();
+      this.showToast('¡Amigo agregado!', 'success');
+      // Ocultar inmediatamente el item de solicitud
+      const requestItem = document.querySelector(`.friend-request-item[data-user-id="${userId}"]`);
+      if (requestItem) {
+        requestItem.style.opacity = '0.5';
+        requestItem.innerHTML = '<span style="padding:10px;">✅ Agregado</span>';
+      }
+      // Recargar lista de amigos
+      setTimeout(() => this.loadFriends(), 500);
       this.updateNotificationBadges();
     } else {
       this.showToast(result.error || 'Error al aceptar solicitud', 'error');
@@ -1085,9 +1097,16 @@ window.Social = {
 
   // Rechazar solicitud de amistad
   async rejectFriendRequest(userId) {
+    console.log('[Social] Rechazando solicitud de:', userId);
     const result = await BackendService.rejectFriendRequest(userId);
+    console.log('[Social] Resultado de rechazar:', result);
     
     if (result.success) {
+      // Ocultar inmediatamente el item de solicitud
+      const requestItem = document.querySelector(`.friend-request-item[data-user-id="${userId}"]`);
+      if (requestItem) {
+        requestItem.remove();
+      }
       this.loadFriends();
       this.updateNotificationBadges();
     } else {

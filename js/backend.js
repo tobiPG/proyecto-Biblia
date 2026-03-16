@@ -135,6 +135,44 @@ window.BackendService = {
     }
   },
 
+  // Vincular email/contraseña a cuenta existente
+  async linkEmail(email, password) {
+    try {
+      if (!this.token) {
+        return { success: false, error: 'No hay sesión activa' };
+      }
+      
+      const response = await fetch(`${API_BASE_URL}/auth/link-email`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.token}`
+        },
+        body: JSON.stringify({ email, password })
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        return { success: false, error: error.error };
+      }
+      
+      const data = await response.json();
+      
+      // Actualizar usuario local
+      if (this.currentUser) {
+        this.currentUser.email = data.user.email;
+        this.currentUser.isAnonymous = false;
+      }
+      
+      this.notifyListeners('auth', { user: this.currentUser });
+      
+      return { success: true, message: data.message };
+    } catch (error) {
+      console.error('[Backend] Error vinculando email:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
   // Login con email y contraseña
   async login(email, password) {
     try {
@@ -518,14 +556,15 @@ window.BackendService = {
       if (!response.ok) throw new Error('Error creando reto');
       
       const data = await response.json();
-      return { success: true, challengeId: data.id };
+      // Devolver el challenge completo para que el creador pueda jugar
+      return { success: true, challengeId: data.id, challenge: data };
     } catch (error) {
       console.error('[Backend] Error creando reto:', error);
       return { success: false, error: error.message };
     }
   },
 
-  // Obtener retos pendientes
+  // Obtener retos pendientes (esperando aceptación)
   async getPendingChallenges() {
     try {
       const response = await fetch(`${API_BASE_URL}/challenges/pending`, {
@@ -537,6 +576,22 @@ window.BackendService = {
       return await response.json();
     } catch (error) {
       console.error('[Backend] Error obteniendo retos:', error);
+      return [];
+    }
+  },
+
+  // Obtener retos listos para jugar (activos donde aún no he jugado)
+  async getReadyChallenges() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/challenges/ready`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      
+      if (!response.ok) throw new Error('Error obteniendo retos listos');
+      
+      return await response.json();
+    } catch (error) {
+      console.error('[Backend] Error obteniendo retos listos:', error);
       return [];
     }
   },
@@ -589,7 +644,7 @@ window.BackendService = {
     }
   },
 
-  // Aceptar reto
+  // Aceptar reto (oponente acepta, queda esperando)
   async acceptChallenge(challengeId) {
     try {
       const response = await fetch(`${API_BASE_URL}/challenges/${challengeId}/accept`, {
@@ -599,10 +654,61 @@ window.BackendService = {
       
       if (!response.ok) throw new Error('Error aceptando reto');
       
-      return { success: true };
+      const data = await response.json();
+      return { success: true, challenge: data.challenge };
     } catch (error) {
       console.error('[Backend] Error aceptando reto:', error);
       return { success: false, error: error.message };
+    }
+  },
+
+  // Iniciar reto (creador confirma, ambos pueden jugar)
+  async startChallenge(challengeId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/challenges/${challengeId}/start`, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      
+      if (!response.ok) throw new Error('Error iniciando reto');
+      
+      const data = await response.json();
+      return { success: true, challenge: data.challenge };
+    } catch (error) {
+      console.error('[Backend] Error iniciando reto:', error);
+      return { success: false, error: error.message };
+    }
+  },
+
+  // Obtener retos aceptados (esperando que yo inicie)
+  async getAcceptedChallenges() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/challenges/accepted`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      
+      if (!response.ok) throw new Error('Error obteniendo retos aceptados');
+      
+      return await response.json();
+    } catch (error) {
+      console.error('[Backend] Error obteniendo retos aceptados:', error);
+      return [];
+    }
+  },
+
+  // Verificar estado del reto (para polling)
+  async getChallengeStatus(challengeId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/challenges/${challengeId}/status`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      
+      if (!response.ok) return null;
+      
+      return await response.json();
+    } catch (error) {
+      console.error('[Backend] Error verificando estado:', error);
+      return null;
     }
   },
 

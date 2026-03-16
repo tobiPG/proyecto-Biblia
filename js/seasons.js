@@ -400,12 +400,7 @@ const SeasonSystem = {
 
   savePowerups(powerups) {
     localStorage.setItem(this.STORAGE_KEYS.POWERUPS, JSON.stringify(powerups));
-    // Sincronizar con Firebase si está disponible
-    if (window.Firebase?.currentUser) {
-      window.Firebase.db.collection('users').doc(window.Firebase.currentUser.uid).update({
-        powerups: powerups
-      }).catch(e => console.warn('[Season] Error sync powerups:', e));
-    }
+    // Los powerups se guardan localmente - la sincronización con servidor se hace automáticamente
   },
 
   addPowerup(powerupId, amount = 1) {

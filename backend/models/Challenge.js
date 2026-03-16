@@ -19,9 +19,13 @@ const challengeSchema = new mongoose.Schema({
   questionIds: [String], // IDs de las preguntas
   
   // Estado
+  // pending = enviado, esperando aceptación
+  // accepted = oponente aceptó, esperando que creador inicie
+  // active = ambos pueden jugar
+  // completed = terminado
   status: {
     type: String,
-    enum: ['pending', 'active', 'completed'],
+    enum: ['pending', 'accepted', 'active', 'completed'],
     default: 'pending'
   },
   
@@ -36,6 +40,7 @@ const challengeSchema = new mongoose.Schema({
   
   // Timestamps
   createdAt: { type: Date, default: Date.now },
+  startedAt: Date, // Cuando el creador inicia el reto
   expiresAt: Date,
   completedAt: Date
 });

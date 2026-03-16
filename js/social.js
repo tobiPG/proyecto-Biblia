@@ -127,7 +127,7 @@ window.Social = {
       }
       
       // Mostrar resultados si no estamos ya en el modal
-      const myId = BackendService.currentUser?.uid;
+      const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
       const isWinner = challenge.winner === myId;
       const isTie = challenge.winner === 'tie';
       
@@ -273,7 +273,7 @@ window.Social = {
     console.log('[Social] questionIds:', challenge.questionIds);
 
     // Guardar oponente para posible revancha
-    const isCreator = challenge.creatorId === BackendService.currentUser?.uid;
+    const isCreator = challenge.creatorId === (BackendService.currentUser?.uid || BackendService.currentUser?.id);
     this.lastChallengeOpponent = {
       friendId: isCreator ? challenge.opponentId : challenge.creatorId,
       friendName: isCreator ? challenge.opponentName : challenge.creatorName
@@ -312,7 +312,7 @@ window.Social = {
   
   // Mostrar prompt para jugar un reto (NO BLOQUEANTE)
   showPlayPrompt(challenge, reason) {
-    const myId = BackendService.currentUser?.uid;
+    const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
     const isCreator = challenge.creatorId === myId;
     const opponentName = isCreator ? challenge.opponentName : challenge.creatorName;
     
@@ -456,8 +456,8 @@ window.Social = {
       btnCloseSocial.addEventListener('click', () => this.closeSocialScreen());
     }
 
-    // Tabs
-    document.querySelectorAll('.social-tab').forEach(tab => {
+    // Tabs - soporte para ambos selectores (antiguo y nuevo)
+    document.querySelectorAll('.social-tab, .social-tab-new').forEach(tab => {
       tab.addEventListener('click', (e) => {
         const tabName = e.currentTarget.dataset.tab;
         this.switchTab(tabName);
@@ -582,13 +582,13 @@ window.Social = {
   switchTab(tabName) {
     this.currentTab = tabName;
     
-    // Actualizar UI de tabs
-    document.querySelectorAll('.social-tab').forEach(tab => {
+    // Actualizar UI de tabs - soporte para ambos selectores
+    document.querySelectorAll('.social-tab, .social-tab-new').forEach(tab => {
       tab.classList.toggle('active', tab.dataset.tab === tabName);
     });
     
-    // Mostrar contenido del tab
-    document.querySelectorAll('.social-tab-content').forEach(content => {
+    // Mostrar contenido del tab - soporte para ambos selectores
+    document.querySelectorAll('.social-tab-content, .social-tab-content-new').forEach(content => {
       content.classList.toggle('hidden', content.id !== `tab-${tabName}`);
     });
     
@@ -616,7 +616,7 @@ window.Social = {
     const container = document.getElementById('leaderboard-list');
     if (!container) return;
 
-    container.innerHTML = '<div class="loading-spinner">Cargando...</div>';
+    container.innerHTML = '<div class="loading-spinner-new">Cargando...</div>';
     console.log('[Social] Cargando leaderboard...');
 
     try {
@@ -629,7 +629,7 @@ window.Social = {
         return;
       }
 
-      const myId = BackendService.currentUser?.uid;
+      const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
       let myRank = leaderboard.findIndex(u => u.id === myId) + 1;
 
       container.innerHTML = leaderboard.map((user, index) => {
@@ -638,21 +638,21 @@ window.Social = {
         const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
         
         return `
-          <div class="leaderboard-item ${isMe ? 'is-me' : ''}" data-user-id="${user.id}">
-            <span class="lb-rank ${rank <= 3 ? 'top-3' : ''}">${medal}</span>
-            <div class="lb-avatar">
+          <div class="leaderboard-item-new ${isMe ? 'is-me' : ''}" data-user-id="${user.id}" onclick="Social.viewUserProfile('${user.id}')">
+            <span class="lb-rank-new ${rank <= 3 ? 'top-3' : ''}">${medal}</span>
+            <div class="lb-avatar-new">
               ${user.photoURL 
-                ? `<img src="${user.photoURL}" alt="" class="lb-avatar-img">` 
-                : `<span class="lb-avatar-placeholder">${(user.displayName || 'J')[0].toUpperCase()}</span>`
+                ? `<img src="${user.photoURL}" alt="">` 
+                : `<span class="placeholder">${(user.displayName || 'J')[0].toUpperCase()}</span>`
               }
             </div>
-            <div class="lb-info">
-              <span class="lb-name">${this.escapeHtml(user.displayName || 'Jugador')}</span>
-              <span class="lb-stats">Nivel ${user.level || 1} • ${user.totalGames || 0} partidas</span>
+            <div class="lb-info-new">
+              <span class="lb-name-new">${this.escapeHtml(user.displayName || 'Jugador')}</span>
+              <span class="lb-stats-new">Nivel ${user.level || 1} • ${user.totalGames || 0} partidas</span>
             </div>
-            <div class="lb-points">
-              <span class="lb-points-value">${(user.totalPoints || 0).toLocaleString()}</span>
-              <span class="lb-points-label">puntos</span>
+            <div class="lb-points-new">
+              <span class="lb-points-value-new">${(user.totalPoints || 0).toLocaleString()}</span>
+              <span class="lb-points-label-new">pts</span>
             </div>
           </div>
         `;
@@ -740,24 +740,25 @@ window.Social = {
       }
 
       container.innerHTML = friends.map((friend, index) => `
-        <div class="friend-item" data-user-id="${friend.id}">
-          <span class="friend-rank">#${index + 1}</span>
-          <div class="friend-avatar">
+        <div class="friend-item-new" data-user-id="${friend.id}">
+          <div class="friend-avatar-new" onclick="Social.viewFriendProfile('${friend.id}')">
             ${friend.photoURL 
-              ? `<img src="${friend.photoURL}" alt="" class="friend-avatar-img">` 
-              : `<span class="friend-avatar-placeholder">${(friend.displayName || 'J')[0].toUpperCase()}</span>`
+              ? `<img src="${friend.photoURL}" alt="">` 
+              : `<span class="avatar-placeholder">${(friend.displayName || 'J')[0].toUpperCase()}</span>`
             }
           </div>
-          <div class="friend-info">
-            <span class="friend-name">${this.escapeHtml(friend.displayName || 'Jugador')}</span>
-            <span class="friend-stats">Nivel ${friend.level || 1} • ${(friend.totalPoints || 0).toLocaleString()} pts</span>
+          <div class="friend-info-new" onclick="Social.viewFriendProfile('${friend.id}')">
+            <span class="friend-name-new">${this.escapeHtml(friend.displayName || 'Jugador')}</span>
+            <span class="friend-stats-new">
+              <span class="level">Nivel ${friend.level || 1}</span> • ${(friend.totalPoints || 0).toLocaleString()} pts
+            </span>
           </div>
-          <div class="friend-actions">
-            <button class="btn-challenge-friend" onclick="Social.startChallenge('${friend.id}', '${this.escapeHtml(friend.displayName || 'Jugador')}')">
-              ⚔️ Retar
+          <div class="friend-actions-new">
+            <button class="btn-view-profile" onclick="Social.viewFriendProfile('${friend.id}')">
+              👤
             </button>
-            <button class="btn-remove-friend" onclick="Social.removeFriend('${friend.id}')" title="Eliminar amigo">
-              🗑️
+            <button class="btn-challenge-new" onclick="Social.startChallenge('${friend.id}', '${this.escapeHtml(friend.displayName || 'Jugador')}')">
+              ⚔️ Retar
             </button>
           </div>
         </div>
@@ -812,16 +813,43 @@ window.Social = {
       const pendingChallenges = await BackendService.getPendingChallenges();
       
       // ====================================
-      // 2. Retos recibidos activos (ya acepté, debo jugar o ver resultados)
+      // 2. Retos aceptados esperando que creador inicie (soy creador)
+      // ====================================
+      const acceptedChallenges = await BackendService.getAcceptedChallenges();
+      
+      // ====================================
+      // 3. Retos activos (listos para jugar)
       // ====================================
       const activeReceivedChallenges = await BackendService.getActiveReceivedChallenges();
       
       // Renderizar retos recibidos
       let pendingHTML = '';
       
+      // Mostrar notificación de retos aceptados (para el creador)
+      if (acceptedChallenges.length > 0) {
+        pendingHTML += `
+          <h4 class="challenges-subtitle">🔔 ¡Reto Aceptado!</h4>
+          ${acceptedChallenges.map(challenge => {
+            const catName = categoryNames[challenge.category] || challenge.category;
+            const diffIcon = difficultyIcons[challenge.difficulty] || '🎲';
+            return `
+              <div class="challenge-item accepted" data-challenge-id="${challenge.id}">
+                <div class="challenge-info">
+                  <span class="challenge-from">🎉 <strong>${this.escapeHtml(challenge.opponentName)}</strong> aceptó tu reto!</span>
+                  <span class="challenge-details">${challenge.questionsCount}P • ${catName} • ${diffIcon}</span>
+                  <span class="challenge-status">Esperando que inicies...</span>
+                </div>
+                <button class="btn-start-challenge" onclick="Social.confirmStartChallenge('${challenge.id}')">▶️ ¡INICIAR!</button>
+              </div>
+            `;
+          }).join('')}
+        `;
+      }
+      
+      // Retos pendientes de aceptar
       if (pendingChallenges.length > 0) {
         pendingHTML += `
-          <h4 class="challenges-subtitle">🔔 Nuevos Retos</h4>
+          <h4 class="challenges-subtitle">📩 Nuevos Retos</h4>
           ${pendingChallenges.map(challenge => {
             const catName = categoryNames[challenge.category] || challenge.category;
             const diffIcon = difficultyIcons[challenge.difficulty] || '🎲';
@@ -875,7 +903,7 @@ window.Social = {
       pendingContainer.innerHTML = pendingHTML;
 
       // ====================================
-      // 3. Mis retos enviados
+      // 4. Mis retos enviados
       // ====================================
       const myChallenges = await BackendService.getMyChallenges();
       
@@ -891,7 +919,7 @@ window.Social = {
             const catName = categoryNames[challenge.category] || challenge.category;
             const diffIcon = difficultyIcons[challenge.difficulty] || '🎲';
             const isTie = challenge.winner === 'tie';
-            const isCreator = challenge.creatorId === BackendService.currentUser?.uid;
+            const isCreator = challenge.creatorId === (BackendService.currentUser?.uid || BackendService.currentUser?.id);
             
             // Determinar si necesito jugar (soy creador y no he jugado)
             const needToPlay = challenge.status === 'active' && isCreator && challenge.creatorScore === null;
@@ -906,8 +934,8 @@ window.Social = {
                 ${challenge.status === 'completed' ? `
                   <div class="challenge-result">
                     <span class="result-score">${challenge.creatorScore || 0} - ${challenge.opponentScore || 0}</span>
-                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === BackendService.currentUser?.uid ? 'won' : 'lost')}">
-                      ${isTie ? '🤝 Empate' : (challenge.winner === BackendService.currentUser?.uid ? '🏆 Ganaste' : '😔 Perdiste')}
+                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === (BackendService.currentUser?.uid || BackendService.currentUser?.id) ? 'won' : 'lost')}">
+                      ${isTie ? '🤝 Empate' : (challenge.winner === (BackendService.currentUser?.uid || BackendService.currentUser?.id) ? '🏆 Ganaste' : '😔 Perdiste')}
                     </span>
                   </div>
                 ` : needToPlay ? `
@@ -939,8 +967,8 @@ window.Social = {
                 ${challenge.status === 'completed' ? `
                   <div class="challenge-result">
                     <span class="result-score">${challenge.creatorScore || 0} - ${challenge.opponentScore || 0}</span>
-                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === BackendService.currentUser?.uid ? 'won' : 'lost')}">
-                      ${isTie ? '🤝 Empate' : (challenge.winner === BackendService.currentUser?.uid ? '🏆 Ganaste' : '😔 Perdiste')}
+                    <span class="result-winner ${isTie ? 'tie' : (challenge.winner === (BackendService.currentUser?.uid || BackendService.currentUser?.id) ? 'won' : 'lost')}">
+                      ${isTie ? '🤝 Empate' : (challenge.winner === (BackendService.currentUser?.uid || BackendService.currentUser?.id) ? '🏆 Ganaste' : '😔 Perdiste')}
                     </span>
                   </div>
                 ` : ''}
@@ -960,7 +988,7 @@ window.Social = {
 
   // Obtener estado del reto
   getChallengeStatus(challenge) {
-    const myId = BackendService.currentUser?.uid;
+    const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
     const isCreator = challenge.creatorId === myId;
     
     switch (challenge.status) {
@@ -1297,7 +1325,7 @@ window.Social = {
     btnSend.disabled = false;
 
     if (result.success) {
-      this.showToast(`¡Reto enviado a ${friendName}!`, 'success');
+      this.showToast(`¡Reto enviado a ${friendName}! Esperando que acepte...`, 'success');
       this.closeChallengeConfig();
       this.switchTab('challenges');
       this.loadChallenges();
@@ -1306,16 +1334,74 @@ window.Social = {
     }
   },
 
-  // Aceptar reto
+  // Aceptar reto (oponente acepta y espera que creador inicie)
   async acceptChallenge(challengeId) {
     const result = await BackendService.acceptChallenge(challengeId);
     
     if (result.success) {
-      this.showToast('Reto aceptado', 'success');
-      // Iniciar partida del reto
-      this.playChallenge(challengeId);
+      this.showToast('✅ Reto aceptado. Esperando que el creador inicie...', 'success');
+      // Mostrar pantalla de espera con polling
+      this.showWaitingScreen(challengeId, result.challenge);
     } else {
       this.showToast(result.error || 'Error al aceptar reto', 'error');
+    }
+  },
+
+  // Mostrar pantalla de espera mientras el creador inicia
+  showWaitingScreen(challengeId, challenge) {
+    // Crear modal de espera
+    const modal = document.createElement('div');
+    modal.id = 'waiting-modal';
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal-content waiting-modal">
+        <div class="waiting-spinner">⏳</div>
+        <h2>¡Reto Aceptado!</h2>
+        <p>Esperando que <strong>${this.escapeHtml(challenge?.creatorName || 'el creador')}</strong> inicie el reto...</p>
+        <p class="waiting-tip">El juego comenzará cuando ambos estén listos</p>
+        <div class="waiting-dots"><span>.</span><span>.</span><span>.</span></div>
+        <button class="btn-cancel-wait" onclick="Social.cancelWaiting()">Cancelar</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Polling cada 2 segundos
+    this.waitingInterval = setInterval(async () => {
+      const status = await BackendService.getChallengeStatus(challengeId);
+      if (status && status.canPlay) {
+        this.stopWaiting();
+        this.showToast('🎮 ¡El reto ha comenzado!', 'success');
+        this.playChallenge(challengeId);
+      }
+    }, 2000);
+  },
+
+  // Cancelar espera
+  cancelWaiting() {
+    this.stopWaiting();
+    this.showToast('Espera cancelada', 'info');
+    this.loadChallenges();
+  },
+
+  // Detener polling de espera
+  stopWaiting() {
+    if (this.waitingInterval) {
+      clearInterval(this.waitingInterval);
+      this.waitingInterval = null;
+    }
+    const modal = document.getElementById('waiting-modal');
+    if (modal) modal.remove();
+  },
+
+  // Iniciar reto (creador confirma y ambos juegan)
+  async confirmStartChallenge(challengeId) {
+    const result = await BackendService.startChallenge(challengeId);
+    
+    if (result.success) {
+      this.showToast('🎮 ¡Reto iniciado!', 'success');
+      this.playChallenge(challengeId);
+    } else {
+      this.showToast(result.error || 'Error al iniciar reto', 'error');
     }
   },
 
@@ -1350,12 +1436,16 @@ window.Social = {
     console.log('[Social] questionIds:', this.currentChallenge.questionIds);
 
     // Guardar oponente para posible revancha
-    const isCreator = this.currentChallenge.creatorId === BackendService.currentUser?.uid;
+    const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const isCreator = this.currentChallenge.creatorId === myId;
+    console.log('[Social] myId:', myId);
+    console.log('[Social] creatorId:', this.currentChallenge.creatorId);
+    console.log('[Social] isCreator:', isCreator);
+    
     this.lastChallengeOpponent = {
       friendId: isCreator ? this.currentChallenge.opponentId : this.currentChallenge.creatorId,
       friendName: isCreator ? this.currentChallenge.opponentName : this.currentChallenge.creatorName
     };
-    console.log('[Social] isCreator:', isCreator);
     console.log('[Social] lastChallengeOpponent:', this.lastChallengeOpponent);
 
     // Cerrar pantalla social
@@ -1375,8 +1465,9 @@ window.Social = {
   async finishChallenge(score, timeSpent, correctAnswers = 0) {
     if (!this.currentChallenge) return;
 
+    const challengeId = this.currentChallenge.id;
     const result = await BackendService.submitChallengeResult(
-      this.currentChallenge.id,
+      challengeId,
       score,
       timeSpent,
       correctAnswers
@@ -1387,11 +1478,94 @@ window.Social = {
         // Ambos jugadores completaron - mostrar resultados
         this.showChallengeResults(result);
       } else {
-        this.showToast('✓ Resultado enviado. Esperando al oponente...', 'info');
+        // Primer jugador en terminar - mostrar pantalla de espera
+        this.showWaitingForOpponentResults(challengeId, score, timeSpent);
       }
     }
 
     this.currentChallenge = null;
+  },
+
+  // Mostrar pantalla de espera mientras el oponente termina
+  showWaitingForOpponentResults(challengeId, myScore, myTime) {
+    console.log('[Social] ======= ESPERANDO RESULTADOS DEL OPONENTE =======');
+    console.log('[Social] challengeId:', challengeId, 'myScore:', myScore);
+    
+    // Crear modal de espera
+    const existingModal = document.getElementById('waiting-results-modal');
+    if (existingModal) existingModal.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'waiting-results-modal';
+    modal.className = 'modal-overlay';
+    modal.innerHTML = `
+      <div class="modal-content waiting-modal">
+        <div class="waiting-spinner">⏳</div>
+        <h2>¡Completaste el reto!</h2>
+        <p>Tu puntuación: <strong>${myScore} puntos</strong></p>
+        <p>Esperando que el oponente termine...</p>
+        <div class="waiting-dots"><span>.</span><span>.</span><span>.</span></div>
+        <p class="waiting-tip">Los resultados aparecerán cuando ambos terminen</p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Polling cada 2 segundos para verificar si el otro terminó
+    console.log('[Social] Iniciando polling cada 2 segundos...');
+    const myUserId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    console.log('[Social] Mi userId:', myUserId);
+    
+    this.waitingResultsInterval = setInterval(async () => {
+      console.log('[Social] Polling... verificando estado del reto');
+      try {
+        const challenge = await BackendService.getChallenge(challengeId);
+        console.log('[Social] Challenge obtenido:', challenge?.status);
+        
+        if (challenge && challenge.status === 'completed') {
+          console.log('[Social] ¡Reto completado! Mostrando resultados...');
+          this.stopWaitingForResults();
+          // Mostrar resultados finales
+          const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+          const isCreator = challenge.creatorId === myId;
+          const myFinalScore = isCreator ? challenge.creatorScore : challenge.opponentScore;
+          const oppScore = isCreator ? challenge.opponentScore : challenge.creatorScore;
+          
+          console.log('[Social] myId:', myId);
+          console.log('[Social] challenge.creatorId:', challenge.creatorId);
+          console.log('[Social] isCreator:', isCreator);
+          console.log('[Social] myFinalScore:', myFinalScore, 'oppScore:', oppScore);
+          
+          // Guardar oponente para revancha
+          this.lastChallengeOpponent = {
+            friendId: isCreator ? challenge.opponentId : challenge.creatorId,
+            friendName: isCreator ? challenge.opponentName : challenge.creatorName
+          };
+          this.showChallengeResults({
+            completed: true,
+            myScore: myFinalScore,
+            opponentScore: oppScore,
+            opponentName: isCreator ? challenge.opponentName : challenge.creatorName,
+            myTime: isCreator ? challenge.creatorTime : challenge.opponentTime,
+            opponentTime: isCreator ? challenge.opponentTime : challenge.creatorTime,
+            category: challenge.category,
+            difficulty: challenge.difficulty,
+            questionsCount: challenge.questionsCount
+          });
+        }
+      } catch (err) {
+        console.error('[Social] Error en polling:', err);
+      }
+    }, 2000);
+  },
+
+  // Detener espera de resultados
+  stopWaitingForResults() {
+    if (this.waitingResultsInterval) {
+      clearInterval(this.waitingResultsInterval);
+      this.waitingResultsInterval = null;
+    }
+    const modal = document.getElementById('waiting-results-modal');
+    if (modal) modal.remove();
   },
 
   // Mostrar modal de resultados del reto
@@ -1399,8 +1573,33 @@ window.Social = {
     const modal = document.getElementById('challenge-results-modal');
     if (!modal) return;
 
-    const isWinner = result.winner === BackendService.currentUser?.uid;
-    const isTie = result.winner === 'tie';
+    console.log('[Social] ======= MOSTRANDO RESULTADOS =======');
+    console.log('[Social] result completo:', JSON.stringify(result));
+    console.log('[Social] result.iWon:', result.iWon, typeof result.iWon);
+    console.log('[Social] result.isTie:', result.isTie, typeof result.isTie);
+    console.log('[Social] result.myScore:', result.myScore);
+    console.log('[Social] result.opponentScore:', result.opponentScore);
+    
+    // Usar iWon e isTie del resultado - primero verificar por puntos directamente
+    let isTie = false;
+    let isWinner = false;
+    
+    // Método más confiable: comparar directamente los puntos
+    if (result.myScore !== undefined && result.opponentScore !== undefined) {
+      if (result.myScore > result.opponentScore) {
+        isWinner = true;
+      } else if (result.myScore === result.opponentScore) {
+        isTie = true;
+      } else {
+        isWinner = false;
+      }
+    } else {
+      // Fallback al iWon/isTie del servidor
+      isTie = result.isTie === true || result.winner === 'tie';
+      isWinner = result.iWon === true;
+    }
+    
+    console.log('[Social] RESULTADO FINAL - isTie:', isTie, 'isWinner:', isWinner);
     
     // Banner del ganador
     const banner = document.getElementById('challenge-winner-banner');
@@ -1411,22 +1610,22 @@ window.Social = {
     
     if (isTie) {
       banner.classList.add('tie');
-      winnerEmoji.textContent = '🤝';
-      winnerText.textContent = '¡Empate!';
+      winnerEmoji.innerHTML = '<span style="font-size:32px">&#9876;</span>';
+      winnerText.textContent = 'Empate';
     } else if (isWinner) {
       banner.classList.add('won');
-      winnerEmoji.textContent = '🏆';
-      winnerText.textContent = '¡Ganaste!';
+      winnerEmoji.innerHTML = '<span style="font-size:32px;color:#ffd700">&#9733;</span>';
+      winnerText.textContent = 'Ganaste!';
     } else {
       banner.classList.add('lost');
-      winnerEmoji.textContent = '😔';
+      winnerEmoji.innerHTML = '<span style="font-size:32px;color:#888">&#9734;</span>';
       winnerText.textContent = 'Perdiste';
     }
 
     // Puntuaciones
     document.getElementById('result-my-score').textContent = result.myScore || 0;
     document.getElementById('result-opponent-score').textContent = result.opponentScore || 0;
-    document.getElementById('result-opponent-name').textContent = this.lastChallengeOpponent?.friendName || 'Oponente';
+    document.getElementById('result-opponent-name').textContent = result.opponentName || this.lastChallengeOpponent?.friendName || 'Oponente';
 
     // Marcar ganador visualmente
     const myResult = document.querySelector('.result-me');
@@ -1607,6 +1806,150 @@ window.Social = {
       App.showToast(message, type === 'error' ? 'danger' : type);
     } else {
       alert(message);
+    }
+  },
+
+  // Ver perfil de amigo
+  async viewFriendProfile(friendId) {
+    const modal = document.getElementById('friend-profile-modal');
+    const container = document.getElementById('friend-profile-view');
+    if (!modal || !container) return;
+
+    // Buscar en la lista de amigos cacheados
+    let friend = this.cachedFriends.find(f => f.id === friendId);
+    
+    if (!friend) {
+      // Si no está en cache, intentar obtenerlo del leaderboard
+      friend = this.cachedLeaderboard.find(f => f.id === friendId);
+    }
+
+    if (!friend) {
+      this.showToast('No se encontró el perfil', 'error');
+      return;
+    }
+
+    this.renderProfileModal(friend, container, true);
+    modal.classList.remove('hidden');
+  },
+
+  // Ver perfil de cualquier usuario (desde leaderboard)
+  async viewUserProfile(userId) {
+    const modal = document.getElementById('friend-profile-modal');
+    const container = document.getElementById('friend-profile-view');
+    if (!modal || !container) return;
+
+    // Buscar en el leaderboard
+    let user = this.cachedLeaderboard.find(u => u.id === userId);
+    
+    if (!user) {
+      user = this.cachedFriends.find(f => f.id === userId);
+    }
+
+    if (!user) {
+      this.showToast('No se encontró el perfil', 'error');
+      return;
+    }
+
+    // Verificar si es amigo
+    const isFriend = this.cachedFriends.some(f => f.id === userId);
+    this.renderProfileModal(user, container, isFriend);
+    modal.classList.remove('hidden');
+  },
+
+  // Renderizar el modal de perfil
+  renderProfileModal(user, container, isFriend) {
+    const myId = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const isMe = user.id === myId;
+
+    // Calcular estadísticas
+    const accuracy = user.totalGames > 0 
+      ? Math.round((user.correctAnswers || 0) / ((user.correctAnswers || 0) + (user.wrongAnswers || 0)) * 100) || 0
+      : 0;
+    
+    // Badges basados en estadísticas
+    const badges = [];
+    if ((user.level || 1) >= 10) badges.push('🌟');
+    if ((user.totalGames || 0) >= 100) badges.push('🎮');
+    if (accuracy >= 80) badges.push('🎯');
+    if ((user.currentStreak || 0) >= 7) badges.push('🔥');
+    if ((user.totalPoints || 0) >= 10000) badges.push('💎');
+
+    container.innerHTML = `
+      <div class="friend-profile-view">
+        <div class="profile-avatar-large">
+          ${user.photoURL 
+            ? `<img src="${user.photoURL}" alt="">` 
+            : `<span class="placeholder">${(user.displayName || 'J')[0].toUpperCase()}</span>`
+          }
+        </div>
+        <h3 class="profile-name-large">${this.escapeHtml(user.displayName || 'Jugador')}</h3>
+        <p class="profile-code">Código: ${user.friendCode || '------'}</p>
+        
+        ${badges.length > 0 ? `
+          <div class="profile-badges">
+            ${badges.map(b => `<span class="profile-badge">${b}</span>`).join('')}
+          </div>
+        ` : ''}
+        
+        <div class="profile-stats-grid">
+          <div class="profile-stat-item">
+            <span class="profile-stat-value">${user.level || 1}</span>
+            <span class="profile-stat-label">Nivel</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-value">${(user.totalPoints || 0).toLocaleString()}</span>
+            <span class="profile-stat-label">Puntos</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-value">${user.totalGames || 0}</span>
+            <span class="profile-stat-label">Partidas</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-value">${accuracy}%</span>
+            <span class="profile-stat-label">Precisión</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-value">${user.currentStreak || 0}</span>
+            <span class="profile-stat-label">Racha</span>
+          </div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-value">${user.challengesWon || 0}</span>
+            <span class="profile-stat-label">Victorias</span>
+          </div>
+        </div>
+        
+        ${!isMe ? `
+          <div class="profile-actions">
+            ${isFriend ? `
+              <button class="btn-challenge-profile" onclick="Social.startChallenge('${user.id}', '${this.escapeHtml(user.displayName || 'Jugador')}'); document.getElementById('friend-profile-modal').classList.add('hidden');">
+                ⚔️ Retar
+              </button>
+              <button class="btn-remove-profile" onclick="Social.removeFriend('${user.id}'); document.getElementById('friend-profile-modal').classList.add('hidden');">
+                Eliminar
+              </button>
+            ` : `
+              <button class="btn-challenge-profile" style="flex:1" onclick="Social.sendFriendRequest('${user.id}'); document.getElementById('friend-profile-modal').classList.add('hidden');">
+                👤 Agregar amigo
+              </button>
+            `}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  },
+
+  // Enviar solicitud de amistad
+  async sendFriendRequest(userId) {
+    try {
+      const result = await BackendService.sendFriendRequest(userId);
+      if (result.success) {
+        this.showToast('Solicitud de amistad enviada', 'success');
+      } else {
+        this.showToast(result.error || 'Error al enviar solicitud', 'error');
+      }
+    } catch (error) {
+      console.error('Error enviando solicitud:', error);
+      this.showToast('Error al enviar solicitud', 'error');
     }
   },
 

@@ -28,16 +28,23 @@ router.post('/', authMiddleware, async (req, res) => {
       difficulty,
       questionsCount: questionsCount || 10,
       questionIds: questionIds || [],
-      status: 'pending',
+      status: 'pending', // Pendiente hasta que el oponente acepte
       expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 horas
     });
     
     await challenge.save();
     
+    // Devolver el challenge completo para que el creador pueda jugar
     res.json({
       id: challenge.id,
       creatorId: challenge.creatorId,
+      creatorName: challenge.creatorName,
       opponentId: challenge.opponentId,
+      opponentName: challenge.opponentName,
+      category: challenge.category,
+      difficulty: challenge.difficulty,
+      questionsCount: challenge.questionsCount,
+      questionIds: challenge.questionIds,
       status: challenge.status,
       createdAt: challenge.createdAt
     });
@@ -46,16 +53,58 @@ router.post('/', authMiddleware, async (req, res) => {
   }
 });
 
-// Obtener retos pendientes (para aceptar)
+// Obtener retos pendientes (recibidos, esperando que yo acepte)
 router.get('/pending', authMiddleware, async (req, res) => {
   try {
     if (!req.user) {
       return res.status(401).json({ error: 'No autenticado' });
     }
     
+    // Retos donde soy el oponente y están pendientes de aceptar
     const challenges = await Challenge.find({
       opponentId: req.user.uid,
       status: 'pending'
+    }).sort({ createdAt: -1 });
+    
+    res.json(challenges);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Obtener retos aceptados (oponente aceptó, esperando que creador inicie)
+router.get('/accepted', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ error: 'No autenticado' });
+    }
+    
+    // Retos donde soy el creador y el oponente ya aceptó
+    const challenges = await Challenge.find({
+      creatorId: req.user.uid,
+      status: 'accepted'
+    }).sort({ createdAt: -1 });
+    
+    res.json(challenges);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Obtener retos listos para jugar (activos donde aún no he jugado)
+router.get('/ready', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ error: 'No autenticado' });
+    }
+    
+    // Retos activos donde soy creador y no he jugado, O soy oponente y no he jugado
+    const challenges = await Challenge.find({
+      status: 'active',
+      $or: [
+        { creatorId: req.user.uid, creatorScore: null },
+        { opponentId: req.user.uid, opponentScore: null }
+      ]
     }).sort({ createdAt: -1 });
     
     res.json(challenges);
@@ -106,6 +155,8 @@ router.get('/:challengeId', authMiddleware, async (req, res) => {
   try {
     const challenge = await Challenge.findOne({ id: req.params.challengeId });
     
+    console.log(`[Challenge GET] ${req.params.challengeId} - status: ${challenge?.status}, creatorScore: ${challenge?.creatorScore}, opponentScore: ${challenge?.opponentScore}`);
+    
     if (!challenge) {
       return res.status(404).json({ error: 'Reto no encontrado' });
     }
@@ -116,7 +167,7 @@ router.get('/:challengeId', authMiddleware, async (req, res) => {
   }
 });
 
-// Aceptar reto
+// Aceptar reto (oponente acepta, queda esperando que creador inicie)
 router.put('/:challengeId/accept', authMiddleware, async (req, res) => {
   try {
     if (!req.user) {
@@ -129,7 +180,7 @@ router.put('/:challengeId/accept', authMiddleware, async (req, res) => {
         opponentId: req.user.uid,
         status: 'pending'
       },
-      { status: 'active' },
+      { status: 'accepted' }, // Aceptado, esperando que creador inicie
       { new: true }
     );
     
@@ -138,6 +189,51 @@ router.put('/:challengeId/accept', authMiddleware, async (req, res) => {
     }
     
     res.json({ success: true, challenge });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Iniciar reto (creador confirma, ambos pueden jugar)
+router.put('/:challengeId/start', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ error: 'No autenticado' });
+    }
+    
+    const challenge = await Challenge.findOneAndUpdate(
+      { 
+        id: req.params.challengeId,
+        creatorId: req.user.uid,
+        status: 'accepted'
+      },
+      { status: 'active', startedAt: new Date() },
+      { new: true }
+    );
+    
+    if (!challenge) {
+      return res.status(404).json({ error: 'Reto no encontrado o no está aceptado' });
+    }
+    
+    res.json({ success: true, challenge });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Verificar si el reto ya inició (para polling del oponente)
+router.get('/:challengeId/status', authMiddleware, async (req, res) => {
+  try {
+    const challenge = await Challenge.findOne({ id: req.params.challengeId });
+    
+    if (!challenge) {
+      return res.status(404).json({ error: 'Reto no encontrado' });
+    }
+    
+    res.json({ 
+      status: challenge.status,
+      canPlay: challenge.status === 'active'
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -193,27 +289,39 @@ router.put('/:challengeId/result', authMiddleware, async (req, res) => {
     // Verificar si el otro jugador ya jugó
     const otherScore = isCreator ? challenge.opponentScore : challenge.creatorScore;
     
-    if (otherScore !== null) {
-      let winner = null;
+    if (otherScore !== null && otherScore !== undefined) {
+      // Determinar ganador
+      let iWon = false;
+      let isTie = false;
+      let winnerUid = null;
       
       if (score > otherScore) {
-        winner = req.user.uid;
+        iWon = true;
+        winnerUid = req.user.uid;
       } else if (otherScore > score) {
-        winner = isCreator ? challenge.opponentId : challenge.creatorId;
+        iWon = false;
+        winnerUid = isCreator ? challenge.opponentId : challenge.creatorId;
       } else {
-        winner = 'tie';
+        isTie = true;
+        winnerUid = 'tie';
       }
       
       updateData.status = 'completed';
-      updateData.winner = winner;
+      updateData.winner = winnerUid;
       updateData.completedAt = new Date();
+      
+      console.log(`[Challenge Result] User ${req.user.uid} scored ${score}, other scored ${otherScore}`);
+      console.log(`[Challenge Result] iWon: ${iWon}, isTie: ${isTie}, winner: ${winnerUid}`);
       
       resultData = {
         success: true,
         completed: true,
-        winner: winner,
+        iWon: iWon,
+        isTie: isTie,
+        winner: winnerUid,
         myScore: score,
         opponentScore: otherScore,
+        opponentName: isCreator ? challenge.opponentName : challenge.creatorName,
         myTime: timeSpent,
         opponentTime: isCreator ? challenge.opponentTime : challenge.creatorTime,
         category: challenge.category,

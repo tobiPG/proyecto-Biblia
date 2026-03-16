@@ -7,6 +7,43 @@ import { authMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
 
+// 🔧 ADMIN: Asignar email/password a usuario existente (TEMPORAL - borrar en producción)
+router.post('/admin/assign-credentials', async (req, res) => {
+  try {
+    const { displayName, email, password } = req.body;
+    
+    if (!displayName || !email || !password) {
+      return res.status(400).json({ error: 'displayName, email y password son requeridos' });
+    }
+    
+    // Buscar usuario por displayName
+    const user = await User.findOne({ displayName: displayName });
+    
+    if (!user) {
+      return res.status(404).json({ error: `Usuario '${displayName}' no encontrado` });
+    }
+    
+    // Verificar que email no está en uso por otro usuario
+    const existingEmail = await User.findOne({ email: email.toLowerCase() });
+    if (existingEmail && existingEmail.uid !== user.uid) {
+      return res.status(400).json({ error: 'Email ya en uso por otra cuenta' });
+    }
+    
+    // Hashear y asignar
+    user.email = email.toLowerCase();
+    user.password = await bcryptjs.hash(password, 10);
+    user.isAnonymous = false;
+    await user.save();
+    
+    console.log('[ADMIN] Credenciales asignadas a:', displayName, 'email:', email);
+    
+    res.json({ success: true, message: `Credenciales asignadas a ${displayName}` });
+  } catch (error) {
+    console.error('Error en admin assign:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Registrarse con email y contraseña
 router.post('/register', async (req, res) => {
   try {
@@ -73,6 +110,12 @@ router.post('/login', async (req, res) => {
     
     // Buscar usuario
     const user = await User.findOne({ email: email.toLowerCase() });
+    
+    console.log('[AUTH] Login intento para:', email);
+    console.log('[AUTH] Usuario encontrado:', user ? 'Sí' : 'No');
+    if (user) {
+      console.log('[AUTH] Tiene password:', user.password ? 'Sí' : 'No');
+    }
     
     if (!user) {
       return res.status(401).json({ error: 'Email o contraseña incorrectos' });
@@ -166,6 +209,55 @@ router.post('/validate', authMiddleware, (req, res) => {
     valid: true,
     user: req.user
   });
+});
+
+// Vincular email/contraseña a cuenta existente
+router.post('/link-email', authMiddleware, async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ error: 'No autenticado' });
+    }
+    
+    const { email, password } = req.body;
+    
+    if (!email || !password) {
+      return res.status(400).json({ error: 'Email y contraseña son requeridos' });
+    }
+    
+    // Verificar que email no está en uso por otro usuario
+    const existingUser = await User.findOne({ email: email.toLowerCase() });
+    if (existingUser && existingUser.uid !== req.user.uid) {
+      return res.status(400).json({ error: 'Este email ya está en uso por otra cuenta' });
+    }
+    
+    // Actualizar usuario con email y contraseña
+    const user = await User.findOne({ uid: req.user.uid });
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+    
+    const hashedPassword = await bcryptjs.hash(password, 10);
+    user.email = email.toLowerCase();
+    user.password = hashedPassword;
+    user.isAnonymous = false;
+    await user.save();
+    
+    console.log('[AUTH] Email vinculado:', email, 'a usuario:', user.displayName);
+    
+    res.json({ 
+      success: true, 
+      message: 'Email y contraseña vinculados correctamente',
+      user: {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        isAnonymous: user.isAnonymous
+      }
+    });
+  } catch (error) {
+    console.error('Error vinculando email:', error);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 // Logout

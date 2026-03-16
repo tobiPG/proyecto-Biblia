@@ -523,6 +523,7 @@ router.get('/me/progress', authMiddleware, async (req, res) => {
     // Devolver TODOS los datos de progreso
     res.json({
       id: user.uid,
+      uid: user.uid, // Asegurar que ambos campos existan
       displayName: user.displayName,
       photoURL: user.photoURL,
       email: user.email,

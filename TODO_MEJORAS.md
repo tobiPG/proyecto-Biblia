@@ -64,8 +64,8 @@ Ver archivo: **DEPLOY_GUIDE.md** para instrucciones paso a paso.
 ## 🟢 MEJORAS UX - Mediano Impacto
 
 ### 7. Más Preguntas
-- [ ] Archivo: `js/questions.js`
-- [ ] Actualmente: 1,700 preguntas
+- [x] Archivo: `js/questions.js`
+- [x] Actualmente: 1,859 preguntas (antes 1,709)
 - [ ] Objetivo: 3,000+ preguntas
 - [ ] Áreas a expandir:
   - Más preguntas de Nuevo Testamento
@@ -73,20 +73,25 @@ Ver archivo: **DEPLOY_GUIDE.md** para instrucciones paso a paso.
   - Preguntas de cultura bíblica
 
 ### 8. Imágenes en Preguntas
-- [ ] Crear carpeta `images/questions/`
-- [ ] Añadir mapas bíblicos
+- [x] Crear carpeta `images/questions/`
+- [x] Estructura de pregunta soporta `image` y `imageAlt`
+- [x] 5 preguntas de ejemplo con imágenes (2101-2105)
+- [ ] Añadir mapas bíblicos reales
 - [ ] Ilustraciones de personajes
-- [ ] Modificar estructura de pregunta para incluir `imageUrl`
 
 ### 9. Sonidos y Efectos
-- [ ] Crear carpeta `sounds/`
-- [ ] Sonidos necesarios:
+- [x] Crear carpeta `sounds/`
+- [x] Archivo: `js/sounds.js` - Sistema de sonidos con Web Audio API
+- [x] Sonidos implementados:
   - Respuesta correcta
-  - Respuesta incorrecta
+  - Respuesta incorrecta  
   - Subir de nivel
   - Obtener insignia
-  - Temporizador bajo
-- [ ] Integrar con configuración de sonido existente
+  - Temporizador bajo (5 segundos)
+  - Inicio de partida
+  - Fin de partida (Game Over)
+  - Racha de respuestas
+- [x] Integrado con configuración de sonido existente
 
 ### 10. Compartir Resultados
 - [ ] Añadir botón "Compartir" en pantalla de resultados
@@ -95,11 +100,11 @@ Ver archivo: **DEPLOY_GUIDE.md** para instrucciones paso a paso.
 - [ ] Botones para WhatsApp, Facebook, Twitter
 
 ### 11. Tema Claro
-- [ ] Archivo: `css/styles.css`
-- [ ] Ya existe toggle en configuración
-- [ ] Crear variables CSS para tema claro
-- [ ] Colores sugeridos:
-  - Background: #FFFFFF
+- [x] Archivo: `css/styles.css`
+- [x] Toggle en configuración
+- [x] Variables CSS para tema claro implementadas
+- [x] Colores implementados:
+  - Background: #F5F5F5
   - Text: #1A1A2E
   - Primary: #4ECDC4
 

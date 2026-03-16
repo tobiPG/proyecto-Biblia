@@ -323,6 +323,93 @@ const App = {
   deferredInstallPrompt: null,
   // Contador de comodines usados en la partida actual (max 1 por partida)
   sessionPowerupsUsed: 0,
+  
+  // Pool de distractores bíblicos por categoría para generar opciones extra
+  distractorPool: {
+    personajes: ['Abraham', 'Isaac', 'Jacob', 'Moisés', 'David', 'Salomón', 'Elías', 'Eliseo', 'Daniel', 'José', 'Samuel', 'Jonás', 'Noé', 'Adán', 'Eva', 'Caín', 'Abel', 'Set', 'Enoc', 'Matusalén', 'Pedro', 'Pablo', 'Juan', 'Santiago', 'Andrés', 'Felipe', 'Tomás', 'Mateo', 'Judas', 'Bartolomé', 'María', 'Marta', 'Lázaro', 'Nicodemo', 'Pilato', 'Herodes', 'Faraón', 'Nabucodonosor', 'Goliat', 'Sansón'],
+    numeros: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '20', '30', '40', '50', '70', '100', '120', '150', '200', '300', '400', '500', '600', '666', '1000'],
+    lugares: ['Jerusalén', 'Belén', 'Nazaret', 'Galilea', 'Samaria', 'Egipto', 'Babilonia', 'Roma', 'Corinto', 'Éfeso', 'Antioquía', 'Damasco', 'Jericó', 'Sodoma', 'Gomorra', 'Nínive', 'Tarsis', 'Sinaí', 'Carmelo', 'Tabor', 'Getsemaní', 'Gólgota', 'Caná', 'Capernaúm', 'Betania'],
+    libros: ['Génesis', 'Éxodo', 'Levítico', 'Números', 'Deuteronomio', 'Josué', 'Jueces', 'Rut', 'Samuel', 'Reyes', 'Crónicas', 'Esdras', 'Nehemías', 'Ester', 'Job', 'Salmos', 'Proverbios', 'Eclesiastés', 'Cantares', 'Isaías', 'Jeremías', 'Ezequiel', 'Daniel', 'Mateo', 'Marcos', 'Lucas', 'Juan', 'Hechos', 'Romanos', 'Corintios', 'Apocalipsis'],
+    general: ['Fe', 'Esperanza', 'Amor', 'Paz', 'Gozo', 'Paciencia', 'Bondad', 'Benignidad', 'Templanza', 'Gracia', 'Misericordia', 'Perdón', 'Salvación', 'Redención', 'Justificación', 'Santificación', 'Bautismo', 'Comunión', 'Oración', 'Ayuno', 'Diezmo', 'Sacrificio', 'Pacto', 'Alianza', 'Ley', 'Profecía', 'Milagro', 'Señal', 'Maravilla', 'Reino']
+  },
+  
+  // Función para expandir opciones a 6
+  expandOptionsTo6(question) {
+    const originalOptions = [...question.options];
+    const correctAnswer = originalOptions[question.correct];
+    
+    // Si ya tiene 6 o más opciones, mezclarlas y devolver
+    if (originalOptions.length >= 6) {
+      const shuffled = this.shuffleWithCorrect(originalOptions, question.correct);
+      return shuffled;
+    }
+    
+    // Determinar categoría de distractores según el contenido de las opciones
+    let poolCategory = 'general';
+    const firstOption = originalOptions[0]?.toLowerCase() || '';
+    
+    // Detectar tipo de opciones
+    if (/^\d+$/.test(originalOptions[0])) {
+      poolCategory = 'numeros';
+    } else if (originalOptions.some(opt => this.distractorPool.personajes.some(p => opt.toLowerCase().includes(p.toLowerCase())))) {
+      poolCategory = 'personajes';
+    } else if (originalOptions.some(opt => this.distractorPool.lugares.some(l => opt.toLowerCase().includes(l.toLowerCase())))) {
+      poolCategory = 'lugares';
+    } else if (originalOptions.some(opt => this.distractorPool.libros.some(b => opt.toLowerCase().includes(b.toLowerCase())))) {
+      poolCategory = 'libros';
+    }
+    
+    // Obtener distractores que no estén ya en las opciones
+    const existingLower = originalOptions.map(o => o.toLowerCase());
+    const availableDistractors = this.distractorPool[poolCategory].filter(
+      d => !existingLower.includes(d.toLowerCase())
+    );
+    
+    // Si no hay suficientes en la categoría, añadir de la general
+    if (availableDistractors.length < 2) {
+      const generalDistractors = this.distractorPool.general.filter(
+        d => !existingLower.includes(d.toLowerCase()) && !availableDistractors.includes(d)
+      );
+      availableDistractors.push(...generalDistractors);
+    }
+    
+    // Mezclar distractores disponibles
+    const shuffledDistractors = availableDistractors.sort(() => Math.random() - 0.5);
+    
+    // Añadir 2 distractores extra
+    const extraOptions = shuffledDistractors.slice(0, 6 - originalOptions.length);
+    const allOptions = [...originalOptions, ...extraOptions];
+    
+    // Mezclar todas las opciones manteniendo track del índice correcto
+    const shuffled = this.shuffleWithCorrect(allOptions, question.correct);
+    return shuffled;
+  },
+  
+  // Función auxiliar para mezclar opciones y devolver nuevo índice correcto
+  shuffleWithCorrect(options, originalCorrectIndex) {
+    const correctAnswer = options[originalCorrectIndex];
+    
+    // Crear array de pares [opción, esCorrecta]
+    const optionsWithFlag = options.map((opt, i) => ({
+      text: opt,
+      isCorrect: i === originalCorrectIndex
+    }));
+    
+    // Mezclar usando Fisher-Yates
+    for (let i = optionsWithFlag.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [optionsWithFlag[i], optionsWithFlag[j]] = [optionsWithFlag[j], optionsWithFlag[i]];
+    }
+    
+    // Encontrar nuevo índice correcto
+    const newCorrectIndex = optionsWithFlag.findIndex(opt => opt.isCorrect);
+    
+    return {
+      options: optionsWithFlag.map(opt => opt.text),
+      correctIndex: newCorrectIndex
+    };
+  },
+  
   // --- Metodos ---
   renderSettings() {
     const container = document.getElementById('settings-container');
@@ -584,7 +671,7 @@ const App = {
       slides[idx].classList.add('active');
       dots[idx].classList.add('active');
       current = idx;
-      nextBtn.textContent = idx === slides.length - 1 ? '�Empezar!' : 'Siguiente ';
+      nextBtn.textContent = idx === slides.length - 1 ? 'Empezar!' : 'Siguiente ';
     };
     nextBtn.addEventListener('click', () => {
       if (current < slides.length - 1) {
@@ -689,6 +776,10 @@ const App = {
     document.getElementById('btn-progress').addEventListener('click', () => {
       this.renderProgress();
       this.showScreen('progress');
+    });
+    document.getElementById('btn-achievements').addEventListener('click', () => {
+      this.renderAchievements();
+      this.showScreen('achievements');
     });
     document.getElementById('btn-settings').addEventListener('click', () => {
       this.renderSettings();
@@ -802,6 +893,14 @@ const App = {
       this.showScreen('home');
       this.renderHome();
     });
+    // Botón salir durante partida duo
+    document.getElementById('btn-duo-exit').addEventListener('click', () => {
+      this.stopDuoTimer();
+      if (confirm('¿Seguro que quieres salir? Se perderá el progreso de la partida.')) {
+        this.showScreen('home');
+        this.renderHome();
+      }
+    });
     // --- IMPOSTOR MODE ---
     document.getElementById('btn-impostor').addEventListener('click', () => {
       // Reset input cada vez que se entra
@@ -859,6 +958,10 @@ const App = {
     document.getElementById('btn-impostor-back').addEventListener('click', () => {
       this.showScreen('home');
       this.renderHome();
+    });
+    // --- SPELLING MODE (DELETREAR) ---
+    document.getElementById('btn-spelling').addEventListener('click', () => {
+      this.startSpellingMode();
     });
     // Shop button
     document.getElementById('btn-shop').addEventListener('click', () => {
@@ -1240,11 +1343,11 @@ const App = {
     } else {
       verseCard.style.display = 'none';
     }
-    // Show player level on home
+    // Show player greeting on home
     const player = Storage.getPlayer();
-    const subtitle = document.querySelector('.app-subtitle');
-    if (subtitle) {
-      subtitle.textContent = `!Hola, ${player.name}!  Nivel ${player.level}`;
+    const greeting = document.getElementById('user-greeting');
+    if (greeting) {
+      greeting.textContent = `!Hola, ${player.name}! Nivel ${player.level}`;
     }
     // Update home lives card
     this.renderHomeLives();
@@ -1408,7 +1511,7 @@ const App = {
     } else {
       // Fallback: copy to clipboard
       navigator.clipboard?.writeText(shareText).then(() => {
-        this.showToast('?? Versiculo copiado al portapapeles');
+        this.showToast('Versiculo copiado al portapapeles');
       }).catch(() => {
         this.showToast('No se pudo copiar', 'error');
       });
@@ -1523,6 +1626,8 @@ const App = {
     document.getElementById('catcomplete-overlay').classList.add('hidden');
     this.cleanOverlayTraps();
     this.showScreen('quiz');
+    // Sonido de inicio de partida
+    this.playSound('gameStart');
     this.renderLives();
     this.renderQuestion();
   },
@@ -1664,14 +1769,14 @@ const App = {
       'salmos-proverbios': 'Salmos'
     };
     const difficultyNames = {
-      'facil': '??',
-      'intermedio': '??',
-      'dificil': '??',
-      'experto': '?'
+      'facil': '[F]',
+      'intermedio': '[M]',
+      'dificil': '[D]',
+      'experto': '[E]'
     };
     const catName = categoryNames[category] || category;
-    const diffIcon = difficultyNames[difficulty] || '??';
-    this.showToast(`?? Reto: ${numQuestions}P � ${catName} ${diffIcon}`, 'info');
+    const diffIcon = difficultyNames[difficulty] || '';
+    this.showToast(`Reto: ${numQuestions}P - ${catName} ${diffIcon}`, 'info');
   },
   
   // ============================================
@@ -1691,35 +1796,36 @@ const App = {
     
     // Mostrar mis resultados
     document.getElementById('my-challenge-score').textContent = score;
-    document.getElementById('my-challenge-correct').textContent = `${correctAnswers} ?`;
-    document.getElementById('my-challenge-time').textContent = `${timeSpent}s ??`;
+    document.getElementById('my-challenge-correct').textContent = `${correctAnswers} correctas`;
+    document.getElementById('my-challenge-time').textContent = `${timeSpent}s`;
     
     // Nombre del oponente
-    const isCreator = this.socialChallengeData.creatorId === window.Firebase?.currentUser?.uid;
+    const myUid = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const isCreator = this.socialChallengeData.creatorId === myUid;
     const opponentName = isCreator ? this.socialChallengeData.opponentName : this.socialChallengeData.creatorName;
     document.getElementById('opponent-name').textContent = opponentName || 'Oponente';
     
     // Mostrar estado de espera
     document.getElementById('opponent-score-value').textContent = '--';
     document.getElementById('opponent-waiting').classList.remove('hidden');
-    document.getElementById('opponent-challenge-correct').textContent = '-- ?';
-    document.getElementById('opponent-challenge-time').textContent = '-- ??';
+    document.getElementById('opponent-challenge-correct').textContent = '--';
+    document.getElementById('opponent-challenge-time').textContent = '--';
     document.getElementById('challenge-status-message').classList.remove('hidden');
     document.getElementById('challenge-status-message').classList.remove('completed');
-    document.getElementById('challenge-result-title').textContent = '�Reto Completado!';
-    document.getElementById('challenge-result-subtitle').textContent = '';
-    document.getElementById('challenge-result-icon').textContent = '??';
+    document.getElementById('challenge-result-title').textContent = 'Reto Completado';
+    document.getElementById('challenge-result-subtitle').textContent = 'Esperando al oponente...';
+    document.getElementById('challenge-result-icon').innerHTML = '<span style="font-size:48px">&#9876;</span>';
     
-    // Enviar resultado a Firebase
+    // Enviar resultado a BackendService
     try {
-      const result = await window.Firebase.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
+      const result = await BackendService.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
       console.log('[App] Resultado enviado:', result);
       
       if (result.success && result.completed) {
-        // Ambos terminaron - mostrar comparaci�n
-        this.showChallengeComparison(result, score, timeSpent, correctAnswers);
+        // Ambos terminaron - mostrar comparación
+        this.showChallengeComparison(result, score, timeSpent, correctAnswers, result.opponentCorrect);
       } else {
-        // Esperando al oponente - escuchar cambios
+        // Esperando al oponente - iniciar polling
         this.listenForOpponentResult(challengeId, score, timeSpent, correctAnswers);
       }
     } catch (error) {
@@ -1746,41 +1852,80 @@ const App = {
     };
   },
   
-  // Escuchar cuando el oponente termine
+  // Escuchar cuando el oponente termine (polling)
   listenForOpponentResult(challengeId, myScore, myTime, myCorrect) {
-    // Limpiar listener anterior si existe
-    if (this._challengeUnsubscribe) {
-      this._challengeUnsubscribe();
+    // Limpiar polling anterior si existe
+    if (this._challengePollingInterval) {
+      clearInterval(this._challengePollingInterval);
     }
     
-    this._challengeUnsubscribe = window.Firebase.subscribeToChallenge(challengeId, (challenge) => {
-      console.log('[App] Actualizaci�n del reto:', challenge);
-      
-      // Verificar si ambos han terminado
-      const iAmCreator = challenge.creatorId === window.Firebase?.currentUser?.uid;
-      const opponentScore = iAmCreator ? challenge.opponentScore : challenge.creatorScore;
-      const opponentTime = iAmCreator ? challenge.opponentTime : challenge.creatorTime;
-      const opponentCorrect = iAmCreator ? challenge.opponentCorrect : challenge.creatorCorrect;
-      
-      if (opponentScore !== null && opponentScore !== undefined) {
-        // El oponente termin� - mostrar comparaci�n
-        const result = {
-          completed: true,
-          winner: challenge.winner,
-          myScore: myScore,
-          opponentScore: opponentScore,
-          myTime: myTime,
-          opponentTime: opponentTime
-        };
-        this.showChallengeComparison(result, myScore, myTime, myCorrect, opponentCorrect);
+    console.log('[App] ====== INICIANDO POLLING ======');
+    console.log('[App] challengeId:', challengeId);
+    console.log('[App] myScore:', myScore, 'myTime:', myTime);
+    
+    const pollForResults = async () => {
+      console.log('[App] Polling tick...');
+      try {
+        const challenge = await BackendService.getChallenge(challengeId);
+        console.log('[App] Challenge data:', JSON.stringify(challenge));
+        console.log('[App] Status:', challenge?.status);
         
-        // Cancelar listener
-        if (this._challengeUnsubscribe) {
-          this._challengeUnsubscribe();
-          this._challengeUnsubscribe = null;
+        if (!challenge) {
+          console.log('[App] ERROR: Challenge es null');
+          return;
         }
+        
+        if (challenge.status === 'completed') {
+          console.log('[App] ¡RETO COMPLETADO! Deteniendo polling...');
+          // El reto está completado - detener polling y mostrar resultados
+          clearInterval(this._challengePollingInterval);
+          this._challengePollingInterval = null;
+          
+          const myUid = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+          const iAmCreator = challenge.creatorId === myUid;
+          
+          console.log('[App] myUid:', myUid);
+          console.log('[App] creatorId:', challenge.creatorId);
+          console.log('[App] iAmCreator:', iAmCreator);
+          
+          const opponentScore = iAmCreator ? challenge.opponentScore : challenge.creatorScore;
+          const opponentTime = iAmCreator ? challenge.opponentTime : challenge.creatorTime;
+          const opponentCorrect = iAmCreator ? challenge.opponentCorrect : challenge.creatorCorrect;
+          
+          console.log('[App] opponentScore:', opponentScore);
+          console.log('[App] opponentTime:', opponentTime);
+          
+          const result = {
+            completed: true,
+            winner: challenge.winner,
+            myScore: myScore,
+            opponentScore: opponentScore,
+            myTime: myTime,
+            opponentTime: opponentTime
+          };
+          
+          console.log('[App] Llamando showChallengeComparison con:', result);
+          this.showChallengeComparison(result, myScore, myTime, myCorrect, opponentCorrect);
+        } else {
+          console.log('[App] Todavía esperando... status:', challenge.status);
+        }
+      } catch (err) {
+        console.error('[App] ERROR en polling:', err);
       }
-    });
+    };
+    
+    // Ejecutar inmediatamente y luego cada 2 segundos
+    pollForResults();
+    this._challengePollingInterval = setInterval(pollForResults, 2000);
+    
+    // Guardar referencia para poder cancelar
+    this._challengeUnsubscribe = () => {
+      console.log('[App] Cancelando polling...');
+      if (this._challengePollingInterval) {
+        clearInterval(this._challengePollingInterval);
+        this._challengePollingInterval = null;
+      }
+    };
   },
   
   // Mostrar comparaci�n de resultados
@@ -1793,8 +1938,8 @@ const App = {
     
     // Mostrar resultados del oponente
     document.getElementById('opponent-score-value').textContent = result.opponentScore;
-    document.getElementById('opponent-challenge-correct').textContent = `${opponentCorrect ?? '--'} ?`;
-    document.getElementById('opponent-challenge-time').textContent = `${result.opponentTime ?? '--'}s ??`;
+    document.getElementById('opponent-challenge-correct').textContent = `${opponentCorrect ?? '--'} correctas`;
+    document.getElementById('opponent-challenge-time').textContent = `${result.opponentTime ?? '--'}s`;
     
     // Determinar ganador y aplicar estilos
     const myCard = document.querySelector('.challenge-player.me');
@@ -1803,24 +1948,25 @@ const App = {
     myCard.classList.remove('winner', 'loser');
     opponentCard.classList.remove('winner', 'loser');
     
-    const iWon = result.winner === window.Firebase?.currentUser?.uid;
+    const myUid = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const iWon = result.winner === myUid;
     const isTie = result.winner === 'tie';
     
     if (isTie) {
-      document.getElementById('challenge-result-icon').textContent = '??';
-      document.getElementById('challenge-result-title').textContent = '�Empate!';
+      document.getElementById('challenge-result-icon').innerHTML = '<span style="font-size:48px;color:#ffd700">&#9876;</span>';
+      document.getElementById('challenge-result-title').textContent = 'Empate';
       document.getElementById('challenge-result-subtitle').textContent = 'Ambos jugaron igual de bien';
       document.getElementById('challenge-vs-text').textContent = '=';
     } else if (iWon) {
-      document.getElementById('challenge-result-icon').textContent = '??';
-      document.getElementById('challenge-result-title').textContent = '�Ganaste!';
-      document.getElementById('challenge-result-subtitle').textContent = '�Felicitaciones!';
+      document.getElementById('challenge-result-icon').innerHTML = '<span style="font-size:48px;color:#ffd700">&#9733;</span>';
+      document.getElementById('challenge-result-title').textContent = 'Ganaste!';
+      document.getElementById('challenge-result-subtitle').textContent = 'Felicitaciones!';
       myCard.classList.add('winner');
       opponentCard.classList.add('loser');
     } else {
-      document.getElementById('challenge-result-icon').textContent = '??';
+      document.getElementById('challenge-result-icon').innerHTML = '<span style="font-size:48px;color:#888">&#9734;</span>';
       document.getElementById('challenge-result-title').textContent = 'Perdiste';
-      document.getElementById('challenge-result-subtitle').textContent = '�Int�ntalo de nuevo!';
+      document.getElementById('challenge-result-subtitle').textContent = 'Intentalo de nuevo!';
       myCard.classList.add('loser');
       opponentCard.classList.add('winner');
     }
@@ -1861,7 +2007,7 @@ const App = {
   // Abrir pantalla de ranked
   async openRankedScreen() {
     if (!window.Firebase?.currentUser) {
-      this.showToast('Debes iniciar sesi�n para jugar Ranked', 'error');
+      this.showToast('Debes iniciar sesion para jugar Ranked', 'error');
       if (window.Social) {
         Social.openSocialModal();
       }
@@ -1904,7 +2050,7 @@ const App = {
     
     // Actualizar info del siguiente rango
     document.getElementById('ranked-next-rank-name').textContent = nextRank.name;
-    document.getElementById('ranked-next-trophies').textContent = `(${nextRank.minTrophies} ` + String.fromCodePoint(0x1F3C6) + `)`;
+    document.getElementById('ranked-next-trophies').textContent = `(${nextRank.minTrophies} trofeos)`;
     
     const progress = window.Ranked.getRankProgress(totalTrophies);
     document.getElementById('ranked-my-progress-bar').style.width = progress + '%';
@@ -1933,7 +2079,7 @@ const App = {
           <span class="ranked-category-icon">${cat.icon}</span>
           <span class="ranked-category-name">${cat.name}</span>
           <div class="ranked-category-trophies">
-            <span>${ranking.trophies} ` + String.fromCodePoint(0x1F3C6) + `</span>
+            <span>${ranking.trophies} T</span>
           </div>
           <span class="ranked-category-rank" style="color: ${rank.color}">${rank.icon} ${rank.name}</span>
         </div>
@@ -1979,7 +2125,7 @@ const App = {
     document.getElementById('overview-current-name').textContent = currentRank.name;
     document.getElementById('overview-current-name').style.color = currentRank.color;
     document.getElementById('overview-current-trophies').textContent = 
-      `${totalTrophies} / ${currentRank.maxTrophies === Infinity ? '8' : currentRank.maxTrophies} ` + String.fromCodePoint(0x1F3C6);
+      `${totalTrophies} / ${currentRank.maxTrophies === Infinity ? '8' : currentRank.maxTrophies} trofeos`;
     
     // Renderizar lista de rangos
     const ranksList = document.getElementById('ranks-list');
@@ -1992,7 +2138,7 @@ const App = {
           <span class="rank-icon">${rank.icon}</span>
           <div class="rank-info">
             <span class="rank-name" style="color: ${rank.color}">${rank.name}</span>
-            <span class="rank-trophies">${rank.minTrophies}${rank.maxTrophies === Infinity ? '+' : ' - ' + rank.maxTrophies} ` + String.fromCodePoint(0x1F3C6) + `</span>
+            <span class="rank-trophies">${rank.minTrophies}${rank.maxTrophies === Infinity ? '+' : ' - ' + rank.maxTrophies} T</span>
           </div>
           ${isCurrent ? '<span class="rank-current-badge">? Actual</span>' : ''}
         </div>
@@ -2062,7 +2208,7 @@ const App = {
     this.renderQuestion();
     
     // Mostrar indicador de ranked
-    this.showToast(`?? Ranked: ${matchData.category} vs ${matchData.opponent?.userName || 'Oponente'}`, 'info');
+    this.showToast(`Ranked: ${matchData.category} vs ${matchData.opponent?.userName || 'Oponente'}`, 'info');
   },
 
   // Mostrar resultados de partida ranked
@@ -2084,9 +2230,9 @@ const App = {
     document.getElementById('ranked-opponent-name').textContent = this.rankedMatchData.opponent?.userName || 'Oponente';
     document.getElementById('ranked-opponent-score').textContent = '--';
     document.getElementById('ranked-status-message').classList.remove('hidden');
-    document.getElementById('ranked-result-title').textContent = '�Partida Terminada!';
+    document.getElementById('ranked-result-title').textContent = 'Partida Terminada!';
     document.getElementById('ranked-result-subtitle').textContent = '';
-    document.getElementById('ranked-result-icon').textContent = '??';
+    document.getElementById('ranked-result-icon').textContent = '?';
     
     // Ocultar cambio de trofeos hasta tener resultado final
     document.getElementById('ranked-trophy-change').style.display = 'none';
@@ -2195,21 +2341,21 @@ const App = {
     opponentCard?.classList.remove('winner', 'loser');
     
     if (isTie) {
-      document.getElementById('ranked-result-icon').textContent = '??';
-      document.getElementById('ranked-result-title').textContent = '�Empate!';
+      document.getElementById('ranked-result-icon').textContent = '=';
+      document.getElementById('ranked-result-title').textContent = 'Empate!';
       document.getElementById('ranked-result-subtitle').textContent = 'Ambos jugaron igual';
       myCard?.classList.add('winner');
       opponentCard?.classList.add('winner');
     } else if (iWon) {
-      document.getElementById('ranked-result-icon').textContent = '??';
-      document.getElementById('ranked-result-title').textContent = '�Victoria!';
-      document.getElementById('ranked-result-subtitle').textContent = '�Excelente!';
+      document.getElementById('ranked-result-icon').textContent = '*';
+      document.getElementById('ranked-result-title').textContent = 'Victoria!';
+      document.getElementById('ranked-result-subtitle').textContent = 'Excelente!';
       myCard?.classList.add('winner');
       opponentCard?.classList.add('loser');
     } else {
-      document.getElementById('ranked-result-icon').textContent = '??';
+      document.getElementById('ranked-result-icon').textContent = 'X';
       document.getElementById('ranked-result-title').textContent = 'Derrota';
-      document.getElementById('ranked-result-subtitle').textContent = '�Sigue intentando!';
+      document.getElementById('ranked-result-subtitle').textContent = 'Sigue intentando!';
       myCard?.classList.add('loser');
       opponentCard?.classList.add('winner');
     }
@@ -2296,7 +2442,7 @@ const App = {
           <span class="leaderboard-name">${player.name}</span>
           <div class="leaderboard-trophies">
             <span>${player.trophies}</span>
-            <span>??</span>
+            <span>T</span>
           </div>
           <span class="leaderboard-stats">${player.wins}W ${player.losses}L</span>
         </div>
@@ -2324,7 +2470,7 @@ const App = {
     const current = this.currentQuestionIndex + 1;
     // Update top bar
     document.getElementById('question-counter').textContent = `${current}/${total}`;
-    document.getElementById('quiz-points').textContent = `� ${this.sessionPoints}`;
+    document.getElementById('quiz-points').textContent = `P ${this.sessionPoints}`;
     // Phase badge
     const diffInfo = DIFFICULTIES[this.activeDifficulty || this.selectedDifficulty];
     const phaseBadge = document.getElementById('quiz-phase-badge');
@@ -2343,16 +2489,45 @@ const App = {
     // Progress bar
     const percent = ((current - 1) / total) * 100;
     document.getElementById('progress-fill').style.width = `${percent}%`;
-    // Category tag
-    const cat = CATEGORIES[q.category] || { icon: '', name: q.category };
+    // Category tag and big icon
+    const cat = CATEGORIES[q.category] || { icon: '', name: q.category, bigIcon: '📖', color: '#6C63FF' };
     document.getElementById('question-category-tag').innerHTML = `${cat.icon} ${cat.name}`;
+    
+    // Big category icon
+    const bigIconEl = document.getElementById('category-big-icon');
+    if (bigIconEl) {
+      bigIconEl.textContent = cat.bigIcon || cat.icon;
+      bigIconEl.style.background = `linear-gradient(135deg, ${cat.color}33, ${cat.color}11)`;
+      bigIconEl.style.boxShadow = `0 0 30px ${cat.color}44`;
+    }
+    
+    // Question image (if exists)
+    const imgContainer = document.getElementById('question-image-container');
+    const imgEl = document.getElementById('question-image');
+    if (q.image) {
+      imgEl.src = q.image;
+      imgEl.alt = q.imageAlt || 'Imagen relacionada a la pregunta';
+      imgContainer.classList.remove('hidden');
+    } else {
+      imgContainer.classList.add('hidden');
+      imgEl.src = '';
+    }
     // Question text
     document.getElementById('question-text').textContent = q.question;
-    // Options
+    // Options - Expanded to 6 options
     const optionsContainer = document.getElementById('options-container');
     optionsContainer.innerHTML = '';
-    const letters = ['A', 'B', 'C', 'D'];
-    q.options.forEach((opt, i) => {
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+    
+    // Get expanded options (6 options with proper shuffling)
+    const expandedData = this.expandOptionsTo6(q);
+    const expandedOptions = expandedData.options;
+    const correctIndex = expandedData.correctIndex;
+    
+    // Store corrected index for answer checking
+    this.currentCorrectIndex = correctIndex;
+    
+    expandedOptions.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.setAttribute('role', 'option');
@@ -2361,11 +2536,12 @@ const App = {
         <span class="option-letter" aria-hidden="true">${letters[i]}</span>
         <span class="option-text">${escapeHTML(opt)}</span>
       `;
-      btn.addEventListener('click', () => this.selectAnswer(i, btn));
+      btn.addEventListener('click', () => this.selectAnswer(i, btn, correctIndex));
       optionsContainer.appendChild(btn);
     });
     optionsContainer.setAttribute('role', 'listbox');
     optionsContainer.setAttribute('aria-label', 'Opciones de respuesta');
+    optionsContainer.classList.add('six-options');
     // Hide reference and next
     document.getElementById('reference-card').classList.add('hidden');
     document.getElementById('next-btn').classList.add('hidden');
@@ -2400,14 +2576,14 @@ const App = {
     const effectiveMax = this.timerMax + extraTime;
     
     this.timerSeconds = effectiveMax;
-    timerEl.textContent = `?? ${this.timerSeconds}`;
+    timerEl.textContent = `T: ${this.timerSeconds}`;
     timerEl.className = 'quiz-timer';
     timerBar.style.width = '100%';
     timerBar.className = 'timer-bar-fill';
     this.timerInterval = setInterval(() => {
       this.timerSeconds--;
       const percent = (this.timerSeconds / effectiveMax) * 100;
-      timerEl.textContent = `?? ${this.timerSeconds}`;
+      timerEl.textContent = `T: ${this.timerSeconds}`;
       timerBar.style.width = `${percent}%`;
       // Color changes
       if (this.timerSeconds <= effectiveMax * 0.25) {
@@ -2416,6 +2592,10 @@ const App = {
       } else if (this.timerSeconds <= effectiveMax * 0.5) {
         timerEl.className = 'quiz-timer warning';
         timerBar.className = 'timer-bar-fill warning';
+      }
+      // Sonido de alerta cuando quedan 5 segundos o menos
+      if (this.timerSeconds <= 5 && this.timerSeconds > 0 && !this.answered) {
+        this.playSound('timerLow');
       }
       if (this.timerSeconds <= 0) {
         this.stopTimer();
@@ -2473,10 +2653,10 @@ const App = {
     Storage.addWrongAnswer(q.id, -1);
     // Show time's up message
     const timerEl = document.getElementById('quiz-timer');
-    timerEl.textContent = 'T: �Tiempo!';
+    timerEl.textContent = 'T: Tiempo!';
     timerEl.className = 'quiz-timer danger';
     // Show reference
-    document.getElementById('ref-text').innerHTML = `<strong>T: �Se acab� el tiempo!</strong>  ${q.reference}`;
+    document.getElementById('ref-text').innerHTML = `<strong>T: Se acabo el tiempo!</strong>  ${q.reference}`;
     document.getElementById('reference-card').classList.remove('hidden');
     // Show next button
     const nextBtn = document.getElementById('next-btn');
@@ -2484,7 +2664,7 @@ const App = {
     nextBtn.textContent = isLast ? 'Completar Fase ' : 'Siguiente ';
     nextBtn.classList.remove('hidden');
   },
-  selectAnswer(index, btnEl) {
+  selectAnswer(index, btnEl, correctIndex) {
     if (this.answered) return;
     this.answered = true;
     this.stopTimer();
@@ -2492,7 +2672,9 @@ const App = {
     const answerTime = (performance.now() - this.questionStartTime) / 1000;
     this.recordAnswerSpeed(answerTime);
     const q = this.currentQuestions[this.currentQuestionIndex];
-    const isCorrect = index === q.correct;
+    // Use passed correctIndex if available (for expanded 6-option questions)
+    const actualCorrect = correctIndex !== undefined ? correctIndex : q.correct;
+    const isCorrect = index === actualCorrect;
     const allBtns = document.querySelectorAll('#options-container .option-btn');
     // Disable all buttons
     allBtns.forEach(b => b.classList.add('disabled'));
@@ -2516,8 +2698,8 @@ const App = {
     } else {
       btnEl.classList.add('wrong');
       btnEl.setAttribute('aria-label', btnEl.getAttribute('aria-label') + '  Incorrecta');
-      allBtns[q.correct].classList.add('correct');
-      allBtns[q.correct].setAttribute('aria-label', allBtns[q.correct].getAttribute('aria-label') + '   Respuesta correcta');
+      allBtns[actualCorrect].classList.add('correct');
+      allBtns[actualCorrect].setAttribute('aria-label', allBtns[actualCorrect].getAttribute('aria-label') + '   Respuesta correcta');
       this.handleWrong();
       // Save wrong answer for study mode
       Storage.addWrongAnswer(q.id, index);
@@ -2595,7 +2777,7 @@ const App = {
       }
     }
     // A�adir monedas al popup
-    popupText += ` ??${coinsEarned}`;
+    popupText += ` +${coinsEarned}c`;
     // Show point popup
     this.showPointPopup(popupText);
     // Update streak display
@@ -2604,7 +2786,7 @@ const App = {
       streakEl.textContent = ` ${this.currentStreak}`;
       streakEl.classList.remove('hidden');
     }
-    document.getElementById('quiz-points').textContent = `� ${this.sessionPoints}`;
+    document.getElementById('quiz-points').textContent = `P ${this.sessionPoints}`;
     // Sound & Vibrate (variable vibration based on streak)
     this.playSound('correct');
     if (this.currentStreak >= 10) {
@@ -2695,11 +2877,11 @@ const App = {
     const percentage = this.currentQuestions.length > 0
       ? Math.round((this.phaseCorrect / this.currentQuestions.length) * 100) : 0;
     let icon;
-    if (percentage === 100) icon = '??';
-    else if (percentage >= 80) icon = '??';
-    else if (percentage >= 60) icon = '??';
-    else if (percentage >= 40) icon = '??';
-    else icon = '??';
+    if (percentage === 100) icon = '*';
+    else if (percentage >= 80) icon = '*';
+    else if (percentage >= 60) icon = '+';
+    else if (percentage >= 40) icon = '~';
+    else icon = '-';
     document.getElementById('phase-icon').textContent = icon;
     document.getElementById('phase-title').textContent = `Fase ${this.currentPhase} Completada`;
     document.getElementById('phase-correct').textContent = this.phaseCorrect;
@@ -2729,7 +2911,7 @@ const App = {
     
     // Mostrar info del multiplicador si es perfecto
     if (phasePerfect && newMultiplier > 1) {
-      subtitleEl.textContent = `�Fase Perfecta! ?? Multiplicador x${newMultiplier}`;
+      subtitleEl.textContent = `Fase Perfecta! Multiplicador x${newMultiplier}`;
       subtitleEl.classList.remove('hidden');
       if (nextDiff !== this.activeDifficulty && !this.categoryExhausted) {
         const diffInfo = DIFFICULTIES[nextDiff];
@@ -2898,14 +3080,14 @@ const App = {
     const livesEl = document.getElementById('quiz-lives');
     if (!livesEl) return;
     if (this.infiniteLives) {
-      livesEl.textContent = '�';
+      livesEl.innerHTML = '<span style="color:#ffd700">&#8734;</span>';
       return;
     }
     let hearts = '';
     for (let i = 0; i < this.maxLives; i++) {
-      hearts += i < this.lives ? '??' : '??';
+      hearts += i < this.lives ? '<span style="color:#e74c3c">&#9829;</span>' : '<span style="color:#555">&#9829;</span>';
     }
-    livesEl.textContent = hearts;
+    livesEl.innerHTML = hearts;
   },
   // ========== SISTEMA DE MONEDAS ==========
   updateCoinsDisplay() {
@@ -2959,7 +3141,7 @@ const App = {
     // Verificar que no exceda el maximo de vidas
     const livesToAdd = Math.min(amount, this.maxLives - this.lives);
     if (livesToAdd <= 0) {
-      this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas');
+      this.showToast('Ya tienes todas las vidas');
       return false;
     }
     
@@ -3033,19 +3215,19 @@ const App = {
     if (typeof SeasonSystem === 'undefined') return;
     const inventory = SeasonSystem.getPowerups();
     
-    // En modo ranked, verificar si ya se us� el comod�n permitido
+    // En modo ranked, verificar si ya se uso el comodin permitido
     const rankedLimitReached = this.isRankedMatch && this.rankedPowerupsUsed >= 1;
     
     ['shield', 'reveal', 'doubleCoins', 'extraTime', 'fiftyFifty'].forEach(id => {
       const btn = document.getElementById(`use-${id}`);
       if (btn) {
         const count = inventory[id] || 0;
-        // Deshabilitar si no tiene o si alcanz� l�mite en ranked
+        // Deshabilitar si no tiene o si alcanzo limite en ranked
         btn.disabled = count <= 0 || rankedLimitReached;
         
-        // Agregar indicador de l�mite ranked
+        // Agregar indicador de limite ranked
         if (this.isRankedMatch) {
-          btn.title = rankedLimitReached ? 'Ya usaste tu comod�n en esta partida' : `${btn.title} (1 por partida)`;
+          btn.title = rankedLimitReached ? 'Ya usaste tu comodin en esta partida' : `${btn.title} (1 por partida)`;
         }
         
         // Marcar activos
@@ -3070,15 +3252,15 @@ const App = {
     if (typeof SeasonSystem !== 'undefined') {
       if (SeasonSystem.hasShieldActive()) {
         const remaining = SeasonSystem.getShieldRemainingTime();
-        activePowerups.push({ id: 'shield', name: 'Escudo Divino', icon: '???', time: remaining });
+        activePowerups.push({ id: 'shield', name: 'Escudo Divino', icon: '#', time: remaining });
       }
       if (SeasonSystem.hasDoubleCoinsActive()) {
         const remaining = SeasonSystem.getDoubleCoinsRemainingTime();
-        activePowerups.push({ id: 'doubleCoins', name: 'Doble Monedas', icon: '??', time: remaining });
+        activePowerups.push({ id: 'doubleCoins', name: 'Doble Monedas', icon: 'x2', time: remaining });
       }
       if (SeasonSystem.hasExtraTimeActive()) {
         const remaining = SeasonSystem.getExtraTimeRemainingTime();
-        activePowerups.push({ id: 'extraTime', name: 'Tiempo Extra', icon: '??', time: remaining });
+        activePowerups.push({ id: 'extraTime', name: 'Tiempo Extra', icon: '+T', time: remaining });
       }
     }
     
@@ -3123,7 +3305,7 @@ const App = {
     
     // Restriccion: maximo 1 comodin por partida en CUALQUIER modo
     if (this.sessionPowerupsUsed >= 1) {
-      this.showToast(String.fromCodePoint(0x26A0) + ' Solo puedes usar 1 comodin por partida');
+      this.showToast('Solo puedes usar 1 comodin por partida');
       return;
     }
     
@@ -3154,13 +3336,19 @@ const App = {
     
     // Restriccion: max 1 comodin por partida
     if (this.sessionPowerupsUsed >= 1) {
-      this.showToast(String.fromCodePoint(0x26A0) + ' Solo puedes usar 1 comodin por partida');
+      this.showToast('Solo puedes usar 1 comodin por partida');
+      return;
+    }
+    
+    // Verificar que no se haya respondido ya
+    if (this.answered) {
+      this.showToast('Ya respondiste esta pregunta');
       return;
     }
     
     const inventory = SeasonSystem.getPowerups();
     if (!inventory.reveal || inventory.reveal <= 0) {
-      this.showToast('? No tienes Revelaci�n disponible');
+      this.showToast('No tienes Revelacion disponible');
       return;
     }
     
@@ -3173,15 +3361,17 @@ const App = {
     // Mostrar la respuesta correcta
     const currentQ = this.currentQuestions[this.currentQuestionIndex];
     if (currentQ) {
-      const buttons = document.querySelectorAll('.option-btn');
-      buttons.forEach(btn => {
-        if (btn.dataset.answer === currentQ.answer) {
+      const buttons = document.querySelectorAll('#options-container .option-btn');
+      // currentQ.correct es el indice (0, 1, 2, 3) de la respuesta correcta
+      const correctIndex = currentQ.correct;
+      buttons.forEach((btn, index) => {
+        if (index === correctIndex) {
           btn.classList.add('reveal-highlight');
           btn.style.border = '3px solid var(--success)';
           btn.style.boxShadow = '0 0 20px rgba(76, 175, 80, 0.5)';
         }
       });
-      this.showToast('??? �Respuesta revelada!');
+      this.showToast('Respuesta revelada!');
       this.playSound('correct');
     }
     this.updatePowerupsDisplay();
@@ -3191,13 +3381,19 @@ const App = {
     
     // Restriccion: max 1 comodin por partida
     if (this.sessionPowerupsUsed >= 1) {
-      this.showToast(String.fromCodePoint(0x26A0) + ' Solo puedes usar 1 comodin por partida');
+      this.showToast('Solo puedes usar 1 comodin por partida');
+      return;
+    }
+    
+    // Verificar que no se haya respondido ya
+    if (this.answered) {
+      this.showToast('Ya respondiste esta pregunta');
       return;
     }
     
     const inventory = SeasonSystem.getPowerups();
     if (!inventory.fiftyFifty || inventory.fiftyFifty <= 0) {
-      this.showToast('? No tienes 50:50 disponible');
+      this.showToast('No tienes 50:50 disponible');
       return;
     }
     
@@ -3210,19 +3406,23 @@ const App = {
     // Contar uso de comodin
     this.sessionPowerupsUsed = (this.sessionPowerupsUsed || 0) + 1;
     
-    // Obtener opciones incorrectas
-    const buttons = Array.from(document.querySelectorAll('.option-btn'));
-    const wrongButtons = buttons.filter(btn => btn.dataset.answer !== currentQ.answer && !btn.disabled);
+    // Obtener botones y filtrar los incorrectos
+    const buttons = Array.from(document.querySelectorAll('#options-container .option-btn'));
+    const correctIndex = currentQ.correct;
+    const wrongButtons = buttons.filter((btn, index) => index !== correctIndex && !btn.disabled);
     
     // Eliminar 2 opciones incorrectas aleatorias
-    const toRemove = this.shuffleArray([...wrongButtons]).slice(0, 2);
+    const shuffled = this.shuffle([...wrongButtons]);
+    const toRemove = shuffled.slice(0, 2);
     toRemove.forEach(btn => {
       btn.disabled = true;
+      btn.classList.add('eliminated');
       btn.style.opacity = '0.3';
       btn.style.textDecoration = 'line-through';
+      btn.style.pointerEvents = 'none';
     });
     
-    this.showToast('?? �2 respuestas eliminadas!');
+    this.showToast('2 respuestas eliminadas!');
     this.playSound('correct');
     this.updatePowerupsDisplay();
   },
@@ -3249,33 +3449,31 @@ const App = {
     localStorage.setItem('bq_infiniteLives', this.infiniteLives ? 'true' : 'false');
   },
   renderHomeLives() {
-    const heartsEl = document.getElementById('home-lives-hearts');
     const countEl = document.getElementById('home-lives-count');
     const timerWrap = document.getElementById('home-lives-timer-wrap');
     const card = document.getElementById('home-lives-card');
-    if (!heartsEl) return;
-    const heartFull = String.fromCodePoint(0x2764); // ❤
-    const heartEmpty = String.fromCodePoint(0x1F5A4); // 🖤
-    const infinitySymbol = String.fromCodePoint(0x221E); // ∞
+    if (!countEl) return;
+    
     if (this.infiniteLives) {
-      heartsEl.textContent = infinitySymbol;
-      countEl.textContent = 'Infinitas';
-      timerWrap.classList.add('hidden');
-      card.classList.add('infinite-active');
+      countEl.textContent = '∞ Infinitas';
+      if (timerWrap) timerWrap.classList.add('hidden');
+      if (card) card.classList.add('infinite-active');
       return;
     }
-    card.classList.remove('infinite-active');
-    let hearts = '';
-    for (let i = 0; i < this.maxLives; i++) {
-      hearts += i < this.lives ? heartFull : heartEmpty;
+    if (card) card.classList.remove('infinite-active');
+    
+    // Mostrar vidas con corazones en el texto
+    let heartsText = '';
+    for (let i = 0; i < this.lives; i++) {
+      heartsText += '❤️';
     }
-    heartsEl.textContent = hearts;
-    countEl.textContent = `${this.lives}/${this.maxLives}`;
+    countEl.textContent = heartsText || `${this.lives}/${this.maxLives}`;
+    
     // Show/hide timer
-    if (this.lives < this.maxLives) {
+    if (this.lives < this.maxLives && timerWrap) {
       timerWrap.classList.remove('hidden');
       this.updateHomeLivesTimer();
-    } else {
+    } else if (timerWrap) {
       timerWrap.classList.add('hidden');
     }
   },
@@ -3319,18 +3517,15 @@ const App = {
     // Update lives display
     const heartsEl = document.getElementById('shop-lives-hearts');
     const textEl = document.getElementById('shop-lives-text');
-    const heartFull = String.fromCodePoint(0x2764); // ❤
-    const heartEmpty = String.fromCodePoint(0x1F5A4); // 🖤
-    const infinitySymbol = String.fromCodePoint(0x221E); // ∞
     if (this.infiniteLives) {
-      heartsEl.textContent = infinitySymbol;
+      heartsEl.innerHTML = '<span style="color:#ffd700;font-size:24px">&#8734;</span>';
       textEl.textContent = 'Vidas infinitas activas';
     } else {
       let hearts = '';
       for (let i = 0; i < this.maxLives; i++) {
-        hearts += i < this.lives ? heartFull : heartEmpty;
+        hearts += i < this.lives ? '<span style="color:#e74c3c">&#9829;</span>' : '<span style="color:#555">&#9829;</span>';
       }
-      heartsEl.textContent = hearts;
+      heartsEl.innerHTML = hearts;
       textEl.textContent = `${this.lives}/${this.maxLives} vidas`;
     }
     // Update infinite button label
@@ -3364,28 +3559,28 @@ const App = {
     // Fallback legacy
     if (action === '1') {
       if (this.lives >= this.maxLives) {
-        this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas', 'info');
+        this.showToast('Ya tienes todas las vidas', 'info');
         return;
       }
       this.lives = Math.min(this.maxLives, this.lives + 1);
       this.saveLivesState();
       this.playSound('correct');
-      this.showToast(String.fromCodePoint(0x2764) + ' +1 vida obtenida');
+      this.showToast('+1 vida obtenida');
     } else if (action === 'full') {
       if (this.lives >= this.maxLives) {
-        this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas', 'info');
+        this.showToast('Ya tienes todas las vidas', 'info');
         return;
       }
       this.lives = this.maxLives;
       this.saveLivesState();
       this.playSound('correct');
-      this.showToast(String.fromCodePoint(0x2764) + ' Vidas al maximo!');
+      this.showToast('Vidas al maximo!');
     } else if (action === 'infinite') {
       this.infiniteLives = !this.infiniteLives;
       this.saveInfiniteLives();
       if (this.infiniteLives) {
         this.playSound('correct');
-        this.showToast(String.fromCodePoint(0x221E) + ' Vidas infinitas activadas!');
+        this.showToast('Vidas infinitas activadas!');
       } else {
         this.showToast('Vidas infinitas desactivadas');
       }
@@ -3411,13 +3606,13 @@ const App = {
     // Verificar si ya tiene vidas completas para productos de vidas
     if (mappedId === 'life_1' || mappedId === 'life_full') {
       if (this.lives >= this.maxLives && !Billing.isPremium) {
-        this.showToast(String.fromCodePoint(0x2764) + ' Ya tienes todas las vidas', 'info');
+        this.showToast('Ya tienes todas las vidas', 'info');
         return;
       }
     }
     
     // Iniciar compra
-    this.showToast('?? Procesando...', 'info');
+    this.showToast('Procesando...', 'info');
     
     const result = await Billing.purchase(mappedId);
     
@@ -3534,8 +3729,8 @@ const App = {
   
   async handleManageSubscription() {
     const result = await this.showConfirmModal(
-      '?? Gestionar Suscripcion',
-      '�Qu� deseas hacer con tu suscripcion Premium?',
+      'Gestionar Suscripcion',
+      'Que deseas hacer con tu suscripcion Premium?',
       'Cancelar Suscripcion',
       'Volver'
     );
@@ -3604,6 +3799,8 @@ const App = {
   // ========== GAME OVER ==========
   showGameOver() {
     this.stopTimer();
+    // Sonido de fin de juego
+    this.playSound('gameOver');
     document.getElementById('gameover-phase').textContent = this.currentPhase;
     document.getElementById('gameover-correct').textContent = this.sessionCorrect;
     document.getElementById('gameover-wrong').textContent = this.sessionWrong;
@@ -3793,7 +3990,7 @@ const App = {
       const medal = document.createElement('div');
       medal.className = `catcomplete-medal ${isDone ? 'earned' : 'locked'} ${isNew ? 'new-medal' : ''}`;
       medal.innerHTML = `
-        <span class="medal-icon">${isDone ? '??' : '??'}</span>
+        <span class="medal-icon">${isDone ? '*' : 'o'}</span>
         <span class="medal-name" style="color: ${isDone ? diffInfo.color : '#666'}">${diffInfo.icon} ${diffInfo.name}</span>
       `;
       medalsEl.appendChild(medal);
@@ -3812,13 +4009,13 @@ const App = {
     // Mensaje motivador
     let motivation, icon;
     if (percentage >= 90) {
-      icon = '??'; motivation = '!Increible! Vas como un verdadero sabio biblico.';
+      icon = '*'; motivation = '!Increible! Vas como un verdadero sabio biblico.';
     } else if (percentage >= 70) {
-      icon = '??'; motivation = '!Muy bien! Tu conocimiento brilla con fuerza.';
+      icon = '+'; motivation = '!Muy bien! Tu conocimiento brilla con fuerza.';
     } else if (percentage >= 50) {
-      icon = '??'; motivation = '!Sigue adelante! La Palabra de Dios te guia.';
+      icon = '~'; motivation = '!Sigue adelante! La Palabra de Dios te guia.';
     } else {
-      icon = '??'; motivation = '!No te rindas! Cada pregunta es una oportunidad de aprender.';
+      icon = '-'; motivation = '!No te rindas! Cada pregunta es una oportunidad de aprender.';
     }
     document.getElementById('pause-icon').textContent = icon;
     document.getElementById('pause-motivation').textContent = motivation;
@@ -3881,8 +4078,18 @@ const App = {
     });
     // Update category stats
     Storage.updateCategoryStatsData(this.selectedCategory, this.sessionCorrect, this.sessionWrong);
-    // Add XP
+    // Add XP and check for level up
+    const playerBefore = Storage.getPlayer();
+    const levelBefore = playerBefore.level;
     Storage.addXP(this.sessionPoints);
+    const playerAfter = Storage.getPlayer();
+    if (playerAfter.level > levelBefore) {
+      // Subio de nivel!
+      this.playSound('levelup');
+      setTimeout(() => {
+        this.showToast(`!Subiste al nivel ${playerAfter.level}!`, 'success');
+      }, 1500);
+    }
     // Save to history
     Storage.addGameToHistory({
       difficulty: this.selectedDifficulty,
@@ -3927,6 +4134,12 @@ const App = {
     
     // Check badges
     const newBadges = Storage.checkNewBadges();
+    // Show achievement popup for new badges
+    if (newBadges && newBadges.length > 0) {
+      newBadges.forEach((badge, i) => {
+        setTimeout(() => this.showAchievementPopup(badge), 1000 + (i * 2500));
+      });
+    }
     // Render results
     this.renderResults(newBadges);
     this.showScreen('results');
@@ -3943,15 +4156,15 @@ const App = {
     // Icon & title based on score
     let icon, title, subtitle;
     if (percentage === 100) {
-      icon = '??'; title = '!PERFECTO!'; subtitle = '!No has fallado ninguna!';
+      icon = '*'; title = '!PERFECTO!'; subtitle = '!No has fallado ninguna!';
     } else if (percentage >= 80) {
-      icon = '??'; title = '!Excelente!'; subtitle = '!Conoces muy bien la Biblia!';
+      icon = '*'; title = '!Excelente!'; subtitle = '!Conoces muy bien la Biblia!';
     } else if (percentage >= 60) {
-      icon = '??'; title = '!Bien hecho!'; subtitle = 'Sigue estudiando la Palabra';
+      icon = '+'; title = '!Bien hecho!'; subtitle = 'Sigue estudiando la Palabra';
     } else if (percentage >= 40) {
-      icon = '??'; title = 'Puedes mejorar'; subtitle = 'No te rindas, sigue aprendiendo';
+      icon = '~'; title = 'Puedes mejorar'; subtitle = 'No te rindas, sigue aprendiendo';
     } else {
-      icon = '??'; title = 'A estudiar'; subtitle = 'La Palabra de Dios es tu guia';
+      icon = '-'; title = 'A estudiar'; subtitle = 'La Palabra de Dios es tu guia';
     }
     document.getElementById('results-icon').textContent = icon;
     document.getElementById('results-title').textContent = title;
@@ -3983,7 +4196,7 @@ const App = {
     document.getElementById('progress-name').textContent = player.name;
     document.getElementById('progress-email').textContent = player.email ? ` ${player.email}` : '';
     document.getElementById('progress-age').textContent = player.age ? ` ${player.age} anos` : '';
-    document.getElementById('progress-level').textContent = `Nivel ${player.level}� ${this.getLevelTitle(player.level)}`;
+    document.getElementById('progress-level').textContent = `Nivel ${player.level} - ${this.getLevelTitle(player.level)}`;
     const xpPercent = player.xpToNext > 0 ? (player.xp / player.xpToNext) * 100 : 0;
     document.getElementById('progress-xp-fill').style.width = `${xpPercent}%`;
     document.getElementById('progress-xp-text').textContent = `${player.xp} / ${player.xpToNext} XP`;
@@ -3991,6 +4204,28 @@ const App = {
     document.getElementById('stat-total-points').textContent = stats.totalPoints.toLocaleString();
     document.getElementById('stat-games-played').textContent = stats.totalGames;
     document.getElementById('stat-best-streak').textContent = ` ${stats.bestStreak}`;
+    
+    // Daily streak
+    const dailyStreak = Storage.getDailyStreak();
+    const dailyStreakEl = document.getElementById('stat-daily-streak');
+    if (dailyStreakEl) {
+      dailyStreakEl.textContent = dailyStreak.count || 0;
+    }
+    
+    // Advanced stats
+    const totalCorrectEl = document.getElementById('stat-total-correct');
+    const totalAnsweredEl = document.getElementById('stat-total-answered');
+    const perfectGamesEl = document.getElementById('stat-perfect-games');
+    const avgPerGameEl = document.getElementById('stat-avg-per-game');
+    
+    if (totalCorrectEl) totalCorrectEl.textContent = stats.totalCorrect.toLocaleString();
+    if (totalAnsweredEl) totalAnsweredEl.textContent = stats.totalAnswered.toLocaleString();
+    if (perfectGamesEl) perfectGamesEl.textContent = stats.perfectGames || 0;
+    if (avgPerGameEl) {
+      const avg = stats.totalGames > 0 ? Math.round(stats.totalPoints / stats.totalGames) : 0;
+      avgPerGameEl.textContent = avg;
+    }
+    
     // Accuracy
     const accuracy = stats.totalAnswered > 0 ? Math.round((stats.totalCorrect / stats.totalAnswered) * 100) : 0;
     const accuracyFill = document.getElementById('accuracy-fill');
@@ -4023,7 +4258,15 @@ const App = {
     // Category Stats
     this.renderCategoryStats();
     // Progress Chart
-    this.renderProgressChart();
+    this.renderProgressChart('weekly');
+    // Period selector listeners
+    document.querySelectorAll('.period-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.renderProgressChart(btn.dataset.period);
+      };
+    });
     // Leaderboard
     this.renderLeaderboard();
     // History
@@ -4063,6 +4306,183 @@ const App = {
     if (level >= 10) return 'Discipulo';
     if (level >= 5) return 'Explorador';
     return 'Aprendiz';
+  },
+  // === LOGROS / ACHIEVEMENTS ===
+  renderAchievements(filter = 'all') {
+    const earnedBadges = Storage.getBadges();
+    const stats = this.getAchievementStats();
+    
+    // Summary
+    document.getElementById('achievements-unlocked').textContent = earnedBadges.length;
+    document.getElementById('achievements-total').textContent = BADGES.length;
+    const progressPercent = (earnedBadges.length / BADGES.length) * 100;
+    document.getElementById('achievements-progress-fill').style.width = `${progressPercent}%`;
+    
+    // Tabs
+    document.querySelectorAll('.achievements-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.tab === filter);
+      tab.onclick = () => this.renderAchievements(tab.dataset.tab);
+    });
+    
+    // Filter badges
+    let filteredBadges = BADGES;
+    if (filter === 'unlocked') {
+      filteredBadges = BADGES.filter(b => earnedBadges.includes(b.id));
+    } else if (filter === 'locked') {
+      filteredBadges = BADGES.filter(b => !earnedBadges.includes(b.id));
+    }
+    
+    // Grid
+    const grid = document.getElementById('achievements-grid');
+    if (filteredBadges.length === 0) {
+      grid.innerHTML = `<div class="empty-state" style="grid-column: 1/-1; padding: 40px; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 12px;">${filter === 'unlocked' ? '🔒' : '🏆'}</div>
+        <p style="color: var(--text-muted);">${filter === 'unlocked' ? 'Aun no has desbloqueado logros' : 'Has desbloqueado todos los logros!'}</p>
+      </div>`;
+      return;
+    }
+    
+    grid.innerHTML = filteredBadges.map(badge => {
+      const isEarned = earnedBadges.includes(badge.id);
+      return `
+        <div class="achievement-card ${isEarned ? 'unlocked' : 'locked'}">
+          <span class="achievement-icon">${badge.icon}</span>
+          <div class="achievement-name">${badge.name}</div>
+          <div class="achievement-desc">${badge.description}</div>
+        </div>
+      `;
+    }).join('');
+  },
+  
+  getAchievementStats() {
+    const stats = Storage.getStats();
+    const player = Storage.getPlayer();
+    const history = Storage.getHistory();
+    
+    // Calculate additional stats for achievements
+    let perfectGames = 0;
+    let categoriesPlayed = new Set();
+    let categoriesCompleted = [];
+    let expertCorrect = 0;
+    let fastAnswers = 0;
+    let gamesNoLivesLost = 0;
+    let impostorWins = 0;
+    let dailyChallengesWon = 0;
+    
+    history.forEach(game => {
+      categoriesPlayed.add(game.category);
+      if (game.correct === game.total) {
+        perfectGames++;
+        if (!game.livesLost || game.livesLost === 0) {
+          gamesNoLivesLost++;
+        }
+      }
+      if (game.difficulty === 'experto') {
+        expertCorrect += game.correct;
+      }
+      if (game.mode === 'impostor' && game.won) {
+        impostorWins++;
+      }
+      if (game.mode === 'daily' && game.won) {
+        dailyChallengesWon++;
+      }
+    });
+    
+    // Speed stats
+    const speedStats = Storage.getSpeedStats();
+    fastAnswers = speedStats.fastAnswers || 0;
+    
+    // Daily streak
+    const dailyStreak = Storage.getDailyStreak();
+    
+    return {
+      ...stats,
+      totalPoints: stats.totalPoints,
+      totalGames: stats.totalGames,
+      bestStreak: stats.bestStreak,
+      totalAnswered: stats.totalAnswered,
+      totalCorrect: stats.totalCorrect,
+      perfectGames,
+      categoriesPlayed: categoriesPlayed.size,
+      categoriesCompleted,
+      expertCorrect,
+      fastAnswers,
+      dailyStreak: dailyStreak.count || 0,
+      uniqueDaysPlayed: history.length > 0 ? new Set(history.map(h => h.date?.split('T')[0])).size : 0,
+      gamesNoLivesLost,
+      impostorWins,
+      dailyChallengesWon
+    };
+  },
+  
+  checkAndUnlockAchievements() {
+    const earnedBadges = Storage.getBadges();
+    const stats = this.getAchievementStats();
+    const newBadges = [];
+    
+    BADGES.forEach(badge => {
+      if (!earnedBadges.includes(badge.id) && badge.condition(stats)) {
+        newBadges.push(badge);
+        earnedBadges.push(badge.id);
+      }
+    });
+    
+    if (newBadges.length > 0) {
+      Storage.saveBadges(earnedBadges);
+      // Show popup for each new badge
+      newBadges.forEach((badge, i) => {
+        setTimeout(() => this.showAchievementPopup(badge), i * 2500);
+      });
+    }
+    
+    return newBadges;
+  },
+  
+  showAchievementPopup(badge) {
+    // Create overlay if not exists
+    let overlay = document.querySelector('.achievement-overlay');
+    let popup = document.querySelector('.achievement-popup');
+    
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'achievement-overlay';
+      document.body.appendChild(overlay);
+    }
+    
+    if (!popup) {
+      popup = document.createElement('div');
+      popup.className = 'achievement-popup';
+      document.body.appendChild(popup);
+    }
+    
+    popup.innerHTML = `
+      <div class="achievement-popup-title">Nuevo Logro!</div>
+      <div class="achievement-popup-icon">${badge.icon}</div>
+      <div class="achievement-popup-name">${badge.name}</div>
+      <div class="achievement-popup-desc">${badge.description}</div>
+      <button class="achievement-popup-close">Genial!</button>
+    `;
+    
+    // Sonido de logro
+    this.playSound('achievement');
+    
+    // Show
+    setTimeout(() => {
+      overlay.classList.add('show');
+      popup.classList.add('show');
+    }, 100);
+    
+    // Close button
+    popup.querySelector('.achievement-popup-close').onclick = () => {
+      overlay.classList.remove('show');
+      popup.classList.remove('show');
+    };
+    
+    // Auto close after 5 seconds
+    setTimeout(() => {
+      overlay.classList.remove('show');
+      popup.classList.remove('show');
+    }, 5000);
   },
   // === CONFIGURACION ===
   renderSettings() {
@@ -4301,7 +4721,7 @@ const App = {
     if (catKeys.every(k => !catStats[k])) {
       grid.innerHTML = `
         <div class="empty-state" style="padding:16px;">
-          <div class="empty-icon">�</div>
+          <div class="empty-icon">?</div>
           <div class="empty-text">Juega partidas para ver tus estadisticas por categoria</div>
         </div>
       `;
@@ -4360,7 +4780,7 @@ const App = {
     const bestText = document.getElementById('challenge-best-text');
     if (record) {
       bestEl.style.display = 'block';
-      bestText.textContent = `Mejor: ${record.correct} correctas � ${record.points} pts`;
+      bestText.textContent = `Mejor: ${record.correct} correctas - ${record.points} pts`;
     } else {
       bestEl.style.display = 'none';
     }
@@ -4443,7 +4863,7 @@ const App = {
     // Counter
     document.getElementById('challenge-counter').textContent = ` ${this.challengeCorrect + this.challengeWrong}`;
     // Points
-    document.getElementById('challenge-points').textContent = `� ${this.challengePoints}`;
+    document.getElementById('challenge-points').textContent = `P ${this.challengePoints}`;
     // Streak
     const streakEl = document.getElementById('challenge-streak');
     if (this.challengeStreak >= 3) {
@@ -4522,7 +4942,7 @@ const App = {
       Storage.addWrongAnswer(q.id, index);
     }
     // Update display
-    document.getElementById('challenge-points').textContent = `� ${this.challengePoints}`;
+    document.getElementById('challenge-points').textContent = `P ${this.challengePoints}`;
     document.getElementById('challenge-counter').textContent = ` ${this.challengeCorrect + this.challengeWrong}`;
     const streakEl = document.getElementById('challenge-streak');
     if (this.challengeStreak >= 3) {
@@ -4532,6 +4952,8 @@ const App = {
       streakEl.classList.add('hidden');
     }
     this.vibrate(isCorrect ? 50 : [100, 50, 100]);
+    // Sonidos
+    this.playSound(isCorrect ? 'correct' : 'wrong');
     // Auto-advance after 1.2s
     this.challengeAutoAdvance = setTimeout(() => {
       if (this.challengeSecondsLeft <= 0) return;
@@ -4563,8 +4985,18 @@ const App = {
       stats.bestStreak = this.challengeBestStreak;
     }
     Storage.saveStats(stats);
-    // Add XP
+    // Add XP and check for level up
+    const playerBefore = Storage.getPlayer();
+    const levelBefore = playerBefore.level;
     Storage.addXP(this.challengePoints);
+    const playerAfter = Storage.getPlayer();
+    if (playerAfter.level > levelBefore) {
+      // Subio de nivel!
+      this.playSound('levelup');
+      setTimeout(() => {
+        this.showToast(`!Subiste al nivel ${playerAfter.level}!`, 'success');
+      }, 1500);
+    }
     // Save to history
     Storage.addGameToHistory({
       difficulty: this.challengeDifficulty,
@@ -4583,15 +5015,15 @@ const App = {
     const pct = total > 0 ? Math.round((this.challengeCorrect / total) * 100) : 0;
     let icon, title, subtitle;
     if (this.challengeCorrect >= 20) {
-      icon = '??'; title = '!INCREIBLE!'; subtitle = `${this.challengeCorrect} respuestas correctas  !Eres imparable!`;
+      icon = '*'; title = '!INCREIBLE!'; subtitle = `${this.challengeCorrect} respuestas correctas  !Eres imparable!`;
     } else if (this.challengeCorrect >= 15) {
-      icon = '??'; title = '!Excelente!'; subtitle = `${this.challengeCorrect} correctas  !Gran desempeno!`;
+      icon = '*'; title = '!Excelente!'; subtitle = `${this.challengeCorrect} correctas  !Gran desempeno!`;
     } else if (this.challengeCorrect >= 10) {
-      icon = '??'; title = '!Bien hecho!'; subtitle = `${this.challengeCorrect} correctas  !Sigue mejorando!`;
+      icon = '+'; title = '!Bien hecho!'; subtitle = `${this.challengeCorrect} correctas  !Sigue mejorando!`;
     } else if (this.challengeCorrect >= 5) {
-      icon = '??'; title = '!Buen intento!'; subtitle = `${this.challengeCorrect} correctas  !Puedes mas!`;
+      icon = '~'; title = '!Buen intento!'; subtitle = `${this.challengeCorrect} correctas  !Puedes mas!`;
     } else {
-      icon = '??'; title = 'A practicar'; subtitle = `${this.challengeCorrect} correctas  !No te rindas!`;
+      icon = '-'; title = 'A practicar'; subtitle = `${this.challengeCorrect} correctas  !No te rindas!`;
     }
     document.getElementById('cr-icon').textContent = icon;
     document.getElementById('cr-title').textContent = title;
@@ -4727,11 +5159,20 @@ const App = {
     document.getElementById('duo-question-cat').innerHTML = `${cat.icon} ${cat.name}`;
     // Question
     document.getElementById('duo-question-text').textContent = q.question;
-    // Options
+    // Options - Expanded to 6 options
     const optionsContainer = document.getElementById('duo-options');
     optionsContainer.innerHTML = '';
-    const letters = ['A', 'B', 'C', 'D'];
-    q.options.forEach((opt, i) => {
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+    
+    // Get expanded options (6 options with proper shuffling)
+    const expandedData = this.expandOptionsTo6(q);
+    const expandedOptions = expandedData.options;
+    const correctIndex = expandedData.correctIndex;
+    
+    // Store corrected index for answer checking
+    this.duoCurrentCorrectIndex = correctIndex;
+    
+    expandedOptions.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
       btn.setAttribute('aria-label', `Opcion ${letters[i]}: ${opt}`);
@@ -4739,9 +5180,10 @@ const App = {
         <span class="option-letter">${letters[i]}</span>
         <span class="option-text">${escapeHTML(opt)}</span>
       `;
-      btn.addEventListener('click', () => this.duoSelectAnswer(i, btn));
+      btn.addEventListener('click', () => this.duoSelectAnswer(i, btn, correctIndex));
       optionsContainer.appendChild(btn);
     });
+    optionsContainer.classList.add('six-options');
     // Hide reference
     document.getElementById('duo-ref-card').classList.add('hidden');
     // Animate
@@ -4812,15 +5254,15 @@ const App = {
       this.duoP2Wrong++;
     }
     const timerEl = document.getElementById('duo-quiz-timer');
-    timerEl.textContent = 'T: �Tiempo!';
+    timerEl.textContent = 'T: Tiempo!';
     timerEl.className = 'quiz-timer danger';
-    document.getElementById('duo-ref-text').innerHTML = `<strong>T: �Se acab� el tiempo!</strong>  ${q.reference}`;
+    document.getElementById('duo-ref-text').innerHTML = `<strong>T: Se acabo el tiempo!</strong>  ${q.reference}`;
     document.getElementById('duo-ref-card').classList.remove('hidden');
     this.vibrate([100, 50, 100]);
     // Auto-advance after 2 seconds
     setTimeout(() => this.duoAdvance(), 2000);
   },
-  duoSelectAnswer(index, btnEl) {
+  duoSelectAnswer(index, btnEl, correctIndex) {
     if (this.duoAnswered) return;
     this.duoAnswered = true;
     this.stopDuoTimer();
@@ -4828,7 +5270,9 @@ const App = {
     const questions = isP1 ? this.duoP1Questions : this.duoP2Questions;
     const idx = isP1 ? this.duoP1Index : this.duoP2Index;
     const q = questions[idx];
-    const isCorrect = index === q.correct;
+    // Use passed correctIndex for 6-option questions
+    const actualCorrect = correctIndex !== undefined ? correctIndex : q.correct;
+    const isCorrect = index === actualCorrect;
     const allBtns = document.querySelectorAll('#duo-options .option-btn');
     allBtns.forEach(b => b.classList.add('disabled'));
     const points = DIFFICULTIES[this.duoDifficulty]?.points || 10;
@@ -4850,12 +5294,14 @@ const App = {
       }
       this.showPointPopup(`+${totalPoints}`);
       this.vibrate(50);
+      this.playSound('correct');
     } else {
       btnEl.classList.add('wrong');
-      allBtns[q.correct].classList.add('correct');
+      allBtns[actualCorrect].classList.add('correct');
       if (isP1) this.duoP1Wrong++;
       else this.duoP2Wrong++;
       this.vibrate([100, 50, 100]);
+      this.playSound('wrong');
     }
     // Show reference
     document.getElementById('duo-ref-text').innerHTML = `<strong>${q.reference}</strong>`;
@@ -4920,19 +5366,17 @@ const App = {
   endDuo() {
     this.stopDuoTimer();
     let icon, title, subtitle;
-    const trophy = String.fromCodePoint(0x1F3C6);
-    const handshake = String.fromCodePoint(0x1F91D);
     if (this.duoP1Points > this.duoP2Points) {
-      icon = trophy;
-      title = String.fromCodePoint(0xA1) + this.duoPlayer1 + ' gana!';
+      icon = '*';
+      title = this.duoPlayer1 + ' gana!';
       subtitle = this.duoP1Points + ' vs ' + this.duoP2Points + ' puntos';
     } else if (this.duoP2Points > this.duoP1Points) {
-      icon = trophy;
-      title = String.fromCodePoint(0xA1) + this.duoPlayer2 + ' gana!';
+      icon = '*';
+      title = this.duoPlayer2 + ' gana!';
       subtitle = this.duoP2Points + ' vs ' + this.duoP1Points + ' puntos';
     } else {
-      icon = handshake;
-      title = String.fromCodePoint(0xA1) + 'Empate!';
+      icon = '=';
+      title = 'Empate!';
       subtitle = 'Ambos con ' + this.duoP1Points + ' puntos';
     }
     document.getElementById('duo-res-icon').textContent = icon;
@@ -4960,11 +5404,38 @@ const App = {
     this.showConfetti();
   },
   // ============================================================
-  // SISTEMA DE SONIDO (Web Audio API)
+  // SISTEMA DE SONIDO (Web Audio API + SoundManager)
   // ============================================================
   playSound(type) {
     const settings = Storage.getSettings();
     if (!settings.sound) return;
+    
+    // Usar SoundManager si esta disponible
+    if (typeof SoundManager !== 'undefined') {
+      const soundMap = {
+        'correct': 'playCorrect',
+        'wrong': 'playIncorrect',
+        'phase': 'playLevelUp',
+        'complete': 'playPerfect',
+        'levelup': 'playLevelUp',
+        'achievement': 'playAchievement',
+        'timerLow': 'playTimerLow',
+        'click': 'playClick',
+        'gameStart': 'playGameStart',
+        'gameOver': 'playGameOver',
+        'streak': 'playStreak',
+        'bonus': 'playBonus',
+        'countdown': 'playCountdown'
+      };
+      
+      const soundMethod = soundMap[type];
+      if (soundMethod && typeof SoundManager[soundMethod] === 'function') {
+        SoundManager[soundMethod]();
+        return;
+      }
+    }
+    
+    // Fallback al sistema antiguo
     try {
       if (!this.audioCtx) {
         this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -5016,9 +5487,9 @@ const App = {
     const catName = cat ? cat.name : this.selectedCategory;
     const text = ` BibliaQuiz - !${percentage}% de aciertos!\n` +
       ` ${this.sessionCorrect}/${total} correctas\n` +
-      `� ${this.sessionPoints} puntos\n` +
+      `P ${this.sessionPoints} puntos\n` +
       ` Categoria: ${catName}\n` +
-      `� Fase: ${this.currentPhase}\n` +
+      `F Fase: ${this.currentPhase}\n` +
       `!Pon a prueba tu conocimiento biblico!`;
     if (navigator.share) {
       navigator.share({ title: 'BibliaQuiz', text }).catch(() => {});
@@ -5081,23 +5552,23 @@ const App = {
     // Stats row
     ctx.font = '20px Nunito, sans-serif';
     ctx.fillStyle = '#E0E0E0';
-    ctx.fillText(`? ${this.sessionCorrect} correctas � ? ${this.sessionWrong} incorrectas`, 300, 230);
-    ctx.fillText(`? ${this.sessionPoints} puntos`, 300, 260);
+    ctx.fillText(`V ${this.sessionCorrect} correctas - X ${this.sessionWrong} incorrectas`, 300, 230);
+    ctx.fillText(`P ${this.sessionPoints} puntos`, 300, 260);
     
     // Category
     ctx.font = '18px Nunito, sans-serif';
     ctx.fillStyle = '#6C63FF';
-    ctx.fillText(`${cat?.icon || '??'} ${catName}`, 300, 300);
+    ctx.fillText(`${cat?.icon || '?'} ${catName}`, 300, 300);
     
     // Player info
     ctx.font = '16px Nunito, sans-serif';
     ctx.fillStyle = '#888';
-    ctx.fillText(`${player.avatar} ${player.name} � Nivel ${player.level}`, 300, 330);
+    ctx.fillText(`${player.avatar} ${player.name} - Nivel ${player.level}`, 300, 330);
     
     // Call to action
     ctx.font = 'italic 14px Nunito, sans-serif';
     ctx.fillStyle = '#666';
-    ctx.fillText('�Descarga BibliaQuiz y pon a prueba tu conocimiento!', 300, 370);
+    ctx.fillText('Descarga BibliaQuiz y pon a prueba tu conocimiento!', 300, 370);
     
     // Convert to blob and share
     try {
@@ -5107,7 +5578,7 @@ const App = {
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           title: 'Mi resultado en BibliaQuiz',
-          text: `�Obtuve ${percentage}% en BibliaQuiz!`,
+          text: `Obtuve ${percentage}% en BibliaQuiz!`,
           files: [file]
         });
       } else {
@@ -5133,7 +5604,7 @@ const App = {
     'VIDASINFINITAS': { type: 'infinite_lives', description: 'Vidas Infinitas' },
     'BIBLIAQUIZ2026': { type: 'infinite_lives', description: 'Vidas Infinitas' },
     'GODMODE': { type: 'infinite_lives', description: 'Vidas Infinitas' },
-    'PREMIUM30': { type: 'premium_days', days: 30, description: '30 d�as Premium' },
+    'PREMIUM30': { type: 'premium_days', days: 30, description: '30 dias Premium' },
     'BIENVENIDO': { type: 'lives', amount: 5, description: '5 vidas extra' }
   },
   
@@ -5146,15 +5617,15 @@ const App = {
     resultEl.classList.remove('hidden', 'success', 'error');
     
     if (!code) {
-      resultEl.textContent = '? Ingresa un c�digo';
+      resultEl.textContent = 'Ingresa un codigo';
       resultEl.classList.add('error');
       return;
     }
     
-    // Verificar si el c�digo ya fue usado
+    // Verificar si el codigo ya fue usado
     const usedCodes = JSON.parse(localStorage.getItem('bq_used_promo_codes') || '[]');
     if (usedCodes.includes(code)) {
-      resultEl.textContent = '?? Este c�digo ya fue canjeado';
+      resultEl.textContent = 'Este codigo ya fue canjeado';
       resultEl.classList.add('error');
       return;
     }
@@ -5162,7 +5633,7 @@ const App = {
     // Buscar el c�digo
     const promo = this.PROMO_CODES[code];
     if (!promo) {
-      resultEl.textContent = '? C�digo inv�lido';
+      resultEl.textContent = 'Codigo invalido';
       resultEl.classList.add('error');
       return;
     }
@@ -5174,28 +5645,28 @@ const App = {
         this.infiniteLives = true;
         this.saveInfiniteLives();
         this.renderHomeLives();
-        message = `? �${promo.description} activadas!`;
+        message = `${promo.description} activadas!`;
         break;
         
       case 'premium_days':
-        // Agregar d�as premium
+        // Agregar dias premium
         const currentExpiry = localStorage.getItem('bq_premium_expiry');
         const now = Date.now();
         const baseDate = currentExpiry ? Math.max(parseInt(currentExpiry), now) : now;
         const newExpiry = baseDate + (promo.days * 24 * 60 * 60 * 1000);
         localStorage.setItem('bq_premium_expiry', newExpiry.toString());
-        message = `? �${promo.description} agregados!`;
+        message = `${promo.description} agregados!`;
         break;
         
       case 'lives':
         this.lives = Math.min(this.lives + promo.amount, this.maxLives);
         this.saveLives();
         this.renderHomeLives();
-        message = `? �${promo.description} agregadas!`;
+        message = `${promo.description} agregadas!`;
         break;
     }
     
-    // Marcar c�digo como usado
+    // Marcar codigo como usado
     usedCodes.push(code);
     localStorage.setItem('bq_used_promo_codes', JSON.stringify(usedCodes));
     
@@ -5394,9 +5865,9 @@ const App = {
     card.classList.remove('hidden');
     document.getElementById('streak-card-days').textContent = streak.days;
     if (streak.days >= 30) {
-      document.getElementById('streak-card-title').textContent = '� !Racha legendaria!';
+      document.getElementById('streak-card-title').textContent = 'Racha legendaria!';
     } else if (streak.days >= 7) {
-      document.getElementById('streak-card-title').textContent = '� !Gran racha semanal!';
+      document.getElementById('streak-card-title').textContent = 'Gran racha semanal!';
     } else {
       document.getElementById('streak-card-title').textContent = ' Racha diaria';
     }
@@ -5416,7 +5887,7 @@ const App = {
     if (challenge.date === today && challenge.completed) {
       btn.classList.add('completed');
       document.getElementById('daily-challenge-desc').textContent =
-        ` Completado � ${challenge.score} pts`;
+        ` Completado - ${challenge.score} pts`;
     } else {
       document.getElementById('daily-challenge-desc').textContent =
         '10 preguntas unicas cada dia';
@@ -5438,7 +5909,7 @@ const App = {
     const challenge = Storage.getDailyChallenge();
     const today = new Date().toISOString().split('T')[0];
     if (challenge.date === today && challenge.completed) {
-      this.showToast('? Ya completaste el desaf�o de hoy');
+      this.showToast('Ya completaste el desafio de hoy');
       return;
     }
     // Verificar vidas antes de iniciar
@@ -5527,6 +5998,8 @@ const App = {
     popup.className = 'streak-popup';
     popup.textContent = ` !Racha de ${streak}! +50%`;
     document.body.appendChild(popup);
+    // Sonido de racha
+    this.playSound('streak');
     setTimeout(() => popup.remove(), 1300);
   },
   // ============================================================
@@ -5553,7 +6026,7 @@ const App = {
           Storage.saveNotifEnabled(true);
           document.getElementById('notif-time-setting').classList.remove('hidden');
           PushNotifications.setDailyReminder(true, 9, 0);
-          this.showToast('?? �Recordatorios activados!');
+          this.showToast('Recordatorios activados!');
         } else {
           Storage.saveNotifEnabled(false);
           document.getElementById('setting-notifications').checked = false;
@@ -5568,7 +6041,7 @@ const App = {
           Storage.saveNotifEnabled(true);
           document.getElementById('notif-time-setting').classList.remove('hidden');
           this.scheduleDailyReminder();
-          this.showToast('?? �Recordatorios activados!');
+          this.showToast('Recordatorios activados!');
         } else {
           Storage.saveNotifEnabled(false);
           document.getElementById('setting-notifications').checked = false;
@@ -5609,7 +6082,7 @@ const App = {
       container.innerHTML = '<div class="leaderboard-empty">Juega partidas para llenar el ranking</div>';
       return;
     }
-    const medals = ['??', '??', '??'];
+    const medals = ['1ro', '2do', '3ro'];
     container.innerHTML = lb.slice(0, 10).map((entry, i) => {
       const rank = medals[i] || `${i + 1}`;
       const d = entry.date ? new Date(entry.date).toLocaleDateString('es', { day: '2-digit', month: 'short' }) : '';
@@ -5627,15 +6100,20 @@ const App = {
     }).join('');
   },
   // ============================================================
-  // PROGRESS CHART (canvas bar chart - weekly progress)
+  // PROGRESS CHART (canvas bar chart - weekly/monthly progress)
   // ============================================================
-  renderProgressChart() {
+  renderProgressChart(period = 'weekly') {
     const canvas = document.getElementById('progress-chart');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     
-    // Get weekly stats (last 7 days)
-    const weeklyData = Storage.getWeeklyStats();
+    // Get stats based on period
+    let chartData;
+    if (period === 'monthly') {
+      chartData = Storage.getMonthlyStats ? Storage.getMonthlyStats() : this.calculateMonthlyStats();
+    } else {
+      chartData = Storage.getWeeklyStats();
+    }
     
     // Set actual canvas size for sharp rendering
     const dpr = window.devicePixelRatio || 1;
@@ -5657,26 +6135,26 @@ const App = {
     const bgColor = cs.getPropertyValue('--bg-card').trim() || '#1a1a2e';
     
     // Check if there's any data
-    const totalGames = weeklyData.reduce((sum, d) => sum + d.games, 0);
+    const totalGames = chartData.reduce((sum, d) => sum + d.games, 0);
     if (totalGames === 0) {
       ctx.fillStyle = textColor;
       ctx.font = '13px Nunito, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('Juega partidas para ver tu progreso semanal', W / 2, H / 2 - 10);
       ctx.font = '11px Nunito, sans-serif';
-      ctx.fillText('?? Aqu� ver�s tus estad�sticas diarias', W / 2, H / 2 + 15);
+      ctx.fillText('Aqui veras tus estadisticas diarias', W / 2, H / 2 + 15);
       return;
     }
     
     const padL = 40, padR = 16, padT = 30, padB = 45;
     const chartW = W - padL - padR;
     const chartH = H - padT - padB;
-    const n = weeklyData.length;
+    const n = chartData.length;
     const barGroupW = chartW / n;
     
     // Find max values for scaling
-    const maxGames = Math.max(...weeklyData.map(d => d.games), 1);
-    const maxPoints = Math.max(...weeklyData.map(d => d.points), 10);
+    const maxGames = Math.max(...chartData.map(d => d.games), 1);
+    const maxPoints = Math.max(...chartData.map(d => d.points), 10);
     
     // Draw Y axis guides
     ctx.strokeStyle = gridColor + '22';
@@ -5692,7 +6170,7 @@ const App = {
     }
     
     // Draw bars for each day
-    weeklyData.forEach((day, i) => {
+    chartData.forEach((day, i) => {
       const x = padL + i * barGroupW + barGroupW * 0.1;
       const barW = barGroupW * 0.8;
       
@@ -5777,14 +6255,54 @@ const App = {
     ctx.fillStyle = textColor;
     ctx.fillText('<50%', padL + 127, legendY);
     
-    // Total week stats
-    const totalCorrect = weeklyData.reduce((s, d) => s + d.correct, 0);
-    const totalQuestions = weeklyData.reduce((s, d) => s + d.total, 0);
-    const weekAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+    // Total stats
+    const totalCorrect = chartData.reduce((s, d) => s + d.correct, 0);
+    const totalQuestions = chartData.reduce((s, d) => s + d.total, 0);
+    const periodAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+    const periodLabel = period === 'monthly' ? 'Mes' : 'Semana';
     
     ctx.textAlign = 'right';
     ctx.fillStyle = textColor;
-    ctx.fillText(`Semana: ${weekAccuracy}% (${totalGames} partidas)`, W - padR, legendY);
+    ctx.fillText(`${periodLabel}: ${periodAccuracy}% (${totalGames} partidas)`, W - padR, legendY);
+  },
+  
+  // Calculate monthly stats for chart
+  calculateMonthlyStats() {
+    const history = Storage.getHistory();
+    const now = new Date();
+    const data = [];
+    
+    // Get data for last 4 weeks
+    for (let week = 3; week >= 0; week--) {
+      const weekStart = new Date(now);
+      weekStart.setDate(now.getDate() - (week * 7) - now.getDay());
+      weekStart.setHours(0, 0, 0, 0);
+      
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekStart.getDate() + 6);
+      weekEnd.setHours(23, 59, 59, 999);
+      
+      const weekGames = history.filter(h => {
+        const d = new Date(h.date);
+        return d >= weekStart && d <= weekEnd;
+      });
+      
+      const correct = weekGames.reduce((s, g) => s + (g.correct || 0), 0);
+      const total = weekGames.reduce((s, g) => s + (g.total || 0), 0);
+      const points = weekGames.reduce((s, g) => s + (g.points || 0), 0);
+      
+      data.push({
+        label: `Sem ${4 - week}`,
+        date: weekStart.toLocaleDateString('es', { day: '2-digit', month: 'short' }),
+        games: weekGames.length,
+        correct,
+        total,
+        points,
+        accuracy: total > 0 ? Math.round((correct / total) * 100) : 0
+      });
+    }
+    
+    return data;
   },
   // ============================================================
   // TOAST NOTIFICATION
@@ -5816,7 +6334,7 @@ const App = {
       this.deferredInstallPrompt.prompt();
       const { outcome } = await this.deferredInstallPrompt.userChoice;
       if (outcome === 'accepted') {
-        this.showToast('?? �App instalada!');
+        this.showToast('App instalada!');
       }
       this.deferredInstallPrompt = null;
       document.getElementById('install-banner')?.classList.add('hidden');
@@ -5871,15 +6389,15 @@ const App = {
     grid.innerHTML = '';
     // Las categorias de palabras del impostor (no incluir 'aleatorio' como categoria separada)
     const impostorCats = {
-      personajes: { name: "Personajes", icon: String.fromCodePoint(0x1F465), color: "#4CAF50" },
-      libros: { name: "Libros", icon: String.fromCodePoint(0x1F4DA), color: "#2196F3" },
-      historias: { name: "Historias", icon: String.fromCodePoint(0x1F4D6), color: "#FF9800" },
-      reyes: { name: "Reyes", icon: String.fromCodePoint(0x1F451), color: "#9C27B0" },
-      profetas: { name: "Profetas", icon: String.fromCodePoint(0x1F64F), color: "#F44336" },
-      vida_jesus: { name: "Vida de Jesus", icon: String.fromCodePoint(0x271D), color: "#E91E63" },
-      milagros: { name: "Milagros", icon: String.fromCodePoint(0x2728), color: "#00BCD4" },
-      cartas: { name: "Cartas", icon: String.fromCodePoint(0x1F4DC), color: "#795548" },
-      aleatorio: { name: "Aleatorio", icon: String.fromCodePoint(0x1F3B2), color: "#607D8B" }
+      personajes: { name: "Personajes", icon: "&#129489;", color: "#4CAF50" },
+      libros: { name: "Libros", icon: "&#128214;", color: "#2196F3" },
+      historias: { name: "Historias", icon: "&#128220;", color: "#FF9800" },
+      reyes: { name: "Reyes", icon: "&#128081;", color: "#9C27B0" },
+      profetas: { name: "Profetas", icon: "&#128227;", color: "#F44336" },
+      vida_jesus: { name: "Vida de Jesus", icon: "&#10013;", color: "#E91E63" },
+      milagros: { name: "Milagros", icon: "&#10024;", color: "#00BCD4" },
+      cartas: { name: "Cartas", icon: "&#9993;", color: "#795548" },
+      aleatorio: { name: "Aleatorio", icon: "&#127922;", color: "#607D8B" }
     };
     Object.entries(impostorCats).forEach(([key, cat]) => {
       const card = document.createElement('div');
@@ -5985,7 +6503,7 @@ const App = {
     // Colores de alerta
     timerEl.classList.remove('warning', 'danger');
     if (this.impostorDiscussSeconds <= 0) {
-      timerEl.textContent = 'T: �Tiempo!';
+      timerEl.textContent = 'T: Tiempo!';
       timerEl.classList.add('danger');
     } else if (this.impostorDiscussSeconds <= 15) {
       timerEl.classList.add('danger');
@@ -6082,6 +6600,439 @@ const App = {
         this[key] = null;
       }
     });
+  },
+
+  // =====================================================
+  // MODO DELETREAR (Spelling Mode)
+  // =====================================================
+  
+  // Estado del modo deletrear
+  spellingQuestions: [],
+  spellingIndex: 0,
+  spellingCorrect: 0,
+  spellingSkipped: 0,
+  spellingPoints: 0,
+  spellingCurrentAnswer: '',
+  spellingUserInput: [],
+  spellingShuffledLetters: [],
+
+  // Preguntas especiales para deletrear (respuestas cortas)
+  spellingQuestionPool: [
+    { hint: '¿Quién construyó el arca?', answer: 'NOE', reference: 'Génesis 6:14' },
+    { hint: '¿Profeta que fue tragado por un pez?', answer: 'JONAS', reference: 'Jonás 1:17' },
+    { hint: '¿Primer hombre creado por Dios?', answer: 'ADAN', reference: 'Génesis 2:7' },
+    { hint: '¿Rey sabio que pidió sabiduría?', answer: 'SALOMON', reference: '1 Reyes 3:9' },
+    { hint: '¿Discípulo que negó a Jesús tres veces?', answer: 'PEDRO', reference: 'Mateo 26:69-75' },
+    { hint: '¿Gigante derrotado por David?', answer: 'GOLIAT', reference: '1 Samuel 17:49' },
+    { hint: '¿Ciudad donde nació Jesús?', answer: 'BELEN', reference: 'Mateo 2:1' },
+    { hint: '¿Primer libro de la Biblia?', answer: 'GENESIS', reference: 'Génesis 1:1' },
+    { hint: '¿Último libro de la Biblia?', answer: 'APOCALIPSIS', reference: 'Apocalipsis 1:1' },
+    { hint: '¿Monte donde Moisés recibió los mandamientos?', answer: 'SINAI', reference: 'Éxodo 19:20' },
+    { hint: '¿Mar que Moisés dividió?', answer: 'ROJO', reference: 'Éxodo 14:21' },
+    { hint: '¿Discípulo que traicionó a Jesús?', answer: 'JUDAS', reference: 'Mateo 26:14-16' },
+    { hint: '¿Patriarca que casi sacrifica a su hijo?', answer: 'ABRAHAM', reference: 'Génesis 22:2' },
+    { hint: '¿Profeta arrebatado al cielo en carro de fuego?', answer: 'ELIAS', reference: '2 Reyes 2:11' },
+    { hint: '¿Rey pastor de Israel?', answer: 'DAVID', reference: '1 Samuel 16:13' },
+    { hint: '¿Madre de Jesús?', answer: 'MARIA', reference: 'Lucas 1:30-31' },
+    { hint: '¿Apóstol de los gentiles?', answer: 'PABLO', reference: 'Hechos 9:15' },
+    { hint: '¿Profeta del foso de los leones?', answer: 'DANIEL', reference: 'Daniel 6:16' },
+    { hint: '¿Hombre fuerte que perdió su fuerza?', answer: 'SANSON', reference: 'Jueces 16:17' },
+    { hint: '¿Hijo de Jacob vendido por sus hermanos?', answer: 'JOSE', reference: 'Génesis 37:28' },
+    { hint: '¿Ciudad de muros que cayeron?', answer: 'JERICO', reference: 'Josué 6:20' },
+    { hint: '¿Primer mártir cristiano?', answer: 'ESTEBAN', reference: 'Hechos 7:59' },
+    { hint: '¿Esposa de Isaac?', answer: 'REBECA', reference: 'Génesis 24:67' },
+    { hint: '¿Hermano de Moisés?', answer: 'AARON', reference: 'Éxodo 4:14' },
+    { hint: '¿Rey que persiguió a David?', answer: 'SAUL', reference: '1 Samuel 18:9' },
+    { hint: '¿Libro de los Salmos?', answer: 'SALMOS', reference: 'Salmo 1:1' },
+    { hint: '¿Profeta del Antiguo Testamento, hijo de Amoz?', answer: 'ISAIAS', reference: 'Isaías 1:1' },
+    { hint: '¿Primer rey de Israel?', answer: 'SAUL', reference: '1 Samuel 10:1' },
+    { hint: '¿Padre de Juan el Bautista?', answer: 'ZACARIAS', reference: 'Lucas 1:13' },
+    { hint: '¿Nombre del huerto donde Jesús oró?', answer: 'GETSEMANI', reference: 'Mateo 26:36' }
+  ],
+
+  // Iniciar modo deletrear
+  startSpellingMode() {
+    console.log('[Spelling] Iniciando modo deletrear');
+    
+    // Combinar preguntas del pool estático con preguntas de QUESTIONS_DB
+    let allSpellingQuestions = [...this.spellingQuestionPool];
+    
+    // Convertir preguntas de QUESTIONS_DB al formato de spelling
+    // Solo incluir respuestas que sean una sola palabra (nombres, lugares, etc.)
+    if (typeof QUESTIONS_DB !== 'undefined' && Array.isArray(QUESTIONS_DB)) {
+      const dbQuestions = QUESTIONS_DB
+        .filter(q => {
+          const answer = q.options[q.correct];
+          // Solo incluir respuestas de una sola palabra, sin espacios, y de longitud razonable
+          return answer && 
+                 !answer.includes(' ') && 
+                 answer.length >= 3 && 
+                 answer.length <= 12 &&
+                 /^[a-záéíóúñü]+$/i.test(answer);
+        })
+        .map(q => ({
+          hint: q.question,
+          answer: q.options[q.correct].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""),
+          reference: q.reference || ''
+        }));
+      
+      allSpellingQuestions = [...allSpellingQuestions, ...dbQuestions];
+    }
+    
+    // Mezclar y seleccionar 10 preguntas
+    const shuffled = allSpellingQuestions.sort(() => Math.random() - 0.5);
+    this.spellingQuestions = shuffled.slice(0, 10);
+    
+    // Resetear estado
+    this.spellingIndex = 0;
+    this.spellingCorrect = 0;
+    this.spellingSkipped = 0;
+    this.spellingPoints = 0;
+    this.spellingLives = 5; // 5 vidas para el modo
+    
+    // Mostrar pantalla
+    this.showScreen('spelling');
+    
+    // Renderizar primera pregunta
+    this.renderSpellingQuestion();
+    
+    // Vincular eventos
+    this.bindSpellingEvents();
+  },
+
+  // Renderizar pregunta de deletrear
+  renderSpellingQuestion() {
+    const q = this.spellingQuestions[this.spellingIndex];
+    if (!q) return this.endSpellingMode();
+
+    // Actualizar contador y progreso
+    document.getElementById('spelling-counter').textContent = `${this.spellingIndex + 1}/${this.spellingQuestions.length}`;
+    document.getElementById('spelling-score').textContent = `${this.spellingPoints} pts`;
+    
+    // Actualizar vidas
+    const livesEl = document.getElementById('spelling-lives');
+    if (livesEl) {
+      livesEl.textContent = '❤️'.repeat(this.spellingLives);
+    }
+    
+    const progress = (this.spellingIndex / this.spellingQuestions.length) * 100;
+    document.getElementById('spelling-progress-fill').style.width = `${progress}%`;
+
+    // Mostrar pista y referencia
+    document.getElementById('spelling-hint').textContent = q.hint;
+    document.getElementById('spelling-reference').textContent = q.reference;
+
+    // Guardar respuesta actual
+    this.spellingCurrentAnswer = q.answer.toUpperCase();
+    this.spellingUserInput = [];
+
+    // Crear cajas de letras vacías (con evento click para quitar letra)
+    const boxesContainer = document.getElementById('spelling-boxes');
+    boxesContainer.innerHTML = '';
+    
+    for (let i = 0; i < this.spellingCurrentAnswer.length; i++) {
+      const box = document.createElement('div');
+      box.className = 'spelling-box';
+      box.dataset.index = i;
+      box.addEventListener('click', () => this.removeSpellingLetter(i));
+      boxesContainer.appendChild(box);
+    }
+
+    // Crear teclado con letras mezcladas
+    this.createSpellingKeyboard();
+
+    // Ocultar feedback
+    document.getElementById('spelling-feedback').classList.add('hidden');
+  },
+
+  // Crear teclado con letras mezcladas (2 filas)
+  createSpellingKeyboard() {
+    const answer = this.spellingCurrentAnswer;
+    
+    // Obtener letras de la respuesta
+    let letters = answer.split('');
+    
+    // Calcular cuántas letras extra necesitamos (queremos 14-16 letras total, en 2 filas de 7-8)
+    const targetTotal = 14;
+    const extraNeeded = Math.max(0, targetTotal - letters.length);
+    
+    // Añadir letras extra aleatorias como distracción
+    const extraLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    const usedLetters = new Set(letters.map(l => l.toUpperCase()));
+    
+    // Primero añadir letras que NO están en la respuesta
+    const availableExtra = extraLetters.filter(l => !usedLetters.has(l));
+    
+    for (let i = 0; i < extraNeeded; i++) {
+      if (availableExtra.length > 0) {
+        const idx = Math.floor(Math.random() * availableExtra.length);
+        letters.push(availableExtra.splice(idx, 1)[0]);
+      } else {
+        // Si no hay suficientes letras únicas, añadir aleatorias
+        letters.push(extraLetters[Math.floor(Math.random() * extraLetters.length)]);
+      }
+    }
+    
+    // Mezclar todas las letras
+    this.spellingShuffledLetters = letters.sort(() => Math.random() - 0.5);
+    
+    // Crear teclado con 2 filas
+    const keyboard = document.getElementById('spelling-keyboard');
+    keyboard.innerHTML = '';
+    
+    // Dividir en 2 filas
+    const midpoint = Math.ceil(this.spellingShuffledLetters.length / 2);
+    const row1Letters = this.spellingShuffledLetters.slice(0, midpoint);
+    const row2Letters = this.spellingShuffledLetters.slice(midpoint);
+    
+    // Fila 1
+    const row1 = document.createElement('div');
+    row1.className = 'spelling-keyboard-row';
+    row1Letters.forEach((letter, i) => {
+      const key = this.createSpellingKey(letter, i);
+      row1.appendChild(key);
+    });
+    keyboard.appendChild(row1);
+    
+    // Fila 2
+    const row2 = document.createElement('div');
+    row2.className = 'spelling-keyboard-row';
+    row2Letters.forEach((letter, i) => {
+      const key = this.createSpellingKey(letter, midpoint + i);
+      row2.appendChild(key);
+    });
+    keyboard.appendChild(row2);
+  },
+  
+  // Crear una tecla individual
+  createSpellingKey(letter, index) {
+    const key = document.createElement('button');
+    key.className = 'spelling-key';
+    key.textContent = letter;
+    key.dataset.letter = letter;
+    key.dataset.index = index;
+    key.addEventListener('click', () => this.handleSpellingKeyPress(letter, index, key));
+    return key;
+  },
+  
+  // Quitar letra al tocar un cuadro lleno
+  removeSpellingLetter(boxIndex) {
+    // Solo si hay una letra en esa posición
+    if (boxIndex >= this.spellingUserInput.length) return;
+    
+    // Obtener la letra que se va a quitar
+    const removed = this.spellingUserInput[boxIndex];
+    
+    // Quitar del array
+    this.spellingUserInput.splice(boxIndex, 1);
+    
+    // Restaurar la tecla correspondiente
+    const keys = document.querySelectorAll('.spelling-key');
+    if (keys[removed.keyIndex]) {
+      keys[removed.keyIndex].classList.remove('used');
+    }
+    
+    // Actualizar todas las cajas
+    const boxes = document.querySelectorAll('.spelling-box');
+    boxes.forEach((box, i) => {
+      if (i < this.spellingUserInput.length) {
+        box.textContent = this.spellingUserInput[i].letter;
+        box.classList.add('filled');
+      } else {
+        box.textContent = '';
+        box.classList.remove('filled', 'correct', 'wrong');
+      }
+    });
+    
+    // Ocultar feedback si estaba visible
+    document.getElementById('spelling-feedback').classList.add('hidden');
+  },
+
+  // Manejar presión de tecla
+  handleSpellingKeyPress(letter, keyIndex, keyEl) {
+    if (this.spellingUserInput.length >= this.spellingCurrentAnswer.length) return;
+    
+    // Añadir letra al input
+    this.spellingUserInput.push({ letter, keyIndex });
+    
+    // Actualizar caja correspondiente
+    const boxes = document.querySelectorAll('.spelling-box');
+    const currentBox = boxes[this.spellingUserInput.length - 1];
+    if (currentBox) {
+      currentBox.textContent = letter;
+      currentBox.classList.add('filled');
+    }
+    
+    // Marcar tecla como usada
+    keyEl.classList.add('used');
+    
+    // Verificar si completó la palabra
+    if (this.spellingUserInput.length === this.spellingCurrentAnswer.length) {
+      this.checkSpellingAnswer();
+    }
+  },
+
+  // Verificar respuesta
+  checkSpellingAnswer() {
+    const userAnswer = this.spellingUserInput.map(u => u.letter).join('');
+    const isCorrect = userAnswer === this.spellingCurrentAnswer;
+    
+    const boxes = document.querySelectorAll('.spelling-box');
+    const feedback = document.getElementById('spelling-feedback');
+    
+    if (isCorrect) {
+      // Marcar todas como correctas
+      boxes.forEach(box => box.classList.add('correct'));
+      
+      // Mostrar feedback
+      feedback.className = 'spelling-feedback correct';
+      document.getElementById('spelling-feedback-icon').textContent = '✓';
+      document.getElementById('spelling-feedback-text').textContent = '¡Correcto!';
+      feedback.classList.remove('hidden');
+      
+      // Sumar puntos
+      this.spellingCorrect++;
+      this.spellingPoints += 15;
+      document.getElementById('spelling-score').textContent = `${this.spellingPoints} pts`;
+      
+      // Monedas
+      const coins = 8;
+      this.sessionCoins += coins;
+      Storage.addCoins(coins);
+      
+      // Siguiente pregunta después de delay
+      setTimeout(() => this.nextSpellingQuestion(), 1500);
+      
+    } else {
+      // INCORRECTO: Quitar una vida y dejar intentar de nuevo
+      this.spellingLives--;
+      
+      // Actualizar display de vidas
+      const livesEl = document.getElementById('spelling-lives');
+      if (livesEl) {
+        livesEl.textContent = '❤️'.repeat(Math.max(0, this.spellingLives));
+      }
+      
+      // Marcar letra por letra temporalmente para mostrar cuáles estaban mal
+      for (let i = 0; i < boxes.length; i++) {
+        if (this.spellingUserInput[i]?.letter === this.spellingCurrentAnswer[i]) {
+          boxes[i].classList.add('correct');
+        } else {
+          boxes[i].classList.add('wrong');
+        }
+      }
+      
+      // Mostrar feedback SIN la respuesta
+      feedback.className = 'spelling-feedback wrong';
+      document.getElementById('spelling-feedback-icon').textContent = '✗';
+      document.getElementById('spelling-feedback-text').textContent = `¡Incorrecto! Te quedan ${this.spellingLives} vidas`;
+      feedback.classList.remove('hidden');
+      
+      // Si se quedó sin vidas, terminar
+      if (this.spellingLives <= 0) {
+        document.getElementById('spelling-feedback-text').textContent = '¡Sin vidas! Game Over';
+        setTimeout(() => this.endSpellingMode(), 2000);
+      } else {
+        // Limpiar después de un momento y dejar intentar de nuevo
+        setTimeout(() => {
+          this.clearSpellingInput();
+        }, 1500);
+      }
+    }
+  },
+
+  // Siguiente pregunta
+  nextSpellingQuestion() {
+    this.spellingIndex++;
+    
+    if (this.spellingIndex >= this.spellingQuestions.length) {
+      this.endSpellingMode();
+    } else {
+      this.renderSpellingQuestion();
+    }
+  },
+
+  // Limpiar input actual
+  clearSpellingInput() {
+    this.spellingUserInput = [];
+    
+    // Limpiar cajas
+    const boxes = document.querySelectorAll('.spelling-box');
+    boxes.forEach(box => {
+      box.textContent = '';
+      box.classList.remove('filled', 'correct', 'wrong');
+    });
+    
+    // Restaurar teclas
+    const keys = document.querySelectorAll('.spelling-key');
+    keys.forEach(key => key.classList.remove('used'));
+    
+    // Ocultar feedback
+    document.getElementById('spelling-feedback').classList.add('hidden');
+  },
+
+  // Saltar pregunta
+  skipSpellingQuestion() {
+    this.spellingSkipped++;
+    
+    // Mostrar respuesta correcta
+    const boxes = document.querySelectorAll('.spelling-box');
+    this.spellingCurrentAnswer.split('').forEach((letter, i) => {
+      if (boxes[i]) {
+        boxes[i].textContent = letter;
+        boxes[i].classList.add('filled');
+      }
+    });
+    
+    const feedback = document.getElementById('spelling-feedback');
+    feedback.className = 'spelling-feedback wrong';
+    document.getElementById('spelling-feedback-icon').textContent = '⏭️';
+    document.getElementById('spelling-feedback-text').textContent = `Respuesta: ${this.spellingCurrentAnswer}`;
+    feedback.classList.remove('hidden');
+    
+    // Siguiente pregunta
+    setTimeout(() => this.nextSpellingQuestion(), 2000);
+  },
+
+  // Vincular eventos del modo deletrear
+  bindSpellingEvents() {
+    const clearBtn = document.getElementById('spelling-clear');
+    const skipBtn = document.getElementById('spelling-skip');
+    
+    // Remover listeners anteriores
+    clearBtn.replaceWith(clearBtn.cloneNode(true));
+    skipBtn.replaceWith(skipBtn.cloneNode(true));
+    
+    // Añadir nuevos
+    document.getElementById('spelling-clear').addEventListener('click', () => this.clearSpellingInput());
+    document.getElementById('spelling-skip').addEventListener('click', () => this.skipSpellingQuestion());
+  },
+
+  // Terminar modo deletrear
+  endSpellingMode() {
+    console.log('[Spelling] Modo completado');
+    
+    // Mostrar resultados
+    this.showScreen('spelling-results');
+    
+    // Actualizar estadísticas
+    document.getElementById('spelling-stat-correct').textContent = this.spellingCorrect;
+    document.getElementById('spelling-stat-skipped').textContent = this.spellingSkipped;
+    document.getElementById('spelling-stat-points').textContent = this.spellingPoints;
+    
+    // Calcular porcentaje
+    const percentage = Math.round((this.spellingCorrect / this.spellingQuestions.length) * 100);
+    let message = '';
+    if (percentage >= 90) message = '¡Increíble! Eres un experto bíblico.';
+    else if (percentage >= 70) message = '¡Muy bien! Conoces bien la Biblia.';
+    else if (percentage >= 50) message = 'Buen intento. ¡Sigue practicando!';
+    else message = 'No te rindas. ¡La práctica hace al maestro!';
+    
+    document.getElementById('spelling-results-subtitle').textContent = message;
+    
+    // Vincular botones de resultados
+    document.getElementById('btn-spelling-replay').onclick = () => this.startSpellingMode();
+    document.getElementById('btn-spelling-home').onclick = () => this.showScreen('home');
   }
 };
 

@@ -1,17 +1,17 @@
 // BibliaQuiz - Definiciones con iconos estilizados
 // Version con simbolos Unicode decorativos
 
-// Categorias con iconos bonitos
+// Categorias con iconos bonitos e imágenes decorativas
 window.CATEGORIES = {
-  personajes: { name: "Personajes", icon: "🧑‍🤝‍🧑", color: "#4CAF50" },
-  libros: { name: "Libros", icon: "📚", color: "#2196F3" },
-  historias: { name: "Historias", icon: "📜", color: "#FF9800" },
-  reyes: { name: "Reyes", icon: "👑", color: "#9C27B0" },
-  profetas: { name: "Profetas", icon: "🔮", color: "#F44336" },
-  vida_jesus: { name: "Vida de Jesús", icon: "✝️", color: "#E91E63" },
-  milagros: { name: "Milagros", icon: "✨", color: "#00BCD4" },
-  cartas: { name: "Cartas", icon: "💌", color: "#795548" },
-  aleatorio: { name: "Aleatorio", icon: "🎲", color: "#607D8B" }
+  personajes: { name: "Personajes", icon: "🧑‍🤝‍🧑", color: "#4CAF50", bigIcon: "👨‍👩‍👧‍👦" },
+  libros: { name: "Libros", icon: "📚", color: "#2196F3", bigIcon: "📖" },
+  historias: { name: "Historias", icon: "📜", color: "#FF9800", bigIcon: "🎬" },
+  reyes: { name: "Reyes", icon: "👑", color: "#9C27B0", bigIcon: "👑" },
+  profetas: { name: "Profetas", icon: "🔮", color: "#F44336", bigIcon: "🧙" },
+  vida_jesus: { name: "Vida de Jesús", icon: "✝️", color: "#E91E63", bigIcon: "✝️" },
+  milagros: { name: "Milagros", icon: "✨", color: "#00BCD4", bigIcon: "🌟" },
+  cartas: { name: "Cartas", icon: "💌", color: "#795548", bigIcon: "✉️" },
+  aleatorio: { name: "Aleatorio", icon: "🎲", color: "#607D8B", bigIcon: "🎲" }
 };
 
 // Niveles de dificultad

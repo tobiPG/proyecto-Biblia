@@ -54,6 +54,10 @@ const userSchema = new mongoose.Schema({
   
   // 🆕 Récords de modo contrarreloj
   challengeRecords: { type: mongoose.Schema.Types.Mixed, default: {} },
+
+  // Rankings por categoría (ranked competitivo)
+  // { personajes: { trophies, wins, losses, ties, highestTrophies, gamesPlayed }, ... }
+  rankings: { type: mongoose.Schema.Types.Mixed, default: {} },
   
   // 🆕 Racha diaria
   dailyStreak: { type: mongoose.Schema.Types.Mixed, default: { current: 0, best: 0, lastDate: null } },

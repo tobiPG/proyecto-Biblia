@@ -78,7 +78,7 @@
         loadingDiv.style.display = 'block';
         
         try {
-          const response = await fetch('http://localhost:3001/api/auth/login', {
+          const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -126,7 +126,7 @@
         loadingDiv.style.display = 'block';
         
         try {
-          const response = await fetch('http://localhost:3001/api/auth/register', {
+          const response = await fetch(`${API_BASE_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password, displayName: name })
@@ -326,7 +326,7 @@ const App = {
   
   // Pool de distractores bíblicos por categoría para generar opciones extra
   distractorPool: {
-    personajes: ['Abraham', 'Isaac', 'Jacob', 'Moisés', 'David', 'Salomón', 'Elías', 'Eliseo', 'Daniel', 'José', 'Samuel', 'Jonás', 'Noé', 'Adán', 'Eva', 'Caín', 'Abel', 'Set', 'Enoc', 'Matusalén', 'Pedro', 'Pablo', 'Juan', 'Santiago', 'Andrés', 'Felipe', 'Tomás', 'Mateo', 'Judas', 'Bartolomé', 'María', 'Marta', 'Lázaro', 'Nicodemo', 'Pilato', 'Herodes', 'Faraón', 'Nabucodonosor', 'Goliat', 'Sansón'],
+    personajes: ['Abraham', 'Isaac', 'Jacob', 'Moisés', 'David', 'Salomón', 'Elías', 'Eliseo', 'Daniel', 'José', 'Samuel', 'Jonás', 'Noé', 'Adán', 'Eva', 'Caín', 'Abel', 'Set', 'Enoc', 'Matusalén', 'Pedro', 'Pablo', 'Juan', 'Santiago', 'Andrés', 'Felipe', 'Tomás', 'Mateo', 'Judas', 'Bartolomé', 'María', 'Marta', 'Lázaro', 'Nicodemo', 'Pilato', 'Herodes', 'Faraón', 'Nabucodonosor', 'Goliat', 'Sansón', 'Isaías', 'Jeremías', 'Ezequiel', 'Oseas', 'Amós', 'Miqueas', 'Habacuc', 'Sofonías', 'Hageo', 'Zacarías', 'Malaquías', 'Hilcías', 'Petuel', 'Beeri', 'Buzi', 'Amoz', 'Cusi', 'Iddo'],
     numeros: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '20', '30', '40', '50', '70', '100', '120', '150', '200', '300', '400', '500', '600', '666', '1000'],
     lugares: ['Jerusalén', 'Belén', 'Nazaret', 'Galilea', 'Samaria', 'Egipto', 'Babilonia', 'Roma', 'Corinto', 'Éfeso', 'Antioquía', 'Damasco', 'Jericó', 'Sodoma', 'Gomorra', 'Nínive', 'Tarsis', 'Sinaí', 'Carmelo', 'Tabor', 'Getsemaní', 'Gólgota', 'Caná', 'Capernaúm', 'Betania'],
     libros: ['Génesis', 'Éxodo', 'Levítico', 'Números', 'Deuteronomio', 'Josué', 'Jueces', 'Rut', 'Samuel', 'Reyes', 'Crónicas', 'Esdras', 'Nehemías', 'Ester', 'Job', 'Salmos', 'Proverbios', 'Eclesiastés', 'Cantares', 'Isaías', 'Jeremías', 'Ezequiel', 'Daniel', 'Mateo', 'Marcos', 'Lucas', 'Juan', 'Hechos', 'Romanos', 'Corintios', 'Apocalipsis'],
@@ -344,19 +344,30 @@ const App = {
       return shuffled;
     }
     
-    // Determinar categoría de distractores según el contenido de las opciones
+    // PRIORIDAD 1: Usar la categoría de la pregunta si está disponible
     let poolCategory = 'general';
-    const firstOption = originalOptions[0]?.toLowerCase() || '';
+    const questionCategory = question.category?.toLowerCase();
     
-    // Detectar tipo de opciones
-    if (/^\d+$/.test(originalOptions[0])) {
-      poolCategory = 'numeros';
-    } else if (originalOptions.some(opt => this.distractorPool.personajes.some(p => opt.toLowerCase().includes(p.toLowerCase())))) {
+    // Mapear categorías de preguntas a pools de distractores
+    if (questionCategory === 'personajes' || questionCategory === 'profetas' || questionCategory === 'reyes') {
       poolCategory = 'personajes';
-    } else if (originalOptions.some(opt => this.distractorPool.lugares.some(l => opt.toLowerCase().includes(l.toLowerCase())))) {
+    } else if (questionCategory === 'lugares' || questionCategory === 'geografia') {
       poolCategory = 'lugares';
-    } else if (originalOptions.some(opt => this.distractorPool.libros.some(b => opt.toLowerCase().includes(b.toLowerCase())))) {
+    } else if (questionCategory === 'libros') {
       poolCategory = 'libros';
+    } else {
+      // PRIORIDAD 2: Detectar automáticamente según contenido de opciones
+      const firstOption = originalOptions[0]?.toLowerCase() || '';
+      
+      if (/^\d+$/.test(originalOptions[0])) {
+        poolCategory = 'numeros';
+      } else if (originalOptions.some(opt => this.distractorPool.personajes.some(p => opt.toLowerCase().includes(p.toLowerCase())))) {
+        poolCategory = 'personajes';
+      } else if (originalOptions.some(opt => this.distractorPool.lugares.some(l => opt.toLowerCase().includes(l.toLowerCase())))) {
+        poolCategory = 'lugares';
+      } else if (originalOptions.some(opt => this.distractorPool.libros.some(b => opt.toLowerCase().includes(b.toLowerCase())))) {
+        poolCategory = 'libros';
+      }
     }
     
     // Obtener distractores que no estén ya en las opciones
@@ -365,12 +376,12 @@ const App = {
       d => !existingLower.includes(d.toLowerCase())
     );
     
-    // Si no hay suficientes en la categoría, añadir de la general
-    if (availableDistractors.length < 2) {
-      const generalDistractors = this.distractorPool.general.filter(
+    // Si no hay suficientes en la categoría, añadir de personajes (más seguro que general)
+    if (availableDistractors.length < 2 && poolCategory !== 'personajes') {
+      const personajesDistractors = this.distractorPool.personajes.filter(
         d => !existingLower.includes(d.toLowerCase()) && !availableDistractors.includes(d)
       );
-      availableDistractors.push(...generalDistractors);
+      availableDistractors.push(...personajesDistractors);
     }
     
     // Mezclar distractores disponibles
@@ -1197,6 +1208,34 @@ const App = {
       this.showScreen('home');
       this.renderHome();
     });
+    // Sync progress button
+    document.getElementById('btn-sync-progress')?.addEventListener('click', async () => {
+      const btn = document.getElementById('btn-sync-progress');
+      
+      // Verificar si hay sesión activa
+      if (!BackendService.isAuthenticated()) {
+        this.showToast('⚠️ Debes iniciar sesión para sincronizar');
+        return;
+      }
+      
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '⏳ Sincronizando...';
+      btn.disabled = true;
+      try {
+        const result = await BackendService.syncFullProgress();
+        if (result) {
+          this.showToast('✅ Progreso sincronizado correctamente');
+        } else {
+          this.showToast('⚠️ No se pudo sincronizar. Verifica tu conexión.');
+        }
+      } catch (error) {
+        console.error('Error al sincronizar:', error);
+        this.showToast('❌ Error al sincronizar. Inténtalo de nuevo.');
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    });
     // Promo code redeem
     document.getElementById('btn-redeem-code')?.addEventListener('click', () => {
       this.redeemPromoCode();
@@ -1355,18 +1394,60 @@ const App = {
     this.updateCoinsDisplay();
   },
   showDailyVerse() {
-    // Mostrar siempre el primer versiculo para evitar vacios
-    const verse = DAILY_VERSES[0];
-    this.currentVerse = verse;
-    document.getElementById('verse-text').textContent = `"${verse.text}"`;
-    document.getElementById('verse-ref').textContent = ` ${verse.ref}`;
+    // Verificar que DAILY_VERSES exista y tenga contenido
+    if (typeof DAILY_VERSES === 'undefined' || !DAILY_VERSES || DAILY_VERSES.length === 0) {
+      console.warn('[App] DAILY_VERSES no está disponible, reintentando en 500ms...');
+      setTimeout(() => this.showDailyVerse(), 500);
+      return;
+    }
+    
+    // Seleccionar versículo basado en el día del año para que cambie cada día
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+    const verseIndex = dayOfYear % DAILY_VERSES.length;
+    
+    const verse = DAILY_VERSES[verseIndex];
+    
+    // Validar que el versículo tenga la estructura correcta
+    if (!verse || !verse.text || !verse.ref) {
+      console.warn('[App] Versículo inválido en índice', verseIndex, verse);
+      // Usar versículo de respaldo
+      this.currentVerse = { 
+        text: "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.", 
+        ref: "Juan 3:16" 
+      };
+    } else {
+      this.currentVerse = verse;
+    }
+    
+    document.getElementById('verse-text').textContent = `"${this.currentVerse.text}"`;
+    document.getElementById('verse-ref').textContent = ` ${this.currentVerse.ref}`;
     this.updateVerseFavoriteButton();
   },
   showNewVerse() {
+    // Verificar que DAILY_VERSES exista
+    if (typeof DAILY_VERSES === 'undefined' || !DAILY_VERSES || DAILY_VERSES.length === 0) {
+      this.showToast('Cargando versículos...');
+      return;
+    }
+    
     const verse = DAILY_VERSES[Math.floor(Math.random() * DAILY_VERSES.length)];
-    this.currentVerse = verse;
-    document.getElementById('verse-text').textContent = `"${verse.text}"`;
-    document.getElementById('verse-ref').textContent = ` ${verse.ref}`;
+    
+    // Validar estructura del versículo
+    if (!verse || !verse.text || !verse.ref) {
+      this.currentVerse = { 
+        text: "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.", 
+        ref: "Juan 3:16" 
+      };
+    } else {
+      this.currentVerse = verse;
+    }
+    
+    document.getElementById('verse-text').textContent = `"${this.currentVerse.text}"`;
+    document.getElementById('verse-ref').textContent = ` ${this.currentVerse.ref}`;
     this.updateVerseFavoriteButton();
     const card = document.getElementById('verse-card');
     card.style.display = 'block';
@@ -1668,7 +1749,7 @@ const App = {
       // Buscar las preguntas por ID en el orden correcto
       this.currentQuestions = [];
       for (const qId of challengeData.questionIds) {
-        // Convertir a nmero por si viene como string de Firebase
+        // Convertir a número si viene como string
         const numId = typeof qId === 'string' ? parseInt(qId, 10) : qId;
         const question = QUESTIONS_DB.find(q => q.id === numId);
         console.log('[App] Buscando ID:', qId, '(numId:', numId, ') encontrada:', !!question);
@@ -1992,7 +2073,7 @@ const App = {
     this.socialChallengeStartTime = null;
     this.infiniteLives = false;
     
-    // Enviar resultado a Firebase
+    // Enviar resultado al backend
     if (window.Social) {
       // Guardar el reto actual en Social para mostrar resultados
       Social.currentChallenge = challengeData;
@@ -2006,7 +2087,7 @@ const App = {
 
   // Abrir pantalla de ranked
   async openRankedScreen() {
-    if (!window.Firebase?.currentUser) {
+    if (!window.BackendService?.token) {
       this.showToast('Debes iniciar sesion para jugar Ranked', 'error');
       if (window.Social) {
         Social.openSocialModal();
@@ -2152,35 +2233,36 @@ const App = {
   // Iniciar modo ranked (llamado por Ranked.js)
   startRankedMode(matchData) {
     console.log('[App] Iniciando partida ranked:', matchData);
-    
+
     this.isRankedMatch = true;
     this.rankedMatchData = matchData;
     this.rankedMatchStartTime = Date.now();
-    this.rankedPowerupsUsed = 0; // Reset contador de comodines (legacy)
-    this.sessionPowerupsUsed = 0; // Reset contador global de comodines
-    
-    // Configurar categoria
+    this.rankedPowerupsUsed = 0;
+    this.sessionPowerupsUsed = 0;
     this.selectedCategory = matchData.category;
-    
-    // Cargar preguntas del match
-    const numQuestions = matchData.questionIds.length;
-    this.currentQuestions = [];
-    
-    for (const qId of matchData.questionIds) {
-      const numId = typeof qId === 'string' ? parseInt(qId, 10) : qId;
-      const question = QUESTIONS_DB.find(q => q.id === numId);
-      if (question) {
-        this.currentQuestions.push(question);
+
+    // Aceptar preguntas como objetos directos (nuevo flujo socket)
+    // o como array de IDs (flujo legacy)
+    if (matchData.questions && matchData.questions.length > 0 && typeof matchData.questions[0] === 'object') {
+      this.currentQuestions = matchData.questions;
+    } else {
+      // Flujo legacy: buscar por IDs
+      const ids = matchData.questions || matchData.questionIds || [];
+      this.currentQuestions = [];
+      for (const qId of ids) {
+        const numId = typeof qId === 'string' ? parseInt(qId, 10) : qId;
+        const question = window.QUESTIONS_DB?.find(q => q.id === numId);
+        if (question) this.currentQuestions.push(question);
       }
     }
-    
+
     console.log('[App] Preguntas ranked cargadas:', this.currentQuestions.length);
-    
+
     if (this.currentQuestions.length === 0) {
-      this.showToast('Error cargando preguntas', 'error');
+      this.showToast('Error cargando preguntas de la partida', 'error');
       return;
     }
-    
+
     // Reset estado
     this.currentQuestionIndex = 0;
     this.currentStreak = 0;
@@ -2195,128 +2277,195 @@ const App = {
     this.phaseCorrect = 0;
     this.phaseWrong = 0;
     this.answered = false;
-    this.infiniteLives = true; // Sin vidas en ranked
-    
-    // Configurar timer - 8 segundos para ranked
+    this.infiniteLives = true;
+
+    // Timer de 8s para ranked
     this.timerMax = window.RANKED_CONFIG?.questionTime || 8;
-    
+
+    // Mostrar y configurar barra del oponente
+    const oppBar = document.getElementById('ranked-opponent-bar');
+    if (oppBar) {
+      oppBar.classList.remove('hidden');
+      const nameEl = document.getElementById('ranked-opp-name-bar');
+      if (nameEl) nameEl.textContent = matchData.opponent?.userName || 'Oponente';
+      // Crear indicadores por pregunta
+      const indContainer = document.getElementById('ranked-opp-indicators');
+      if (indContainer) {
+        indContainer.innerHTML = '';
+        for (let i = 0; i < this.currentQuestions.length; i++) {
+          const dot = document.createElement('span');
+          dot.id = `ranked-opp-q${i}`;
+          dot.className = 'ranked-opp-dot';
+          dot.textContent = '·';
+          indContainer.appendChild(dot);
+        }
+      }
+    }
+    if (window.Ranked) window.Ranked._opponentCorrect = 0;
+
     // Mostrar pantalla de quiz
-    document.getElementById('phase-overlay').classList.add('hidden');
-    document.getElementById('gameover-overlay').classList.add('hidden');
-    document.getElementById('ad-overlay').classList.add('hidden');
+    document.getElementById('phase-overlay')?.classList.add('hidden');
+    document.getElementById('gameover-overlay')?.classList.add('hidden');
+    document.getElementById('ad-overlay')?.classList.add('hidden');
     this.showScreen('quiz');
     this.renderQuestion();
-    
-    // Mostrar indicador de ranked
-    this.showToast(`Ranked: ${matchData.category} vs ${matchData.opponent?.userName || 'Oponente'}`, 'info');
+
+    this.showToast(`⚔️ Ranked vs ${matchData.opponent?.userName || 'Oponente'}`, 'info');
   },
 
-  // Mostrar resultados de partida ranked
+  // Mostrar resultados de partida ranked (nuevo flujo con Socket.io)
   async showRankedResults() {
     console.log('[App] Mostrando resultados ranked');
-    
+
     const timeSpent = Math.floor((Date.now() - this.rankedMatchStartTime) / 1000);
     const score = this.sessionPoints;
     const correctAnswers = this.sessionCorrect;
-    const matchId = this.rankedMatchData.id;
-    const category = this.rankedMatchData.category;
-    
+    const matchId = this.rankedMatchData?.id;
+    const opponent = this.rankedMatchData?.opponent;
+
     // Mostrar overlay
     const overlay = document.getElementById('ranked-result-overlay');
-    overlay.classList.remove('hidden');
-    
-    // Mostrar mis resultados
-    document.getElementById('ranked-my-score').textContent = score;
-    document.getElementById('ranked-opponent-name').textContent = this.rankedMatchData.opponent?.userName || 'Oponente';
-    document.getElementById('ranked-opponent-score').textContent = '--';
-    document.getElementById('ranked-status-message').classList.remove('hidden');
-    document.getElementById('ranked-result-title').textContent = 'Partida Terminada!';
-    document.getElementById('ranked-result-subtitle').textContent = '';
-    document.getElementById('ranked-result-icon').textContent = '?';
-    
-    // Ocultar cambio de trofeos hasta tener resultado final
-    document.getElementById('ranked-trophy-change').style.display = 'none';
-    
-    // Enviar resultado
-    try {
-      const result = await window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers);
-      console.log('[App] Resultado ranked enviado:', result);
-      
-      if (result.success && result.completed) {
-        this.showRankedComparison(result, category);
-      } else {
-        // Esperar al oponente
-        this.listenForRankedOpponent(matchId, score, timeSpent, correctAnswers, category);
-      }
-    } catch (error) {
-      console.error('[App] Error enviando resultado ranked:', error);
-      document.getElementById('ranked-status-message').innerHTML = 
-        '<span style="color: var(--danger)">Error al enviar resultado</span>';
-    }
-    
-    // Limpiar estado
+    if (overlay) overlay.classList.remove('hidden');
+
+    // Mostrar mis datos inmediatamente
+    const myScoreEl = document.getElementById('ranked-my-score');
+    if (myScoreEl) myScoreEl.textContent = score;
+    const oppNameEl = document.getElementById('ranked-opponent-name');
+    if (oppNameEl) oppNameEl.textContent = opponent?.userName || 'Oponente';
+    const oppScoreEl = document.getElementById('ranked-opponent-score');
+    if (oppScoreEl) oppScoreEl.textContent = '--';
+    const statusEl = document.getElementById('ranked-status-message');
+    if (statusEl) { statusEl.textContent = 'Esperando resultado del servidor...'; statusEl.classList.remove('hidden'); }
+    const titleEl = document.getElementById('ranked-result-title');
+    if (titleEl) titleEl.textContent = 'Partida Terminada!';
+    const iconEl = document.getElementById('ranked-result-icon');
+    if (iconEl) iconEl.textContent = '⏳';
+    const trophyEl = document.getElementById('ranked-trophy-change');
+    if (trophyEl) trophyEl.style.display = 'none';
+
+    // Enviar resultado al servidor via socket (el servidor calculará el ganador y emitirá game_over)
+    window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers);
+
+    // Guardar categoría para showRankedResult
+    this._rankedCategory = this.rankedMatchData?.category;
+
+    // Ocultar barra del oponente
+    document.getElementById('ranked-opponent-bar')?.classList.add('hidden');
+
+    // Limpiar estado de partida
     this.isRankedMatch = false;
     this.rankedMatchData = null;
     this.rankedMatchStartTime = null;
     this.infiniteLives = false;
-    
+
     // Botones
-    document.getElementById('btn-ranked-done').onclick = () => {
-      overlay.classList.add('hidden');
-      if (this._rankedUnsubscribe) {
-        this._rankedUnsubscribe();
-        this._rankedUnsubscribe = null;
-      }
-      this.showScreen('home');
-    };
-    
-    document.getElementById('btn-ranked-play-again').onclick = () => {
-      overlay.classList.add('hidden');
-      if (this._rankedUnsubscribe) {
-        this._rankedUnsubscribe();
-        this._rankedUnsubscribe = null;
-      }
-      this.showScreen('ranked');
-      this.loadRankedData();
-    };
+    const doneBtn = document.getElementById('btn-ranked-done');
+    if (doneBtn) doneBtn.onclick = () => { if (overlay) overlay.classList.add('hidden'); this.showScreen('home'); };
+
+    const againBtn = document.getElementById('btn-ranked-play-again');
+    if (againBtn) againBtn.onclick = () => { if (overlay) overlay.classList.add('hidden'); this.showScreen('ranked'); this.loadRankedData(); };
   },
 
-  // Escuchar resultado del oponente en ranked
+  // Llamado por socket 'game_over' — resultado calculado por el servidor
+  showRankedResult(result) {
+    console.log('[App] Resultado final del servidor:', result);
+    const category = this._rankedCategory || 'aleatorio';
+
+    // Actualizar score del oponente
+    const oppScoreEl = document.getElementById('ranked-opponent-score');
+    if (oppScoreEl) oppScoreEl.textContent = result.opponentScore ?? '--';
+
+    // Ocultar "esperando..."
+    const statusEl = document.getElementById('ranked-status-message');
+    if (statusEl) statusEl.classList.add('hidden');
+
+    // Mostrar resultado
+    const iconEl  = document.getElementById('ranked-result-icon');
+    const titleEl = document.getElementById('ranked-result-title');
+    const subEl   = document.getElementById('ranked-result-subtitle');
+    const myCard  = document.querySelector('#ranked-result-overlay .challenge-player.me');
+    const oppCard = document.querySelector('#ranked-result-overlay .challenge-player.opponent');
+
+    myCard?.classList.remove('winner', 'loser');
+    oppCard?.classList.remove('winner', 'loser');
+
+    if (result.isTie) {
+      if (iconEl)  iconEl.textContent  = '=';
+      if (titleEl) titleEl.textContent = '¡Empate!';
+      if (subEl)   subEl.textContent   = 'Ambos jugaron igual de bien';
+      myCard?.classList.add('winner');
+      oppCard?.classList.add('winner');
+    } else if (result.isWinner) {
+      if (iconEl)  iconEl.textContent  = '🏆';
+      if (titleEl) titleEl.textContent = '¡Victoria!';
+      if (subEl)   subEl.textContent   = '¡Excelente desempeño!';
+      myCard?.classList.add('winner');
+      oppCard?.classList.add('loser');
+    } else {
+      if (iconEl)  iconEl.textContent  = '😔';
+      if (titleEl) titleEl.textContent = 'Derrota';
+      if (subEl)   subEl.textContent   = '¡Sigue intentando!';
+      myCard?.classList.add('loser');
+      oppCard?.classList.add('winner');
+    }
+
+    // Mostrar cambio de trofeos (datos directos del servidor, ya calculados)
+    const trophyEl = document.getElementById('ranked-trophy-change');
+    if (trophyEl) {
+      trophyEl.style.display = 'flex';
+      const oldTrophies = Math.max(0, result.newTrophies - result.trophyChange);
+      const oldEl  = document.getElementById('ranked-trophy-old');
+      const newEl  = document.getElementById('ranked-trophy-new');
+      const diffEl = document.getElementById('ranked-trophy-diff');
+      if (oldEl)  oldEl.textContent  = oldTrophies;
+      if (newEl)  newEl.textContent  = result.newTrophies;
+      if (diffEl) {
+        const ch = result.trophyChange;
+        diffEl.textContent = ch >= 0 ? `+${ch}` : `${ch}`;
+        diffEl.className = 'trophy-diff ' + (ch > 0 ? 'positive' : ch < 0 ? 'negative' : 'neutral');
+      }
+    }
+
+    this.playSound(result.isWinner || result.isTie ? 'phase' : 'wrong');
+  },
+
+  // Oponente se desconectó durante la partida
+  endRankedMatchByDisconnect() {
+    if (!this.isRankedMatch) return;
+    this.showRankedResults();
+  },
+
+  // Escuchar resultado del oponente en ranked (LEGACY - ya no se usa con sockets)
   listenForRankedOpponent(matchId, myScore, myTime, myCorrect, category) {
     if (this._rankedUnsubscribe) {
       this._rankedUnsubscribe();
     }
-    
-    this._rankedUnsubscribe = window.Ranked.subscribeToMatch(matchId, async (match) => {
-      console.log('[App] Actualizacion match ranked:', match);
-      
-      const iAmPlayer1 = match.player1Id === window.Firebase?.currentUser?.uid;
-      const opponentScore = iAmPlayer1 ? match.player2Score : match.player1Score;
-      
-      if (opponentScore !== null && opponentScore !== undefined) {
-        // El oponente termin - actualizar MIS trofeos tambi�n
-        if (match.status === 'completed' && match.winner) {
-          console.log('[App] Partida completada, actualizando mis trofeos...');
-          await window.Ranked.updateTrophies(category, match.winner, iAmPlayer1, match);
-        }
-        
-        const result = {
-          completed: true,
-          winner: match.winner,
-          myScore: myScore,
-          opponentScore: opponentScore,
-          myTime: myTime,
-          opponentTime: iAmPlayer1 ? match.player2Time : match.player1Time
-        };
-        
-        this.showRankedComparison(result, category);
-        
-        if (this._rankedUnsubscribe) {
-          this._rankedUnsubscribe();
-          this._rankedUnsubscribe = null;
-        }
-      }
-    });
+
+    this._rankedUnsubscribe = window.Ranked.subscribeToMatch
+      ? window.Ranked.subscribeToMatch(matchId, async (match) => {
+          console.log('[App] Actualizacion match ranked (legacy polling):', match);
+
+          const iAmPlayer1 = match.player1Id === window.BackendService?.currentUser?.uid;
+          const opponentScore = iAmPlayer1 ? match.player2Score : match.player1Score;
+
+          if (opponentScore !== null && opponentScore !== undefined) {
+            const result = {
+              isTie: match.winner === 'tie',
+              isWinner: match.winner === window.BackendService?.currentUser?.uid,
+              myScore,
+              opponentScore,
+              trophyChange: 0,
+              newTrophies: 0
+            };
+            this.showRankedResult(result);
+
+            if (this._rankedUnsubscribe) {
+              this._rankedUnsubscribe();
+              this._rankedUnsubscribe = null;
+            }
+          }
+        })
+      : null;
   },
 
   // Mostrar comparacion de resultados ranked
@@ -2330,7 +2479,7 @@ const App = {
     document.getElementById('ranked-opponent-score').textContent = result.opponentScore;
     
     // Determinar ganador
-    const iWon = result.winner === window.Firebase?.currentUser?.uid;
+    const iWon = result.winner === window.BackendService?.currentUser?.uid;
     const isTie = result.winner === 'tie';
     
     // Actualizar UI
@@ -2395,27 +2544,16 @@ const App = {
     const allCategories = ['personajes', 'lugares', 'eventos', 'profetas', 'reyes', 'milagros', 'parabolas', 'salmos-proverbios'];
     
     // Obtener trofeos del usuario para mostrar su rango
-    const myUserId = window.Firebase?.currentUser?.uid;
     let myTrophies = 0;
-    
-    if (myUserId) {
+    if (window.BackendService?.token) {
       if (category === 'aleatorio') {
-        // Sumar trofeos de todas las categor�as
+        const allRankings = await window.BackendService.getMyRankings();
         for (const cat of allCategories) {
-          const doc = await window.Firebase.db
-            .collection('users').doc(myUserId)
-            .collection('rankings').doc(cat).get();
-          if (doc.exists) {
-            myTrophies += doc.data().trophies || 0;
-          }
+          myTrophies += allRankings[cat]?.trophies || 0;
         }
       } else {
-        const myRankingDoc = await window.Firebase.db
-          .collection('users').doc(myUserId)
-          .collection('rankings').doc(category).get();
-        if (myRankingDoc.exists) {
-          myTrophies = myRankingDoc.data().trophies || 0;
-        }
+        const catRanking = await window.BackendService.getCategoryRanking(category);
+        myTrophies = catRanking?.trophies || 0;
       }
     }
     
@@ -2493,24 +2631,39 @@ const App = {
     const cat = CATEGORIES[q.category] || { icon: '', name: q.category, bigIcon: '📖', color: '#6C63FF' };
     document.getElementById('question-category-tag').innerHTML = `${cat.icon} ${cat.name}`;
     
-    // Big category icon
+    // Big category icon - ahora oculto porque usamos imágenes
     const bigIconEl = document.getElementById('category-big-icon');
     if (bigIconEl) {
-      bigIconEl.textContent = cat.bigIcon || cat.icon;
-      bigIconEl.style.background = `linear-gradient(135deg, ${cat.color}33, ${cat.color}11)`;
-      bigIconEl.style.boxShadow = `0 0 30px ${cat.color}44`;
+      bigIconEl.classList.add('hidden');
     }
     
-    // Question image (if exists)
+    // Question image - SIEMPRE mostrar imagen (específica o de categoría)
     const imgContainer = document.getElementById('question-image-container');
     const imgEl = document.getElementById('question-image');
-    if (q.image) {
-      imgEl.src = q.image;
-      imgEl.alt = q.imageAlt || 'Imagen relacionada a la pregunta';
+    
+    // Usar imagen específica de la pregunta, o imagen aleatoria de la categoría
+    const imageUrl = q.image || (typeof getCategoryImage === 'function' ? getCategoryImage(q.category) : null);
+    
+    if (imageUrl) {
+      imgEl.src = imageUrl;
+      imgEl.alt = q.imageAlt || `Imagen de ${cat.name}`;
+      imgEl.onerror = () => {
+        // Si falla la imagen, mostrar placeholder con color de categoría
+        imgContainer.innerHTML = `
+          <div class="image-placeholder" style="background: linear-gradient(135deg, ${cat.color}44, ${cat.color}22);">
+            <span class="placeholder-icon">${cat.bigIcon || cat.icon}</span>
+          </div>
+        `;
+      };
       imgContainer.classList.remove('hidden');
     } else {
-      imgContainer.classList.add('hidden');
-      imgEl.src = '';
+      // Fallback: mostrar icono grande si no hay imágenes
+      imgContainer.innerHTML = `
+        <div class="image-placeholder" style="background: linear-gradient(135deg, ${cat.color}44, ${cat.color}22);">
+          <span class="placeholder-icon">${cat.bigIcon || cat.icon}</span>
+        </div>
+      `;
+      imgContainer.classList.remove('hidden');
     }
     // Question text
     document.getElementById('question-text').textContent = q.question;
@@ -2711,6 +2864,12 @@ const App = {
     }
     document.getElementById('ref-text').innerHTML = refHtml;
     document.getElementById('reference-card').classList.remove('hidden');
+    // Enviar respuesta en tiempo real al oponente (Socket.io)
+    if (this.isRankedMatch && window.Ranked?.submitAnswer) {
+      const timeMs = Math.round((performance.now() - this.questionStartTime));
+      window.Ranked.submitAnswer(this.currentQuestionIndex, isCorrect, timeMs);
+    }
+
     // Show next button
     const nextBtn = document.getElementById('next-btn');
     const isLast = this.currentQuestionIndex >= this.currentQuestions.length - 1;
@@ -2744,9 +2903,9 @@ const App = {
     
     this.sessionCoins += coinsEarned;
     const updatedCoins = Storage.addCoins(coinsEarned);
-    // Sincronizar monedas con Firebase
-    if (window.Firebase?.currentUser) {
-      window.Firebase.syncCoinsToCloud(updatedCoins);
+    // Sincronizar monedas con Backend
+    if (window.BackendService?.currentUser) {
+      window.BackendService?.syncCoinsToCloud(updatedCoins);
     }
     // Actualizar UI de monedas
     this.updateCoinsDisplay();
@@ -3147,9 +3306,9 @@ const App = {
     
     // Gastar monedas
     if (Storage.spendCoins(cost)) {
-      // Sincronizar con Firebase
-      if (window.Firebase?.currentUser) {
-        window.Firebase.syncCoinsToCloud(Storage.getCoins());
+      // Sincronizar con Backend
+      if (window.BackendService?.currentUser) {
+        window.BackendService?.syncCoinsToCloud(Storage.getCoins());
       }
       this.lives = Math.min(this.lives + livesToAdd, this.maxLives);
       this.saveLivesState();
@@ -3180,9 +3339,9 @@ const App = {
       this.showToast(`? ${result.message || 'Compra exitosa'}`);
       this.updateCoinsDisplay();
       this.updatePowerupsDisplay();
-      // Sincronizar con Firebase
-      if (window.Firebase?.currentUser) {
-        window.Firebase.syncCoinsToCloud(Storage.getCoins());
+      // Sincronizar con Backend
+      if (window.BackendService?.currentUser) {
+        window.BackendService?.syncCoinsToCloud(Storage.getCoins());
       }
     } else {
       this.playSound('wrong');
@@ -3362,8 +3521,8 @@ const App = {
     const currentQ = this.currentQuestions[this.currentQuestionIndex];
     if (currentQ) {
       const buttons = document.querySelectorAll('#options-container .option-btn');
-      // currentQ.correct es el indice (0, 1, 2, 3) de la respuesta correcta
-      const correctIndex = currentQ.correct;
+      // Usar this.currentCorrectIndex que es el índice REAL después de mezclar las opciones
+      const correctIndex = this.currentCorrectIndex;
       buttons.forEach((btn, index) => {
         if (index === correctIndex) {
           btn.classList.add('reveal-highlight');
@@ -3408,7 +3567,8 @@ const App = {
     
     // Obtener botones y filtrar los incorrectos
     const buttons = Array.from(document.querySelectorAll('#options-container .option-btn'));
-    const correctIndex = currentQ.correct;
+    // Usar this.currentCorrectIndex que es el índice REAL después de mezclar las opciones
+    const correctIndex = this.currentCorrectIndex;
     const wrongButtons = buttons.filter((btn, index) => index !== correctIndex && !btn.disabled);
     
     // Eliminar 2 opciones incorrectas aleatorias
@@ -3662,8 +3822,8 @@ const App = {
         this.updateCoinsDisplay();
         this.playSound('correct');
         this.showToast('?? +500 monedas');
-        if (window.Firebase?.currentUser) {
-          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        if (window.BackendService?.currentUser) {
+          window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
         break;
         
@@ -3672,8 +3832,8 @@ const App = {
         this.updateCoinsDisplay();
         this.playSound('correct');
         this.showToast('?? +1,650 monedas (+10% bonus)');
-        if (window.Firebase?.currentUser) {
-          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        if (window.BackendService?.currentUser) {
+          window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
         break;
         
@@ -3682,8 +3842,8 @@ const App = {
         this.updateCoinsDisplay();
         this.playSound('complete');
         this.showToast('?? +6,250 monedas (+25% bonus)');
-        if (window.Firebase?.currentUser) {
-          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        if (window.BackendService?.currentUser) {
+          window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
         break;
         
@@ -3692,8 +3852,8 @@ const App = {
         this.updateCoinsDisplay();
         this.playSound('complete');
         this.showToast('?? +16,800 monedas (+40% bonus)');
-        if (window.Firebase?.currentUser) {
-          window.Firebase.syncCoinsToCloud(Storage.getCoins());
+        if (window.BackendService?.currentUser) {
+          window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
         break;
     }
@@ -4101,18 +4261,14 @@ const App = {
       streak: this.currentStreak
     });
     
-    // Sincronizar con Firebase
-    if (window.FirebaseService && FirebaseService.isReady) {
-      FirebaseService.updateStats({
+    // Sincronizar stats con BackendService
+    if (window.BackendService?.token) {
+      BackendService.updateStats({
         points: this.sessionPoints,
         correct: this.sessionCorrect,
         games: 1,
         streak: this.sessionBestStreak
       }).catch(err => console.error('Error sincronizando stats:', err));
-      
-      // Sincronizar progreso completo (incluyendo monedas)
-      FirebaseService.syncProgressToCloud()
-        .catch(err => console.error('Error sincronizando progreso:', err));
     }
     
     // 🆕 Sincronizar con BackendService (MongoDB)

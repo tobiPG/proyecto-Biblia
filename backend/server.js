@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 
 // Cargar variables de entorno
 dotenv.config();
@@ -11,67 +12,115 @@ dotenv.config();
 import userRoutes from './routes/users.js';
 import challengeRoutes from './routes/challenges.js';
 import authRoutes from './routes/auth.js';
+import rankedRoutes from './routes/ranked.js';
+import { initSocket } from './socket/gameSocket.js';
+
+// Función para conectar a MongoDB con fallback en memoria
+async function connectDB() {
+  const atlasUri = process.env.MONGODB_URI;
+
+  if (atlasUri && !atlasUri.includes('localhost')) {
+    try {
+      await mongoose.connect(atlasUri, { serverSelectionTimeoutMS: 5000 });
+      console.log('✅ Conectado a MongoDB Atlas');
+      return;
+    } catch (err) {
+      console.warn('⚠️  Atlas no disponible:', err.message);
+      console.log('🔄 Usando MongoDB en memoria para pruebas...');
+    }
+  }
+
+  try {
+    const { MongoMemoryServer } = await import('mongodb-memory-server');
+    const memServer = await MongoMemoryServer.create();
+    const memUri = memServer.getUri();
+    await mongoose.connect(memUri);
+    console.log('✅ MongoDB en memoria iniciado (datos temporales - solo para pruebas)');
+  } catch (memErr) {
+    console.error('❌ No se pudo iniciar MongoDB en memoria:', memErr.message);
+  }
+}
 
 const app = express();
+const httpServer = createServer(app);
 const PORT = process.env.PORT || 3001;
 
-// Conectar a MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bibliaquiz')
-  .then(() => {
-    console.log('✅ Conectado a MongoDB');
-  })
-  .catch(err => {
-    console.error('❌ Error conectando a MongoDB:', err);
-    process.exit(1);
-  });
+const allowedOrigins = [
+  'http://localhost:8080',
+  'http://localhost:3000',
+  'http://localhost:5500',
+  'http://127.0.0.1:8080',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5500',
+  'null'
+];
+
+// Socket.io con CORS
+const io = new Server(httpServer, {
+  cors: {
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin) || origin === 'null') return callback(null, true);
+      if (origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) return callback(null, true);
+      callback(null, true); // En desarrollo, permitir todo
+    },
+    methods: ['GET', 'POST'],
+    credentials: true
+  }
+});
+
+// Inicializar lógica de sockets
+initSocket(io);
 
 // Middleware
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:8080',
-  credentials: true
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin) || origin === 'null') return callback(null, true);
+    if (origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) return callback(null, true);
+    callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health check
+// Health check (incluye estado de socket.io)
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date() });
+  res.json({ status: 'ok', timestamp: new Date(), sockets: io.engine.clientsCount });
 });
 
-// Rutas
+// Rutas HTTP
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/challenges', challengeRoutes);
+app.use('/api/ranked', rankedRoutes);
 
-// Ruta raíz
 app.get('/', (req, res) => {
-  res.json({ 
+  res.json({
     message: 'BibliaQuiz API Backend',
-    version: '1.0.0',
-    endpoints: {
-      auth: '/api/auth',
-      users: '/api/users',
-      challenges: '/api/challenges'
-    }
+    version: '2.0.0',
+    features: ['REST API', 'Socket.io real-time 1v1'],
+    endpoints: { auth: '/api/auth', users: '/api/users', challenges: '/api/challenges', ranked: '/api/ranked' }
   });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err);
-  res.status(err.status || 500).json({
-    error: err.message,
-    status: err.status || 500
-  });
+  res.status(err.status || 500).json({ error: err.message, status: err.status || 500 });
 });
 
-// 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
 });
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor ejecutándose en http://localhost:${PORT}`);
-  console.log(`📍 CORS habilitado para: ${process.env.CORS_ORIGIN || 'http://localhost:8080'}`);
+// Conectar a MongoDB y arrancar servidor
+connectDB().then(() => {
+  httpServer.listen(PORT, () => {
+    console.log(`🚀 Servidor HTTP + Socket.io en http://localhost:${PORT}`);
+    console.log(`🔌 Socket.io listo para conexiones en tiempo real`);
+  });
+}).catch(err => {
+  console.error('Error fatal:', err);
+  process.exit(1);
 });

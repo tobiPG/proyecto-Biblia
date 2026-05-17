@@ -7,7 +7,7 @@
 // Detecta automáticamente si estamos en producción o desarrollo
 // Para producción: cambiar PRODUCTION_API_URL a tu dominio real
 
-const PRODUCTION_API_URL = 'https://tu-backend.onrender.com/api'; // ← CAMBIAR EN PRODUCCIÓN
+const PRODUCTION_API_URL = 'https://tu-backend.onrender.com/api'; // ← CAMBIAR: pegar URL del backend desplegado (ej: https://bibliaquiz-api.onrender.com/api)
 const DEVELOPMENT_API_URL = 'http://localhost:3001/api';
 
 // Detectar entorno automáticamente
@@ -27,6 +27,11 @@ window.BackendService = {
   isReady: false,
   listeners: [],
   _initPromise: null,
+
+  // Verificar si el usuario está autenticado
+  isAuthenticated() {
+    return !!(this.token && this.currentUser);
+  },
 
   // Inicializar servicio
   async init() {
@@ -1061,6 +1066,143 @@ window.BackendService = {
       clearInterval(this._autoSyncInterval);
       this._autoSyncInterval = null;
       console.log('[Backend] 🛑 Auto-sync detenido');
+    }
+  },
+
+  // ============================================
+  // RANKED - métodos para compatibilidad con ranked.js
+  // ============================================
+
+  async getCategoryRanking(category) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/rankings/${category}`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      if (!response.ok) return { trophies: 0, wins: 0, losses: 0, ties: 0, highestTrophies: 0, gamesPlayed: 0 };
+      return await response.json();
+    } catch (e) {
+      return { trophies: 0, wins: 0, losses: 0, ties: 0, highestTrophies: 0, gamesPlayed: 0 };
+    }
+  },
+
+  async getMyRankings() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/rankings`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      if (!response.ok) return {};
+      return await response.json();
+    } catch (e) {
+      return {};
+    }
+  },
+
+  async getRankedLeaderboard(category, limit = 100) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/leaderboard/${category}?limit=${limit}`);
+      if (!response.ok) return [];
+      return await response.json();
+    } catch (e) {
+      return [];
+    }
+  },
+
+  async joinMatchmakingQueue(category, trophies, rankId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/queue`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}` },
+        body: JSON.stringify({ category, trophies, rankId, userName: this.userProfile?.displayName || 'Jugador' })
+      });
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (e) {
+      return null;
+    }
+  },
+
+  async leaveMatchmakingQueue() {
+    try {
+      await fetch(`${API_BASE_URL}/ranked/queue`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+    } catch (e) {}
+  },
+
+  async getQueueStatus() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/queue/status`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      if (!response.ok) return { status: 'not_in_queue' };
+      return await response.json();
+    } catch (e) {
+      return { status: 'not_in_queue' };
+    }
+  },
+
+  async findRankedOpponent(category, trophies, range) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/queue/find`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}` },
+        body: JSON.stringify({ category, trophies, range })
+      });
+      if (!response.ok) return { matched: false };
+      return await response.json();
+    } catch (e) {
+      return { matched: false };
+    }
+  },
+
+  async createRankedMatch(category, questionIds, myTrophies, opponent) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/matches`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}` },
+        body: JSON.stringify({ category, questionIds, myTrophies, opponent })
+      });
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (e) {
+      return null;
+    }
+  },
+
+  async waitForRankedMatch() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/matches/waiting`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      if (!response.ok) return { found: false };
+      return await response.json();
+    } catch (e) {
+      return { found: false };
+    }
+  },
+
+  async getRankedMatch(matchId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/matches/${matchId}`);
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (e) {
+      return null;
+    }
+  },
+
+  async submitRankedResult(matchId, score, timeSpent, correctAnswers) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/matches/${matchId}/result`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}` },
+        body: JSON.stringify({ score, timeSpent, correctAnswers })
+      });
+      if (!response.ok) return { success: false };
+      return await response.json();
+    } catch (e) {
+      return { success: false, error: e.message };
     }
   }
 };

@@ -982,27 +982,75 @@ body::after {
   position: relative;
 }
 
-/* Question Image */
+/* Question Image - Estilo mejorado */
 .question-image-container {
   width: 100%;
-  max-height: 200px;
+  height: 180px;
   margin-bottom: 16px;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  background: var(--bg-card-alt);
+  background: linear-gradient(135deg, var(--bg-card-alt), var(--bg-card));
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.1);
 }
 
 .question-image {
-  max-width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.question-image:hover {
+  transform: scale(1.02);
+}
+
+/* Overlay gradient para mejor legibilidad */
+.question-image-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  pointer-events: none;
+  border-radius: 0 0 14px 14px;
+}
+
+/* Placeholder cuando no hay imagen */
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
 }
 
 .question-image-container.hidden {
+  display: none;
+}
+
+/* Category big icon - ahora oculto por defecto */
+#category-big-icon.hidden {
   display: none;
 }
 
@@ -8532,6 +8580,95 @@ button:focus:not(:focus-visible) {
 .leaderboard-stats {
   font-size: 0.8rem;
   color: #6A6D90;
+}
+
+/* ============================================
+   RANKED 1v1 — NUEVOS ESTILOS
+   ============================================ */
+
+/* Barra del oponente durante el quiz */
+.ranked-opponent-bar {
+  background: rgba(255,107,107,0.1);
+  border: 1px solid rgba(255,107,107,0.3);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin: 0 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ranked-opp-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+.ranked-opp-label { color: var(--text-muted); }
+.ranked-opp-score { color: #ff6b6b; font-weight: bold; }
+.ranked-opp-indicators {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.ranked-opp-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+.ranked-opp-dot[data-answered="1"] {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* Overlay: oponente encontrado */
+.ranked-found-card {
+  text-align: center;
+}
+.ranked-found-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.ranked-found-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+.ranked-found-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.found-avatar {
+  font-size: 2.5rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.found-name { font-weight: bold; font-size: 0.95rem; }
+.found-trophies { color: #ffd700; font-size: 0.85rem; }
+.found-vs-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+.found-auto-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
 }
 
 /* Overlay de búsqueda - ESTILO CLASH ROYALE */

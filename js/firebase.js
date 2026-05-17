@@ -271,8 +271,8 @@ window.FirebaseService = {
           displayName: this.currentUser.displayName || localPlayer.name || `Jugador${Math.floor(Math.random() * 9999)}`,
           photoURL: this.currentUser.photoURL || null,
           totalPoints: localStats.totalPoints || 0,
-          totalCorrect: localStats.correct || 0,
-          totalGames: localStats.games || 0,
+          totalCorrect: localStats.totalCorrect || 0,
+          totalGames: localStats.totalGames || 0,
           bestStreak: localStats.bestStreak || 0,
           level: localPlayer.level || 1,
           xp: localPlayer.xp || 0,
@@ -388,8 +388,8 @@ window.FirebaseService = {
         level: player.level || 1,
         xp: player.xp || 0,
         totalPoints: stats.totalPoints || 0,
-        totalCorrect: stats.correct || 0,
-        totalGames: stats.games || 0,
+        totalCorrect: stats.totalCorrect || 0,
+        totalGames: stats.totalGames || 0,
         bestStreak: stats.bestStreak || 0,
         coins: coins.total || 0,
         coinsEarned: coins.earned || 0,
@@ -607,16 +607,16 @@ window.FirebaseService = {
       
       await userRef.update({
         totalPoints: firebase.firestore.FieldValue.increment(stats.points || 0),
-        totalCorrect: firebase.firestore.FieldValue.increment(stats.correct || 0),
-        totalGames: firebase.firestore.FieldValue.increment(stats.games || 0),
+        totalCorrect: firebase.firestore.FieldValue.increment(stats.totalCorrect || 0),
+        totalGames: firebase.firestore.FieldValue.increment(stats.totalGames || 0),
         bestStreak: Math.max(this.userProfile.bestStreak || 0, stats.streak || 0),
         level: newLevel,
         lastActive: firebase.firestore.FieldValue.serverTimestamp()
       });
       
       this.userProfile.totalPoints = newTotalPoints;
-      this.userProfile.totalCorrect = (this.userProfile.totalCorrect || 0) + (stats.correct || 0);
-      this.userProfile.totalGames = (this.userProfile.totalGames || 0) + (stats.games || 0);
+      this.userProfile.totalCorrect = (this.userProfile.totalCorrect || 0) + (stats.totalCorrect || 0);
+      this.userProfile.totalGames = (this.userProfile.totalGames || 0) + (stats.totalGames || 0);
       this.userProfile.level = newLevel;
       
       return true;

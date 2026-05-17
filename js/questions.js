@@ -1,38630 +1,19304 @@
 ﻿// ============================================================
 
-
-
 // BibliaQuiz - Base de Datos de Preguntas
-
-
 
 // ============================================================
 
-
-
 const QUESTIONS_DB = [
-
-
 
   // ===================== FACIL =====================
 
-
-
   // --- Personajes (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 1, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien construyo el arca?",
-
-
 
     options: ["Isaac", "Noe", "Moises", "Abraham"],
 
-
-
     correct: 1, reference: "Genesis 6-9",
-
-
 
     explanation: "Noe fue elegido por Dios para construir el arca y salvar a su familia y a los animales del diluvio, segun Genesis 6-9."
 
-
-
   },
 
-
-
   {
-
-
 
     id: 2, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el primer hombre?",
-
-
 
     options: ["Set", "Noe", "Adan", "Abel"],
 
-
-
     correct: 2, reference: "Genesis 2:7",
-
-
 
     explanation: "Adan fue el primer hombre creado por Dios, segun el relato de Genesis 2:7."
 
-
-
   },
 
-
-
   {
-
-
 
     id: 3, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue la primera mujer?",
-
-
 
     options: ["Eva", "Sara", "Rebeca", "Lea"],
 
-
-
     correct: 0, reference: "Genesis 2:22",
-
-
 
     explanation: "Eva fue creada a partir de una costilla de Adan, siendo la primera mujer segun Genesis 2:22."
 
-
-
   },
 
-
-
   {
-
-
 
     id: 4, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien vencio a Goliat?",
-
-
 
     options: ["Sanson", "Samuel", "Saul", "David"],
 
-
-
     correct: 3, reference: "1 Samuel 17:50",
-
-
 
     explanation: "David derroto al gigante Goliat con una honda y una piedra, demostrando su fe en Dios (1 Samuel 17:50)."
 
-
-
   },
 
-
-
   {
-
-
 
     id: 5, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien libero a Israel de Egipto?",
-
-
 
     options: ["Moises", "Caleb", "Josue", "Aaron"],
 
-
-
     correct: 0, reference: "Exodo 3:10",
-
-
 
     explanation: "Moises fue llamado por Dios para liberar al pueblo de Israel de la esclavitud en Egipto (Exodo 3:10)."
 
-
-
   },
 
-
-
   {
-
-
 
     id: 450, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue tragado por un gran pez?",
-
-
 
     options: ["Elias", "Jonas", "Pedro", "Pablo"],
 
-
-
     correct: 1, reference: "Jonas 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 451, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Isaac?",
-
-
 
     options: ["Esau", "Abraham", "Lot", "Jacob"],
 
-
-
     correct: 1, reference: "Genesis 21:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 452, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien nego a Jesus tres veces?",
-
-
 
     options: ["Tomas", "Pedro", "Juan", "Mateo"],
 
-
-
     correct: 1, reference: "Lucas 22:54-62"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 453, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey mas sabio?",
-
-
 
     options: ["Roboam", "Salomon", "David", "Saul"],
 
-
-
     correct: 1, reference: "1 Reyes 3:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 454, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue llevado al cielo sin morir?",
-
-
 
     options: ["Job", "Moises", "Noe", "Elias"],
 
-
-
     correct: 3, reference: "2 Reyes 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 455, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue la madre de Jesus?",
-
-
 
     options: ["Marta", "Maria", "Isabel", "Ana"],
 
-
-
     correct: 1, reference: "Lucas 1:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 456, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien bautizo a Jesus?",
-
-
 
     options: ["Juan el Bautista", "Pedro", "Andres", "Felipe"],
 
-
-
     correct: 0, reference: "Mateo 3:13-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 457, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien escribio muchos Salmos?",
-
-
 
     options: ["Salomon", "Isaias", "Jeremias", "David"],
 
-
-
     correct: 3, reference: "Salmos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 458, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el primer rey de Israel?",
-
-
 
     options: ["Samuel", "David", "Saul", "Salomon"],
 
-
-
     correct: 2, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 459, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien traiciono a Jesus?",
-
-
 
     options: ["Judas", "Mateo", "Pedro", "Juan"],
 
-
-
     correct: 0, reference: "Mateo 26:14-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 460, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue hermano de Moises?",
-
-
 
     options: ["Aaron", "Eli", "Caleb", "Josue"],
 
-
-
     correct: 0, reference: "Exodo 4:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 461, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien interpreto suenos en Egipto?",
-
-
 
     options: ["Daniel", "Jacob", "Jose", "Ruben"],
 
-
-
     correct: 2, reference: "Genesis 41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 462, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien lucho con un angel?",
-
-
 
     options: ["Abraham", "Isaac", "Jacob", "Moises"],
 
-
-
     correct: 2, reference: "Genesis 32:24-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 463, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue conocido por su fuerza?",
-
-
 
     options: ["Elias", "Sanson", "Gedeon", "David"],
 
-
-
     correct: 1, reference: "Jueces 14-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 464, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan el Bautista?",
-
-
 
     options: ["Felipe", "Andres", "Zacarias", "Simeon"],
 
-
-
     correct: 2, reference: "Lucas 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 465, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien recibio los Diez Mandamientos?",
-
-
 
     options: ["Josue", "Caleb", "Moises", "Aaron"],
 
-
-
     correct: 2, reference: "Exodo 20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 466, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien camino sobre el agua con Jesus?",
-
-
 
     options: ["Pedro", "Tomas", "Juan", "Andres"],
 
-
-
     correct: 0, reference: "Mateo 14:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 467, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue amigo de David?",
-
-
 
     options: ["Saul", "Jonatan", "Joab", "Abner"],
 
-
-
     correct: 1, reference: "1 Samuel 18:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 468, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue vendido por sus hermanos?",
-
-
 
     options: ["Ruben", "Juda", "Benjamin", "Jose"],
 
-
-
     correct: 3, reference: "Genesis 37:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 469, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue padre de Salomon?",
-
-
 
     options: ["David", "Natan", "Roboam", "Saul"],
 
-
-
     correct: 0, reference: "2 Samuel 12:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 470, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien construyo el templo?",
-
-
 
     options: ["Saul", "Josias", "David", "Salomon"],
 
-
-
     correct: 3, reference: "1 Reyes 6:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 471, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el primer martir cristiano?",
-
-
 
     options: ["Pablo", "Pedro", "Esteban", "Juan"],
 
-
-
     correct: 2, reference: "Hechos 7:59-60"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 472, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue sanado de lepra por Eliseo?",
-
-
 
     options: ["Jehu", "Gedeon", "Naaman", "Uzias"],
 
-
-
     correct: 2, reference: "2 Reyes 5:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 473, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue esposa de Abraham?",
-
-
 
     options: ["Rebeca", "Raquel", "Lea", "Sara"],
 
-
-
     correct: 3, reference: "Genesis 17:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 474, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien nego conocer a Jesus?",
-
-
 
     options: ["Juan", "Pedro", "Judas", "Mateo"],
 
-
-
     correct: 1, reference: "Mateo 26:69-75"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 475, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el primer discipulo llamado?",
-
-
 
     options: ["Felipe", "Tomas", "Pedro", "Juan"],
 
-
-
     correct: 2, reference: "Mateo 4:18-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 476, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue madre de Samuel?",
-
-
 
     options: ["Ester", "Ana", "Debora", "Rut"],
 
-
-
     correct: 1, reference: "1 Samuel 1:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 477, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue reina y salvo a su pueblo?",
-
-
 
     options: ["Maria", "Ester", "Marta", "Rut"],
 
-
-
     correct: 1, reference: "Ester 4:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 478, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue profeta llevado por un carro de fuego?",
-
-
 
     options: ["Isaias", "Eliseo", "Elias", "Jeremias"],
 
-
-
     correct: 2, reference: "2 Reyes 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 479, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue hermano de Esau?",
-
-
 
     options: ["Jose", "Jacob", "Isaac", "Juda"],
 
-
-
     correct: 1, reference: "Genesis 25:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 480, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien escribio Hechos?",
-
-
 
     options: ["Juan", "Lucas", "Marcos", "Pablo"],
 
-
-
     correct: 1, reference: "Hechos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 481, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el discipulo amado?",
-
-
 
     options: ["Juan", "Pedro", "Felipe", "Andres"],
 
-
-
     correct: 0, reference: "Juan 13:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 482, difficulty: "facil", category: "personajes",
 
+    question: "¿Que comia Juan el Bautista en el desierto?",
 
+    options: ["Pan y agua", "Mana y codornices", "Langostas y miel silvestre", "Peces y aceitunas"],
 
-    question: "¿Quien fue padre de Juan el Bautista?",
-
-
-
-    options: ["Eli", "Zacarias", "Simeon", "Felipe"],
-
-
-
-    correct: 1, reference: "Lucas 1:13"
-
-
+    correct: 2, reference: "Mateo 3:4"
 
   },
 
-
-
   {
-
-
 
     id: 483, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue el primer asesinado en la Biblia?",
-
-
 
     options: ["Set", "Cain", "Noe", "Abel"],
 
-
-
     correct: 3, reference: "Genesis 4:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 484, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue padre de Jacob?",
-
-
 
     options: ["Lot", "Esau", "Isaac", "Abraham"],
 
-
-
     correct: 2, reference: "Genesis 25:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 485, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue madre de Jesus?",
-
-
 
     options: ["Rut", "Maria", "Ana", "Marta"],
 
-
-
     correct: 1, reference: "Lucas 1:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 486, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien escribio Apocalipsis?",
-
-
 
     options: ["Pedro", "Juan", "Lucas", "Pablo"],
 
-
-
     correct: 1, reference: "Apocalipsis 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 487, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue resucitado por Jesus?",
-
-
 
     options: ["Nicodemo", "Zaqueo", "Bartimeo", "Lazaro"],
 
-
-
     correct: 3, reference: "Juan 11:43-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 488, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien era recaudador de impuestos?",
-
-
 
     options: ["Felipe", "Mateo", "Pedro", "Juan"],
 
-
-
     correct: 1, reference: "Mateo 9:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 489, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue padre de Samuel?",
-
-
 
     options: ["Isai", "Natan", "Caleb", "Elcana"],
 
-
-
     correct: 3, reference: "1 Samuel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 490, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue profeta en el vientre del pez?",
-
-
 
     options: ["Miqueas", "Amos", "Jonas", "Oseas"],
 
-
-
     correct: 2, reference: "Jonas 2:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 491, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue padre de Juan?",
-
-
 
     options: ["Andres", "Zacarias", "Felipe", "Simeon"],
 
-
-
     correct: 1, reference: "Lucas 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 492, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue esposa de Isaac?",
-
-
 
     options: ["Raquel", "Sara", "Lea", "Rebeca"],
 
-
-
     correct: 3, reference: "Genesis 24:67"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 493, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue padre de David?",
-
-
 
     options: ["Caleb", "Saul", "Isai", "Abner"],
 
-
-
     correct: 2, reference: "1 Samuel 16:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 494, difficulty: "facil", category: "personajes",
 
-
-
     question: "¿Quien fue hermano de Marta y Maria?",
-
-
 
     options: ["Nicodemo", "Lazaro", "Zaqueo", "Felipe"],
 
-
-
     correct: 1, reference: "Juan 11:1"
 
-
-
   },
-
-
 
   // --- Libros (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 6, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual es el primer libro de la Biblia?",
-
-
 
     options: ["Genesis", "Salmos", "Exodo", "Levitico"],
 
-
-
     correct: 0, reference: "Genesis 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 7, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual es el ultimo libro de la Biblia?",
-
-
 
     options: ["Romanos", "Apocalipsis", "Judas", "Hebreos"],
 
-
-
     correct: 1, reference: "Apocalipsis 22:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 8, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro se encuentra la creacion del mundo?",
-
-
 
     options: ["Exodo", "Salmos", "Genesis", "Job"],
 
-
-
     correct: 2, reference: "Genesis 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 9, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparecen los Diez Mandamientos?",
-
-
 
     options: ["Levitico", "Genesis", "Exodo", "Deuteronomio"],
 
-
-
     correct: 2, reference: "Exodo 20:1-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 10, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro contiene muchos salmos de alabanza?",
-
-
 
     options: ["Cantares", "Eclesiastes", "Salmos", "Proverbios"],
 
-
-
     correct: 2, reference: "Salmos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 101, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro se habla del diluvio?",
-
-
 
     options: ["Genesis", "Jueces", "Josue", "Numeros"],
 
-
-
     correct: 0, reference: "Genesis 6-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 102, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro sigue despues de Genesis?",
-
-
 
     options: ["Exodo", "Numeros", "Levitico", "Deuteronomio"],
 
-
-
     correct: 0, reference: "Exodo 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 103, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta la historia de Moises?",
-
-
 
     options: ["Exodo", "Rut", "Genesis", "Job"],
 
-
-
     correct: 0, reference: "Exodo 2-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 104, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro contiene proverbios de sabiduria?",
-
-
 
     options: ["Job", "Isaias", "Proverbios", "Salmos"],
 
-
-
     correct: 2, reference: "Proverbios 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 105, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparece la historia de Job?",
-
-
 
     options: ["Salmos", "Job", "Proverbios", "Eclesiastes"],
 
-
-
     correct: 1, reference: "Job 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 106, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual es el primer libro del Nuevo Testamento?",
-
-
 
     options: ["Juan", "Marcos", "Mateo", "Lucas"],
 
-
-
     correct: 2, reference: "Mateo 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 107, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro cuenta la vida de Jesus?",
-
-
 
     options: ["Hechos", "Judas", "Mateo", "Romanos"],
 
-
-
     correct: 2, reference: "Mateo (Evangelio)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 108, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro escribio principalmente el apostol Pablo?",
-
-
 
     options: ["Romanos", "Hechos", "Juan", "Mateo"],
 
-
-
     correct: 0, reference: "Romanos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 109, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro estan los Hechos de los Apostoles?",
-
-
 
     options: ["Lucas", "Romanos", "Juan", "Hechos"],
 
-
-
     correct: 3, reference: "Hechos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 110, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro contiene el Sermon del Monte?",
-
-
 
     options: ["Lucas", "Mateo", "Marcos", "Juan"],
 
-
-
     correct: 1, reference: "Mateo 5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 111, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta el Salmo 23?",
-
-
 
     options: ["Proverbios", "Job", "Salmos", "Isaias"],
 
-
-
     correct: 2, reference: "Salmos 23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 112, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro habla del amor entre esposos?",
-
-
 
     options: ["Job", "Eclesiastes", "Cantares", "Proverbios"],
 
-
-
     correct: 2, reference: "Cantares 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 113, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparece Noe?",
-
-
 
     options: ["Rut", "Genesis", "Numeros", "Exodo"],
 
-
-
     correct: 1, reference: "Genesis 6:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 114, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro fue escrito por Juan en Patmos?",
-
-
 
     options: ["Judas", "Apocalipsis", "Pedro", "Romanos"],
 
-
-
     correct: 1, reference: "Apocalipsis 1:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 115, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro contiene cartas a iglesias?",
-
-
 
     options: ["Hechos", "Salmos", "Apocalipsis", "Mateo"],
 
-
-
     correct: 2, reference: "Apocalipsis 2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 116, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparece Abraham?",
-
-
 
     options: ["Josue", "Exodo", "Levitico", "Genesis"],
 
-
-
     correct: 3, reference: "Genesis 12:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 117, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro habla del exodo de Israel?",
-
-
 
     options: ["Numeros", "Genesis", "Exodo", "Deuteronomio"],
 
-
-
     correct: 2, reference: "Exodo 12-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 118, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta la historia de Rut?",
-
-
 
     options: ["Jueces", "Reyes", "Samuel", "Rut"],
 
-
-
     correct: 3, reference: "Rut 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 119, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro contiene leyes para Israel?",
-
-
 
     options: ["Salmos", "Levitico", "Rut", "Ester"],
 
-
-
     correct: 1, reference: "Levitico 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 120, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro se narra la conquista de Canaan?",
-
-
 
     options: ["Josue", "Numeros", "Samuel", "Jueces"],
 
-
-
     correct: 0, reference: "Josue 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 121, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro habla de los jueces de Israel?",
-
-
 
     options: ["Rut", "Cronicas", "Reyes", "Jueces"],
 
-
-
     correct: 3, reference: "Jueces 2:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 122, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparece el rey Saul?",
-
-
 
     options: ["Rut", "1 Samuel", "Reyes", "Cronicas"],
 
-
-
     correct: 1, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 123, difficulty: "facil", category: "libros",
 
+    question: "¿Que libro narra el reinado de David como rey de Israel?",
 
+    options: ["Rut", "1 Samuel", "2 Samuel", "2 Reyes"],
 
-    question: "¿Que libro narra el reinado de David?",
-
-
-
-    options: ["Rut", "1 Samuel", "Ester", "2 Reyes"],
-
-
-
-    correct: 1, reference: "1 Samuel 16"
-
-
+    correct: 2, reference: "2 Samuel 2:4"
 
   },
 
-
-
   {
-
-
 
     id: 124, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro se habla del rey Salomon?",
-
-
 
     options: ["Rut", "Jueces", "1 Reyes", "Job"],
 
-
-
     correct: 2, reference: "1 Reyes 3:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 125, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro cuenta la historia de Ester?",
-
-
 
     options: ["Rut", "Nehemias", "Job", "Ester"],
 
-
-
     correct: 3, reference: "Ester 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 126, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro se reconstruyo Jerusalen?",
-
-
 
     options: ["Reyes", "Nehemias", "Job", "Ester"],
 
-
-
     correct: 1, reference: "Nehemias 2:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 127, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro habla del templo reconstruido?",
-
-
 
     options: ["Isaias", "Esdras", "Rut", "Jueces"],
 
-
-
     correct: 1, reference: "Esdras 3:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 128, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta el profeta Isaias?",
-
-
 
     options: ["Isaias", "Daniel", "Ezequiel", "Jeremias"],
 
-
-
     correct: 0, reference: "Isaias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 129, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro habla del profeta Daniel?",
-
-
 
     options: ["Amos", "Daniel", "Jeremias", "Oseas"],
 
-
-
     correct: 1, reference: "Daniel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 130, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparece Jonas?",
-
-
 
     options: ["Jonas", "Miqueas", "Nahum", "Joel"],
 
-
-
     correct: 0, reference: "Jonas 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 131, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual es el primer evangelio?",
-
-
 
     options: ["Lucas", "Juan", "Marcos", "Mateo"],
 
-
-
     correct: 3, reference: "Mateo 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 132, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro escribio Lucas?",
 
-
-
     options: ["Juan", "Mateo", "Marcos", "Lucas"],
-
-
 
     correct: 3, reference: "Lucas 1:1-3"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 133, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta la conversion de Pablo?",
-
-
 
     options: ["Hechos", "Corintios", "Romanos", "Galatas"],
 
-
-
     correct: 0, reference: "Hechos 9:1-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 134, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro habla de la fe?",
-
-
 
     options: ["Santiago", "Judas", "Pedro", "Hebreos"],
 
-
-
     correct: 3, reference: "Hebreos 11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 135, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta 'Todo lo puedo en Cristo'?",
-
-
 
     options: ["Colosenses", "Efesios", "Tito", "Filipenses"],
 
-
-
     correct: 3, reference: "Filipenses 4:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 136, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro escribio Pedro?",
-
-
 
     options: ["1 Pedro", "Romanos", "Judas", "Juan"],
 
-
-
     correct: 0, reference: "1 Pedro 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 137, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta el amor cristiano descrito extensamente?",
-
-
 
     options: ["1 Corintios", "Galatas", "Tito", "Romanos"],
 
-
-
     correct: 0, reference: "1 Corintios 13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 138, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual libro habla del fruto del Espiritu?",
-
-
 
     options: ["Efesios", "Hebreos", "Romanos", "Galatas"],
 
-
-
     correct: 3, reference: "Galatas 5:22-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 139, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro aparece la epistola de Judas?",
-
-
 
     options: ["Pedro", "Juan", "Santiago", "Judas"],
 
-
-
     correct: 3, reference: "Judas 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 140, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Cual es el libro mas corto del Nuevo Testamento?",
-
-
 
     options: ["2 Pedro", "Filemon", "Judas", "Tito"],
 
-
-
-    correct: 2, reference: "Judas"
-
-
+    correct: 1, reference: "Filemon"
 
   },
 
-
-
   {
-
-
 
     id: 141, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro escribio Juan sobre el amor?",
-
-
 
     options: ["Tito", "Romanos", "Pedro", "1 Juan"],
 
-
-
     correct: 3, reference: "1 Juan 4:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 142, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta la armadura de Dios?",
-
-
 
     options: ["Galatas", "Efesios", "Filipenses", "Colosenses"],
 
-
-
     correct: 1, reference: "Efesios 6:10-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 143, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro escribio Santiago?",
-
-
 
     options: ["Pedro", "Santiago", "Juan", "Judas"],
 
-
-
     correct: 1, reference: "Santiago 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 144, difficulty: "facil", category: "libros",
 
-
-
     question: "¿En que libro esta el 'Padre Nuestro'?",
 
-
-
     options: ["Juan", "Mateo", "Marcos", "Lucas"],
-
-
 
     correct: 1, reference: "Mateo 6:9-13"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 145, difficulty: "facil", category: "libros",
 
-
-
     question: "¿Que libro cierra la Biblia?",
-
-
 
     options: ["Judas", "Romanos", "Hebreos", "Apocalipsis"],
 
-
-
     correct: 3, reference: "Apocalipsis 22:21"
 
-
-
   },
-
-
 
   // --- Historias Facil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 11, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que construyo Noe por mandato de Dios?",
-
-
 
     options: ["Un palacio", "Una torre", "Un templo", "Un arca"],
 
-
-
     correct: 3, reference: "Genesis 6:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 12, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que evento cubrio toda la tierra con agua?",
-
-
 
     options: ["El diluvio", "El exodo", "La plaga", "La sequia"],
 
-
-
     correct: 0, reference: "Genesis 7:17-24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 13, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Donde vivian Adan y Eva?",
-
-
 
     options: ["Sinai", "Eden", "Egipto", "Canaan"],
 
-
-
     correct: 1, reference: "Genesis 2:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 14, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que pueblo cruzo el Mar Rojo?",
-
-
 
     options: ["Babilonia", "Grecia", "Roma", "Israel"],
 
-
-
     correct: 3, reference: "Exodo 14:21-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 15, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que cayo del cielo para alimentar a Israel?",
-
-
 
     options: ["Carne", "Agua", "Pan", "Mana"],
 
-
-
     correct: 3, reference: "Exodo 16:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 800, difficulty: "facil", category: "historias",
 
-
-
-    question: "¿Que ciudad cayeron sus muros?",
-
-
+    question: "¿Que ciudad vio caer sus muros?",
 
     options: ["Samaria", "Jerusalen", "Hebron", "Jerico"],
 
-
-
     correct: 3, reference: "Josue 6:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 801, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que torre quisieron construir hasta el cielo?",
-
-
 
     options: ["Betel", "Sinai", "Babel", "Sion"],
 
-
-
     correct: 2, reference: "Genesis 11:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 802, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que plaga fue la ultima en Egipto?",
-
-
 
     options: ["Granizo", "Oscuridad", "Muerte de primogenitos", "Ranas"],
 
-
-
     correct: 2, reference: "Exodo 12:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 803, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Donde recibio Moises los mandamientos?",
-
-
 
     options: ["Sinai", "Nebo", "Horeb", "Carmelo"],
 
-
-
     correct: 0, reference: "Exodo 19:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 804, difficulty: "facil", category: "historias",
 
+    question: "¿En que dia se recogia doble porcion de mana antes del sabado?",
 
-
-    question: "¿Cuantos dias cayo mana doble antes del sabado?",
-
-
-
-    options: ["3", "1", "7", "2"],
-
-
+    options: ["Tercer dia", "Primer dia", "Septimo dia", "Sexto dia"],
 
     correct: 3, reference: "Exodo 16:22-26"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 805, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que animal hablo con Balaam?",
-
-
 
     options: ["Burro", "Leon", "Caballo", "Oveja"],
 
-
-
     correct: 0, reference: "Numeros 22:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 806, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Quien derribo a Goliat?",
-
-
 
     options: ["David", "Samuel", "Jonatan", "Saul"],
 
-
-
     correct: 0, reference: "1 Samuel 17:50"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 807, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que ciudad fue destruida con fuego?",
-
-
 
     options: ["Betel", "Ninive", "Jerico", "Sodoma"],
 
-
-
     correct: 3, reference: "Genesis 19:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 808, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que profeta enfrento a los profetas de Baal?",
-
-
 
     options: ["Elias", "Amos", "Eliseo", "Jonas"],
 
-
-
     correct: 0, reference: "1 Reyes 18:20-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 809, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Donde nacio Jesus?",
-
-
 
     options: ["Jerusalen", "Belen", "Galilea", "Nazaret"],
 
-
-
     correct: 1, reference: "Mateo 2:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 810, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que senal guio a los sabios?",
-
-
 
     options: ["Un sueno", "Una estrella", "Un angel", "Una nube"],
 
-
-
     correct: 1, reference: "Mateo 2:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 811, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que multiplico Jesus?",
-
-
 
     options: ["Carne y vino", "Pan y vino", "Agua y pan", "Pan y peces"],
 
-
-
     correct: 3, reference: "Mateo 14:17-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 812, difficulty: "facil", category: "historias",
 
-
-
-    question: "¿Que mar calmo Jesus?",
-
-
+    question: "¿En que lago calmo Jesus la tormenta?",
 
     options: ["Galilea", "Rojo", "Mediterraneo", "Muerto"],
 
-
-
     correct: 0, reference: "Marcos 4:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 813, difficulty: "facil", category: "historias",
 
-
-
-    question: "¿Que instrumento derribo Jerico?",
-
-
+    question: "¿Que usaron los israelitas al caer los muros de Jerico?",
 
     options: ["Trompetas", "Campanas", "Arpas", "Espadas"],
 
-
-
     correct: 0, reference: "Josue 6:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 814, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que arca contenia la Ley?",
-
-
 
     options: ["Del rey", "De David", "Del pacto", "De Noe"],
 
-
-
     correct: 2, reference: "Exodo 25:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 815, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que ciudad fue capital de David?",
-
-
 
     options: ["Betel", "Jerusalen", "Hebron", "Samaria"],
 
-
-
     correct: 1, reference: "2 Samuel 5:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 816, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Cuantos dias estuvo Jonas en el pez?",
-
-
 
     options: ["7", "3", "1", "5"],
 
-
-
     correct: 1, reference: "Jonas 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 817, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que libro narra la creacion?",
-
-
 
     options: ["Exodo", "Levitico", "Numeros", "Genesis"],
 
-
-
     correct: 3, reference: "Genesis 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 818, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que plaga convirtio el agua en sangre?",
-
-
 
     options: ["5ta", "10ma", "2da", "1ra"],
 
-
-
     correct: 3, reference: "Exodo 7:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 819, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Donde fue crucificado Jesus?",
-
-
 
     options: ["Horeb", "Golgota", "Sion", "Getsemani"],
 
-
-
     correct: 1, reference: "Mateo 27:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 820, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que pueblo cayo en idolatria con un becerro?",
-
-
 
     options: ["Persia", "Egipto", "Roma", "Israel"],
 
-
-
     correct: 3, reference: "Exodo 32:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 821, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que rey pidio sabiduria?",
-
-
 
     options: ["David", "Salomon", "Saul", "Asa"],
 
-
-
     correct: 1, reference: "1 Reyes 3:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 822, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que profeta fue llevado al cielo?",
-
-
 
     options: ["Daniel", "Samuel", "Jeremias", "Elias"],
 
-
-
     correct: 3, reference: "2 Reyes 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 823, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que mujer salvo a su pueblo?",
-
-
 
     options: ["Lea", "Ana", "Ester", "Rut"],
 
-
-
     correct: 2, reference: "Ester 4:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 824, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que apostol camino sobre el agua?",
-
-
 
     options: ["Pedro", "Felipe", "Juan", "Tomas"],
 
-
-
     correct: 0, reference: "Mateo 14:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 825, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Donde oraba Jesus?",
-
-
 
     options: ["Sion", "Sinai", "Monte de los Olivos", "Palacio"],
 
-
-
     correct: 2, reference: "Lucas 22:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 826, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que ciudad fue reconstruida por Nehemias?",
-
-
 
     options: ["Hebron", "Jerico", "Samaria", "Jerusalen"],
 
-
-
     correct: 3, reference: "Nehemias 2:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 827, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que libro relata jueces de Israel?",
-
-
 
     options: ["Cronicas", "Reyes", "Jueces", "Rut"],
 
-
-
     correct: 2, reference: "Jueces 2:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 828, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que rey persiguio a David?",
-
-
 
     options: ["Roboam", "Asa", "Saul", "Acab"],
 
-
-
     correct: 2, reference: "1 Samuel 19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 829, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que mar cruzo Moises?",
-
-
 
     options: ["Mediterraneo", "Galilea", "Muerto", "Rojo"],
 
-
-
     correct: 3, reference: "Exodo 14:21-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 830, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que plaga fueron langostas?",
-
-
 
     options: ["7ma", "5ta", "6ta", "8va"],
 
-
-
     correct: 3, reference: "Exodo 10:4-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 831, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que libro relata el exodo?",
-
-
 
     options: ["Exodo", "Levitico", "Deuteronomio", "Genesis"],
 
-
-
     correct: 0, reference: "Exodo 12-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 832, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que ciudad cayo por obediencia?",
-
-
 
     options: ["Dan", "Betel", "Hebron", "Jerico"],
 
-
-
     correct: 3, reference: "Josue 6:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 833, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que apostol escribio Apocalipsis?",
-
-
 
     options: ["Pablo", "Pedro", "Juan", "Lucas"],
 
-
-
     correct: 2, reference: "Apocalipsis 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 834, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que animal fue sacrificado en Pascua?",
-
-
 
     options: ["Buey", "Cabra", "Cordero", "Paloma"],
 
-
-
     correct: 2, reference: "Exodo 12:3-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 835, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que rey construyo el templo?",
-
-
 
     options: ["Saul", "Asa", "David", "Salomon"],
 
-
-
     correct: 3, reference: "1 Reyes 6:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 836, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que libro narra el nacimiento de Jesus?",
-
-
 
     options: ["Hechos", "Mateo", "Juan", "Marcos"],
 
-
-
     correct: 1, reference: "Mateo 1:18-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 837, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que rio cruzo Josue?",
-
-
 
     options: ["Tigris", "Eufrates", "Nilo", "Jordan"],
 
-
-
     correct: 3, reference: "Josue 3:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 838, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que libro cuenta la caida de Jerusalen?",
-
-
 
     options: ["Lamentaciones", "Ester", "Joel", "Rut"],
 
-
-
     correct: 0, reference: "Lamentaciones 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 839, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que discipulo dudo?",
-
-
 
     options: ["Pedro", "Juan", "Tomas", "Andres"],
 
-
-
     correct: 2, reference: "Juan 20:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 840, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que evento celebran en Pentecostes?",
-
-
 
     options: ["Navidad", "Ayuno", "Espiritu Santo", "Pascua"],
 
-
-
     correct: 2, reference: "Hechos 2:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 841, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que libro relata la iglesia primitiva?",
-
-
 
     options: ["Hechos", "Romanos", "Hebreos", "Galatas"],
 
-
-
     correct: 0, reference: "Hechos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 842, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que profeta cerro el AT?",
-
-
 
     options: ["Malaquias", "Amos", "Joel", "Zacarias"],
 
-
-
     correct: 0, reference: "Malaquias 4:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 843, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que ciudad fue destruida junto a Sodoma?",
-
-
 
     options: ["Jerico", "Gomorra", "Samaria", "Ninive"],
 
-
-
     correct: 1, reference: "Genesis 19:24-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 844, difficulty: "facil", category: "historias",
 
-
-
     question: "¿Que evento marca la resurreccion?",
-
-
 
     options: ["Domingo", "Sabado", "Viernes", "Jueves"],
 
-
-
     correct: 0, reference: "Mateo 28:1-6"
-
-
 
   },
 
-
-
   // --- Vida de Jesus ---
 
-
-
   {
-
-
 
     id: 1400, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad nacio Jesus?",
-
-
 
     options: ["Capernaum", "Belen", "Nazaret", "Jerusalen"],
 
-
-
     correct: 1, reference: "Mateo 2:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1401, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿En que lugar fue acostado Jesus al nacer?",
-
-
 
     options: ["El suelo", "Una cama", "Una cuna", "Un pesebre"],
 
-
-
     correct: 3, reference: "Lucas 2:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1402, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Quienes visitaron al nino Jesus guiados por una estrella?",
-
-
 
     options: ["Los sacerdotes", "Los magos de oriente", "Los pastores", "Los angeles"],
 
-
-
     correct: 1, reference: "Mateo 2:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1403, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Quienes fueron los primeros en visitar a Jesus recien nacido?",
-
-
 
     options: ["Los magos", "Los sacerdotes", "Los pastores", "Los reyes"],
 
-
-
     correct: 2, reference: "Lucas 2:15-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1404, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Como se llamaba la madre de Jesus?",
-
-
 
     options: ["Ana", "Maria", "Elisabet", "Marta"],
 
-
-
     correct: 1, reference: "Mateo 1:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1405, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Como se llamaba el padre terrenal de Jesus?",
-
-
 
     options: ["Jose", "Zacarias", "David", "Jacob"],
 
-
-
     correct: 0, reference: "Mateo 1:18-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1406, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿A que pais huyo la familia de Jesus para escapar de Herodes?",
-
-
 
     options: ["Babilonia", "Egipto", "Siria", "Grecia"],
 
-
-
     correct: 1, reference: "Mateo 2:13-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1407, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que rey quiso matar al nino Jesus?",
-
-
 
     options: ["Cesar Augusto", "Herodes", "Pilato", "Faraon"],
 
-
-
     correct: 1, reference: "Mateo 2:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1408, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad crecio Jesus?",
-
-
 
     options: ["Belen", "Jerusalen", "Nazaret", "Jerico"],
 
-
-
     correct: 2, reference: "Lucas 2:39-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1409, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿En que rio fue bautizado Jesus?",
-
-
 
     options: ["Eufrates", "Jordan", "Nilo", "Tigris"],
 
-
-
     correct: 1, reference: "Mateo 3:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1410, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Quien bautizo a Jesus?",
-
-
 
     options: ["Pablo", "Juan el Bautista", "Santiago", "Pedro"],
 
-
-
     correct: 1, reference: "Mateo 3:13-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1411, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que descendio sobre Jesus al ser bautizado?",
-
-
 
     options: ["Fuego", "Una nube", "Una paloma", "Un rayo de luz"],
 
-
-
     correct: 2, reference: "Mateo 3:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1412, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos dias ayuno Jesus en el desierto?",
-
-
 
     options: ["30", "21", "40", "7"],
 
-
-
     correct: 2, reference: "Mateo 4:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1413, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Quien tento a Jesus en el desierto?",
-
-
 
     options: ["Un fariseo", "El diablo", "Un demonio", "Un angel"],
 
-
-
     correct: 1, reference: "Mateo 4:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1414, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos apostoles eligio Jesus?",
-
-
 
     options: ["7", "14", "10", "12"],
 
-
-
     correct: 3, reference: "Mateo 10:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1415, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Cual fue la profesion de Jesus antes de predicar?",
 
-
-
     options: ["Pescador", "Carpintero", "Agricultor", "Pastor"],
-
-
 
     correct: 1, reference: "Marcos 6:3"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1416, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Cual de estos era uno de los 12 apostoles?",
-
-
 
     options: ["Lucas", "Pedro", "Marcos", "Pablo"],
 
-
-
     correct: 1, reference: "Mateo 10:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1417, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que profesion tenian Pedro y Andres antes de seguir a Jesus?",
-
-
 
     options: ["Carpinteros", "Pescadores", "Agricultores", "Pastores"],
 
-
-
     correct: 1, reference: "Mateo 4:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1418, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que famoso sermon predico Jesus en una montana?",
-
-
 
     options: ["Sermon del desierto", "Sermon del templo", "Sermon del lago", "Sermon del Monte"],
 
-
-
     correct: 3, reference: "Mateo 5:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1419, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que oracion enseno Jesus a sus discipulos?",
-
-
 
     options: ["El Padrenuestro", "El Ave Maria", "El Credo", "El Salmo 23"],
 
-
-
     correct: 0, reference: "Mateo 6:9-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1420, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Como se llama la parabola del hijo que regresa a su padre?",
-
-
 
     options: ["El buen pastor", "El sembrador", "El hijo prodigo", "El buen samaritano"],
 
-
-
     correct: 2, reference: "Lucas 15:11-32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1421, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Como se llama la parabola donde un hombre ayuda a un herido en el camino?",
-
-
 
     options: ["La oveja perdida", "El buen samaritano", "El sembrador", "El hijo prodigo"],
 
-
-
     correct: 1, reference: "Lucas 10:30-37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1422, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Sobre que animal entro Jesus a Jerusalen el Domingo de Ramos?",
-
-
 
     options: ["A pie", "Un burro", "Un caballo", "Un camello"],
 
-
-
     correct: 1, reference: "Mateo 21:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1423, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que ponian las personas en el camino cuando Jesus entro a Jerusalen?",
-
-
 
     options: ["Flores", "Ramas de palma y mantos", "Alfombras", "Piedras"],
 
-
-
     correct: 1, reference: "Mateo 21:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1424, difficulty: "facil", category: "vida_jesus",
 
+    question: "¿Que fiesta celebraba Jesus con sus discipulos en la ultima cena?",
 
+    options: ["La Pascua", "Pentecostes", "Tabernaculos", "Purim"],
 
-    question: "¿Como se llama la ultima cena que Jesus tuvo con sus discipulos?",
-
-
-
-    options: ["La Pascua", "La fiesta", "El banquete", "La Santa Cena"],
-
-
-
-    correct: 3, reference: "Mateo 26:26-28"
-
-
+    correct: 0, reference: "Mateo 26:17-19"
 
   },
 
-
-
   {
-
-
 
     id: 1425, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que representaba el pan en la ultima Cena?",
-
-
 
     options: ["La vida eterna", "La bendicion", "El cuerpo de Cristo", "El mana del cielo"],
 
-
-
     correct: 2, reference: "Mateo 26:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1426, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que representaba el vino en la ultima Cena?",
-
-
 
     options: ["La nueva vida", "El Espiritu Santo", "La sangre de Cristo", "La alegria"],
 
-
-
     correct: 2, reference: "Mateo 26:27-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1427, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Quien traiciono a Jesus?",
-
-
 
     options: ["Pedro", "Tomas", "Mateo", "Judas Iscariote"],
 
-
-
     correct: 3, reference: "Mateo 26:14-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1428, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Con que gesto traiciono Judas a Jesus?",
-
-
 
     options: ["Un abrazo", "Senalandolo", "Un beso", "Un saludo"],
 
-
-
     correct: 2, reference: "Mateo 26:49"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1429, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Cuantas monedas de plata recibio Judas por traicionar a Jesus?",
-
-
 
     options: ["50", "20", "30", "10"],
 
-
-
     correct: 2, reference: "Mateo 26:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1430, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo nego conocer a Jesus tres veces?",
-
-
 
     options: ["Andres", "Pedro", "Santiago", "Juan"],
 
-
-
     correct: 1, reference: "Mateo 26:69-75"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1431, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que gobernador romano juzgo a Jesus?",
-
-
 
     options: ["Poncio Pilato", "Cesar", "Herodes", "Felix"],
 
-
-
     correct: 0, reference: "Mateo 27:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1432, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿En que lugar fue crucificado Jesus?",
-
-
 
     options: ["El Golgota (Calvario)", "El monte Sinai", "El monte de los Olivos", "El monte Carmelo"],
 
-
-
     correct: 0, reference: "Mateo 27:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1433, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos dias despues de morir resucito Jesus?",
-
-
 
     options: ["Una semana despues", "Al dia siguiente", "Al segundo dia", "Al tercer dia"],
 
-
-
     correct: 3, reference: "1 Corintios 15:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1434, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Quienes fueron las primeras en descubrir la tumba vacia de Jesus?",
-
-
 
     options: ["Los sacerdotes", "Los soldados", "Los apostoles", "Unas mujeres"],
 
-
-
     correct: 3, reference: "Mateo 28:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1435, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que encontraron las mujeres al llegar a la tumba de Jesus?",
-
-
 
     options: ["La tumba cerrada", "A Jesus dormido", "La piedra removida y un angel", "A los soldados"],
 
-
-
     correct: 2, reference: "Mateo 28:2-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1436, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo dudo de la resurreccion hasta ver a Jesus?",
-
-
 
     options: ["Tomas", "Pedro", "Felipe", "Juan"],
 
-
-
     correct: 0, reference: "Juan 20:24-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1437, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que evento se celebra con la ascension de Jesus al cielo?",
-
-
 
     options: ["Pentecostes", "La Epifania", "La Transfiguracion", "La Ascension"],
 
-
-
     correct: 3, reference: "Hechos 1:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1438, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Como subio Jesus al cielo el dia de la Ascension?",
-
-
 
     options: ["Desaparecio", "En un carro de fuego", "Fue elevado en una nube", "Caminando"],
 
-
-
     correct: 2, reference: "Hechos 1:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1439, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que significa el nombre 'Emmanuel'?",
-
-
 
     options: ["Salvador del mundo", "Hijo de Dios", "Dios con nosotros", "Rey de reyes"],
 
-
-
     correct: 2, reference: "Mateo 1:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1440, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que significa el nombre 'Jesus'?",
-
-
 
     options: ["Maestro", "Ungido", "Dios es grande", "Salvador"],
 
-
-
     correct: 3, reference: "Mateo 1:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1441, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que titulo significa 'Ungido' y se aplica a Jesus?",
-
-
 
     options: ["Rabi", "Profeta", "Mesias (Cristo)", "Maestro"],
 
-
-
     correct: 2, reference: "Juan 1:41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1442, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Donde oro Jesus la noche antes de ser arrestado?",
-
-
 
     options: ["En el desierto", "En el huerto de Getsemani", "En el templo", "En el monte Sinai"],
 
-
-
     correct: 1, reference: "Mateo 26:36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1443, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que dijo Jesus que era el mandamiento mas importante?",
-
-
 
     options: ["Honrar a los padres", "No mentir", "No robar", "Amar a Dios con todo el corazon"],
 
-
-
     correct: 3, reference: "Mateo 22:37-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1444, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Jesus dijo: 'Yo soy el camino, la verdad y la...'?",
-
-
 
     options: ["Puerta", "Luz", "Vida", "Esperanza"],
 
-
-
     correct: 2, reference: "Juan 14:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1445, difficulty: "facil", category: "vida_jesus",
 
-
-
-    question: "¿Cuantos regalos llevaron los magos al nino Jesus?",
-
-
+    question: "¿Cuantos tipos de regalos llevaron los magos al nino Jesus?",
 
     options: ["4", "5", "2", "3"],
 
-
-
     correct: 3, reference: "Mateo 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1446, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que les guio a los magos hasta donde estaba Jesus?",
-
-
 
     options: ["Un angel", "Una estrella", "Un profeta", "Un sueno"],
 
-
-
     correct: 1, reference: "Mateo 2:9-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1447, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que edad tenia Jesus cuando fue encontrado ensenando en el templo?",
-
-
 
     options: ["12 anos", "10 anos", "15 anos", "8 anos"],
 
-
-
     correct: 0, reference: "Lucas 2:42-46"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1448, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿En que parabola Jesus habla de un pastor que busca una oveja perdida?",
-
-
 
     options: ["La oveja perdida", "El sembrador", "Los talentos", "El buen samaritano"],
 
-
-
     correct: 0, reference: "Lucas 15:3-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1449, difficulty: "facil", category: "vida_jesus",
 
-
-
     question: "¿Que le pusieron a Jesus en la cabeza antes de crucificarlo?",
-
-
 
     options: ["Una venda", "Un velo", "Un casco", "Una corona de espinas"],
 
-
-
     correct: 3, reference: "Mateo 27:29"
 
-
-
   },
-
-
 
   // --- Milagros Facil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 1600, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Cual fue el primer milagro de Jesus segun el Evangelio de Juan?",
-
-
 
     options: ["Convertir agua en vino", "Sanar a un leproso", "Multiplicar los panes", "Caminar sobre el agua"],
 
-
-
     correct: 0, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1601, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien resucito Jesus despues de estar 4 dias muerto?",
-
-
 
     options: ["El hijo de la viuda", "Jairo", "Tabita", "Lazaro"],
 
-
-
     correct: 3, reference: "Juan 11:43-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1602, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que mar dividio Moises para que el pueblo de Israel cruzara?",
-
-
 
     options: ["Mar de Galilea", "Mar Muerto", "Mar Rojo", "Mar Mediterraneo"],
 
-
-
     correct: 2, reference: "Exodo 14:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1603, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Con cuantos panes y peces alimento Jesus a 5,000 personas?",
-
-
 
     options: ["5 panes y 2 peces", "3 panes y 3 peces", "7 panes y 5 peces", "2 panes y 5 peces"],
 
-
-
     correct: 0, reference: "Mateo 14:17-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1604, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Quien camino sobre el agua junto a Jesus?",
-
-
 
     options: ["Pedro", "Juan", "Andres", "Santiago"],
 
-
-
     correct: 0, reference: "Mateo 14:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1605, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que hizo Jesus para calmar la tempestad en el mar?",
-
-
 
     options: ["Reprendio al viento y al mar", "Lanzo aceite al agua", "Oro toda la noche", "Pidio ayuda a los discipulos"],
 
-
-
     correct: 0, reference: "Marcos 4:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1606, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien sano Jesus de ceguera en Jerico?",
-
-
 
     options: ["Nicodemo", "Bartimeo", "Zaqueo", "Lazaro"],
 
-
-
     correct: 1, reference: "Marcos 10:46-52"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1607, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que aparicion milagrosa vio Moises en el monte Horeb?",
-
-
 
     options: ["Un angel con espada", "Una columna de fuego", "Una zarza que ardia sin consumirse", "Un arcoiris"],
 
-
-
     correct: 2, reference: "Exodo 3:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1608, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que alimento envio Dios del cielo al pueblo de Israel en el desierto?",
-
-
 
     options: ["Pan y leche", "Trigo", "Mana", "Frutas"],
 
-
-
     correct: 2, reference: "Exodo 16:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1609, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que animal se trago a Jonas?",
-
-
 
     options: ["Una ballena", "Un gran pez", "Un tiburon", "Un cocodrilo"],
 
-
-
     correct: 1, reference: "Jonas 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1610, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Cuantos dias estuvo Jonas dentro del gran pez?",
-
-
 
     options: ["3 dias y 3 noches", "2 dias", "7 dias", "1 dia"],
 
-
-
     correct: 0, reference: "Jonas 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1611, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que murallas cayeron milagrosamente al marchar el pueblo de Israel alrededor?",
-
-
 
     options: ["Las de Jerusalen", "Las de Egipto", "Las de Babilonia", "Las de Jerico"],
 
-
-
     correct: 3, reference: "Josue 6:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1612, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿De que fue protegido Daniel milagrosamente?",
-
-
 
     options: ["De los leones", "Del fuego", "De serpientes", "De una inundacion"],
 
-
-
     correct: 0, reference: "Daniel 6:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1613, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Quienes fueron arrojados al horno de fuego ardiente y no se quemaron?",
-
-
 
     options: ["Moises y Aaron", "Daniel y sus amigos", "Elias y Eliseo", "Sadrac, Mesac y Abed-nego"],
 
-
-
     correct: 3, reference: "Daniel 3:26-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1614, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que profeta hizo descender fuego del cielo en el monte Carmelo?",
 
-
-
     options: ["Eliseo", "Jeremias", "Elias", "Isaias"],
-
-
 
     correct: 2, reference: "1 Reyes 18:38"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1615, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Como fue llevado Elias al cielo?",
-
-
 
     options: ["Un carro de fuego con caballos de fuego", "Un angel lo llevo", "Subio caminando", "Desaparecio"],
 
-
-
     correct: 0, reference: "2 Reyes 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1616, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que rio dividio Eliseo golpeandolo con el manto de Elias?",
-
-
 
     options: ["El Tigris", "El Jordan", "El Eufrates", "El Nilo"],
 
-
-
     correct: 1, reference: "2 Reyes 2:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1617, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien resucito Jesus, la hija de un principal de la sinagoga?",
-
-
 
     options: ["La hija de Nicodemo", "La hija de Pedro", "La hija de Herodes", "La hija de Jairo"],
 
-
-
     correct: 3, reference: "Marcos 5:41-42"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1618, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que enfermedad sano Jesus tocando al enfermo, aunque era considerado impuro?",
-
-
 
     options: ["Sordera", "Lepra", "Paralisis", "Ceguera"],
 
-
-
     correct: 1, reference: "Mateo 8:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1619, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Cuantos leprosos sano Jesus de los cuales solo uno volvio a dar gracias?",
-
-
 
     options: ["10", "7", "12", "5"],
 
-
-
     correct: 0, reference: "Lucas 17:12-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1620, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que hizo Jesus en la boda de Cana?",
-
-
 
     options: ["Resucito a un muerto", "Multiplico panes", "Convirtio agua en vino", "Sano a un enfermo"],
 
-
-
     correct: 2, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1621, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien le dijo Jesus 'Toma tu lecho y anda' en el estanque de Betesda?",
-
-
 
     options: ["A un paralitico", "A un ciego", "A un leproso", "A un sordomudo"],
 
-
-
     correct: 0, reference: "Juan 5:8-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1622, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que milagro hizo Jesus con el hombre de la mano seca?",
-
-
 
     options: ["Le dio una mano nueva", "Le puso una venda", "Le restauro la mano", "Le corto la mano"],
 
-
-
     correct: 2, reference: "Marcos 3:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1623, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que plaga envio Dios como la ultima sobre Egipto?",
-
-
 
     options: ["Oscuridad", "Langostas", "La muerte de los primogenitos", "Granizo"],
 
-
-
     correct: 2, reference: "Exodo 12:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1624, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿De donde saco Moises agua golpeando con su vara?",
-
-
 
     options: ["De un pozo", "De un arbol", "De una roca", "Del rio Nilo"],
 
-
-
     correct: 2, reference: "Exodo 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1625, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que convirtio Moises en serpiente delante de Faraon?",
-
-
 
     options: ["Su mano", "Una piedra", "Una cuerda", "Su vara"],
 
-
-
     correct: 3, reference: "Exodo 7:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1626, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Quien fue sanada al tocar el borde del manto de Jesus?",
-
-
 
     options: ["La suegra de Pedro", "Una mujer con flujo de sangre", "Maria Magdalena", "Marta"],
 
-
-
     correct: 1, reference: "Marcos 5:25-29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1627, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien sano Jesus de fiebre en la casa de Pedro?",
-
-
 
     options: ["La hija de Pedro", "La suegra de Pedro", "La esposa de Pedro", "La madre de Pedro"],
 
-
-
     correct: 1, reference: "Mateo 8:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1628, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que milagro ocurrio cuando Jesus murio en la cruz?",
-
-
 
     options: ["El mar se seco", "El velo del templo se rasgo en dos", "Llovio fuego", "El templo se derrumbo"],
 
-
-
     correct: 1, reference: "Mateo 27:51"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1629, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Cual es el mayor milagro de Jesus segun el cristianismo?",
-
-
 
     options: ["Multiplicar los panes", "Caminar sobre el agua", "Su resurreccion", "Convertir agua en vino"],
 
-
-
     correct: 2, reference: "Mateo 28:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1630, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que le sucedio a la vara de Aaron que confirmo su sacerdocio?",
-
-
 
     options: ["Se volvio serpiente", "Brillo con luz", "Se convirtio en oro", "Florecio y dio almendras"],
 
-
-
     correct: 3, reference: "Numeros 17:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1631, difficulty: "facil", category: "milagros",
 
-
-
-    question: "¿Que animal hablo milagrosamente en el Antiguo Testamento?",
-
-
+    question: "¿Que animal hablo para salvar la vida de su amo Balaam en el Antiguo Testamento?",
 
     options: ["Una burra", "Un leon", "Un perro", "Una serpiente"],
 
-
-
     correct: 0, reference: "Numeros 22:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1632, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que hizo Jesus antes de alimentar a los 5,000?",
-
-
 
     options: ["Ayuno", "Dio gracias y bendijo los panes", "Envio a comprar pan", "Pidio mas comida"],
 
-
-
     correct: 1, reference: "Mateo 14:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1633, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Cuantas canastas sobraron despues de alimentar a los 5,000?",
-
-
 
     options: ["3", "7", "5", "12"],
 
-
-
     correct: 3, reference: "Mateo 14:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1634, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que le dijo Jesus al paralitico que bajaron por el techo?",
-
-
 
     options: ["Cree en mi", "Tus pecados te son perdonados", "Vete a tu casa", "Levantate y salta"],
 
-
-
     correct: 1, reference: "Marcos 2:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1635, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que sucedio en Pentecostes segun el libro de Hechos?",
-
-
 
     options: ["Se abrio el mar", "El Espiritu Santo descendio con lenguas de fuego", "Llovio mana", "Un terremoto"],
 
-
-
     correct: 1, reference: "Hechos 2:3-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1636, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que hicieron Pedro y Juan con el cojo de la puerta del templo llamada la Hermosa?",
-
-
 
     options: ["Le dieron dinero", "Le dieron comida", "Lo sanaron en el nombre de Jesus", "Lo llevaron al medico"],
 
-
-
     correct: 2, reference: "Hechos 3:6-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1637, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Como fue liberado Pedro de la carcel segun Hechos?",
-
-
 
     options: ["Soborno al guardia", "Cavo un tunel", "Los discipulos lo rescataron", "Un angel abrio las puertas"],
 
-
-
     correct: 3, reference: "Hechos 12:7-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1638, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien resucito Pedro en Jope?",
-
-
 
     options: ["Maria", "Tabita (Dorcas)", "Lidia", "Priscila"],
 
-
-
     correct: 1, reference: "Hechos 9:40-41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1639, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que le paso a Pablo cuando fue mordido por una vibora en Malta?",
-
-
 
     options: ["Perdio la mano", "Se enfermo", "Murio", "No le paso nada"],
 
-
-
     correct: 3, reference: "Hechos 28:3-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1640, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que milagro hizo Eliseo con el aceite de una viuda?",
-
-
 
     options: ["Lo convirtio en agua", "Lo convirtio en oro", "Lo hizo arder sin consumirse", "Multiplico el aceite en muchas vasijas"],
 
-
-
     correct: 3, reference: "2 Reyes 4:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1641, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿A quien resucito Eliseo, el hijo de una mujer sunamita?",
-
-
 
     options: ["Al hijo de una viuda", "A un soldado", "Al siervo de Naaman", "Al hijo de la sunamita"],
 
-
-
     correct: 3, reference: "2 Reyes 4:32-35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1642, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que enfermedad fue sanada en Naaman al sumergirse en el rio Jordan?",
-
-
 
     options: ["Ceguera", "Paralisis", "Sordera", "Lepra"],
 
-
-
     correct: 3, reference: "2 Reyes 5:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1643, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Como alimentaron los cuervos a Elias junto al arroyo de Querit?",
-
-
 
     options: ["Le traian pan y carne", "Le traian peces", "Le traian agua", "Le traian frutas"],
 
-
-
     correct: 0, reference: "1 Reyes 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1644, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que milagro hizo Jesus con el ciego de nacimiento usando lodo?",
-
-
 
     options: ["Le dio una medicina", "Le toco con su manto", "Le puso lodo en los ojos y lo envio a lavarse", "Le soplo en los ojos"],
 
-
-
     correct: 2, reference: "Juan 9:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1645, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que hizo Josue pidiendo a Dios que detuviera en Gabaon?",
-
-
 
     options: ["El sol y la luna", "El viento", "La lluvia", "Un terremoto"],
 
-
-
     correct: 0, reference: "Josue 10:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1646, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Con que se alimento Elias durante 40 dias gracias a un angel?",
-
-
 
     options: ["Pan y vino", "Una torta cocida y agua", "Frutas del desierto", "Mana"],
 
-
-
     correct: 1, reference: "1 Reyes 19:5-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1647, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que milagro ocurrio cuando Jesus toco la oreja del siervo del sumo sacerdote?",
-
-
 
     options: ["El siervo quedo sordo", "La oreja fue sanada", "La oreja se volvio de oro", "El siervo cayo muerto"],
 
-
-
     correct: 1, reference: "Lucas 22:51"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1648, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que encontro Pedro en la boca de un pez por instruccion de Jesus?",
-
-
 
     options: ["Una llave", "Una moneda", "Un anillo", "Una perla"],
 
-
-
     correct: 1, reference: "Mateo 17:27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1649, difficulty: "facil", category: "milagros",
 
-
-
     question: "¿Que milagro realizo Jesus al liberar al endemoniado gadareno?",
-
-
 
     options: ["Lo resucito", "Expulso los demonios a una piara de cerdos", "Lo sano de lepra", "Le devolvio la vista"],
 
-
-
     correct: 1, reference: "Marcos 5:1-13"
 
-
-
   },
-
-
 
   // --- Reyes Facil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 1000, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien fue el primer rey de Israel?",
-
-
 
     options: ["Saul", "David", "Samuel", "Salomon"],
 
-
-
     correct: 0, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1001, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel vencio al gigante Goliat?",
-
-
 
     options: ["Salomon", "Jonatan", "Saul", "David"],
 
-
-
     correct: 3, reference: "1 Samuel 17:50"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1002, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey construyo el primer templo de Jerusalen?",
-
-
 
     options: ["Josias", "Ezequias", "David", "Salomon"],
 
-
-
     correct: 3, reference: "1 Reyes 6:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1003, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que le pidio Salomon a Dios cuando comenzo a reinar?",
-
-
 
     options: ["Victoria sobre sus enemigos", "Sabiduria", "Larga vida", "Riquezas"],
 
-
-
     correct: 1, reference: "1 Reyes 3:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1004, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que instrumento musical tocaba el rey David?",
-
-
 
     options: ["Trompeta", "Flauta", "Arpa", "Tambor"],
 
-
-
     correct: 2, reference: "1 Samuel 16:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1005, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Cual era la ocupacion de David antes de ser rey?",
-
-
 
     options: ["Pescador", "Carpintero", "Agricultor", "Pastor"],
 
-
-
     correct: 3, reference: "1 Samuel 16:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1006, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que profeta ungio a Saul como primer rey de Israel?",
-
-
 
     options: ["Samuel", "Natan", "Elias", "Isaias"],
 
-
-
     correct: 0, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1007, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey fue conocido como el mas sabio de todos?",
-
-
 
     options: ["Josafat", "Ezequias", "Salomon", "David"],
 
-
-
     correct: 2, reference: "1 Reyes 4:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1008, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿De que tribu era el rey Saul?",
-
-
 
     options: ["Levi", "Juda", "Benjamin", "Efrain"],
 
-
-
     correct: 2, reference: "1 Samuel 9:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1009, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien fue el hijo de David que reino despues de el?",
-
-
 
     options: ["Amnon", "Adonias", "Salomon", "Absalon"],
 
-
-
     correct: 2, reference: "1 Reyes 1:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1010, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que ciudad conquisto David para hacerla su capital?",
-
-
 
     options: ["Samaria", "Hebron", "Jerusalen", "Belen"],
 
-
-
     correct: 2, reference: "2 Samuel 5:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1011, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Con que arma vencio David a Goliat?",
-
-
 
     options: ["Lanza", "Honda y una piedra", "Espada", "Arco y flecha"],
 
-
-
     correct: 1, reference: "1 Samuel 17:49"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1012, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey dividio el reino de Israel en dos?",
-
-
 
     options: ["Salomon", "Jeroboam", "Roboam", "David"],
 
-
-
     correct: 2, reference: "1 Reyes 12:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1013, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien fue la esposa malvada del rey Acab?",
-
-
 
     options: ["Atalia", "Ester", "Jezabel", "Betsabe"],
 
-
-
     correct: 2, reference: "1 Reyes 16:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1014, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que libro de la Biblia contiene muchos salmos escritos por el rey David?",
-
-
 
     options: ["Proverbios", "Cantares", "Eclesiastes", "Salmos"],
 
-
-
     correct: 3, reference: "Salmos 72:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1015, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda hizo una gran reforma religiosa y encontro el libro de la Ley?",
-
-
 
     options: ["Ezequias", "Asa", "Josias", "Josafat"],
 
-
-
     correct: 2, reference: "2 Reyes 22:8-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1016, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Cuantas tribus se separaron para formar el reino del norte (Israel)?",
-
-
 
     options: ["Doce", "Diez", "Dos", "Cinco"],
 
-
-
     correct: 1, reference: "1 Reyes 11:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1017, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que pecado cometio David con Betsabe?",
-
-
 
     options: ["Robo", "Adulterio", "Idolatria", "Blasfemia"],
 
-
-
     correct: 1, reference: "2 Samuel 11:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1018, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que profeta confronto a David por su pecado con Betsabe?",
-
-
 
     options: ["Samuel", "Isaias", "Elias", "Natan"],
 
-
-
     correct: 3, reference: "2 Samuel 12:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1019, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel adoro a Baal por influencia de su esposa?",
 
-
-
     options: ["Omri", "Acab", "Jehu", "Jeroboam"],
-
-
 
     correct: 1, reference: "1 Reyes 16:31-33"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1020, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que hijo de David se rebelo contra el para quitarle el trono?",
-
-
 
     options: ["Adonias", "Amnon", "Salomon", "Absalon"],
 
-
-
     correct: 3, reference: "2 Samuel 15:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1021, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Cual fue el primer rey del reino del norte (Israel) tras la division?",
-
-
 
     options: ["Jeroboam", "Roboam", "Baasa", "Omri"],
 
-
-
     correct: 0, reference: "1 Reyes 12:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1022, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda enfermo y Dios le anadio 15 anos de vida?",
-
-
 
     options: ["Asa", "Josias", "Manases", "Ezequias"],
 
-
-
     correct: 3, reference: "2 Reyes 20:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1023, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que reina visito a Salomon para comprobar su sabiduria?",
-
-
 
     options: ["Atalia", "La reina de Saba", "Ester", "Jezabel"],
 
-
-
     correct: 1, reference: "1 Reyes 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1024, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Cuantos proverbios se le atribuyen al rey Salomon?",
-
-
 
     options: ["Quinientos", "Cinco mil", "Tres mil", "Mil"],
 
-
-
     correct: 2, reference: "1 Reyes 4:32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1025, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien ungio a David como rey?",
-
-
 
     options: ["Natan", "Elias", "Moises", "Samuel"],
 
-
-
     correct: 3, reference: "1 Samuel 16:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1026, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿En que ciudad nacio el rey David?",
-
-
 
     options: ["Nazaret", "Jerusalen", "Hebron", "Belen"],
 
-
-
     correct: 3, reference: "1 Samuel 17:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1027, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Como murio el rey Saul?",
-
-
 
     options: ["En batalla, cayendo sobre su propia espada", "Fue ejecutado por los filisteos", "Fue asesinado por David", "Murio de enfermedad"],
 
-
-
     correct: 0, reference: "1 Samuel 31:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1028, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que pidio Dios a Abraham que sacrificara, prefigurando la obediencia de los reyes?",
-
-
 
     options: ["Una paloma", "A su hijo Isaac", "Un cordero", "Un buey"],
 
-
-
     correct: 1, reference: "Genesis 22:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1029, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey mando construir becerros de oro para que el pueblo no fuera a Jerusalen?",
-
-
 
     options: ["Baasa", "Acab", "Jeroboam", "Roboam"],
 
-
-
     correct: 2, reference: "1 Reyes 12:28-29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1030, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien era el mejor amigo de David, hijo del rey Saul?",
-
-
 
     options: ["Jonatan", "Abner", "Abiatar", "Joab"],
 
-
-
     correct: 0, reference: "1 Samuel 18:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1031, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que objeto sagrado llevo David a Jerusalen con gran celebracion?",
-
-
 
     options: ["Las tablas de la Ley", "El Arca del Pacto", "El altar de incienso", "El candelabro de oro"],
 
-
-
     correct: 1, reference: "2 Samuel 6:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1032, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey fue el padre de Salomon?",
-
-
 
     options: ["David", "Samuel", "Roboam", "Saul"],
 
-
-
     correct: 0, reference: "2 Samuel 12:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1033, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino Salomon sobre Israel?",
-
-
 
     options: ["20 anos", "50 anos", "40 anos", "30 anos"],
 
-
-
     correct: 2, reference: "1 Reyes 11:42"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1034, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue puesto en el trono a los 8 anos de edad?",
-
-
 
     options: ["Joas", "Josias", "Manases", "Amon"],
 
-
-
     correct: 1, reference: "2 Reyes 22:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1035, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey tuvo 700 esposas y 300 concubinas?",
-
-
 
     options: ["Acab", "Roboam", "Salomon", "David"],
 
-
-
     correct: 2, reference: "1 Reyes 11:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1036, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda destruyo los lugares altos y purifico el templo?",
-
-
 
     options: ["Manases", "Acaz", "Ezequias", "Amon"],
 
-
-
     correct: 2, reference: "2 Cronicas 29:3-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1037, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Contra que pueblo luchaba frecuentemente el rey Saul?",
-
-
 
     options: ["Los asirios", "Los babilonios", "Los filisteos", "Los egipcios"],
 
-
-
     correct: 2, reference: "1 Samuel 14:52"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1038, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que le sucedio a Salomon al final de su vida por causa de sus esposas extranjeras?",
-
-
 
     options: ["Se hizo mas sabio", "Escribio mas proverbios", "Se aparto tras dioses ajenos", "Conquisto mas territorios"],
 
-
-
     correct: 2, reference: "1 Reyes 11:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1039, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que profeta se enfrento a los profetas de Baal en el monte Carmelo durante el reinado de Acab?",
-
-
 
     options: ["Eliseo", "Jeremias", "Elias", "Isaias"],
 
-
-
     correct: 2, reference: "1 Reyes 18:19-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1040, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que pecado cometio Saul que hizo que Dios lo rechazara como rey?",
-
-
 
     options: ["Idolatria", "Adulterio", "Asesinato", "Desobedecio el mandato de Dios"],
 
-
-
     correct: 3, reference: "1 Samuel 15:22-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1041, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue conocido por su maldad y fue esposo de Jezabel?",
-
-
 
     options: ["Jehu", "Omri", "Jeroboam", "Acab"],
 
-
-
     correct: 3, reference: "1 Reyes 21:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1042, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿En que libro de la Biblia se narra la historia de los reyes de Israel y Juda?",
-
-
 
     options: ["Genesis", "Exodo", "Apocalipsis", "1 y 2 Reyes"],
 
-
-
     correct: 3, reference: "1 Reyes 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1043, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien sucedio a Roboam como rey de Juda?",
-
-
 
     options: ["Abias", "Josafat", "Joram", "Asa"],
 
-
-
     correct: 0, reference: "1 Reyes 14:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1044, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda confio en Dios y vio la destruccion del ejercito asirio?",
-
-
 
     options: ["Josias", "Manases", "Asa", "Ezequias"],
 
-
-
     correct: 3, reference: "2 Reyes 19:35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1045, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿De quien era hijo el gigante Goliat segun su pueblo?",
-
-
 
     options: ["De los moabitas", "De los amonitas", "De los amalecitas", "De los filisteos"],
 
-
-
     correct: 3, reference: "1 Samuel 17:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1046, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que escribio Salomon ademas de Proverbios?",
-
-
 
     options: ["El libro de Isaias", "Lamentaciones", "El libro de Job", "Eclesiastes y Cantares"],
 
-
-
     correct: 3, reference: "Eclesiastes 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1047, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey fue llevado cautivo a Babilonia con cadenas y luego se arrepintio?",
-
-
 
     options: ["Sedequias", "Manases", "Joaquin", "Acaz"],
 
-
-
     correct: 1, reference: "2 Cronicas 33:11-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1048, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Quien fue el ultimo rey de Juda antes del exilio a Babilonia?",
-
-
 
     options: ["Joaquin", "Josias", "Joacaz", "Sedequias"],
 
-
-
     correct: 3, reference: "2 Reyes 25:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1049, difficulty: "facil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue ungido por el profeta Eliseo para destruir la casa de Acab?",
-
-
 
     options: ["Jehu", "Salum", "Zacarias", "Jeroboam II"],
 
-
-
     correct: 0, reference: "2 Reyes 9:6-7"
 
-
-
   },
-
-
 
   // --- Profetas Facil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 1200, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue tragado por un gran pez?",
-
-
 
     options: ["Miqueas", "Amos", "Eliseo", "Jonas"],
 
-
-
     correct: 3, reference: "Jonas 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1201, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿A que ciudad fue enviado Jonas a predicar?",
-
-
 
     options: ["Babilonia", "Tarsis", "Jerusalen", "Ninive"],
 
-
-
     correct: 3, reference: "Jonas 1:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1202, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue llevado al cielo en un carro de fuego?",
-
-
 
     options: ["Eliseo", "Elias", "Ezequiel", "Isaias"],
 
-
-
     correct: 1, reference: "2 Reyes 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1203, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue lanzado al foso de los leones?",
-
-
 
     options: ["Isaias", "Jeremias", "Ezequiel", "Daniel"],
 
-
-
     correct: 3, reference: "Daniel 6:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1204, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta interpreto los suenos del rey Nabucodonosor?",
-
-
 
     options: ["Jeremias", "Ezequiel", "Isaias", "Daniel"],
 
-
-
     correct: 3, reference: "Daniel 2:27-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1205, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo la vision de los huesos secos que cobraron vida?",
-
-
 
     options: ["Isaias", "Daniel", "Ezequiel", "Jeremias"],
 
-
-
     correct: 2, reference: "Ezequiel 37:1-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1206, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta escribio: 'Porque un nino nos es nacido, hijo nos es dado'?",
-
-
 
     options: ["Malaquias", "Miqueas", "Isaias", "Jeremias"],
 
-
-
     correct: 2, reference: "Isaias 9:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1207, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta es conocido como 'el profeta lloron'?",
-
-
 
     options: ["Isaias", "Ezequiel", "Jeremias", "Oseas"],
 
-
-
     correct: 2, reference: "Jeremias 9:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1208, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta desafio a los profetas de Baal en el monte Carmelo?",
-
-
 
     options: ["Eliseo", "Samuel", "Elias", "Natan"],
 
-
-
     correct: 2, reference: "1 Reyes 18:20-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1209, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Quien fue el discipulo y sucesor del profeta Elias?",
-
-
 
     options: ["Isaias", "Samuel", "Eliseo", "Natan"],
 
-
-
     correct: 2, reference: "1 Reyes 19:19-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1210, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta ungio a David como rey de Israel?",
-
-
 
     options: ["Samuel", "Natan", "Gad", "Elias"],
 
-
-
     correct: 0, reference: "1 Samuel 16:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1211, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta confronto a David por su pecado con Betsabe?",
-
-
 
     options: ["Natan", "Samuel", "Isaias", "Gad"],
 
-
-
     correct: 0, reference: "2 Samuel 12:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1212, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta profetizo que el Mesias naceria en Belen?",
-
-
 
     options: ["Isaias", "Zacarias", "Malaquias", "Miqueas"],
 
-
-
     correct: 3, reference: "Miqueas 5:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1213, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo una vision del trono de Dios con serafines?",
 
-
-
     options: ["Daniel", "Jeremias", "Isaias", "Ezequiel"],
-
-
 
     correct: 2, reference: "Isaias 6:1-3"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1214, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue llamado por Dios siendo aun muy joven?",
-
-
 
     options: ["Isaias", "Daniel", "Jeremias", "Samuel"],
 
-
-
     correct: 3, reference: "1 Samuel 3:4-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1215, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Cuantos dias estuvo Jonas dentro del gran pez?",
-
-
 
     options: ["Dos", "Tres", "Uno", "Siete"],
 
-
-
     correct: 1, reference: "Jonas 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1216, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue alimentado por cuervos junto al arroyo de Querit?",
-
-
 
     options: ["Elias", "Samuel", "Isaias", "Eliseo"],
 
-
-
     correct: 0, reference: "1 Reyes 17:4-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1217, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
-
-
 
     options: ["Isaias", "Samuel", "Eliseo", "Elias"],
 
-
-
     correct: 2, reference: "2 Reyes 4:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1218, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta sano las aguas amargas de Jerico con sal?",
-
-
 
     options: ["Eliseo", "Elias", "Samuel", "Moises"],
 
-
-
     correct: 0, reference: "2 Reyes 2:19-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1219, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Cuales son los cuatro profetas mayores?",
-
-
 
     options: ["Isaias, Jeremias, Ezequiel y Daniel", "Amos, Oseas, Joel y Jonas", "Miqueas, Nahum, Habacuc y Sofonias", "Elias, Eliseo, Samuel y Natan"],
 
-
-
     correct: 0, reference: "Isaias 1:1; Jeremias 1:1; Ezequiel 1:1; Daniel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1220, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta escribio el libro de Lamentaciones?",
-
-
 
     options: ["Isaias", "Daniel", "Ezequiel", "Jeremias"],
 
-
-
     correct: 3, reference: "Lamentaciones 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1221, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue pastor de ovejas antes de ser llamado por Dios?",
-
-
 
     options: ["Oseas", "Amos", "Jeremias", "Isaias"],
 
-
-
     correct: 1, reference: "Amos 7:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1222, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿A que profeta Dios le ordeno casarse con una mujer infiel como simbolo de Israel?",
-
-
 
     options: ["Oseas", "Amos", "Joel", "Miqueas"],
 
-
-
     correct: 0, reference: "Oseas 1:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1223, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta escribio: 'He aqui que la virgen concebira y dara a luz un hijo'?",
-
-
 
     options: ["Jeremias", "Miqueas", "Malaquias", "Isaias"],
 
-
-
     correct: 3, reference: "Isaias 7:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1224, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que le pidio Eliseo a Elias antes de que este fuera llevado al cielo?",
-
-
 
     options: ["Su manto", "Su baston", "Una doble porcion de su espiritu", "Su bendicion"],
 
-
-
     correct: 2, reference: "2 Reyes 2:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1225, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Con que instrumento se le cayo el manto a Elias cuando fue llevado al cielo?",
-
-
 
     options: ["Cayo cuando subio al carro de fuego", "Lo dejo caer con su mano", "Un angel lo recogio", "Lo lanzo a Eliseo"],
 
-
-
     correct: 0, reference: "2 Reyes 2:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1226, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta dijo: 'Preparen camino al Senor' como profecia sobre Juan el Bautista?",
-
-
 
     options: ["Ezequiel", "Jeremias", "Isaias", "Malaquias"],
 
-
-
     correct: 2, reference: "Isaias 40:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1227, difficulty: "facil", category: "profetas",
 
-
-
-    question: "¿Que tres amigos de Daniel fueron lanzados al horno de fuego ardiente?",
-
-
+    question: "¿Con que nombres babilonicos fueron conocidos los tres amigos de Daniel lanzados al horno de fuego?",
 
     options: ["Ananias, Misael y Azarias", "Sem, Cam y Jafet", "Sadrac, Mesac y Abed-nego", "Pedro, Juan y Santiago"],
 
-
-
     correct: 2, reference: "Daniel 3:19-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1228, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta vio una zarza ardiente que no se consumia?",
-
-
 
     options: ["Isaias", "Elias", "Samuel", "Moises"],
 
-
-
     correct: 3, reference: "Exodo 3:2-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1229, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta es el autor del libro mas largo del Antiguo Testamento?",
 
-
-
     options: ["Jeremias", "Daniel", "Isaias", "Ezequiel"],
-
-
 
     correct: 2, reference: "Isaias 1:1"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1230, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue echado en una cisterna de lodo por predicar la verdad?",
 
-
-
     options: ["Ezequiel", "Isaias", "Jeremias", "Daniel"],
-
-
 
     correct: 2, reference: "Jeremias 38:6"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1231, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta le dijo a Naaman que se lavara siete veces en el rio Jordan?",
-
-
 
     options: ["Elias", "Eliseo", "Samuel", "Natan"],
 
-
-
     correct: 1, reference: "2 Reyes 5:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1232, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿De que enfermedad fue sanado Naaman al obedecer al profeta Eliseo?",
-
-
 
     options: ["Sordera", "Lepra", "Ceguera", "Paralisis"],
 
-
-
     correct: 1, reference: "2 Reyes 5:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1233, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta vio una escritura en la pared durante el banquete de Belsasar?",
 
-
-
     options: ["Jeremias", "Daniel", "Isaias", "Ezequiel"],
-
-
 
     correct: 1, reference: "Daniel 5:5-17"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1234, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta huyo de la reina Jezabel y se escondio en una cueva?",
-
-
 
     options: ["Elias", "Eliseo", "Samuel", "Natan"],
 
-
-
     correct: 0, reference: "1 Reyes 19:1-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1235, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta profetizo sobre el valle de los huesos secos que representa la restauracion de Israel?",
-
-
 
     options: ["Daniel", "Jeremias", "Isaias", "Ezequiel"],
 
-
-
     correct: 3, reference: "Ezequiel 37:11-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1236, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Cual fue el ultimo profeta del Antiguo Testamento?",
-
-
 
     options: ["Hageo", "Malaquias", "Joel", "Zacarias"],
 
-
-
     correct: 1, reference: "Malaquias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1237, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta resucito al hijo de la viuda de Sarepta?",
-
-
 
     options: ["Samuel", "Isaias", "Eliseo", "Elias"],
 
-
-
     correct: 3, reference: "1 Reyes 17:21-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1238, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta resucito al hijo de la sunamita?",
-
-
 
     options: ["Eliseo", "Samuel", "Natan", "Elias"],
 
-
-
     correct: 0, reference: "2 Reyes 4:32-37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1239, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que planta crecio y luego se seco causando enojo a Jonas?",
-
-
 
     options: ["Una vid", "Una calabacera", "Una higuera", "Un olivo"],
 
-
-
     correct: 1, reference: "Jonas 4:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1240, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta dijo: 'Busquen al Senor y viviran'?",
-
-
 
     options: ["Miqueas", "Oseas", "Joel", "Amos"],
 
-
-
     correct: 3, reference: "Amos 5:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1241, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta hablo de la venida del 'Sol de justicia'?",
-
-
 
     options: ["Sofonias", "Malaquias", "Zacarias", "Hageo"],
 
-
-
     correct: 1, reference: "Malaquias 4:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1242, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profetas animaron al pueblo a reconstruir el templo despues del exilio?",
-
-
 
     options: ["Hageo y Zacarias", "Isaias y Jeremias", "Amos y Oseas", "Malaquias y Joel"],
 
-
-
     correct: 0, reference: "Esdras 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1243, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿De que tribu era el profeta Samuel?",
-
-
 
     options: ["Benjamin", "Juda", "Levi", "Efrain"],
 
-
-
     correct: 2, reference: "1 Cronicas 6:33-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1244, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Como se llamaba la madre de Samuel?",
-
-
 
     options: ["Rut", "Sara", "Ana", "Raquel"],
 
-
-
     correct: 2, reference: "1 Samuel 1:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1245, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta fue llamado por Dios desde antes de nacer?",
 
-
-
     options: ["Ezequiel", "Jeremias", "Isaias", "Daniel"],
-
-
 
     correct: 1, reference: "Jeremias 1:5"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1246, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta hablo de un nuevo pacto que Dios haria con su pueblo?",
-
-
 
     options: ["Isaias", "Ezequiel", "Jeremias", "Malaquias"],
 
-
-
     correct: 2, reference: "Jeremias 31:31-33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1247, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta vio cuatro bestias que representaban imperios mundiales?",
 
-
-
     options: ["Isaias", "Daniel", "Jeremias", "Ezequiel"],
-
-
 
     correct: 1, reference: "Daniel 7:1-7"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1248, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta escribio: 'Jehova es mi pastor, nada me faltara'?",
-
-
 
     options: ["Isaias", "David", "Samuel", "Jeremias"],
 
-
-
     correct: 1, reference: "Salmos 23:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1249, difficulty: "facil", category: "profetas",
 
-
-
     question: "¿Que profeta anuncio que Dios enviaria al profeta Elias antes del dia del Senor?",
-
-
 
     options: ["Malaquias", "Joel", "Zacarias", "Hageo"],
 
-
-
     correct: 0, reference: "Malaquias 4:5"
 
-
-
   },
-
-
 
   // --- Cartas Facil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 1800, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Quien escribio la mayoria de las cartas del Nuevo Testamento?",
-
-
 
     options: ["Pedro", "Santiago", "Pablo", "Juan"],
 
-
-
     correct: 2, reference: "Romanos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1801, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿A que ciudad fue dirigida la carta a los Romanos?",
-
-
 
     options: ["Roma", "Corinto", "Efeso", "Filipos"],
 
-
-
     correct: 0, reference: "Romanos 1:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1802, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cual es conocido como el 'capitulo del amor' en las cartas de Pablo?",
-
-
 
     options: ["Romanos 8", "Efesios 5", "1 Corintios 13", "Filipenses 4"],
 
-
-
     correct: 2, reference: "1 Corintios 13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1803, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que versiculo dice: 'Todo lo puedo en Cristo que me fortalece'?",
-
-
 
     options: ["Romanos 8:28", "Galatas 2:20", "Efesios 6:10", "Filipenses 4:13"],
 
-
-
     correct: 3, reference: "Filipenses 4:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1804, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que versiculo dice: 'Porque de tal manera amo Dios al mundo...'?",
-
-
 
     options: ["1 Juan 4:8", "Juan 3:16", "Efesios 2:8", "Romanos 5:8"],
 
-
-
     correct: 1, reference: "Juan 3:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1805, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta de Pablo habla sobre la armadura de Dios?",
-
-
 
     options: ["Romanos", "Filipenses", "Efesios", "Colosenses"],
 
-
-
     correct: 2, reference: "Efesios 6:10-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1806, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cuantas cartas escribio Pablo a los Corintios que estan en la Biblia?",
-
-
 
     options: ["Cuatro", "Tres", "Una", "Dos"],
 
-
-
     correct: 3, reference: "1 y 2 Corintios"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1807, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que versiculo dice: 'Sabemos que a los que aman a Dios, todas las cosas les ayudan a bien'?",
-
-
 
     options: ["Romanos 8:28", "1 Pedro 5:7", "Filipenses 4:13", "Santiago 1:2"],
 
-
-
     correct: 0, reference: "Romanos 8:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1808, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿A quien escribio Pablo las cartas llamadas 'epistolas pastorales'?",
-
-
 
     options: ["Timoteo y Tito", "Pedro y Juan", "Santiago y Judas", "Filemon y Lucas"],
 
-
-
     correct: 0, reference: "1 Timoteo 1:1; Tito 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1809, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Quien escribio la epistola de Santiago?",
-
-
 
     options: ["Santiago hijo de Zebedeo", "Santiago hermano de Jesus", "Pedro", "Pablo"],
 
-
-
     correct: 1, reference: "Santiago 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1810, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cuantas cartas de Pedro hay en el Nuevo Testamento?",
-
-
 
     options: ["Dos", "Una", "Cuatro", "Tres"],
 
-
-
     correct: 0, reference: "1 Pedro 1:1; 2 Pedro 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1811, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cuantas cartas del apostol Juan hay en el Nuevo Testamento?",
-
-
 
     options: ["Cuatro", "Una", "Dos", "Tres"],
 
-
-
     correct: 3, reference: "1, 2 y 3 Juan"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1812, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta de Pablo fue escrita a un dueno de un esclavo llamado Onesimo?",
-
-
 
     options: ["Filemon", "Tito", "Timoteo", "Galatas"],
 
-
-
     correct: 0, reference: "Filemon 1:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1813, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿En que carta se encuentra el fruto del Espiritu?",
-
-
 
     options: ["Romanos", "Galatas", "Colosenses", "Efesios"],
 
-
-
     correct: 1, reference: "Galatas 5:22-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1814, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que dice Romanos 6:23 que es la paga del pecado?",
-
-
 
     options: ["Muerte", "Soledad", "Enfermedad", "Sufrimiento"],
 
-
-
     correct: 0, reference: "Romanos 6:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1815, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta habla de que la fe sin obras es muerta?",
-
-
 
     options: ["Santiago", "1 Pedro", "Hebreos", "Romanos"],
 
-
-
     correct: 0, reference: "Santiago 2:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1816, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que versiculo dice: 'Por gracia sois salvos por medio de la fe'?",
-
-
 
     options: ["Galatas 3:11", "Efesios 2:8", "Romanos 3:23", "Tito 3:5"],
 
-
-
     correct: 1, reference: "Efesios 2:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1817, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿En que carta se describe a Jesus como sumo sacerdote?",
-
-
 
     options: ["Romanos", "Hebreos", "Colosenses", "Efesios"],
 
-
-
     correct: 1, reference: "Hebreos 4:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1818, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta contiene el capitulo de la fe conocido como 'los heroes de la fe'?",
-
-
 
     options: ["Romanos", "Hebreos", "Galatas", "Santiago"],
 
-
-
     correct: 1, reference: "Hebreos 11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1819, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta de Pablo fue escrita a los creyentes de Filipos?",
-
-
 
     options: ["Efesios", "Filipenses", "Colosenses", "Galatas"],
 
-
-
     correct: 1, reference: "Filipenses 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1820, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta ensena que 'Dios es amor'?",
-
-
 
     options: ["1 Juan", "1 Corintios", "Santiago", "Romanos"],
 
-
-
     correct: 0, reference: "1 Juan 4:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1821, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿En que carta Pablo dice: 'Ya no vivo yo, mas vive Cristo en mi'?",
-
-
 
     options: ["Romanos", "Galatas", "Filipenses", "Efesios"],
 
-
-
     correct: 1, reference: "Galatas 2:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1822, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta menciona que debemos echar toda nuestra ansiedad sobre Dios?",
-
-
 
     options: ["Filipenses", "1 Pedro", "Santiago", "Romanos"],
 
-
-
     correct: 1, reference: "1 Pedro 5:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1823, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿A quien esta dirigida la carta a Tito?",
-
-
 
     options: ["A un diacono en Efeso", "A un anciano en Corinto", "A un colaborador en Creta", "A un pastor en Roma"],
 
-
-
     correct: 2, reference: "Tito 1:4-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1824, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cuales son los tres elementos que permanecen segun 1 Corintios 13?",
-
-
 
     options: ["Fe, esperanza y amor", "Verdad, justicia y amor", "Gracia, paz y amor", "Bondad, paciencia y amor"],
 
-
-
     correct: 0, reference: "1 Corintios 13:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1825, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta de Pablo trata principalmente sobre la justificacion por la fe?",
-
-
 
     options: ["Efesios", "Filipenses", "1 Corintios", "Romanos"],
 
-
-
     correct: 3, reference: "Romanos 3:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1826, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que dijo Pablo que debemos hacer sin cesar segun 1 Tesalonicenses?",
-
-
 
     options: ["Ayunar", "Cantar", "Orar", "Predicar"],
 
-
-
     correct: 2, reference: "1 Tesalonicenses 5:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1827, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta dice: 'Toda la Escritura es inspirada por Dios'?",
-
-
 
     options: ["Tito", "1 Timoteo", "Hebreos", "2 Timoteo"],
 
-
-
     correct: 3, reference: "2 Timoteo 3:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1828, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿A que iglesia Pablo le escribio sobre los problemas de divisiones?",
-
-
 
     options: ["Efeso", "Filipos", "Corinto", "Roma"],
 
-
-
     correct: 2, reference: "1 Corintios 1:10-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1829, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta habla del arrebatamiento de los creyentes?",
-
-
 
     options: ["Romanos", "Hebreos", "1 Tesalonicenses", "Efesios"],
 
-
-
     correct: 2, reference: "1 Tesalonicenses 4:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1830, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cuantas cartas escribio Pablo a los Tesalonicenses?",
-
-
 
     options: ["Una", "Tres", "Dos", "Cuatro"],
 
-
-
     correct: 2, reference: "1 y 2 Tesalonicenses"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1831, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Quien escribio la epistola de Judas?",
-
-
 
     options: ["Pablo", "Juan", "Judas Iscariote", "Judas hermano de Jesus"],
 
-
-
     correct: 3, reference: "Judas 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1832, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta de Pablo enfatiza la supremacia de Cristo sobre toda la creacion?",
-
-
 
     options: ["Efesios", "Filipenses", "Romanos", "Colosenses"],
 
-
-
     correct: 3, reference: "Colosenses 1:15-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1833, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿En que carta Pablo habla sobre los dones espirituales comparandolos con el cuerpo humano?",
-
-
 
     options: ["Romanos", "Galatas", "1 Corintios", "Efesios"],
 
-
-
     correct: 2, reference: "1 Corintios 12:12-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1834, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta dice: 'No os unais en yugo desigual con los incredulos'?",
-
-
 
     options: ["Efesios", "1 Corintios", "2 Corintios", "Galatas"],
 
-
-
     correct: 2, reference: "2 Corintios 6:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1835, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Cuantas cartas escribio Pablo a Timoteo?",
-
-
 
     options: ["Una", "Cuatro", "Dos", "Tres"],
 
-
-
     correct: 2, reference: "1 y 2 Timoteo"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1836, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta dice que si confesamos nuestros pecados, Dios es fiel para perdonarnos?",
-
-
 
     options: ["Hebreos", "Romanos", "1 Juan", "Santiago"],
 
-
-
     correct: 2, reference: "1 Juan 1:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1837, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿En que carta se habla de las 'obras de la carne' y el 'fruto del Espiritu'?",
-
-
 
     options: ["Galatas", "Efesios", "Colosenses", "Romanos"],
 
-
-
     correct: 0, reference: "Galatas 5:19-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1838, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta fue escrita a los creyentes de Efeso?",
-
-
 
     options: ["Colosenses", "Filipenses", "Galatas", "Efesios"],
 
-
-
     correct: 3, reference: "Efesios 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1839, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que versiculo dice: 'No se amolden al mundo actual'?",
-
-
 
     options: ["Romanos 12:2", "Filipenses 2:5", "Colosenses 3:1", "Efesios 4:1"],
 
-
-
     correct: 0, reference: "Romanos 12:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1840, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta describe la resurreccion de los muertos en detalle?",
-
-
 
     options: ["1 Tesalonicenses", "Hebreos", "1 Corintios", "Romanos"],
 
-
-
     correct: 2, reference: "1 Corintios 15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1841, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Quien es el autor tradicional de la carta a los Hebreos?",
-
-
 
     options: ["Pedro", "Santiago", "Se desconoce con certeza", "Juan"],
 
-
-
     correct: 2, reference: "Hebreos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1842, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta dice: 'Dad gracias en todo, porque esta es la voluntad de Dios'?",
-
-
 
     options: ["1 Tesalonicenses", "Filipenses", "Efesios", "Romanos"],
 
-
-
     correct: 0, reference: "1 Tesalonicenses 5:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1843, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta habla sobre la relacion entre esposos comparandola con Cristo y la iglesia?",
-
-
 
     options: ["Efesios", "1 Corintios", "Colosenses", "Romanos"],
 
-
-
     correct: 0, reference: "Efesios 5:22-33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1844, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta aconseja a los creyentes a presentar sus cuerpos como sacrificio vivo?",
-
-
 
     options: ["Hebreos", "Galatas", "Efesios", "Romanos"],
 
-
-
     correct: 3, reference: "Romanos 12:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1845, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta dice: 'Estad siempre gozosos'?",
-
-
 
     options: ["Filipenses", "1 Tesalonicenses", "1 Pedro", "Santiago"],
 
-
-
     correct: 1, reference: "1 Tesalonicenses 5:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1846, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿En que carta Pablo pide que reciban a Onesimo como hermano?",
-
-
 
     options: ["Tito", "Filemon", "Colosenses", "1 Timoteo"],
 
-
-
     correct: 1, reference: "Filemon 1:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1847, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta habla de que la lengua es un fuego y un mundo de maldad?",
-
-
 
     options: ["Judas", "1 Pedro", "Santiago", "Romanos"],
 
-
-
     correct: 2, reference: "Santiago 3:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1848, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta dice: 'Si alguno esta en Cristo, nueva criatura es'?",
-
-
 
     options: ["2 Corintios", "Efesios", "Romanos", "Galatas"],
 
-
-
     correct: 0, reference: "2 Corintios 5:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1849, difficulty: "facil", category: "cartas",
 
-
-
     question: "¿Que carta comienza diciendo: 'Pablo, siervo de Jesucristo, llamado a ser apostol'?",
-
-
 
     options: ["Filipenses", "Efesios", "Romanos", "Galatas"],
 
-
-
     correct: 2, reference: "Romanos 1:1"
 
-
-
   },
-
-
 
   // ===================== INTERMEDIO =====================
 
-
-
   // --- Personajes Intermedio (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 26, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Moises?",
-
-
 
     options: ["Amram", "Caleb", "Josue", "Aaron"],
 
-
-
     correct: 0, reference: "Exodo 6:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 27, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la esposa de Isaac?",
-
-
 
     options: ["Rebeca", "Lea", "Raquel", "Sara"],
 
-
-
     correct: 0, reference: "Genesis 24:67"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 28, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien ayudo a esconder a los espias en Jerico?",
-
-
 
     options: ["Rut", "Debora", "Ester", "Rahab"],
 
-
-
     correct: 3, reference: "Josue 2:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 29, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el suegro de Moises?",
-
-
 
     options: ["Natan", "Jetro", "Eli", "Laban"],
 
-
-
     correct: 1, reference: "Exodo 3:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 30, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien reemplazo a Moises como lider?",
-
-
 
     options: ["Gedeon", "Caleb", "Josue", "Aaron"],
 
-
-
     correct: 2, reference: "Josue 1:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 500, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien interpreto los suenos del rey Nabucodonosor?",
 
-
-
     options: ["Daniel", "Isaias", "Ezequiel", "Jeremias"],
-
-
 
     correct: 0, reference: "Daniel 2:27-28"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 501, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que ungio a David?",
-
-
 
     options: ["Natan", "Gad", "Eli", "Samuel"],
 
-
-
     correct: 3, reference: "1 Samuel 16:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 502, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la esposa de Jacob que dio a luz a Jose?",
-
-
 
     options: ["Raquel", "Zilpa", "Bilha", "Lea"],
 
-
-
     correct: 0, reference: "Genesis 30:22-24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 503, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que persiguio a David?",
-
-
 
     options: ["Saul", "Acab", "Roboam", "Jeroboam"],
 
-
-
     correct: 0, reference: "1 Samuel 19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 504, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la madre de Juan el Bautista?",
-
-
 
     options: ["Isabel", "Maria", "Rut", "Ana"],
 
-
-
     correct: 0, reference: "Lucas 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 505, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el primer juez de Israel?",
-
-
 
     options: ["Sanson", "Debora", "Gedeon", "Otoniel"],
 
-
-
     correct: 3, reference: "Jueces 3:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 506, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Salomon?",
-
-
 
     options: ["Saul", "Roboam", "David", "Natan"],
 
-
-
     correct: 2, reference: "2 Samuel 12:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 507, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue llamado 'amigo de Dios'?",
-
-
 
     options: ["Isaac", "Abraham", "Moises", "Jacob"],
 
-
-
     correct: 1, reference: "Santiago 2:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 508, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la esposa de Booz?",
-
-
 
     options: ["Ana", "Ester", "Lea", "Rut"],
 
-
-
     correct: 3, reference: "Rut 4:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 509, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que enfrento a Acab?",
-
-
 
     options: ["Eliseo", "Elias", "Amos", "Jonas"],
 
-
-
     correct: 1, reference: "1 Reyes 18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 510, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan y Santiago?",
-
-
 
     options: ["Andres", "Zebedeo", "Felipe", "Simeon"],
 
-
-
     correct: 1, reference: "Mateo 4:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 511, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue conocido como 'el hombre conforme al corazon de Dios'?",
-
-
 
     options: ["David", "Saul", "Josias", "Salomon"],
 
-
-
     correct: 0, reference: "Hechos 13:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 512, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la mujer que juzgo a Israel?",
-
-
 
     options: ["Ester", "Rut", "Ana", "Debora"],
 
-
-
     correct: 3, reference: "Jueces 4:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 513, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el rey mas rico de Israel?",
 
-
-
     options: ["Salomon", "David", "Roboam", "Saul"],
-
-
 
     correct: 0, reference: "1 Reyes 10:23"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 514, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Samuel?",
-
-
 
     options: ["Isai", "Elcana", "Caleb", "Natan"],
 
-
-
     correct: 1, reference: "1 Samuel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 515, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue convertido en el camino a Damasco?",
-
-
 
     options: ["Pablo", "Marcos", "Juan", "Pedro"],
 
-
-
     correct: 0, reference: "Hechos 9:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 516, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien nego a Jesus antes del gallo cantar?",
-
-
 
     options: ["Tomas", "Juan", "Pedro", "Andres"],
 
-
-
     correct: 2, reference: "Mateo 26:74-75"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 517, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien escribio el libro de Lamentaciones?",
-
-
 
     options: ["Ezequiel", "Jeremias", "Isaias", "Daniel"],
 
-
-
     correct: 1, reference: "Lamentaciones 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 518, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta llamado desde nino?",
-
-
 
     options: ["Samuel", "Isaias", "Elias", "Oseas"],
 
-
-
     correct: 0, reference: "1 Samuel 3:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 519, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Sanson?",
-
-
 
     options: ["Gad", "Manoah", "Eli", "Natan"],
 
-
-
     correct: 1, reference: "Jueces 13:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 520, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el gobernador que juzgo a Jesus?",
-
-
 
     options: ["Felix", "Agripa", "Pilato", "Herodes"],
 
-
-
     correct: 2, reference: "Mateo 27:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 521, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el companero de Pablo en viajes misioneros?",
-
-
 
     options: ["Tomas", "Pedro", "Juan", "Bernabe"],
 
-
-
     correct: 3, reference: "Hechos 13:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 522, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue resucitado por Pedro?",
-
-
 
     options: ["Lazaro", "Felipe", "Esteban", "Dorcas"],
 
-
-
     correct: 3, reference: "Hechos 9:40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 523, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Isaac?",
-
-
 
     options: ["Jacob", "Abraham", "Esau", "Lot"],
 
-
-
     correct: 1, reference: "Genesis 21:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 524, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el rey durante la vida de Jesus?",
-
-
 
     options: ["Herodes", "Pilato", "Cesar", "Agripa"],
 
-
-
     correct: 0, reference: "Mateo 2:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 525, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la madre de Samuel?",
-
-
 
     options: ["Ester", "Lea", "Rut", "Ana"],
 
-
-
     correct: 3, reference: "1 Samuel 1:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 526, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien escribio el evangelio mas corto?",
 
-
-
     options: ["Mateo", "Lucas", "Juan", "Marcos"],
-
-
 
     correct: 3, reference: "Marcos"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 527, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que vio huesos secos?",
 
-
-
     options: ["Daniel", "Isaias", "Ezequiel", "Jeremias"],
-
-
 
     correct: 2, reference: "Ezequiel 37:1-10"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 528, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan el Bautista?",
-
-
 
     options: ["Zacarias", "Felipe", "Andres", "Simeon"],
 
-
-
     correct: 0, reference: "Lucas 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 529, difficulty: "intermedio", category: "personajes",
 
-
-
-    question: "¿Quien fue el rey que reconstruyo Jerusalen?",
-
-
+    question: "¿Que rey autorizo a Nehemias para reconstruir Jerusalen?",
 
     options: ["Nabucodonosor", "Dario", "Artajerjes", "Ciro"],
 
-
-
     correct: 2, reference: "Nehemias 2:1-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 530, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue sanado de ceguera por Jesus?",
-
-
 
     options: ["Lazaro", "Bartimeo", "Zaqueo", "Felipe"],
 
-
-
     correct: 1, reference: "Marcos 10:46-52"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 531, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que hablo con Dios en el monte Horeb?",
-
-
 
     options: ["Elias", "Oseas", "Amos", "Eliseo"],
 
-
-
     correct: 0, reference: "1 Reyes 19:8-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 532, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue padre de Jacob y Esau?",
-
-
 
     options: ["Abraham", "Lot", "Laban", "Isaac"],
 
-
-
     correct: 3, reference: "Genesis 25:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 533, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el primer rey ungido por Samuel?",
-
-
 
     options: ["Saul", "Salomon", "Roboam", "David"],
 
-
-
     correct: 0, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 534, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la esposa de David que era hija de Saul?",
-
-
 
     options: ["Betsabe", "Abigail", "Mical", "Tamar"],
 
-
-
     correct: 2, reference: "1 Samuel 18:27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 535, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien escribio muchas cartas del NT?",
-
-
 
     options: ["Lucas", "Juan", "Pablo", "Pedro"],
 
-
-
     correct: 2, reference: "Romanos-Filemon"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 536, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan Marcos?",
-
-
 
     options: ["No se menciona claramente", "Felipe", "Pedro", "Jose"],
 
-
-
     correct: 0, reference: "Hechos 12:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 537, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que huyo a Tarsis?",
-
-
 
     options: ["Nahum", "Miqueas", "Amos", "Jonas"],
 
-
-
     correct: 3, reference: "Jonas 1:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 538, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que cayo por orgullo?",
-
-
 
     options: ["Ezequias", "David", "Uzias", "Josias"],
 
-
-
     correct: 2, reference: "2 Cronicas 26:16-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 539, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el sacerdote que crio a Samuel?",
-
-
 
     options: ["Eli", "Natan", "Gad", "Zacarias"],
 
-
-
     correct: 0, reference: "1 Samuel 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 540, difficulty: "intermedio", category: "personajes",
 
-
-
-    question: "¿Quien fue el primer misionero gentil?",
-
-
+    question: "¿Quien fue el primer gentil convertido al cristianismo?",
 
     options: ["Cornelio", "Felipe", "Marcos", "Lucas"],
 
-
-
     correct: 0, reference: "Hechos 10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 541, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue la esposa de Abraham despues de Sara?",
-
-
 
     options: ["Lea", "Rebeca", "Quetura", "Raquel"],
 
-
-
     correct: 2, reference: "Genesis 25:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 542, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que reprendio a David?",
-
-
 
     options: ["Samuel", "Eli", "Gad", "Natan"],
 
-
-
     correct: 3, reference: "2 Samuel 12:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 543, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue padre de Jose (esposo de Maria)?",
-
-
 
     options: ["Jacob", "Natan", "David", "Eli"],
 
-
-
     correct: 0, reference: "Mateo 1:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 544, difficulty: "intermedio", category: "personajes",
 
-
-
     question: "¿Quien fue el discipulo que dudo de Jesus resucitado?",
-
-
 
     options: ["Tomas", "Juan", "Pedro", "Andres"],
 
-
-
     correct: 0, reference: "Juan 20:24-29"
 
-
-
   },
-
-
 
   // --- Libros Intermedio (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 200, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se registran las generaciones desde Adan hasta Noe?",
-
-
 
     options: ["Numeros", "Cronicas", "Genesis", "Exodo"],
 
-
-
     correct: 2, reference: "Genesis 5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 201, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro repite gran parte de la ley dada en el desierto?",
-
-
 
     options: ["Josue", "Levitico", "Deuteronomio", "Numeros"],
 
-
-
     correct: 2, reference: "Deuteronomio 5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 202, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se describen los sacrificios del tabernaculo?",
-
-
 
     options: ["Rut", "Exodo", "Jueces", "Levitico"],
 
-
-
     correct: 3, reference: "Levitico 1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 203, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro narra el conteo del pueblo de Israel?",
-
-
 
     options: ["Reyes", "Numeros", "Josue", "Exodo"],
 
-
-
     correct: 1, reference: "Numeros 1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 204, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro aparece la oracion de Ana?",
-
-
 
     options: ["1 Samuel", "Salmos", "Jueces", "Rut"],
 
-
-
     correct: 0, reference: "1 Samuel 2:1-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 205, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro registra la caida del reino del norte?",
-
-
 
     options: ["2 Reyes", "Esdras", "1 Reyes", "Cronicas"],
 
-
-
     correct: 0, reference: "2 Reyes 17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 206, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se mencionan los valientes de David?",
-
-
 
     options: ["Nehemias", "Ester", "2 Samuel", "Rut"],
 
-
-
     correct: 2, reference: "2 Samuel 23:8-39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 207, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro contiene listas genealogicas extensas?",
-
-
 
     options: ["Reyes", "Rut", "Job", "Cronicas"],
 
-
-
     correct: 3, reference: "1 Cronicas 1-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 208, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se relata el decreto de Ciro?",
-
-
 
     options: ["Nehemias", "Daniel", "Ester", "Esdras"],
 
-
-
     correct: 3, reference: "Esdras 1:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 209, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro muestra el lamento por Jerusalen destruida?",
-
-
 
     options: ["Ezequiel", "Lamentaciones", "Jeremias", "Isaias"],
 
-
-
     correct: 1, reference: "Lamentaciones 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 210, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro Dios habla desde un torbellino?",
-
-
 
     options: ["Isaias", "Job", "Salmos", "Daniel"],
 
-
-
     correct: 1, reference: "Job 38:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 211, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro inicia con 'Vision de Isaias'?",
-
-
 
     options: ["Jeremias", "Isaias", "Oseas", "Amos"],
 
-
-
     correct: 1, reference: "Isaias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 212, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro aparece la vision del valle de huesos secos?",
-
-
 
     options: ["Joel", "Miqueas", "Ezequiel", "Daniel"],
 
-
-
     correct: 2, reference: "Ezequiel 37:1-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 213, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro menciona las setenta semanas?",
-
-
 
     options: ["Daniel", "Isaias", "Jeremias", "Zacarias"],
 
-
-
     correct: 0, reference: "Daniel 9:24-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 214, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se anuncia el 'Dia del Senor' con langostas?",
-
-
 
     options: ["Oseas", "Joel", "Amos", "Abdias"],
 
-
-
     correct: 1, reference: "Joel 1:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 215, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro contiene profecias contra Ninive?",
-
-
 
     options: ["Sofonias", "Nahum", "Jonas", "Habacuc"],
 
-
-
     correct: 1, reference: "Nahum 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 216, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro aparece 'el justo vivira por fe'?",
-
-
 
     options: ["Oseas", "Habacuc", "Malaquias", "Amos"],
 
-
-
     correct: 1, reference: "Habacuc 2:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 217, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro anuncia la venida del mensajero del Senor?",
-
-
 
     options: ["Zacarias", "Malaquias", "Joel", "Ageo"],
 
-
-
     correct: 1, reference: "Malaquias 3:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 218, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que evangelio esta la genealogia de Jesus desde Abraham?",
 
-
-
     options: ["Mateo", "Marcos", "Lucas", "Juan"],
-
-
 
     correct: 0, reference: "Mateo 1:1-17"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 219, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que evangelio presenta a Jesus como el Verbo?",
-
-
 
     options: ["Mateo", "Marcos", "Lucas", "Juan"],
 
-
-
     correct: 3, reference: "Juan 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 220, difficulty: "intermedio", category: "libros",
 
-
-
-    question: "¿En que libro Jesus cuenta mas parabolas?",
-
-
+    question: "¿En que evangelio se encuentra una gran cantidad de parabolas de Jesus?",
 
     options: ["Marcos", "Mateo", "Hechos", "Juan"],
 
-
-
     correct: 1, reference: "Mateo 13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 221, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro narra el concilio de Jerusalen?",
-
-
 
     options: ["Romanos", "Hechos", "Efesios", "Galatas"],
 
-
-
     correct: 1, reference: "Hechos 15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 222, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro Pablo explica la justificacion por la fe?",
-
-
 
     options: ["Romanos", "Tito", "Filipenses", "Corintios"],
 
-
-
     correct: 0, reference: "Romanos 3:21-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 223, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro corrige abusos en la Cena del Senor?",
-
-
 
     options: ["Efesios", "1 Corintios", "Colosenses", "Galatas"],
 
-
-
     correct: 1, reference: "1 Corintios 11:17-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 224, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se habla del 'cuerpo de Cristo'?",
-
-
 
     options: ["Tito", "Hebreos", "Romanos", "1 Corintios"],
 
-
-
     correct: 3, reference: "1 Corintios 12:12-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 225, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro destaca el gozo en medio de pruebas?",
-
-
 
     options: ["Filipenses", "Colosenses", "Efesios", "Filemon"],
 
-
-
     correct: 0, reference: "Filipenses 1:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 226, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se menciona la armadura espiritual completa?",
-
-
 
     options: ["Galatas", "Tito", "Efesios", "Romanos"],
 
-
-
     correct: 2, reference: "Efesios 6:10-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 227, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro enfatiza la supremacia de Cristo?",
-
-
 
     options: ["Colosenses", "Pedro", "Juan", "Hebreos"],
 
-
-
     correct: 0, reference: "Colosenses 1:15-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 228, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se compara a Jesus con Melquisedec?",
-
-
 
     options: ["Judas", "Romanos", "Tito", "Hebreos"],
 
-
-
     correct: 3, reference: "Hebreos 7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 229, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro ensena que la fe sin obras esta muerta?",
-
-
 
     options: ["Judas", "Santiago", "Pedro", "Juan"],
 
-
-
     correct: 1, reference: "Santiago 2:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 230, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se exhorta a resistir al diablo?",
-
-
 
     options: ["Santiago", "Juan", "Tito", "Pedro"],
 
-
-
     correct: 0, reference: "Santiago 4:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 231, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro habla del sufrimiento cristiano?",
-
-
 
     options: ["Romanos", "1 Pedro", "Filemon", "Galatas"],
 
-
-
     correct: 1, reference: "1 Pedro 4:12-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 232, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se advierte contra falsos maestros?",
-
-
 
     options: ["Pedro", "Lucas", "Tito", "Judas"],
 
-
-
     correct: 3, reference: "Judas 1:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 233, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro menciona el anticristo?",
-
-
 
     options: ["1 Juan", "Judas", "Hebreos", "Apocalipsis"],
 
-
-
     correct: 0, reference: "1 Juan 2:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 234, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro Juan recibe visiones celestiales?",
-
-
 
     options: ["Apocalipsis", "Hechos", "Judas", "Pedro"],
 
-
-
     correct: 0, reference: "Apocalipsis 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 235, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro contiene cartas a siete iglesias?",
-
-
 
     options: ["Tito", "Hebreos", "Romanos", "Apocalipsis"],
 
-
-
     correct: 3, reference: "Apocalipsis 2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 236, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro aparece el Cordero como figura central?",
-
-
 
     options: ["Mateo", "Juan", "Hechos", "Apocalipsis"],
 
-
-
     correct: 3, reference: "Apocalipsis 5:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 237, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro habla del trono blanco?",
-
-
 
     options: ["Zacarias", "Apocalipsis", "Isaias", "Daniel"],
 
-
-
     correct: 1, reference: "Apocalipsis 20:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 238, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se describe la Nueva Jerusalen?",
-
-
 
     options: ["Juan", "Pedro", "Apocalipsis", "Hebreos"],
 
-
-
     correct: 2, reference: "Apocalipsis 21:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 239, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro muestra el inicio de la iglesia?",
-
-
 
     options: ["Mateo", "Hechos", "Corintios", "Romanos"],
 
-
-
     correct: 1, reference: "Hechos 2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 240, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se ensena sobre los dones espirituales?",
-
-
 
     options: ["Hebreos", "Romanos", "Tito", "1 Corintios"],
 
-
-
     correct: 3, reference: "1 Corintios 12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 241, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro habla del amor como mandamiento nuevo?",
-
-
 
     options: ["Pedro", "Judas", "Juan", "Tito"],
 
-
-
     correct: 2, reference: "Juan 13:34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 242, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro Pablo escribe desde prision?",
-
-
 
     options: ["Galatas", "Filipenses", "Romanos", "Hechos"],
 
-
-
     correct: 1, reference: "Filipenses 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 243, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro trata sobre liderazgo pastoral?",
-
-
 
     options: ["Romanos", "1 Timoteo", "Hebreos", "Judas"],
 
-
-
     correct: 1, reference: "1 Timoteo 3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 244, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro Pablo aconseja a Tito?",
-
-
 
     options: ["Judas", "Pedro", "Filemon", "Tito"],
 
-
-
     correct: 3, reference: "Tito 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 245, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro defiende la sana doctrina?",
-
-
 
     options: ["2 Timoteo", "Romanos", "Juan", "Judas"],
 
-
-
     correct: 0, reference: "2 Timoteo 4:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 246, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se habla de Onesimo?",
-
-
 
     options: ["Tito", "Hebreos", "Pedro", "Filemon"],
 
-
-
     correct: 3, reference: "Filemon 1:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 247, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro exhorta a perseverar hasta el fin?",
-
-
 
     options: ["Romanos", "Juan", "Hebreos", "Judas"],
 
-
-
     correct: 2, reference: "Hebreos 10:36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 248, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿En que libro se menciona a Enoc?",
-
-
 
     options: ["Tito", "Pedro", "Judas", "Juan"],
 
-
-
     correct: 2, reference: "Judas 1:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 249, difficulty: "intermedio", category: "libros",
 
-
-
     question: "¿Que libro une profecia, cartas y visiones?",
-
-
 
     options: ["Daniel", "Apocalipsis", "Isaias", "Zacarias"],
 
-
-
     correct: 1, reference: "Apocalipsis"
-
-
 
   },
 
-
-
   // --- Reyes ---
 
-
-
   {
-
-
 
     id: 1050, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino David en Hebron antes de trasladarse a Jerusalen?",
-
-
 
     options: ["Diez anos", "Siete anos y medio", "Cinco anos", "Tres anos"],
 
-
-
     correct: 1, reference: "2 Samuel 5:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1051, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que reforma importante realizo el rey Josias al encontrar el libro de la Ley?",
-
-
 
     options: ["Dividio el reino", "Establecio nuevos sacerdotes levitas", "Elimino la idolatria y renovo el pacto", "Construyo un nuevo templo"],
 
-
-
     correct: 2, reference: "2 Reyes 23:1-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1052, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey del norte establecio Samaria como capital del reino de Israel?",
-
-
 
     options: ["Acab", "Jeroboam I", "Baasa", "Omri"],
 
-
-
     correct: 3, reference: "1 Reyes 16:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1053, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que pecado especifico cometio Jeroboam I que se convirtio en referencia para los reyes posteriores?",
-
-
 
     options: ["Consultar adivinos", "Hacer becerros de oro en Dan y Bet-el", "Adorar a Baal", "Sacrificar a sus hijos"],
 
-
-
     correct: 1, reference: "1 Reyes 12:28-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1054, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda quito los lugares altos y destruyo la serpiente de bronce de Moises?",
-
-
 
     options: ["Asa", "Ezequias", "Josafat", "Josias"],
 
-
-
     correct: 1, reference: "2 Reyes 18:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1055, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Con que profeta tuvo el rey Acab frecuentes enfrentamientos?",
-
-
 
     options: ["Eliseo", "Isaias", "Jeremias", "Elias"],
 
-
-
     correct: 3, reference: "1 Reyes 18:17-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1056, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino Salomon sobre todo Israel?",
-
-
 
     options: ["Cincuenta anos", "Veinte anos", "Cuarenta anos", "Treinta anos"],
 
-
-
     correct: 2, reference: "1 Reyes 11:42"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1057, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue herido de lepra por quemar incienso en el templo?",
-
-
 
     options: ["Acaz", "Amasias", "Uzias (Azarias)", "Jotam"],
 
-
-
     correct: 2, reference: "2 Cronicas 26:19-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1058, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda hizo alianza con el rey de Israel para pelear en Ramot de Galaad?",
-
-
 
     options: ["Amasias", "Asa", "Josafat", "Joas"],
 
-
-
     correct: 2, reference: "1 Reyes 22:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1059, difficulty: "intermedio", category: "reyes",
 
-
-
-    question: "¿Cual fue la causa principal de la division del reino despues de Salomon?",
-
-
+    question: "¿Que motivo inmediato llevo a la division del reino tras la muerte de Salomon?",
 
     options: ["Una guerra civil", "La invasion asiria", "Los impuestos excesivos y el trabajo forzado", "La idolatria"],
 
-
-
     correct: 2, reference: "1 Reyes 12:4-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1060, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Israel reino solo siete dias antes de suicidarse?",
-
-
 
     options: ["Zimri", "Nadab", "Pekaia", "Ela"],
 
-
-
     correct: 0, reference: "1 Reyes 16:15-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1061, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que profeta ungio a Jehu como rey de Israel para destruir la casa de Acab?",
-
-
 
     options: ["Un discipulo de Eliseo", "Miqueas", "Eliseo", "Elias"],
 
-
-
     correct: 0, reference: "2 Reyes 9:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1062, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue escondido en el templo durante seis anos siendo nino?",
-
-
 
     options: ["Joas", "Amon", "Josias", "Manases"],
 
-
-
     correct: 0, reference: "2 Reyes 11:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1063, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Israel expandio las fronteras del reino del norte a su mayor extension?",
-
-
 
     options: ["Acab", "Peka", "Jeroboam II", "Omri"],
 
-
-
     correct: 2, reference: "2 Reyes 14:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1064, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Quien fue la reina que usurpo el trono de Juda e intento destruir la descendencia real?",
-
-
 
     options: ["Atalia", "Betsabe", "Jezabel", "Maaca"],
 
-
-
     correct: 0, reference: "2 Reyes 11:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1065, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda llevo cautivo al profeta Jeremias a Egipto?",
-
-
 
     options: ["Joaquin", "Sedequias", "Joacim", "Nadie, fue Johanan hijo de Carea"],
 
-
-
     correct: 3, reference: "Jeremias 43:5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1066, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino Asa en Juda haciendo lo recto ante los ojos de Jehova?",
-
-
 
     options: ["Veinticinco anos", "Cuarenta y un anos", "Veinte anos", "Treinta y un anos"],
 
-
-
     correct: 1, reference: "1 Reyes 15:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1067, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda cavo cisternas, tuvo vinas y fue amante de la agricultura?",
-
-
 
     options: ["Uzias", "Josafat", "Jotam", "Ezequias"],
 
-
-
     correct: 0, reference: "2 Cronicas 26:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1068, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que pecado cometio el rey Saul que provoco que Dios lo rechazara como rey?",
-
-
 
     options: ["Matar a los sacerdotes", "Desobedecer ofreciendo sacrificio sin Samuel", "Consultar adivinos", "Adulterio"],
 
-
-
     correct: 1, reference: "1 Samuel 13:8-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1069, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue asesinado por su propio oficial Zimri?",
-
-
 
     options: ["Nadab", "Baasa", "Jeroboam I", "Ela"],
 
-
-
     correct: 3, reference: "1 Reyes 16:8-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1070, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que hizo Ezequias cuando recibio la carta amenazante de Senaquerib?",
-
-
 
     options: ["La extendio delante de Jehova en el templo", "Huyo al desierto", "Pidio ayuda a Egipto", "Reunio su ejercito"],
 
-
-
     correct: 0, reference: "2 Reyes 19:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1071, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda reino mas tiempo segun la Biblia?",
-
-
 
     options: ["Uzias", "Manases", "Asa", "Josafat"],
 
-
-
     correct: 1, reference: "2 Reyes 21:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1072, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Israel construyo un templo a Baal en Samaria?",
-
-
 
     options: ["Omri", "Jeroboam II", "Acab", "Jehu"],
 
-
-
     correct: 2, reference: "1 Reyes 16:32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1073, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿A que edad comenzo Josias a reinar en Juda?",
-
-
 
     options: ["Siete anos", "Dieciseis anos", "Doce anos", "Ocho anos"],
 
-
-
     correct: 3, reference: "2 Reyes 22:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1074, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que profeta reprendio a David por su pecado con Betsabe?",
-
-
 
     options: ["Samuel", "Isaias", "Natan", "Gad"],
 
-
-
     correct: 2, reference: "2 Samuel 12:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1075, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda mando a sus principes a ensenar la ley en las ciudades?",
 
-
-
     options: ["Josafat", "Asa", "Josias", "Ezequias"],
-
-
 
     correct: 0, reference: "2 Cronicas 17:7-9"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1076, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Cual fue el ultimo rey del reino del norte (Israel) antes de la caida ante Asiria?",
-
-
 
     options: ["Peka", "Oseas", "Jeroboam II", "Manahem"],
 
-
-
     correct: 1, reference: "2 Reyes 17:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1077, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue llevado cautivo a Babilonia con ganchos y cadenas?",
-
-
 
     options: ["Joacim", "Joaquin", "Sedequias", "Manases"],
 
-
-
     correct: 3, reference: "2 Cronicas 33:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1078, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que hizo Josias con los huesos de los sacerdotes de los lugares altos?",
-
-
 
     options: ["Los enterro con honores", "Los quemo sobre los altares", "Los arrojo al mar", "Los llevo a Jerusalen"],
 
-
-
     correct: 1, reference: "2 Reyes 23:16-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1079, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue conocido como un guerrero valiente pero hizo lo malo ante Jehova?",
-
-
 
     options: ["Peka", "Baasa", "Jeroboam II", "Omri"],
 
-
-
     correct: 3, reference: "1 Reyes 16:25-26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1080, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Cuantos anos anadio Dios a la vida de Ezequias cuando oro por sanidad?",
-
-
 
     options: ["Quince anos", "Diez anos", "Cinco anos", "Veinte anos"],
 
-
-
     correct: 0, reference: "2 Reyes 20:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1081, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda hizo pasar a su hijo por fuego como sacrificio?",
-
-
 
     options: ["Joacim", "Manases", "Amon", "Acaz"],
 
-
-
     correct: 3, reference: "2 Reyes 16:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1082, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que senal dio Dios a Ezequias para confirmar su sanidad?",
-
-
 
     options: ["Fuego del cielo", "Un terremoto", "La sombra retrocedio diez grados", "Una voz del cielo"],
 
-
-
     correct: 2, reference: "2 Reyes 20:8-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1083, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey sucedio a Salomon y causo la division del reino?",
-
-
 
     options: ["Roboam", "Abias", "Jeroboam", "Asa"],
 
-
-
     correct: 0, reference: "1 Reyes 12:1-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1084, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que profeta le dijo a Asa que confiara en Dios en lugar de en el rey de Siria?",
-
-
 
     options: ["Micaias", "Hanani", "Jehu", "Azarias"],
 
-
-
     correct: 1, reference: "2 Cronicas 16:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1085, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Israel derroto a Ben-adad rey de Siria tres veces segun la profecia de Eliseo?",
 
-
-
     options: ["Jehu", "Joacaz", "Jeroboam II", "Joas de Israel"],
-
-
 
     correct: 3, reference: "2 Reyes 13:18-25"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1086, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que hizo Salomon en su vejez que desagrado a Dios?",
-
-
 
     options: ["Su corazon se inclino tras dioses ajenos", "Destruyo el templo", "Aumento los impuestos", "Abandono Jerusalen"],
 
-
-
     correct: 0, reference: "1 Reyes 11:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1087, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que vina codicio el rey Acab y Jezabel tramo para obtenerla?",
-
-
 
     options: ["La vina de Efrain", "La vina de Caleb", "La vina de Nabot", "La vina de Isai"],
 
-
-
     correct: 2, reference: "1 Reyes 21:1-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1088, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda organizo cantores y musicos para alabar a Dios antes de la batalla?",
-
-
 
     options: ["Josias", "Josafat", "Ezequias", "David"],
 
-
-
     correct: 1, reference: "2 Cronicas 20:21-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1089, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Cuantas tribus siguieron a Jeroboam cuando se dividio el reino?",
-
-
 
     options: ["Cinco", "Dos", "Ocho", "Diez"],
 
-
-
     correct: 3, reference: "1 Reyes 11:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1090, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda restauro el templo usando las ofrendas del pueblo?",
-
-
 
     options: ["Josias", "Asa", "Ezequias", "Joas"],
 
-
-
     correct: 3, reference: "2 Reyes 12:4-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1091, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Quien ungio a Saul como primer rey de Israel?",
-
-
 
     options: ["Eli", "Gad", "Natan", "Samuel"],
 
-
-
     correct: 3, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1092, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey del norte destruyo completamente el culto a Baal en Israel?",
-
-
 
     options: ["Jeroboam II", "Oseas", "Jehu", "Manahem"],
 
-
-
     correct: 2, reference: "2 Reyes 10:18-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1093, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿En que batalla murio el rey Saul?",
-
-
 
     options: ["En Jerico", "En el monte Gilboa", "En Gilgal", "En Hebron"],
 
-
-
     correct: 1, reference: "1 Samuel 31:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1094, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue contemporaneo del profeta Isaias?",
-
-
 
     options: ["Ezequias", "Josias", "Manases", "Amon"],
 
-
-
     correct: 0, reference: "Isaias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1095, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que condicion puso Dios a Salomon para bendecir su reinado?",
-
-
 
     options: ["Andar en sus caminos y guardar sus mandamientos", "Conquistar naciones vecinas", "No tomar esposas extranjeras", "Construir el templo"],
 
-
-
     correct: 0, reference: "1 Reyes 9:4-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1096, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda cavo el tunel de Siloe para abastecer agua a Jerusalen?",
-
-
 
     options: ["Josias", "Manases", "Ezequias", "Josafat"],
 
-
-
     correct: 2, reference: "2 Reyes 20:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1097, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que le sacaron los babilonios al rey Sedequias despues de capturarlo?",
-
-
 
     options: ["Le cortaron la lengua", "Le raparon la cabeza", "Le sacaron los ojos", "Le cortaron las manos"],
 
-
-
     correct: 2, reference: "2 Reyes 25:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1098, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que rey de Juda se arrepintio en el cautiverio y Dios lo restauro a su trono?",
-
-
 
     options: ["Sedequias", "Joaquin", "Manases", "Joacim"],
 
-
-
     correct: 2, reference: "2 Cronicas 33:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1099, difficulty: "intermedio", category: "reyes",
 
-
-
     question: "¿Que consejero aconsejo a Roboam aumentar la carga sobre el pueblo?",
-
-
 
     options: ["Los sacerdotes", "Los profetas", "Los jovenes que se habian criado con el", "Los ancianos"],
 
-
-
     correct: 2, reference: "1 Reyes 12:8-11"
-
-
 
   },
 
-
-
   // --- Profetas ---
 
-
-
   {
-
-
 
     id: 1250, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue llamado por Dios cuando era nino mientras dormia en el templo?",
-
-
 
     options: ["Jeremias", "Isaias", "Samuel", "Elias"],
 
-
-
     correct: 2, reference: "1 Samuel 3:1-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1251, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Bajo que rey de Juda profetizo Isaias principalmente?",
-
-
 
     options: ["Ezequias", "Manases", "Acab", "Josias"],
 
-
-
     correct: 0, reference: "Isaias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1252, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue enviado a predicar a Ninive pero huyo hacia Tarsis?",
-
-
 
     options: ["Jonas", "Miqueas", "Nahum", "Amos"],
 
-
-
     correct: 0, reference: "Jonas 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1253, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que accion simbolica realizo Ezequiel acostandose sobre su lado izquierdo?",
-
-
 
     options: ["Simbolizar la caida de Babilonia", "Anunciar el nacimiento del Mesias", "Cargar la iniquidad de Israel", "Representar la destruccion de Egipto"],
 
-
-
     correct: 2, reference: "Ezequiel 4:4-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1254, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Cuantos dias debia Ezequiel acostarse sobre su lado izquierdo segun Dios?",
-
-
 
     options: ["40 dias", "150 dias", "390 dias", "70 dias"],
 
-
-
     correct: 2, reference: "Ezequiel 4:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1255, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿A que profeta Dios le ordeno casarse con una mujer adultera como senal?",
-
-
 
     options: ["Joel", "Amos", "Oseas", "Miqueas"],
 
-
-
     correct: 2, reference: "Oseas 1:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1256, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Como se llamaba la esposa de Oseas?",
-
-
 
     options: ["Gomer", "Raquel", "Abigail", "Ester"],
 
-
-
     correct: 0, reference: "Oseas 1:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1257, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta menor hablo especificamente sobre la destruccion de Edom?",
-
-
 
     options: ["Joel", "Amos", "Habacuc", "Abdias"],
 
-
-
     correct: 3, reference: "Abdias 1:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1258, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo la vision de las cuatro bestias que salian del mar?",
-
-
 
     options: ["Zacarias", "Isaias", "Daniel", "Ezequiel"],
 
-
-
     correct: 2, reference: "Daniel 7:1-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1259, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue arrebatado al cielo en un carro de fuego?",
-
-
 
     options: ["Eliseo", "Elias", "Enoc", "Moises"],
 
-
-
     correct: 1, reference: "2 Reyes 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1260, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta recibio el manto de Elias al ser este arrebatado?",
-
-
 
     options: ["Natan", "Gad", "Samuel", "Eliseo"],
 
-
-
     correct: 3, reference: "2 Reyes 2:13-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1261, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta visito la casa del alfarero por orden de Dios?",
 
-
-
     options: ["Isaias", "Jeremias", "Ezequiel", "Oseas"],
-
-
 
     correct: 1, reference: "Jeremias 18:1-6"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1262, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que vision tuvo Zacarias sobre un candelabro de oro entre dos olivos?",
-
-
 
     options: ["El poder del Espiritu Santo", "La gloria del templo", "La venida del Mesias", "El juicio final"],
 
-
-
     correct: 0, reference: "Zacarias 4:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1263, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta profetizo que el Mesias naceria en Belen?",
-
-
 
     options: ["Malaquias", "Zacarias", "Isaias", "Miqueas"],
 
-
-
     correct: 3, reference: "Miqueas 5:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1264, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta anuncio que una virgen concebiria y daria a luz un hijo llamado Emanuel?",
-
-
 
     options: ["Ezequiel", "Daniel", "Jeremias", "Isaias"],
 
-
-
     correct: 3, reference: "Isaias 7:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1265, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta describio al Siervo Sufriente en el capitulo 53 de su libro?",
 
-
-
     options: ["Ezequiel", "Isaias", "Daniel", "Jeremias"],
-
-
 
     correct: 1, reference: "Isaias 53:1-12"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1266, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue contemporaneo de Jeremias y profetizo en el exilio babilonico?",
-
-
 
     options: ["Amos", "Miqueas", "Isaias", "Ezequiel"],
 
-
-
     correct: 3, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1267, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta confronto al rey David por su pecado con Betsabe?",
-
-
 
     options: ["Samuel", "Gad", "Elias", "Natan"],
 
-
-
     correct: 3, reference: "2 Samuel 12:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1268, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta era pastor y cultivador de higos silvestres antes de ser llamado?",
-
-
 
     options: ["Oseas", "Miqueas", "Amos", "Joel"],
 
-
-
     correct: 2, reference: "Amos 7:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1269, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta hablo del 'Dia del Senor' usando una plaga de langostas como ilustracion?",
-
-
 
     options: ["Sofonias", "Joel", "Amos", "Nahum"],
 
-
-
     correct: 1, reference: "Joel 1:4 - 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1270, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta predijo la caida de Ninive como juicio de Dios?",
-
-
 
     options: ["Jonas", "Sofonias", "Nahum", "Habacuc"],
 
-
-
     correct: 2, reference: "Nahum 1:1; 3:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1271, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta cuestiono a Dios sobre por que permitia la injusticia?",
-
-
 
     options: ["Malaquias", "Amos", "Miqueas", "Habacuc"],
 
-
-
     correct: 3, reference: "Habacuc 1:2-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1272, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿En tiempos de que rey reformador profetizo Sofonias?",
-
-
 
     options: ["Manases", "Josias", "Ezequias", "Joacim"],
 
-
-
     correct: 1, reference: "Sofonias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1273, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profetas animaron al pueblo a reconstruir el templo despues del exilio?",
-
-
 
     options: ["Amos y Oseas", "Hageo y Zacarias", "Isaias y Jeremias", "Malaquias y Joel"],
 
-
-
     correct: 1, reference: "Esdras 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1274, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que reprocho Malaquias al pueblo de Israel respecto a los diezmos?",
-
-
 
     options: ["Que ofrecian solo los primogenitos", "Que daban demasiado", "Que robaban a Dios al no diezmar", "Que no ayunaban"],
 
-
-
     correct: 2, reference: "Malaquias 3:8-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1275, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue echado en un foso de leones por orar a Dios?",
-
-
 
     options: ["Elias", "Jeremias", "Ezequiel", "Daniel"],
 
-
-
     correct: 3, reference: "Daniel 6:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1276, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta interpreto la escritura en la pared durante el banquete de Belsasar?",
 
-
-
     options: ["Isaias", "Daniel", "Jeremias", "Ezequiel"],
-
-
 
     correct: 1, reference: "Daniel 5:25-28"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1277, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que significaban las palabras 'Mene, Mene, Tekel, Uparsin' que Daniel interpreto?",
-
-
 
     options: ["Victoria y gloria eterna", "Paz y prosperidad vendran", "Arrepentimiento y perdon", "Dios ha contado tu reino, has sido pesado y hallado falto, tu reino sera dividido"],
 
-
-
     correct: 3, reference: "Daniel 5:26-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1278, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que vision tuvo Isaias al ser llamado como profeta en el templo?",
-
-
 
     options: ["Una zarza ardiente", "Al Senor sentado en un trono alto con serafines", "Un ejercito de angeles", "Un arco iris"],
 
-
-
     correct: 1, reference: "Isaias 6:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1279, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que hizo el serafin con una brasa del altar cuando Isaias fue llamado?",
-
-
 
     options: ["La arrojo al suelo", "Toco sus labios para purificarlo", "La puso sobre su frente", "La coloco en sus manos"],
 
-
-
     correct: 1, reference: "Isaias 6:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1280, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue puesto en una cisterna de lodo por predicar la rendicion ante Babilonia?",
 
-
-
     options: ["Jeremias", "Daniel", "Ezequiel", "Isaias"],
-
-
 
     correct: 0, reference: "Jeremias 38:6"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1281, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Quien rescato a Jeremias de la cisterna de lodo?",
-
-
 
     options: ["El rey Sedequias", "Ebed-melec el etiope", "Gedalias", "Baruc"],
 
-
-
     correct: 1, reference: "Jeremias 38:7-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1282, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo la vision de una vara de almendro como senal del cuidado de Dios?",
-
-
 
     options: ["Amos", "Isaias", "Jeremias", "Zacarias"],
 
-
-
     correct: 2, reference: "Jeremias 1:11-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1283, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que accion simbolica realizo Jeremias al comprar un cinto de lino y esconderlo?",
-
-
 
     options: ["Anunciar una nueva alianza", "Representar la pureza de Israel", "Simbolizar que Dios se habia unido a Israel pero el pueblo se corrompio", "Mostrar la riqueza venidera"],
 
-
-
     correct: 2, reference: "Jeremias 13:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1284, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Cuantos anos profetizo Jeremias que duraria el cautiverio en Babilonia?",
-
-
 
     options: ["50 anos", "100 anos", "40 anos", "70 anos"],
 
-
-
     correct: 3, reference: "Jeremias 25:11-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1285, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta vio la vision de un rollo que volaba?",
-
-
 
     options: ["Zacarias", "Ezequiel", "Isaias", "Daniel"],
 
-
-
     correct: 0, reference: "Zacarias 5:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1286, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta profetizo la entrada triunfal de Jesus montado sobre un pollino?",
-
-
 
     options: ["Malaquias", "Zacarias", "Isaias", "Miqueas"],
 
-
-
     correct: 1, reference: "Zacarias 9:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1287, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta menciono las treinta piezas de plata como precio de traicion?",
-
-
 
     options: ["Daniel", "Zacarias", "Jeremias", "Isaias"],
 
-
-
     correct: 1, reference: "Zacarias 11:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1288, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo la vision de las cuatro carros tirados por caballos de colores?",
-
-
 
     options: ["Ezequiel", "Daniel", "Isaias", "Zacarias"],
 
-
-
     correct: 3, reference: "Zacarias 6:1-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1289, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta menor predico contra la injusticia social y la opresion de los pobres en Israel?",
-
-
 
     options: ["Malaquias", "Amos", "Hageo", "Abdias"],
 
-
-
     correct: 1, reference: "Amos 2:6-7; 5:11-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1290, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Desde que lugar fue llamado Amos para profetizar en Israel?",
-
-
 
     options: ["Samaria", "Tecoa", "Belen", "Jerusalen"],
 
-
-
     correct: 1, reference: "Amos 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1291, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta realizo el milagro de hacer flotar un hacha de hierro en el agua?",
-
-
 
     options: ["Samuel", "Elias", "Eliseo", "Moises"],
 
-
-
     correct: 2, reference: "2 Reyes 6:5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1292, difficulty: "intermedio", category: "profetas",
 
+    question: "¿Que pidio Eliseo a Elias antes de que fuera llevado al cielo?",
 
+    options: ["Riquezas", "Poder militar", "El doble de su espiritu", "Larga vida"],
 
-    question: "¿Cuantos milagros registrados realizo Eliseo en comparacion con Elias?",
-
-
-
-    options: ["La misma cantidad", "La mitad", "Tres veces mas", "El doble"],
-
-
-
-    correct: 3, reference: "2 Reyes 2:9 (pidio doble porcion)"
-
-
+    correct: 2, reference: "2 Reyes 2:9"
 
   },
 
-
-
   {
-
-
 
     id: 1293, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta fue alimentado por cuervos junto al arroyo de Querit?",
-
-
 
     options: ["Isaias", "Elias", "Samuel", "Eliseo"],
 
-
-
     correct: 1, reference: "1 Reyes 17:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1294, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que planta crecio sobre Jonas para darle sombra y luego se seco?",
-
-
 
     options: ["Un olivo", "Una vid", "Una calabacera", "Una higuera"],
 
-
-
     correct: 2, reference: "Jonas 4:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1295, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo la vision de la gloria de Dios junto al rio Quebar?",
-
-
 
     options: ["Ezequiel", "Isaias", "Jeremias", "Daniel"],
 
-
-
     correct: 0, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1296, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que accion simbolica realizo Ezequiel al hacer un modelo de Jerusalen en un adobe?",
-
-
 
     options: ["Celebrar una fiesta", "Construir un altar", "Ensenar arquitectura", "Representar el asedio de Jerusalen"],
 
-
-
     correct: 3, reference: "Ezequiel 4:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1297, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta describio un templo futuro con medidas detalladas en los ultimos capitulos de su libro?",
-
-
 
     options: ["Zacarias", "Isaias", "Ezequiel", "Jeremias"],
 
-
-
     correct: 2, reference: "Ezequiel 40-48"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1298, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta anuncio un nuevo pacto que Dios escribiria en los corazones?",
-
-
 
     options: ["Ezequiel", "Isaias", "Malaquias", "Jeremias"],
 
-
-
     correct: 3, reference: "Jeremias 31:31-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1299, difficulty: "intermedio", category: "profetas",
 
-
-
     question: "¿Que profeta es considerado el ultimo del Antiguo Testamento antes del periodo intertestamentario?",
-
-
 
     options: ["Malaquias", "Zacarias", "Hageo", "Joel"],
 
-
-
     correct: 0, reference: "Malaquias 1:1"
-
-
 
   },
 
-
-
   // --- Cartas ---
 
-
-
   {
-
-
 
     id: 1850, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Desde que ciudad escribio Pablo la carta a los Filipenses?",
-
-
 
     options: ["Corinto", "Cesarea", "Efeso", "Roma"],
 
-
-
     correct: 3, reference: "Filipenses 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1851, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Cual era el problema principal que Pablo abordo en la carta a los Galatas?",
-
-
 
     options: ["La persecucion romana", "La inmoralidad sexual", "La imposicion de la ley mosaica a los gentiles", "Las divisiones internas"],
 
-
-
     correct: 2, reference: "Galatas 2:16; 3:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1852, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿En que carta Pablo explica en detalle la justificacion por la fe?",
-
-
 
     options: ["Filipenses", "Romanos", "Colosenses", "Efesios"],
 
-
-
     correct: 1, reference: "Romanos 3:21-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1853, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que problema de divisiones existia en la iglesia de Corinto?",
-
-
 
     options: ["Se dividian segun las tribus de Israel", "Disputaban por el dia de reposo", "Seguian a diferentes lideres como Pablo, Apolos y Cefas", "Peleaban por el liderazgo femenino"],
 
-
-
     correct: 2, reference: "1 Corintios 1:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1854, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿A quien estaba dirigida la carta a Filemon?",
-
-
 
     options: ["A un dueno de esclavos cristiano", "A un gobernador romano", "A un pastor de Efeso", "A un lider judio"],
 
-
-
     correct: 0, reference: "Filemon 1:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1855, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Cual es el tema central de la carta a los Hebreos?",
-
-
 
     options: ["El bautismo del Espiritu Santo", "La segunda venida de Cristo", "La organizacion de la iglesia", "La superioridad de Cristo sobre el antiguo pacto"],
 
-
-
     correct: 3, reference: "Hebreos 1:1-4; 8:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1856, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Pablo sobre los dones espirituales en 1 Corintios 12?",
-
-
 
     options: ["Que todos deben hablar en lenguas", "Que hay diversidad de dones pero un mismo Espiritu", "Que los dones ya cesaron", "Que solo los apostoles tienen dones"],
 
-
-
     correct: 1, reference: "1 Corintios 12:4-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1857, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Por que razon Pablo escribio la segunda carta a los Corintios?",
-
-
 
     options: ["Para corregir doctrina sobre la resurreccion", "Para defender su apostolado y reconciliarse con la iglesia", "Para anunciar su visita a Roma", "Para pedir dinero"],
 
-
-
     correct: 1, reference: "2 Corintios 1:23-24; 7:8-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1858, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que metafora usa Pablo en Efesios 6 para describir la vida cristiana?",
-
-
 
     options: ["La armadura de Dios", "Un atleta en competencia", "Un agricultor sembrando", "Un barco en la tormenta"],
 
-
-
     correct: 0, reference: "Efesios 6:10-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1859, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que herejia combatia Pablo en la carta a los Colosenses?",
-
-
 
     options: ["El culto a Diana", "El gnosticismo y el legalismo", "El arrianismo", "El judaismo farisaico"],
 
-
-
     correct: 1, reference: "Colosenses 2:8-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1860, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que tema trata Pablo en 1 Tesalonicenses 4:13-18?",
-
-
 
     options: ["El matrimonio cristiano", "Los dones espirituales", "La venida del Senor y la resurreccion de los muertos", "La ofrenda para Jerusalen"],
 
-
-
     correct: 2, reference: "1 Tesalonicenses 4:13-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1861, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Cual carta del NT fue escrita para acompanar a un esclavo fugitivo que regresaba a su amo?",
-
-
 
     options: ["Filemon", "3 Juan", "2 Timoteo", "Tito"],
 
-
-
     correct: 0, reference: "Filemon 1:10-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1862, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Como se llamaba el esclavo que Pablo envio de regreso a Filemon?",
-
-
 
     options: ["Onesimo", "Epafrodito", "Aristarco", "Tiquico"],
 
-
-
     correct: 0, reference: "Filemon 1:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1863, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Santiago sobre la relacion entre la lengua y la sabiduria?",
-
-
 
     options: ["Que la lengua solo es danina para los incredulos", "Que hay que guardar silencio siempre", "Que la lengua es un miembro pequeno pero puede causar gran dano", "Que solo los sabios deben hablar"],
 
-
-
     correct: 2, reference: "Santiago 3:1-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1864, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿En que carta Pablo habla del 'aguijon en la carne' que Dios no le quito?",
-
-
 
     options: ["Filipenses", "2 Corintios", "Galatas", "Romanos"],
 
-
-
     correct: 1, reference: "2 Corintios 12:7-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1865, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que les enseno Pablo a los tesalonicenses sobre el 'hombre de pecado'?",
-
-
 
     options: ["Que era el emperador romano", "Que ya habia venido", "Que era Satanas mismo", "Que se manifestaria antes de la venida del Senor"],
 
-
-
     correct: 3, reference: "2 Tesalonicenses 2:1-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1866, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que significa la palabra 'justificacion' segun Pablo en Romanos?",
-
-
 
     options: ["Ser declarado justo por Dios mediante la fe", "Hacerse justo por obras", "Cumplir toda la ley", "Vivir sin pecar jamas"],
 
-
-
     correct: 0, reference: "Romanos 3:24-26; 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1867, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Cual es el famoso himno cristologico que se encuentra en Filipenses 2?",
-
-
 
     options: ["El himno sobre la kenosis o vaciamiento de Cristo", "El himno de la creacion", "El himno de victoria sobre la muerte", "El cantico del siervo sufriente"],
 
-
-
     correct: 0, reference: "Filipenses 2:5-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1868, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que instrucciones da Pablo a Timoteo sobre los ancianos de la iglesia?",
-
-
 
     options: ["Que solo los levitas pueden ser ancianos", "Que los ancianos no deben trabajar", "Que sean irreprensibles, marido de una sola mujer y aptos para ensenar", "Que sean menores de 30 anos"],
 
-
-
     correct: 2, reference: "1 Timoteo 3:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1869, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que problema especifico de inmoralidad menciona Pablo en 1 Corintios 5?",
-
-
 
     options: ["Un hombre viviendo con la mujer de su padre", "Poligamia entre los creyentes", "Matrimonios entre judios y gentiles", "Adulterio con prostitutas del templo"],
 
-
-
     correct: 0, reference: "1 Corintios 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1870, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Pedro en su primera carta sobre el sufrimiento?",
-
-
 
     options: ["Que es una bendicion participar en los sufrimientos de Cristo", "Que el cristiano nunca debe sufrir", "Que hay que huir del sufrimiento siempre", "Que el sufrimiento es castigo divino"],
 
-
-
     correct: 0, reference: "1 Pedro 4:12-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1871, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Contra que tipo de falsos maestros advierte la segunda carta de Pedro?",
-
-
 
     options: ["Los que obligaban a circuncidarse", "Los que negaban la divinidad de Cristo", "Los que prohibian comer carne", "Los que negaban la segunda venida de Cristo"],
 
-
-
     correct: 3, reference: "2 Pedro 3:3-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1872, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que fruto del Espiritu enumera Pablo en Galatas 5:22-23?",
-
-
 
     options: ["Sabiduria, fortaleza y poder", "Profecia, lenguas e interpretacion", "Fe, esperanza y caridad", "Amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre, templanza"],
 
-
-
     correct: 3, reference: "Galatas 5:22-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1873, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Pablo en Romanos 8:28 sobre todas las cosas?",
-
-
 
     options: ["Que a los que aman a Dios, todas las cosas les ayudan a bien", "Que Dios elimina todo sufrimiento", "Que nunca habra problemas", "Que todo es bueno siempre"],
 
-
-
     correct: 0, reference: "Romanos 8:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1874, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que carta del NT fue escrita a una iglesia que Pablo no habia fundado ni visitado?",
-
-
 
     options: ["Romanos", "1 Corintios", "Galatas", "Filipenses"],
 
-
-
     correct: 0, reference: "Romanos 1:10-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1875, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que advertencia da Juan en su primera carta sobre el anticristo?",
-
-
 
     options: ["Que vendra solo al final de los tiempos", "Que es un simbolo y no una persona", "Que ya hay muchos anticristos que niegan al Padre y al Hijo", "Que es un solo individuo futuro"],
 
-
-
     correct: 2, reference: "1 Juan 2:18-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1876, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Cual es el proposito de la carta de Judas?",
-
-
 
     options: ["Relatar la vida de Judas Iscariote", "Exhortar a contender por la fe contra falsos maestros", "Dar instrucciones liturgicas", "Hablar de la genealogia de Cristo"],
 
-
-
     correct: 1, reference: "Judas 1:3-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1877, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que analogia usa Pablo en 1 Corintios 3 para describir la iglesia?",
-
-
 
     options: ["Un barco", "Un ejercito", "Un edificio y un campo de cultivo", "Una familia terrenal"],
 
-
-
     correct: 2, reference: "1 Corintios 3:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1878, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que dice Pablo en Efesios 2:8-9 sobre la salvacion?",
-
-
 
     options: ["Es por obras para que nadie se pierda", "Es por gracia mediante la fe, no por obras", "Es por guardar la ley y la fe juntas", "Es solo para los judios que creen"],
 
-
-
     correct: 1, reference: "Efesios 2:8-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1879, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que le pide Pablo a Timoteo en 2 Timoteo 4:13?",
-
-
 
     options: ["Que visite a los enfermos de Efeso", "Que traiga a Marcos consigo", "Que traiga el capote y los pergaminos que dejo en Troas", "Que envie dinero a Roma"],
 
-
-
     correct: 2, reference: "2 Timoteo 4:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1880, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Hebreos 11 sobre la fe?",
-
-
 
     options: ["Que presenta ejemplos de heroes de la fe del AT", "Que la fe es creer sin ninguna base", "Que la fe reemplaza las obras completamente", "Que la fe solo aplica a los apostoles"],
 
-
-
     correct: 0, reference: "Hebreos 11:1-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1881, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que relacion tenia Tito con Pablo segun la carta a Tito?",
-
-
 
     options: ["Era su escriba personal", "Era su hermano biologico", "Era su verdadero hijo en la fe comun", "Era un apostol igual a Pablo"],
 
-
-
     correct: 2, reference: "Tito 1:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1882, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿En que isla dejo Pablo a Tito para organizar las iglesias?",
-
-
 
     options: ["Creta", "Malta", "Chipre", "Patmos"],
 
-
-
     correct: 0, reference: "Tito 1:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1883, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que problema habia con la cena del Senor en la iglesia de Corinto?",
-
-
 
     options: ["Usaban vino en vez de jugo", "No la celebraban nunca", "Algunos comian en exceso mientras otros pasaban hambre", "La celebraban solo una vez al ano"],
 
-
-
     correct: 2, reference: "1 Corintios 11:20-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1884, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que dice Pablo sobre el matrimonio y la solteria en 1 Corintios 7?",
-
-
 
     options: ["Que todos deben casarse", "Que el matrimonio es pecado", "Que el soltero puede dedicarse mas al Senor, pero casarse no es pecado", "Que la solteria es obligatoria para servir a Dios"],
 
-
-
     correct: 2, reference: "1 Corintios 7:32-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1885, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Pablo en Romanos 12:1-2 sobre la vida cristiana?",
-
-
 
     options: ["Que solo importa la vida espiritual", "Que el cuerpo no tiene importancia", "Que debemos presentar nuestros cuerpos como sacrificio vivo y renovar la mente", "Que hay que seguir rituales judios"],
 
-
-
     correct: 2, reference: "Romanos 12:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1886, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Quien llevo la carta de Pablo a la iglesia de Roma?",
-
-
 
     options: ["Timoteo", "Febe", "Lucas", "Tito"],
 
-
-
     correct: 1, reference: "Romanos 16:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1887, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que dice Santiago sobre la oracion del enfermo?",
-
-
 
     options: ["Que llame a los ancianos para que oren y lo unjan con aceite", "Que solo el enfermo debe orar por si mismo", "Que su enfermedad es voluntad de Dios", "Que vaya al medico y no ore"],
 
-
-
     correct: 0, reference: "Santiago 5:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1888, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que comparacion usa Pablo en Galatas 4 con Sara y Agar?",
-
-
 
     options: ["Israel y Roma", "La iglesia y la sinagoga", "El viejo y el nuevo pacto", "El cielo y la tierra"],
 
-
-
     correct: 2, reference: "Galatas 4:21-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1889, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que dice Juan que es Dios en 1 Juan 4:8?",
-
-
 
     options: ["Dios es venganza", "Dios es justicia", "Dios es amor", "Dios es fuego consumidor"],
 
-
-
     correct: 2, reference: "1 Juan 4:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1890, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que consejo da Pablo a los colosenses sobre las relaciones familiares?",
-
-
 
     options: ["Que los maridos amen a sus esposas y los padres no exasperen a sus hijos", "Que los padres provoquen a ira a sus hijos", "Que los hijos sean independientes desde jovenes", "Que las esposas dominen a sus maridos"],
 
-
-
     correct: 0, reference: "Colosenses 3:18-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1891, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Por que razon escribio Pablo la carta a los Galatas con tanta urgencia?",
-
-
 
     options: ["Porque habia una hambruna", "Porque querian dejar de reunirse", "Porque estaban abandonando el evangelio de la gracia por otro evangelio", "Porque la iglesia se estaba dividiendo"],
 
-
-
     correct: 2, reference: "Galatas 1:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1892, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Pablo sobre la resurreccion en 1 Corintios 15?",
-
-
 
     options: ["Que solo los apostoles resucitaran", "Que la resurreccion ya ocurrio", "Que la resurreccion es solo espiritual", "Que si Cristo no resucito, vana es nuestra fe"],
 
-
-
     correct: 3, reference: "1 Corintios 15:14-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1893, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena la carta a los Hebreos sobre Melquisedec?",
-
-
 
     options: ["Que Cristo es sacerdote segun el orden de Melquisedec, superior al sacerdocio levitico", "Que Melquisedec era un angel", "Que fue un rey pagano sin importancia", "Que Melquisedec fue el primer sumo sacerdote de Israel"],
 
-
-
     correct: 0, reference: "Hebreos 7:1-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1894, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que mandamiento llama Santiago 'la ley real'?",
-
-
 
     options: ["Amaras a tu projimo como a ti mismo", "No mataras", "Guardar el sabado", "Honrar padre y madre"],
 
-
-
     correct: 0, reference: "Santiago 2:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1895, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que advertencia da Pablo en 2 Timoteo 3 sobre los ultimos tiempos?",
-
-
 
     options: ["Que todos se convertiran", "Que habra paz mundial", "Que la iglesia desaparecera", "Que vendran tiempos peligrosos con hombres amadores de si mismos"],
 
-
-
     correct: 3, reference: "2 Timoteo 3:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1896, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que imagen usa Pedro para describir a los creyentes en 1 Pedro 2:5?",
-
-
 
     options: ["Olas del mar", "Ramas de un arbol", "Estrellas del cielo", "Piedras vivas edificadas como casa espiritual"],
 
-
-
     correct: 3, reference: "1 Pedro 2:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1897, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que ensena Pablo en Efesios 4 sobre la unidad del cuerpo de Cristo?",
-
-
 
     options: ["Que solo los judios forman el cuerpo", "Que hay un solo cuerpo, un Espiritu, un Senor, una fe y un bautismo", "Que la unidad no es importante", "Que cada iglesia es independiente"],
 
-
-
     correct: 1, reference: "Efesios 4:4-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1898, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Que dice Pablo sobre la colecta para los santos de Jerusalen en 2 Corintios 8-9?",
-
-
 
     options: ["Que Jerusalen no necesita ayuda", "Que deben dar con alegria porque Dios ama al dador alegre", "Que solo los ricos deben ofrendar", "Que es obligatoria bajo pena de disciplina"],
 
-
-
     correct: 1, reference: "2 Corintios 9:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1899, difficulty: "intermedio", category: "cartas",
 
-
-
     question: "¿Cual colaborador abandono a Pablo segun 2 Timoteo 4:10 por amar el mundo presente?",
-
-
 
     options: ["Bernabe", "Silas", "Demas", "Marcos"],
 
-
-
     correct: 2, reference: "2 Timoteo 4:10"
 
-
-
   },
-
-
 
   // --- Historias Intermedio (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 46, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Cuantos anos estuvo Israel en el desierto?",
-
-
 
     options: ["20", "50", "40", "30"],
 
-
-
     correct: 2, reference: "Numeros 14:33-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 47, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Quien lidero la conquista de Canaan?",
-
-
 
     options: ["Josue", "Moises", "Aaron", "Caleb"],
 
-
-
     correct: 0, reference: "Josue 1:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 48, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey unifico Israel?",
-
-
 
     options: ["Salomon", "David", "Saul", "Roboam"],
 
-
-
     correct: 1, reference: "2 Samuel 5:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 49, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que imperio destruyo Jerusalen en 586 a.C.?",
-
-
 
     options: ["Asirio", "Romano", "Babilonico", "Persa"],
 
-
-
     correct: 2, reference: "2 Reyes 25:8-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 50, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Quien reconstruyo los muros de Jerusalen?",
-
-
 
     options: ["Zorobabel", "Esdras", "Nehemias", "Ageo"],
 
-
-
     correct: 2, reference: "Nehemias 2:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 850, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro relata el cautiverio en Babilonia?",
-
-
 
     options: ["Daniel", "Rut", "Amos", "Joel"],
 
-
-
     correct: 0, reference: "Daniel 1:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 851, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta anuncio 70 anos de exilio?",
-
-
 
     options: ["Jeremias", "Daniel", "Ezequiel", "Isaias"],
 
-
-
     correct: 0, reference: "Jeremias 25:11-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 852, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey fue llevado cautivo a Babilonia?",
-
-
 
     options: ["Josias", "Joaquin", "Asa", "Joacim"],
 
-
-
     correct: 1, reference: "2 Reyes 24:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 853, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey permitio el regreso del exilio?",
-
-
 
     options: ["Dario", "Ciro", "Jerjes", "Artajerjes"],
 
-
-
     correct: 1, reference: "Esdras 1:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 854, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que ciudad fue capital del reino del norte?",
-
-
 
     options: ["Betel", "Jerusalen", "Dan", "Samaria"],
 
-
-
     correct: 3, reference: "1 Reyes 16:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 855, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que evento dividio el reino?",
-
-
 
     options: ["Rechazo de Roboam", "Muerte de David", "Idolatria", "Invasion asiria"],
 
-
-
     correct: 0, reference: "1 Reyes 12:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 856, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Quien lidero el primer regreso del exilio?",
-
-
 
     options: ["Zorobabel", "Nehemias", "Ageo", "Esdras"],
 
-
-
     correct: 0, reference: "Esdras 2:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 857, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta vio el valle de huesos?",
-
-
 
     options: ["Daniel", "Isaias", "Jeremias", "Ezequiel"],
 
-
-
     correct: 3, reference: "Ezequiel 37:1-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 858, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey hizo reformas espirituales?",
-
-
 
     options: ["Roboam", "Josias", "Manases", "Uzias"],
 
-
-
     correct: 1, reference: "2 Reyes 23:1-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 859, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que imperio dominaba en tiempos de Jesus?",
-
-
 
     options: ["Romano", "Griego", "Persa", "Babilonico"],
 
-
-
     correct: 0, reference: "Lucas 2:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 860, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Quien escribio la mayoria de Proverbios?",
-
-
 
     options: ["Ezequias", "David", "Salomon", "Asa"],
 
-
-
     correct: 2, reference: "Proverbios 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 861, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que ciudad fue destruida por Asiria?",
-
-
 
     options: ["Jerusalen", "Samaria", "Betel", "Hebron"],
 
-
-
     correct: 1, reference: "2 Reyes 17:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 862, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Quien fue deportado con Daniel?",
-
-
 
     options: ["Isaias", "Jeremias", "Ezequiel", "Amos"],
 
-
-
     correct: 2, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 863, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro narra el retorno del exilio?",
-
-
 
     options: ["Ester", "Esdras", "Joel", "Rut"],
 
-
-
     correct: 1, reference: "Esdras 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 864, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey fue librado de Senaquerib?",
-
-
 
     options: ["Uzias", "Ezequias", "Josias", "Asa"],
 
-
-
     correct: 1, reference: "2 Reyes 19:35-36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 865, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta fue contemporaneo de Jeremias?",
-
-
 
     options: ["Daniel", "Joel", "Ezequiel", "Amos"],
 
-
-
     correct: 2, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 866, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro relata el ministerio de Eliseo?",
-
-
 
     options: ["Reyes", "Samuel", "Jueces", "Cronicas"],
 
-
-
     correct: 0, reference: "2 Reyes 2-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 867, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que evento marco el inicio de la iglesia?",
-
-
 
     options: ["Exilio", "Navidad", "Pascua", "Pentecostes"],
 
-
-
     correct: 3, reference: "Hechos 2:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 868, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey perdio el reino por idolatria?",
-
-
 
     options: ["Josias", "Asa", "Jeroboam I", "Uzias"],
 
-
-
     correct: 2, reference: "1 Reyes 14:7-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 869, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que ciudad fue reconstruida primero tras el exilio?",
-
-
 
     options: ["Jerusalen", "Samaria", "Betel", "Dan"],
 
-
-
     correct: 0, reference: "Esdras 1:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 870, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta reprendio a David?",
-
-
 
     options: ["Eli", "Natan", "Samuel", "Gad"],
 
-
-
     correct: 1, reference: "2 Samuel 12:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 871, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro cubre desde Saul hasta Salomon?",
-
-
 
     options: ["Cronicas", "Rut", "Reyes", "Samuel"],
 
-
-
     correct: 3, reference: "1-2 Samuel"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 872, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que imperio sucedio a Babilonia?",
-
-
 
     options: ["Romano", "Griego", "Persa", "Asirio"],
 
-
-
     correct: 2, reference: "Daniel 5:28-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 873, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey persa apoyo el templo?",
-
-
 
     options: ["Jerjes", "Artajerjes", "Ciro II", "Dario I"],
 
-
-
     correct: 3, reference: "Esdras 6:1-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 874, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro relata el reinado de David?",
-
-
 
     options: ["Jueces", "Reyes", "Rut", "Samuel"],
 
-
-
     correct: 3, reference: "2 Samuel"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 875, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que ciudad fue destruida en el ano 70 d.C.?",
-
-
 
     options: ["Jerusalen", "Antioquia", "Roma", "Alejandria"],
 
-
-
     correct: 0, reference: "Mateo 24:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 876, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que concilio aparece en Hechos 15?",
-
-
 
     options: ["Jerusalen", "Efeso", "Corinto", "Roma"],
 
-
-
     correct: 0, reference: "Hechos 15:1-29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 877, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Quien fue el primer martir?",
-
-
 
     options: ["Pedro", "Pablo", "Esteban", "Juan"],
 
-
-
     correct: 2, reference: "Hechos 7:59-60"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 878, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey fue castigado con lepra?",
-
-
 
     options: ["Josias", "Roboam", "Uzias", "Asa"],
 
-
-
     correct: 2, reference: "2 Cronicas 26:19-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 879, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta anuncio destruccion a Ninive?",
-
-
 
     options: ["Jonas", "Amos", "Joel", "Nahum"],
 
-
-
     correct: 3, reference: "Nahum 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 880, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey fue llevado encadenado a Babilonia?",
-
-
 
     options: ["Josias", "Manases", "Uzias", "Asa"],
 
-
-
     correct: 1, reference: "2 Cronicas 33:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 881, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro describe la creacion detallada?",
-
-
 
     options: ["Salmos", "Job", "Genesis 1-2", "Exodo"],
 
-
-
     correct: 2, reference: "Genesis 1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 882, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que apostol lidero la iglesia primitiva?",
-
-
 
     options: ["Pedro", "Marcos", "Juan", "Pablo"],
 
-
-
     correct: 0, reference: "Hechos 2:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 883, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que ciudad fue centro misionero?",
-
-
 
     options: ["Jerusalen", "Efeso", "Roma", "Antioquia"],
 
-
-
     correct: 3, reference: "Hechos 13:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 884, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro narra la reina Ester?",
-
-
 
     options: ["Ester", "Rut", "Joel", "Esdras"],
 
-
-
     correct: 0, reference: "Ester 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 885, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta fue llevado al exilio?",
-
-
 
     options: ["Daniel", "Isaias", "Joel", "Amos"],
 
-
-
     correct: 0, reference: "Daniel 1:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 886, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey destruyo el altar de Betel?",
-
-
 
     options: ["Uzias", "Asa", "Roboam", "Josias"],
 
-
-
     correct: 3, reference: "2 Reyes 23:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 887, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro narra el ministerio de Samuel?",
-
-
 
     options: ["Cronicas", "Reyes", "Jueces", "Samuel"],
 
-
-
     correct: 3, reference: "1 Samuel"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 888, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que imperio controlaba Palestina en Hechos?",
-
-
 
     options: ["Asirio", "Romano", "Persa", "Griego"],
 
-
-
     correct: 1, reference: "Hechos 25:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 889, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro habla del cautiverio?",
-
-
 
     options: ["Rut", "Joel", "Daniel", "Ester"],
 
-
-
     correct: 2, reference: "Daniel 1:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 890, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey permitio reedificar el templo?",
-
-
 
     options: ["Artajerjes", "Nabucodonosor", "Jerjes", "Dario I"],
 
-
-
     correct: 3, reference: "Esdras 6:1-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 891, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que evento marco el fin del reino del norte?",
-
-
 
     options: ["Division", "Exilio a Babilonia", "Reforma", "Caida de Samaria"],
 
-
-
     correct: 3, reference: "2 Reyes 17:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 892, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que profeta vivio durante el exilio?",
-
-
 
     options: ["Joel", "Oseas", "Ezequiel", "Amos"],
 
-
-
     correct: 2, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 893, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que libro conecta AT y NT?",
-
-
 
     options: ["Zacarias", "Amos", "Malaquias", "Joel"],
 
-
-
     correct: 2, reference: "Malaquias 4:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 894, difficulty: "intermedio", category: "historias",
 
-
-
     question: "¿Que rey restauro la adoracion verdadera?",
-
-
 
     options: ["Josias", "Acaz", "Roboam", "Manases"],
 
-
-
     correct: 0, reference: "2 Reyes 23:1-25"
-
-
 
   },
 
-
-
   // --- Vida de Jesus ---
 
-
-
   {
-
-
 
     id: 1450, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad se celebraron las bodas donde Jesus convirtio el agua en vino?",
-
-
 
     options: ["Cana de Galilea", "Nazaret", "Capernaum", "Belen"],
 
-
-
     correct: 0, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1451, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantas tinajas de agua mando Jesus llenar en las bodas de Cana?",
-
-
 
     options: ["Siete", "Cinco", "Seis", "Cuatro"],
 
-
-
     correct: 2, reference: "Juan 2:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1452, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que dijo Jesus que era mas dificil que un camello pasara por el ojo de una aguja?",
-
-
 
     options: ["Que un rico entrara en el reino de Dios", "Que un pobre entrara al templo", "Que un gentil se convirtiera", "Que un fariseo se arrepintiera"],
 
-
-
     correct: 0, reference: "Mateo 19:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1453, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cual fue la primera bienaventuranza del Sermon del Monte?",
-
-
 
     options: ["Bienaventurados los pobres en espiritu", "Bienaventurados los pacificadores", "Bienaventurados los que lloran", "Bienaventurados los mansos"],
 
-
-
     correct: 0, reference: "Mateo 5:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1454, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que monte predico Jesus el Sermon del Monte?",
-
-
 
     options: ["Monte de los Olivos", "Monte Hermon", "Un monte en Galilea", "Monte Tabor"],
 
-
-
     correct: 2, reference: "Mateo 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1455, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿A quien le dijo Jesus 'Tu eres Pedro, y sobre esta roca edificare mi iglesia'?",
-
-
 
     options: ["A Santiago", "A Juan", "A Andres", "A Simon Pedro"],
 
-
-
     correct: 3, reference: "Mateo 16:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1456, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo camino sobre el agua hacia Jesus y luego comenzo a hundirse?",
-
-
 
     options: ["Andres", "Santiago", "Juan", "Pedro"],
 
-
-
     correct: 3, reference: "Mateo 14:28-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1457, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantos panes y peces habia antes de la alimentacion de los cinco mil?",
-
-
 
     options: ["Siete panes y tres peces", "Tres panes y dos peces", "Dos panes y cinco peces", "Cinco panes y dos peces"],
 
-
-
     correct: 3, reference: "Mateo 14:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1458, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Quien ofrecio los cinco panes y dos peces en la alimentacion de los cinco mil?",
-
-
 
     options: ["Un fariseo", "Un soldado romano", "Un discipulo", "Un muchacho"],
 
-
-
     correct: 3, reference: "Juan 6:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1459, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantas canastas sobraron despues de alimentar a los cuatro mil?",
-
-
 
     options: ["Doce", "Cinco", "Siete", "Tres"],
 
-
-
     correct: 2, reference: "Mateo 15:37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1460, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que parabola Jesus habla de un hombre que siembra buena semilla pero un enemigo siembra cizana?",
-
-
 
     options: ["Parabola del trigo y la cizana", "Parabola de la mostaza", "Parabola del sembrador", "Parabola de la red"],
 
-
-
     correct: 0, reference: "Mateo 13:24-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1461, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que representa la semilla que cae en buena tierra en la parabola del sembrador?",
-
-
 
     options: ["Los que persiguen a otros", "Los que oyen, entienden y dan fruto", "Los que oyen y no entienden", "Los que se apartan de la fe"],
 
-
-
     correct: 1, reference: "Mateo 13:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1462, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantos talentos recibio el siervo que los enterro en la parabola de los talentos?",
-
-
 
     options: ["Diez", "Uno", "Dos", "Cinco"],
 
-
-
     correct: 1, reference: "Mateo 25:15,18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1463, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "En la parabola del buen samaritano, ?que personas pasaron de largo antes que el samaritano?",
-
-
 
     options: ["Un anciano y un joven", "Un sacerdote y un levita", "Un soldado y un publicano", "Un fariseo y un escriba"],
 
-
-
     correct: 1, reference: "Lucas 10:31-32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1464, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que pidio la madre de los hijos de Zebedeo a Jesus?",
-
-
 
     options: ["Que los bautizara", "Que se sentaran uno a su derecha y otro a su izquierda en su reino", "Que los sanara", "Que les diera pan"],
 
-
-
     correct: 1, reference: "Mateo 20:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1465, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo dijo 'Senor mio, y Dios mio' al ver a Jesus resucitado?",
-
-
 
     options: ["Felipe", "Juan", "Tomas", "Pedro"],
 
-
-
     correct: 2, reference: "Juan 20:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1466, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantos dias despues de su resurreccion ascendio Jesus al cielo?",
-
-
 
     options: ["Cincuenta", "Tres", "Siete", "Cuarenta"],
 
-
-
     correct: 3, reference: "Hechos 1:3,9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1467, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que lugar ascendio Jesus al cielo?",
-
-
 
     options: ["Getsemani", "Monte Sinai", "Monte Tabor", "Monte de los Olivos"],
 
-
-
     correct: 3, reference: "Hechos 1:9-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1468, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que le dijo Jesus a Nicodemo sobre nacer de nuevo?",
-
-
 
     options: ["Que debia nacer en Belen", "Que debia circuncidarse nuevamente", "Que debia ayunar cuarenta dias", "Que debia nacer del agua y del Espiritu"],
 
-
-
     correct: 3, reference: "Juan 3:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1469, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad Jesus hablo con la mujer samaritana junto al pozo?",
-
-
 
     options: ["Betania", "Jerusalen", "Sicar", "Nazaret"],
 
-
-
     correct: 2, reference: "Juan 4:5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1470, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que le ofrecio Jesus a la mujer samaritana en el pozo de Jacob?",
-
-
 
     options: ["Agua viva", "Vino nuevo", "Pan de vida", "Aceite de uncion"],
 
-
-
     correct: 0, reference: "Juan 4:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1471, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Quien ungio los pies de Jesus con perfume costoso y los seco con sus cabellos?",
-
-
 
     options: ["Maria Magdalena", "La mujer samaritana", "Maria, hermana de Lazaro", "Marta"],
 
-
-
     correct: 2, reference: "Juan 12:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1472, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo se quejo del gasto del perfume con que ungieron a Jesus?",
-
-
 
     options: ["Judas Iscariote", "Tomas", "Pedro", "Mateo"],
 
-
-
     correct: 0, reference: "Juan 12:4-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1473, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que jardin oro Jesus antes de ser arrestado?",
-
-
 
     options: ["El huerto de Jose", "Eden", "Getsemani", "El jardin del templo"],
 
-
-
     correct: 2, reference: "Mateo 26:36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1474, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantas veces oro Jesus en Getsemani antes de ser arrestado?",
-
-
 
     options: ["Dos", "Tres", "Una", "Cuatro"],
 
-
-
     correct: 1, reference: "Mateo 26:39-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1475, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Con que senal identifico Judas a Jesus ante los soldados?",
-
-
 
     options: ["Senalandolo con el dedo", "Entregandole una moneda", "Llamandolo por su nombre", "Con un beso"],
 
-
-
     correct: 3, reference: "Mateo 26:48-49"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1476, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantas monedas de plata recibio Judas por entregar a Jesus?",
-
-
 
     options: ["Cuarenta", "Treinta", "Veinte", "Diez"],
 
-
-
     correct: 1, reference: "Mateo 26:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1477, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo corto la oreja de un siervo del sumo sacerdote al arrestar a Jesus?",
-
-
 
     options: ["Pedro", "Andres", "Santiago", "Juan"],
 
-
-
     correct: 0, reference: "Juan 18:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1478, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Como se llamaba el siervo del sumo sacerdote a quien Pedro le corto la oreja?",
-
-
 
     options: ["Barrabas", "Cleofas", "Nicodemo", "Malco"],
 
-
-
     correct: 3, reference: "Juan 18:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1479, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantas veces nego Pedro conocer a Jesus?",
-
-
 
     options: ["Una", "Dos", "Cuatro", "Tres"],
 
-
-
     correct: 3, reference: "Mateo 26:69-75"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1480, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que animal canto despues de que Pedro nego a Jesus por tercera vez?",
-
-
 
     options: ["Un cordero balo", "Un burro rebuzno", "Un gallo canto", "Una paloma arrullo"],
 
-
-
     correct: 2, reference: "Mateo 26:74-75"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1481, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Ante que gobernador romano fue juzgado Jesus?",
-
-
 
     options: ["Herodes", "Pilato", "Cesar", "Felix"],
 
-
-
     correct: 1, reference: "Mateo 27:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1482, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿A quien libero Pilato en lugar de Jesus por peticion del pueblo?",
-
-
 
     options: ["Judas", "Barrabas", "Simon de Cirene", "Malco"],
 
-
-
     correct: 1, reference: "Mateo 27:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1483, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que inscripcion fue colocada sobre la cruz de Jesus?",
-
-
 
     options: ["Hijo de Dios", "Rey de los judios", "Profeta de Nazaret", "Maestro de Israel"],
 
-
-
     correct: 1, reference: "Juan 19:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1484, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que sucedio con el velo del templo cuando Jesus murio?",
-
-
 
     options: ["Cambio de color", "Se quemo", "Desaparecio", "Se rasgo en dos de arriba abajo"],
 
-
-
     correct: 3, reference: "Mateo 27:51"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1485, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Quien pidio el cuerpo de Jesus a Pilato para sepultarlo?",
-
-
 
     options: ["Pedro", "Jose de Arimatea", "Juan", "Nicodemo"],
 
-
-
     correct: 1, reference: "Mateo 27:57-58"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1486, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Quien fue la primera persona en ver a Jesus resucitado?",
-
-
 
     options: ["Maria Magdalena", "Juan", "Pedro", "Tomas"],
 
-
-
     correct: 0, reference: "Marcos 16:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1487, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que hicieron los discipulos de Emaus cuando reconocieron a Jesus resucitado?",
-
-
 
     options: ["Se quedaron en silencio", "Se arrodillaron", "Regresaron inmediatamente a Jerusalen", "Huyeron de miedo"],
 
-
-
     correct: 2, reference: "Lucas 24:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1488, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantos discipulos iban camino a Emaus cuando Jesus se les aparecio?",
-
-
 
     options: ["Dos", "Cuatro", "Uno", "Tres"],
 
-
-
     correct: 0, reference: "Lucas 24:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1489, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que le pidio Jesus resucitado a Pedro tres veces junto al mar de Tiberias?",
-
-
 
     options: ["Que ayunara", "Que lo siguiera al templo", "Que predicara", "Que apacentara sus ovejas"],
 
-
-
     correct: 3, reference: "Juan 21:15-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1490, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que enseno Jesus sobre la oracion en el Sermon del Monte?",
-
-
 
     options: ["Orar solo en el templo", "Orar solo los sabados", "Orar en secreto y Dios recompensara", "Orar en publico para ser vistos"],
 
-
-
     correct: 2, reference: "Mateo 6:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1491, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que parabola Jesus habla de diez virgenes esperando al esposo?",
-
-
 
     options: ["Parabola de la vina", "Parabola de los talentos", "Parabola de las diez virgenes", "Parabola del banquete"],
 
-
-
     correct: 2, reference: "Mateo 25:1-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1492, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Cuantas virgenes prudentes y cuantas insensatas habia en la parabola?",
-
-
 
     options: ["Tres y siete", "Cuatro y seis", "Cinco y cinco", "Seis y cuatro"],
 
-
-
     correct: 2, reference: "Mateo 25:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1493, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que impuesto pago Jesus con una moneda encontrada en la boca de un pez?",
-
-
 
     options: ["El tributo al Cesar", "El impuesto del templo (las dos dracmas)", "El diezmo del templo", "El impuesto romano"],
 
-
-
     correct: 1, reference: "Mateo 17:24-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1494, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad vivia Zaqueo, el publicano que subio a un arbol para ver a Jesus?",
-
-
 
     options: ["Jerusalen", "Jerico", "Capernaum", "Betania"],
 
-
-
     correct: 1, reference: "Lucas 19:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1495, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿A que tipo de arbol se subio Zaqueo para ver a Jesus?",
-
-
 
     options: ["Una palmera", "Una higuera", "Un sicomoro", "Un olivo"],
 
-
-
     correct: 2, reference: "Lucas 19:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1496, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que accion realizo Jesus al entrar al templo durante la Semana de la Pasion?",
-
-
 
     options: ["Oro en silencio", "Expulso a los mercaderes y cambistas", "Predico un sermon", "Sano a los enfermos"],
 
-
-
     correct: 1, reference: "Mateo 21:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1497, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Sobre que animal entro Jesus triunfalmente a Jerusalen?",
-
-
 
     options: ["Un burro (pollino)", "Un camello", "Un caballo", "Un buey"],
 
-
-
     correct: 0, reference: "Mateo 21:5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1498, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que gritaba la multitud cuando Jesus entro a Jerusalen el Domingo de Ramos?",
-
-
 
     options: ["!Amen!", "!Aleluya!", "!Hosanna al Hijo de David!", "!Gloria a Dios!"],
 
-
-
     correct: 2, reference: "Mateo 21:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1499, difficulty: "intermedio", category: "vida_jesus",
 
-
-
     question: "¿Que les lavo Jesus a sus discipulos durante la ultima cena como ejemplo de servicio?",
-
-
 
     options: ["La cabeza", "Los pies", "El rostro", "Las manos"],
 
-
-
     correct: 1, reference: "Juan 13:5"
-
-
 
   },
 
-
-
   // --- Milagros ---
 
-
-
   {
-
-
 
     id: 1650, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantas canastas sobraron despues de alimentar a los 5,000?",
-
-
 
     options: ["5", "12", "10", "7"],
 
-
-
     correct: 1, reference: "Mateo 14:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1651, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantas canastas sobraron despues de alimentar a los 4,000?",
-
-
 
     options: ["7", "5", "12", "3"],
 
-
-
     correct: 0, reference: "Mateo 15:37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1652, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que le ordeno Jesus al leproso despues de sanarlo segun Marcos?",
-
-
 
     options: ["Que se lavara en el Jordan", "Que predicara en el templo", "Que ayunara 7 dias", "Que se mostrara al sacerdote"],
 
-
-
     correct: 3, reference: "Marcos 1:44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1653, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que hizo la mujer con flujo de sangre para ser sanada?",
-
-
 
     options: ["Toco el borde de su manto", "Le lavo los pies", "Grito a Jesus", "Se arrodillo ante el"],
 
-
-
     correct: 0, reference: "Marcos 5:27-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1654, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantos anos llevaba enfermo el paralitico del estanque de Betesda?",
-
-
 
     options: ["30", "18", "12", "38"],
 
-
-
     correct: 3, reference: "Juan 5:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1655, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que instruccion le dio Jesus al ciego de nacimiento para completar su sanidad?",
-
-
 
     options: ["Que orara en el templo", "Que ayunara tres dias", "Que se lavara en el estanque de Siloe", "Que buscara a un sacerdote"],
 
-
-
     correct: 2, reference: "Juan 9:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1656, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantos dias llevaba muerto Lazaro cuando Jesus llego a Betania?",
-
-
 
     options: ["4", "2", "7", "3"],
 
-
-
     correct: 0, reference: "Juan 11:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1657, difficulty: "intermedio", category: "milagros",
 
-
-
-    question: "¿Quien le dijo a Jesus 'Si hubieras estado aqui, mi hermano no habria muerto'?",
-
-
+    question: "¿Quienes le dijeron a Jesus 'Si hubieras estado aqui, mi hermano no habria muerto'?",
 
     options: ["Tanto Marta como Maria", "Maria solamente", "Los discipulos", "Marta solamente"],
 
-
-
     correct: 0, reference: "Juan 11:21,32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1658, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿En que ciudad Jesus resucito al hijo de una viuda?",
-
-
 
     options: ["Jerico", "Capernaum", "Nain", "Betania"],
 
-
-
     correct: 2, reference: "Lucas 7:11-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1659, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Como se llamaba la hija de Jairo que Jesus resucito?",
-
-
 
     options: ["Tabita", "Rut", "No se menciona su nombre", "Maria"],
 
-
-
     correct: 2, reference: "Marcos 5:22-43"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1660, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que edad tenia la hija de Jairo cuando fue resucitada?",
-
-
 
     options: ["12 anos", "15 anos", "10 anos", "7 anos"],
 
-
-
     correct: 0, reference: "Marcos 5:42"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1661, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que le dijo Jesus a la hija de Jairo para resucitarla?",
-
-
 
     options: ["Talita cumi", "Lazaro, ven fuera", "Efata", "Levantate y anda"],
 
-
-
     correct: 0, reference: "Marcos 5:41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1662, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿En que boda Jesus convirtio el agua en vino?",
-
-
 
     options: ["En Nazaret", "En Betania", "En Jerusalen", "En Cana de Galilea"],
 
-
-
     correct: 3, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1663, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantas tinajas de agua se usaron en el milagro de las bodas de Cana?",
-
-
 
     options: ["10", "8", "4", "6"],
 
-
-
     correct: 3, reference: "Juan 2:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1664, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
-
-
 
     options: ["Eliseo", "Elias", "Samuel", "Isaias"],
 
-
-
     correct: 0, reference: "2 Reyes 4:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1665, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que profeta resucito al hijo de la sunamita?",
-
-
 
     options: ["Moises", "Elias", "Eliseo", "Samuel"],
 
-
-
     correct: 2, reference: "2 Reyes 4:32-37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1666, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que profeta resucito al hijo de la viuda de Sarepta?",
-
-
 
     options: ["Elias", "Isaias", "Eliseo", "Jeremias"],
 
-
-
     correct: 0, reference: "1 Reyes 17:17-24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1667, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que metodo uso Jesus para sanar al ciego de Betsaida?",
-
-
 
     options: ["Le escupio en los ojos y puso sus manos", "Le puso barro en los ojos", "Le lavo con agua", "Solo le hablo"],
 
-
-
     correct: 0, reference: "Marcos 8:22-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1668, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantas veces impuso Jesus las manos al ciego de Betsaida para sanarlo completamente?",
-
-
 
     options: ["Tres", "Una", "Dos", "No le impuso manos"],
 
-
-
     correct: 2, reference: "Marcos 8:23-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1669, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿En que lago calmo Jesus la tempestad?",
-
-
 
     options: ["Mar Muerto", "Mar de Galilea", "Rio Jordan", "Mar Mediterraneo"],
 
-
-
     correct: 1, reference: "Marcos 4:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1670, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que hacia Jesus cuando se desato la tempestad en el mar?",
-
-
 
     options: ["Predicaba", "Oraba", "Pescaba", "Dormia"],
 
-
-
     correct: 3, reference: "Marcos 4:38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1671, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Como se llamaba el endemoniado gadareno que Jesus libero?",
-
-
 
     options: ["Simon", "No se da su nombre personal", "Barrabas", "Legion"],
 
-
-
     correct: 1, reference: "Marcos 5:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1672, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿A que animales entraron los demonios del endemoniado gadareno?",
-
-
 
     options: ["Cabras", "Ovejas", "Cerdos", "Bueyes"],
 
-
-
     correct: 2, reference: "Marcos 5:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1673, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantos cerdos se ahogaron cuando los demonios entraron en ellos?",
-
-
 
     options: ["Unos 5,000", "Unos 500", "Unos 2,000", "Unos 1,000"],
 
-
-
     correct: 2, reference: "Marcos 5:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1674, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que discipulo camino sobre el agua hacia Jesus?",
-
-
 
     options: ["Pedro", "Juan", "Andres", "Santiago"],
 
-
-
     correct: 0, reference: "Mateo 14:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1675, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que causo que Pedro comenzara a hundirse al caminar sobre el agua?",
-
-
 
     options: ["La oscuridad", "El viento fuerte y el miedo", "Una ola grande", "El peso de su ropa"],
 
-
-
     correct: 1, reference: "Mateo 14:30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1676, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que encontro Pedro en la boca de un pez por instruccion de Jesus?",
-
-
 
     options: ["Una moneda", "Una llave", "Un anillo", "Una perla"],
 
-
-
     correct: 0, reference: "Mateo 17:27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1677, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Para que sirvio la moneda que Pedro encontro en el pez?",
-
-
 
     options: ["Para dar ofrenda", "Para comprar perfume", "Para comprar pan", "Para pagar el impuesto del templo"],
 
-
-
     correct: 3, reference: "Mateo 17:24-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1678, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que le paso a la higuera que Jesus maldijo?",
-
-
 
     options: ["Dio fruto al instante", "Fue cortada", "Se seco", "Cayo un rayo sobre ella"],
 
-
-
     correct: 2, reference: "Marcos 11:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1679, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿A cuantos leprosos sano Jesus que iban camino a Jerusalen?",
-
-
 
     options: ["10", "3", "7", "12"],
 
-
-
     correct: 0, reference: "Lucas 17:12-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1680, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Cuantos de los diez leprosos regresaron a dar gracias a Jesus?",
-
-
 
     options: ["Uno", "Tres", "Cinco", "Ninguno"],
 
-
-
     correct: 0, reference: "Lucas 17:15-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1681, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿De que nacionalidad era el leproso que regreso a agradecer a Jesus?",
-
-
 
     options: ["Samaritano", "Romano", "Griego", "Judio"],
 
-
-
     correct: 0, reference: "Lucas 17:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1682, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que parte del cuerpo le fue restaurada al hombre en la sinagoga?",
-
-
 
     options: ["La pierna", "El oido", "La mano seca", "El ojo"],
 
-
-
     correct: 2, reference: "Marcos 3:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1683, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿En que dia de la semana sano Jesus al hombre de la mano seca?",
-
-
 
     options: ["Lunes", "Sabado", "Viernes", "Primer dia de la semana"],
 
-
-
     correct: 1, reference: "Marcos 3:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1684, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿A quien sano Jesus cortandole la oreja que Pedro le habia cortado?",
-
-
 
     options: ["Un fariseo", "Malco, siervo del sumo sacerdote", "Un soldado romano", "Un escriba"],
 
-
-
     correct: 1, reference: "Lucas 22:50-51; Juan 18:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1685, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que apostol sano a un cojo en la puerta del templo llamada la Hermosa?",
-
-
 
     options: ["Pablo", "Santiago", "Juan solo", "Pedro y Juan"],
 
-
-
     correct: 3, reference: "Hechos 3:1-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1686, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que le dijo Pedro al cojo de la puerta la Hermosa antes de sanarlo?",
-
-
 
     options: ["Tu fe te ha sanado", "Se sano en el nombre de Jesus", "Levantate y anda", "No tengo plata ni oro, pero lo que tengo te doy"],
 
-
-
     correct: 3, reference: "Hechos 3:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1687, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿A quien resucito Pedro en Jope?",
-
-
 
     options: ["Priscila", "Tabita (Dorcas)", "Lidia", "Maria"],
 
-
-
     correct: 1, reference: "Hechos 9:36-41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1688, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que joven resucito Pablo despues de caer de una ventana en Troas?",
-
-
 
     options: ["Filemon", "Tito", "Eutico", "Timoteo"],
 
-
-
     correct: 2, reference: "Hechos 20:9-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1689, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Desde que piso cayo Eutico antes de ser resucitado por Pablo?",
-
-
 
     options: ["El techo", "Tercer piso", "Cuarto piso", "Segundo piso"],
 
-
-
     correct: 1, reference: "Hechos 20:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1690, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que plaga envio Dios como la decima plaga sobre Egipto?",
-
-
 
     options: ["Tinieblas", "Langostas", "Muerte de los primogenitos", "Granizo"],
 
-
-
     correct: 2, reference: "Exodo 12:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1691, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que milagro ocurrio cuando los israelitas cruzaron el Mar Rojo?",
-
-
 
     options: ["El mar se seco completamente", "El agua se convirtio en tierra", "Las aguas se dividieron en dos", "Aparecio un puente"],
 
-
-
     correct: 2, reference: "Exodo 14:21-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1692, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que alimento envio Dios del cielo para alimentar a Israel en el desierto?",
-
-
 
     options: ["Trigo", "Frutas", "Mana", "Pan y pescado"],
 
-
-
     correct: 2, reference: "Exodo 16:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1693, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿De donde saco Moises agua para el pueblo en el desierto?",
-
-
 
     options: ["De un pozo profundo", "De un rio subterraneo", "De una roca", "Del cielo"],
 
-
-
     correct: 2, reference: "Exodo 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1694, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que milagro hizo Eliseo con las aguas de Jerico?",
-
-
 
     options: ["Las sano echando sal", "Las hizo brotar del suelo", "Las convirtio en vino", "Las dividio"],
 
-
-
     correct: 0, reference: "2 Reyes 2:19-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1695, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que le sucedio a Naaman al sumergirse siete veces en el Jordan?",
-
-
 
     options: ["Fue sanado de su lepra", "Aprendio a nadar", "Recibio fuerza sobrenatural", "Tuvo una vision"],
 
-
-
     correct: 0, reference: "2 Reyes 5:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1696, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que profeta le indico a Naaman que se lavara en el Jordan?",
-
-
 
     options: ["Elias", "Isaias", "Jeremias", "Eliseo"],
 
-
-
     correct: 3, reference: "2 Reyes 5:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1697, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que milagro realizo Jesus con la suegra de Pedro?",
-
-
 
     options: ["La resucito", "Le devolvio la vista", "Le sano la mano", "La sano de una fiebre"],
 
-
-
     correct: 3, reference: "Marcos 1:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1698, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que sucedio inmediatamente despues de que Jesus sano a la suegra de Pedro?",
-
-
 
     options: ["Ella salio a predicar", "Ella lloro de alegria", "Ella fue al templo", "Ella se levanto y les servia"],
 
-
-
     correct: 3, reference: "Marcos 1:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1699, difficulty: "intermedio", category: "milagros",
 
-
-
     question: "¿Que milagro hizo Jesus en la pesca cuando Pedro no habia atrapado nada toda la noche?",
-
-
 
     options: ["Convirtio piedras en peces", "Hizo que los peces saltaran al barco", "Calmo el mar", "Lleno las redes de tantos peces que se rompian"],
 
-
-
     correct: 3, reference: "Lucas 5:4-7"
 
-
-
   },
-
-
 
   // ===================== DIFICIL =====================
 
-
-
   // --- Libros Dificil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 300, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro aparece por primera vez la palabra 'pacto'?",
-
-
 
     options: ["Exodo", "Deuteronomio", "Levitico", "Genesis"],
 
-
-
     correct: 3, reference: "Genesis 6:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 301, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro registra el pacto con Finees?",
-
-
 
     options: ["Numeros", "Levitico", "Josue", "Jueces"],
 
-
-
     correct: 0, reference: "Numeros 25:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 302, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se menciona la serpiente de bronce?",
-
-
 
     options: ["Exodo", "Josue", "Numeros", "Deuteronomio"],
 
-
-
     correct: 2, reference: "Numeros 21:8-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 303, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro detalla la bendicion de Jacob a sus hijos?",
-
-
 
     options: ["Genesis", "Numeros", "Exodo", "Levitico"],
 
-
-
     correct: 0, reference: "Genesis 49"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 304, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro aparece el cantico de Moises despues del Mar Rojo?",
-
-
 
     options: ["Numeros", "Deuteronomio", "Josue", "Exodo"],
 
-
-
     correct: 3, reference: "Exodo 15:1-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 305, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro registra la rebelion de Core?",
-
-
 
     options: ["Levitico", "Josue", "Numeros", "Reyes"],
 
-
-
     correct: 2, reference: "Numeros 16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 306, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se detalla la division de la tierra por tribus?",
-
-
 
     options: ["Josue", "Jueces", "Rut", "Samuel"],
 
-
-
     correct: 0, reference: "Josue 13-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 307, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro contiene la oracion de dedicacion del templo?",
-
-
 
     options: ["Nehemias", "Cronicas", "1 Reyes", "2 Reyes"],
 
-
-
     correct: 2, reference: "1 Reyes 8:22-53"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 308, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se menciona a Hulda la profetisa?",
-
-
 
     options: ["Isaias", "Jeremias", "1 Reyes", "2 Reyes"],
 
-
-
     correct: 3, reference: "2 Reyes 22:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 309, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro registra el hallazgo del libro de la ley en tiempos de Josias?",
-
-
 
     options: ["2 Reyes", "Cronicas", "Nehemias", "Esdras"],
 
-
-
     correct: 0, reference: "2 Reyes 22:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 310, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro aparece la vision del trono con serafines?",
-
-
 
     options: ["Jeremias", "Isaias", "Daniel", "Ezequiel"],
 
-
-
     correct: 1, reference: "Isaias 6:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 311, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro contiene el 'siervo sufriente'?",
-
-
 
     options: ["Jeremias", "Isaias", "Amos", "Oseas"],
 
-
-
     correct: 1, reference: "Isaias 52:13-53:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 312, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se describen ruedas llenas de ojos?",
-
-
 
     options: ["Ezequiel", "Zacarias", "Daniel", "Joel"],
 
-
-
     correct: 0, reference: "Ezequiel 1:15-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 313, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro registra el ayuno de Ninive?",
-
-
 
     options: ["Nahum", "Jonas", "Sofonias", "Habacuc"],
 
-
-
     correct: 1, reference: "Jonas 3:5-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 314, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro aparece 'aunque la higuera no florezca'?",
-
-
 
     options: ["Oseas", "Joel", "Amos", "Habacuc"],
 
-
-
     correct: 3, reference: "Habacuc 3:17-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 315, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro contiene visiones del sumo sacerdote Josue?",
-
-
 
     options: ["Malaquias", "Zacarias", "Joel", "Ageo"],
 
-
-
     correct: 1, reference: "Zacarias 3:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 316, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se promete un nuevo pacto?",
 
-
-
     options: ["Isaias", "Ezequiel", "Jeremias", "Daniel"],
-
-
 
     correct: 2, reference: "Jeremias 31:31-34"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 317, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro menciona al 'Renuevo'?",
-
-
 
     options: ["Oseas", "Joel", "Jeremias", "Zacarias"],
 
-
-
     correct: 3, reference: "Zacarias 6:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 318, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que evangelio Jesus es presentado como Rey?",
 
-
-
     options: ["Mateo", "Juan", "Lucas", "Marcos"],
-
-
 
     correct: 0, reference: "Mateo 2:2"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 319, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que evangelio destaca a Jesus como Siervo?",
 
-
-
     options: ["Juan", "Mateo", "Lucas", "Marcos"],
-
-
 
     correct: 3, reference: "Marcos 10:45"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 320, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro aparece la transfiguracion primero?",
-
-
 
     options: ["Mateo", "Marcos", "Juan", "Lucas"],
 
-
-
     correct: 0, reference: "Mateo 17:1-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 321, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro registra el discurso en Pentecostes?",
-
-
 
     options: ["Romanos", "Juan", "Galatas", "Hechos"],
 
-
-
     correct: 3, reference: "Hechos 2:14-36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 322, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro Pablo cita mas el Antiguo Testamento?",
-
-
 
     options: ["Corintios", "Romanos", "Galatas", "Efesios"],
 
-
-
     correct: 1, reference: "Romanos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 323, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro explica el ministerio de la reconciliacion?",
-
-
 
     options: ["Tito", "Galatas", "1 Corintios", "2 Corintios"],
 
-
-
     correct: 3, reference: "2 Corintios 5:18-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 324, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se habla del 'aguijon en la carne'?",
-
-
 
     options: ["Colosenses", "Filipenses", "2 Corintios", "Romanos"],
 
-
-
     correct: 2, reference: "2 Corintios 12:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 325, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro combate el legalismo judio?",
-
-
 
     options: ["Galatas", "Hebreos", "Efesios", "Tito"],
 
-
-
     correct: 0, reference: "Galatas 3:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 326, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro Pablo explica la predestinacion?",
-
-
 
     options: ["Tito", "Romanos", "Efesios", "Filipenses"],
 
-
-
     correct: 2, reference: "Efesios 1:4-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 327, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro enfatiza la ciudadania celestial?",
-
-
 
     options: ["Filipenses", "Pedro", "Hebreos", "Colosenses"],
 
-
-
     correct: 0, reference: "Filipenses 3:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 328, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se presenta a Cristo como sumo sacerdote eterno?",
-
-
 
     options: ["Romanos", "Judas", "Pedro", "Hebreos"],
 
-
-
     correct: 3, reference: "Hebreos 4:14-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 329, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro exhorta a contender por la fe?",
-
-
 
     options: ["Judas", "Juan", "Pedro", "Tito"],
 
-
-
     correct: 0, reference: "Judas 1:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 330, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se menciona a Balaam como ejemplo negativo?",
-
-
 
     options: ["Juan", "Judas", "Pedro", "Tito"],
 
-
-
     correct: 1, reference: "Judas 1:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 331, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro habla de cielos nuevos y tierra nueva?",
-
-
 
     options: ["Daniel", "Isaias", "Apocalipsis", "Joel"],
 
-
-
     correct: 2, reference: "Apocalipsis 21:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 332, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro aparece Gog y Magog?",
-
-
 
     options: ["Apocalipsis", "Isaias", "Zacarias", "Daniel"],
 
-
-
     correct: 0, reference: "Apocalipsis 20:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 333, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro contiene las trompetas del juicio?",
-
-
 
     options: ["Zacarias", "Daniel", "Apocalipsis", "Joel"],
 
-
-
     correct: 2, reference: "Apocalipsis 8-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 334, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se describe el lago de fuego?",
-
-
 
     options: ["Judas", "Pedro", "Apocalipsis", "Mateo"],
 
-
-
     correct: 2, reference: "Apocalipsis 20:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 335, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro muestra a Cristo con ojos como llama?",
-
-
 
     options: ["Daniel", "Isaias", "Apocalipsis", "Juan"],
 
-
-
     correct: 2, reference: "Apocalipsis 1:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 336, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se habla del arrebatamiento?",
-
-
 
     options: ["Hebreos", "Tito", "Romanos", "1 Tesalonicenses"],
 
-
-
     correct: 3, reference: "1 Tesalonicenses 4:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 337, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro contiene la profecia del hombre de pecado?",
-
-
 
     options: ["2 Tesalonicenses", "Efesios", "Tito", "Filemon"],
 
-
-
     correct: 0, reference: "2 Tesalonicenses 2:3-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 338, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se exhorta a guardar el buen deposito?",
-
-
 
     options: ["Pedro", "Hebreos", "Tito", "2 Timoteo"],
 
-
-
     correct: 3, reference: "2 Timoteo 1:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 339, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro presenta a Cristo como Pastor supremo?",
-
-
 
     options: ["1 Pedro", "Judas", "Juan", "Hebreos"],
 
-
-
     correct: 0, reference: "1 Pedro 5:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 340, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se menciona la segunda muerte?",
-
-
 
     options: ["Apocalipsis", "Joel", "Daniel", "Isaias"],
 
-
-
     correct: 0, reference: "Apocalipsis 20:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 341, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro describe la bestia del mar?",
-
-
 
     options: ["Joel", "Apocalipsis", "Daniel", "Zacarias"],
 
-
-
     correct: 1, reference: "Apocalipsis 13:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 342, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se habla del rollo sellado?",
-
-
 
     options: ["Jeremias", "Apocalipsis", "Oseas", "Isaias"],
 
-
-
     correct: 1, reference: "Apocalipsis 5:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 343, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro contiene las siete bienaventuranzas profeticas?",
-
-
 
     options: ["Juan", "Lucas", "Apocalipsis", "Mateo"],
 
-
-
     correct: 2, reference: "Apocalipsis 1:3; 14:13; 16:15; 19:9; 20:6; 22:7; 22:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 344, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se menciona al 'testigo fiel y verdadero'?",
-
-
 
     options: ["Juan", "Pedro", "Hebreos", "Apocalipsis"],
 
-
-
     correct: 3, reference: "Apocalipsis 3:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 345, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro conecta Genesis con Apocalipsis tematicamente?",
-
-
 
     options: ["Tito", "Galatas", "Romanos", "Hebreos"],
 
-
-
     correct: 3, reference: "Hebreos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 346, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se cita a Enoc profetizando?",
-
-
 
     options: ["Juan", "Judas", "Tito", "Pedro"],
 
-
-
     correct: 1, reference: "Judas 1:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 347, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro enfatiza el reposo espiritual?",
-
-
 
     options: ["Juan", "Pedro", "Romanos", "Hebreos"],
 
-
-
     correct: 3, reference: "Hebreos 4:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 348, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿En que libro se presenta el misterio revelado a los gentiles?",
-
-
 
     options: ["Tito", "Efesios", "Romanos", "Judas"],
 
-
-
     correct: 1, reference: "Efesios 3:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 349, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Que libro une historia, profecia y escatologia?",
-
-
 
     options: ["Isaias", "Oseas", "Jeremias", "Daniel"],
 
-
-
     correct: 3, reference: "Daniel"
 
-
-
   },
-
-
 
   // --- Personajes Dificil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 59, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del profeta Samuel?",
-
-
 
     options: ["Natan", "Isai", "Elcana", "Abner"],
 
-
-
     correct: 2, reference: "1 Samuel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 60, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue la esposa de Moises?",
-
-
 
     options: ["Rut", "Sefora", "Rebeca", "Lea"],
 
-
-
     correct: 1, reference: "Exodo 2:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 61, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que mando a matar a los ninos en Belen?",
-
-
 
     options: ["Pilato", "Cesar", "Agripa", "Herodes el Grande"],
 
-
-
     correct: 3, reference: "Mateo 2:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 62, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan el Bautista?",
-
-
 
     options: ["Felipe", "Andres", "Simeon", "Zacarias"],
 
-
-
     correct: 3, reference: "Lucas 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 63, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el hijo mayor de Jacob?",
-
-
 
     options: ["Juda", "Levi", "Simeon", "Ruben"],
 
-
-
     correct: 3, reference: "Genesis 29:32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 600, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien ayudo a David contra Goliat?",
-
-
 
     options: ["Samuel", "Saul", "Jonatan", "Nadie, confio en Dios"],
 
-
-
     correct: 3, reference: "1 Samuel 17:45-47"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 601, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que ungio a Saul?",
-
-
 
     options: ["Samuel", "Natan", "Gad", "Eli"],
 
-
-
     correct: 0, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 602, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el hijo de David que se rebelo contra el?",
-
-
 
     options: ["Absalon", "Salomon", "Amnon", "Adonias"],
 
-
-
     correct: 0, reference: "2 Samuel 15:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 603, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que escribio Proverbios?",
-
-
 
     options: ["Salomon", "Asa", "Roboam", "David"],
 
-
-
     correct: 0, reference: "Proverbios 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 604, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el esposo de Maria?",
-
-
 
     options: ["Juan", "Pedro", "Felipe", "Jose"],
 
-
-
     correct: 3, reference: "Mateo 1:18-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 605, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta mayor que vio el trono de Dios?",
-
-
 
     options: ["Daniel", "Isaias", "Ezequiel", "Jeremias"],
 
-
-
     correct: 1, reference: "Isaias 6:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 606, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan y Santiago?",
-
-
 
     options: ["Zebedeo", "Simeon", "Felipe", "Andres"],
 
-
-
     correct: 0, reference: "Mateo 4:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 607, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que consulto a una adivina en Endor?",
-
-
 
     options: ["Saul", "David", "Acab", "Jeroboam"],
 
-
-
     correct: 0, reference: "1 Samuel 28:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 608, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que sucedio a Elias?",
-
-
 
     options: ["Eliseo", "Jonas", "Amos", "Samuel"],
 
-
-
     correct: 0, reference: "2 Reyes 2:13-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 609, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el general sanado de lepra?",
-
-
 
     options: ["Jehu", "Uzias", "Naaman", "Gedeon"],
 
-
-
     correct: 2, reference: "2 Reyes 5:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 610, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que pidio sabiduria a Dios?",
-
-
 
     options: ["Asa", "David", "Salomon", "Roboam"],
 
-
-
     correct: 2, reference: "1 Reyes 3:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 611, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que escribio Lamentaciones?",
-
-
 
     options: ["Jeremias", "Ezequiel", "Daniel", "Isaias"],
 
-
-
     correct: 0, reference: "Lamentaciones 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 612, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Gedeon?",
-
-
 
     options: ["Gad", "Joas", "Abner", "Natan"],
 
-
-
     correct: 1, reference: "Jueces 6:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 613, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que destruyo Jerusalen?",
-
-
 
     options: ["Artajerjes", "Dario", "Ciro", "Nabucodonosor"],
 
-
-
     correct: 3, reference: "2 Reyes 25:8-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 614, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el discipulo reemplazado por Matias?",
-
-
 
     options: ["Judas Iscariote", "Juan", "Pedro", "Felipe"],
 
-
-
     correct: 0, reference: "Hechos 1:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 615, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que enfermo por orgullo?",
-
-
 
     options: ["Josias", "Asa", "Uzias", "Ezequias"],
 
-
-
     correct: 2, reference: "2 Cronicas 26:16-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 616, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Betsabe?",
-
-
 
     options: ["Eliam", "Urias", "Joab", "Abner"],
 
-
-
     correct: 0, reference: "2 Samuel 11:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 617, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que se humillo tras oir la Ley?",
-
-
 
     options: ["Asa", "Josias", "Roboam", "Manases"],
 
-
-
     correct: 1, reference: "2 Reyes 22:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 618, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta enviado a Ninive?",
-
-
 
     options: ["Nahum", "Jonas", "Amos", "Miqueas"],
 
-
-
     correct: 1, reference: "Jonas 1:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 619, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que vio escritura en la pared?",
-
-
 
     options: ["Ciro", "Nabucodonosor", "Dario", "Belsasar"],
 
-
-
     correct: 3, reference: "Daniel 5:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 620, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del profeta Jeremias?",
-
-
 
     options: ["Samuel", "Natan", "Hilcias", "Gad"],
 
-
-
     correct: 2, reference: "Jeremias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 621, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que quemo el rollo de Jeremias?",
-
-
 
     options: ["Sedequias", "Manases", "Joacim", "Josias"],
 
-
-
     correct: 2, reference: "Jeremias 36:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 622, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el sumo sacerdote cuando Jesus fue juzgado?",
-
-
 
     options: ["Caifas", "Sadoc", "Eleazar", "Anas"],
 
-
-
     correct: 0, reference: "Mateo 26:57"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 623, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Eliseo?",
-
-
 
     options: ["Gad", "Abner", "Natan", "Safat"],
 
-
-
     correct: 3, reference: "1 Reyes 19:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 624, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta contemporaneo de Daniel?",
-
-
 
     options: ["Joel", "Ezequiel", "Oseas", "Amos"],
 
-
-
     correct: 1, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 625, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Jonatan?",
-
-
 
     options: ["David", "Isai", "Saul", "Abner"],
 
-
-
     correct: 2, reference: "1 Samuel 14:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 626, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que hizo altares a dioses extranjeros?",
-
-
 
     options: ["Salomon", "Josias", "Asa", "Ezequias"],
 
-
-
     correct: 0, reference: "1 Reyes 11:7-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 627, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que caso con una mujer infiel?",
-
-
 
     options: ["Amos", "Miqueas", "Joel", "Oseas"],
 
-
-
     correct: 3, reference: "Oseas 1:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 628, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Juan Marcos?",
-
-
 
     options: ["Pablo", "No se menciona claramente", "Lucas", "Pedro"],
 
-
-
     correct: 1, reference: "Hechos 12:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 629, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que reconstruyo el templo?",
-
-
 
     options: ["Artajerjes", "Dario", "Ciro", "Jerjes"],
 
-
-
     correct: 2, reference: "Esdras 1:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 630, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que tuvo 700 esposas?",
-
-
 
     options: ["Asa", "Salomon", "David", "Roboam"],
 
-
-
     correct: 1, reference: "1 Reyes 11:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 631, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Absalon?",
-
-
 
     options: ["David", "Natan", "Saul", "Joab"],
 
-
-
     correct: 0, reference: "2 Samuel 3:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 632, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que vio ruedas dentro de ruedas?",
-
-
 
     options: ["Jeremias", "Daniel", "Isaias", "Ezequiel"],
 
-
-
     correct: 3, reference: "Ezequiel 1:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 633, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que pidio ayuda a Egipto?",
-
-
 
     options: ["Ezequias", "Asa", "Josias", "Uzias"],
 
-
-
     correct: 1, reference: "2 Cronicas 16:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 634, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Roboam?",
-
-
 
     options: ["David", "Salomon", "Asa", "Saul"],
 
-
-
     correct: 1, reference: "1 Reyes 11:43"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 635, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el juez que hizo un voto imprudente?",
-
-
 
     options: ["Gedeon", "Jefte", "Sanson", "Otoniel"],
 
-
-
     correct: 1, reference: "Jueces 11:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 636, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que mostro tesoros a Babilonia?",
-
-
 
     options: ["Asa", "Uzias", "Ezequias", "Josias"],
 
-
-
     correct: 2, reference: "2 Reyes 20:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 637, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del profeta Oseas?",
-
-
 
     options: ["Beeri", "Gad", "Safat", "Hilcias"],
 
-
-
     correct: 0, reference: "Oseas 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 638, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que reino mas tiempo en Juda?",
-
-
 
     options: ["Uzias", "Asa", "Manases", "Josias"],
 
-
-
     correct: 2, reference: "2 Reyes 21:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 639, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que desafio a 450 profetas?",
-
-
 
     options: ["Elias", "Amos", "Eliseo", "Joel"],
 
-
-
     correct: 0, reference: "1 Reyes 18:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 640, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Natanael (Bartolome)?",
-
-
 
     options: ["Felipe", "Zebedeo", "Simeon", "Talmai"],
 
-
-
     correct: 3, reference: "Juan 1:45"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 641, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que lloro por su hijo Absalon?",
-
-
 
     options: ["Salomon", "David", "Roboam", "Saul"],
 
-
-
     correct: 1, reference: "2 Samuel 18:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 642, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que perdio el reino por desobedecer?",
-
-
 
     options: ["Saul", "Asa", "David", "Uzias"],
 
-
-
     correct: 0, reference: "1 Samuel 15:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 643, difficulty: "dificil", category: "personajes",
 
-
-
-    question: "¿Quien fue el profeta que anuncio el nacimiento de Juan?",
-
-
+    question: "¿Quien fue el angel que anuncio el nacimiento de Juan el Bautista?",
 
     options: ["Rafael", "Gabriel", "Miguel", "Uriel"],
 
-
-
     correct: 1, reference: "Lucas 1:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 644, difficulty: "dificil", category: "personajes",
 
-
-
     question: "¿Quien fue el apostol que escribio mas libros del NT?",
-
-
 
     options: ["Pablo", "Lucas", "Juan", "Pedro"],
 
-
-
     correct: 0, reference: "Romanos-Filemon"
-
-
 
   },
 
-
-
   // --- Reyes ---
 
-
-
   {
-
-
 
     id: 1100, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel reino solo 7 dias antes de suicidarse?",
-
-
 
     options: ["Ela", "Zimri", "Nadab", "Tibni"],
 
-
-
     correct: 1, reference: "1 Reyes 16:15-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1101, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Quien disputo el trono de Israel con Omri tras la muerte de Zimri?",
-
-
 
     options: ["Tibni", "Ela", "Nadab", "Baasa"],
 
-
-
     correct: 0, reference: "1 Reyes 16:21-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1102, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue asesinado por Baasa mientras sitiaba Gibeton?",
-
-
 
     options: ["Jeroboam II", "Nadab", "Ela", "Zimri"],
 
-
-
     correct: 1, reference: "1 Reyes 15:27-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1103, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue herido por sus siervos y murio en Milo?",
-
-
 
     options: ["Joas", "Ocozias", "Amasias", "Amon"],
 
-
-
     correct: 0, reference: "2 Reyes 12:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1104, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino Omri en Israel?",
-
-
 
     options: ["22 anos", "12 anos", "10 anos", "8 anos"],
 
-
-
     correct: 1, reference: "1 Reyes 16:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1105, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue llevado cautivo a Babilonia con garfios?",
-
-
 
     options: ["Sedequias", "Manases", "Joacaz", "Joaquin"],
 
-
-
     correct: 1, reference: "2 Cronicas 33:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1106, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel hizo alianza con Ben-adad de Siria contra Baasa?",
-
-
 
     options: ["Acab", "Omri", "Josafat", "Asa"],
 
-
-
     correct: 3, reference: "1 Reyes 15:18-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1107, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Quien fue el padre del rey Josafat de Juda?",
-
-
 
     options: ["Asa", "Joram", "Roboam", "Abiam"],
 
-
-
     correct: 0, reference: "1 Reyes 22:41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1108, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue asesinado por Salum despues de reinar 6 meses?",
-
-
 
     options: ["Manahem", "Zacarias", "Peka", "Pekahia"],
 
-
-
     correct: 1, reference: "2 Reyes 15:8-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1109, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda tenia 8 anos cuando comenzo a reinar?",
-
-
 
     options: ["Josias", "Manases", "Amon", "Joas"],
 
-
-
-    correct: 3, reference: "2 Reyes 11:21"
-
-
+    correct: 0, reference: "2 Reyes 22:1"
 
   },
 
-
-
   {
-
-
 
     id: 1110, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel pago tributo a Tiglat-pileser III de Asiria con mil talentos de plata?",
-
-
 
     options: ["Joacaz", "Oseas", "Peka", "Manahem"],
 
-
-
     correct: 3, reference: "2 Reyes 15:19-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1111, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue azotado con lepra por quemar incienso en el templo?",
-
-
 
     options: ["Jotam", "Amasias", "Uzias (Azarias)", "Acaz"],
 
-
-
     correct: 2, reference: "2 Cronicas 26:16-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1112, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que ciudad fundo Omri como nueva capital de Israel?",
-
-
 
     options: ["Tirsa", "Samaria", "Jezreel", "Siquem"],
 
-
-
     correct: 1, reference: "1 Reyes 16:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1113, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda quito los lugares altos e hizo la reforma mas completa?",
-
-
 
     options: ["Josafat", "Asa", "Josias", "Ezequias"],
 
-
-
     correct: 2, reference: "2 Reyes 23:4-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1114, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue el ultimo de la dinastia de Jehu?",
-
-
 
     options: ["Joas", "Joacaz", "Zacarias", "Jeroboam II"],
 
-
-
     correct: 2, reference: "2 Reyes 15:8-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1115, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda sacrifico a su hijo pasandolo por fuego?",
-
-
 
     options: ["Amon", "Acaz", "Joacaz", "Manases"],
 
-
-
     correct: 1, reference: "2 Reyes 16:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1116, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino Manases en Jerusalen, siendo el reinado mas largo de Juda?",
-
-
 
     options: ["45 anos", "50 anos", "55 anos", "41 anos"],
 
-
-
     correct: 2, reference: "2 Reyes 21:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1117, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel derroto a Amasias de Juda y derribo parte del muro de Jerusalen?",
-
-
 
     options: ["Jehu", "Joacaz", "Jeroboam II", "Joas de Israel"],
 
-
-
     correct: 3, reference: "2 Reyes 14:11-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1118, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿A que rey de Juda le sacaron los ojos los babilonios despues de matar a sus hijos?",
-
-
 
     options: ["Joaquin", "Manases", "Joacaz", "Sedequias"],
 
-
-
     correct: 3, reference: "2 Reyes 25:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1119, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel recibio la evaluacion de que hizo lo malo mas que todos los que fueron antes de el?",
-
-
 
     options: ["Manases de Juda", "Jeroboam I", "Acab", "Omri"],
 
-
-
     correct: 2, reference: "1 Reyes 16:30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1120, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue asesinado por sus siervos en su cama?",
-
-
 
     options: ["Amasias", "Ocozias", "Joas", "Amon"],
 
-
-
     correct: 3, reference: "2 Reyes 21:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1121, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel envio a su esposa disfrazada a consultar al profeta Ahias?",
-
-
 
     options: ["Baasa", "Nadab", "Jeroboam I", "Omri"],
 
-
-
     correct: 2, reference: "1 Reyes 14:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1122, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que faraon mato al rey Josias en la batalla de Meguido?",
-
-
 
     options: ["Tirhaca", "Sisac", "Necao II", "Hofra"],
 
-
-
     correct: 2, reference: "2 Reyes 23:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1123, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda construyo el estanque y el acueducto que llevaba agua a Jerusalen?",
-
-
 
     options: ["Ezequias", "Asa", "Manases", "Josias"],
 
-
-
     correct: 0, reference: "2 Reyes 20:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1124, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue asesinado por Peka hijo de Remalias?",
-
-
 
     options: ["Manahem", "Zacarias", "Salum", "Pekahia"],
 
-
-
     correct: 3, reference: "2 Reyes 15:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1125, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que evaluacion teologica recibieron todos los reyes del reino del norte (Israel)?",
-
-
 
     options: ["Alternaron entre bien y mal", "Hicieron lo bueno", "Hicieron lo malo ante los ojos de Jehova", "Fueron fieles a Dios"],
 
-
-
     correct: 2, reference: "1 Reyes 15:26,34; 16:25,30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1126, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel reino 41 anos, el mas largo del reino del norte?",
-
-
 
     options: ["Jeroboam II", "Acab", "Jehu", "Baasa"],
 
-
-
     correct: 0, reference: "2 Reyes 14:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1127, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Quien fue la unica mujer que reino en Juda usurpando el trono?",
-
-
 
     options: ["Betsabe", "Maaca", "Jezabel", "Atalia"],
 
-
-
     correct: 3, reference: "2 Reyes 11:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1128, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda pidio ayuda a Asiria en lugar de confiar en Dios contra Siria e Israel?",
-
-
 
     options: ["Manases", "Jotam", "Acaz", "Ezequias"],
 
-
-
     correct: 2, reference: "2 Reyes 16:7-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1129, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Cuantos reyes tuvo el reino del norte (Israel) desde Jeroboam I hasta Oseas?",
-
-
 
     options: ["17", "15", "20", "19"],
 
-
-
     correct: 3, reference: "1 Reyes 12 - 2 Reyes 17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1130, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue sepultado en un huerto y no en los sepulcros reales?",
-
-
 
     options: ["Acaz", "Uzias", "Manases", "Amon"],
 
-
-
     correct: 1, reference: "2 Cronicas 26:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1131, difficulty: "dificil", category: "reyes",
 
+    question: "¿Quien recupero Elot para Siria en tiempos del rey Acaz?",
 
+    options: ["Peka", "Acaz", "Oseas", "Rezin de Siria"],
 
-    question: "¿Que rey de Israel capturo Elot y la restituyo a Siria?",
-
-
-
-    options: ["Peka", "Acaz perdio Elot", "Oseas", "Rezin de Siria"],
-
-
-
-    correct: 1, reference: "2 Reyes 16:6"
-
-
+    correct: 3, reference: "2 Reyes 16:6"
 
   },
 
-
-
   {
-
-
 
     id: 1132, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿A que rey asirio pago tributo Oseas, ultimo rey de Israel, antes de rebelarse?",
-
-
 
     options: ["Sargon II", "Salmanasar V", "Tiglat-pileser III", "Senaquerib"],
 
-
-
     correct: 1, reference: "2 Reyes 17:3-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1133, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda elimino la serpiente de bronce que Moises habia hecho?",
-
-
 
     options: ["Ezequias", "Josafat", "Asa", "Josias"],
 
-
-
     correct: 0, reference: "2 Reyes 18:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1134, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que hijo de Salomon causo la division del reino por su dureza?",
-
-
 
     options: ["Nadab", "Jeroboam", "Abiam", "Roboam"],
 
-
-
     correct: 3, reference: "1 Reyes 12:13-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1135, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda reino solo 3 meses antes de ser deportado a Egipto por el faraon Necao?",
-
-
 
     options: ["Amon", "Sedequias", "Joaquin", "Joacaz"],
 
-
-
     correct: 3, reference: "2 Reyes 23:31-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1136, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que profeta ungio a Jehu como rey de Israel para destruir la casa de Acab?",
-
-
 
     options: ["Elias", "Eliseo", "Un discipulo de Eliseo", "Miqueas"],
 
-
-
     correct: 2, reference: "2 Reyes 9:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1137, difficulty: "dificil", category: "reyes",
 
-
-
-    question: "¿Que rey de Juda fue comparado favorablemente con David sin reservas?",
-
-
+    question: "¿Que rey de Juda confio en Dios como ninguno antes ni despues de el?",
 
     options: ["Josias", "Josafat", "Asa", "Ezequias"],
 
-
-
-    correct: 0, reference: "2 Reyes 22:2"
-
-
+    correct: 3, reference: "2 Reyes 18:5"
 
   },
 
-
-
   {
-
-
 
     id: 1138, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel erigio los becerros de oro en Dan y Bet-el?",
-
-
 
     options: ["Acab", "Baasa", "Jeroboam I", "Omri"],
 
-
-
     correct: 2, reference: "1 Reyes 12:28-29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1139, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿En que ano cayo Samaria ante Asiria, terminando el reino del norte?",
-
-
 
     options: ["722 a.C.", "701 a.C.", "586 a.C.", "612 a.C."],
 
-
-
     correct: 0, reference: "2 Reyes 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1140, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda envio embajadores a mostrar todos sus tesoros a los babilonios?",
-
-
 
     options: ["Manases", "Josafat", "Josias", "Ezequias"],
 
-
-
     correct: 3, reference: "2 Reyes 20:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1141, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que oficial de Ela, rey de Israel, lo asesino mientras estaba borracho en casa de Arsa?",
-
-
 
     options: ["Tibni", "Zimri", "Baasa", "Omri"],
 
-
-
     correct: 1, reference: "1 Reyes 16:9-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1142, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue puesto en el trono por el pueblo de la tierra tras el asesinato de Amon?",
-
-
 
     options: ["Sedequias", "Josias", "Manases", "Joacaz"],
 
-
-
     correct: 1, reference: "2 Reyes 21:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1143, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que hijo de Acab reino dos anos e hizo lo malo, cayendo por la ventana de su aposento?",
-
-
 
     options: ["Jeroboam II", "Jehu", "Ocozias de Israel", "Joram"],
 
-
-
     correct: 2, reference: "2 Reyes 1:2-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1144, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Cuantos reyes de Juda recibieron la evaluacion de que hicieron lo recto ante Jehova?",
-
-
 
     options: ["6", "8", "4", "12"],
 
-
-
     correct: 1, reference: "1 Reyes - 2 Reyes (Asa, Josafat, Joas, Amasias, Uzias, Jotam, Ezequias, Josias)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1145, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey asirio sitio Jerusalen en tiempos de Ezequias y su ejercito fue destruido por un angel?",
-
-
 
     options: ["Asurbanipal", "Senaquerib", "Sargon II", "Tiglat-pileser III"],
 
-
-
     correct: 1, reference: "2 Reyes 19:35-36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1146, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda reino junto con su padre Uzias debido a la lepra de este?",
-
-
 
     options: ["Acaz", "Amasias", "Ezequias", "Jotam"],
 
-
-
     correct: 3, reference: "2 Reyes 15:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1147, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue el primero de la dinastia de Omri?",
-
-
 
     options: ["Tibni", "Omri", "Ela", "Zimri"],
 
-
-
     correct: 1, reference: "1 Reyes 16:21-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1148, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey babilonico libero a Joaquin de la carcel y le dio un lugar en su mesa?",
-
-
 
     options: ["Belsasar", "Nabonido", "Evil-merodac", "Nabucodonosor"],
 
-
-
     correct: 2, reference: "2 Reyes 25:27-29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1149, difficulty: "dificil", category: "reyes",
 
-
-
     question: "¿Que rey de Juda hizo lo malo y reino solo 2 anos antes de ser asesinado por sus siervos?",
-
-
 
     options: ["Ocozias", "Amon", "Joacaz", "Abiam"],
 
-
-
     correct: 1, reference: "2 Reyes 21:19-23"
-
-
 
   },
 
-
-
   // --- Profetas ---
 
-
-
   {
-
-
 
     id: 1300, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta se caso con una mujer infiel llamada Gomer por orden de Dios?",
-
-
 
     options: ["Oseas", "Amos", "Joel", "Miqueas"],
 
-
-
     correct: 0, reference: "Oseas 1:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1301, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta vio un rollo volante de veinte codos de largo y diez de ancho?",
-
-
 
     options: ["Hageo", "Malaquias", "Ezequiel", "Zacarias"],
 
-
-
     correct: 3, reference: "Zacarias 5:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1302, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Durante el reinado de que rey comenzo Isaias su ministerio profetico?",
-
-
 
     options: ["Josias", "Ezequias", "Manases", "Uzias"],
 
-
-
     correct: 3, reference: "Isaias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1303, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿En que cisterna fue arrojado Jeremias por orden de los principes?",
-
-
 
     options: ["La cisterna del templo", "La cisterna de Malquias hijo de Hamelec", "La cisterna de Bet-semes", "La cisterna de Siloe"],
 
-
-
     correct: 1, reference: "Jeremias 38:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1304, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta fue arrebatado por el Espiritu despues de bautizar al eunuco etiope?",
-
-
 
     options: ["Agabo", "Felipe", "Elias", "Eliseo"],
 
-
-
     correct: 1, reference: "Hechos 8:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1305, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta recibio la orden de cocinar su comida usando estiercol de vaca como combustible?",
-
-
 
     options: ["Jeremias", "Ezequiel", "Oseas", "Isaias"],
 
-
-
     correct: 1, reference: "Ezequiel 4:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1306, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿A que profeta le fue prohibido llorar la muerte de su esposa?",
-
-
 
     options: ["Isaias", "Jeremias", "Ezequiel", "Oseas"],
 
-
-
     correct: 2, reference: "Ezequiel 24:16-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1307, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta menciono el valle de los huesos secos?",
 
-
-
     options: ["Ezequiel", "Isaias", "Daniel", "Jeremias"],
-
-
 
     correct: 0, reference: "Ezequiel 37:1-14"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1308, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Cuantos dias estuvo Ezequiel acostado sobre su lado izquierdo para cargar la iniquidad de Israel?",
-
-
 
     options: ["150 dias", "390 dias", "40 dias", "70 dias"],
 
-
-
     correct: 1, reference: "Ezequiel 4:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1309, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta del Antiguo Testamento predijo que el Mesias naceria en Belen?",
-
-
 
     options: ["Isaias", "Zacarias", "Malaquias", "Miqueas"],
 
-
-
     correct: 3, reference: "Miqueas 5:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1310, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta fue contemporaneo de Jeremias y profetizo a los exiliados en Babilonia?",
-
-
 
     options: ["Habacuc", "Sofonias", "Ezequiel", "Daniel"],
 
-
-
     correct: 2, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1311, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que arbol uso Amos como simbolo de su oficio antes de ser profeta?",
-
-
 
     options: ["Higuera silvestre (sicomoro)", "Palmera", "Olivo", "Vid"],
 
-
-
     correct: 0, reference: "Amos 7:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1312, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta anuncio que Dios deseaba misericordia y no sacrificio?",
-
-
 
     options: ["Joel", "Amos", "Miqueas", "Oseas"],
 
-
-
     correct: 3, reference: "Oseas 6:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1313, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿En la vision de Isaias en el templo, cuantas alas tenia cada serafin?",
-
-
 
     options: ["Seis", "Dos", "Ocho", "Cuatro"],
 
-
-
     correct: 0, reference: "Isaias 6:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1314, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta fue llamado a profetizar contra Ninive y la ciudad se arrepintio?",
-
-
 
     options: ["Jonas", "Nahum", "Miqueas", "Abdias"],
 
-
-
     correct: 0, reference: "Jonas 3:5-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1315, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta escribio especificamente contra Edom?",
-
-
 
     options: ["Nahum", "Sofonias", "Habacuc", "Abdias"],
 
-
-
     correct: 3, reference: "Abdias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1316, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta proclamo: 'El justo por su fe vivira'?",
-
-
 
     options: ["Sofonias", "Habacuc", "Amos", "Miqueas"],
 
-
-
     correct: 1, reference: "Habacuc 2:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1317, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Cual fue el nombre del padre de Isaias segun el libro profetico?",
-
-
 
     options: ["Buzi", "Beeri", "Hilcias", "Amoz"],
 
-
-
     correct: 3, reference: "Isaias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1318, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo una vision de cuatro carros que salian de entre dos montes de bronce?",
 
-
-
     options: ["Daniel", "Hageo", "Zacarias", "Ezequiel"],
-
-
 
     correct: 2, reference: "Zacarias 6:1"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1319, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta predijo la destruccion de Ninive con gran detalle poetico?",
-
-
 
     options: ["Abdias", "Sofonias", "Jonas", "Nahum"],
 
-
-
     correct: 3, reference: "Nahum 1:1; 2:1-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1320, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que nombre simbolico le puso Oseas a su hija, que significa 'no compadecida'?",
-
-
 
     options: ["Lo-ruhama", "Maher-salal-hasbaz", "Jezreel", "Lo-ammi"],
 
-
-
     correct: 0, reference: "Oseas 1:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1321, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta camino desnudo y descalzo durante tres anos como senal contra Egipto y Etiopia?",
-
-
 
     options: ["Jeremias", "Miqueas", "Isaias", "Ezequiel"],
 
-
-
     correct: 2, reference: "Isaias 20:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1322, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que vision tuvo Amos que representaba el juicio inminente sobre Israel?",
-
-
 
     options: ["Un angel con espada", "Un canasto de fruta de verano", "Un muro con plomada", "Un rollo volante"],
 
-
-
     correct: 1, reference: "Amos 8:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1323, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Cuantos capitulos tiene el libro de Isaias?",
-
-
 
     options: ["52", "60", "66", "72"],
 
-
-
     correct: 2, reference: "Isaias (66 capitulos)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1324, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta fue puesto dentro de un cepo por el sacerdote Pasur?",
-
-
 
     options: ["Amos", "Jeremias", "Ezequiel", "Isaias"],
 
-
-
     correct: 1, reference: "Jeremias 20:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1325, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿En que rio tuvo Ezequiel su primera vision de la gloria de Dios?",
-
-
 
     options: ["Eufrates", "Tigris", "Jordan", "Quebar"],
 
-
-
     correct: 3, reference: "Ezequiel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1326, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta menciono las 'setenta semanas' como profecia mesianica?",
-
-
 
     options: ["Zacarias", "Isaias", "Ezequiel", "Daniel"],
 
-
-
     correct: 3, reference: "Daniel 9:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1327, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿A que profeta alimentaron los cuervos junto al arroyo de Querit?",
 
-
-
     options: ["Elias", "Samuel", "Isaias", "Eliseo"],
-
-
 
     correct: 0, reference: "1 Reyes 17:4-6"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 1328, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta multiplico el aceite de una viuda para pagar sus deudas?",
-
-
 
     options: ["Elias", "Samuel", "Isaias", "Eliseo"],
 
-
-
     correct: 3, reference: "2 Reyes 4:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1329, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Cuantos profetas de Baal fueron desafiados por Elias en el monte Carmelo?",
-
-
 
     options: ["500", "400", "850", "450"],
 
-
-
     correct: 3, reference: "1 Reyes 18:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1330, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta uso un yugo de madera sobre su cuello como senal profetica?",
-
-
 
     options: ["Oseas", "Ezequiel", "Isaias", "Jeremias"],
 
-
-
     correct: 3, reference: "Jeremias 27:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1331, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que falso profeta rompio el yugo de madera del cuello de Jeremias?",
-
-
 
     options: ["Pasur", "Acab hijo de Colaias", "Semaias", "Hananias"],
 
-
-
     correct: 3, reference: "Jeremias 28:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1332, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta fue lanzado al mar durante una tormenta por los marineros?",
-
-
 
     options: ["Abdias", "Nahum", "Jonas", "Amos"],
 
-
-
     correct: 2, reference: "Jonas 1:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1333, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que planta crecio para dar sombra a Jonas y luego se seco?",
-
-
 
     options: ["Una higuera", "Una vid", "Un sicomoro", "Una calabacera"],
 
-
-
     correct: 3, reference: "Jonas 4:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1334, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta tuvo una vision de un candelabro de oro con siete lamparas y dos olivos?",
-
-
 
     options: ["Hageo", "Zacarias", "Daniel", "Malaquias"],
 
-
-
     correct: 1, reference: "Zacarias 4:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1335, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta anuncio que Dios enviaria al profeta Elias antes del dia grande y terrible de Jehova?",
-
-
 
     options: ["Zacarias", "Joel", "Hageo", "Malaquias"],
 
-
-
     correct: 3, reference: "Malaquias 4:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1336, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿A que profeta se le ordeno comprar un campo en Anatot durante el asedio de Jerusalen?",
-
-
 
     options: ["Miqueas", "Isaias", "Ezequiel", "Jeremias"],
 
-
-
     correct: 3, reference: "Jeremias 32:7-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1337, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Quien fue el secretario (escriba) de Jeremias que escribia sus profecias?",
-
-
 
     options: ["Baruc", "Gedalias", "Sofonias", "Esdras"],
 
-
-
     correct: 0, reference: "Jeremias 36:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1338, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que rey quemo el rollo de las profecias de Jeremias columna por columna?",
-
-
 
     options: ["Josias", "Joacim", "Sedequias", "Joaquin"],
 
-
-
     correct: 1, reference: "Jeremias 36:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1339, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta describio a Tiro como una ciudad que seria arrojada al mar?",
-
-
 
     options: ["Amos", "Ezequiel", "Jeremias", "Isaias"],
 
-
-
     correct: 1, reference: "Ezequiel 26:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1340, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿En que capitulo de Isaias se encuentra el cantico del Siervo Sufriente que describe al Mesias?",
-
-
 
     options: ["Isaias 53", "Isaias 40", "Isaias 61", "Isaias 7"],
 
-
-
     correct: 0, reference: "Isaias 53"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1341, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta recibio instrucciones de medir el templo con una cana de medir?",
-
-
 
     options: ["Ezequiel", "Hageo", "Daniel", "Zacarias"],
 
-
-
     correct: 0, reference: "Ezequiel 40:3-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1342, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta profetizo que el Mesias entraria en Jerusalen montado sobre un pollino?",
-
-
 
     options: ["Zacarias", "Miqueas", "Malaquias", "Isaias"],
 
-
-
     correct: 0, reference: "Zacarias 9:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1343, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta hablo del 'Dia de Jehova' como dia de tinieblas y no de luz?",
-
-
 
     options: ["Sofonias", "Amos", "Malaquias", "Joel"],
 
-
-
     correct: 1, reference: "Amos 5:18-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1344, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿A que profeta Dios le mostro una vision de langostas que devoraban la tierra?",
-
-
 
     options: ["Amos", "Joel", "Habacuc", "Nahum"],
 
-
-
     correct: 0, reference: "Amos 7:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1345, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta insto al pueblo a reconstruir el templo despues del exilio babilonico?",
-
-
 
     options: ["Zacarias", "Hageo", "Malaquias", "Abdias"],
 
-
-
     correct: 1, reference: "Hageo 1:2-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1346, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Junto a que profeta sirvio Hageo para motivar la reconstruccion del templo?",
-
-
 
     options: ["Malaquias", "Joel", "Zacarias", "Abdias"],
 
-
-
     correct: 2, reference: "Esdras 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1347, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta vio la gloria de Dios salir del templo por el oriente?",
-
-
 
     options: ["Ezequiel", "Daniel", "Zacarias", "Isaias"],
 
-
-
     correct: 0, reference: "Ezequiel 10:18-19; 11:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1348, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que nombre simbolico dio Isaias a su hijo que significa 'el despojo se apresura, la presa se precipita'?",
-
-
 
     options: ["Maher-salal-hasbaz", "Emanuel", "Lo-ammi", "Sear-jasub"],
 
-
-
     correct: 0, reference: "Isaias 8:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1349, difficulty: "dificil", category: "profetas",
 
-
-
     question: "¿Que profeta fue sacado de la cisterna por Ebed-melec, un etiope?",
-
-
 
     options: ["Isaias", "Ezequiel", "Jeremias", "Daniel"],
 
-
-
     correct: 2, reference: "Jeremias 38:7-13"
-
-
 
   },
 
-
-
   // --- Cartas ---
 
-
-
   {
-
-
 
     id: 1900, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Desde que ciudad escribio Pablo la carta a los Filipenses?",
-
-
 
     options: ["Efeso", "Antioquia", "Roma (prision)", "Corinto"],
 
-
-
     correct: 2, reference: "Filipenses 1:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1901, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que carta del NT tiene un solo capitulo y trata sobre un esclavo fugitivo llamado Onesimo?",
-
-
 
     options: ["2 Juan", "Filemon", "3 Juan", "Judas"],
 
-
-
     correct: 1, reference: "Filemon 1:10-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1902, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Por que se considera debatida la autoria de la carta a los Hebreos?",
-
-
 
     options: ["Porque fue escrita por una mujer", "Porque se perdio el manuscrito original", "Porque no incluye saludo inicial con nombre del autor", "Porque fue escrita en arameo"],
 
-
-
     correct: 2, reference: "Hebreos 1:1 (autoria debatida)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1903, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que falsa ensenanza combatia Pablo en la carta a los Colosenses?",
-
-
 
     options: ["La negacion de la resurreccion", "El arrianismo", "El gnosticismo incipiente y el sincretismo religioso", "El judaismo legalista"],
 
-
-
     correct: 2, reference: "Colosenses 2:8-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1904, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Cual es el himno cristologico que Pablo cita en Filipenses sobre la kenosis de Cristo?",
-
-
 
     options: ["Filipenses 1:3-11", "Filipenses 2:5-11", "Filipenses 3:7-14", "Filipenses 4:4-9"],
 
-
-
     correct: 1, reference: "Filipenses 2:5-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1905, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿A quien llama Pablo 'verdadero companero' (syzygos) en Filipenses?",
-
-
 
     options: ["Un colaborador sin nombre especifico", "Timoteo", "Epafrodito", "Lucas"],
 
-
-
     correct: 0, reference: "Filipenses 4:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1906, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que dos mujeres estaban en conflicto en la iglesia de Filipos segun Pablo?",
-
-
 
     options: ["Loida y Eunice", "Priscila y Lidia", "Febe y Junia", "Evodia y Sintique"],
 
-
-
     correct: 3, reference: "Filipenses 4:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1907, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que concepto teologico central desarrolla Pablo en Romanos capitulos 9 al 11?",
-
-
 
     options: ["La justificacion por la fe", "Los dones espirituales", "La resurreccion de los muertos", "La eleccion de Israel y el plan de Dios para judios y gentiles"],
 
-
-
     correct: 3, reference: "Romanos 9-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1908, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que personaje del AT usa Pablo en Romanos 4 como ejemplo de justificacion por fe?",
-
-
 
     options: ["Noe", "Abraham", "David", "Moises"],
 
-
-
     correct: 1, reference: "Romanos 4:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1909, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que profeta del AT cita Pablo en Romanos 1:17 para fundamentar la justificacion por fe?",
-
-
 
     options: ["Jeremias", "Habacuc", "Amos", "Isaias"],
 
-
-
     correct: 1, reference: "Romanos 1:17; Habacuc 2:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1910, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que mujer menciona Pablo como diaconisa de la iglesia de Cencrea en Romanos 16?",
-
-
 
     options: ["Priscila", "Maria", "Junia", "Febe"],
 
-
-
     correct: 3, reference: "Romanos 16:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1911, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que problema especifico de la iglesia de Corinto trata Pablo en 1 Corintios 5?",
-
-
 
     options: ["Un caso de inmoralidad sexual extrema (incesto)", "El hablar en lenguas sin interprete", "La idolatria", "Las divisiones entre lideres"],
 
-
-
     correct: 0, reference: "1 Corintios 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1912, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Cuantas cartas escribio Pablo a los corintios segun las evidencias internas del NT?",
-
-
 
     options: ["Tres", "Al menos cuatro", "Una", "Dos"],
 
-
-
     correct: 1, reference: "1 Corintios 5:9; 2 Corintios 2:4; 7:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1913, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que capitulo de 1 Corintios es conocido como 'el capitulo del amor'?",
-
-
 
     options: ["Capitulo 13", "Capitulo 12", "Capitulo 14", "Capitulo 15"],
 
-
-
     correct: 0, reference: "1 Corintios 13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1914, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que argumento central presenta Pablo en 1 Corintios 15 sobre la resurreccion?",
-
-
 
     options: ["Que la resurreccion es simbolica", "Que la resurreccion ocurrira antes de la tribulacion", "Que solo resucitaran los justos", "Que si Cristo no resucito, la fe es vana"],
 
-
-
     correct: 3, reference: "1 Corintios 15:14,17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1915, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que expresion aramea usa Pablo al final de 1 Corintios que significa 'Senor nuestro, ven'?",
-
-
 
     options: ["Abba", "Hosanna", "Aleluya", "Maranata"],
 
-
-
     correct: 3, reference: "1 Corintios 16:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1916, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que metafora usa Pablo en 2 Corintios 4:7 para describir a los creyentes que portan el evangelio?",
-
-
 
     options: ["Ovejas sin pastor", "Piedras vivas", "Soldados con armadura", "Vasos de barro"],
 
-
-
     correct: 3, reference: "2 Corintios 4:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1917, difficulty: "dificil", category: "cartas",
 
+    question: "¿Como describe Pablo su 'aguijon en la carne' en 2 Corintios 12?",
 
+    options: ["Una enfermedad fisica especifica", "Un mensajero de Satanas que lo abofetea", "Una persecucion constante", "Un pecado personal"],
 
-    question: "¿Que 'aguijon en la carne' menciona Pablo en 2 Corintios 12?",
-
-
-
-    options: ["Una enfermedad fisica no especificada", "La persecucion de los judios", "La culpa por haber perseguido a la iglesia", "La tentacion sexual"],
-
-
-
-    correct: 0, reference: "2 Corintios 12:7-9"
-
-
+    correct: 1, reference: "2 Corintios 12:7"
 
   },
 
-
-
   {
-
-
 
     id: 1918, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Cual era el principal error doctrinal que Pablo combatia en Galatas?",
-
-
 
     options: ["La negacion de la resurreccion", "El culto a los angeles", "La exigencia de la circuncision y la ley para la salvacion", "La negacion de la divinidad de Cristo"],
 
-
-
     correct: 2, reference: "Galatas 2:16; 5:2-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1919, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿A quien confronto Pablo 'cara a cara' en Antioquia segun Galatas 2?",
-
-
 
     options: ["Pedro (Cefas)", "Juan", "Bernabe", "Santiago"],
 
-
-
     correct: 0, reference: "Galatas 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1920, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que alegoria del AT utiliza Pablo en Galatas 4 para ilustrar la ley y la gracia?",
-
-
 
     options: ["Jacob y Esau", "El sacrificio de Isaac", "Sara y Agar", "Raquel y Lea"],
 
-
-
     correct: 2, reference: "Galatas 4:21-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1921, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que concepto teologico introduce Pablo en Efesios 1:10 sobre el plan eterno de Dios?",
-
-
 
     options: ["La predestinacion individual", "La recapitulacion de todas las cosas en Cristo", "La gracia irresistible", "La expiacion limitada"],
 
-
-
     correct: 1, reference: "Efesios 1:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1922, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Cuantas piezas componen la armadura de Dios descrita en Efesios 6?",
-
-
 
     options: ["Siete", "Cinco", "Cuatro", "Seis"],
 
-
-
-    correct: 0, reference: "Efesios 6:14-18"
-
-
+    correct: 3, reference: "Efesios 6:14-18"
 
   },
 
-
-
   {
-
-
 
     id: 1923, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que carta de Pablo fue probablemente una carta circular enviada a varias iglesias?",
-
-
 
     options: ["Filipenses", "Efesios", "Filemon", "Colosenses"],
 
-
-
     correct: 1, reference: "Efesios 1:1 (algunos manuscritos omiten 'en Efeso')"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1924, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Quien llevo la carta a los Colosenses y la carta a Filemon?",
-
-
 
     options: ["Timoteo", "Epafrodito", "Tiquico y Onesimo", "Tito"],
 
-
-
     correct: 2, reference: "Colosenses 4:7-9; Filemon 1:10-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1925, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que error escatologico corrige Pablo en 2 Tesalonicenses 2?",
-
-
 
     options: ["Que no habria resurreccion", "Que el milenio ya comenzo", "Que Cristo ya habia venido", "Que el dia del Senor ya habia llegado"],
 
-
-
     correct: 3, reference: "2 Tesalonicenses 2:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1926, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que figura escatologica menciona Pablo en 2 Tesalonicenses 2 que debe manifestarse antes del fin?",
-
-
 
     options: ["El hombre de pecado (hijo de perdicion)", "La bestia del mar", "El falso profeta", "El anticristo"],
 
-
-
     correct: 0, reference: "2 Tesalonicenses 2:3-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1927, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Con que imagen describe Pablo la venida del Senor en 1 Tesalonicenses 4:16-17?",
-
-
 
     options: ["Con voz de mando, trompeta de Dios y los muertos en Cristo resucitando primero", "Sobre las nubes con los angeles", "Como relampago de oriente a occidente", "Como un ladron en la noche"],
 
-
-
     correct: 0, reference: "1 Tesalonicenses 4:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1928, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Cuales son las tres cartas llamadas 'Epistolas Pastorales'?",
-
-
 
     options: ["Filipenses, Colosenses, Filemon", "1 Timoteo, 2 Timoteo, Tito", "1 Pedro, 2 Pedro, Judas", "Romanos, Galatas, Efesios"],
 
-
-
     correct: 1, reference: "1 Timoteo, 2 Timoteo, Tito"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1929, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que requisitos para los obispos establece Pablo en 1 Timoteo 3?",
-
-
 
     options: ["Ser celibe y ayunar frecuentemente", "Ser mayor de 40 anos y levita", "Ser irreprensible, marido de una sola mujer, apto para ensenar", "Ser rico y generoso con los pobres"],
 
-
-
     correct: 2, reference: "1 Timoteo 3:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1930, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que declaracion hace Pablo sobre la Escritura en 2 Timoteo 3:16?",
-
-
 
     options: ["Que toda Escritura es inspirada por Dios (theopneustos)", "Que solo los Evangelios son infalibles", "Que fue dictada palabra por palabra", "Que debe interpretarse literalmente siempre"],
 
-
-
     correct: 0, reference: "2 Timoteo 3:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1931, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que personajes menciona Pablo en 2 Timoteo 3:8 como opositores de Moises?",
-
-
 
     options: ["Balaam y Balac", "Simon y Levi", "Janes y Jambres", "Core y Datan"],
 
-
-
     correct: 2, reference: "2 Timoteo 3:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1932, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que colaborador abandono a Pablo 'amando este mundo' segun 2 Timoteo?",
-
-
 
     options: ["Bernabe", "Demas", "Tito", "Marcos"],
 
-
-
     correct: 1, reference: "2 Timoteo 4:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1933, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que sacerdocio superior al levitico presenta la carta a los Hebreos?",
-
-
 
     options: ["El sacerdocio segun el orden de Melquisedec", "El sacerdocio real de David", "El sacerdocio de Aaron", "El sacerdocio de Samuel"],
 
-
-
     correct: 0, reference: "Hebreos 7:1-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1934, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que capitulo de Hebreos es conocido como 'el salon de la fe' por listar heroes de la fe del AT?",
-
-
 
     options: ["Hebreos 13", "Hebreos 12", "Hebreos 10", "Hebreos 11"],
 
-
-
     correct: 3, reference: "Hebreos 11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1935, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que advertencia severa da Hebreos 6:4-6 respecto a quienes han recibido la fe?",
-
-
 
     options: ["Que deben bautizarse nuevamente", "Que deben guardar el sabado", "Que es imposible renovar al arrepentimiento a quienes recayeron tras ser iluminados", "Que perderan sus recompensas pero no la salvacion"],
 
-
-
     correct: 2, reference: "Hebreos 6:4-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1936, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que definicion de fe da el autor de Hebreos en 11:1?",
-
-
 
     options: ["Obedecer todos los mandamientos sin dudar", "Confiar en las promesas de los profetas", "La certeza de lo que se espera, la conviccion de lo que no se ve", "Creer sin ver ni entender"],
 
-
-
     correct: 2, reference: "Hebreos 11:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1937, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que relacion establece Santiago entre la fe y las obras?",
-
-
 
     options: ["Que la fe sola salva sin obras", "Que la fe sin obras esta muerta", "Que las obras salvan sin fe", "Que fe y obras son incompatibles"],
 
-
-
     correct: 1, reference: "Santiago 2:17,26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1938, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que personaje del AT usa Santiago como ejemplo de fe manifestada en obras?",
-
-
 
     options: ["Abraham y Rahab", "Moises y David", "Noe y Daniel", "Jose y Job"],
 
-
-
     correct: 0, reference: "Santiago 2:21-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1939, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que instruccion da Santiago respecto a los enfermos en la iglesia?",
-
-
 
     options: ["Que visiten al medico del pueblo", "Que llamen a los ancianos para que oren y los unjan con aceite", "Que ayunen por 40 dias", "Que ofrezcan sacrificios de accion de gracias"],
 
-
-
     correct: 1, reference: "Santiago 5:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1940, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que concepto usa Pedro en 1 Pedro 2:9 para describir a los creyentes?",
-
-
 
     options: ["Hijos de la promesa", "Real sacerdocio, nacion santa, pueblo adquirido por Dios", "Ejercito del Senor", "Ciudadanos del cielo"],
 
-
-
     correct: 1, reference: "1 Pedro 2:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1941, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que pasaje dificil de 1 Pedro 3:19 menciona que Cristo predico a los 'espiritus encarcelados'?",
-
-
 
     options: ["Que predico a los fariseos encarcelados", "Que predico a los angeles caidos o muertos del tiempo de Noe", "Que predico en el templo de Jerusalen", "Que predico a los discipulos con miedo"],
 
-
-
     correct: 1, reference: "1 Pedro 3:19-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1942, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que falsos maestros denuncia Pedro en 2 Pedro 2 comparandolos con personajes del AT?",
-
-
 
     options: ["Saul y Absalon", "Angeles caidos, la generacion del diluvio y Sodoma", "Faraon y Goliat", "Core y Acan"],
 
-
-
     correct: 1, reference: "2 Pedro 2:4-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1943, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que dice Pedro en 2 Pedro 3:8 sobre el tiempo de Dios?",
-
-
 
     options: ["Que Dios no cuenta el tiempo", "Que el fin vendra en la generacion presente", "Que un dia ante el Senor es como mil anos y mil anos como un dia", "Que los tiempos se han acortado"],
 
-
-
     correct: 2, reference: "2 Pedro 3:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1944, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que prueba propone Juan en 1 Juan 4:2-3 para discernir el espiritu de verdad del de error?",
-
-
 
     options: ["Profetizar el futuro", "Confesar que Jesucristo ha venido en carne", "Hacer milagros", "Hablar en lenguas"],
 
-
-
     correct: 1, reference: "1 Juan 4:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1945, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que herejia cristologica combate Juan en sus epistolas?",
-
-
 
     options: ["El pelagianismo", "El montanismo", "El arrianismo", "El docetismo (negar que Cristo vino en carne)"],
 
-
-
     correct: 3, reference: "1 Juan 4:2; 2 Juan 1:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1946, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿A quien denuncia Juan en 3 Juan por no recibir a los hermanos y expulsar de la iglesia a quienes lo hacian?",
-
-
 
     options: ["Gayo", "Diotrefes", "Alejandro", "Demetrio"],
 
-
-
     correct: 1, reference: "3 Juan 1:9-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1947, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que libro apocrifo cita Judas en su epistola sobre la disputa por el cuerpo de Moises?",
-
-
 
     options: ["El Testamento de los Doce Patriarcas", "El libro de Enoc", "La Asuncion de Moises", "El libro de los Jubileos"],
 
-
-
     correct: 2, reference: "Judas 1:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1948, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que profecia de Enoc cita la epistola de Judas?",
-
-
 
     options: ["Sobre la venida del Senor con sus santas decenas de millares para hacer juicio", "Sobre el nacimiento del Mesias", "Sobre la caida de Babilonia", "Sobre el diluvio universal"],
 
-
-
     correct: 0, reference: "Judas 1:14-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1949, difficulty: "dificil", category: "cartas",
 
-
-
     question: "¿Que grupo de cartas de Pablo se conoce como 'epistolas de la cautividad'?",
-
-
 
     options: ["Hebreos, Santiago, 1 y 2 Pedro", "1 y 2 Tesalonicenses, 1 y 2 Timoteo", "Efesios, Filipenses, Colosenses y Filemon", "Romanos, Galatas, 1 y 2 Corintios"],
 
-
-
     correct: 2, reference: "Efesios 3:1; Filipenses 1:13; Colosenses 4:18; Filemon 1:1"
 
-
-
   },
-
-
 
   // --- Historias Dificil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 74, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantas veces marcho Israel alrededor de Jerico el septimo dia?",
-
-
 
     options: ["3 veces", "1 vez", "7 veces", "13 veces"],
 
-
-
     correct: 2, reference: "Josue 6:15-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 75, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que angel anuncio el nacimiento de Jesus a Maria?",
-
-
 
     options: ["Uriel", "Rafael", "Miguel", "Gabriel"],
 
-
-
     correct: 3, reference: "Lucas 1:26-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 76, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos anos vago Israel por el desierto?",
-
-
 
     options: ["40 anos", "30 anos", "20 anos", "50 anos"],
 
-
-
     correct: 0, reference: "Numeros 14:33-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 900, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que pacto hizo Dios con Abraham sobre la tierra?",
-
-
 
     options: ["Pacto de las partes", "Pacto de arco iris", "Pacto de sal", "Pacto de sangre"],
 
-
-
     correct: 0, reference: "Genesis 15:9-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 901, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos anos reino David en Hebron antes de Jerusalen?",
-
-
 
     options: ["5 anos", "10 anos", "7 anos", "3 anos"],
 
-
-
     correct: 2, reference: "2 Samuel 5:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 902, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que nacion deporto al reino del norte?",
-
-
 
     options: ["Persia", "Babilonia", "Asiria", "Egipto"],
 
-
-
     correct: 2, reference: "2 Reyes 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 903, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantas tribus formaron el reino del norte?",
-
-
 
     options: ["12", "8", "5", "10"],
 
-
-
     correct: 3, reference: "1 Reyes 11:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 904, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que pecado cometio Acan tras la conquista de Jerico?",
-
-
 
     options: ["Blasfemia", "Asesinato", "Robo del anatema", "Idolatria"],
 
-
-
     correct: 2, reference: "Josue 7:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 905, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien engano a Israel haciendose pasar por extranjeros lejanos?",
-
-
 
     options: ["Moabitas", "Filisteos", "Amalecitas", "Gabaonitas"],
 
-
-
     correct: 3, reference: "Josue 9:3-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 906, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que rey dividio el reino de Israel?",
-
-
 
     options: ["Jeroboam", "Roboam", "Salomon", "David"],
 
-
-
     correct: 1, reference: "1 Reyes 12:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 907, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantas deportaciones principales hubo a Babilonia?",
-
-
 
     options: ["3", "1", "4", "2"],
 
-
-
     correct: 0, reference: "2 Reyes 24-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 908, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que fiesta celebraba Israel al cruzar a Canaan?",
-
-
 
     options: ["Purim", "Tabernaculos", "Pascua", "Pentecostes"],
 
-
-
     correct: 2, reference: "Josue 5:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 909, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que rio se detuvo para que Israel cruzara?",
-
-
 
     options: ["Arnon", "Eufrates", "Jordan", "Nilo"],
 
-
-
     correct: 2, reference: "Josue 3:14-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 910, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿En que batalla el sol se detuvo?",
-
-
 
     options: ["Gabaon", "Jerico", "Hai", "Laquis"],
 
-
-
     correct: 0, reference: "Josue 10:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 911, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que hizo Gedeon con los 300 guerreros?",
-
-
 
     options: ["Toco trompetas y cantaros", "Ataco con espadas", "Uso hondas", "Lucho cuerpo a cuerpo"],
 
-
-
     correct: 0, reference: "Jueces 7:16-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 912, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos guerreros quedaron con Gedeon al final?",
-
-
 
     options: ["1000", "300", "500", "100"],
 
-
-
     correct: 1, reference: "Jueces 7:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 913, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que ciudad fue destruida tras la derrota inicial de Israel por el pecado de Acan?",
-
-
 
     options: ["Gabaon", "Betel", "Jerico", "Hai"],
 
-
-
     correct: 3, reference: "Josue 7-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 914, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que rey de Juda fue asesinado en Meguido?",
-
-
 
     options: ["Ezequias", "Manases", "Josias", "Asa"],
 
-
-
     correct: 2, reference: "2 Reyes 23:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 915, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien reconstruyo el templo tras el exilio?",
-
-
 
     options: ["Nehemias", "Esdras", "Zorobabel", "Ageo"],
 
-
-
     correct: 2, reference: "Esdras 3:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 916, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos anos duro el cautiverio babilonico?",
-
-
 
     options: ["70", "50", "100", "40"],
 
-
-
     correct: 0, reference: "Jeremias 25:11-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 917, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que reina intento destruir la descendencia real de Juda?",
-
-
 
     options: ["Vasti", "Atalia", "Jezabel", "Ester"],
 
-
-
     correct: 1, reference: "2 Reyes 11:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 918, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que profeta confronto a los profetas de Baal en el Carmelo?",
-
-
 
     options: ["Eliseo", "Elias", "Isaias", "Amos"],
 
-
-
     correct: 1, reference: "1 Reyes 18:20-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 919, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien financio la reconstruccion del templo segun Esdras?",
-
-
 
     options: ["Artajerjes", "Dario", "Nabucodonosor", "Ciro"],
 
-
-
     correct: 3, reference: "Esdras 1:1-4; 6:3-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 920, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantas piedras tomo Josue del Jordan como memorial?",
-
-
 
     options: ["24", "10", "7", "12"],
 
-
-
     correct: 3, reference: "Josue 4:1-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 921, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que evento provoco la dispersion de lenguas?",
-
-
 
     options: ["El exodo", "La torre de Babel", "El diluvio", "La conquista"],
 
-
-
     correct: 1, reference: "Genesis 11:7-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 922, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien fue el ultimo juez antes de la monarquia?",
-
-
 
     options: ["Gedeon", "Sanson", "Eli", "Samuel"],
 
-
-
     correct: 3, reference: "1 Samuel 7:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 923, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que hizo Rajab con el cordon escarlata?",
-
-
 
     options: ["Se lo dio a los espias", "Lo ato en su mano", "Lo colgo de la ventana", "Lo enterro"],
 
-
-
     correct: 2, reference: "Josue 2:18-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 924, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos espias dieron un informe negativo?",
-
-
 
     options: ["12", "2", "8", "10"],
 
-
-
     correct: 3, reference: "Numeros 13:31-33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 925, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que rey de Moab oprimio a Israel 18 anos?",
-
-
 
     options: ["Og", "Eglon", "Sehon", "Balac"],
 
-
-
     correct: 1, reference: "Jueces 3:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 926, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien mato al rey Eglon?",
-
-
 
     options: ["Gedeon", "Aod", "Otoniel", "Samgar"],
 
-
-
     correct: 1, reference: "Jueces 3:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 927, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que acontecio en el monte Carmelo?",
-
-
 
     options: ["Jesus fue tentado", "Moises recibio la ley", "Abraham sacrifico", "Elias desafio a Baal"],
 
-
-
     correct: 3, reference: "1 Reyes 18:20-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 928, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos hombres lucharon contra Sisara bajo Debora?",
-
-
 
     options: ["5,000", "10,000", "20,000", "30,000"],
 
-
-
     correct: 1, reference: "Jueces 4:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 929, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que mujer mato a Sisara con una estaca?",
-
-
 
     options: ["Rut", "Debora", "Jael", "Rahab"],
 
-
-
     correct: 2, reference: "Jueces 4:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 930, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos anos de paz hubo tras la victoria de Debora?",
-
-
 
     options: ["80", "40", "20", "60"],
 
-
-
     correct: 1, reference: "Jueces 5:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 931, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que pecado provoco el diluvio?",
-
-
 
     options: ["Desobediencia alimentaria", "Violencia y maldad generalizada", "Blasfemia", "Idolatria"],
 
-
-
     correct: 1, reference: "Genesis 6:5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 932, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantas personas se salvaron en el arca?",
-
-
 
     options: ["4", "12", "6", "8"],
 
-
-
     correct: 3, reference: "1 Pedro 3:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 933, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que senal dio Dios despues del diluvio?",
-
-
 
     options: ["Un arcoiris", "Un terremoto", "Una paloma", "Una estrella"],
 
-
-
     correct: 0, reference: "Genesis 9:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 934, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿A que edad murio Moises?",
-
-
 
     options: ["130", "110", "100", "120"],
 
-
-
     correct: 3, reference: "Deuteronomio 34:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 935, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Donde murio Moises?",
-
-
 
     options: ["Sinai", "Monte Nebo", "Jerico", "Jordan"],
 
-
-
     correct: 1, reference: "Deuteronomio 34:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 936, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que hizo Josue tras cruzar el Jordan?",
-
-
 
     options: ["Oro en el monte", "Ataco Jerico", "Construyo un altar", "Circuncido al pueblo"],
 
-
-
     correct: 3, reference: "Josue 5:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 937, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que tribu no recibio herencia territorial?",
-
-
 
     options: ["Juda", "Simeon", "Benjamin", "Levi"],
 
-
-
     correct: 3, reference: "Josue 13:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 938, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que imperio conquisto Babilonia?",
-
-
 
     options: ["Griego", "Asirio", "Medo-Persa", "Romano"],
 
-
-
     correct: 2, reference: "Daniel 5:28-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 939, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien leyo la ley al pueblo tras el regreso del exilio?",
-
-
 
     options: ["Esdras", "Ageo", "Zorobabel", "Nehemias"],
 
-
-
     correct: 0, reference: "Nehemias 8:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 940, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que conspiracion frustro Ester?",
-
-
 
     options: ["Asesinato de Ciro", "Destruccion de Jerusalen", "Rebelion contra Persia", "Exterminio de los judios"],
 
-
-
     correct: 3, reference: "Ester 7:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 941, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Quien planeo el exterminio de los judios en Persia?",
-
-
 
     options: ["Aman", "Dario", "Mardoqueo", "Asuero"],
 
-
-
     correct: 0, reference: "Ester 3:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 942, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que fiesta celebra la liberacion narrada en Ester?",
-
-
 
     options: ["Purim", "Tabernaculos", "Pentecostes", "Pascua"],
 
-
-
     correct: 0, reference: "Ester 9:26-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 943, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos dias ayuno Ester antes de ir ante el rey?",
-
-
 
     options: ["40", "1", "7", "3"],
 
-
-
     correct: 3, reference: "Ester 4:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 944, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que sucedio en el dia de Pentecostes segun Hechos?",
-
-
 
     options: ["Terremoto", "Lenguas de fuego y Espiritu Santo", "Transfiguracion", "Ascension"],
 
-
-
     correct: 1, reference: "Hechos 2:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 945, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Cuantos se convirtieron en el primer sermon de Pedro?",
-
-
 
     options: ["3,000", "1,000", "5,000", "500"],
 
-
-
     correct: 0, reference: "Hechos 2:41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 946, difficulty: "dificil", category: "historias",
 
-
-
     question: "¿Que persecucion disperso a la iglesia primitiva?",
-
-
 
     options: ["Tras la muerte de Esteban", "De Pilato", "De Neron", "De Herodes"],
 
-
-
     correct: 0, reference: "Hechos 8:1"
 
-
-
   },
-
-
 
   // --- Vida de Jesus Dificil (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 1500, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos dias ayuno Jesus en el desierto antes de ser tentado por Satanas?",
-
-
 
     options: ["50 dias", "40 dias", "7 dias", "30 dias"],
 
-
-
     correct: 1, reference: "Mateo 4:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1501, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿A que edad fue encontrado Jesus ensenando en el templo de Jerusalen?",
-
-
 
     options: ["12 anos", "14 anos", "10 anos", "16 anos"],
 
-
-
     correct: 0, reference: "Lucas 2:42-46"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1502, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que rio fue bautizado Jesus por Juan el Bautista?",
-
-
 
     options: ["Jordan", "Nilo", "Eufrates", "Cedron"],
 
-
-
     correct: 0, reference: "Mateo 3:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1503, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cual fue la primera tentacion que Satanas le hizo a Jesus en el desierto?",
-
-
 
     options: ["Convertir piedras en pan", "Tirarse del templo", "Dominar los reinos", "Adorar a Satanas"],
 
-
-
     correct: 0, reference: "Mateo 4:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1504, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad Jesus realizo su primer milagro convirtiendo agua en vino?",
-
-
 
     options: ["Capernaum", "Cana de Galilea", "Nazaret", "Betania"],
 
-
-
     correct: 1, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1505, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que profeta del Antiguo Testamento profetizo que Jesus naceria en Belen?",
-
-
 
     options: ["Oseas", "Isaias", "Miqueas", "Jeremias"],
 
-
-
     correct: 2, reference: "Miqueas 5:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1506, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿A que discipulo le dijo Jesus 'sobre esta roca edificare mi iglesia'?",
-
-
 
     options: ["Juan", "Andres", "Santiago", "Pedro"],
 
-
-
     correct: 3, reference: "Mateo 16:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1507, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que monte subio Jesus para la Transfiguracion segun la tradicion?",
-
-
 
     options: ["Monte Carmelo", "Monte Tabor", "Monte de los Olivos", "Monte Sinai"],
 
-
-
     correct: 1, reference: "Mateo 17:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1508, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Con quienes hablo Jesus durante la Transfiguracion?",
-
-
 
     options: ["Moises y Abraham", "Samuel y Elias", "Moises y Elias", "Abraham y David"],
 
-
-
     correct: 2, reference: "Mateo 17:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1509, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantas veces nego Pedro a Jesus antes de que cantara el gallo?",
-
-
 
     options: ["Dos veces", "Cuatro veces", "Una vez", "Tres veces"],
 
-
-
     correct: 3, reference: "Mateo 26:34, 69-75"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1510, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantas piezas de plata recibio Judas por traicionar a Jesus?",
-
-
 
     options: ["20", "40", "25", "30"],
 
-
-
     correct: 3, reference: "Mateo 26:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1511, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que jardin oro Jesus antes de ser arrestado?",
-
-
 
     options: ["Eden", "Jardin del Rey", "Huerto de Salomon", "Getsemani"],
 
-
-
     correct: 3, reference: "Mateo 26:36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1512, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que gobernador romano se lavo las manos declarandose inocente de la sangre de Jesus?",
-
-
 
     options: ["Felix", "Pilato", "Herodes", "Festo"],
 
-
-
     correct: 1, reference: "Mateo 27:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1513, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Quien ayudo a Jesus a cargar la cruz camino al Calvario?",
-
-
 
     options: ["Jose de Arimatea", "Nicodemo", "Bartolome", "Simon de Cirene"],
 
-
-
     correct: 3, reference: "Mateo 27:32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1514, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que lugar especifico fue crucificado Jesus?",
-
-
 
     options: ["Monte de los Olivos", "Monte Carmelo", "Golgota (Calvario)", "Monte Sinai"],
 
-
-
     correct: 2, reference: "Mateo 27:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1515, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos dias despues de su resurreccion ascendio Jesus al cielo?",
-
-
 
     options: ["40 dias", "7 dias", "50 dias", "3 dias"],
 
-
-
     correct: 0, reference: "Hechos 1:3, 9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1516, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que dijo Jesus desde la cruz que cumplio la profecia del Salmo 22?",
-
-
 
     options: ["Todo esta consumado", "Tengo sed", "Padre, perdonalos", "Dios mio, Dios mio, ?por que me has desamparado?"],
 
-
-
     correct: 3, reference: "Mateo 27:46"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1517, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿A que ciudad iban los dos discipulos cuando Jesus resucitado camino con ellos?",
-
-
 
     options: ["Emaus", "Nazaret", "Betania", "Jerico"],
 
-
-
     correct: 0, reference: "Lucas 24:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1518, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo pidio ver las marcas de los clavos para creer en la resurreccion?",
-
-
 
     options: ["Pedro", "Tomas", "Andres", "Felipe"],
 
-
-
     correct: 1, reference: "Juan 20:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1519, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que nombre profetico de Jesus significa 'Dios con nosotros'?",
-
-
 
     options: ["Admirable", "Emanuel", "Consejero", "Mesias"],
 
-
-
     correct: 1, reference: "Mateo 1:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1520, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿A que pais huyo la familia de Jesus para escapar de Herodes?",
-
-
 
     options: ["Persia", "Egipto", "Babilonia", "Siria"],
 
-
-
     correct: 1, reference: "Mateo 2:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1521, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que parabola cuenta sobre un hombre que sembro buena semilla pero su enemigo sembro cizana?",
-
-
 
     options: ["El trigo y la cizana", "Los labradores malvados", "La semilla de mostaza", "El sembrador"],
 
-
-
     correct: 0, reference: "Mateo 13:24-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1522, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos canastos sobraron tras la alimentacion de los cinco mil?",
-
-
 
     options: ["12", "10", "7", "5"],
 
-
-
     correct: 0, reference: "Mateo 14:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1523, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que impuesto pago Jesus con una moneda encontrada en la boca de un pez?",
-
-
 
     options: ["Tributo a Cesar", "Impuesto romano", "Diezmo del templo", "El impuesto del templo (didracma)"],
 
-
-
     correct: 3, reference: "Mateo 17:24-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1524, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantas veces dijo Jesus que debemos perdonar a nuestro hermano?",
-
-
 
     options: ["7 veces", "70 veces 7", "100 veces", "49 veces"],
 
-
-
     correct: 1, reference: "Mateo 18:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1525, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que mujer ungio los pies de Jesus con perfume costoso y los seco con su cabello?",
-
-
 
     options: ["Maria de Betania", "Marta", "La mujer samaritana", "Maria Magdalena"],
 
-
-
     correct: 0, reference: "Juan 12:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1526, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que arbol maldijo Jesus porque no tenia fruto?",
-
-
 
     options: ["Un sicomoro", "Una vid", "Un olivo", "Una higuera"],
 
-
-
     correct: 3, reference: "Marcos 11:13-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1527, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que rito establecio Jesus durante la ultima Cena?",
-
-
 
     options: ["La ofrenda", "La Santa Cena (Eucaristia)", "El lavamiento de pies", "El bautismo"],
 
-
-
     correct: 1, reference: "Lucas 22:19-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1528, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que Evangelio Jesus lava los pies de sus discipulos?",
-
-
 
     options: ["Mateo", "Lucas", "Juan", "Marcos"],
 
-
-
     correct: 2, reference: "Juan 13:4-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1529, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿A quien dijo Jesus 'De cierto te digo que hoy estaras conmigo en el paraiso'?",
-
-
 
     options: ["A Juan", "A su madre Maria", "Al ladron arrepentido", "A Pedro"],
 
-
-
     correct: 2, reference: "Lucas 23:43"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1530, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Quien pidio el cuerpo de Jesus a Pilato para sepultarlo?",
-
-
 
     options: ["Juan", "Pedro", "Nicodemo", "Jose de Arimatea"],
 
-
-
     correct: 3, reference: "Mateo 27:57-58"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1531, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que profecia de Isaias habla del siervo sufriente que fue herido por nuestras rebeliones?",
-
-
 
     options: ["Isaias 53:5", "Isaias 7:14", "Isaias 40:3", "Isaias 9:6"],
 
-
-
     correct: 0, reference: "Isaias 53:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1532, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cual fue el primer mandamiento segun Jesus cuando se lo preguntaron?",
-
-
 
     options: ["No robaras", "No mataras", "Honra a tu padre y madre", "Amaras al Senor tu Dios con todo tu corazon"],
 
-
-
     correct: 3, reference: "Marcos 12:29-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1533, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que le dijo Jesus a Nicodemo sobre nacer de nuevo?",
-
-
 
     options: ["Que debia guardar la ley", "Que debia bautizarse solamente", "Que debia hacer buenas obras", "Que debia nacer del agua y del Espiritu"],
 
-
-
     correct: 3, reference: "Juan 3:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1534, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad vivio Jesus la mayor parte de su ministerio publico?",
-
-
 
     options: ["Capernaum", "Jerusalen", "Betania", "Nazaret"],
 
-
-
     correct: 0, reference: "Mateo 4:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1535, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que pregunto Pilato a la multitud sobre Jesus y Barrabas?",
-
-
 
     options: ["?Lo conozco acaso?", "?Que mal ha hecho?", "?A cual de los dos quereis que os suelte?", "?Es este el rey de los judios?"],
 
-
-
     correct: 2, reference: "Mateo 27:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1536, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que senal se produjo en el templo cuando Jesus murio en la cruz?",
-
-
 
     options: ["Se derrumbo el altar", "Las puertas se abrieron solas", "El velo del templo se rasgo en dos", "Cayo fuego del cielo"],
 
-
-
     correct: 2, reference: "Mateo 27:51"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1537, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantos discipulos estaban presentes en la Transfiguracion de Jesus?",
-
-
 
     options: ["4", "2", "3", "12"],
 
-
-
     correct: 2, reference: "Mateo 17:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1538, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que parabola ensena sobre diez virgenes esperando al esposo?",
-
-
 
     options: ["Las diez virgenes", "Los talentos", "Las diez minas", "La red"],
 
-
-
     correct: 0, reference: "Mateo 25:1-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1539, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿A que mujer gentil le dijo Jesus que su fe era grande al sanar a su hija?",
-
-
 
     options: ["La mujer samaritana", "Marta de Betania", "Maria Magdalena", "La mujer cananea (sirofenicia)"],
 
-
-
     correct: 3, reference: "Mateo 15:22-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1540, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que declaro Jesus ser en Juan 6:35?",
-
-
 
     options: ["La luz del mundo", "La puerta", "El camino", "El pan de vida"],
 
-
-
     correct: 3, reference: "Juan 6:35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1541, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿En que lugar predico Jesus el Sermon del Monte?",
-
-
 
     options: ["Junto al mar de Galilea", "En Jerusalen", "En un monte cerca de Capernaum", "En el templo"],
 
-
-
     correct: 2, reference: "Mateo 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1542, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo camino sobre el agua hacia Jesus pero comenzo a hundirse?",
-
-
 
     options: ["Juan", "Pedro", "Andres", "Santiago"],
 
-
-
     correct: 1, reference: "Mateo 14:29-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1543, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que profecia de Zacarias se cumplio cuando Jesus entro en Jerusalen montado en un burro?",
-
-
 
     options: ["Zacarias 9:9", "Zacarias 14:4", "Zacarias 12:10", "Zacarias 11:12"],
 
-
-
     correct: 0, reference: "Zacarias 9:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1544, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que le dijo Jesus a la mujer samaritana junto al pozo de Jacob?",
-
-
 
     options: ["Que le diera de beber", "Que lo siguiera", "Que le diera limosna", "Que fuera al templo"],
 
-
-
     correct: 0, reference: "Juan 4:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1545, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que dijo Jesus que representaba el pan en la ultima Cena?",
-
-
 
     options: ["El mana del cielo", "La ley de Moises", "La Palabra de Dios", "Su cuerpo"],
 
-
-
     correct: 3, reference: "Lucas 22:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1546, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cual de los Evangelios narra la visita de los magos de oriente al nino Jesus?",
-
-
 
     options: ["Mateo", "Juan", "Lucas", "Marcos"],
 
-
-
     correct: 0, reference: "Mateo 2:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1547, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que dijo Jesus a sus discipulos que seria la senal de su segunda venida?",
-
-
 
     options: ["Todas las anteriores", "Sol oscurecido y estrellas cayendo", "El Hijo del Hombre viniendo en las nubes", "Terremotos y hambres"],
 
-
-
     correct: 0, reference: "Mateo 24:29-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1548, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Quien era el sumo sacerdote que interrogo a Jesus la noche de su arresto?",
-
-
 
     options: ["Aaron", "Zacarias", "Anas", "Caifas"],
 
-
-
     correct: 3, reference: "Mateo 26:57"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1549, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Que declaracion 'Yo soy' hizo Jesus en Juan 11:25?",
-
-
 
     options: ["Yo soy la vid verdadera", "Yo soy la resurreccion y la vida", "Yo soy el camino, la verdad y la vida", "Yo soy el buen pastor"],
 
-
-
     correct: 1, reference: "Juan 11:25"
-
-
 
   },
 
-
-
   // --- Milagros ---
 
-
-
   {
-
-
 
     id: 1700, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos panes y peces uso Jesus para alimentar a los 4,000?",
-
-
 
     options: ["7 panes y unos pocos peces", "10 panes y 3 peces", "5 panes y 2 peces", "3 panes y 5 peces"],
 
-
-
     correct: 0, reference: "Mateo 15:34-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1701, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantas canastas sobraron despues de alimentar a los 5,000?",
-
-
 
     options: ["7 canastas", "5 canastas", "12 cestas", "3 cestas"],
 
-
-
     correct: 2, reference: "Mateo 14:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1702, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que tipo de canastas sobraron tras alimentar a los 4,000 a diferencia de los 5,000?",
-
-
 
     options: ["Canastas grandes (spyris)", "Sacos de tela", "Odres de cuero", "Cestas pequenas (kophinos)"],
 
-
-
     correct: 0, reference: "Mateo 15:37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1703, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que hizo Jesus antes de sanar al sordomudo en Decapolis?",
-
-
 
     options: ["Oro en voz alta", "Le impuso las manos", "Le dijo que se lavara en el Jordan", "Metio sus dedos en los oidos del hombre y toco su lengua con saliva"],
 
-
-
     correct: 3, reference: "Marcos 7:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1704, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que palabra aramea dijo Jesus al sanar al sordomudo?",
-
-
 
     options: ["Raboni", "Talita cumi", "Eli, Eli", "Efata"],
 
-
-
     correct: 3, reference: "Marcos 7:34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1705, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿En que ciudad Eliseo sano las aguas echando sal en el manantial?",
-
-
 
     options: ["Gilgal", "Betel", "Samaria", "Jerico"],
 
-
-
     correct: 3, reference: "2 Reyes 2:19-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1706, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que sucedio cuando el cadaver de un hombre toco los huesos de Eliseo?",
-
-
 
     options: ["Se convirtio en polvo", "Fue consumido por fuego", "Se preservo sin corrupcion", "Resucito"],
 
-
-
     correct: 3, reference: "2 Reyes 13:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1707, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantas veces se zambullo Naaman en el Jordan para ser sanado de lepra?",
-
-
 
     options: ["3 veces", "7 veces", "5 veces", "12 veces"],
 
-
-
     correct: 1, reference: "2 Reyes 5:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1708, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que profeta le indico a Naaman que se lavara en el Jordan?",
-
-
 
     options: ["Elias", "Eliseo", "Natan", "Isaias"],
 
-
-
     correct: 1, reference: "2 Reyes 5:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1709, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que le sucedio a Giezi, el siervo de Eliseo, por su codicia con Naaman?",
-
-
 
     options: ["Se volvio leproso", "Fue desterrado", "Murio instantaneamente", "Quedo ciego"],
 
-
-
     correct: 0, reference: "2 Reyes 5:27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1710, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que uso Eliseo para purificar la olla de comida envenenada?",
-
-
 
     options: ["Harina", "Agua del Jordan", "Aceite", "Sal"],
 
-
-
     correct: 0, reference: "2 Reyes 4:41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1711, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantas veces estornudo el hijo de la sunamita al ser resucitado por Eliseo?",
-
-
 
     options: ["5 veces", "No estornudo", "3 veces", "7 veces"],
 
-
-
     correct: 3, reference: "2 Reyes 4:35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1712, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿En que estanque Jesus sano al paralitico que habia estado enfermo 38 anos?",
-
-
 
     options: ["Betesda", "El estanque del rey", "Siloe", "Gihon"],
 
-
-
     correct: 0, reference: "Juan 5:2-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1713, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos anos llevaba enfermo el paralitico del estanque de Betesda?",
-
-
 
     options: ["18 anos", "40 anos", "12 anos", "38 anos"],
 
-
-
     correct: 3, reference: "Juan 5:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1714, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que hizo Jesus con barro para sanar al ciego de nacimiento?",
-
-
 
     options: ["Lo puso en sus oidos", "Lo aplico en su frente", "Lo puso en sus ojos y le dijo que se lavara en Siloe", "Lo froto en sus manos"],
 
-
-
     correct: 2, reference: "Juan 9:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1715, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿En que piscina debia lavarse el ciego de nacimiento sanado por Jesus?",
-
-
 
     options: ["Siloe", "Betesda", "Gihon", "El estanque superior"],
 
-
-
     correct: 0, reference: "Juan 9:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1716, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos dias llevaba muerto Lazaro cuando Jesus llego a Betania?",
-
-
 
     options: ["2 dias", "7 dias", "4 dias", "3 dias"],
 
-
-
     correct: 2, reference: "Juan 11:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1717, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cual fue la primera senal milagrosa de Jesus segun el Evangelio de Juan?",
-
-
 
     options: ["Convertir el agua en vino", "La pesca milagrosa", "Sanar al hijo de un noble", "Caminar sobre el agua"],
 
-
-
     correct: 0, reference: "Juan 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1718, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿En que boda realizo Jesus su primer milagro?",
-
-
 
     options: ["En Betania", "En Cana de Galilea", "En Nazaret", "En Jerusalen"],
 
-
-
     correct: 1, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1719, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantas tinajas de agua convirtio Jesus en vino en Cana?",
-
-
 
     options: ["6 tinajas", "4 tinajas", "12 tinajas", "7 tinajas"],
 
-
-
     correct: 0, reference: "Juan 2:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1720, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que capacidad tenia cada tinaja en las bodas de Cana?",
-
-
 
     options: ["De dos a tres cantaros", "De medio cantaro", "De cinco a diez cantaros", "De uno a tres cantaros"],
 
-
-
     correct: 0, reference: "Juan 2:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1721, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que apostol camino sobre el agua junto con Jesus?",
-
-
 
     options: ["Andres", "Santiago", "Pedro", "Juan"],
 
-
-
     correct: 2, reference: "Mateo 14:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1722, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que pidio Pedro a Jesus antes de caminar sobre el agua?",
-
-
 
     options: ["Que le mandara ir sobre las aguas", "Que le diera fe", "Que calmara la tormenta", "Que lo salvara"],
 
-
-
     correct: 0, reference: "Mateo 14:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1723, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que parte del cuerpo le corto Pedro al siervo del sumo sacerdote, y como respondio Jesus?",
-
-
 
     options: ["La oreja izquierda; la restituyo", "El brazo; lo vendo", "La oreja derecha; la sano", "La mano; la restauro"],
 
-
-
     correct: 2, reference: "Lucas 22:50-51"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1724, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Como se llamaba el siervo del sumo sacerdote cuya oreja corto Pedro?",
-
-
 
     options: ["Barrabas", "Nicodemo", "Cleofas", "Malco"],
 
-
-
     correct: 3, reference: "Juan 18:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1725, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos endemoniados gadarenos sano Jesus segun el Evangelio de Mateo?",
-
-
 
     options: ["Una multitud", "Tres", "Dos", "Uno"],
 
-
-
     correct: 2, reference: "Mateo 8:28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1726, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Como se llamaba la legion de demonios que poseia al endemoniado gadareno?",
-
-
 
     options: ["Legion", "Belcebu", "Belial", "Asmodeo"],
 
-
-
     correct: 0, reference: "Marcos 5:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1727, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿A donde pidieron los demonios de Legion que Jesus los enviara?",
-
-
 
     options: ["Al abismo", "Al mar", "A una piara de cerdos", "Al desierto"],
 
-
-
     correct: 2, reference: "Marcos 5:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1728, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos cerdos se ahogaron cuando los demonios entraron en ellos en Gadara?",
-
-
 
     options: ["Unos 1,000", "Unos 500", "Unos 2,000", "Unos 5,000"],
 
-
-
     correct: 2, reference: "Marcos 5:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1729, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos anos llevaba enferma la mujer con flujo de sangre que toco el manto de Jesus?",
-
-
 
     options: ["10 anos", "18 anos", "7 anos", "12 anos"],
 
-
-
     correct: 3, reference: "Marcos 5:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1730, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que parte del vestido de Jesus toco la mujer con flujo de sangre?",
-
-
 
     options: ["La manga", "El borde de su manto", "El hombro", "El cinturon"],
 
-
-
     correct: 1, reference: "Marcos 5:27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1731, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos leprosos sano Jesus de los cuales solo uno volvio a dar gracias?",
-
-
 
     options: ["7 leprosos", "10 leprosos", "5 leprosos", "12 leprosos"],
 
-
-
     correct: 1, reference: "Lucas 17:12-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1732, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿De que nacionalidad era el leproso que regreso a agradecer a Jesus?",
-
-
 
     options: ["Samaritano", "Judio", "Galileo", "Griego"],
 
-
-
     correct: 0, reference: "Lucas 17:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1733, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿En que ciudad Elias resucito al hijo de la viuda?",
-
-
 
     options: ["Jerico", "Jerusalen", "Betel", "Sarepta de Sidon"],
 
-
-
     correct: 3, reference: "1 Reyes 17:9-24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1734, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantas veces se tendio Elias sobre el hijo muerto de la viuda de Sarepta?",
-
-
 
     options: ["Dos veces", "Siete veces", "Una vez", "Tres veces"],
 
-
-
     correct: 3, reference: "1 Reyes 17:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1735, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que milagro realizo Eliseo con veinte panes de cebada?",
-
-
 
     options: ["Los preservo por un ano", "Los multiplico para todo Israel", "Los convirtio en trigo", "Alimento a cien hombres"],
 
-
-
     correct: 3, reference: "2 Reyes 4:42-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1736, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que instrumento uso Moises para endulzar las aguas amargas de Mara?",
-
-
 
     options: ["Una piedra", "Un arbol (madera)", "Sal", "Arena del desierto"],
 
-
-
     correct: 1, reference: "Exodo 15:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1737, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que le sucedio a la mano de Moises cuando la metio en su seno ante la zarza ardiente?",
-
-
 
     options: ["Brillo con luz", "Se volvio leprosa", "Se lleno de fuego", "Se seco"],
 
-
-
     correct: 1, reference: "Exodo 4:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1738, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que plaga de Egipto los magos de Faraon no pudieron imitar?",
-
-
 
     options: ["La sangre", "Los piojos", "Las moscas", "Las ranas"],
 
-
-
     correct: 1, reference: "Exodo 8:18-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1739, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cual fue la ultima plaga de Egipto antes de la muerte de los primogenitos?",
-
-
 
     options: ["ulceras", "Granizo", "Tinieblas", "Langostas"],
 
-
-
     correct: 2, reference: "Exodo 10:21-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1740, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Cuantos dias duraron las tinieblas sobre Egipto en la novena plaga?",
-
-
 
     options: ["1 dia", "7 dias", "3 dias", "40 dias"],
 
-
-
     correct: 2, reference: "Exodo 10:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1741, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Quien fue resucitado por el apostol Pedro en Jope?",
-
-
 
     options: ["Dorcas (Tabita)", "Priscila", "Rode", "Lidia"],
 
-
-
     correct: 0, reference: "Hechos 9:36-41"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1742, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que joven cayo de una ventana y murio mientras Pablo predicaba, pero fue resucitado?",
-
-
 
     options: ["Eutico", "Tito", "Bernabe", "Timoteo"],
 
-
-
     correct: 0, reference: "Hechos 20:9-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1743, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Desde que piso cayo Eutico mientras Pablo predicaba en Troas?",
-
-
 
     options: ["El cuarto piso", "El techo", "El segundo piso", "El tercer piso"],
 
-
-
     correct: 3, reference: "Hechos 20:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1744, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que milagro realizo la vara de Aaron ante Faraon?",
-
-
 
     options: ["Produjo fuego", "Se convirtio en serpiente", "Florecio", "Broto agua"],
 
-
-
     correct: 1, reference: "Exodo 7:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1745, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que produjo la vara de Aaron al florecer en el tabernaculo?",
-
-
 
     options: ["Almendras", "Higos", "Rosas", "Lirios"],
 
-
-
     correct: 0, reference: "Numeros 17:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1746, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que le sucedio al altar cuando el profeta de Juda profetizo contra Jeroboam?",
-
-
 
     options: ["Se derrumbo completamente", "Se incendio", "Se partio y la ceniza se derramo", "Temblo"],
 
-
-
     correct: 2, reference: "1 Reyes 13:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1747, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que le paso a la mano de Jeroboam cuando la extendio contra el profeta de Juda?",
-
-
 
     options: ["Se seco", "Se quemo", "Se lleno de lepra", "Fue cortada"],
 
-
-
     correct: 0, reference: "1 Reyes 13:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1748, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿A que hijo de la sunamita resucito Eliseo y que envio primero?",
-
-
 
     options: ["A su hija; envio aceite", "A su esposo; envio agua", "A su sobrino; envio pan", "A su hijo; envio su baculo con Giezi"],
 
-
-
     correct: 3, reference: "2 Reyes 4:29-35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1749, difficulty: "dificil", category: "milagros",
 
-
-
     question: "¿Que animal mordio a Pablo en la isla de Malta sin causarle dano?",
-
-
 
     options: ["Una arana", "Un escorpion", "Un aspid", "Una vibora"],
 
-
-
     correct: 3, reference: "Hechos 28:3-6"
 
-
-
   },
-
-
 
   // ===================== EXPERTO =====================
 
-
-
   // --- Libros Experto (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 400, difficulty: "experto", category: "libros",
 
-
-
-    question: "¿En que libro se presenta por primera vez el concepto del 'Redentor' (Goel)?",
-
-
+    question: "¿En que libro se desarrolla claramente el concepto del 'Redentor' (Goel)?",
 
     options: ["Job", "Genesis", "Isaias", "Rut"],
 
-
-
     correct: 3, reference: "Rut 3:9-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 401, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro conecta el pacto abrahamico con la ley mosaica?",
-
-
 
     options: ["Exodo", "Hebreos", "Galatas", "Romanos"],
 
-
-
     correct: 2, reference: "Galatas 3:15-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 402, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se revela progresivamente el concepto de resurreccion corporal?",
-
-
 
     options: ["Job", "Salmos", "Daniel", "Isaias"],
 
-
-
     correct: 2, reference: "Daniel 12:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 403, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta el primer 'tipo' claro de sacrificio sustitutorio?",
-
-
 
     options: ["Hebreos", "Exodo", "Levitico", "Genesis"],
 
-
-
     correct: 3, reference: "Genesis 22:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 404, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se desarrolla la teologia del 'remanente fiel'?",
-
-
 
     options: ["Isaias", "Amos", "Joel", "Nahum"],
 
-
-
     correct: 0, reference: "Isaias 10:20-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 405, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro une sacerdocio y realeza en una sola figura?",
-
-
 
     options: ["Hebreos", "Daniel", "Zacarias", "Salmos"],
 
-
-
     correct: 0, reference: "Hebreos 7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 406, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se establece el patron biblico del pacto matrimonial?",
-
-
 
     options: ["Cantares", "Rut", "Proverbios", "Genesis"],
 
-
-
     correct: 3, reference: "Genesis 2:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 407, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro contiene el himno cristologico mas antiguo registrado?",
-
-
 
     options: ["Filipenses", "Hebreos", "Romanos", "Colosenses"],
 
-
-
     correct: 0, reference: "Filipenses 2:5-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 408, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se formula con mayor claridad la doctrina de la expiacion?",
-
-
 
     options: ["Galatas", "Hebreos", "Isaias", "Romanos"],
 
-
-
     correct: 3, reference: "Romanos 3:21-26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 409, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta a Cristo como cumplimiento del sistema levitico?",
-
-
 
     options: ["Hebreos", "Efesios", "Tito", "Galatas"],
 
-
-
     correct: 0, reference: "Hebreos 9-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 410, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro aparece el concepto de 'nuevo corazon'?",
-
-
 
     options: ["Ezequiel", "Isaias", "Daniel", "Jeremias"],
 
-
-
     correct: 0, reference: "Ezequiel 36:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 411, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro muestra el conflicto entre soberania divina y libre albedrio?",
-
-
 
     options: ["Salmos", "Proverbios", "Job", "Eclesiastes"],
 
-
-
     correct: 2, reference: "Job 1-2; 38-42"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 412, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se anticipa el Nuevo Pacto con mayor detalle?",
-
-
 
     options: ["Isaias", "Oseas", "Daniel", "Jeremias"],
 
-
-
     correct: 3, reference: "Jeremias 31:31-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 413, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta la teologia del 'siervo sufriente' como figura mesianica?",
-
-
 
     options: ["Zacarias", "Isaias", "Salmos", "Malaquias"],
 
-
-
     correct: 1, reference: "Isaias 52:13-53:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 414, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se desarrolla el concepto de 'sabiduria personificada'?",
-
-
 
     options: ["Eclesiastes", "Proverbios", "Job", "Salmos"],
 
-
-
     correct: 1, reference: "Proverbios 8:22-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 415, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro confronta directamente el problema del sufrimiento justo?",
-
-
 
     options: ["Job", "Lamentaciones", "Eclesiastes", "Salmos"],
 
-
-
     correct: 0, reference: "Job"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 416, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se revela la union mistica entre Cristo y la Iglesia?",
-
-
 
     options: ["Romanos", "Colosenses", "Efesios", "Hebreos"],
 
-
-
     correct: 2, reference: "Efesios 5:25-32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 417, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro conecta la creacion original con la nueva creacion?",
-
-
 
     options: ["Romanos", "Isaias", "Hebreos", "Apocalipsis"],
 
-
-
     correct: 3, reference: "Apocalipsis 21:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 418, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se expone la doctrina de la justificacion forense?",
-
-
 
     options: ["Romanos", "Tito", "Efesios", "Galatas"],
 
-
-
     correct: 0, reference: "Romanos 3:21-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 419, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro desarrolla el concepto del 'misterio revelado'?",
-
-
 
     options: ["Colosenses", "Filipenses", "Efesios", "Filemon"],
 
-
-
     correct: 2, reference: "Efesios 3:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 420, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se presenta la tipologia del segundo Adan?",
-
-
 
     options: ["Hebreos", "Romanos", "Galatas", "1 Corintios"],
 
-
-
     correct: 3, reference: "1 Corintios 15:45"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 421, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro muestra la relacion entre ley, gracia y fe?",
-
-
 
     options: ["Galatas", "Hebreos", "Judas", "Tito"],
 
-
-
     correct: 0, reference: "Galatas 3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 422, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se formula una escatologia sistematica?",
-
-
 
     options: ["Daniel", "Apocalipsis", "Joel", "Isaias"],
 
-
-
     correct: 1, reference: "Apocalipsis"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 423, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta el Reino de Dios en parabolas progresivas?",
-
-
 
     options: ["Juan", "Marcos", "Lucas", "Mateo"],
 
-
-
     correct: 3, reference: "Mateo 13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 424, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se enfatiza la etica del Reino?",
-
-
 
     options: ["Mateo", "Juan", "Marcos", "Lucas"],
 
-
-
     correct: 0, reference: "Mateo 5-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 425, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta la alta cristologia mas explicita?",
 
-
-
     options: ["Juan", "Mateo", "Marcos", "Lucas"],
-
-
 
     correct: 0, reference: "Juan 1:1-18"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 426, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se revela la identidad mesianica por senales?",
-
-
 
     options: ["Marcos", "Lucas", "Mateo", "Juan"],
 
-
-
     correct: 3, reference: "Juan 20:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 427, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro conecta Pentecostes con Joel?",
-
-
 
     options: ["Hechos", "Galatas", "Hebreos", "Romanos"],
 
-
-
     correct: 0, reference: "Hechos 2:16-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 428, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se sistematiza la doctrina del Espiritu Santo?",
-
-
 
     options: ["Romanos", "Juan", "Hechos", "Galatas"],
 
-
-
     correct: 0, reference: "Romanos 8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 429, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro desarrolla la perseverancia de los santos?",
-
-
 
     options: ["Filemon", "Judas", "Hebreos", "Tito"],
 
-
-
     correct: 2, reference: "Hebreos 6; 10:26-39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 430, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se presenta la teologia del exilio espiritual?",
-
-
 
     options: ["Isaias", "Jeremias", "Lamentaciones", "1 Pedro"],
 
-
-
     correct: 3, reference: "1 Pedro 1:1; 2:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 432, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se articula la mision a los gentiles?",
-
-
 
     options: ["Hechos", "Mateo", "Romanos", "Juan"],
 
-
-
     correct: 0, reference: "Hechos 13:46-47"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 433, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro desarrolla el liderazgo apostolico pastoral?",
-
-
 
     options: ["1 Timoteo", "Hebreos", "Pedro", "Judas"],
 
-
-
     correct: 0, reference: "1 Timoteo 3"
 
-
-
   },
 
-
-
   {
-
-
-
-    id: 434, difficulty: "experto", category: "libros",
-
-
-
-    question: "¿En que libro se muestra la intercesion celestial de Cristo?",
-
-
-
-    options: ["Romanos", "Juan", "Hebreos", "Pedro"],
-
-
-
-    correct: 2, reference: "Hebreos 7:25"
-
-
-
-  },
-
-
-
-  {
-
-
 
     id: 435, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta la escatologia inaugurada ('ya, pero todavia no')?",
-
-
 
     options: ["Romanos", "Tito", "Hebreos", "1 Corintios"],
 
-
-
-    correct: 3, reference: "1 Corintios 15:20-28"
-
-
+    correct: 0, reference: "Romanos 8:23-25"
 
   },
 
-
-
   {
-
-
 
     id: 436, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se describe la apostasia final con detalle?",
-
-
 
     options: ["Tito", "Judas", "Filemon", "2 Tesalonicenses"],
 
-
-
     correct: 3, reference: "2 Tesalonicenses 2:1-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 437, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro conecta creacion, caida y redencion en poesia?",
-
-
 
     options: ["Salmos", "Eclesiastes", "Proverbios", "Job"],
 
-
-
     correct: 0, reference: "Salmos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 438, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se presenta la teologia del pacto eterno?",
-
-
 
     options: ["Hebreos", "Isaias", "Daniel", "Joel"],
 
-
-
     correct: 0, reference: "Hebreos 13:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 439, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro articula la esperanza escatologica comunitaria?",
-
-
 
     options: ["Tito", "1 Tesalonicenses", "Pedro", "Judas"],
 
-
-
     correct: 1, reference: "1 Tesalonicenses 4:13-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 440, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se define la santificacion progresiva?",
-
-
 
     options: ["Hebreos", "Romanos", "1 Tesalonicenses", "Pedro"],
 
-
-
     correct: 2, reference: "1 Tesalonicenses 4:3-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 441, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta la teologia del discipulado radical?",
-
-
 
     options: ["Marcos", "Mateo", "Lucas", "Juan"],
 
-
-
     correct: 0, reference: "Marcos 8:34-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 442, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se conecta la fe con obras en equilibrio?",
-
-
 
     options: ["Romanos", "Santiago", "Judas", "Hebreos"],
 
-
-
     correct: 1, reference: "Santiago 2:14-26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 443, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro muestra la autoridad apostolica defendida?",
-
-
 
     options: ["Efesios", "Pedro", "2 Corintios", "Tito"],
 
-
-
     correct: 2, reference: "2 Corintios 10-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 444, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se articula la comunion trinitaria?",
-
-
 
     options: ["Hebreos", "Mateo", "Romanos", "Juan"],
 
-
-
     correct: 3, reference: "Juan 14-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 445, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro presenta el testimonio triple: Espiritu, agua y sangre?",
-
-
 
     options: ["1 Juan", "Pedro", "Judas", "Tito"],
 
-
-
     correct: 0, reference: "1 Juan 5:7-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 446, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro se expone la teologia del amor perfecto?",
-
-
 
     options: ["1 Juan", "Pedro", "Romanos", "Hebreos"],
 
-
-
     correct: 0, reference: "1 Juan 4:7-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 447, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro conecta angeles, juicio y apostasia?",
-
-
 
     options: ["Judas", "Pedro", "Tito", "Filemon"],
 
-
-
     correct: 0, reference: "Judas 1:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 448, difficulty: "experto", category: "libros",
 
-
-
     question: "¿En que libro culmina la narrativa biblica de redencion?",
-
-
 
     options: ["Hebreos", "Daniel", "Apocalipsis", "Isaias"],
 
-
-
     correct: 2, reference: "Apocalipsis 21-22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 449, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro une Genesis, Evangelios y Escatologia en un solo arco teologico?",
-
-
 
     options: ["Apocalipsis", "Romanos", "Hebreos", "Isaias"],
 
-
-
     correct: 0, reference: "Apocalipsis"
 
-
-
   },
-
-
 
   // --- Personajes Experto (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 79, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Agar?",
-
-
 
     options: ["Abimelec", "No se menciona", "Laban", "Faraon"],
 
-
-
     correct: 1, reference: "Genesis 16:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 80, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Que profeta fue contemporaneo de Ageo?",
-
-
 
     options: ["Amos", "Malaquias", "Zacarias", "Joel"],
 
-
-
     correct: 2, reference: "Esdras 5:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 81, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del rey Joacaz?",
-
-
 
     options: ["Josias", "Asa", "Joacim", "Manases"],
 
-
-
     correct: 0, reference: "2 Reyes 23:30-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 700, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el padre de Gedalias, gobernador de Juda?",
-
-
 
     options: ["Hilcias", "Natan", "Abner", "Safan"],
 
-
-
     correct: 3, reference: "2 Reyes 25:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 701, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el rey que deporto a Israel a Asiria?",
-
-
 
     options: ["Nabucodonosor", "Senaquerib", "Salmanasar V", "Tiglat-pileser"],
 
-
-
     correct: 2, reference: "2 Reyes 17:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 702, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que reprendio a Jeroboam I?",
-
-
 
     options: ["Elias", "Eliseo", "Ahias", "Miqueas"],
 
-
-
     correct: 2, reference: "1 Reyes 14:7-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 703, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del profeta Joel?",
-
-
 
     options: ["Hilcias", "Penuel", "Beeri", "Petuel"],
 
-
-
     correct: 3, reference: "Joel 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 704, difficulty: "experto", category: "personajes",
 
+    question: "¿Quienes fueron los sacerdotes principales durante el reinado de David?",
 
-
-    question: "¿Quien fue el sumo sacerdote durante el reinado de David?",
-
-
-
-    options: ["Eli", "Sadoc", "Abiatar", "Caifas"],
-
-
-
-    correct: 2, reference: "1 Samuel 22:20; 2 Samuel 15:35"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 705, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que reino cuando cayo Samaria?",
-
-
-
-    options: ["Uzias", "Oseas", "Ezequias", "Acaz"],
-
-
-
-    correct: 1, reference: "2 Reyes 17:1-6"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 706, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el profeta que anuncio el nacimiento de Ciro?",
-
-
-
-    options: ["Jeremias", "Isaias", "Ezequiel", "Daniel"],
-
-
-
-    correct: 1, reference: "Isaias 44:28-45:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 707, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Matatias (padre de Judas Macabeo)?",
-
-
-
-    options: ["Asmoneo", "Eleazar", "Hasmon", "Sadoc"],
-
-
-
-    correct: 2, reference: "1 Macabeos 2:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 708, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que tomo a Sara por esposa?",
-
-
-
-    options: ["Faraon", "Nabucodonosor", "Herodes", "Abimelec"],
-
-
-
-    correct: 3, reference: "Genesis 20:2"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 709, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Husai el arquita?",
-
-
-
-    options: ["Joab", "No se menciona", "Talmai", "Abner"],
-
-
-
-    correct: 1, reference: "2 Samuel 15:32"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 710, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el gobernador persa que apoyo a Nehemias?",
-
-
-
-    options: ["Ciro", "Artajerjes I", "Dario", "Jerjes"],
-
-
-
-    correct: 1, reference: "Nehemias 2:1-8"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 711, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el profeta que hablo contra Ninive junto con Jonas?",
-
-
-
-    options: ["Joel", "Nahum", "Amos", "Abdias"],
-
-
-
-    correct: 1, reference: "Nahum 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 712, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Jabez?",
-
-
-
-    options: ["No se menciona", "Abner", "Caleb", "Isai"],
-
-
-
-    correct: 0, reference: "1 Cronicas 4:9"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 713, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que mando escribir cronicas reales?",
-
-
-
-    options: ["Salomon", "David", "Asuero", "Roboam"],
-
-
-
-    correct: 2, reference: "Ester 6:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 714, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del profeta Sofonias?",
-
-
-
-    options: ["Gedalias", "Cusi", "Beeri", "Petuel"],
-
-
-
-    correct: 1, reference: "Sofonias 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 715, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el oficial que protegio a Jeremias?",
-
-
-
-    options: ["Baruc", "Safan", "Ebed-melec", "Gedalias"],
-
-
-
-    correct: 2, reference: "Jeremias 38:7-13"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 716, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Gedeon segun Jueces?",
-
-
-
-    options: ["Gad", "Joas", "Abner", "Natan"],
-
-
-
-    correct: 1, reference: "Jueces 6:11"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 717, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el profeta que hablo con Dario?",
-
-
-
-    options: ["Zacarias", "Malaquias", "Ageo", "Daniel"],
-
-
-
-    correct: 3, reference: "Daniel 6"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 718, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Simon Pedro?",
-
-
-
-    options: ["Felipe", "Zebedeo", "Jonas", "Jose"],
-
-
-
-    correct: 2, reference: "Mateo 16:17"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 719, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el sacerdote que encontro el libro de la Ley?",
-
-
-
-    options: ["Hilcias", "Abiatar", "Eleazar", "Sadoc"],
-
-
-
-    correct: 0, reference: "2 Reyes 22:8"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 720, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del profeta Malaquias?",
-
-
-
-    options: ["No se menciona", "Zacarias", "Nehemias", "Esdras"],
-
-
-
-    correct: 0, reference: "Malaquias 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 721, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que destruyo el altar de Betel?",
-
-
-
-    options: ["Josias", "Uzias", "Asa", "Ezequias"],
-
-
-
-    correct: 0, reference: "2 Reyes 23:15"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 722, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Baruc?",
-
-
-
-    options: ["Nerias", "Gedalias", "Hilcias", "Safan"],
-
-
-
-    correct: 0, reference: "Jeremias 32:12"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 723, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el general que mato a Amasa?",
-
-
-
-    options: ["Joab", "Urias", "Abner", "Asael"],
-
-
-
-    correct: 0, reference: "2 Samuel 20:10"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 724, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del profeta Abdias?",
-
-
-
-    options: ["Safan", "Jeremias", "No se menciona", "Hilcias"],
-
-
-
-    correct: 2, reference: "Abdias 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 725, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que reino cuando nacio Moises?",
-
-
-
-    options: ["Seti", "Amenhotep", "Tutmosis", "Ramses II"],
-
-
-
-    correct: 3, reference: "Exodo 1:8-22"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 726, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del profeta Miqueas?",
-
-
-
-    options: ["Petuel", "No se menciona", "Moraset", "Beeri"],
-
-
-
-    correct: 1, reference: "Miqueas 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 727, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Eliseo?",
-
-
-
-    options: ["Safat", "Natan", "Abner", "Gad"],
-
-
-
-    correct: 0, reference: "1 Reyes 19:16"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 728, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que permitio volver del exilio?",
-
-
-
-    options: ["Ciro", "Artajerjes", "Dario", "Jerjes"],
-
-
-
-    correct: 0, reference: "Esdras 1:1-4"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 729, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del profeta Nahum?",
-
-
-
-    options: ["Petuel", "Beeri", "No se menciona", "Elcosita"],
-
-
-
-    correct: 2, reference: "Nahum 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 730, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el escriba que ayudo a Jeremias?",
-
-
-
-    options: ["Esdras", "Baruc", "Safan", "Gedalias"],
-
-
-
-    correct: 1, reference: "Jeremias 36:4"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 731, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Booz?",
-
-
-
-    options: ["Obed", "Nahason", "Salmon", "Isai"],
-
-
-
-    correct: 2, reference: "Rut 4:21"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 732, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que perdio la razon por orgullo?",
-
-
-
-    options: ["Dario", "Nabucodonosor", "Jerjes", "Ciro"],
-
-
-
-    correct: 1, reference: "Daniel 4:33"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 733, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Samuel segun 1 Samuel?",
-
-
-
-    options: ["Natan", "Abner", "Elcana", "Isai"],
-
-
-
-    correct: 2, reference: "1 Samuel 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 734, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el profeta que anuncio 70 anos de cautiverio?",
-
-
-
-    options: ["Isaias", "Daniel", "Jeremias", "Ezequiel"],
-
-
-
-    correct: 2, reference: "Jeremias 25:11-12"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 735, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del rey Asa?",
-
-
-
-    options: ["Roboam", "Josafat", "Uzias", "Abias"],
-
-
-
-    correct: 3, reference: "1 Reyes 15:8"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 736, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Jonatan hijo de Saul?",
-
-
-
-    options: ["Ner", "Saul", "Abner", "Isai"],
-
-
-
-    correct: 1, reference: "1 Samuel 14:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 737, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Jehu?",
-
-
-
-    options: ["Natan", "Gad", "Abner", "Nimsi"],
-
-
-
-    correct: 3, reference: "2 Reyes 9:2"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 738, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que edifico Samaria?",
-
-
-
-    options: ["Omri", "Acab", "Jehu", "Jeroboam"],
-
-
-
-    correct: 0, reference: "1 Reyes 16:24"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 739, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre del profeta Habacuc?",
-
-
-
-    options: ["Beeri", "No se menciona", "Jeremias", "Petuel"],
-
-
-
-    correct: 1, reference: "Habacuc 1:1"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 740, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el rey que consulto a Isaias?",
-
-
-
-    options: ["Ezequias", "Asa", "Manases", "Uzias"],
-
-
-
-    correct: 0, reference: "2 Reyes 19:2"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 741, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Obed?",
-
-
-
-    options: ["Salmon", "Isai", "Booz", "Nahason"],
-
-
-
-    correct: 2, reference: "Rut 4:17"
-
-
-
-  },
-
-
-
-  {
-
-
-
-    id: 742, difficulty: "experto", category: "personajes",
-
-
-
-    question: "¿Quien fue el padre de Sadoc?",
-
-
-
-    options: ["Finees", "Ahitob", "Eleazar", "Abiatar"],
-
-
+    options: ["Eli y Samuel", "Sadoc y Abiatar", "Abiatar solo", "Caifas y Anas"],
 
     correct: 1, reference: "2 Samuel 8:17"
 
-
-
   },
-
-
 
   {
 
+    id: 705, difficulty: "experto", category: "personajes",
 
+    question: "¿Quien fue el rey que reino cuando cayo Samaria?",
+
+    options: ["Uzias", "Oseas", "Ezequias", "Acaz"],
+
+    correct: 1, reference: "2 Reyes 17:1-6"
+
+  },
+
+  {
+
+    id: 706, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el profeta que anuncio el nacimiento de Ciro?",
+
+    options: ["Jeremias", "Isaias", "Ezequiel", "Daniel"],
+
+    correct: 1, reference: "Isaias 44:28-45:1"
+
+  },
+
+  {
+
+    id: 707, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Matatias (padre de Judas Macabeo)?",
+
+    options: ["Asmoneo", "Eleazar", "Hasmon", "Sadoc"],
+
+    correct: 2, reference: "1 Macabeos 2:1"
+
+  },
+
+  {
+
+    id: 708, difficulty: "experto", category: "personajes",
+
+    question: "¿Que rey de Gerar tomo a Sara por esposa cuando Abraham dijo que era su hermana?",
+
+    options: ["Faraon", "Nabucodonosor", "Herodes", "Abimelec"],
+
+    correct: 3, reference: "Genesis 20:2"
+
+  },
+
+  {
+
+    id: 709, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Husai el arquita?",
+
+    options: ["Joab", "No se menciona", "Talmai", "Abner"],
+
+    correct: 1, reference: "2 Samuel 15:32"
+
+  },
+
+  {
+
+    id: 710, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el gobernador persa que apoyo a Nehemias?",
+
+    options: ["Ciro", "Artajerjes I", "Dario", "Jerjes"],
+
+    correct: 1, reference: "Nehemias 2:1-8"
+
+  },
+
+  {
+
+    id: 711, difficulty: "experto", category: "personajes",
+
+    question: "¿Que otro profeta profetizo contra Ninive ademas de Jonas?",
+
+    options: ["Joel", "Nahum", "Amos", "Abdias"],
+
+    correct: 1, reference: "Nahum 1:1"
+
+  },
+
+  {
+
+    id: 712, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Jabez?",
+
+    options: ["No se menciona", "Abner", "Caleb", "Isai"],
+
+    correct: 0, reference: "1 Cronicas 4:9"
+
+  },
+
+  {
+
+    id: 713, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el rey que mando escribir cronicas reales?",
+
+    options: ["Salomon", "David", "Asuero", "Roboam"],
+
+    correct: 2, reference: "Ester 6:1"
+
+  },
+
+  {
+
+    id: 714, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del profeta Sofonias?",
+
+    options: ["Gedalias", "Cusi", "Beeri", "Petuel"],
+
+    correct: 1, reference: "Sofonias 1:1"
+
+  },
+
+  {
+
+    id: 715, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el oficial que protegio a Jeremias?",
+
+    options: ["Baruc", "Safan", "Ebed-melec", "Gedalias"],
+
+    correct: 2, reference: "Jeremias 38:7-13"
+
+  },
+
+  {
+
+    id: 716, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Gedeon segun Jueces?",
+
+    options: ["Gad", "Joas", "Abner", "Natan"],
+
+    correct: 1, reference: "Jueces 6:11"
+
+  },
+
+  {
+
+    id: 717, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el profeta que hablo con Dario?",
+
+    options: ["Zacarias", "Malaquias", "Ageo", "Daniel"],
+
+    correct: 3, reference: "Daniel 6"
+
+  },
+
+  {
+
+    id: 718, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Simon Pedro?",
+
+    options: ["Felipe", "Zebedeo", "Jonas", "Jose"],
+
+    correct: 2, reference: "Mateo 16:17"
+
+  },
+
+  {
+
+    id: 719, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el sacerdote que encontro el libro de la Ley?",
+
+    options: ["Hilcias", "Abiatar", "Eleazar", "Sadoc"],
+
+    correct: 0, reference: "2 Reyes 22:8"
+
+  },
+
+  {
+
+    id: 720, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del profeta Malaquias?",
+
+    options: ["No se menciona", "Zacarias", "Nehemias", "Esdras"],
+
+    correct: 0, reference: "Malaquias 1:1"
+
+  },
+
+  {
+
+    id: 721, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el rey que destruyo el altar de Betel?",
+
+    options: ["Josias", "Uzias", "Asa", "Ezequias"],
+
+    correct: 0, reference: "2 Reyes 23:15"
+
+  },
+
+  {
+
+    id: 722, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Baruc?",
+
+    options: ["Nerias", "Gedalias", "Hilcias", "Safan"],
+
+    correct: 0, reference: "Jeremias 32:12"
+
+  },
+
+  {
+
+    id: 723, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el general que mato a Amasa?",
+
+    options: ["Joab", "Urias", "Abner", "Asael"],
+
+    correct: 0, reference: "2 Samuel 20:10"
+
+  },
+
+  {
+
+    id: 724, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del profeta Abdias?",
+
+    options: ["Safan", "Jeremias", "No se menciona", "Hilcias"],
+
+    correct: 2, reference: "Abdias 1:1"
+
+  },
+
+  {
+
+    id: 725, difficulty: "experto", category: "personajes",
+
+    question: "¿Se menciona en la Biblia el nombre del faraon que reino cuando nacio Moises?",
+
+    options: ["No se menciona", "Seti", "Amenhotep", "Ramses II"],
+
+    correct: 0, reference: "Exodo 1:8"
+
+  },
+
+  {
+
+    id: 726, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del profeta Miqueas?",
+
+    options: ["Petuel", "No se menciona", "Moraset", "Beeri"],
+
+    correct: 1, reference: "Miqueas 1:1"
+
+  },
+
+  {
+
+    id: 727, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Eliseo?",
+
+    options: ["Safat", "Natan", "Abner", "Gad"],
+
+    correct: 0, reference: "1 Reyes 19:16"
+
+  },
+
+  {
+
+    id: 728, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el rey que permitio volver del exilio?",
+
+    options: ["Ciro", "Artajerjes", "Dario", "Jerjes"],
+
+    correct: 0, reference: "Esdras 1:1-4"
+
+  },
+
+  {
+
+    id: 729, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del profeta Nahum?",
+
+    options: ["Petuel", "Beeri", "No se menciona", "Elcosita"],
+
+    correct: 2, reference: "Nahum 1:1"
+
+  },
+
+  {
+
+    id: 730, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el escriba que ayudo a Jeremias?",
+
+    options: ["Esdras", "Baruc", "Safan", "Gedalias"],
+
+    correct: 1, reference: "Jeremias 36:4"
+
+  },
+
+  {
+
+    id: 731, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Booz?",
+
+    options: ["Obed", "Nahason", "Salmon", "Isai"],
+
+    correct: 2, reference: "Rut 4:21"
+
+  },
+
+  {
+
+    id: 732, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el rey que perdio la razon por orgullo?",
+
+    options: ["Dario", "Nabucodonosor", "Jerjes", "Ciro"],
+
+    correct: 1, reference: "Daniel 4:33"
+
+  },
+
+  {
+
+    id: 733, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Samuel segun 1 Samuel?",
+
+    options: ["Natan", "Abner", "Elcana", "Isai"],
+
+    correct: 2, reference: "1 Samuel 1:1"
+
+  },
+
+  {
+
+    id: 734, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el profeta que anuncio 70 anos de cautiverio?",
+
+    options: ["Isaias", "Daniel", "Jeremias", "Ezequiel"],
+
+    correct: 2, reference: "Jeremias 25:11-12"
+
+  },
+
+  {
+
+    id: 735, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del rey Asa?",
+
+    options: ["Roboam", "Josafat", "Uzias", "Abias"],
+
+    correct: 3, reference: "1 Reyes 15:8"
+
+  },
+
+  {
+
+    id: 736, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Jonatan hijo de Saul?",
+
+    options: ["Ner", "Saul", "Abner", "Isai"],
+
+    correct: 1, reference: "1 Samuel 14:1"
+
+  },
+
+  {
+
+    id: 737, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Jehu?",
+
+    options: ["Natan", "Gad", "Abner", "Nimsi"],
+
+    correct: 3, reference: "2 Reyes 9:2"
+
+  },
+
+  {
+
+    id: 738, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el rey que edifico Samaria?",
+
+    options: ["Omri", "Acab", "Jehu", "Jeroboam"],
+
+    correct: 0, reference: "1 Reyes 16:24"
+
+  },
+
+  {
+
+    id: 739, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre del profeta Habacuc?",
+
+    options: ["Beeri", "No se menciona", "Jeremias", "Petuel"],
+
+    correct: 1, reference: "Habacuc 1:1"
+
+  },
+
+  {
+
+    id: 740, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el rey que consulto a Isaias?",
+
+    options: ["Ezequias", "Asa", "Manases", "Uzias"],
+
+    correct: 0, reference: "2 Reyes 19:2"
+
+  },
+
+  {
+
+    id: 741, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Obed?",
+
+    options: ["Salmon", "Isai", "Booz", "Nahason"],
+
+    correct: 2, reference: "Rut 4:17"
+
+  },
+
+  {
+
+    id: 742, difficulty: "experto", category: "personajes",
+
+    question: "¿Quien fue el padre de Sadoc?",
+
+    options: ["Finees", "Ahitob", "Eleazar", "Abiatar"],
+
+    correct: 1, reference: "2 Samuel 8:17"
+
+  },
+
+  {
 
     id: 743, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el profeta que reprendio a Acab por Nabot?",
-
-
 
     options: ["Elias", "Eliseo", "Amos", "Miqueas"],
 
-
-
     correct: 0, reference: "1 Reyes 21:17-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 744, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del rey Joas de Juda?",
-
-
 
     options: ["Asa", "Roboam", "Josias", "Ocozias"],
 
-
-
     correct: 3, reference: "2 Reyes 11:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 745, difficulty: "experto", category: "personajes",
 
-
-
-    question: "¿Quien fue el padre de Timoteo?",
-
-
+    question: "¿De qué nacionalidad era el padre de Timoteo?",
 
     options: ["Hebreo", "Romano", "Judio", "Griego"],
 
-
-
     correct: 3, reference: "Hechos 16:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 746, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Quien fue el padre del profeta Ageo?",
-
-
 
     options: ["Zacarias", "Beeri", "Petuel", "No se menciona"],
 
-
-
     correct: 3, reference: "Ageo 1:1"
 
-
-
   },
-
-
 
   // --- Reyes ---
 
-
-
   {
-
-
 
     id: 1150, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos dias reino Zimri sobre Israel antes de suicidarse en el palacio en llamas?",
-
-
 
     options: ["7 dias", "3 dias", "10 dias", "14 dias"],
 
-
-
     correct: 0, reference: "1 Reyes 16:15-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1151, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue co-regente con su padre Uzias debido a la lepra de este?",
-
-
 
     options: ["Jotam", "Amasias", "Acaz", "Ezequias"],
 
-
-
     correct: 0, reference: "2 Reyes 15:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1152, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos talentos de plata pago Omri por el monte de Samaria a Semer?",
-
-
 
     options: ["Un talento", "Dos talentos", "Diez talentos", "Cinco talentos"],
 
-
-
     correct: 1, reference: "1 Reyes 16:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1153, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 2 Reyes 3:4, ?cuantos corderos y cuantos carneros pagaba Mesa, rey de Moab, como tributo a Israel?",
-
-
 
     options: ["150.000 corderos y 75.000 carneros", "50.000 corderos y 50.000 carneros", "200.000 ovejas y 10.000 carneros", "100.000 corderos y 100.000 carneros con lana"],
 
-
-
     correct: 3, reference: "2 Reyes 3:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1154, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue herido por sus siervos en la casa de Milo, en la bajada de Sila?",
-
-
 
     options: ["Acaz", "Atalia", "Amasias", "Joas"],
 
-
-
     correct: 3, reference: "2 Reyes 12:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1155, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Israel reino solo un mes antes de ser asesinado por Salum hijo de Jabes?",
-
-
 
     options: ["Manahem", "Zacarias", "Ela", "Peka"],
 
-
-
     correct: 1, reference: "2 Reyes 15:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1156, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos talentos de plata pago Manahem al rey Pul (Tiglat-pileser III) de Asiria?",
-
-
 
     options: ["2.000 talentos", "1.000 talentos", "3.000 talentos", "500 talentos"],
 
-
-
     correct: 1, reference: "2 Reyes 15:19-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1157, difficulty: "experto", category: "reyes",
 
-
-
     question: "En 2 Cronicas 14:9, ?que comandante etiope ataco a Asa con un ejercito de un millon de hombres?",
-
-
 
     options: ["Zera", "Tirhaca", "So", "Sisac"],
 
-
-
     correct: 0, reference: "2 Cronicas 14:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1158, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que edad tenia Josias cuando comenzo a reinar segun 2 Reyes 22:1?",
-
-
 
     options: ["8 anos", "10 anos", "7 anos", "12 anos"],
 
-
-
     correct: 0, reference: "2 Reyes 22:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1159, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cual fue la formula de evaluacion de Abias/Abiam rey de Juda segun 1 Reyes 15:3?",
-
-
 
     options: ["Anduvo en todos los pecados de su padre", "Hizo lo malo parcialmente", "Su corazon fue perfecto", "Hizo lo recto ante los ojos de Jehova"],
 
-
-
     correct: 0, reference: "1 Reyes 15:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1160, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda quito a su propia madre Maaca del cargo de reina madre por haber hecho una imagen de Asera?",
-
-
 
     options: ["Asa", "Joas", "Josafat", "Ezequias"],
 
-
-
     correct: 0, reference: "1 Reyes 15:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1161, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 2 Cronicas 26:10, ?que rey de Juda construyo torres en el desierto y cavo muchas cisternas porque amaba la agricultura?",
-
-
 
     options: ["Uzias", "Josafat", "Manases", "Ezequias"],
 
-
-
     correct: 0, reference: "2 Cronicas 26:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1162, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue asesinado por Peka hijo de Remalias junto con Argob y Arie en el palacio de Samaria?",
-
-
 
     options: ["Salum", "Zacarias", "Pekaia", "Manahem"],
 
-
-
     correct: 2, reference: "2 Reyes 15:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1163, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos anos duro exactamente el reinado de Jeroboam II sobre Israel?",
-
-
 
     options: ["31 anos", "22 anos", "29 anos", "41 anos"],
 
-
-
     correct: 3, reference: "2 Reyes 14:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1164, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 2 Reyes 18:14, ?cuantos talentos de plata y de oro envio Ezequias a Senaquerib como tributo?",
-
-
 
     options: ["200 de plata y 20 de oro", "100 de plata y 10 de oro", "500 de plata y 50 de oro", "300 de plata y 30 de oro"],
 
-
-
     correct: 3, reference: "2 Reyes 18:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1165, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue llevado cautivo a Babilonia con garfios y cadenas de bronce, segun 2 Cronicas 33:11?",
-
-
 
     options: ["Manases", "Sedequias", "Joacim", "Joaquin"],
 
-
-
     correct: 0, reference: "2 Cronicas 33:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1166, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cual es el nombre del rey de Egipto que capturo y mato a Josias en Meguido?",
-
-
 
     options: ["So", "Hofra", "Sisac", "Necao"],
 
-
-
     correct: 3, reference: "2 Reyes 23:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1167, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que diferencia existe entre 2 Samuel 24:9 y 1 Cronicas 21:5 respecto al censo de David en cuanto al numero de Israel?",
-
-
 
     options: ["No hay diferencia", "Samuel dice 500.000 y Cronicas 470.000 para Juda", "Samuel dice 1.000.000 y Cronicas 800.000 para Israel", "Samuel dice 800.000 y Cronicas 1.100.000 para Israel"],
 
-
-
     correct: 3, reference: "2 Samuel 24:9; 1 Cronicas 21:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1168, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda reino solo tres meses antes de ser depuesto por el faraon Necao?",
-
-
 
     options: ["Joacim", "Joaquin", "Joacaz", "Sedequias"],
 
-
-
     correct: 2, reference: "2 Reyes 23:31-33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1169, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que nombre le puso el faraon Necao a Eliaquim hijo de Josias cuando lo hizo rey?",
-
-
 
     options: ["Sedequias", "Joacaz", "Joaquin", "Joacim"],
 
-
-
     correct: 3, reference: "2 Reyes 23:34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1170, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que nombre le cambio Nabucodonosor a Matanias cuando lo puso por rey en Juda?",
-
-
 
     options: ["Josias", "Joacim", "Joaquin", "Sedequias"],
 
-
-
     correct: 3, reference: "2 Reyes 24:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1171, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 1 Reyes 4:7, ?cuantos gobernadores tenia Salomon sobre todo Israel para proveer alimento?",
-
-
 
     options: ["15", "20", "10", "12"],
 
-
-
     correct: 3, reference: "1 Reyes 4:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1172, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos anos tardo Salomon en construir su propio palacio segun 1 Reyes 7:1?",
-
-
 
     options: ["7 anos", "20 anos", "10 anos", "13 anos"],
 
-
-
     correct: 3, reference: "1 Reyes 7:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1173, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Israel edifico Peniel y Siquem segun 1 Reyes 12?",
-
-
 
     options: ["Baasa", "Omri", "Nadab", "Jeroboam I"],
 
-
-
     correct: 3, reference: "1 Reyes 12:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1174, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos talentos de oro traian anualmente a Salomon segun 1 Reyes 10:14?",
-
-
 
     options: ["120 talentos", "420 talentos", "1.000 talentos", "666 talentos"],
 
-
-
     correct: 3, reference: "1 Reyes 10:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1175, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿En que ano del reinado de Salomon comenzo la construccion del templo, segun 1 Reyes 6:1?",
-
-
 
     options: ["En el ano septimo", "En el ano segundo", "En el ano cuarto", "En el ano decimo"],
 
-
-
     correct: 2, reference: "1 Reyes 6:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1176, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey asirio deporto a las diez tribus del norte segun 2 Reyes 17:6?",
-
-
 
     options: ["Esar-hadon", "Senaquerib", "Sargon II / Salmanasar V", "Tiglat-pileser III"],
 
-
-
     correct: 2, reference: "2 Reyes 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1177, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que hijo de Salomon fue su sucesor en el trono segun 1 Reyes 11:43?",
-
-
 
     options: ["Roboam", "Jeroboam", "Abias", "Nadab"],
 
-
-
     correct: 0, reference: "1 Reyes 11:43"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1178, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Quien mato a Ela hijo de Baasa mientras este estaba ebrio en casa de Arsa en Tirsa?",
-
-
 
     options: ["Zimri", "Acab", "Omri", "Tibni"],
 
-
-
     correct: 0, reference: "1 Reyes 16:9-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1179, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 2 Cronicas 11:21, ?cuantas esposas y concubinas tuvo Roboam?",
-
-
 
     options: ["7 esposas y 20 concubinas", "18 esposas y 60 concubinas", "14 esposas y 40 concubinas", "10 esposas y 30 concubinas"],
 
-
-
     correct: 1, reference: "2 Cronicas 11:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1180, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda cavo la piscina y el acueducto que traia agua a la ciudad segun 2 Reyes 20:20?",
-
-
 
     options: ["Asa", "Josafat", "Manases", "Ezequias"],
 
-
-
     correct: 3, reference: "2 Reyes 20:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1181, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos hijos engendro Roboam segun 2 Cronicas 11:21?",
-
-
 
     options: ["12 hijos y 15 hijas", "18 hijos y 30 hijas", "28 hijos y 60 hijas", "20 hijos y 40 hijas"],
 
-
-
     correct: 2, reference: "2 Cronicas 11:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1182, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda fue asesinado por sus siervos en venganza por la muerte de Zacarias hijo del sacerdote Joiada?",
-
-
 
     options: ["Joas", "Amasias", "Uzias", "Acaz"],
 
-
-
     correct: 0, reference: "2 Cronicas 24:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1183, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantos anos reino Manases en Jerusalen segun 2 Reyes 21:1?",
-
-
 
     options: ["55 anos", "40 anos", "45 anos", "35 anos"],
 
-
-
     correct: 0, reference: "2 Reyes 21:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1184, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Israel consulto a Baal-zebub, dios de Ecron, tras caer por la ventana de su aposento?",
-
-
 
     options: ["Joacaz", "Ocozias hijo de Acab", "Jehu", "Joram"],
 
-
-
     correct: 1, reference: "2 Reyes 1:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1185, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda reino a los siete anos de edad segun 2 Reyes 11:21?",
-
-
 
     options: ["Amon", "Manases", "Josias", "Joas"],
 
-
-
     correct: 3, reference: "2 Reyes 11:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1186, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que oficial de Baasa cumplio la profecia de Jehu hijo de Hanani al exterminar toda la casa de Baasa?",
-
-
 
     options: ["Ela", "Omri", "Zimri", "Tibni"],
 
-
-
     correct: 2, reference: "1 Reyes 16:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1187, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 2 Reyes 14:19, ?a que ciudad huyo Amasias cuando conspiraron contra el en Jerusalen?",
-
-
 
     options: ["Laquis", "Beerseba", "Gat", "Hebron"],
 
-
-
     correct: 0, reference: "2 Reyes 14:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1188, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que tributo impuso el faraon Necao a la tierra de Juda segun 2 Reyes 23:33?",
-
-
 
     options: ["200 talentos de plata y 20 de oro", "100 talentos de plata y un talento de oro", "50 talentos de plata y 5 de oro", "300 talentos de plata y 30 de oro"],
 
-
-
     correct: 1, reference: "2 Reyes 23:33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1189, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantas ciudades de almacenaje edifico Salomon segun 2 Cronicas 8:4-6?",
-
-
 
     options: ["Meguido y Hazor solamente", "Bet-horon y Gezer unicamente", "Solo Tadmor", "Tadmor y todas las ciudades de almacenaje en Hamat"],
 
-
-
     correct: 3, reference: "2 Cronicas 8:4-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1190, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que profeta le dijo a Jeroboam I que Dios le daria diez tribus rasgando su capa nueva en doce pedazos?",
-
-
 
     options: ["Iddo", "Ahias silonita", "Jehu hijo de Hanani", "Semaias"],
 
-
-
     correct: 1, reference: "1 Reyes 11:29-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1191, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Juda hizo pasar a su hijo por fuego, practico la adivinacion y consulto a encantadores segun 2 Reyes 21:6?",
-
-
 
     options: ["Amon", "Acaz", "Manases", "Joacim"],
 
-
-
     correct: 2, reference: "2 Reyes 21:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1192, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Israel fue caracterizado con la frase 'anduvo en el camino de Jeroboam hijo de Nabat' mas frecuentemente en 1 y 2 Reyes?",
-
-
 
     options: ["Acab", "Omri", "Casi todos los reyes del norte", "Baasa unicamente"],
 
-
-
     correct: 2, reference: "1 Reyes 15:34; 16:26; 2 Reyes 3:3; etc."
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1193, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Cuantas naves de Tarsis intento construir Josafat que se rompieron en Ezion-geber?",
-
-
 
     options: ["Siete naves", "Naves de Tarsis (sin numero especifico)", "Tres naves", "Diez naves"],
 
-
-
     correct: 1, reference: "1 Reyes 22:48"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1194, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Con que rey de Tiro hizo Salomon un pacto para recibir madera de cedro y cipres?",
-
-
 
     options: ["Etbaal", "Hiram", "Ben-hadad", "Abibaal"],
 
-
-
     correct: 1, reference: "1 Reyes 5:1-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1195, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que profeta reprendio a Josafat por haberse aliado con Ocozias rey de Israel, segun 2 Cronicas 20:37?",
-
-
 
     options: ["Micaias", "Eliezer hijo de Dodava", "Semaias", "Jehu hijo de Hanani"],
 
-
-
     correct: 1, reference: "2 Cronicas 20:37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1196, difficulty: "experto", category: "reyes",
 
-
-
     question: "Segun 2 Reyes 24:14, ?cuantas personas fueron deportadas de Jerusalen por Nabucodonosor en la segunda deportacion?",
-
-
 
     options: ["10.000 cautivos", "8.000 personas", "4.600 personas", "3.023 personas"],
 
-
-
     correct: 0, reference: "2 Reyes 24:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1197, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que sumo sacerdote escondio a Joas de nino durante seis anos de la usurpacion de Atalia?",
-
-
 
     options: ["Hilcias", "Joiada", "Seraias", "Azarias"],
 
-
-
     correct: 1, reference: "2 Reyes 11:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1198, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey de Asiria envio al Rabsaces a amenazar a Ezequias con un discurso ante los muros de Jerusalen?",
-
-
 
     options: ["Senaquerib", "Tiglat-pileser III", "Esar-hadon", "Sargon II"],
 
-
-
     correct: 0, reference: "2 Reyes 18:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1199, difficulty: "experto", category: "reyes",
 
-
-
     question: "¿Que rey babilonico libero a Joaquin de la carcel y le dio un puesto de honor en el ano 37 del cautiverio?",
-
-
 
     options: ["Evil-merodac", "Nabucodonosor", "Belsasar", "Nabonido"],
 
-
-
     correct: 0, reference: "2 Reyes 25:27"
 
-
-
   },
-
-
 
   // --- Profetas ---
 
-
-
   {
-
-
 
     id: 1350, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cual es el termino hebreo que Isaias usa para referirse a la 'virgen' en su profecia mesianica de Isaias 7:14?",
-
-
 
     options: ["Ishsha", "Alma", "Betula", "Nashim"],
 
-
-
     correct: 1, reference: "Isaias 7:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1351, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿En que ano aproximado recibio Ezequiel su vision inaugural del trono-carroza de Dios junto al rio Quebar?",
-
-
 
     options: ["597 a.C.", "586 a.C.", "593 a.C.", "605 a.C."],
 
-
-
     correct: 2, reference: "Ezequiel 1:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1352, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantas alas tenia cada serafin en la vision de Isaias en el templo?",
-
-
 
     options: ["Cuatro", "Ocho", "Dos", "Seis"],
 
-
-
     correct: 3, reference: "Isaias 6:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1353, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos dias permanecio Ezequiel acostado sobre su lado izquierdo para cargar simbolicamente la iniquidad de Israel?",
-
-
 
     options: ["150 dias", "40 dias", "390 dias", "290 dias"],
 
-
-
     correct: 2, reference: "Ezequiel 4:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1354, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cual era el nombre de la esposa de Oseas, a quien Dios le ordeno tomar como simbolo del amor divino por Israel infiel?",
-
-
 
     options: ["Rut", "Ester", "Gomer", "Debora"],
 
-
-
     correct: 2, reference: "Oseas 1:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1355, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta fue arrebatado por el Espiritu y transportado entre el cielo y la tierra en una vision, tomado por un mechon de su cabello?",
-
-
 
     options: ["Elias", "Eliseo", "Ezequiel", "Daniel"],
 
-
-
     correct: 2, reference: "Ezequiel 8:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1356, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos cuernos vio el profeta Zacarias en su primera vision nocturna?",
-
-
 
     options: ["Siete", "Dos", "Diez", "Cuatro"],
 
-
-
     correct: 3, reference: "Zacarias 1:18-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1357, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta menciona especificamente a Bet-el-sar-eser y Regem-melec como emisarios enviados a consultar a los sacerdotes?",
-
-
 
     options: ["Zacarias", "Hageo", "Sofonias", "Malaquias"],
 
-
-
     correct: 0, reference: "Zacarias 7:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1358, difficulty: "experto", category: "profetas",
 
-
-
     question: "Segun Daniel 8, ?que representaba el macho cabrio con un cuerno notable entre sus ojos?",
-
-
 
     options: ["El imperio persa", "El imperio griego", "El imperio romano", "El imperio babilonico"],
 
-
-
     correct: 1, reference: "Daniel 8:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1359, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos dias profetizo Daniel que pasarian desde la supresion del sacrificio continuo hasta la abominacion desoladora?",
-
-
 
     options: ["1290 dias", "1150 dias", "1335 dias", "1260 dias"],
 
-
-
     correct: 0, reference: "Daniel 12:11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1360, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿A que rey de Juda profetizo Isaias que la sombra del reloj de sol de Acaz retrocederia diez grados como senal?",
-
-
 
     options: ["Ezequias", "Josias", "Acaz", "Manases"],
 
-
-
     correct: 0, reference: "Isaias 38:7-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1361, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cual es el nombre del valle que Ezequiel describe lleno de huesos secos que volvieron a la vida?",
-
-
 
     options: ["Valle de Josafat", "Valle de Meguido", "No se especifica un nombre propio", "Valle de Cedron"],
 
-
-
     correct: 2, reference: "Ezequiel 37:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1362, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta menor contiene unicamente 21 versiculos, siendo el libro mas corto del Antiguo Testamento?",
-
-
 
     options: ["Abdias", "Sofonias", "Nahum", "Hageo"],
 
-
-
     correct: 0, reference: "Abdias 1:1-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1363, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Contra que nacion esta dirigida exclusivamente la profecia de Abdias?",
-
-
 
     options: ["Edom", "Asiria", "Filistea", "Moab"],
 
-
-
     correct: 0, reference: "Abdias 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1364, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantas semanas de anos (semanas profeticas) menciona Daniel en su famosa profecia de las 'setenta semanas'?",
-
-
 
     options: ["70 semanas", "62 semanas", "49 semanas", "77 semanas"],
 
-
-
     correct: 0, reference: "Daniel 9:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1365, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que nombre simbolico le puso Oseas a su hija, que significa 'no compadecida'?",
-
-
 
     options: ["Jezreel", "Lo-ruhama", "Maher-salal-hasbaz", "Lo-ammi"],
 
-
-
     correct: 1, reference: "Oseas 1:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1366, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿En cual capitulo de Isaias se encuentra el cantico de la vina, una parabola sobre el juicio de Juda?",
-
-
 
     options: ["Isaias 3", "Isaias 12", "Isaias 5", "Isaias 9"],
 
-
-
     correct: 2, reference: "Isaias 5:1-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1367, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta uso la imagen de un plomo de albanil (plomada) como simbolo de juicio contra Israel?",
-
-
 
     options: ["Oseas", "Miqueas", "Joel", "Amos"],
 
-
-
     correct: 3, reference: "Amos 7:7-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1368, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos jinetes aparecen en la primera vision de Zacarias entre los mirtos?",
-
-
 
     options: ["Siete", "Tres", "Cuatro", "Uno"],
 
-
-
     correct: 1, reference: "Zacarias 1:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1369, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cual era la profesion de Amos antes de ser llamado como profeta?",
-
-
 
     options: ["Carpintero", "Sacerdote", "Escriba", "Boyero y cultivador de higos silvestres"],
 
-
-
     correct: 3, reference: "Amos 7:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1370, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta describe a Ninive como 'la ciudad sanguinaria, toda llena de mentira y de rapina'?",
-
-
 
     options: ["Sofonias", "Jonas", "Nahum", "Habacuc"],
 
-
-
     correct: 2, reference: "Nahum 3:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1371, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantas visiones nocturnas tuvo Zacarias en total, segun los capitulos 1 al 6 de su libro?",
-
-
 
     options: ["Ocho", "Cinco", "Diez", "Siete"],
 
-
-
     correct: 0, reference: "Zacarias 1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1372, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Con que nombre simbolico llamo Isaias a su hijo para profetizar la inminente caida de Damasco y Samaria?",
-
-
 
     options: ["Lo-ammi", "Sear-jasub", "Emanuel", "Maher-salal-hasbaz"],
 
-
-
     correct: 3, reference: "Isaias 8:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1373, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que criatura marina especifica menciona Jonas en su oracion desde el vientre del gran pez?",
-
-
 
     options: ["Algas que se enredaron en su cabeza", "Un cocodrilo", "Leviatan", "Un tiburon"],
 
-
-
     correct: 0, reference: "Jonas 2:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1374, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos capitulos tiene el libro de Isaias y en que dos grandes secciones se divide comunmente?",
-
-
 
     options: ["70 capitulos: 1-35 y 36-70", "60 capitulos: 1-30 y 31-60", "52 capitulos: 1-26 y 27-52", "66 capitulos: 1-39 y 40-66"],
 
-
-
     correct: 3, reference: "Isaias 1-66"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1375, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que rey estaba en el trono cuando Isaias recibio su llamado profetico en el ano en que murio el rey Uzias?",
-
-
 
     options: ["Uzias acababa de morir", "Jotam", "Acaz", "Ezequias"],
 
-
-
     correct: 0, reference: "Isaias 6:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1376, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que rio menciona Ezequiel que fluia del umbral del templo en su vision del templo restaurado?",
-
-
 
     options: ["El Eufrates", "El Quebar", "El Jordan", "Un rio sin nombre que fluia del templo hacia el oriente"],
 
-
-
     correct: 3, reference: "Ezequiel 47:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1377, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿En que ano del reinado de Dario termino la reconstruccion del segundo templo, segun la profecia de Hageo?",
-
-
 
     options: ["Ano 2 de Dario", "Ano 4 de Dario", "Ano 10 de Dario", "Ano 6 de Dario"],
 
-
-
     correct: 3, reference: "Esdras 6:15; Hageo 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1378, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que piedra preciosa se menciona como parte de la descripcion del rey de Tiro en la lamentacion de Ezequiel 28?",
-
-
 
     options: ["Nueve piedras preciosas incluyendo topacio, diamante y berilo", "Solo oro y plata", "Solo rubi y esmeralda", "Solo zafiro y jaspe"],
 
-
-
     correct: 0, reference: "Ezequiel 28:13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1379, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos candeleros de oro y cuantos olivos vio Zacarias en su quinta vision?",
-
-
 
     options: ["Diez candeleros y un olivo", "Siete candeleros y dos olivos", "Tres candeleros y cuatro olivos", "Un candelero con siete lamparas y dos olivos"],
 
-
-
     correct: 3, reference: "Zacarias 4:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1380, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Quien fue el sumo sacerdote al que Zacarias vio con vestiduras viles ante el angel de Jehova?",
-
-
 
     options: ["Aaron", "Josue hijo de Josadac", "Hilcias", "Esdras"],
 
-
-
     correct: 1, reference: "Zacarias 3:1-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1381, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantas plagas o calamidades enumera Joel en el capitulo 1 como etapas de la devastacion de la tierra?",
-
-
 
     options: ["Cuatro tipos de langosta", "Dos", "Tres", "Seis"],
 
-
-
     correct: 0, reference: "Joel 1:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1382, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta compara a Dios con un esposo que compra de vuelta a su esposa infiel por quince siclos de plata y un homer y medio de cebada?",
-
-
 
     options: ["Jeremias", "Isaias", "Ezequiel", "Oseas"],
 
-
-
     correct: 3, reference: "Oseas 3:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1383, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que animal usa Miqueas como metafora de Israel, al decir que el remanente sera 'como leon entre las bestias de la selva'?",
-
-
 
     options: ["Un oso", "Un lobo", "Un aguila", "Un leon"],
 
-
-
     correct: 3, reference: "Miqueas 5:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1384, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantas naciones extranjeras condena Amos en sus oraculos de juicio antes de dirigirse a Israel y Juda?",
-
-
 
     options: ["Seis", "Cuatro", "Ocho", "Diez"],
 
-
-
     correct: 0, reference: "Amos 1:3-2:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1385, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que planta crecio sobre la cabeza de Jonas para darle sombra y luego fue destruida por un gusano?",
-
-
 
     options: ["Un olivo", "Una higuera", "Una calabacera (ricino)", "Una vid"],
 
-
-
     correct: 2, reference: "Jonas 4:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1386, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que montana menciona Zacarias que se partira en dos cuando Jehova ponga sus pies sobre ella en el dia final?",
-
-
 
     options: ["Monte Hermon", "Monte Carmelo", "Monte Sinai", "Monte de los Olivos"],
 
-
-
     correct: 3, reference: "Zacarias 14:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1387, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Con que metal precioso Malaquias compara el proceso de purificacion que Dios hara con los hijos de Levi?",
-
-
 
     options: ["Hierro", "Plata", "Oro", "Bronce"],
 
-
-
     correct: 1, reference: "Malaquias 3:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1388, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que nombre recibe la imagen enorme compuesta de cuatro metales que Nabucodonosor vio en su sueno interpretado por Daniel?",
-
-
 
     options: ["La estatua del imperio", "La gran imagen o estatua", "El coloso de Babilonia", "El idolo babilonico"],
 
-
-
     correct: 1, reference: "Daniel 2:31-33"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1389, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos dias estuvo Ezequiel acostado sobre su lado derecho para llevar simbolicamente la iniquidad de Juda?",
-
-
 
     options: ["70 dias", "90 dias", "40 dias", "30 dias"],
 
-
-
     correct: 2, reference: "Ezequiel 4:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1390, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta describe a cuatro herreros que vinieron a espantar y derribar los cuernos de las naciones?",
-
-
 
     options: ["Daniel", "Hageo", "Zacarias", "Ezequiel"],
 
-
-
     correct: 2, reference: "Zacarias 1:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1391, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que titulo mesianico usa Isaias 9:6 que se traduce como 'Padre Eterno' en espanol?",
-
-
 
     options: ["Abi-ad", "Pele Yoetz", "El Gibbor", "Sar Shalom"],
 
-
-
     correct: 0, reference: "Isaias 9:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1392, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Con que nombre llama Jeremias al futuro rey justo del linaje de David: 'Jehova, justicia nuestra'?",
-
-
 
     options: ["Jehova-Nissi", "Jehova-Tsidkenu", "Jehova-Shalom", "Jehova-Jire"],
 
-
-
     correct: 1, reference: "Jeremias 23:5-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1393, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos capitulos componen las Lamentaciones de Jeremias y que estructura poetica predomina?",
-
-
 
     options: ["3 capitulos con paralelismo", "4 capitulos con verso libre", "5 capitulos con estructura acrostica", "7 capitulos con rima"],
 
-
-
     correct: 2, reference: "Lamentaciones 1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1394, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantas medidas tenia el codo largo (codo real) que uso Ezequiel en sus mediciones del templo futuro?",
-
-
 
     options: ["Dos codos regulares", "Un codo mas un palmo", "Un codo regular", "Un codo mas un palmo menor"],
 
-
-
     correct: 1, reference: "Ezequiel 40:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1395, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que profeta menciona el 'Dia de Jehova' como un dia de tinieblas y no de luz, oscuridad y no resplandor?",
-
-
 
     options: ["Joel", "Amos", "Habacuc", "Sofonias"],
 
-
-
     correct: 1, reference: "Amos 5:18-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1396, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que precio exacto de traicion profetiza Zacarias que seria pagado por el pastor rechazado?",
-
-
 
     options: ["Cincuenta siclos de plata", "Veinte siclos de plata", "Diez siclos de plata", "Treinta piezas de plata"],
 
-
-
     correct: 3, reference: "Zacarias 11:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1397, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿A que alfarero envio Dios a Jeremias para ensenarle una leccion sobre la soberania divina sobre las naciones?",
-
-
 
     options: ["Al alfarero de Anatot", "Al alfarero del templo", "A la casa del alfarero en Jerusalen", "Al alfarero real de Juda"],
 
-
-
     correct: 2, reference: "Jeremias 18:1-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1398, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Cuantos años profetizo Isaias que tardaria en caer la gloria de Moab, siendo reducida a nada con todo su gran gentio?",
-
-
 
     options: ["Siete años", "Tres años", "Cinco años", "Un año"],
 
-
-
     correct: 1, reference: "Isaias 16:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1399, difficulty: "experto", category: "profetas",
 
-
-
     question: "¿Que nombre simbolico dio Oseas a su tercer hijo, que significa 'no pueblo mio', representando el rechazo temporal de Israel?",
-
-
 
     options: ["Sear-jasub", "Jezreel", "Lo-ammi", "Lo-ruhama"],
 
-
-
     correct: 2, reference: "Oseas 1:9"
 
-
-
   },
-
-
 
   // --- Cartas ---
 
-
-
   {
-
-
 
     id: 1950, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en Romanos 1:18 para describir la 'impiedad' que provoca la ira de Dios?",
-
-
 
     options: ["Anomia", "Asebeia", "Hamartia", "Paranomia"],
 
-
-
     correct: 1, reference: "Romanos 1:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1951, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que epistola del NT contiene la expresion griega 'logos tou staurou' (palabra de la cruz)?",
-
-
 
     options: ["Efesios", "Galatas", "Romanos", "1 Corintios"],
 
-
-
     correct: 3, reference: "1 Corintios 1:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1952, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Cuantas veces menciona Pablo al personaje Tiquico en sus epistolas como portador de cartas?",
-
-
 
     options: ["Dos", "Una", "Cinco", "Tres"],
 
-
-
     correct: 3, reference: "Efesios 6:21; Colosenses 4:7; 2 Timoteo 4:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1953, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que texto del AT cita Pablo en Romanos 10:13 como fundamento de la salvacion universal?",
-
-
 
     options: ["Isaias 28:16", "Salmo 32:1", "Deuteronomio 30:14", "Joel 2:32"],
 
-
-
     correct: 3, reference: "Romanos 10:13; Joel 2:32"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1954, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que palabra griega hapax legomenon aparece en Efesios 4:14 traducida como 'estratagema' o 'astucia enganosa'?",
-
-
 
     options: ["Methodeia", "Panourgia", "Plano", "Kybeia"],
 
-
-
     correct: 3, reference: "Efesios 4:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1955, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que argumento principal usan los eruditos para cuestionar la autoria paulina de las Epistolas pastorales?",
-
-
 
     options: ["Contradicen la teologia de Romanos", "Vocabulario con mas de 300 palabras no usadas en las cartas indisputadas", "No mencionan la resurreccion de Cristo", "Ausencia de saludos personales"],
 
-
-
     correct: 1, reference: "1-2 Timoteo, Tito (debate academico)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1956, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en Romanos 12:1 traducido como 'culto racional' o 'adoracion espiritual'?",
-
-
 
     options: ["Latreia pneumatike", "Thysia euarestos", "Logike latreia", "Proskunosis alothine"],
 
-
-
     correct: 2, reference: "Romanos 12:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1957, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que persona mencionada en 3 Juan es criticada por amar 'ser el primero' en la iglesia?",
-
-
 
     options: ["Gayo", "Demetrio", "Diotrefes", "Filemon"],
 
-
-
     correct: 2, reference: "3 Juan 9-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1958, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que recurso literario emplea Pablo en 1 Corintios 13 al personificar al amor con quince verbos?",
-
-
 
     options: ["Alegoria extendida", "Prosopopeya", "Hiperbole", "Sinecdoque"],
 
-
-
     correct: 1, reference: "1 Corintios 13:4-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1959, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que texto del AT cita el autor de Hebreos en 10:5-7 para explicar la encarnacion de Cristo como ofrenda superior?",
-
-
 
     options: ["Isaias 53:7-8", "Levitico 16:21", "Exodo 29:38", "Salmo 40:6-8"],
 
-
-
     correct: 3, reference: "Hebreos 10:5-7; Salmo 40:6-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1960, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en 2 Tesalonicenses 2:3 para referirse a la 'apostasia' o 'rebelion' antes del dia del Senor?",
-
-
 
     options: ["Parabasis", "Apostasia", "Skandalon", "Paraptoma"],
 
-
-
     correct: 1, reference: "2 Tesalonicenses 2:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1961, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿En que epistola aparece el hapax legomenon 'theopneustos' (inspirada por Dios) referido a la Escritura?",
-
-
 
     options: ["Hebreos", "2 Pedro", "1 Pedro", "2 Timoteo"],
 
-
-
     correct: 3, reference: "2 Timoteo 3:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1962, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que nombre propio menciona Pablo en Romanos 16:23 como 'tesorero de la ciudad' (oikonomos tos poleos)?",
-
-
 
     options: ["Erasto", "Tercio", "Cuarto", "Gayo"],
 
-
-
     correct: 0, reference: "Romanos 16:23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1963, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que concepto teologico griego expresa Pablo en Romanos 6:6 con 'ho palaios homon anthropos'?",
-
-
 
     options: ["El hombre interior", "El hombre natural", "El hombre carnal", "El viejo hombre"],
 
-
-
     correct: 3, reference: "Romanos 6:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1964, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que cita textual de Isaias 59:20-21 usa Pablo en Romanos 11:26-27 respecto a la salvacion futura de Israel?",
-
-
 
     options: ["'Porque todos me conoceran, desde el menor hasta el mayor'", "'El pueblo que andaba en tinieblas vio gran luz'", "'El Redentor vendra de Sion y apartara la impiedad de Jacob'", "'He aqui la virgen concebira y dara a luz un hijo'"],
 
-
-
     correct: 2, reference: "Romanos 11:26-27; Isaias 59:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1965, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿En que epistola del NT aparece la expresion griega 'antitypon' (antitipo) referida al bautismo?",
-
-
 
     options: ["Hebreos", "1 Pedro", "Romanos", "Colosenses"],
 
-
-
     correct: 1, reference: "1 Pedro 3:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1966, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que persona envio Pablo de regreso a Filipos porque estaba gravemente enfermo y los filipenses lo supieron?",
-
-
 
     options: ["Tiquico", "Silvano", "Epafrodito", "Timoteo"],
 
-
-
     correct: 2, reference: "Filipenses 2:25-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1967, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa el autor de Hebreos en 6:4 para describir a los que han sido 'iluminados'?",
-
-
 
     options: ["Photisthentas", "Augazontas", "Lampadontas", "Epiphaneia"],
 
-
-
     correct: 0, reference: "Hebreos 6:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1968, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que catalogo de vicios en Galatas 5:19-21 Pablo designa con la expresion griega 'erga tos sarkos'?",
-
-
 
     options: ["Obras de la ley", "Obras de las tinieblas", "Obras de la carne", "Obras muertas"],
 
-
-
     correct: 2, reference: "Galatas 5:19-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1969, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que debate textual rodea a 1 Juan 5:7-8 (Comma Johanneum) en la critica textual?",
-
-
 
     options: ["Si el pasaje pertenece originalmente a 2 Juan", "Si incluir la referencia trinitaria 'el Padre, el Verbo y el Espiritu Santo'", "Si la palabra 'agua' debe traducirse como 'espiritu'", "Si el versiculo fue escrito por Juan o por un discipulo"],
 
-
-
     correct: 1, reference: "1 Juan 5:7-8 (aparato critico)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1970, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que hapax legomenon del NT usa Pablo en Filipenses 4:8 traducido como 'amable' o 'digno de amor'?",
-
-
 
     options: ["Semnos", "Euphoma", "Agathos", "Prosphilo"],
 
-
-
     correct: 3, reference: "Filipenses 4:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1971, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Desde que ciudad envio Pablo a Tercio como amanuense que escribio la carta a los Romanos?",
-
-
 
     options: ["Antioquia", "Corinto", "Filipos", "Efeso"],
 
-
-
     correct: 1, reference: "Romanos 16:22-23; cf. Hechos 20:2-3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1972, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que expresion griega usa Pablo en Galatas 2:20 que resume la mistica paulina: 'zo de ouketi ego, zo de en emoi...'?",
-
-
 
     options: ["La gracia", "El Espiritu Santo", "Dios Padre", "Cristo"],
 
-
-
     correct: 3, reference: "Galatas 2:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1973, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que libro del AT cita extensamente el autor de Hebreos en el capitulo 3 para advertir contra la incredulidad?",
-
-
 
     options: ["Salmo 95", "Deuteronomio 1", "Exodo 17", "Numeros 14"],
 
-
-
     correct: 0, reference: "Hebreos 3:7-11; Salmo 95:7-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1974, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino tecnico griego aparece en 1 Corintios 16:22 como formula aramea transliterada que significa 'Senor nuestro, ven'?",
-
-
 
     options: ["Maranatha", "Abba", "Hosanna", "Amen"],
 
-
-
     correct: 0, reference: "1 Corintios 16:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1975, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿A que dos personas entrego Pablo a Satanas 'para que aprendan a no blasfemar' segun 1 Timoteo?",
-
-
 
     options: ["Diotrefes y Demas", "Fileto y Hermogenes", "Demas y Figelo", "Himeneo y Alejandro"],
 
-
-
     correct: 3, reference: "1 Timoteo 1:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1976, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que texto de Deuteronomio 25:4 cita Pablo en 1 Corintios 9:9 para defender el derecho del obrero a su salario?",
-
-
 
     options: ["'No pondras bozal al buey que trilla'", "'No haras acepcion de personas'", "'Amaras a tu projimo como a ti mismo'", "'El obrero es digno de su salario'"],
 
-
-
     correct: 0, reference: "1 Corintios 9:9; Deuteronomio 25:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1977, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en 2 Corintios 3:18 para describir la transformacion progresiva del creyente 'de gloria en gloria'?",
-
-
 
     options: ["Allasso", "Metamorphoumetha", "Anakainoo", "Metaschomatizo"],
 
-
-
     correct: 1, reference: "2 Corintios 3:18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1978, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿En que epistola Pablo utiliza la metafora del atleta, el soldado y el labrador como tres imagenes del ministerio cristiano?",
-
-
 
     options: ["Filipenses", "1 Corintios", "1 Tesalonicenses", "2 Timoteo"],
 
-
-
     correct: 3, reference: "2 Timoteo 2:3-6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1979, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que expresion griega hapax legomenon usa el autor de Hebreos en 12:1 traducida como 'nube de testigos'?",
-
-
 
     options: ["Synagogo martyron", "Nephos martyron", "Plothos martyron", "Ochlos martyron"],
 
-
-
     correct: 1, reference: "Hebreos 12:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1980, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Cual de las siete epistolas generales (catolicas) es la mas breve del NT con solo 13 versiculos?",
-
-
 
     options: ["Judas", "3 Juan", "2 Juan", "2 Pedro"],
 
-
-
     correct: 1, reference: "3 Juan"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1981, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pedro en 2 Pedro 1:16 traducido como 'fabulas artificiosamente inventadas' al defender la veracidad apostolica?",
-
-
 
     options: ["Pseudo logoi", "Kenophonias", "Genealogiais aperantois", "Sesophismenois muthois"],
 
-
-
     correct: 3, reference: "2 Pedro 1:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1982, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que pasaje de Jeremias 31:31-34 cita extensamente el autor de Hebreos como la profecia del nuevo pacto?",
-
-
 
     options: ["Hebreos 5:1-4", "Hebreos 7:20-22", "Hebreos 8:8-12", "Hebreos 10:1-4"],
 
-
-
     correct: 2, reference: "Hebreos 8:8-12; Jeremias 31:31-34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1983, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que disputa menciona Judas entre el arcangel Miguel y el diablo respecto al cuerpo de Moises?",
-
-
 
     options: ["Miguel enterro a Moises y el diablo lo desenterro", "El diablo queria usar el cuerpo para idolatria y Miguel no pronuncio juicio de maldicion", "Miguel reclamaba el alma de Moises para el cielo", "El diablo negaba la muerte de Moises"],
 
-
-
     correct: 1, reference: "Judas 9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1984, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que expresion griega usa Pablo en Efesios 2:14 para llamar a Cristo 'nuestra paz' que derribo el muro de separacion?",
-
-
 
     options: ["Ho kurios homon", "Ho sotor homon", "Ho lytrotos homon", "Ho eirene homon"],
 
-
-
     correct: 3, reference: "Efesios 2:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1985, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que persona mencionada en Colosenses 4:17 recibio la instruccion de 'cumplir el ministerio que recibiste en el Senor'?",
-
-
 
     options: ["Onesimo", "Epafras", "Arquipo", "Tiquico"],
 
-
-
     correct: 2, reference: "Colosenses 4:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1986, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en Romanos 8:26 para describir los gemidos 'inexpresables' del Espiritu al interceder?",
-
-
 
     options: ["Phonais megalais", "Stenagmois alaletois", "Glossais aggelikais", "Proseuchais adialeiptois"],
 
-
-
     correct: 1, reference: "Romanos 8:26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1987, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que particularidad literaria distingue a Filemon como la unica carta paulina dirigida principalmente a un individuo sobre un asunto privado?",
-
-
 
     options: ["Es la mas larga de las cartas privadas", "Intercede por el esclavo Onesimo usando retorica deliberativa", "Contiene una extensa seccion doctrinal", "Fue escrita sin amanuense"],
 
-
-
     correct: 1, reference: "Filemon 8-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1988, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que cita de Genesis 15:6 usa Pablo tanto en Romanos 4:3 como en Galatas 3:6 para argumentar la justificacion por fe?",
-
-
 
     options: ["'Abraham obedecio mi voz y guardo mi precepto'", "'Por fe Abraham salio sin saber a donde iba'", "'Abraham creyo a Dios y le fue contado por justicia'", "'Abraham ofrecio a Isaac sobre el altar'"],
 
-
-
     correct: 2, reference: "Romanos 4:3; Galatas 3:6; Genesis 15:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1989, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego emplea Pablo en Colosenses 2:9 para expresar que en Cristo habita 'toda la plenitud de la Deidad corporalmente'?",
-
-
 
     options: ["Theototos", "Pneumatos", "Theiototos", "Doxos"],
 
-
-
     correct: 0, reference: "Colosenses 2:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1990, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que peculiaridad tiene 2 Juan al ser la unica epistola del NT dirigida a una 'senora elegida' (eklekto kyria)?",
-
-
 
     options: ["Es la carta mas larga de Juan", "Es la primera epistola general cronologicamente", "Contiene el unico mandamiento nuevo del NT", "Es dirigida a una congregacion personificada como mujer"],
 
-
-
     correct: 3, reference: "2 Juan 1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1991, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que texto de Isaias 28:16 cita Pablo en Romanos 9:33 combinandolo con Isaias 8:14 para hablar de Cristo como piedra de tropiezo?",
-
-
 
     options: ["'El que creyere en el no sera avergonzado'", "'La piedra que desecharon los edificadores'", "'Piedra de tropiezo y roca de escandalo'", "Ambas citas combinadas en un solo pasaje"],
 
-
-
     correct: 3, reference: "Romanos 9:33; Isaias 28:16 + 8:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1992, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que expresion griega usa Santiago en 2:19 de forma ironica al decir que 'tambien los demonios creen y tiemblan'?",
-
-
 
     options: ["Pisteuousin kai phrussousin", "Homolousin kai klaiousin", "Pisteuousin kai tremousin", "Ginoskousin kai phobountai"],
 
-
-
     correct: 0, reference: "Santiago 2:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1993, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que estructura retorica clasica de diatriba (dialogo con interlocutor ficticio) emplea Pablo extensamente en Romanos?",
-
-
 
     options: ["Utiliza la estructura de los Salmos imprecatorios", "Emplea acrosticos hebreos ocultos", "Responde objeciones con '?Que diremos pues?' (ti oun eroumen)", "Usa parabolas como Jesus en los evangelios"],
 
-
-
     correct: 2, reference: "Romanos 3:1; 6:1; 7:7; 9:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1994, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego tecnico usa Pablo en Galatas 1:15 cuando dice que Dios lo 'aparto' desde el vientre, evocando la vocacion profetica?",
-
-
 
     options: ["Aphorisas", "Eklexato", "Ekalesen", "Procheirisato"],
 
-
-
     correct: 0, reference: "Galatas 1:15; cf. Jeremias 1:5; Isaias 49:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1995, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que persona menciona Pablo en 1 Corintios 1:14-16 como uno de los pocos que el personalmente bautizo en Corinto?",
-
-
 
     options: ["Apolos", "Sostenes", "Aquila", "Crispo"],
 
-
-
     correct: 3, reference: "1 Corintios 1:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1996, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en 1 Tesalonicenses 4:15 traducido como 'palabra del Senor' (logos kyriou) para fundamentar la ensenanza sobre la parusia?",
-
-
 
     options: ["Una cita del libro de Daniel", "Un agraphon o dicho de Jesus no registrado en los evangelios", "Una cita directa de los evangelios escritos", "Una referencia a Malaquias"],
 
-
-
     correct: 1, reference: "1 Tesalonicenses 4:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1997, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que peculiaridad tiene Hebreos entre las epistolas del NT en cuanto a su estructura introductoria?",
-
-
 
     options: ["Inicia con una oracion liturgica completa", "Abre con una lista de virtudes cristianas", "Carece del saludo epistolar tipico al inicio, comenzando como un tratado teologico", "Comienza con una genealogia"],
 
-
-
     correct: 2, reference: "Hebreos 1:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1998, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que termino griego usa Pablo en Efesios 6:12 para 'potestades' o 'autoridades' espirituales malignas en las regiones celestes?",
-
-
 
     options: ["Dynameis", "Exousias", "Arcontas", "Kosmokratoras"],
 
-
-
     correct: 3, reference: "Efesios 6:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1999, difficulty: "experto", category: "cartas",
 
-
-
     question: "¿Que cita directa de Habacuc 2:3-4 usa el autor de Hebreos en 10:37-38 para exhortar a la perseverancia?",
-
-
 
     options: ["'Clama y no ceses, levanta tu voz como trompeta'", "'Aunque la vision tardara, esperala'", "'El que ha de venir vendra y no tardara; mas el justo vivira por fe'", "'?No eres tu desde la eternidad, Jehova Dios mio?'"],
 
-
-
     correct: 2, reference: "Hebreos 10:37-38; Habacuc 2:3-4"
 
-
-
   },
-
-
 
   // --- Historias Experto (50 preguntas) ---
 
-
-
   {
-
-
 
     id: 89, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Quien era Rahab y que papel tuvo en la conquista de Jerico?",
-
-
 
     options: ["Una prostituta que escondio a los espias", "La esposa de Josue", "Una sacerdotisa que maldijo a Israel", "Una profetisa que guio a Israel"],
 
-
-
     correct: 0, reference: "Josue 2:1-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 90, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cual fue la senal que Gedeon pidio a Dios con el vellon?",
-
-
 
     options: ["Que el vellon se quemara", "Que el vellon estuviera mojado y el suelo seco, y luego al reves", "Que lloviera sobre el vellon", "Que apareciera un angel"],
 
-
-
     correct: 1, reference: "Jueces 6:36-40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 950, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que pacto hizo Dios con Noe y cual fue su senal?",
-
-
 
     options: ["Pacto de no destruir con diluvio, senal: arcoiris", "Pacto de tierra con fuego", "Pacto de prosperidad con lluvia", "Pacto de descendencia con estrella"],
 
-
-
     correct: 0, reference: "Genesis 9:11-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 951, difficulty: "experto", category: "historias",
 
-
-
     question: "¿En que consistio el pacto de las partes con Abraham?",
-
-
 
     options: ["Sacrificio de Isaac", "Circuncision", "Animales cortados por la mitad y antorcha pasando", "Ofrenda de diezmos"],
 
-
-
     correct: 2, reference: "Genesis 15:9-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 952, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos anos transcurrieron entre Abraham y el exodo?",
-
-
 
     options: ["215", "430", "500", "400"],
 
-
-
     correct: 1, reference: "Exodo 12:40; Galatas 3:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 953, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que evento historico marca Genesis 3:15 (protoevangelio)?",
-
-
 
     options: ["La creacion del hombre", "El diluvio universal", "El llamado de Abraham", "La primera profecia mesianica"],
 
-
-
     correct: 3, reference: "Genesis 3:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 954, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cual fue la estrategia militar de Josue contra Hai?",
-
-
 
     options: ["Ataque frontal", "Emboscada con dos grupos", "Cerco de 7 dias", "Trompetas y gritos"],
 
-
-
     correct: 1, reference: "Josue 8:3-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 955, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Por que Moises no entro a la tierra prometida?",
-
-
 
     options: ["Se nego a liderar", "Era muy viejo", "Adoro al becerro", "Golpeo la roca en vez de hablarle"],
 
-
-
     correct: 3, reference: "Numeros 20:7-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 956, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que evento marca el fin de la era de los jueces?",
-
-
 
     options: ["Conquista de Jerusalen", "Uncion de Saul como rey", "Muerte de Sanson", "Construccion del templo"],
 
-
-
     correct: 1, reference: "1 Samuel 10:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 957, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos anos goberno Salomon?",
-
-
 
     options: ["50", "40", "30", "20"],
 
-
-
     correct: 1, reference: "1 Reyes 11:42"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 958, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que causo la division del reino tras Salomon?",
-
-
 
     options: ["Cargas pesadas e impuestos de Roboam", "Invasion extranjera", "Profecia cumplida de Moises", "Guerra civil"],
 
-
-
     correct: 0, reference: "1 Reyes 12:4-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 959, difficulty: "experto", category: "historias",
 
-
-
     question: "¿En que ano cayo el reino del norte (Samaria)?",
-
-
 
     options: ["722 a.C.", "586 a.C.", "605 a.C.", "516 a.C."],
 
-
-
     correct: 0, reference: "2 Reyes 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 960, difficulty: "experto", category: "historias",
 
-
-
     question: "¿En que ano cayo Jerusalen ante Babilonia?",
-
-
 
     options: ["605 a.C.", "516 a.C.", "586 a.C.", "722 a.C."],
 
-
-
     correct: 2, reference: "2 Reyes 25:8-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 961, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que decreto de Ciro permitio el regreso de los judios?",
-
-
 
     options: ["Edicto de Babilonia", "Decreto de reconstruccion militar", "Edicto de Ciro (538 a.C.)", "Decreto de tolerancia religiosa"],
 
-
-
     correct: 2, reference: "Esdras 1:1-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 962, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos regresaron en la primera oleada con Zorobabel?",
-
-
 
     options: ["12,000", "50,000", "70,000", "42,360"],
 
-
-
     correct: 3, reference: "Esdras 2:64"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 963, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos anos tardo la reconstruccion del segundo templo?",
-
-
 
     options: ["10 anos", "46 anos", "4 anos", "20 anos"],
 
-
-
     correct: 3, reference: "Esdras 3-6 (516 a.C.)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 964, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que papel jugo el profeta Ageo en la reconstruccion?",
-
-
 
     options: ["Arquitecto del templo", "Financio la obra", "Motivo al pueblo a reconstruir", "Protegio a los obreros"],
 
-
-
     correct: 2, reference: "Ageo 1:1-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 965, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos dias completo Nehemias la reconstruccion del muro?",
-
-
 
     options: ["40", "52", "70", "30"],
 
-
-
     correct: 1, reference: "Nehemias 6:15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 966, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que significado teologico tiene el exodo para Israel?",
-
-
 
     options: ["Conquista militar", "Redencion y liberacion por gracia", "Alianza politica", "Expansion territorial"],
 
-
-
     correct: 1, reference: "Exodo 6:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 967, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantas estaciones del desierto se registran en Numeros 33?",
-
-
 
     options: ["24", "70", "12", "42"],
 
-
-
     correct: 3, reference: "Numeros 33:1-49"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 968, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que sucedio en Cades-barnea?",
-
-
 
     options: ["Cruce del Jordan", "Rebelion de Israel por el informe de los espias", "Victoria sobre Jerico", "Muerte de Moises"],
 
-
-
     correct: 1, reference: "Numeros 13:26-14:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 969, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que alianza hizo Josafat que fue reprochada por Dios?",
-
-
 
     options: ["Tratado con Edom", "Alianza con Acab de Israel", "Pacto con Egipto", "Alianza con Asiria"],
 
-
-
     correct: 1, reference: "2 Cronicas 18:1-3; 19:2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 970, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que reforma religiosa hizo Ezequias?",
-
-
 
     options: ["Escribio la ley", "Construyo el templo", "Reabrio y purifico el templo", "Destruyo Samaria"],
 
-
-
     correct: 2, reference: "2 Cronicas 29:3-19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 971, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que destruyo Ezequias que Moises habia hecho?",
-
-
 
     options: ["El arca", "El candelabro", "Las tablas de la ley", "La serpiente de bronce (Nehustan)"],
 
-
-
     correct: 3, reference: "2 Reyes 18:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 972, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos soldados asirios murio por el angel del Senor?",
-
-
 
     options: ["50,000", "200,000", "185,000", "100,000"],
 
-
-
     correct: 2, reference: "2 Reyes 19:35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 973, difficulty: "experto", category: "historias",
 
-
-
     question: "¿En que contexto historico profetizo Habacuc?",
-
-
 
     options: ["Regreso del exilio", "Ante la invasion caldea inminente", "Exilio en Babilonia", "Reinado de David"],
 
-
-
     correct: 1, reference: "Habacuc 1:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 974, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que vision tuvo Nabucodonosor sobre los imperios?",
-
-
 
     options: ["Diez cuernos", "Siete sellos", "Cuatro bestias", "Una estatua con cuatro metales"],
 
-
-
     correct: 3, reference: "Daniel 2:31-45"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 975, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que representaba la piedra que destruyo la estatua en Daniel 2?",
-
-
 
     options: ["La iglesia primitiva", "El imperio romano", "El reino eterno de Dios", "Israel restaurado"],
 
-
-
     correct: 2, reference: "Daniel 2:44-45"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 976, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que fiesta judia prefigura la muerte de Cristo?",
-
-
 
     options: ["Pascua", "Pentecostes", "Purim", "Tabernaculos"],
 
-
-
     correct: 0, reference: "1 Corintios 5:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 977, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que evento conecta la ofrenda de Isaac con la cruz?",
-
-
 
     options: ["El mana del desierto", "La zarza ardiente", "La serpiente de bronce", "El cordero sustituto en Moriah"],
 
-
-
     correct: 3, reference: "Genesis 22:13; Juan 1:29"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 978, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos anos de silencio profetico hubo entre AT y NT?",
-
-
 
     options: ["400", "300", "200", "500"],
 
-
-
     correct: 0, reference: "Periodo intertestamentario"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 979, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que imperio dominaba durante el periodo intertestamentario?",
-
-
 
     options: ["Solo Romano", "Asirio luego Babilonico", "Persa luego Griego luego Romano", "Solo Griego"],
 
-
-
     correct: 2, reference: "Historia intertestamentaria"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 980, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que revuelta judia ocurrio entre AT y NT?",
-
-
 
     options: ["Guerra del Jordan", "Rebelion de Core", "Revuelta Macabea", "Revuelta de Bar Kojba"],
 
-
-
     correct: 2, reference: "1 Macabeos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 981, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que fiesta celebra la revuelta macabea?",
-
-
 
     options: ["Purim", "Tabernaculos", "Hanuka", "Pascua"],
 
-
-
     correct: 2, reference: "Juan 10:22"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 982, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que profecia de Daniel senala las 70 semanas?",
-
-
 
     options: ["Daniel 7", "Daniel 2", "Daniel 12", "Daniel 9:24-27"],
 
-
-
     correct: 3, reference: "Daniel 9:24-27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 983, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que evento historico cumple Isaias 44:28?",
-
-
 
     options: ["Decreto de Ciro", "Construccion del arca", "Nacimiento de Jesus", "Caida de Babilonia"],
 
-
-
     correct: 0, reference: "Isaias 44:28; Esdras 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 984, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantas generaciones lista Mateo de Abraham a Cristo?",
-
-
 
     options: ["28", "70", "42", "52"],
 
-
-
     correct: 2, reference: "Mateo 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 985, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que censo provoco el viaje a Belen?",
-
-
 
     options: ["Censo de Herodes", "Censo de Augusto Cesar", "Censo de Pilato", "Censo de Tiberio"],
 
-
-
     correct: 1, reference: "Lucas 2:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 986, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que masacre ordeno Herodes y cuantos ninos murieron aproximadamente?",
-
-
 
     options: ["Ninos menores de 2 anos en Belen", "50 ninos en Jerusalen", "Primogenitos en Galilea", "100 ninos en Judea"],
 
-
-
     correct: 0, reference: "Mateo 2:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 987, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que paralelo tipologico hay entre Jose (AT) y Cristo?",
-
-
 
     options: ["Ambos fueron reyes", "Ambos nacieron en Belen", "Ambos fueron sacerdotes", "Ambos fueron rechazados, vendidos y luego exaltados"],
 
-
-
     correct: 3, reference: "Genesis 37-50"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 988, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que significado tiene el cruce del Mar Rojo tipologicamente?",
-
-
 
     options: ["Bautismo y nueva vida", "Alianza politica", "Conquista territorial", "Victoria militar"],
 
-
-
     correct: 0, reference: "1 Corintios 10:1-2"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 989, difficulty: "experto", category: "historias",
 
+    question: "¿Que sucedio con Ninive tras la predicacion de Jonas?",
 
-
-    question: "¿Que ciudad fue destruida por no arrepentirse pese a la predicacion de Jonas?",
-
-
-
-    options: ["Jerico", "Ninive si se arrepintio", "Babilonia", "Sodoma"],
-
-
+    options: ["Fue destruida", "Se arrepintio", "Ignoro el mensaje", "Ataco a Israel"],
 
     correct: 1, reference: "Jonas 3:5-10"
 
-
-
   },
 
-
-
   {
-
-
 
     id: 990, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que acontecimiento de Hechos 10 marco la entrada de gentiles a la iglesia?",
-
-
 
     options: ["Viaje de Pablo", "Muerte de Esteban", "Conversion de Cornelio", "Concilio de Jerusalen"],
 
-
-
     correct: 2, reference: "Hechos 10:44-48"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 991, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Cuantos viajes misioneros realizo Pablo segun Hechos?",
-
-
 
     options: ["5", "2", "3", "4"],
 
-
-
     correct: 2, reference: "Hechos 13-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 992, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que provoco el concilio de Jerusalen en Hechos 15?",
-
-
 
     options: ["Persecucion romana", "Debate sobre la circuncision de gentiles", "Herejia gnostica", "Eleccion de diaconos"],
 
-
-
     correct: 1, reference: "Hechos 15:1-5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 993, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Como llego Pablo a Roma?",
-
-
 
     options: ["Voluntariamente", "Huyendo de Jerusalen", "Como prisionero tras apelar a Cesar", "Enviado por Pedro"],
 
-
-
     correct: 2, reference: "Hechos 25:11; 27-28"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 994, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que naufragio sufrio Pablo camino a Roma?",
-
-
 
     options: ["Cerca de Malta", "En Creta", "En el Mar Negro", "En el Mar Rojo"],
 
-
-
     correct: 0, reference: "Hechos 27:39-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 995, difficulty: "experto", category: "historias",
 
-
-
     question: "¿Que relacion hay entre el tabernaculo y Cristo segun Hebreos?",
-
-
 
     options: ["Cristo destruyo el tabernaculo", "Ninguna directa", "El tabernaculo era sombra de las realidades celestiales en Cristo", "El tabernaculo reemplazo a Cristo"],
 
-
-
     correct: 2, reference: "Hebreos 8:5; 9:11"
 
-
-
   },
-
-
 
   // --- Vida de Jesus ---
 
-
-
   {
-
-
 
     id: 1550, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que termino griego usa Juan 1:1 para referirse a Jesus como 'Verbo'?",
-
-
 
     options: ["Graphe", "Logos", "Didache", "Rhema"],
 
-
-
     correct: 1, reference: "Juan 1:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1551, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que nombre aparece en la genealogia de Jesus en Lucas pero NO en la de Mateo, como hijo de David?",
-
-
 
     options: ["Natan", "Roboam", "Salomon", "Abiud"],
 
-
-
     correct: 0, reference: "Lucas 3:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1552, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantas generaciones menciona Mateo desde Abraham hasta Cristo en total?",
-
-
 
     options: ["28 generaciones", "42 generaciones", "50 generaciones", "36 generaciones"],
 
-
-
     correct: 1, reference: "Mateo 1:17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1553, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que profeta es citado en Mateo 2:15 con la frase 'De Egipto llame a mi hijo'?",
-
-
 
     options: ["Miqueas", "Jeremias", "Oseas", "Isaias"],
 
-
-
     correct: 2, reference: "Mateo 2:15; Oseas 11:1"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1554, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿A que edad fue Jesus presentado en el templo segun la ley de Moises, y quien lo reconocio como el Mesias ademas de Ana?",
-
-
 
     options: ["A los 40 dias; Simeon", "A los 12 anos; Gamaliel", "Al ano; Nicodemo", "A los 8 dias; Zacarias"],
 
-
-
     correct: 0, reference: "Lucas 2:22-35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1555, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cual es el unico evangelio que narra la visita de Jesus al templo a los 12 anos?",
-
-
 
     options: ["Mateo", "Lucas", "Marcos", "Juan"],
 
-
-
     correct: 1, reference: "Lucas 2:41-52"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1556, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que tipo de amor expresa el termino griego 'agape' que Jesus uso en Juan 13:34?",
-
-
 
     options: ["Amor fraternal entre amigos", "Amor familiar", "Amor incondicional y sacrificial", "Amor romantico"],
 
-
-
     correct: 2, reference: "Juan 13:34-35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1557, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿En que evangelio exclusivamente aparece la parabola del buen samaritano?",
-
-
 
     options: ["Juan", "Mateo", "Lucas", "Marcos"],
 
-
-
     correct: 2, reference: "Lucas 10:25-37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1558, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Como se llamaba el suegro de Pedro, cuya suegra fue sanada por Jesus segun la tradicion, y en que ciudad vivian?",
-
-
 
     options: ["En Nazaret", "En Capernaum", "En Betania", "En Jerusalen"],
 
-
-
     correct: 1, reference: "Marcos 1:29-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1559, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cual es la primera senal (milagro) de Jesus segun el Evangelio de Juan?",
-
-
 
     options: ["La pesca milagrosa", "Convertir agua en vino en Cana", "Caminar sobre el agua", "Sanar al hijo de un noble"],
 
-
-
     correct: 1, reference: "Juan 2:1-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1560, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo le dijo a Jesus: 'Senor, muestranos al Padre y nos basta'?",
-
-
 
     options: ["Andres", "Felipe", "Pedro", "Tomas"],
 
-
-
     correct: 1, reference: "Juan 14:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1561, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantas veces purifico Jesus el templo segun los evangelios, y en que evangelio se narra la primera purificacion?",
-
-
 
     options: ["Tres veces; la primera en Lucas", "Una vez, en Mateo", "Dos veces; la primera en Juan", "Una vez, en Marcos"],
 
-
-
     correct: 2, reference: "Juan 2:13-17; Mateo 21:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1562, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Como se llama el estanque en Jerusalen donde Jesus sano al paralitico que llevaba 38 anos enfermo?",
-
-
 
     options: ["Estanque de Betesda", "Estanque de Gihon", "Estanque de Siloe", "Estanque de Salomon"],
 
-
-
     correct: 0, reference: "Juan 5:2-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1563, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que termino griego para 'otro Consolador' usa Jesus en Juan 14:16, indicando 'otro de la misma clase'?",
-
-
 
     options: ["Pneuma", "Monos", "Heteros", "Allos"],
 
-
-
     correct: 3, reference: "Juan 14:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1564, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿En que dia de la semana de la Pasion maldijo Jesus la higuera segun Marcos?",
-
-
 
     options: ["Miercoles", "Domingo (entrada triunfal)", "Lunes", "Martes"],
 
-
-
     correct: 2, reference: "Marcos 11:12-14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1565, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantas palabras (declaraciones) pronuncio Jesus desde la cruz segun los cuatro evangelios combinados?",
-
-
 
     options: ["3", "9", "5", "7"],
 
-
-
     correct: 3, reference: "Mateo 27:46; Lucas 23:34,43,46; Juan 19:26-28,30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1566, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que nombre recibe en griego la inscripcion colocada sobre la cruz de Jesus?",
-
-
 
     options: ["Kerigma", "Stauros", "Epitaphios", "Titulus"],
 
-
-
     correct: 3, reference: "Juan 19:19-20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1567, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Quien era el padre de los apostoles Santiago y Juan, hijos de Zebedeo?",
-
-
 
     options: ["Jonas", "Zebedeo", "Cleofas", "Alfeo"],
 
-
-
     correct: 1, reference: "Mateo 4:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1568, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo era recaudador de impuestos antes de seguir a Jesus, y con que otro nombre se le conoce?",
-
-
 
     options: ["Simon/Pedro", "Tomas/Didimo", "Mateo/Levi", "Natanael/Bartolome"],
 
-
-
     correct: 2, reference: "Marcos 2:14; Mateo 9:9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1569, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿En que evangelio Jesus dice 'Yo soy el pan de vida' como parte de los siete 'Yo soy' joanicos?",
-
-
 
     options: ["Juan", "Lucas", "Mateo", "Marcos"],
 
-
-
     correct: 0, reference: "Juan 6:35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1570, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantos 'ayes' pronuncio Jesus contra los escribas y fariseos en Mateo 23?",
-
-
 
     options: ["10", "7", "3", "5"],
 
-
-
     correct: 1, reference: "Mateo 23:13-36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1571, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Como se llamaba el siervo del sumo sacerdote a quien Pedro le corto la oreja?",
-
-
 
     options: ["Lazaro", "Barrabas", "Nicodemo", "Malco"],
 
-
-
     correct: 3, reference: "Juan 18:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1572, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que mujer ungio los pies de Jesus con perfume de nardo puro segun Juan 12?",
-
-
 
     options: ["Marta", "La mujer pecadora de Lucas 7", "Maria de Betania", "Maria Magdalena"],
 
-
-
     correct: 2, reference: "Juan 12:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1573, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantos denarios dijo Judas que se podrian haber obtenido por el perfume derramado sobre Jesus?",
-
-
 
     options: ["200 denarios", "300 denarios", "100 denarios", "500 denarios"],
 
-
-
     correct: 1, reference: "Juan 12:5"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1574, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿En que monte fue transfigurado Jesus segun la tradicion, y que dos personajes aparecieron con el?",
-
-
 
     options: ["Monte Carmelo; Samuel y Elias", "Monte Sinai; Abraham y David", "Monte Hermon; Isaias y Jeremias", "Monte Tabor; Moises y Elias"],
 
-
-
     correct: 3, reference: "Mateo 17:1-3; Marcos 9:2-4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1575, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cual fue el precio exacto que los principales sacerdotes pagaron a Judas por traicionar a Jesus?",
-
-
 
     options: ["40 piezas de plata", "30 piezas de plata", "50 piezas de plata", "20 piezas de plata"],
 
-
-
     correct: 1, reference: "Mateo 26:15; Zacarias 11:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1576, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que campo se compro con el dinero que Judas devolvio, y que nombre recibio?",
-
-
 
     options: ["Campo del alfarero / Aceldama", "Campo de sangre / Golgota", "Campo de Booz / Belen", "Campo del pastor / Betania"],
 
-
-
     correct: 0, reference: "Mateo 27:7-8; Hechos 1:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1577, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que termino griego usa Marcos para describir la hora en que Jesus fue crucificado ('hora tercera')?",
-
-
 
     options: ["Hora nona (3 p.m.)", "Hora tercera (9 a.m.)", "Hora primera (6 a.m.)", "Hora sexta (mediodia)"],
 
-
-
     correct: 1, reference: "Marcos 15:25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1578, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Quien ayudo a Jesus a cargar la cruz camino al Calvario segun los sinopticos?",
-
-
 
     options: ["Barrabas", "Jose de Arimatea", "Nicodemo", "Simon de Cirene"],
 
-
-
     correct: 3, reference: "Marcos 15:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1579, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Como se llamaban los dos hijos de Simon de Cirene mencionados en Marcos?",
-
-
 
     options: ["Jacobo y Jose", "Santiago y Juan", "Alejandro y Rufo", "Andres y Felipe"],
 
-
-
     correct: 2, reference: "Marcos 15:21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1580, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que palabra aramea grito Jesus desde la cruz que significa 'Dios mio, Dios mio, ?por que me has desamparado?'?",
-
-
 
     options: ["Maranata", "Talita cumi", "Eloi, Eloi, ?lama sabactani?", "Abba, Padre"],
 
-
-
     correct: 2, reference: "Marcos 15:34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1581, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que miembro del Sanedrin pidio el cuerpo de Jesus a Pilato para sepultarlo?",
-
-
 
     options: ["Caifas", "Gamaliel", "Nicodemo", "Jose de Arimatea"],
 
-
-
     correct: 3, reference: "Marcos 15:43"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1582, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que trajo Nicodemo para preparar el cuerpo de Jesus segun Juan 19:39?",
-
-
 
     options: ["Mirra y aloes, como cien libras", "Incienso y oro", "Aceite de oliva", "Especias y lienzos unicamente"],
 
-
-
     correct: 0, reference: "Juan 19:39"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1583, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cual es el unico evangelio que registra la caida de Jesus con gotas de sangre (hematohidrosis) en Getsemani?",
-
-
 
     options: ["Marcos", "Juan", "Lucas", "Mateo"],
 
-
-
     correct: 2, reference: "Lucas 22:44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1584, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantos panes y peces uso Jesus en la alimentacion de los 4,000?",
-
-
 
     options: ["3 panes y 5 peces", "10 panes y 3 peces", "7 panes y unos pocos peces", "5 panes y 2 peces"],
 
-
-
     correct: 2, reference: "Mateo 15:34-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1585, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantas canastas sobraron en la alimentacion de los 5,000 y cuantas en la de los 4,000?",
-
-
 
     options: ["10 y 5", "12 y 7", "5 y 3", "7 y 12"],
 
-
-
     correct: 1, reference: "Mateo 14:20; 15:37"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1586, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo camino sobre el agua hacia Jesus y luego comenzo a hundirse?",
-
-
 
     options: ["Santiago", "Juan", "Pedro", "Andres"],
 
-
-
     correct: 2, reference: "Mateo 14:28-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1587, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿En que ciudad Jesus resucito al hijo unico de una viuda, evento narrado solo por Lucas?",
-
-
 
     options: ["Betania", "Capernaum", "Nain", "Jerico"],
 
-
-
     correct: 2, reference: "Lucas 7:11-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1588, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cual era el nombre del gobernador romano que interrogo a Jesus y no hallo culpa en el?",
-
-
 
     options: ["Herodes Antipas", "Poncio Pilato", "Festo", "Felix"],
 
-
-
     correct: 1, reference: "Juan 18:38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1589, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Ante que otro gobernante fue enviado Jesus por Pilato durante su juicio, porque era galileo?",
-
-
 
     options: ["Cesar Augusto", "Lisanias", "Herodes Antipas", "Herodes Agripa"],
 
-
-
     correct: 2, reference: "Lucas 23:6-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1590, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que velo se rasgo en dos cuando Jesus murio, y en que direccion se rasgo?",
-
-
 
     options: ["El velo del Lugar Santisimo, de arriba abajo", "El velo de la puerta del templo, de lado a lado", "La cortina del atrio exterior, de abajo arriba", "El velo del altar del incienso, en diagonal"],
 
-
-
     correct: 0, reference: "Mateo 27:51"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1591, difficulty: "experto", category: "vida_jesus",
 
-
-
-    question: "¿Cual es la unica parabola que aparece en los tres evangelios sinopticos?",
-
-
+    question: "¿Cual de estas parabolas aparece en los tres evangelios sinopticos?",
 
     options: ["El hijo prodigo", "Los talentos", "El sembrador", "El buen samaritano"],
 
-
-
     correct: 2, reference: "Mateo 13:3-23; Marcos 4:2-20; Lucas 8:4-15"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1592, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que palabra aramea uso Jesus que significa 'Padre' en sentido intimo, registrada en Marcos 14:36?",
-
-
 
     options: ["Rabboni", "Elohim", "Adonai", "Abba"],
 
-
-
     correct: 3, reference: "Marcos 14:36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1593, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que discipulo no estaba presente cuando Jesus resucitado se aparecio por primera vez a los discipulos reunidos?",
-
-
 
     options: ["Tomas", "Juan", "Pedro", "Felipe"],
 
-
-
     correct: 0, reference: "Juan 20:24"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1594, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantos dias permanecio Jesus en la tierra despues de su resurreccion antes de ascender?",
-
-
 
     options: ["7 dias", "3 dias", "40 dias", "50 dias"],
 
-
-
     correct: 2, reference: "Hechos 1:3"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1595, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿En que lugar ascendio Jesus al cielo segun el relato de Lucas?",
-
-
 
     options: ["Monte Tabor", "Monte de los Olivos, cerca de Betania", "Monte Sinai", "Monte Hermon"],
 
-
-
     correct: 1, reference: "Lucas 24:50-51; Hechos 1:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1596, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que profetisa anciana reconocio al nino Jesus en el templo y hablaba de el a todos los que esperaban la redencion?",
-
-
 
     options: ["Maria Magdalena", "Elizabet", "Juana", "Ana hija de Fanuel"],
 
-
-
     correct: 3, reference: "Lucas 2:36-38"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1597, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿De que tribu era la profetisa Ana que vio al nino Jesus en el templo?",
-
-
 
     options: ["Levi", "Juda", "Benjamin", "Aser"],
 
-
-
     correct: 3, reference: "Lucas 2:36"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1598, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Que termino griego se usa en Juan 21:15-17 donde Jesus pregunta a Pedro si lo ama, cambiando entre 'agapao' y 'phileo'?",
-
-
 
     options: ["Storge y pragma", "Eros y storge", "Agapao y phileo", "Phileo y ludus"],
 
-
-
     correct: 2, reference: "Juan 21:15-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1599, difficulty: "experto", category: "vida_jesus",
 
-
-
     question: "¿Cuantos discipulos estaban pescando cuando Jesus resucitado se les aparecio junto al mar de Tiberias segun Juan 21?",
-
-
 
     options: ["7", "5", "12", "10"],
 
-
-
     correct: 0, reference: "Juan 21:2"
 
-
-
   },
-
-
 
   // --- Milagros ---
 
-
-
   {
-
-
 
     id: 1750, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas metretas (medidas) cabian aproximadamente en cada una de las seis tinajas de piedra en las bodas de Cana?",
-
-
 
     options: ["Cuatro o cinco", "Una o dos", "Dos o tres", "Seis o siete"],
 
-
-
     correct: 2, reference: "Juan 2:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1751, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas veces estornudo el hijo de la sunamita al ser resucitado por Eliseo segun 2 Reyes 4?",
-
-
 
     options: ["7 veces", "3 veces", "No se menciona", "5 veces"],
 
-
-
     correct: 0, reference: "2 Reyes 4:35"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1752, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que rio golpeo Elias con su manto para dividir sus aguas antes de ser arrebatado al cielo?",
-
-
 
     options: ["Nilo", "Jordan", "Cison", "Eufrates"],
 
-
-
     correct: 1, reference: "2 Reyes 2:8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1753, difficulty: "experto", category: "milagros",
 
-
-
     question: "Segun 2 Reyes 2:14, ?quien tambien dividio las aguas del Jordan golpeandolas con el manto de Elias despues de su ascension?",
-
-
 
     options: ["Eliseo", "Josue", "Giezi", "Naaman"],
 
-
-
     correct: 0, reference: "2 Reyes 2:14"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1754, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cual fue la tercera plaga que Dios envio sobre Egipto mediante Aaron?",
-
-
 
     options: ["Piojos", "Ranas", "Moscas", "ulceras"],
 
-
-
     correct: 0, reference: "Exodo 8:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1755, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantos dias duro la plaga de tinieblas sobre Egipto?",
-
-
 
     options: ["7 dias", "1 dia", "40 dias", "3 dias"],
 
-
-
     correct: 3, reference: "Exodo 10:22-23"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1756, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que animal hablo con voz humana para reprender la locura del profeta Balaam?",
-
-
 
     options: ["Un cordero", "Un buey", "Una asna", "Un carnero"],
 
-
-
     correct: 2, reference: "Numeros 22:28-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1757, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas veces rodearon los israelitas la ciudad de Jerico el septimo dia antes de que cayeran sus muros?",
-
-
 
     options: ["1 vez", "3 veces", "7 veces", "12 veces"],
 
-
-
     correct: 2, reference: "Josue 6:15-16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1758, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que le sucedio a la estatua de Dagon la segunda vez que amanecio junto al Arca del Pacto en su templo?",
-
-
 
     options: ["Se convirtio en polvo", "Cayo y se le cortaron la cabeza y las palmas de las manos", "Se quemo", "Se partio por la mitad"],
 
-
-
     correct: 1, reference: "1 Samuel 5:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1759, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Con que alimentaron los cuervos a Elias junto al arroyo de Querit segun 1 Reyes 17?",
-
-
 
     options: ["Pan y fruta", "Pan y carne", "Higos y datiles", "Mana y agua"],
 
-
-
     correct: 1, reference: "1 Reyes 17:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1760, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas veces mando Elias a su criado a mirar hacia el mar antes de que apareciera la nube que anunciaba lluvia?",
-
-
 
     options: ["5", "7", "10", "3"],
 
-
-
     correct: 1, reference: "1 Reyes 18:43-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1761, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que forma tenia la pequena nube que vio el criado de Elias emerger del mar antes de la gran lluvia?",
-
-
 
     options: ["Como la palma de la mano de un hombre", "Como un arco iris", "Como una gran montana", "Como una columna de humo"],
 
-
-
     correct: 0, reference: "1 Reyes 18:44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1762, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantos panes de cebada uso Eliseo para alimentar milagrosamente a cien hombres?",
-
-
 
     options: ["50 panes", "10 panes", "20 panes", "5 panes"],
 
-
-
     correct: 2, reference: "2 Reyes 4:42-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1763, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que profeta oro para que su siervo pudiera ver los carros de fuego y caballos celestiales que los rodeaban en Dotan?",
-
-
 
     options: ["Eliseo", "Daniel", "Elias", "Isaias"],
 
-
-
     correct: 0, reference: "2 Reyes 6:16-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1764, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Con que plaga castigo Dios a los filisteos de Asdod por retener el Arca del Pacto?",
-
-
 
     options: ["Tumores", "Langostas", "Lepra", "Ceguera"],
 
-
-
     correct: 0, reference: "1 Samuel 5:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1765, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Sobre que ciudad detuvo Josue el sol y sobre cual valle detuvo la luna durante la batalla contra los amorreos?",
-
-
 
     options: ["Jerico (sol) y Ai (luna)", "Gabaon (sol) y valle de Ajalon (luna)", "Bet-el (sol) y Siquem (luna)", "Hebron (sol) y Laquis (luna)"],
 
-
-
     correct: 1, reference: "Josue 10:12-13"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1766, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantos hombres selectos uso Gedeon para derrotar a los madianitas despues de la reduccion milagrosa de su ejercito?",
-
-
 
     options: ["1,000", "300", "500", "100"],
 
-
-
     correct: 1, reference: "Jueces 7:7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1767, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que tres objetos llevaban los 300 hombres de Gedeon al atacar el campamento madianita?",
-
-
 
     options: ["Arcos, flechas y antorchas", "Espadas, escudos y lanzas", "Cantaros, teas y trompetas", "Piedras, hondas y cuernos"],
 
-
-
     correct: 2, reference: "Jueces 7:16"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1768, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿En que lugar broto agua milagrosamente para saciar la sed de Sanson despues de matar a mil filisteos?",
-
-
 
     options: ["En Gaza", "En Sora", "En Lehi", "En Timnat"],
 
-
-
     correct: 2, reference: "Jueces 15:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1769, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantos filisteos aproximadamente mato Sanson al derrumbar el templo de Dagon sobre si mismo?",
-
-
 
     options: ["Alrededor de 10,000", "Alrededor de 3,000", "Alrededor de 5,000", "Alrededor de 1,000"],
 
-
-
     correct: 1, reference: "Jueces 16:27-30"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1770, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que echo Moises a las aguas amargas de Mara para que se endulzaran?",
-
-
 
     options: ["Harina", "Un arbol (un madero)", "Miel", "Sal"],
 
-
-
     correct: 1, reference: "Exodo 15:23-25"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1771, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas fuentes de agua y palmeras habia en el oasis de Elim donde acamparon los israelitas?",
-
-
 
     options: ["10 fuentes y 60 palmeras", "15 fuentes y 80 palmeras", "12 fuentes y 70 palmeras", "7 fuentes y 50 palmeras"],
 
-
-
     correct: 2, reference: "Exodo 15:27"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1772, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Con que plaga hirio Dios al rey Uzias cuando intento quemar incienso en el templo, funcion reservada a los sacerdotes?",
-
-
 
     options: ["Ceguera", "Paralisis", "Mudez", "Lepra"],
 
-
-
     correct: 3, reference: "2 Cronicas 26:19-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1773, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que le sucedio a la mano del rey Jeroboam cuando senalo al profeta que denunciaba el altar de Bet-el?",
-
-
 
     options: ["Se le cayo la espada", "Se le quemo", "Temblo incontrolablemente", "Se le seco y no podia retraerla"],
 
-
-
     correct: 3, reference: "1 Reyes 13:4"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1774, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿En cual de los evangelios se narra exclusivamente la resurreccion del hijo de la viuda de Nain?",
-
-
 
     options: ["Juan", "Mateo", "Marcos", "Lucas"],
 
-
-
     correct: 3, reference: "Lucas 7:11-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1775, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que detalle unico registra el Evangelio de Juan sobre la sanidad del ciego de nacimiento que no aparece en los sinopticos?",
-
-
 
     options: ["Jesus le soplo en los ojos", "Jesus oro en voz alta antes de sanarlo", "Jesus hizo lodo con saliva y lo unto en sus ojos", "Jesus le impuso las manos tres veces"],
 
-
-
     correct: 2, reference: "Juan 9:6"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1776, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantos enfermos sano Jesus junto al estanque de Betesda segun el relato de Juan 5?",
-
-
 
     options: ["Solamente uno", "Doce", "Cinco", "A todos los que estaban alli"],
 
-
-
     correct: 0, reference: "Juan 5:5-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1777, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que tipo de semilla comparo Jesus con la fe capaz de mover un monte?",
-
-
 
     options: ["De trigo", "De lino", "De mostaza", "De higuera"],
 
-
-
     correct: 2, reference: "Mateo 17:20"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1778, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que discipulo camino brevemente sobre el agua hacia Jesus antes de hundirse por dudar?",
-
-
 
     options: ["Santiago", "Andres", "Pedro", "Juan"],
 
-
-
     correct: 2, reference: "Mateo 14:28-31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1779, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿En cuales evangelios se narra que Jesus sano al siervo de un centurion a distancia, sin verlo ni tocarlo?",
-
-
 
     options: ["Los cuatro evangelios", "Solo Lucas", "Solo Mateo", "Mateo y Lucas"],
 
-
-
     correct: 3, reference: "Mateo 8:5-13; Lucas 7:1-10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1780, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cual fue la primera senal milagrosa que hizo Moises ante Faraon segun Exodo 7?",
-
-
 
     options: ["Enviar granizo", "Convertir la vara en serpiente", "Convertir el agua en sangre", "Producir oscuridad"],
 
-
-
     correct: 1, reference: "Exodo 7:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1781, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que sucedio con las varas de los magos de Egipto cuando tambien se convirtieron en serpientes ante Faraon?",
-
-
 
     options: ["Volvieron a ser varas", "Se convirtieron en ceniza", "La vara de Aaron se las trago", "Desaparecieron"],
 
-
-
     correct: 2, reference: "Exodo 7:12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1782, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas piedras lisas tomo David del arroyo para enfrentar al gigante Goliat?",
-
-
 
     options: ["5", "1", "7", "3"],
 
-
-
     correct: 0, reference: "1 Samuel 17:40"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1783, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿En que parte del cuerpo golpeo la piedra lanzada por David a Goliat?",
-
-
 
     options: ["En el pecho", "En la garganta", "En la frente", "En el ojo"],
 
-
-
     correct: 2, reference: "1 Samuel 17:49"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1784, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que echo Eliseo en un plato nuevo para purificar las aguas contaminadas de Jerico?",
-
-
 
     options: ["Sal", "Aceite", "Harina", "Ceniza"],
 
-
-
     correct: 0, reference: "2 Reyes 2:20-21"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1785, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que alimento preparo un angel para Elias cuando huia de Jezabel, y cuanto tiempo le sustento?",
-
-
 
     options: ["Pan y agua; 7 dias", "Carne y pan; 30 dias", "Fruta y leche; 21 dias", "Torta cocida y agua; 40 dias y 40 noches"],
 
-
-
     correct: 3, reference: "1 Reyes 19:6-8"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1786, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿A cuantos profetas falsos desafio Elias en total en el Monte Carmelo, sumando los de Baal y los de Asera?",
-
-
 
     options: ["450", "950", "550", "850"],
 
-
-
     correct: 3, reference: "1 Reyes 18:19"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1787, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas veces ordeno Elias que derramaran agua sobre el sacrificio y la lena antes de que cayera fuego del cielo en el Carmelo?",
-
-
 
     options: ["2 veces", "3 veces", "4 veces", "1 vez"],
 
-
-
     correct: 1, reference: "1 Reyes 18:34"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1788, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que milagro ocurrio con la puerta de hierro de la prision cuando un angel libero a Pedro en Hechos 12?",
-
-
 
     options: ["El angel la arranco", "Se abrio por si misma", "Fue destruida por fuego", "Un terremoto la derribo"],
 
-
-
     correct: 1, reference: "Hechos 12:10"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1789, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas cadenas ataban a Pedro cuando el angel lo libero de la carcel de Herodes?",
-
-
 
     options: ["Dos", "Cuatro", "Tres", "Una"],
 
-
-
     correct: 0, reference: "Hechos 12:6-7"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1790, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantos dias estuvo ciego Saulo de Tarso despues de su encuentro con Cristo en el camino a Damasco?",
-
-
 
     options: ["1 dia", "3 dias", "40 dias", "7 dias"],
 
-
-
     correct: 1, reference: "Hechos 9:8-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1791, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Quien fue enviado por Dios a Damasco para devolver la vista a Saulo e imponerle las manos?",
-
-
 
     options: ["Felipe", "Bernabe", "Ananias", "Pedro"],
 
-
-
     correct: 2, reference: "Hechos 9:10-18"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1792, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que fenomeno sobrenatural ocurrio a medianoche cuando Pablo y Silas cantaban himnos en la carcel de Filipos?",
-
-
 
     options: ["Un gran terremoto abrio las puertas y solto las cadenas", "Un angel descendio visiblemente", "Los guardias cayeron dormidos", "Las paredes se derrumbaron"],
 
-
-
     correct: 0, reference: "Hechos 16:25-26"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1793, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que objetos personales de Pablo eran llevados a los enfermos y estos sanaban segun Hechos 19?",
-
-
 
     options: ["Panuelos y delantales", "Su sombra y su voz", "Cartas y pergaminos", "Su manto y su cinturon"],
 
-
-
     correct: 0, reference: "Hechos 19:11-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1794, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que nombre tenia el mago que quedo ciego temporalmente por oponerse a Pablo y Bernabe en Pafos, Chipre?",
-
-
 
     options: ["Simon", "Barjesus (Elimas)", "Hermes", "Demetrio"],
 
-
-
     correct: 1, reference: "Hechos 13:6-11"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1795, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas personas en total iban en el barco que naufrago con Pablo rumbo a Roma, y todas sobrevivieron?",
-
-
 
     options: ["176", "276", "76", "376"],
 
-
-
     correct: 1, reference: "Hechos 27:37-44"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1796, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que milagro realizo Josue con las aguas del rio Jordan de manera semejante al cruce del Mar Rojo?",
-
-
 
     options: ["Las dividio para que Israel cruzara en seco", "Las endulzo para beber", "Las hizo retroceder rio arriba", "Las convirtio en sangre"],
 
-
-
     correct: 0, reference: "Josue 3:14-17"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1797, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Cuantas piedras tomaron los israelitas del Jordan como memorial despues de cruzar en seco?",
-
-
 
     options: ["40", "12", "7", "10"],
 
-
-
     correct: 1, reference: "Josue 4:1-9"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1798, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿Que sabor tenia el mana que Dios envio del cielo a los israelitas en el desierto segun Exodo 16?",
-
-
 
     options: ["Como aceitunas maduras", "Como hojuelas con miel", "Como pan sin levadura", "Como datiles frescos"],
 
-
-
     correct: 1, reference: "Exodo 16:31"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 1799, difficulty: "experto", category: "milagros",
 
-
-
     question: "¿En que monte se detuvo el arca de Noe despues del diluvio segun Genesis 8?",
-
-
 
     options: ["Monte Hermon", "Monte Ararat", "Monte Sinai", "Monte Carmelo"],
 
-
-
     correct: 1, reference: "Genesis 8:4"
 
-
-
   },
-
-
 
   // --- Libros ---
 
-
-
   {
-
-
 
     id: 96, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Que libro del AT no menciona el nombre de Dios?",
-
-
 
     options: ["Cantares", "Rut", "Eclesiastes", "Ester"],
 
-
-
     correct: 3, reference: "Ester"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 97, difficulty: "experto", category: "libros",
 
-
-
     question: "¿Cuantos capitulos tiene el libro de los Salmos?",
-
-
 
     options: ["120", "175", "150", "100"],
 
-
-
     correct: 2, reference: "Salmos"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 98, difficulty: "dificil", category: "libros",
 
-
-
     question: "¿Cual es el libro mas corto del Antiguo Testamento?",
-
-
 
     options: ["Jonas", "Nahum", "Hageo", "Abdias"],
 
-
-
     correct: 3, reference: "Abdias (21 versiculos)"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 99, difficulty: "dificil", category: "vida_jesus",
 
-
-
     question: "¿Cuantas bienaventuranzas enseno Jesus en el Sermon del Monte?",
-
-
 
     options: ["8", "7", "5", "10"],
 
-
-
     correct: 0, reference: "Mateo 5:3-12"
-
-
 
   },
 
-
-
   {
-
-
 
     id: 100, difficulty: "experto", category: "personajes",
 
-
-
     question: "¿Cual fue el primer martir cristiano?",
-
-
 
     options: ["Pablo", "Esteban", "Santiago", "Pedro"],
 
-
-
     correct: 1, reference: "Hechos 7:59-60"
-
-
 
   },
 
@@ -38662,31 +19336,31 @@ const QUESTIONS_DB = [
     correct: 1, reference: "1 Samuel 10:1"
   },
   {
-    id: 2005, difficulty: "medio", category: "personajes",
+    id: 2005, difficulty: "intermedio", category: "personajes",
     question: "¿Quién fue el profeta que confrontó a Acab?",
     options: ["Eliseo", "Elías", "Isaías", "Jeremías"],
     correct: 1, reference: "1 Reyes 18:1"
   },
   {
-    id: 2006, difficulty: "medio", category: "personajes",
+    id: 2006, difficulty: "intermedio", category: "personajes",
     question: "¿Quién fue la esposa de Isaac?",
     options: ["Raquel", "Rebeca", "Lea", "Sara"],
     correct: 1, reference: "Génesis 24:67"
   },
   {
-    id: 2007, difficulty: "medio", category: "personajes",
+    id: 2007, difficulty: "intermedio", category: "personajes",
     question: "¿Cuántos hijos tuvo Jacob?",
     options: ["10", "11", "12", "13"],
     correct: 2, reference: "Génesis 35:22"
   },
   {
-    id: 2008, difficulty: "medio", category: "personajes",
+    id: 2008, difficulty: "intermedio", category: "personajes",
     question: "¿Quién fue vendido por sus hermanos como esclavo?",
     options: ["Benjamín", "Rubén", "José", "Judá"],
     correct: 2, reference: "Génesis 37:28"
   },
   {
-    id: 2009, difficulty: "medio", category: "personajes",
+    id: 2009, difficulty: "intermedio", category: "personajes",
     question: "¿Quién era el padre de Juan el Bautista?",
     options: ["José", "Zacarías", "Simeón", "Elías"],
     correct: 1, reference: "Lucas 1:13"
@@ -38748,19 +19422,19 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Génesis 6:14"
   },
   {
-    id: 2019, difficulty: "medio", category: "historias",
+    id: 2019, difficulty: "intermedio", category: "historias",
     question: "¿Qué plagas envió Dios sobre Egipto?",
     options: ["5", "7", "10", "12"],
     correct: 2, reference: "Éxodo 7-12"
   },
   {
-    id: 2020, difficulty: "medio", category: "historias",
+    id: 2020, difficulty: "intermedio", category: "historias",
     question: "¿Quién liberó a los israelitas de Egipto?",
     options: ["Abraham", "José", "Moisés", "Josué"],
     correct: 2, reference: "Éxodo 3:10"
   },
   {
-    id: 2021, difficulty: "medio", category: "historias",
+    id: 2021, difficulty: "intermedio", category: "historias",
     question: "¿Cómo cruzaron los israelitas el Mar Rojo?",
     options: ["En botes", "Dios dividió las aguas", "Nadaron", "Construyeron un puente"],
     correct: 1, reference: "Éxodo 14:21-22"
@@ -38804,13 +19478,13 @@ const QUESTIONS_DB = [
     correct: 2, reference: "Jonás 1:2"
   },
   {
-    id: 2028, difficulty: "medio", category: "lugares",
+    id: 2028, difficulty: "intermedio", category: "lugares",
     question: "¿En qué monte recibió Moisés los Diez Mandamientos?",
     options: ["Monte Carmelo", "Monte Sinaí", "Monte Moriah", "Monte Tabor"],
     correct: 1, reference: "Éxodo 19:20"
   },
   {
-    id: 2029, difficulty: "medio", category: "lugares",
+    id: 2029, difficulty: "intermedio", category: "lugares",
     question: "¿Qué río cruzó Israel para entrar a la Tierra Prometida?",
     options: ["Éufrates", "Nilo", "Jordán", "Tigris"],
     correct: 2, reference: "Josué 3:17"
@@ -38842,13 +19516,13 @@ const QUESTIONS_DB = [
     correct: 2, reference: "Mateo 6:9-13"
   },
   {
-    id: 2034, difficulty: "medio", category: "versiculos",
+    id: 2034, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué salmo comienza con 'El Señor es mi pastor'?",
     options: ["Salmo 1", "Salmo 23", "Salmo 91", "Salmo 119"],
     correct: 1, reference: "Salmo 23:1"
   },
   {
-    id: 2035, difficulty: "medio", category: "versiculos",
+    id: 2035, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué libro dice 'Todo tiene su tiempo'?",
     options: ["Proverbios", "Eclesiastés", "Job", "Salmos"],
     correct: 1, reference: "Eclesiastés 3:1"
@@ -38874,7 +19548,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Mateo 18:22"
   },
   {
-    id: 2039, difficulty: "medio", category: "ensenanzas",
+    id: 2039, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué enseñó Jesús sobre los tesoros?",
     options: ["Acumularlos en la tierra", "Guardarlos en el cielo", "Compartirlos equitativamente", "Invertirlos sabiamente"],
     correct: 1, reference: "Mateo 6:19-20"
@@ -38900,7 +19574,7 @@ const QUESTIONS_DB = [
     correct: 0, reference: "Mateo 25:18"
   },
   {
-    id: 2043, difficulty: "medio", category: "parabolas",
+    id: 2043, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué hizo el padre cuando volvió el hijo pródigo?",
     options: ["Lo rechazó", "Lo castigó", "Lo abrazó y celebró", "Lo ignoró"],
     correct: 2, reference: "Lucas 15:20-24"
@@ -38926,7 +19600,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Juan 5:5-9"
   },
   {
-    id: 2047, difficulty: "medio", category: "milagros",
+    id: 2047, difficulty: "intermedio", category: "milagros",
     question: "¿Cuántos años llevaba enfermo el hombre del estanque?",
     options: ["18 años", "30 años", "38 años", "40 años"],
     correct: 2, reference: "Juan 5:5"
@@ -38946,7 +19620,7 @@ const QUESTIONS_DB = [
     correct: 2, reference: "La tradición atribuye 13 cartas a Pablo"
   },
   {
-    id: 2050, difficulty: "medio", category: "cartas",
+    id: 2050, difficulty: "intermedio", category: "cartas",
     question: "¿A qué iglesia escribió Pablo sobre el amor en el capítulo 13?",
     options: ["Roma", "Corinto", "Éfeso", "Filipos"],
     correct: 1, reference: "1 Corintios 13"
@@ -38984,13 +19658,13 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Números 22:28"
   },
   {
-    id: 2056, difficulty: "medio", category: "historias",
+    id: 2056, difficulty: "intermedio", category: "historias",
     question: "¿Qué reina visitó a Salomón para probar su sabiduría?",
     options: ["Reina de Tarsis", "Reina de Sabá", "Reina Ester", "Reina Jezabel"],
     correct: 1, reference: "1 Reyes 10:1"
   },
   {
-    id: 2057, difficulty: "medio", category: "lugares",
+    id: 2057, difficulty: "intermedio", category: "lugares",
     question: "¿Dónde vivió Jesús durante su infancia?",
     options: ["Belén", "Jerusalén", "Nazaret", "Capernaum"],
     correct: 2, reference: "Mateo 2:23"
@@ -39008,7 +19682,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Mateo 14:29"
   },
   {
-    id: 2060, difficulty: "medio", category: "milagros",
+    id: 2060, difficulty: "intermedio", category: "milagros",
     question: "¿Cuántos leprosos sanó Jesús que solo uno regresó a dar gracias?",
     options: ["5", "7", "10", "12"],
     correct: 2, reference: "Lucas 17:12-17"
@@ -39020,7 +19694,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Mateo 5:44"
   },
   {
-    id: 2062, difficulty: "medio", category: "ensenanzas",
+    id: 2062, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué es más difícil que entre un rico en el reino de Dios?",
     options: ["Que un barco navegue", "Que un camello pase por el ojo de una aguja", "Que llueva en el desierto", "Que un pez vuele"],
     correct: 1, reference: "Mateo 19:24"
@@ -39032,7 +19706,7 @@ const QUESTIONS_DB = [
     correct: 2, reference: "Filipenses 4:13"
   },
   {
-    id: 2064, difficulty: "medio", category: "versiculos",
+    id: 2064, difficulty: "intermedio", category: "versiculos",
     question: "¿Dónde dice 'El Señor es mi luz y mi salvación'?",
     options: ["Salmo 23", "Salmo 27", "Salmo 91", "Salmo 119"],
     correct: 1, reference: "Salmo 27:1"
@@ -39044,7 +19718,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Mateo 7:24"
   },
   {
-    id: 2066, difficulty: "medio", category: "parabolas",
+    id: 2066, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué buscó la mujer que perdió una moneda?",
     options: ["Un denario", "Una dracma", "Un talento", "Un siclo"],
     correct: 1, reference: "Lucas 15:8"
@@ -39068,7 +19742,7 @@ const QUESTIONS_DB = [
     correct: 2, reference: "Apocalipsis 1:1"
   },
   {
-    id: 2070, difficulty: "medio", category: "cartas",
+    id: 2070, difficulty: "intermedio", category: "cartas",
     question: "¿A quién llamó Pablo 'mi verdadero hijo en la fe'?",
     options: ["Tito", "Timoteo", "Filemón", "Lucas"],
     correct: 1, reference: "1 Timoteo 1:2"
@@ -39080,9 +19754,9 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Mateo 26:36-44"
   },
   {
-    id: 2072, difficulty: "medio", category: "milagros",
-    question: "¿Qué hijo de la viuda resucitó Elías?",
-    options: ["En Belén", "En Jerusalén", "En Sarepta", "En Samaria"],
+    id: 2072, difficulty: "intermedio", category: "milagros",
+    question: "¿En que lugar resucito Elias al hijo de la viuda?",
+    options: ["En Belen", "En Jerusalen", "En Sarepta", "En Samaria"],
     correct: 2, reference: "1 Reyes 17:17-24"
   },
   {
@@ -39098,7 +19772,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Mateo 26:36"
   },
   {
-    id: 2075, difficulty: "medio", category: "personajes",
+    id: 2075, difficulty: "intermedio", category: "personajes",
     question: "¿Quién era Bernabé?",
     options: ["Un apóstol original", "Compañero de Pablo", "Un fariseo", "Un rey"],
     correct: 1, reference: "Hechos 13:2"
@@ -39122,7 +19796,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Génesis 7:12"
   },
   {
-    id: 2079, difficulty: "medio", category: "parabolas",
+    id: 2079, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué semilla es la más pequeña pero crece muy grande?",
     options: ["Trigo", "Mostaza", "Cizaña", "Cebada"],
     correct: 1, reference: "Mateo 13:31-32"
@@ -39140,7 +19814,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Juan 21:20"
   },
   {
-    id: 2082, difficulty: "medio", category: "lugares",
+    id: 2082, difficulty: "intermedio", category: "lugares",
     question: "¿Dónde fue bautizado Jesús?",
     options: ["Mar de Galilea", "Río Jordán", "Mar Muerto", "Río Éufrates"],
     correct: 1, reference: "Mateo 3:13"
@@ -39158,7 +19832,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Marcos 10:46-52"
   },
   {
-    id: 2085, difficulty: "medio", category: "cartas",
+    id: 2085, difficulty: "intermedio", category: "cartas",
     question: "¿Qué carta fue escrita a un esclavo fugitivo?",
     options: ["Tito", "Filemón", "Timoteo", "Hebreos"],
     correct: 1, reference: "Filemón 1:10-16"
@@ -39182,7 +19856,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Génesis 1:1"
   },
   {
-    id: 2089, difficulty: "medio", category: "personajes",
+    id: 2089, difficulty: "intermedio", category: "personajes",
     question: "¿Quién fue el ángel que anunció a María el nacimiento de Jesús?",
     options: ["Miguel", "Gabriel", "Rafael", "Uriel"],
     correct: 1, reference: "Lucas 1:26"
@@ -39200,7 +19874,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Lucas 15:4"
   },
   {
-    id: 2092, difficulty: "medio", category: "milagros",
+    id: 2092, difficulty: "intermedio", category: "milagros",
     question: "¿Qué enfermedad sanó Jesús tocando el oído de Malco?",
     options: ["Sordera", "Le restauró la oreja cortada", "Ceguera", "Mudez"],
     correct: 1, reference: "Lucas 22:51"
@@ -39224,7 +19898,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Lucas 24:42-43"
   },
   {
-    id: 2096, difficulty: "medio", category: "ensenanzas",
+    id: 2096, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Cuáles son las dos tablas de la ley?",
     options: ["Fe y obras", "Amor a Dios y amor al prójimo", "Oración y ayuno", "Gracia y verdad"],
     correct: 1, reference: "Mateo 22:37-40"
@@ -39242,7 +19916,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "Romanos 1:17"
   },
   {
-    id: 2099, difficulty: "medio", category: "historias",
+    id: 2099, difficulty: "intermedio", category: "historias",
     question: "¿Qué ángel luchó con Jacob toda la noche?",
     options: ["Miguel", "Gabriel", "El Ángel del Señor", "Rafael"],
     correct: 2, reference: "Génesis 32:24-30"
@@ -39255,7 +19929,7 @@ const QUESTIONS_DB = [
   },
   // === PREGUNTAS CON IMAGENES ===
   {
-    id: 2101, difficulty: "medio", category: "lugares",
+    id: 2101, difficulty: "intermedio", category: "lugares",
     question: "Observa el mapa: ¿Cuál era la ruta del Éxodo desde Egipto?",
     options: ["Por el norte hacia Fenicia", "Por el desierto del Sinaí", "Por barco atravesando el mar", "Directamente hacia Canaán"],
     correct: 1, reference: "Éxodo 13:17-18",
@@ -39263,7 +19937,7 @@ const QUESTIONS_DB = [
     imageAlt: "Mapa de la ruta del Éxodo"
   },
   {
-    id: 2102, difficulty: "medio", category: "lugares",
+    id: 2102, difficulty: "intermedio", category: "lugares",
     question: "¿En qué región estaba ubicada Jerusalén?",
     options: ["Galilea", "Samaria", "Judea", "Decápolis"],
     correct: 2, reference: "Lucas 2:22",
@@ -39334,35 +20008,35 @@ const QUESTIONS_DB = [
     explanation: "Tomas dijo que no creeria hasta ver las marcas de los clavos. Jesus se le aparecio y le mostro sus heridas."
   },
   {
-    id: 2111, difficulty: "medio", category: "personajes",
+    id: 2111, difficulty: "intermedio", category: "personajes",
     question: "¿Quien era Nicodemo?",
     options: ["Un pescador", "Un fariseo que visito a Jesus de noche", "Un publicano", "Un soldado romano"],
     correct: 1, reference: "Juan 3:1-2",
     explanation: "Nicodemo era un fariseo y maestro de Israel que visito a Jesus de noche para aprender de el."
   },
   {
-    id: 2112, difficulty: "medio", category: "personajes",
+    id: 2112, difficulty: "intermedio", category: "personajes",
     question: "¿Quien fue el primer martir cristiano?",
     options: ["Pedro", "Pablo", "Esteban", "Santiago"],
     correct: 2, reference: "Hechos 7:54-60",
     explanation: "Esteban fue apedreado hasta morir por predicar el evangelio, convirtiendose en el primer martir cristiano."
   },
   {
-    id: 2113, difficulty: "medio", category: "personajes",
+    id: 2113, difficulty: "intermedio", category: "personajes",
     question: "¿Como se llamaba Saulo despues de su conversion?",
     options: ["Pedro", "Pablo", "Bernabe", "Silas"],
     correct: 1, reference: "Hechos 13:9",
     explanation: "Saulo, perseguidor de cristianos, se convirtio en Pablo, el apostol de los gentiles."
   },
   {
-    id: 2114, difficulty: "medio", category: "personajes",
+    id: 2114, difficulty: "intermedio", category: "personajes",
     question: "¿Quien acompano a Pablo en su primer viaje misionero?",
     options: ["Pedro", "Silas", "Bernabe", "Timoteo"],
     correct: 2, reference: "Hechos 13:2-3",
     explanation: "Bernabe fue el companero de Pablo en su primer viaje misionero por Asia Menor."
   },
   {
-    id: 2115, difficulty: "medio", category: "personajes",
+    id: 2115, difficulty: "intermedio", category: "personajes",
     question: "¿Quien escribio el libro de Apocalipsis?",
     options: ["Pedro", "Pablo", "Juan", "Santiago"],
     correct: 2, reference: "Apocalipsis 1:1",
@@ -39384,7 +20058,7 @@ const QUESTIONS_DB = [
   },
   {
     id: 2118, difficulty: "dificil", category: "personajes",
-    question: "¿Quien era el padre de Timoteo?",
+    question: "¿De qué nacionalidad era el padre de Timoteo?",
     options: ["Un judio", "Un griego", "Un romano", "Un samaritano"],
     correct: 1, reference: "Hechos 16:1",
     explanation: "El padre de Timoteo era griego, mientras que su madre Eunice era judia creyente."
@@ -39420,28 +20094,28 @@ const QUESTIONS_DB = [
     explanation: "Jesus celebro la cena de Pascua con sus discipulos la noche antes de ser crucificado."
   },
   {
-    id: 2123, difficulty: "medio", category: "historias",
+    id: 2123, difficulty: "intermedio", category: "historias",
     question: "¿Cuantos dias estuvo Jesus en el desierto siendo tentado?",
     options: ["7 dias", "12 dias", "40 dias", "30 dias"],
     correct: 2, reference: "Mateo 4:1-2",
     explanation: "Jesus ayuno 40 dias y 40 noches en el desierto donde fue tentado por el diablo."
   },
   {
-    id: 2124, difficulty: "medio", category: "historias",
+    id: 2124, difficulty: "intermedio", category: "historias",
     question: "¿Que paso en el dia de Pentecostes despues de la resurreccion?",
     options: ["Jesus ascendio al cielo", "El Espiritu Santo descendio", "Pedro fue martirizado", "Pablo se convirtio"],
     correct: 1, reference: "Hechos 2:1-4",
     explanation: "En Pentecostes, el Espiritu Santo descendio sobre los apostoles como lenguas de fuego y hablaron en otras lenguas."
   },
   {
-    id: 2125, difficulty: "medio", category: "historias",
+    id: 2125, difficulty: "intermedio", category: "historias",
     question: "¿Cuantas personas se convirtieron despues del sermon de Pedro en Pentecostes?",
     options: ["500 personas", "1000 personas", "3000 personas", "5000 personas"],
     correct: 2, reference: "Hechos 2:41",
     explanation: "Unas 3000 personas se anadieron a la iglesia despues del sermon de Pedro en Pentecostes."
   },
   {
-    id: 2126, difficulty: "medio", category: "historias",
+    id: 2126, difficulty: "intermedio", category: "historias",
     question: "¿Que le paso a Pablo camino a Damasco?",
     options: ["Fue arrestado", "Vio una luz del cielo y quedo ciego", "Encontro a Jesus caminando", "Fue atacado por ladrones"],
     correct: 1, reference: "Hechos 9:3-9",
@@ -39485,21 +20159,21 @@ const QUESTIONS_DB = [
     explanation: "Jesus resucito a Lazaro de Betania despues de estar muerto cuatro dias en la tumba."
   },
   {
-    id: 2132, difficulty: "medio", category: "milagros",
+    id: 2132, difficulty: "intermedio", category: "milagros",
     question: "¿Que enfermedad tenia el hombre que Jesus sano en el estanque de Betesda?",
     options: ["Ceguera", "Lepra", "Paralisis por 38 anos", "Sordera"],
     correct: 2, reference: "Juan 5:5-9",
     explanation: "El hombre habia estado paralitico por 38 anos. Jesus le dijo: Levantate, toma tu lecho y anda."
   },
   {
-    id: 2133, difficulty: "medio", category: "milagros",
+    id: 2133, difficulty: "intermedio", category: "milagros",
     question: "¿Que hizo Jesus cuando la tormenta amenazaba hundir la barca?",
     options: ["Nado hacia la orilla", "Calmo el viento y el mar", "Desperto a los discipulos", "Oro toda la noche"],
     correct: 1, reference: "Marcos 4:39",
     explanation: "Jesus reprendio al viento y dijo al mar: Calla, enmudece. Y hubo gran bonanza."
   },
   {
-    id: 2134, difficulty: "medio", category: "milagros",
+    id: 2134, difficulty: "intermedio", category: "milagros",
     question: "¿Cuantas canastas sobraron despues de alimentar a los 5000?",
     options: ["5 canastas", "7 canastas", "12 canastas", "3 canastas"],
     correct: 2, reference: "Juan 6:13",
@@ -39536,14 +20210,14 @@ const QUESTIONS_DB = [
     explanation: "Un samaritano tuvo compasion del hombre herido y lo ayudo, a diferencia del sacerdote y levita que pasaron de largo."
   },
   {
-    id: 2139, difficulty: "medio", category: "historias",
+    id: 2139, difficulty: "intermedio", category: "historias",
     question: "¿Cuantas ovejas tenia el pastor en la parabola de la oveja perdida?",
     options: ["50 ovejas", "100 ovejas", "200 ovejas", "70 ovejas"],
     correct: 1, reference: "Lucas 15:4",
     explanation: "El pastor tenia 100 ovejas y dejo las 99 para buscar la una que se habia perdido."
   },
   {
-    id: 2140, difficulty: "medio", category: "historias",
+    id: 2140, difficulty: "intermedio", category: "historias",
     question: "¿Que representan las semillas en la parabola del sembrador?",
     options: ["El dinero", "La palabra de Dios", "Las buenas obras", "Los milagros"],
     correct: 1, reference: "Lucas 8:11",
@@ -39573,14 +20247,14 @@ const QUESTIONS_DB = [
     explanation: "Jesus dijo: Yo soy el camino, la verdad y la vida; nadie viene al Padre sino por mi."
   },
   {
-    id: 2144, difficulty: "medio", category: "versiculos",
+    id: 2144, difficulty: "intermedio", category: "versiculos",
     question: "¿Cual es el versiculo mas corto de la Biblia?",
     options: ["Dios es amor", "Jesus lloro", "Orad sin cesar", "Aleluya"],
     correct: 1, reference: "Juan 11:35",
     explanation: "Jesus lloro es el versiculo mas corto en muchas traducciones, cuando murio Lazaro."
   },
   {
-    id: 2145, difficulty: "medio", category: "versiculos",
+    id: 2145, difficulty: "intermedio", category: "versiculos",
     question: "¿Que dice Filipenses 4:13?",
     options: ["El amor es paciente", "Todo lo puedo en Cristo que me fortalece", "Dios es amor", "La fe sin obras esta muerta"],
     correct: 1, reference: "Filipenses 4:13",
@@ -39610,14 +20284,14 @@ const QUESTIONS_DB = [
     explanation: "Elias fue llevado al cielo en un torbellino con un carro de fuego y caballos de fuego."
   },
   {
-    id: 2149, difficulty: "medio", category: "profetas",
+    id: 2149, difficulty: "intermedio", category: "profetas",
     question: "¿Que profeta se enfrento a 450 profetas de Baal en el monte Carmelo?",
     options: ["Eliseo", "Elias", "Isaias", "Jeremias"],
     correct: 1, reference: "1 Reyes 18:19-40",
     explanation: "Elias desafio a los profetas de Baal y Dios envio fuego del cielo que consumio el sacrificio."
   },
   {
-    id: 2150, difficulty: "medio", category: "profetas",
+    id: 2150, difficulty: "intermedio", category: "profetas",
     question: "¿Que profeta vio el valle de huesos secos?",
     options: ["Daniel", "Isaias", "Ezequiel", "Jeremias"],
     correct: 2, reference: "Ezequiel 37:1-14",
@@ -39654,18 +20328,18 @@ const QUESTIONS_DB = [
     explanation: "Jesus oro en el huerto de Getsemani, al pie del Monte de los Olivos, la noche antes de su crucifixion."
   },
   {
-    id: 2155, difficulty: "medio", category: "lugares",
+    id: 2155, difficulty: "intermedio", category: "lugares",
     question: "¿Que ciudad Pedro visito cuando tuvo la vision del lienzo con animales?",
     options: ["Jerusalen", "Jope", "Cesarea", "Antioquia"],
     correct: 1, reference: "Hechos 10:9-16",
     explanation: "Pedro estaba en Jope cuando tuvo la vision que le mostro que el evangelio era tambien para los gentiles."
   },
   {
-    id: 2156, difficulty: "medio", category: "lugares",
-    question: "¿En que isla estuvo Pablo exiliado cuando escribio Apocalipsis?",
+    id: 2156, difficulty: "intermedio", category: "lugares",
+    question: "¿En que isla estuvo Juan exiliado cuando escribio Apocalipsis?",
     options: ["Creta", "Chipre", "Malta", "Patmos"],
     correct: 3, reference: "Apocalipsis 1:9",
-    explanation: "Juan (no Pablo) estaba exiliado en la isla de Patmos cuando recibio la revelacion de Apocalipsis."
+    explanation: "Juan estaba exiliado en la isla de Patmos cuando recibio la revelacion de Apocalipsis."
   },
   {
     id: 2157, difficulty: "dificil", category: "lugares",
@@ -39691,7 +20365,7 @@ const QUESTIONS_DB = [
     explanation: "Salomon pidio sabiduria a Dios y se convirtio en el rey mas sabio que jamas haya existido."
   },
   {
-    id: 2160, difficulty: "medio", category: "reyes",
+    id: 2160, difficulty: "intermedio", category: "reyes",
     question: "¿Que rey guio una reforma religiosa y encontro el libro de la Ley?",
     options: ["Ezequias", "Josias", "Asa", "Joas"],
     correct: 1, reference: "2 Reyes 22:8-11",
@@ -39721,14 +20395,14 @@ const QUESTIONS_DB = [
     explanation: "David uso su honda y una piedra para derribar al gigante Goliat, luego lo mato con su propia espada."
   },
   {
-    id: 2164, difficulty: "medio", category: "historias",
+    id: 2164, difficulty: "intermedio", category: "historias",
     question: "¿Cuantos anos estuvo Israel cautivo en Babilonia?",
     options: ["40 anos", "70 anos", "100 anos", "50 anos"],
     correct: 1, reference: "Jeremias 25:11",
     explanation: "Jeremias profetizo que el cautiverio en Babilonia duraria 70 anos, lo cual se cumplio."
   },
   {
-    id: 2165, difficulty: "medio", category: "historias",
+    id: 2165, difficulty: "intermedio", category: "historias",
     question: "¿Quien interpreto los suenos del Faraon en Egipto?",
     options: ["Moises", "Jose", "Daniel", "Abraham"],
     correct: 1, reference: "Genesis 41:25-32",
@@ -39748,7 +20422,7 @@ const QUESTIONS_DB = [
     question: "¿Quien fue el padre de Isaac?",
     options: ["Noe", "Abraham", "Jacob", "Jose"],
     correct: 1, reference: "Genesis 21:3",
-    explanation: "Abraham e Isaac su esposa Sara tuvieron a Isaac en su vejez, segun la promesa de Dios."
+    explanation: "Abraham y su esposa Sara tuvieron a Isaac en su vejez, segun la promesa de Dios."
   },
   {
     id: 2168, difficulty: "facil", category: "personajes",
@@ -39765,21 +20439,21 @@ const QUESTIONS_DB = [
     explanation: "Juan el Bautista vestia de pelo de camello y comia langostas y miel silvestre en el desierto."
   },
   {
-    id: 2170, difficulty: "medio", category: "personajes",
+    id: 2170, difficulty: "intermedio", category: "personajes",
     question: "¿Quien era la suegra de Rut?",
     options: ["Sara", "Rebeca", "Noemi", "Raquel"],
     correct: 2, reference: "Rut 1:4-5",
     explanation: "Noemi era la suegra de Rut. Despues de enviudar, Rut se quedo con Noemi y ambas fueron a Belen."
   },
   {
-    id: 2171, difficulty: "medio", category: "personajes",
+    id: 2171, difficulty: "intermedio", category: "personajes",
     question: "¿Que juez de Israel tenia una fuerza sobrenatural en su cabello?",
     options: ["Gideon", "Jefté", "Sanson", "Samuel"],
     correct: 2, reference: "Jueces 16:17",
     explanation: "Sanson tenia fuerza sobrenatural ligada a su voto nazareo. Al cortarle el cabello, perdio su fuerza."
   },
   {
-    id: 2172, difficulty: "medio", category: "historias",
+    id: 2172, difficulty: "intermedio", category: "historias",
     question: "¿Cuantas plagas envio Dios sobre Egipto?",
     options: ["7 plagas", "10 plagas", "12 plagas", "5 plagas"],
     correct: 1, reference: "Exodo 7-12",
@@ -39800,14 +20474,14 @@ const QUESTIONS_DB = [
     explanation: "Zacarias era sacerdote y su esposa Elisabet. El angel Gabriel les anuncio el nacimiento de Juan."
   },
   {
-    id: 2175, difficulty: "extremo", category: "personajes",
+    id: 2175, difficulty: "experto", category: "personajes",
     question: "¿Como se llamaba la bisabuela de David?",
     options: ["Rut", "Rahab", "Tamar", "Betsabe"],
     correct: 0, reference: "Rut 4:17",
     explanation: "Rut fue la bisabuela de David. Rut era madre de Obed, abuelo de David."
   },
   {
-    id: 2176, difficulty: "extremo", category: "historias",
+    id: 2176, difficulty: "experto", category: "historias",
     question: "¿Cuantos anos vivio Matusalen?",
     options: ["900 anos", "950 anos", "969 anos", "930 anos"],
     correct: 2, reference: "Genesis 5:27",
@@ -39816,14 +20490,14 @@ const QUESTIONS_DB = [
 
   // --- CARTAS DEL NUEVO TESTAMENTO ---
   {
-    id: 2177, difficulty: "medio", category: "versiculos",
+    id: 2177, difficulty: "intermedio", category: "versiculos",
     question: "¿En que carta Pablo habla de la armadura de Dios?",
     options: ["Romanos", "Corintios", "Efesios", "Galatas"],
     correct: 2, reference: "Efesios 6:10-18",
     explanation: "Pablo describe la armadura de Dios en Efesios 6: cinturon de verdad, coraza de justicia, escudo de fe, etc."
   },
   {
-    id: 2178, difficulty: "medio", category: "versiculos",
+    id: 2178, difficulty: "intermedio", category: "versiculos",
     question: "¿Donde se encuentra el capitulo del amor (1 Corintios 13)?",
     options: ["Romanos", "1 Corintios", "Efesios", "Filipenses"],
     correct: 1, reference: "1 Corintios 13",
@@ -39846,7 +20520,7 @@ const QUESTIONS_DB = [
 
   // --- APOCALIPSIS ---
   {
-    id: 2181, difficulty: "medio", category: "versiculos",
+    id: 2181, difficulty: "intermedio", category: "versiculos",
     question: "¿A cuantas iglesias escribio Juan en Apocalipsis?",
     options: ["5 iglesias", "7 iglesias", "12 iglesias", "10 iglesias"],
     correct: 1, reference: "Apocalipsis 2-3",
@@ -39860,7 +20534,7 @@ const QUESTIONS_DB = [
     explanation: "El numero de la bestia es 666, segun Apocalipsis 13:18."
   },
   {
-    id: 2183, difficulty: "extremo", category: "versiculos",
+    id: 2183, difficulty: "experto", category: "versiculos",
     question: "¿Cuantos sellados de Israel menciona Apocalipsis?",
     options: ["12,000", "24,000", "144,000", "1,000,000"],
     correct: 2, reference: "Apocalipsis 7:4",
@@ -39883,14 +20557,14 @@ const QUESTIONS_DB = [
     explanation: "Aaron era el hermano mayor de Moises y fue nombrado sumo sacerdote de Israel."
   },
   {
-    id: 2186, difficulty: "medio", category: "lugares",
+    id: 2186, difficulty: "intermedio", category: "lugares",
     question: "¿De que ciudad era Abraham originalmente?",
     options: ["Jerusalen", "Babilonia", "Ur de los Caldeos", "Egipto"],
     correct: 2, reference: "Genesis 11:31",
     explanation: "Abraham (Abram) salio de Ur de los Caldeos con su padre Taré hacia la tierra de Canaan."
   },
   {
-    id: 2187, difficulty: "medio", category: "historias",
+    id: 2187, difficulty: "intermedio", category: "historias",
     question: "¿Cuantos espias envio Moises a explorar Canaan?",
     options: ["10 espias", "12 espias", "7 espias", "2 espias"],
     correct: 1, reference: "Numeros 13:1-2",
@@ -39904,7 +20578,7 @@ const QUESTIONS_DB = [
     explanation: "Melquisedec era rey de Salem y sacerdote del Dios Altisimo que bendijo a Abraham."
   },
   {
-    id: 2189, difficulty: "extremo", category: "lugares",
+    id: 2189, difficulty: "experto", category: "lugares",
     question: "¿Cual era el nombre original de Jerusalen?",
     options: ["Salem", "Jebus", "Sion", "Moria"],
     correct: 1, reference: "Jueces 19:10",
@@ -39918,7 +20592,7 @@ const QUESTIONS_DB = [
     explanation: "Eliseo multiplico el aceite de la viuda para que pudiera vender y pagar sus deudas."
   },
   {
-    id: 2191, difficulty: "medio", category: "milagros",
+    id: 2191, difficulty: "intermedio", category: "milagros",
     question: "¿Que hizo Eliseo para sanar las aguas de Jerico?",
     options: ["Oro sobre ellas", "Les echo sal", "Las bendijo", "Separo las aguas"],
     correct: 1, reference: "2 Reyes 2:20-21",
@@ -39932,7 +20606,7 @@ const QUESTIONS_DB = [
     explanation: "Dios ordeno a Oseas casarse con Gomer, una mujer infiel, para ilustrar la relacion de Dios con Israel."
   },
   {
-    id: 2193, difficulty: "medio", category: "personajes",
+    id: 2193, difficulty: "intermedio", category: "personajes",
     question: "¿Quien era la madre de Salomon?",
     options: ["Abigail", "Mical", "Betsabe", "Ahinoam"],
     correct: 2, reference: "2 Samuel 12:24",
@@ -39946,7 +20620,7 @@ const QUESTIONS_DB = [
     explanation: "Las aguas prevalecieron sobre la tierra 150 dias, aunque llovio solo 40 dias y noches."
   },
   {
-    id: 2195, difficulty: "extremo", category: "personajes",
+    id: 2195, difficulty: "experto", category: "personajes",
     question: "¿Quien fue Bezalel?",
     options: ["Un rey de Israel", "El artesano del tabernaculo", "Un profeta menor", "Un levita cantor"],
     correct: 1, reference: "Exodo 31:2-5",
@@ -39960,7 +20634,7 @@ const QUESTIONS_DB = [
     explanation: "Salomon pidio sabiduria para gobernar, y Dios le dio tambien riquezas y honor."
   },
   {
-    id: 2197, difficulty: "medio", category: "historias",
+    id: 2197, difficulty: "intermedio", category: "historias",
     question: "¿Como demostro Salomon su sabiduria con las dos madres?",
     options: ["Hizo un milagro", "Propuso partir al bebe en dos", "Las hizo jurar", "Consulto a Dios"],
     correct: 1, reference: "1 Reyes 3:24-27",
@@ -39981,14 +20655,14 @@ const QUESTIONS_DB = [
     explanation: "Juan corrio mas rapido que Pedro y llego primero al sepulcro, pero espero afuera."
   },
   {
-    id: 2200, difficulty: "medio", category: "personajes",
+    id: 2200, difficulty: "intermedio", category: "personajes",
     question: "¿Quien fue el sucesor de Moises?",
     options: ["Aaron", "Caleb", "Josue", "Eleazar"],
     correct: 2, reference: "Deuteronomio 31:7-8",
     explanation: "Josue fue comisionado por Moises y Dios para liderar a Israel hacia la tierra prometida."
   },
   {
-    id: 2201, difficulty: "medio", category: "historias",
+    id: 2201, difficulty: "intermedio", category: "historias",
     question: "¿Como cayeron los muros de Jerico?",
     options: ["Con un terremoto", "Marchando y tocando trompetas", "Con arietes de guerra", "Por fuego del cielo"],
     correct: 1, reference: "Josue 6:20",
@@ -40009,7 +20683,7 @@ const QUESTIONS_DB = [
     explanation: "Jose, un carpintero descendiente de David, fue el esposo de Maria y padre adoptivo de Jesus."
   },
   {
-    id: 2204, difficulty: "medio", category: "historias",
+    id: 2204, difficulty: "intermedio", category: "historias",
     question: "¿Que hizo Jesus en el templo con los mercaderes?",
     options: ["Les predico", "Los bendijo", "Los echo volteando sus mesas", "Les compro animales"],
     correct: 2, reference: "Juan 2:15",
@@ -40030,7 +20704,7 @@ const QUESTIONS_DB = [
     explanation: "Cuando Jesus dijo: Tengo sed, le dieron a beber vinagre en una esponja."
   },
   {
-    id: 2207, difficulty: "medio", category: "personajes",
+    id: 2207, difficulty: "intermedio", category: "personajes",
     question: "¿Quien pidio el cuerpo de Jesus para sepultarlo?",
     options: ["Pedro", "Jose de Arimatea", "Nicodemo", "Juan"],
     correct: 1, reference: "Mateo 27:57-58",
@@ -40051,7 +20725,7 @@ const QUESTIONS_DB = [
     explanation: "Jesus resucito al tercer dia, segun las Escrituras, y se aparecio a muchos testigos."
   },
   {
-    id: 2210, difficulty: "medio", category: "historias",
+    id: 2210, difficulty: "intermedio", category: "historias",
     question: "¿A quien se aparecio Jesus primero despues de resucitar?",
     options: ["Pedro", "Juan", "Maria Magdalena", "Los once discipulos"],
     correct: 2, reference: "Marcos 16:9",
@@ -40072,7 +20746,7 @@ const QUESTIONS_DB = [
     explanation: "Jesus dijo que el mayor mandamiento es amar a Dios con todo el corazon, alma y mente."
   },
   {
-    id: 2213, difficulty: "medio", category: "versiculos",
+    id: 2213, difficulty: "intermedio", category: "versiculos",
     question: "¿Cual es el segundo mandamiento mas importante segun Jesus?",
     options: ["No tendras otros dioses", "Amaras a tu projimo como a ti mismo", "Guardaras el dia de reposo", "No codiciaras"],
     correct: 1, reference: "Mateo 22:39",
@@ -40086,7 +20760,7 @@ const QUESTIONS_DB = [
     explanation: "Jesus ascendio al cielo desde el monte de los Olivos, cerca de Betania."
   },
   {
-    id: 2215, difficulty: "medio", category: "personajes",
+    id: 2215, difficulty: "intermedio", category: "personajes",
     question: "¿Quien reemplazo a Judas como apostol?",
     options: ["Pablo", "Matias", "Bernabe", "Silas"],
     correct: 1, reference: "Hechos 1:26",
@@ -40107,7 +20781,7 @@ const QUESTIONS_DB = [
     explanation: "Jesus eligio 12 apostoles, representando las 12 tribus de Israel."
   },
   {
-    id: 2218, difficulty: "medio", category: "personajes",
+    id: 2218, difficulty: "intermedio", category: "personajes",
     question: "¿Cual apostol era cobrador de impuestos?",
     options: ["Pedro", "Juan", "Mateo", "Santiago"],
     correct: 2, reference: "Mateo 9:9",
@@ -40121,7 +20795,7 @@ const QUESTIONS_DB = [
     explanation: "Santiago y Juan, llamados hijos del trueno, eran hijos de Zebedeo y pescadores."
   },
   {
-    id: 2220, difficulty: "extremo", category: "personajes",
+    id: 2220, difficulty: "experto", category: "personajes",
     question: "¿Cual era el otro nombre del apostol Bartolome?",
     options: ["Natanael", "Tadeo", "Simon el Zelote", "Lebeo"],
     correct: 0, reference: "Juan 1:45-46",
@@ -40135,7 +20809,7 @@ const QUESTIONS_DB = [
     explanation: "Bartimeo, un mendigo ciego, grito a Jesus y fue sanado por su fe."
   },
   {
-    id: 2222, difficulty: "medio", category: "milagros",
+    id: 2222, difficulty: "intermedio", category: "milagros",
     question: "¿Cuantos leprosos sano Jesus en una ocasion?",
     options: ["1 leproso", "5 leprosos", "10 leprosos", "7 leprosos"],
     correct: 2, reference: "Lucas 17:12-19",
@@ -40156,7 +20830,7 @@ const QUESTIONS_DB = [
     explanation: "Jesus realizo la mayor parte de su ministerio en Galilea, aunque tambien visito Judea y otras regiones."
   },
   {
-    id: 2225, difficulty: "medio", category: "lugares",
+    id: 2225, difficulty: "intermedio", category: "lugares",
     question: "¿Cual era la ciudad de Maria, Marta y Lazaro?",
     options: ["Nazaret", "Betania", "Capernaum", "Belen"],
     correct: 1, reference: "Juan 11:1",
@@ -40177,7 +20851,7 @@ const QUESTIONS_DB = [
     explanation: "Jesus enseno a orar comenzando: Padre nuestro que estas en los cielos, santificado sea tu nombre."
   },
   {
-    id: 2228, difficulty: "medio", category: "versiculos",
+    id: 2228, difficulty: "intermedio", category: "versiculos",
     question: "¿Que dice Jesus que es la sal de la tierra?",
     options: ["Los angeles", "Los apostoles", "Sus discipulos", "Los profetas"],
     correct: 2, reference: "Mateo 5:13",
@@ -40185,10 +20859,10 @@ const QUESTIONS_DB = [
   },
   {
     id: 2229, difficulty: "dificil", category: "versiculos",
-    question: "¿Cuantas bienaventuranzas enseno Jesus en el Sermon del Monte?",
+    question: "¿Cuantas bienaventuranzas enseno Jesus en el Sermon del Monte segun Mateo 5?",
     options: ["7 bienaventuranzas", "8 bienaventuranzas", "9 bienaventuranzas", "10 bienaventuranzas"],
-    correct: 2, reference: "Mateo 5:3-12",
-    explanation: "Jesus enseno 9 bienaventuranzas, comenzando con Bienaventurados los pobres en espiritu."
+    correct: 1, reference: "Mateo 5:3-10",
+    explanation: "Jesus enseno 8 bienaventuranzas en Mateo 5:3-10. Los versiculos 11-12 son una ampliacion de la octava bienaventuranza sobre los perseguidos."
   },
   {
     id: 2230, difficulty: "facil", category: "historias",
@@ -40198,7 +20872,7 @@ const QUESTIONS_DB = [
     explanation: "Todos los discipulos lo abandonaron y huyeron cuando Jesus fue arrestado en Getsemani."
   },
   {
-    id: 2231, difficulty: "medio", category: "historias",
+    id: 2231, difficulty: "intermedio", category: "historias",
     question: "¿Quien se lavo las manos diciendo ser inocente de la sangre de Jesus?",
     options: ["Herodes", "Caifas", "Pilato", "Anas"],
     correct: 2, reference: "Mateo 27:24",
@@ -40212,7 +20886,7 @@ const QUESTIONS_DB = [
     explanation: "El velo del templo se rasgo en dos, de arriba abajo, simbolizando el acceso libre a Dios."
   },
   {
-    id: 2233, difficulty: "extremo", category: "historias",
+    id: 2233, difficulty: "experto", category: "historias",
     question: "¿Que dijo el centurion romano al ver morir a Jesus?",
     options: ["Era un criminal", "Verdaderamente este era Hijo de Dios", "Era inocente", "Era un profeta"],
     correct: 1, reference: "Mateo 27:54",
@@ -40226,7 +20900,7 @@ const QUESTIONS_DB = [
     explanation: "La multitud pidio que Pilato liberara a Barrabas, un prisionero famoso, en lugar de Jesus."
   },
   {
-    id: 2235, difficulty: "medio", category: "personajes",
+    id: 2235, difficulty: "intermedio", category: "personajes",
     question: "¿Quien era el sumo sacerdote durante el juicio de Jesus?",
     options: ["Anas", "Caifas", "Zacarias", "Eleazar"],
     correct: 1, reference: "Mateo 26:57",
@@ -40240,7 +20914,7 @@ const QUESTIONS_DB = [
     explanation: "La serpiente era mas astuta que todos los animales, y hablo a Eva sin disfrazarse."
   },
   {
-    id: 2237, difficulty: "medio", category: "historias",
+    id: 2237, difficulty: "intermedio", category: "historias",
     question: "¿Que fruto comieron Adan y Eva del arbol prohibido?",
     options: ["Una manzana", "Un higo", "Una uva", "La Biblia no especifica"],
     correct: 3, reference: "Genesis 3:6",
@@ -40261,21 +20935,21 @@ const QUESTIONS_DB = [
     explanation: "Cain mato a su hermano Abel por envidia, porque Dios acepto la ofrenda de Abel pero no la de Cain."
   },
   {
-    id: 2240, difficulty: "medio", category: "historias",
+    id: 2240, difficulty: "intermedio", category: "historias",
     question: "¿Por que Dios rechazo la ofrenda de Cain?",
     options: ["Era muy pequena", "No la ofrecio con fe", "Era de animales", "Llego tarde"],
     correct: 1, reference: "Hebreos 11:4",
     explanation: "Abel ofrecio por fe un sacrificio mas excelente que Cain; Dios mira el corazon."
   },
   {
-    id: 2241, difficulty: "extremo", category: "personajes",
+    id: 2241, difficulty: "experto", category: "personajes",
     question: "¿Que senal puso Dios sobre Cain?",
     options: ["Una marca en la frente", "Una senal no especificada para protegerlo", "Un tatuaje", "Un cambio de color"],
     correct: 1, reference: "Genesis 4:15",
     explanation: "Dios puso una senal en Cain para que nadie lo matara, pero la Biblia no especifica cual era."
   },
   {
-    id: 2242, difficulty: "medio", category: "personajes",
+    id: 2242, difficulty: "intermedio", category: "personajes",
     question: "¿Quien fue el tercer hijo de Adan y Eva mencionado por nombre?",
     options: ["Enoc", "Set", "Lamec", "Cainan"],
     correct: 1, reference: "Genesis 4:25",
@@ -40296,7 +20970,7 @@ const QUESTIONS_DB = [
     explanation: "Noe llevo 7 parejas de animales limpios y 1 pareja de animales no limpios."
   },
   {
-    id: 2245, difficulty: "medio", category: "historias",
+    id: 2245, difficulty: "intermedio", category: "historias",
     question: "¿Que ave solto Noe primero para ver si habia tierra seca?",
     options: ["Una paloma", "Un cuervo", "Un aguila", "Una golondrina"],
     correct: 1, reference: "Genesis 8:7",
@@ -40317,7 +20991,7 @@ const QUESTIONS_DB = [
     explanation: "Dios puso el arco iris como senal de su pacto de nunca mas destruir la tierra con un diluvio."
   },
   {
-    id: 2248, difficulty: "medio", category: "historias",
+    id: 2248, difficulty: "intermedio", category: "historias",
     question: "¿Que construyeron los hombres en Babel?",
     options: ["Un templo", "Una torre hasta el cielo", "Un palacio", "Un muro"],
     correct: 1, reference: "Genesis 11:4",
@@ -40338,7 +21012,7 @@ const QUESTIONS_DB = [
     explanation: "Abraham (Abram) tenia 75 anos cuando salio de Haran siguiendo el llamado de Dios."
   },
   {
-    id: 2251, difficulty: "medio", category: "personajes",
+    id: 2251, difficulty: "intermedio", category: "personajes",
     question: "¿Como se llamaba la esposa de Abraham antes de que Dios cambiara su nombre?",
     options: ["Sara", "Sarai", "Raquel", "Rebeca"],
     correct: 1, reference: "Genesis 17:15",
@@ -40359,7 +21033,7 @@ const QUESTIONS_DB = [
     explanation: "Ismael fue el hijo de Abraham con Agar. Es considerado el padre de los pueblos arabes."
   },
   {
-    id: 2254, difficulty: "medio", category: "historias",
+    id: 2254, difficulty: "intermedio", category: "historias",
     question: "¿Cuantos anos tenia Abraham cuando nacio Isaac?",
     options: ["75 anos", "90 anos", "100 anos", "120 anos"],
     correct: 2, reference: "Genesis 21:5",
@@ -40410,49 +21084,49 @@ const QUESTIONS_DB = [
     explanation: "El hijo pródigo terminó apacentando cerdos, trabajo humillante para un judío."
   },
   {
-    id: 2261, difficulty: "medio", category: "parabolas",
+    id: 2261, difficulty: "intermedio", category: "parabolas",
     question: "¿Sobre qué construyó el hombre sabio su casa?",
     options: ["Arena", "Roca", "Tierra", "Madera"],
     correct: 1, reference: "Mateo 7:24",
     explanation: "El hombre prudente edificó su casa sobre la roca, y cuando vino la lluvia, no cayó."
   },
   {
-    id: 2262, difficulty: "medio", category: "parabolas",
+    id: 2262, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué semilla es la más pequeña pero crece mucho?",
     options: ["Trigo", "Mostaza", "Cebada", "Lino"],
     correct: 1, reference: "Mateo 13:31-32",
     explanation: "La semilla de mostaza es la más pequeña, pero crece hasta ser árbol donde anidan las aves."
   },
   {
-    id: 2263, difficulty: "medio", category: "parabolas",
+    id: 2263, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué encontró el hombre en el campo que lo hizo vender todo?",
     options: ["Oro", "Un tesoro", "Petróleo", "Diamantes"],
     correct: 1, reference: "Mateo 13:44",
     explanation: "El hombre encontró un tesoro escondido en el campo y vendió todo para comprarlo."
   },
   {
-    id: 2264, difficulty: "medio", category: "parabolas",
+    id: 2264, difficulty: "intermedio", category: "parabolas",
     question: "¿Cuántos talentos recibió el primer siervo?",
     options: ["Uno", "Dos", "Cinco", "Diez"],
     correct: 2, reference: "Mateo 25:15",
     explanation: "El primer siervo recibió cinco talentos, el segundo dos, y el tercero uno."
   },
   {
-    id: 2265, difficulty: "medio", category: "parabolas",
+    id: 2265, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué hizo el siervo que recibió un talento?",
     options: ["Lo invirtió", "Lo escondió en tierra", "Lo gastó", "Lo donó"],
     correct: 1, reference: "Mateo 25:18",
     explanation: "El siervo que recibió un talento lo escondió en la tierra por miedo."
   },
   {
-    id: 2266, difficulty: "medio", category: "parabolas",
+    id: 2266, difficulty: "intermedio", category: "parabolas",
     question: "¿Cuántas vírgenes esperaban al novio?",
     options: ["Cinco", "Siete", "Diez", "Doce"],
     correct: 2, reference: "Mateo 25:1",
     explanation: "Diez vírgenes salieron a recibir al esposo; cinco prudentes y cinco insensatas."
   },
   {
-    id: 2267, difficulty: "medio", category: "parabolas",
+    id: 2267, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué les faltó a las vírgenes insensatas?",
     options: ["Lámparas", "Aceite", "Vestidos", "Dinero"],
     correct: 1, reference: "Mateo 25:3",
@@ -40494,21 +21168,21 @@ const QUESTIONS_DB = [
     explanation: "La mujer tomó la levadura y la escondió en tres medidas de harina."
   },
   {
-    id: 2273, difficulty: "medio", category: "parabolas",
+    id: 2273, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué buscaba el mercader en la parábola de la perla?",
     options: ["Oro", "Perlas finas", "Especias", "Telas"],
     correct: 1, reference: "Mateo 13:45",
     explanation: "El mercader buscaba perlas finas y al encontrar una de gran precio, vendió todo."
   },
   {
-    id: 2274, difficulty: "medio", category: "parabolas",
+    id: 2274, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué hicieron los obreros que llegaron primero en la viña?",
     options: ["Se alegraron", "Murmuraron", "Agradecieron", "Se fueron"],
     correct: 1, reference: "Mateo 20:11",
     explanation: "Los primeros obreros murmuraron porque recibieron lo mismo que los últimos."
   },
   {
-    id: 2275, difficulty: "medio", category: "parabolas",
+    id: 2275, difficulty: "intermedio", category: "parabolas",
     question: "¿Cuánto pagó el dueño de la viña a cada obrero?",
     options: ["Media dracma", "Un denario", "Dos denarios", "Tres denarios"],
     correct: 1, reference: "Mateo 20:2",
@@ -40516,10 +21190,10 @@ const QUESTIONS_DB = [
   },
   {
     id: 2276, difficulty: "facil", category: "parabolas",
-    question: "¿Qué animal representa a Jesús en la parábola del Buen Pastor?",
-    options: ["León", "Cordero", "Pastor", "Lobo"],
+    question: "¿Como se identifica Jesus en la ensenanza del Buen Pastor?",
+    options: ["Como Leon", "Como Cordero", "Como el Pastor", "Como Lobo"],
     correct: 2, reference: "Juan 10:11",
-    explanation: "Jesús se identifica como el Buen Pastor que da su vida por las ovejas."
+    explanation: "Jesus se identifica como el Buen Pastor que da su vida por las ovejas."
   },
   {
     id: 2277, difficulty: "facil", category: "parabolas",
@@ -40543,7 +21217,7 @@ const QUESTIONS_DB = [
     explanation: "Lázaro fue llevado por los ángeles al seno de Abraham."
   },
   {
-    id: 2280, difficulty: "medio", category: "parabolas",
+    id: 2280, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué representan los peces malos en la parábola de la red?",
     options: ["Los justos", "Los malos", "Los ángeles", "Los discípulos"],
     correct: 1, reference: "Mateo 13:48",
@@ -40557,7 +21231,7 @@ const QUESTIONS_DB = [
     explanation: "El pastor pone la oveja perdida sobre sus hombros con gozo."
   },
   {
-    id: 2282, difficulty: "medio", category: "parabolas",
+    id: 2282, difficulty: "intermedio", category: "parabolas",
     question: "¿Quién sembró cizaña entre el trigo?",
     options: ["El sembrador", "El enemigo", "Los siervos", "El dueño"],
     correct: 1, reference: "Mateo 13:25",
@@ -40571,7 +21245,7 @@ const QUESTIONS_DB = [
     explanation: "La cizaña se arranca en la siega para no dañar el trigo."
   },
   {
-    id: 2284, difficulty: "medio", category: "parabolas",
+    id: 2284, difficulty: "intermedio", category: "parabolas",
     question: "¿Qué hizo el padre cuando volvió el hijo pródigo?",
     options: ["Lo rechazó", "Lo castigó", "Corrió a abrazarlo", "Lo ignoró"],
     correct: 2, reference: "Lucas 15:20",
@@ -40622,42 +21296,42 @@ const QUESTIONS_DB = [
     explanation: "Jesús enseñó a poner la otra mejilla ante la agresión."
   },
   {
-    id: 2291, difficulty: "medio", category: "ensenanzas",
+    id: 2291, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Cuántas veces debemos perdonar según Jesús?",
     options: ["7 veces", "70 veces 7", "100 veces", "3 veces"],
     correct: 1, reference: "Mateo 18:22",
     explanation: "Jesús dijo que debemos perdonar setenta veces siete, es decir, siempre."
   },
   {
-    id: 2292, difficulty: "medio", category: "ensenanzas",
+    id: 2292, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué dijo Jesús sobre amar a los enemigos?",
     options: ["No es necesario", "Debemos amarlos", "Debemos evitarlos", "Debemos castigarlos"],
     correct: 1, reference: "Mateo 5:44",
     explanation: "Jesús enseñó a amar a los enemigos y orar por los que nos persiguen."
   },
   {
-    id: 2293, difficulty: "medio", category: "ensenanzas",
-    question: "¿Qué comparó Jesús con la sal que pierde su sabor?",
-    options: ["El dinero", "Los discípulos inútiles", "El pecado", "El mundo"],
+    id: 2293, difficulty: "intermedio", category: "ensenanzas",
+    question: "¿A quienes comparo Jesus con la sal de la tierra?",
+    options: ["A los fariseos", "A sus discipulos", "Al pecado", "Al mundo"],
     correct: 1, reference: "Mateo 5:13",
-    explanation: "Jesús dijo que los discípulos son la sal de la tierra, pero si pierden su sabor no sirven."
+    explanation: "Jesus dijo que sus discipulos son la sal de la tierra; si pierden su sabor, no sirven."
   },
   {
-    id: 2294, difficulty: "medio", category: "ensenanzas",
+    id: 2294, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué dijo Jesús sobre la luz y el almud?",
     options: ["Esconderla", "Ponerla en alto", "Apagarla", "Guardarla"],
     correct: 1, reference: "Mateo 5:15",
     explanation: "La luz no se pone bajo el almud sino sobre el candelero para alumbrar a todos."
   },
   {
-    id: 2295, difficulty: "medio", category: "ensenanzas",
+    id: 2295, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Cómo debemos orar según Jesús?",
     options: ["En público", "En secreto", "En el templo", "Con gritos"],
     correct: 1, reference: "Mateo 6:6",
     explanation: "Jesús enseñó a orar en secreto, y el Padre que ve en lo secreto recompensará."
   },
   {
-    id: 2296, difficulty: "medio", category: "ensenanzas",
+    id: 2296, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué dijo Jesús sobre servir a dos señores?",
     options: ["Es posible", "Es imposible", "Es recomendable", "Es necesario"],
     correct: 1, reference: "Mateo 6:24",
@@ -40692,14 +21366,14 @@ const QUESTIONS_DB = [
     explanation: "Entrad por la puerta estrecha, porque angosta es la puerta que lleva a la vida."
   },
   {
-    id: 2301, difficulty: "medio", category: "ensenanzas",
+    id: 2301, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Cómo se reconocen los falsos profetas según Jesús?",
     options: ["Por su ropa", "Por sus frutos", "Por su voz", "Por su dinero"],
     correct: 1, reference: "Mateo 7:16",
     explanation: "Por sus frutos los conoceréis."
   },
   {
-    id: 2302, difficulty: "medio", category: "ensenanzas",
+    id: 2302, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué dijo Jesús sobre los afanes del mañana?",
     options: ["Preocuparse mucho", "No afanarse", "Planificar todo", "Ahorrar siempre"],
     correct: 1, reference: "Mateo 6:34",
@@ -40727,14 +21401,14 @@ const QUESTIONS_DB = [
     explanation: "Buscad primeramente el reino de Dios y su justicia, y las demás cosas serán añadidas."
   },
   {
-    id: 2306, difficulty: "medio", category: "ensenanzas",
+    id: 2306, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Dónde dijo Jesús que debemos guardar nuestros tesoros?",
     options: ["En la tierra", "En el cielo", "En el banco", "En casa"],
     correct: 1, reference: "Mateo 6:20",
     explanation: "Haceos tesoros en el cielo, donde ni la polilla ni el orín corrompen."
   },
   {
-    id: 2307, difficulty: "medio", category: "ensenanzas",
+    id: 2307, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué dijo Jesús sobre ayunar en público?",
     options: ["Es bueno", "Es hipocresía", "Es necesario", "Es obligatorio"],
     correct: 1, reference: "Mateo 6:16-18",
@@ -40755,14 +21429,14 @@ const QUESTIONS_DB = [
     explanation: "Jesús llamó bienaventurados a los pobres en espíritu, los que lloran, los mansos, etc."
   },
   {
-    id: 2310, difficulty: "medio", category: "ensenanzas",
+    id: 2310, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué verán los de limpio corazón?",
     options: ["La tierra", "A Dios", "El cielo", "La gloria"],
     correct: 1, reference: "Mateo 5:8",
     explanation: "Bienaventurados los de limpio corazón, porque ellos verán a Dios."
   },
   {
-    id: 2311, difficulty: "medio", category: "ensenanzas",
+    id: 2311, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Cómo serán llamados los pacificadores?",
     options: ["Siervos", "Hijos de Dios", "Santos", "Profetas"],
     correct: 1, reference: "Mateo 5:9",
@@ -40783,7 +21457,7 @@ const QUESTIONS_DB = [
     explanation: "Todo el que se enoja con su hermano será culpable ante el juicio."
   },
   {
-    id: 2314, difficulty: "medio", category: "ensenanzas",
+    id: 2314, difficulty: "intermedio", category: "ensenanzas",
     question: "¿Qué hacer antes de presentar ofrenda si hay enemistad?",
     options: ["Ofrecer primero", "Reconciliarse primero", "Ignorarlo", "Esperar"],
     correct: 1, reference: "Mateo 5:24",
@@ -40834,42 +21508,42 @@ const QUESTIONS_DB = [
     explanation: "Los israelitas cruzaron el Mar Rojo que Dios dividió milagrosamente."
   },
   {
-    id: 2321, difficulty: "medio", category: "lugares",
+    id: 2321, difficulty: "intermedio", category: "lugares",
     question: "¿Qué ciudad conquistó Josué haciendo caer sus muros?",
     options: ["Jerusalén", "Jericó", "Hebrón", "Betel"],
     correct: 1, reference: "Josué 6:20",
     explanation: "Los muros de Jericó cayeron después de que el pueblo marchó alrededor."
   },
   {
-    id: 2322, difficulty: "medio", category: "lugares",
+    id: 2322, difficulty: "intermedio", category: "lugares",
     question: "¿En qué ciudad estaba el templo de Salomón?",
     options: ["Samaria", "Jerusalén", "Hebrón", "Siquem"],
     correct: 1, reference: "1 Reyes 6:1",
     explanation: "El templo de Salomón fue construido en Jerusalén."
   },
   {
-    id: 2323, difficulty: "medio", category: "lugares",
-    question: "¿A qué ciudad fue tragado Jonás camino de huir de Dios?",
-    options: ["Nínive", "Tarsis", "Jope", "Sidón"],
-    correct: 1, reference: "Jonás 1:3",
-    explanation: "Jonás huía hacia Tarsis cuando fue tragado por el gran pez."
+    id: 2323, difficulty: "intermedio", category: "lugares",
+    question: "¿Hacia que ciudad huia Jonas cuando fue tragado por el gran pez?",
+    options: ["Ninive", "Tarsis", "Jope", "Sidon"],
+    correct: 1, reference: "Jonas 1:3",
+    explanation: "Jonas huia hacia Tarsis cuando fue tragado por el gran pez."
   },
   {
-    id: 2324, difficulty: "medio", category: "lugares",
+    id: 2324, difficulty: "intermedio", category: "lugares",
     question: "¿A qué ciudad fue enviado Jonás a predicar?",
     options: ["Babilonia", "Nínive", "Tarsis", "Tiro"],
     correct: 1, reference: "Jonás 1:2",
     explanation: "Dios envió a Jonás a predicar contra Nínive, la gran ciudad."
   },
   {
-    id: 2325, difficulty: "medio", category: "lugares",
+    id: 2325, difficulty: "intermedio", category: "lugares",
     question: "¿En qué monte fue crucificado Jesús?",
     options: ["Monte de los Olivos", "Gólgota", "Monte Sinaí", "Monte Tabor"],
     correct: 1, reference: "Mateo 27:33",
     explanation: "Jesús fue crucificado en el Gólgota, que significa 'lugar de la calavera'."
   },
   {
-    id: 2326, difficulty: "medio", category: "lugares",
+    id: 2326, difficulty: "intermedio", category: "lugares",
     question: "¿En qué huerto oró Jesús antes de ser arrestado?",
     options: ["Edén", "Getsemaní", "Olivar", "Tabor"],
     correct: 1, reference: "Mateo 26:36",
@@ -40877,8 +21551,8 @@ const QUESTIONS_DB = [
   },
   {
     id: 2327, difficulty: "dificil", category: "lugares",
-    question: "¿En qué ciudad cayó Pablo del caballo?",
-    options: ["Jerusalén", "Cerca de Damasco", "Tarso", "Antioquía"],
+    question: "¿Donde tuvo Pablo su encuentro con Cristo cuando cayo al suelo?",
+    options: ["Jerusalen", "Cerca de Damasco", "Tarso", "Antioquia"],
     correct: 1, reference: "Hechos 9:3",
     explanation: "Pablo tuvo su encuentro con Cristo en el camino cerca de Damasco."
   },
@@ -40911,14 +21585,14 @@ const QUESTIONS_DB = [
     explanation: "Dios prometió dar la tierra de Canaán a la descendencia de Abraham."
   },
   {
-    id: 2332, difficulty: "medio", category: "lugares",
+    id: 2332, difficulty: "intermedio", category: "lugares",
     question: "¿En qué ciudad estaba el pozo donde Jesús habló con la samaritana?",
     options: ["Jerusalén", "Sicar", "Samaria", "Jericó"],
     correct: 1, reference: "Juan 4:5",
     explanation: "Jesús habló con la samaritana en el pozo de Jacob, cerca de Sicar."
   },
   {
-    id: 2333, difficulty: "medio", category: "lugares",
+    id: 2333, difficulty: "intermedio", category: "lugares",
     question: "¿Qué ciudad destruyó Dios con fuego junto a Gomorra?",
     options: ["Jericó", "Sodoma", "Babel", "Nínive"],
     correct: 1, reference: "Génesis 19:24",
@@ -40939,7 +21613,7 @@ const QUESTIONS_DB = [
     explanation: "Jesús ascendió al cielo desde el Monte de los Olivos."
   },
   {
-    id: 2336, difficulty: "medio", category: "lugares",
+    id: 2336, difficulty: "intermedio", category: "lugares",
     question: "¿Dónde estuvo cautivo el pueblo de Israel por 70 años?",
     options: ["Egipto", "Babilonia", "Asiria", "Persia"],
     correct: 1, reference: "Jeremías 25:11",
@@ -40953,7 +21627,7 @@ const QUESTIONS_DB = [
     explanation: "Pedro y Andrés eran pescadores en el Mar de Galilea."
   },
   {
-    id: 2338, difficulty: "medio", category: "lugares",
+    id: 2338, difficulty: "intermedio", category: "lugares",
     question: "¿Dónde vivía Lázaro, a quien Jesús resucitó?",
     options: ["Jerusalén", "Betania", "Nazaret", "Capernaúm"],
     correct: 1, reference: "Juan 11:1",
@@ -40974,7 +21648,7 @@ const QUESTIONS_DB = [
     explanation: "Abraham era originario de Ur de los caldeos."
   },
   {
-    id: 2341, difficulty: "medio", category: "lugares",
+    id: 2341, difficulty: "intermedio", category: "lugares",
     question: "¿Dónde fue vendido José como esclavo?",
     options: ["Babilonia", "Egipto", "Asiria", "Canaán"],
     correct: 1, reference: "Génesis 37:28",
@@ -40995,7 +21669,7 @@ const QUESTIONS_DB = [
     explanation: "Moisés vio la zarza ardiente en el monte Horeb."
   },
   {
-    id: 2344, difficulty: "medio", category: "lugares",
+    id: 2344, difficulty: "intermedio", category: "lugares",
     question: "¿Qué ciudad era capital del reino del norte (Israel)?",
     options: ["Jerusalén", "Samaria", "Betel", "Dan"],
     correct: 1, reference: "1 Reyes 16:24",
@@ -41032,21 +21706,21 @@ const QUESTIONS_DB = [
     explanation: "Juan 14:6 contiene esta famosa declaración de Jesús."
   },
   {
-    id: 2349, difficulty: "medio", category: "versiculos",
+    id: 2349, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo dice 'Confía en Jehová con todo tu corazón'?",
     options: ["Proverbios 1:7", "Proverbios 3:5", "Proverbios 22:6", "Proverbios 31:10"],
     correct: 1, reference: "Proverbios 3:5",
     explanation: "Proverbios 3:5 nos exhorta a confiar en Jehová y no en nuestra prudencia."
   },
   {
-    id: 2350, difficulty: "medio", category: "versiculos",
+    id: 2350, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo dice 'El que habita al abrigo del Altísimo'?",
     options: ["Salmos 23:1", "Salmos 91:1", "Salmos 121:1", "Salmos 139:1"],
     correct: 1, reference: "Salmos 91:1",
     explanation: "Salmos 91:1 habla de la protección divina para quien confía en Dios."
   },
   {
-    id: 2351, difficulty: "medio", category: "versiculos",
+    id: 2351, difficulty: "intermedio", category: "versiculos",
     question: "¿En qué versículo está 'Instruye al niño en su camino'?",
     options: ["Proverbios 22:6", "Proverbios 1:7", "Deuteronomio 6:7", "Efesios 6:4"],
     correct: 0, reference: "Proverbios 22:6",
@@ -41074,7 +21748,7 @@ const QUESTIONS_DB = [
     explanation: "Juan 3:16 es considerado el versículo más conocido: 'Porque de tal manera amó Dios al mundo...'"
   },
   {
-    id: 2355, difficulty: "medio", category: "versiculos",
+    id: 2355, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo dice 'El principio de la sabiduría es el temor de Jehová'?",
     options: ["Proverbios 1:7", "Salmos 111:10", "Eclesiastés 12:13", "Job 28:28"],
     correct: 0, reference: "Proverbios 1:7",
@@ -41088,7 +21762,7 @@ const QUESTIONS_DB = [
     explanation: "Salmos 1:1 abre el libro de los Salmos con esta bienaventuranza."
   },
   {
-    id: 2357, difficulty: "medio", category: "versiculos",
+    id: 2357, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo dice 'Venid a mí todos los que estáis trabajados'?",
     options: ["Mateo 5:3", "Mateo 11:28", "Mateo 28:19", "Mateo 6:33"],
     correct: 1, reference: "Mateo 11:28",
@@ -41109,7 +21783,7 @@ const QUESTIONS_DB = [
     explanation: "Génesis 1:1 es el primer versículo de la Biblia."
   },
   {
-    id: 2360, difficulty: "medio", category: "versiculos",
+    id: 2360, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo dice 'Porque por gracia sois salvos por medio de la fe'?",
     options: ["Romanos 3:23", "Efesios 2:8", "Juan 3:16", "Tito 3:5"],
     correct: 1, reference: "Efesios 2:8",
@@ -41123,7 +21797,7 @@ const QUESTIONS_DB = [
     explanation: "En Apocalipsis 3:20, Jesús dice que está a la puerta llamando."
   },
   {
-    id: 2362, difficulty: "medio", category: "versiculos",
+    id: 2362, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo menciona 'Yo he vencido al mundo'?",
     options: ["Juan 14:6", "Juan 16:33", "Juan 3:16", "Juan 1:1"],
     correct: 1, reference: "Juan 16:33",
@@ -41144,7 +21818,7 @@ const QUESTIONS_DB = [
     explanation: "Romanos 6:23 dice: 'La paga del pecado es muerte, mas la dádiva de Dios es vida eterna'."
   },
   {
-    id: 2365, difficulty: "medio", category: "versiculos",
+    id: 2365, difficulty: "intermedio", category: "versiculos",
     question: "¿Qué versículo dice 'Esforzaos y cobrad ánimo'?",
     options: ["Josué 1:9", "Deuteronomio 31:6", "Isaías 41:10", "Salmos 27:14"],
     correct: 1, reference: "Deuteronomio 31:6",
@@ -41167,14 +21841,14 @@ const QUESTIONS_DB = [
     explanation: "Pedro negó conocer a Jesús tres veces antes de que cantara el gallo."
   },
   {
-    id: 2368, difficulty: "medio", category: "personajes",
+    id: 2368, difficulty: "intermedio", category: "personajes",
     question: "¿Quién dudó de la resurrección hasta ver las heridas de Jesús?",
     options: ["Pedro", "Tomás", "Juan", "Felipe"],
     correct: 1, reference: "Juan 20:25",
     explanation: "Tomás dijo que no creería hasta ver y tocar las heridas de Jesús."
   },
   {
-    id: 2369, difficulty: "medio", category: "personajes",
+    id: 2369, difficulty: "intermedio", category: "personajes",
     question: "¿Quién bautizó al eunuco etíope?",
     options: ["Pedro", "Felipe", "Pablo", "Juan"],
     correct: 1, reference: "Hechos 8:38",
@@ -41188,7 +21862,7 @@ const QUESTIONS_DB = [
     explanation: "Caifás era el sumo sacerdote cuando Jesús fue llevado ante el Sanedrín."
   },
   {
-    id: 2371, difficulty: "medio", category: "personajes",
+    id: 2371, difficulty: "intermedio", category: "personajes",
     question: "¿Quién era el gobernador romano que juzgó a Jesús?",
     options: ["Herodes", "Pilato", "César", "Félix"],
     correct: 1, reference: "Mateo 27:2",
@@ -41202,7 +21876,7 @@ const QUESTIONS_DB = [
     explanation: "Simón de Cirene fue obligado a llevar la cruz de Jesús."
   },
   {
-    id: 2373, difficulty: "medio", category: "personajes",
+    id: 2373, difficulty: "intermedio", category: "personajes",
     question: "¿Quién pidió el cuerpo de Jesús para sepultarlo?",
     options: ["Nicodemo", "José de Arimatea", "Simón Pedro", "Juan"],
     correct: 1, reference: "Mateo 27:57-58",
@@ -41223,7 +21897,7 @@ const QUESTIONS_DB = [
     explanation: "María Magdalena fue la primera en ver a Jesús resucitado."
   },
   {
-    id: 2376, difficulty: "medio", category: "personajes",
+    id: 2376, difficulty: "intermedio", category: "personajes",
     question: "¿Quién reemplazó a Judas como apóstol?",
     options: ["Pablo", "Matías", "Bernabé", "Silas"],
     correct: 1, reference: "Hechos 1:26",
@@ -41237,7 +21911,7 @@ const QUESTIONS_DB = [
     explanation: "La Biblia no menciona el nombre del cojo sanado por Pedro y Juan."
   },
   {
-    id: 2378, difficulty: "medio", category: "personajes",
+    id: 2378, difficulty: "intermedio", category: "personajes",
     question: "¿Quién fue el primer gentil en convertirse al cristianismo?",
     options: ["El eunuco etíope", "Cornelio", "Sergio Paulo", "Lidia"],
     correct: 1, reference: "Hechos 10:48",
@@ -41274,14 +21948,14 @@ const QUESTIONS_DB = [
     explanation: "Llovió sobre la tierra cuarenta días y cuarenta noches."
   },
   {
-    id: 2383, difficulty: "medio", category: "historias",
+    id: 2383, difficulty: "intermedio", category: "historias",
     question: "¿Qué señal puso Dios después del diluvio?",
     options: ["Una estrella", "El arco iris", "Una paloma", "Un altar"],
     correct: 1, reference: "Génesis 9:13",
     explanation: "Dios puso el arco iris como señal del pacto de no volver a destruir la tierra con agua."
   },
   {
-    id: 2384, difficulty: "medio", category: "historias",
+    id: 2384, difficulty: "intermedio", category: "historias",
     question: "¿Por qué Dios confundió las lenguas en Babel?",
     options: ["Por idolatría", "Por construir una torre al cielo", "Por guerra", "Por robo"],
     correct: 1, reference: "Génesis 11:4-7",
@@ -41295,7 +21969,7 @@ const QUESTIONS_DB = [
     explanation: "Matusalén vivió 969 años, siendo el hombre más longevo de la Biblia."
   },
   {
-    id: 2386, difficulty: "medio", category: "historias",
+    id: 2386, difficulty: "intermedio", category: "historias",
     question: "¿Qué ofreció Abraham a Melquisedec?",
     options: ["Oro", "Diezmo de todo", "Un cordero", "Incienso"],
     correct: 1, reference: "Génesis 14:20",
@@ -41316,14 +21990,14 @@ const QUESTIONS_DB = [
     explanation: "José soñó que las gavillas de sus hermanos se inclinaban ante la suya."
   },
   {
-    id: 2389, difficulty: "medio", category: "historias",
+    id: 2389, difficulty: "intermedio", category: "historias",
     question: "¿Qué interpretó José para el copero del faraón?",
     options: ["Su muerte", "Su liberación en 3 días", "7 años de abundancia", "Una guerra"],
     correct: 1, reference: "Génesis 40:13",
     explanation: "José interpretó que el copero sería restaurado en tres días."
   },
   {
-    id: 2390, difficulty: "medio", category: "historias",
+    id: 2390, difficulty: "intermedio", category: "historias",
     question: "¿Cuántos años de hambre profetizó José?",
     options: ["3", "5", "7", "10"],
     correct: 2, reference: "Génesis 41:30",
@@ -41337,7 +22011,7 @@ const QUESTIONS_DB = [
     explanation: "Moisés fue puesto en una arquilla de juncos calafateada."
   },
   {
-    id: 2392, difficulty: "medio", category: "historias",
+    id: 2392, difficulty: "intermedio", category: "historias",
     question: "¿Cuántas plagas envió Dios sobre Egipto?",
     options: ["7", "10", "12", "5"],
     correct: 1, reference: "Éxodo 7-12",
@@ -41351,7 +22025,7 @@ const QUESTIONS_DB = [
     explanation: "La décima plaga fue la muerte de todos los primogénitos de Egipto."
   },
   {
-    id: 2394, difficulty: "medio", category: "historias",
+    id: 2394, difficulty: "intermedio", category: "historias",
     question: "¿Qué comieron los israelitas en el desierto?",
     options: ["Pan y vino", "Maná y codornices", "Trigo y cebada", "Frutas"],
     correct: 1, reference: "Éxodo 16:13-15",
@@ -41381,21 +22055,21 @@ const QUESTIONS_DB = [
     explanation: "Jesús usó 5 panes y 2 peces para alimentar a 5000 hombres."
   },
   {
-    id: 2398, difficulty: "medio", category: "milagros",
+    id: 2398, difficulty: "intermedio", category: "milagros",
     question: "¿Cuántas canastas sobraron después de alimentar a los 5000?",
     options: ["7", "12", "5", "3"],
     correct: 1, reference: "Mateo 14:20",
     explanation: "Sobraron 12 canastas llenas de los pedazos que sobraron."
   },
   {
-    id: 2399, difficulty: "medio", category: "milagros",
+    id: 2399, difficulty: "intermedio", category: "milagros",
     question: "¿Quién caminó sobre el agua además de Jesús?",
     options: ["Juan", "Pedro", "Santiago", "Andrés"],
     correct: 1, reference: "Mateo 14:29",
     explanation: "Pedro caminó sobre el agua hacia Jesús, pero comenzó a hundirse por su duda."
   },
   {
-    id: 2400, difficulty: "medio", category: "milagros",
+    id: 2400, difficulty: "intermedio", category: "milagros",
     question: "¿Cuántos días llevaba muerto Lázaro cuando Jesús llegó?",
     options: ["1", "2", "3", "4"],
     correct: 3, reference: "Juan 11:17",
@@ -41416,7 +22090,7 @@ const QUESTIONS_DB = [
     explanation: "Jesús sanó a diez leprosos, pero solo uno volvió a dar gracias."
   },
   {
-    id: 2403, difficulty: "medio", category: "milagros",
+    id: 2403, difficulty: "intermedio", category: "milagros",
     question: "¿Cuántos leprosos volvieron a agradecer a Jesús?",
     options: ["Ninguno", "1", "5", "10"],
     correct: 1, reference: "Lucas 17:15",
@@ -41430,7 +22104,7 @@ const QUESTIONS_DB = [
     explanation: "El leproso agradecido era samaritano."
   },
   {
-    id: 2405, difficulty: "medio", category: "milagros",
+    id: 2405, difficulty: "intermedio", category: "milagros",
     question: "¿Qué parte del cuerpo sanó Jesús al hombre en el estanque de Betesda?",
     options: ["Sus ojos", "Sus piernas", "Sus manos", "Su espalda"],
     correct: 1, reference: "Juan 5:5-9",
@@ -41444,7 +22118,7 @@ const QUESTIONS_DB = [
     explanation: "Jesús reprendió al viento y dijo al mar: 'Calla, enmudece', y cesó la tempestad."
   },
   {
-    id: 2407, difficulty: "medio", category: "milagros",
+    id: 2407, difficulty: "intermedio", category: "milagros",
     question: "¿Con qué sanó Jesús al ciego de nacimiento?",
     options: ["Agua del Jordán", "Lodo en sus ojos", "Solo su palabra", "Aceite"],
     correct: 1, reference: "Juan 9:6",
@@ -41458,7 +22132,7 @@ const QUESTIONS_DB = [
     explanation: "Jesús envió al ciego a lavarse en el estanque de Siloé."
   },
   {
-    id: 2409, difficulty: "medio", category: "milagros",
+    id: 2409, difficulty: "intermedio", category: "milagros",
     question: "¿Qué hija resucitó Jesús tocando su mano?",
     options: ["De un centurión", "De Jairo", "De una viuda", "De Nicodemo"],
     correct: 1, reference: "Marcos 5:41",
@@ -41488,14 +22162,14 @@ const QUESTIONS_DB = [
     explanation: "Elías fue llevado al cielo en un carro de fuego con caballos de fuego."
   },
   {
-    id: 2413, difficulty: "medio", category: "profetas",
+    id: 2413, difficulty: "intermedio", category: "profetas",
     question: "¿Qué profeta recibió el manto de Elías?",
     options: ["Isaías", "Eliseo", "Jeremías", "Ezequiel"],
     correct: 1, reference: "2 Reyes 2:13",
     explanation: "Eliseo tomó el manto de Elías y recibió doble porción de su espíritu."
   },
   {
-    id: 2414, difficulty: "medio", category: "profetas",
+    id: 2414, difficulty: "intermedio", category: "profetas",
     question: "¿Qué profeta vio el valle de huesos secos?",
     options: ["Isaías", "Jeremías", "Ezequiel", "Daniel"],
     correct: 2, reference: "Ezequiel 37:1",
@@ -41509,7 +22183,7 @@ const QUESTIONS_DB = [
     explanation: "Dios ordenó a Oseas casarse con Gomer como símbolo de Israel infiel."
   },
   {
-    id: 2416, difficulty: "medio", category: "profetas",
+    id: 2416, difficulty: "intermedio", category: "profetas",
     question: "¿Qué profeta escribió las Lamentaciones?",
     options: ["Isaías", "Jeremías", "Ezequiel", "Daniel"],
     correct: 1, reference: "Lamentaciones 1:1",
@@ -41530,7 +22204,7 @@ const QUESTIONS_DB = [
     explanation: "Daniel fue echado al foso de los leones pero Dios cerró sus bocas."
   },
   {
-    id: 2419, difficulty: "medio", category: "profetas",
+    id: 2419, difficulty: "intermedio", category: "profetas",
     question: "¿Qué profeta interpretó los sueños del rey Nabucodonosor?",
     options: ["Isaías", "Jeremías", "Ezequiel", "Daniel"],
     correct: 3, reference: "Daniel 2:27-28",
@@ -41544,7 +22218,7 @@ const QUESTIONS_DB = [
     explanation: "Isaías vio al Señor sentado sobre un trono alto y sublime."
   },
   {
-    id: 2421, difficulty: "medio", category: "profetas",
+    id: 2421, difficulty: "intermedio", category: "profetas",
     question: "¿Con qué purificó el serafín los labios de Isaías?",
     options: ["Agua", "Un carbón encendido", "Aceite", "Sangre"],
     correct: 1, reference: "Isaías 6:6-7",
@@ -41565,7 +22239,7 @@ const QUESTIONS_DB = [
     explanation: "Amós era boyero y cultivador de higos silvestres antes de profetizar."
   },
   {
-    id: 2424, difficulty: "medio", category: "profetas",
+    id: 2424, difficulty: "intermedio", category: "profetas",
     question: "¿Qué profeta predijo que el Espíritu sería derramado sobre toda carne?",
     options: ["Isaías", "Joel", "Amós", "Malaquías"],
     correct: 1, reference: "Joel 2:28",
@@ -41602,14 +22276,14 @@ const QUESTIONS_DB = [
     explanation: "Salomón pidió a Dios sabiduría para gobernar, y Dios se la dio abundantemente."
   },
   {
-    id: 2429, difficulty: "medio", category: "reyes",
+    id: 2429, difficulty: "intermedio", category: "reyes",
     question: "¿Qué rey construyó el primer templo de Jerusalén?",
     options: ["David", "Salomón", "Ezequías", "Herodes"],
     correct: 1, reference: "1 Reyes 6:1",
     explanation: "Salomón construyó el primer templo en Jerusalén."
   },
   {
-    id: 2430, difficulty: "medio", category: "reyes",
+    id: 2430, difficulty: "intermedio", category: "reyes",
     question: "¿Qué rey dividió el reino de Israel?",
     options: ["Salomón", "Roboam", "Jeroboam", "Acab"],
     correct: 1, reference: "1 Reyes 12:16-17",
@@ -41623,7 +22297,7 @@ const QUESTIONS_DB = [
     explanation: "Acab se casó con Jezabel y siguió a Baal, haciendo lo malo ante Dios."
   },
   {
-    id: 2432, difficulty: "medio", category: "reyes",
+    id: 2432, difficulty: "intermedio", category: "reyes",
     question: "¿Qué rey recuperó la salud después de orar y llorar?",
     options: ["David", "Salomón", "Ezequías", "Josías"],
     correct: 2, reference: "2 Reyes 20:5",
@@ -41636,7 +22310,7 @@ const QUESTIONS_DB = [
     correct: 1, reference: "2 Reyes 22:8",
     explanation: "Durante el reinado de Josías se encontró el libro de la ley en el templo."  },
   {
-    id: 2434, difficulty: "medio", category: "reyes",
+    id: 2434, difficulty: "intermedio", category: "reyes",
     question: "¿Qué rey fue arrojado desde una ventana por orden de Jehú?",
     options: ["Acab", "Joram", "Jezabel", "Ocozías"],
     correct: 2, reference: "2 Reyes 9:33",
@@ -41657,7 +22331,7 @@ const QUESTIONS_DB = [
     explanation: "Saúl persiguió a David por celos durante muchos años."
   },
   {
-    id: 2437, difficulty: "medio", category: "reyes",
+    id: 2437, difficulty: "intermedio", category: "reyes",
     question: "¿Qué hijo de David se rebeló contra él?",
     options: ["Salomón", "Absalón", "Adonías", "Amnón"],
     correct: 1, reference: "2 Samuel 15:10",
@@ -41671,7 +22345,7 @@ const QUESTIONS_DB = [
     explanation: "Sedequías, el último rey de Judá, fue llevado cautivo a Babilonia."
   },
   {
-    id: 2439, difficulty: "medio", category: "reyes",
+    id: 2439, difficulty: "intermedio", category: "reyes",
     question: "¿Qué rey visitó a Salomón para ver su sabiduría?",
     options: ["Faraón", "La reina de Sabá", "Hiram", "Nabucodonosor"],
     correct: 1, reference: "1 Reyes 10:1",
@@ -41701,14 +22375,14 @@ const QUESTIONS_DB = [
     explanation: "Pablo escribió a Filemón intercediendo por su esclavo Onésimo convertido."
   },
   {
-    id: 2443, difficulty: "medio", category: "cartas",
+    id: 2443, difficulty: "intermedio", category: "cartas",
     question: "¿Qué carta habla de la justificación por la fe y no por obras?",
     options: ["Santiago", "Romanos", "Hebreos", "1 Pedro"],
     correct: 1, reference: "Romanos 3:28",
     explanation: "Romanos explica extensamente la justificación por fe."
   },
   {
-    id: 2444, difficulty: "medio", category: "cartas",
+    id: 2444, difficulty: "intermedio", category: "cartas",
     question: "¿Qué carta dice que la fe sin obras está muerta?",
     options: ["Romanos", "Santiago", "Gálatas", "Hebreos"],
     correct: 1, reference: "Santiago 2:26",
@@ -41722,7 +22396,7 @@ const QUESTIONS_DB = [
     explanation: "Las cartas pastorales fueron escritas a Timoteo y Tito."
   },
   {
-    id: 2446, difficulty: "medio", category: "cartas",
+    id: 2446, difficulty: "intermedio", category: "cartas",
     question: "¿Qué carta fue escrita a cristianos que sufrían persecución?",
     options: ["Romanos", "1 Pedro", "Filemón", "Gálatas"],
     correct: 1, reference: "1 Pedro 4:12",
@@ -41736,7 +22410,7 @@ const QUESTIONS_DB = [
     explanation: "Judas advierte contra hombres impíos que pervierten la gracia de Dios."
   },
   {
-    id: 2448, difficulty: "medio", category: "cartas",
+    id: 2448, difficulty: "intermedio", category: "cartas",
     question: "¿Qué carta menciona la armadura de Dios?",
     options: ["Romanos", "Efesios", "Colosenses", "Filipenses"],
     correct: 1, reference: "Efesios 6:11",
@@ -41780,14 +22454,14 @@ const QUESTIONS_DB = [
     explanation: "Apocalipsis es el último libro del Nuevo Testamento y de la Biblia."
   },
   {
-    id: 2454, difficulty: "medio", category: "libros",
+    id: 2454, difficulty: "intermedio", category: "libros",
     question: "¿Cuál es el libro más largo de la Biblia?",
     options: ["Génesis", "Isaías", "Salmos", "Jeremías"],
     correct: 2, reference: "Salmos",
     explanation: "Salmos es el libro más largo con 150 capítulos."
   },
   {
-    id: 2455, difficulty: "medio", category: "libros",
+    id: 2455, difficulty: "intermedio", category: "libros",
     question: "¿Cuál es el libro más corto del Antiguo Testamento?",
     options: ["Jonás", "Abdías", "Nahum", "Hageo"],
     correct: 1, reference: "Abdías",
@@ -41801,14 +22475,14 @@ const QUESTIONS_DB = [
     explanation: "3 Juan es el libro más corto del NT por número de palabras."
   },
   {
-    id: 2457, difficulty: "medio", category: "libros",
+    id: 2457, difficulty: "intermedio", category: "libros",
     question: "¿Cuántos evangelios hay en el Nuevo Testamento?",
     options: ["3", "4", "5", "12"],
     correct: 1, reference: "NT",
     explanation: "Hay 4 evangelios: Mateo, Marcos, Lucas y Juan."
   },
   {
-    id: 2458, difficulty: "medio", category: "libros",
+    id: 2458, difficulty: "intermedio", category: "libros",
     question: "¿Qué libro narra la creación del mundo?",
     options: ["Éxodo", "Génesis", "Job", "Salmos"],
     correct: 1, reference: "Génesis 1-2",
@@ -41822,7 +22496,7 @@ const QUESTIONS_DB = [
     explanation: "El libro de Ester no menciona explícitamente el nombre de Dios."
   },
   {
-    id: 2460, difficulty: "medio", category: "libros",
+    id: 2460, difficulty: "intermedio", category: "libros",
     question: "¿Qué libro contiene el capítulo más largo de la Biblia?",
     options: ["Génesis", "Salmos", "Isaías", "Ezequiel"],
     correct: 1, reference: "Salmos 119",
@@ -41845,14 +22519,14 @@ const QUESTIONS_DB = [
     explanation: "Jesús ayunó 40 días y 40 noches en el desierto."
   },
   {
-    id: 2463, difficulty: "medio", category: "vida_jesus",
+    id: 2463, difficulty: "intermedio", category: "vida_jesus",
     question: "¿Quién tentó a Jesús en el desierto?",
     options: ["Un ángel", "El diablo", "Un fariseo", "Herodes"],
     correct: 1, reference: "Mateo 4:1",
     explanation: "Jesús fue llevado al desierto para ser tentado por el diablo."
   },
   {
-    id: 2464, difficulty: "medio", category: "vida_jesus",
+    id: 2464, difficulty: "intermedio", category: "vida_jesus",
     question: "¿Cuántas tentaciones enfrentó Jesús en el desierto?",
     options: ["1", "2", "3", "7"],
     correct: 2, reference: "Mateo 4:1-11",
@@ -41866,7 +22540,7 @@ const QUESTIONS_DB = [
     explanation: "Jesús tenía como 30 años cuando comenzó su ministerio público."
   },
   {
-    id: 2466, difficulty: "medio", category: "vida_jesus",
+    id: 2466, difficulty: "intermedio", category: "vida_jesus",
     question: "¿Qué fiesta celebraba Jesús cuando fue a Jerusalén a los 12 años?",
     options: ["Pentecostés", "Tabernáculos", "Pascua", "Purim"],
     correct: 2, reference: "Lucas 2:41",
@@ -41887,7 +22561,7 @@ const QUESTIONS_DB = [
     explanation: "José era carpintero y Jesús aprendió el oficio."
   },
   {
-    id: 2469, difficulty: "medio", category: "vida_jesus",
+    id: 2469, difficulty: "intermedio", category: "vida_jesus",
     question: "¿Quién anunció a María que tendría un hijo?",
     options: ["Miguel", "Gabriel", "Rafael", "Un profeta"],
     correct: 1, reference: "Lucas 1:26",
@@ -41901,7 +22575,7 @@ const QUESTIONS_DB = [
     explanation: "Unos magos (sabios) del oriente vinieron siguiendo la estrella."
   },
   {
-    id: 2471, difficulty: "medio", category: "vida_jesus",
+    id: 2471, difficulty: "intermedio", category: "vida_jesus",
     question: "¿Qué regalos trajeron los magos a Jesús?",
     options: ["Plata, bronce, hierro", "Oro, incienso, mirra", "Joyas, telas, perfumes", "Ganado, granos, vino"],
     correct: 1, reference: "Mateo 2:11",
@@ -41922,7 +22596,7 @@ const QUESTIONS_DB = [
     explanation: "Jesús oraba, a veces toda la noche, antes de decisiones importantes."
   },
   {
-    id: 2474, difficulty: "medio", category: "vida_jesus",
+    id: 2474, difficulty: "intermedio", category: "vida_jesus",
     question: "¿Cuánto tiempo duró el ministerio público de Jesús?",
     options: ["1 año", "2 años", "3 años", "5 años"],
     correct: 2, reference: "Evangelios",
@@ -41934,482 +22608,1174 @@ const QUESTIONS_DB = [
     options: ["Viernes", "Sábado", "Domingo", "Lunes"],
     correct: 2, reference: "Mateo 28:1",
     explanation: "Jesús resucitó el primer día de la semana, el domingo."
-  }
+  },
+
+  // ===================== LUGARES =====================
+  {id:2476,difficulty:"facil",category:"lugares",question:"¿En qué ciudad nació Jesús?",options:["Nazaret","Jerusalén","Belén","Jericó"],correct:2,reference:"Lucas 2:4-7",explanation:"Jesús nació en Belén de Judea, a donde María y José fueron para el censo."},
+  {id:2477,difficulty:"facil",category:"lugares",question:"¿En qué ciudad creció Jesús?",options:["Belén","Nazaret","Capernaúm","Hebrón"],correct:1,reference:"Lucas 2:51",explanation:"Jesús creció en Nazaret de Galilea, por eso se le llamaba 'el nazareno'."},
+  {id:2478,difficulty:"facil",category:"lugares",question:"¿En qué río fue bautizado Jesús?",options:["Nilo","Jordán","Éufrates","Tigris"],correct:1,reference:"Mateo 3:13",explanation:"Jesús fue bautizado por Juan en el río Jordán."},
+  {id:2479,difficulty:"facil",category:"lugares",question:"¿A qué ciudad huyeron María, José y Jesús para escapar de Herodes?",options:["Siria","Babilonia","Egipto","Arabia"],correct:2,reference:"Mateo 2:14",explanation:"El ángel avisó a José en un sueño y huyeron a Egipto hasta la muerte de Herodes."},
+  {id:2480,difficulty:"facil",category:"lugares",question:"¿En qué jardín oró Jesús antes de ser arrestado?",options:["Jardín del Edén","Jardín de Getsemaní","Jardín de Josafat","Jardín de Siloé"],correct:1,reference:"Mateo 26:36",explanation:"Jesús fue con sus discípulos al huerto de Getsemaní y oró allí antes de ser traicionado por Judas."},
+  {id:2481,difficulty:"facil",category:"lugares",question:"¿En qué montaña recibió Moisés los Diez Mandamientos?",options:["Monte Carmelo","Monte Tabor","Monte Sinaí","Monte Hermón"],correct:2,reference:"Éxodo 19:20",explanation:"Dios se le apareció a Moisés en el Monte Sinaí y le entregó las tablas de la ley."},
+  {id:2482,difficulty:"facil",category:"lugares",question:"¿En qué ciudad fue crucificado Jesús?",options:["Belén","Nazaret","Jericó","Jerusalén"],correct:3,reference:"Juan 19:20",explanation:"Jesús fue crucificado fuera de los muros de Jerusalén, en el Gólgota o Calvario."},
+  {id:2483,difficulty:"facil",category:"lugares",question:"¿En qué mar se ahogó el ejército del faraón?",options:["Mar Mediterráneo","Mar Rojo","Mar Muerto","Mar de Galilea"],correct:1,reference:"Éxodo 14:28",explanation:"El ejército del faraón se ahogó en el Mar Rojo cuando Moisés extendió su mano y las aguas volvieron."},
+  {id:2484,difficulty:"facil",category:"lugares",question:"¿Cómo se llamaba el jardín donde Adán y Eva vivieron?",options:["Jardín del Jordán","Jardín de Edén","Jardín de Sinaí","Jardín de Sión"],correct:1,reference:"Génesis 2:8",explanation:"Dios plantó un jardín en Edén al oriente y puso allí al hombre que había formado."},
+  {id:2485,difficulty:"facil",category:"lugares",question:"¿En qué ciudad fue edificado el templo de Salomón?",options:["Belén","Hebrón","Siquem","Jerusalén"],correct:3,reference:"1 Reyes 6:1",explanation:"Salomón edificó el templo en Jerusalén, en el Monte Moria, donde Abraham había ofrecido a Isaac."},
+  {id:2486,difficulty:"facil",category:"lugares",question:"¿En qué río se convirtió el agua en sangre como primera plaga?",options:["Éufrates","Tigris","Jordán","Nilo"],correct:3,reference:"Éxodo 7:20",explanation:"Moisés golpeó el agua del Nilo y se convirtió en sangre, siendo la primera de las diez plagas de Egipto."},
+  {id:2487,difficulty:"facil",category:"lugares",question:"¿En qué ciudad vivía Lot cuando fue destruida?",options:["Nínive","Babilonia","Sodoma","Tiro"],correct:2,reference:"Génesis 19:1",explanation:"Lot vivía en Sodoma cuando Dios la destruyó con fuego y azufre por los pecados de sus habitantes."},
+  {id:2488,difficulty:"facil",category:"lugares",question:"¿En qué mar caminó Jesús sobre las aguas?",options:["Mar Muerto","Mar Mediterráneo","Mar de Galilea","Mar Rojo"],correct:2,reference:"Mateo 14:25",explanation:"Jesús caminó sobre las aguas del Mar de Galilea (también llamado lago de Genesaret o de Tiberias)."},
+  {id:2489,difficulty:"facil",category:"lugares",question:"¿En qué ciudad fue recluido Pablo cuando escribió varias epístolas desde la cárcel?",options:["Atenas","Corinto","Roma","Éfeso"],correct:2,reference:"Filipenses 1:13",explanation:"Pablo escribió las llamadas 'epístolas de la prisión' (Efesios, Filipenses, Colosenses, Filemón) durante su encarcelamiento en Roma."},
+  {id:2490,difficulty:"facil",category:"lugares",question:"¿En qué lugar fue probado Jesús por el diablo durante 40 días?",options:["El desierto","El templo","El monte Sión","El monte Carmelo"],correct:0,reference:"Mateo 4:1",explanation:"Jesús fue llevado por el Espíritu al desierto para ser tentado por el diablo durante cuarenta días y cuarenta noches."},
+  {id:2491,difficulty:"facil",category:"lugares",question:"¿En qué ciudad predicó Jonás arrepentimiento y fue obedecido?",options:["Nínive","Babilonia","Tiro","Damasco"],correct:0,reference:"Jonás 3:3",explanation:"Jonás fue enviado a predicar a Nínive, la gran ciudad asiria, y sus habitantes se arrepintieron con ayuno y cilicio."},
+  {id:2492,difficulty:"facil",category:"lugares",question:"¿En qué monte ofreció Abraham a su hijo Isaac?",options:["Monte Sinaí","Monte Carmelo","Monte Moria","Monte Tabor"],correct:2,reference:"Génesis 22:2",explanation:"Dios mandó a Abraham ir a la tierra de Moria y ofrecer a Isaac en uno de los montes que le mostraría."},
+  {id:2493,difficulty:"facil",category:"lugares",question:"¿De qué ciudad era originario el apóstol Pablo?",options:["Jerusalén","Antioquía","Tarso","Corinto"],correct:2,reference:"Hechos 21:39",explanation:"Pablo dijo 'soy judío, natural de Tarso de Cilicia, ciudadano de una ciudad no insignificante.'"},
+  {id:2494,difficulty:"facil",category:"lugares",question:"¿En qué lugar se le apareció Dios a Moisés en la zarza ardiente?",options:["Monte Sinaí","Monte Horeb","Monte Carmelo","Monte Nebo"],correct:1,reference:"Éxodo 3:1-2",explanation:"Moisés estaba apacentando el rebaño cerca del monte Horeb cuando el ángel del Señor se le apareció en llama de fuego en medio de una zarza."},
+  {id:2495,difficulty:"facil",category:"lugares",question:"¿A qué ciudad huyó Elías cuando Jezabel lo amenazó de muerte?",options:["Damasco","Beerseba","Jericó","Hebrón"],correct:1,reference:"1 Reyes 19:3",explanation:"Elías huyó por su vida y llegó a Beerseba en Judá, dejando allí a su criado mientras él siguió al desierto."},
+  {id:2496,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad realizó Jesús su primer milagro convirtiendo el agua en vino?",options:["Capernaúm","Nazaret","Caná","Betania"],correct:2,reference:"Juan 2:1-11",explanation:"En Caná de Galilea hubo una boda a la que asistieron Jesús y sus discípulos, donde convirtió el agua en vino."},
+  {id:2497,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad vivía Lázaro, a quien Jesús resucitó?",options:["Jericó","Betania","Betsaida","Capernaúm"],correct:1,reference:"Juan 11:1",explanation:"Lázaro era de Betania, la aldea de María y de su hermana Marta, situada a unos 3 km de Jerusalén."},
+  {id:2498,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad fue fundada la primera iglesia gentil importante según Hechos?",options:["Éfeso","Corinto","Antioquía de Siria","Filipos"],correct:2,reference:"Hechos 11:26",explanation:"En Antioquía de Siria fue donde los discípulos fueron llamados 'cristianos' por primera vez y se convirtió en base de las misiones de Pablo."},
+  {id:2499,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad se encontraba el centurión cuyo siervo sanó Jesús sin ir a su casa?",options:["Nazaret","Betania","Capernaúm","Jericó"],correct:2,reference:"Mateo 8:5-13",explanation:"El centurión de Capernaúm fue a Jesús pidiéndole que sanara a su siervo; Jesús lo sanó de lejos por la fe extraordinaria del oficial."},
+  {id:2500,difficulty:"intermedio",category:"lugares",question:"¿En qué monte Elías desafió a los profetas de Baal?",options:["Monte Sinaí","Monte Tabor","Monte Carmelo","Monte Hermón"],correct:2,reference:"1 Reyes 18:19",explanation:"Elías convocó a Israel y a los 450 profetas de Baal al Monte Carmelo para el gran desafío que demostró quién era el verdadero Dios."},
+  {id:2501,difficulty:"intermedio",category:"lugares",question:"¿Qué ciudad conquistó Josué con el sonido de trompetas?",options:["Hai","Gabaón","Jericó","Betel"],correct:2,reference:"Josué 6:20",explanation:"Los israelitas marcharon alrededor de Jericó durante siete días; al séptimo tocaron las trompetas y la muralla cayó."},
+  {id:2502,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad fue apedreado Esteban, el primer mártir cristiano?",options:["Antioquía","Damasco","Jerusalén","Cesarea"],correct:2,reference:"Hechos 7:58",explanation:"Esteban fue sacado fuera de Jerusalén y apedreado, convirtiéndose en el primer mártir de la iglesia cristiana."},
+  {id:2503,difficulty:"intermedio",category:"lugares",question:"¿En qué monte fue transfigurado Jesús?",options:["Monte Sinaí","Monte Carmelo","Monte de los Olivos","Monte Tabor"],correct:3,reference:"Mateo 17:1-2",explanation:"Jesús llevó a Pedro, Santiago y Juan a un monte alto aparte (identificado tradicionalmente como el Monte Tabor) donde fue transfigurado ante ellos."},
+  {id:2504,difficulty:"intermedio",category:"lugares",question:"¿Desde qué monte ascendió Jesús al cielo?",options:["Monte Sinaí","Monte Carmelo","Monte de los Olivos","Monte Tabor"],correct:2,reference:"Hechos 1:12",explanation:"Jesús ascendió al cielo desde el Monte de los Olivos, frente a Jerusalén, mientras los discípulos miraban."},
+  {id:2505,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad de Macedonia recibió Pablo la visión del macedonio que pedía ayuda?",options:["Éfeso","Troas","Filipos","Tesalónica"],correct:1,reference:"Hechos 16:8-9",explanation:"Estando Pablo en Troas, tuvo una visión de noche de un varón macedonio que le decía 'Pasa a Macedonia y ayúdanos.'"},
+  {id:2506,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad vivía Cornelio, el primer gentil convertido al cristianismo?",options:["Roma","Antioquía","Cesarea","Jope"],correct:2,reference:"Hechos 10:1",explanation:"Cornelio era un centurión en Cesarea de Palestina, un hombre piadoso y temeroso de Dios que fue el primer gentil en recibir al Espíritu Santo."},
+  {id:2507,difficulty:"intermedio",category:"lugares",question:"¿Junto a qué agua Moisés golpeó la roca para que saliera agua para Israel en el desierto?",options:["Oasis de Sin","Meriba en Refidim","Fuente de Ein Gedi","Manantial de Cades"],correct:1,reference:"Éxodo 17:6",explanation:"En Refidim, Moisés golpeó la roca en Horeb por mandato de Dios y salió agua de ella para que bebiera el pueblo; el lugar fue llamado Meriba."},
+  {id:2508,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad fue convertido Pablo de perseguidor a creyente?",options:["Jerusalén","Damasco","Antioquía","Tarso"],correct:1,reference:"Hechos 9:3",explanation:"Yendo Pablo camino a Damasco para perseguir a los creyentes, una luz del cielo lo rodeó y escuchó la voz de Jesús, convirtiéndose."},
+  {id:2509,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad vivía el apóstol Pedro antes de seguir a Jesús?",options:["Nazaret","Capernaúm","Betsaida","Jericó"],correct:2,reference:"Juan 1:44",explanation:"Pedro y Andrés eran de Betsaida, aunque más tarde Jesús los encontró en Capernaúm, donde Pedro también tenía casa."},
+  {id:2510,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar de Egipto vivieron los israelitas durante su esclavitud?",options:["Tebas","Menfis","Gosén","Alejandría"],correct:2,reference:"Génesis 47:6",explanation:"El faraón asignó a los israelitas la tierra de Gosén, la mejor parte de la tierra de Egipto, donde vivieron y se multiplicaron."},
+  {id:2511,difficulty:"intermedio",category:"lugares",question:"¿En qué monte murió Moisés sin entrar a la Tierra Prometida?",options:["Monte Sinaí","Monte Carmelo","Monte Nebo","Monte Hermón"],correct:2,reference:"Deuteronomio 34:1-5",explanation:"Dios mostró a Moisés toda la tierra desde el Monte Nebo y allí murió Moisés en la tierra de Moab, sin cruzar el Jordán."},
+  {id:2512,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad el rey Nabucodonosor levantó la estatua de oro que todos debían adorar?",options:["Babilonia","Ur","Nínive","Persépolis"],correct:0,reference:"Daniel 3:1",explanation:"Nabucodonosor mandó hacer una estatua de oro en la llanura de Dura, en la provincia de Babilonia, y ordenó que todos la adoraran."},
+  {id:2513,difficulty:"intermedio",category:"lugares",question:"¿En qué isla estuvo preso el apóstol Juan cuando recibió el Apocalipsis?",options:["Malta","Chipre","Creta","Patmos"],correct:3,reference:"Apocalipsis 1:9",explanation:"Juan estaba en la isla de Patmos, desterrado por causa de la Palabra de Dios, cuando recibió la revelación del Señor Jesucristo."},
+  {id:2514,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad hablaron en lenguas por primera vez los discípulos en Pentecostés?",options:["Antioquía","Cesarea","Jerusalén","Éfeso"],correct:2,reference:"Hechos 2:1-4",explanation:"En el día de Pentecostés, los discípulos estaban reunidos en Jerusalén cuando el Espíritu Santo descendió y comenzaron a hablar en otras lenguas."},
+  {id:2515,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad nació Abraham antes de ser llamado por Dios?",options:["Harán","Babilonia","Damasco","Ur de los Caldeos"],correct:3,reference:"Génesis 11:28",explanation:"Abraham nació en Ur de los Caldeos, en Mesopotamia (actual Irak), antes de que Dios lo llamara a salir hacia la tierra prometida."},
+  {id:2516,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad hizo Pablo su ministerio más largo, tres años?",options:["Corinto","Filipos","Éfeso","Roma"],correct:2,reference:"Hechos 20:31",explanation:"Pablo ministró en Éfeso por tres años, más tiempo que en ninguna otra ciudad, enseñando cada día en la escuela de Tirano."},
+  {id:2517,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad se reunió el Concilio de Jerusalén que trató el tema de los gentiles y la ley?",options:["Antioquía","Roma","Jerusalén","Éfeso"],correct:2,reference:"Hechos 15:2",explanation:"El llamado Concilio de Jerusalén (Hechos 15) se reunió para resolver si los gentiles debían circuncidarse para ser salvos."},
+  {id:2518,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad naufragó Pablo en su viaje a Roma?",options:["Creta","Chipre","Malta","Sicilia"],correct:2,reference:"Hechos 28:1",explanation:"La nave en que viajaba Pablo naufragó y todos llegaron sanos a la isla de Malta, donde el apóstol sanó al padre del principal de la isla."},
+  {id:2519,difficulty:"dificil",category:"lugares",question:"¿En qué lugar de Canaán Jacob tuvo el sueño de la escalera hasta el cielo?",options:["Siquem","Hebrón","Betel","Berseba"],correct:2,reference:"Génesis 28:10-19",explanation:"Jacob tuvo el sueño de la escalera en un lugar que llamó Betel ('casa de Dios'), donde Dios le confirmó las promesas hechas a Abraham."},
+  {id:2520,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad fue decapitado Juan el Bautista?",options:["Jerusalén","Jericó","Maqueronte","Capernaúm"],correct:2,reference:"Marcos 6:17",explanation:"Juan el Bautista fue encarcelado y decapitado en la fortaleza de Maqueronte, al este del Mar Muerto, por orden de Herodes Antipas."},
+  {id:2521,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad se encontraba la iglesia que recibió la carta del Apocalipsis con el mensaje 'ni frío ni caliente'?",options:["Éfeso","Esmirna","Pérgamo","Laodicea"],correct:3,reference:"Apocalipsis 3:15-16",explanation:"A la iglesia de Laodicea Jesús le dijo: 'Ni eres frío ni caliente; porque eres tibio y no eres frío ni caliente, te vomitaré de mi boca.'"},
+  {id:2522,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad vivía el profeta Jeremías?",options:["Jerusalén","Hebrón","Anatot","Tecoa"],correct:2,reference:"Jeremías 1:1",explanation:"Jeremías era hijo de Hilcías, de los sacerdotes que estaban en Anatot, en la tierra de Benjamín, aunque su ministerio se centró en Jerusalén."},
+  {id:2523,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad Pablo predicó ante el Areópago sobre el 'Dios no conocido'?",options:["Corinto","Éfeso","Atenas","Tesalónica"],correct:2,reference:"Hechos 17:22-23",explanation:"En Atenas, Pablo notó el altar al 'Dios no conocido' y predicó ante los filósofos del Areópago sobre el Dios creador de todo."},
+  {id:2524,difficulty:"dificil",category:"lugares",question:"¿En qué lugar Jacob luchó con el ángel y recibió el nombre Israel?",options:["Betel","Penuel","Hebrón","Siquem"],correct:1,reference:"Génesis 32:30",explanation:"Jacob llamó Penuel al lugar donde luchó con Dios cara a cara, porque allí le fue cambiado el nombre a Israel."},
+  {id:2525,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad Dios confundió el lenguaje de los hombres?",options:["Ur","Nínive","Babilonia (Torre de Babel)","Asiria"],correct:2,reference:"Génesis 11:9",explanation:"En Babel, Dios confundió el lenguaje de toda la tierra y dispersó a los hombres desde allí; por eso se llamó Babel."},
+  {id:2526,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad de Asia Menor estaba la iglesia que tenía 'la sinagoga de Satanás' según el Apocalipsis?",options:["Éfeso","Esmirna","Pérgamo","Tiatira"],correct:1,reference:"Apocalipsis 2:9",explanation:"A la iglesia de Esmirna Jesús le dijo que conocía la blasfemia de los que se dicen judíos pero 'son sinagoga de Satanás.'"},
+  {id:2527,difficulty:"dificil",category:"lugares",question:"¿En qué monte el profeta Elías escuchó la voz de Dios en un silbo apacible?",options:["Monte Carmelo","Monte Nebo","Monte Horeb","Monte Hermón"],correct:2,reference:"1 Reyes 19:8-12",explanation:"Elías huyó al monte Horeb (Sinaí) y allí Dios se le presentó no en el viento recio ni en el terremoto sino en un silbo apacible y delicado."},
+  {id:2528,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad se estableció el arca del pacto antes de que Salomón edificara el templo?",options:["Belén","Hebrón","Silo","Jerusalén"],correct:2,reference:"Josué 18:1",explanation:"El tabernáculo y el arca del pacto estuvieron en Silo durante el período de los jueces, hasta que fue capturada por los filisteos."},
+  {id:2529,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad vivía el publicano Zaqueo que subió al árbol para ver a Jesús?",options:["Capernaúm","Betania","Jericó","Nazaret"],correct:2,reference:"Lucas 19:1-2",explanation:"Zaqueo era jefe de publicanos y rico en Jericó; al ser bajo de estatura subió a un árbol sicómoro para ver a Jesús que pasaba por allí."},
+  {id:2530,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad residió David antes de ser rey de todo Israel, reinando solo sobre Judá?",options:["Hebrón","Belén","Jerusalén","Sión"],correct:0,reference:"2 Samuel 2:3",explanation:"David reinó en Hebrón sobre la casa de Judá durante siete años y medio antes de conquistar Jerusalén y reinar sobre todo Israel."},
+  {id:2531,difficulty:"experto",category:"lugares",question:"¿En qué ciudad nació el profeta Amós?",options:["Belén","Hebrón","Tecoa","Anatot"],correct:2,reference:"Amós 1:1",explanation:"Amós era uno de los pastores de Tecoa, aldea al sur de Belén en Judá, aunque profetizó principalmente en el reino del norte (Israel)."},
+  {id:2532,difficulty:"experto",category:"lugares",question:"¿En qué lugar llamado 'Peniel' cambió Dios el nombre de Jacob?",options:["A orillas del Jordán","Junto al vado de Jaboc","En el Monte Hermón","En las llanuras de Moab"],correct:1,reference:"Génesis 32:22-30",explanation:"Jacob cruzó el vado de Jaboc y allí, al otro lado del río, luchó con el varón (Dios) hasta el amanecer y le fue cambiado su nombre a Israel."},
+  {id:2533,difficulty:"experto",category:"lugares",question:"¿En qué ciudad de Fenicia Elías fue sustentado por una viuda durante la sequía?",options:["Tiro","Sidón","Sarepta","Damasco"],correct:2,reference:"1 Reyes 17:9",explanation:"Dios envió a Elías a Sarepta de Sidón, donde una viuda gentil lo sustentó con harina y aceite que no se acabaron milagrosamente durante la sequía."},
+  {id:2534,difficulty:"experto",category:"lugares",question:"¿En qué ciudad asiria fue enviado el profeta Nahúm a profetizar su destrucción?",options:["Babilonia","Damasco","Nínive","Asiria"],correct:2,reference:"Nahúm 1:1",explanation:"El libro de Nahúm es una 'carga sobre Nínive', profetizando su destrucción por su maldad; Nínive cayó en 612 a.C. ante Babilonia y Media."},
+  {id:2535,difficulty:"experto",category:"lugares",question:"¿En qué ciudad nació el apóstol Bernabé?",options:["Jerusalén","Antioquía","Chipre","Tarso"],correct:2,reference:"Hechos 4:36",explanation:"Bernabé era levita, natural de Chipre, que vendió un campo y puso el dinero a los pies de los apóstoles."},
+
+  // ===================== VERSICULOS =====================
+  {id:2536,difficulty:"facil",category:"versiculos",question:"¿Qué dice Juan 3:16 que hizo Dios por amor al mundo?",options:["Perdonó todos los pecados","Envió un ángel","Dio a su Hijo unigénito","Destruyó la muerte"],correct:2,reference:"Juan 3:16",explanation:"'Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.'"},
+  {id:2537,difficulty:"facil",category:"versiculos",question:"Según Salmo 23:1, ¿qué le da el Señor a quien lo tiene como su pastor?",options:["Riquezas y honor","Nada le faltará","Paz y alegría","Vida eterna"],correct:1,reference:"Salmos 23:1",explanation:"'Jehová es mi pastor; nada me faltará.' Este salmo de David expresa confianza total en el cuidado de Dios."},
+  {id:2538,difficulty:"facil",category:"versiculos",question:"Según Proverbios 3:5, ¿en qué no debemos apoyarnos?",options:["En las riquezas","En nuestra propia prudencia","En los hombres sabios","En las tradiciones"],correct:1,reference:"Proverbios 3:5",explanation:"'Confía en Jehová con todo tu corazón, y no te apoyes en tu propia prudencia.' Dios nos llama a depender de Él, no de nuestra inteligencia."},
+  {id:2539,difficulty:"facil",category:"versiculos",question:"Según Juan 14:6, ¿qué declaró Jesús sobre sí mismo?",options:["Soy la luz del mundo","Soy el pan de vida","Soy el camino, la verdad y la vida","Soy el buen pastor"],correct:2,reference:"Juan 14:6",explanation:"Jesús dijo: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.'"},
+  {id:2540,difficulty:"facil",category:"versiculos",question:"Según Filipenses 4:13, ¿qué puede hacer el creyente en Cristo?",options:["Nada le será imposible","Todo lo puede","Vencerá cualquier obstáculo","Recibirá todo lo que pida"],correct:1,reference:"Filipenses 4:13",explanation:"'Todo lo puedo en Cristo que me fortalece.' Pablo declaró esto en el contexto de haber aprendido a contentarse en toda situación."},
+  {id:2541,difficulty:"facil",category:"versiculos",question:"Según Génesis 1:1, ¿qué hizo Dios en el principio?",options:["Formó al hombre del polvo","Creó los cielos y la tierra","Estableció las estaciones","Bendijo el séptimo día"],correct:1,reference:"Génesis 1:1",explanation:"'En el principio creó Dios los cielos y la tierra.' Este es el versículo inicial de toda la Biblia y afirma la creación por Dios."},
+  {id:2542,difficulty:"facil",category:"versiculos",question:"Según Romanos 3:23, ¿quiénes han pecado?",options:["Solo los que no creen","La mayoría de los hombres","Todos, pues todos pecaron","Solo los que rechazan a Dios"],correct:2,reference:"Romanos 3:23",explanation:"'Por cuanto todos pecaron, y están destituidos de la gloria de Dios.' Pablo declara la universalidad del pecado humano."},
+  {id:2543,difficulty:"facil",category:"versiculos",question:"Según Romanos 6:23, ¿cuál es la paga del pecado?",options:["El sufrimiento eterno","La muerte","La separación de Dios","El infierno"],correct:1,reference:"Romanos 6:23",explanation:"'Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro.'"},
+  {id:2544,difficulty:"facil",category:"versiculos",question:"Según el Salmo 119:105, ¿qué es la palabra de Dios para el creyente?",options:["Espada y escudo","Lámpara a mis pies y lumbrera a mi camino","Roca y fortaleza","Agua y pan de vida"],correct:1,reference:"Salmos 119:105",explanation:"'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.' El salmista celebra la guía de la Escritura para la vida diaria."},
+  {id:2545,difficulty:"facil",category:"versiculos",question:"Según Jeremías 29:11, ¿qué tipo de planes tiene Dios para su pueblo?",options:["Planes de juicio y corrección","Planes de paz y no de mal, para un futuro y esperanza","Planes de prosperidad material","Planes que nadie puede conocer"],correct:1,reference:"Jeremías 29:11",explanation:"'Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz y no de mal, para daros el fin que esperáis.'"},
+  {id:2546,difficulty:"facil",category:"versiculos",question:"Según Isaías 40:31, ¿qué obtendrán los que esperan en el Señor?",options:["Riquezas y honor","Nuevas fuerzas y volarán como águilas","Sabiduría perfecta","Vida sin enfermedades"],correct:1,reference:"Isaías 40:31",explanation:"'Los que esperan a Jehová tendrán nuevas fuerzas; levantarán alas como las águilas; correrán, y no se cansarán; caminarán, y no se fatigarán.'"},
+  {id:2547,difficulty:"facil",category:"versiculos",question:"Según Efesios 2:8, ¿por qué somos salvos?",options:["Por nuestra fe y obras","Por gracia, mediante la fe","Por las oraciones de los santos","Por guardar la ley"],correct:1,reference:"Efesios 2:8",explanation:"'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.' La salvación es don gratuito, no mérito humano."},
+  {id:2548,difficulty:"facil",category:"versiculos",question:"Según Proverbios 22:6, ¿qué se debe hacer con el niño en su infancia?",options:["Enseñarle la ley de Moisés","Instruirle en su camino, y cuando sea anciano no se apartará","Dejarlo descubrir su propio camino","Someterlo a la autoridad religiosa"],correct:1,reference:"Proverbios 22:6",explanation:"'Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.' Principio fundamental sobre la educación en la fe desde pequeños."},
+  {id:2549,difficulty:"facil",category:"versiculos",question:"Según Juan 11:25, ¿qué declaró Jesús antes de resucitar a Lázaro?",options:["Yo soy el camino","Yo soy la resurrección y la vida","Yo soy el pan de vida","Yo soy el buen pastor"],correct:1,reference:"Juan 11:25",explanation:"Jesús dijo a Marta: 'Yo soy la resurrección y la vida; el que cree en mí, aunque esté muerto, vivirá.'"},
+  {id:2550,difficulty:"facil",category:"versiculos",question:"Según Mateo 28:19, ¿cuál fue la Gran Comisión de Jesús?",options:["Amar a Dios y al prójimo","Id y haced discípulos a todas las naciones","Predicar solo a los judíos","Sanar a los enfermos y predicar"],correct:1,reference:"Mateo 28:19",explanation:"'Id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo.'"},
+  {id:2551,difficulty:"intermedio",category:"versiculos",question:"Según Hebreos 11:1, ¿cómo define la Biblia la fe?",options:["Creer sin haber visto","La certeza de lo que se espera, la convicción de lo que no se ve","Confiar en las promesas de Dios","Obedecer los mandamientos de Dios"],correct:1,reference:"Hebreos 11:1",explanation:"'Es, pues, la fe la certeza de lo que se espera, la convicción de lo que no se ve.' Esta es la definición bíblica clásica de la fe."},
+  {id:2552,difficulty:"intermedio",category:"versiculos",question:"Según Romanos 8:28, ¿a quiénes les ayudan todas las cosas para bien?",options:["A todos los que oran","A los que aman a Dios y son llamados conforme a su propósito","A los justos y obedientes","A todos los seres humanos sin excepción"],correct:1,reference:"Romanos 8:28",explanation:"'Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados.'"},
+  {id:2553,difficulty:"intermedio",category:"versiculos",question:"Según Santiago 2:26, ¿qué dice sobre la fe sin obras?",options:["Es suficiente para salvarse","Es muerta por sí sola","Agrada a Dios de todas formas","Es más valiosa que las obras solas"],correct:1,reference:"Santiago 2:26",explanation:"'Porque como el cuerpo sin espíritu está muerto, así también la fe sin obras está muerta.' Santiago enfatiza que la fe genuina produce obras."},
+  {id:2554,difficulty:"intermedio",category:"versiculos",question:"Según 2 Timoteo 3:16, ¿cuál es el origen de toda la Escritura?",options:["La sabiduría de los profetas","La inspiración de Dios","La tradición de la iglesia","La revelación de los apóstoles"],correct:1,reference:"2 Timoteo 3:16",explanation:"'Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia.'"},
+  {id:2555,difficulty:"intermedio",category:"versiculos",question:"Según Gálatas 5:22-23, ¿cuál de estos NO es fruto del Espíritu?",options:["Amor","Poder","Paciencia","Dominio propio"],correct:1,reference:"Gálatas 5:22-23",explanation:"El fruto del Espíritu es: amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre y templanza. El 'poder' no está en esta lista."},
+  {id:2556,difficulty:"intermedio",category:"versiculos",question:"Según Marcos 12:30, ¿cuál es el primer y más importante mandamiento?",options:["No matarás","Amar a tu prójimo como a ti mismo","Amarás al Señor tu Dios con todo tu corazón, alma, mente y fuerzas","Honrar al padre y a la madre"],correct:2,reference:"Marcos 12:30",explanation:"Jesús declaró que el primer mandamiento es amar a Dios con todo el corazón, toda el alma, toda la mente y todas las fuerzas."},
+  {id:2557,difficulty:"intermedio",category:"versiculos",question:"Según 1 Juan 1:9, ¿qué ocurre cuando confesamos nuestros pecados?",options:["Recibimos castigo merecido","Dios es fiel y justo para perdonar y limpiar de toda maldad","Debemos hacer penitencia","Se borra el registro de pecados"],correct:1,reference:"1 Juan 1:9",explanation:"'Si confesamos nuestros pecados, él es fiel y justo para perdonar nuestros pecados, y limpiarnos de toda maldad.'"},
+  {id:2558,difficulty:"intermedio",category:"versiculos",question:"Según Apocalipsis 3:20, ¿qué hace Jesús en la puerta?",options:["Vigila a los que entran","Llama y espera que alguien le abra","Juzga a los que pasan","Protege a su iglesia"],correct:1,reference:"Apocalipsis 3:20",explanation:"'He aquí, yo estoy a la puerta y llamo; si alguno oye mi voz y abre la puerta, entraré a él, y cenaré con él, y él conmigo.'"},
+  {id:2559,difficulty:"intermedio",category:"versiculos",question:"Según Mateo 5:14, ¿qué son los discípulos de Jesús según el Sermón del Monte?",options:["La sal de la tierra","La luz del mundo","El camino de la verdad","La roca de la iglesia"],correct:1,reference:"Mateo 5:14",explanation:"Jesús declaró: 'Vosotros sois la luz del mundo; una ciudad asentada sobre un monte no se puede esconder.'"},
+  {id:2560,difficulty:"intermedio",category:"versiculos",question:"Según Isaías 53:5, ¿por qué fue herido el siervo sufriente?",options:["Por sus propios pecados","Por nuestras rebeliones y pecados","Para demostrar su poder","Para cumplir la ley"],correct:1,reference:"Isaías 53:5",explanation:"'Mas él herido fue por nuestras rebeliones, molido por nuestros pecados; el castigo de nuestra paz fue sobre él, y por su llaga fuimos nosotros curados.'"},
+  {id:2561,difficulty:"intermedio",category:"versiculos",question:"Según Salmos 46:1, ¿qué es Dios para el creyente en los tiempos de angustia?",options:["Un escudo y espada","Nuestro amparo y fortaleza, nuestro pronto auxilio","Una torre fuerte","El único que puede librar"],correct:1,reference:"Salmos 46:1",explanation:"'Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.' Este salmo celebra la presencia protectora de Dios."},
+  {id:2562,difficulty:"intermedio",category:"versiculos",question:"Según Proverbios 4:23, ¿qué se debe guardar con toda diligencia?",options:["La lengua para no pecar","El corazón, porque de él mana la vida","La mente de pensamientos impuros","El cuerpo del pecado sexual"],correct:1,reference:"Proverbios 4:23",explanation:"'Sobre toda cosa guardada, guarda tu corazón; porque de él mana la vida.' El corazón es el centro de donde proviene toda nuestra vida y decisiones."},
+  {id:2563,difficulty:"dificil",category:"versiculos",question:"Según Habacuc 2:4, ¿cómo vivirá el justo?",options:["Guardando todos los mandamientos","Por su fe","Huyendo del mal","Con sabiduría y prudencia"],correct:1,reference:"Habacuc 2:4",explanation:"'Mas el justo por su fe vivirá.' Este versículo es citado tres veces en el Nuevo Testamento (Romanos 1:17, Gálatas 3:11, Hebreos 10:38)."},
+  {id:2564,difficulty:"dificil",category:"versiculos",question:"Según Deuteronomio 6:4-5 (el Shemá), ¿cuántos dioses hay para Israel?",options:["Tres en uno","El Señor nuestro Dios, el Señor uno es","Muchos pero el de Israel es el mayor","El único Dios verdadero sobre todos"],correct:1,reference:"Deuteronomio 6:4",explanation:"'Oye, Israel: Jehová nuestro Dios, Jehová uno es.' El Shemá es la declaración fundamental del monoteísmo judío."},
+  {id:2565,difficulty:"dificil",category:"versiculos",question:"Según Miqueas 6:8, ¿qué requiere Dios del hombre?",options:["Sacrificios y holocaustos","Guardar todos los mandamientos","Hacer justicia, amar misericordia y humillarse ante Dios","Orar tres veces al día"],correct:2,reference:"Miqueas 6:8",explanation:"'Oh hombre, él te ha declarado lo que es bueno... solamente hacer justicia, y amar misericordia, y humillarte ante tu Dios.'"},
+  {id:2566,difficulty:"dificil",category:"versiculos",question:"Según Apocalipsis 21:4, ¿qué no habrá en la nueva creación?",options:["Pecado ni tentación","Muerte, llanto, clamor ni dolor","Noche ni oscuridad","Pecado, muerte ni diablo"],correct:1,reference:"Apocalipsis 21:4",explanation:"'Enjugará Dios toda lágrima de los ojos de ellos; y ya no habrá muerte, ni habrá más llanto, ni clamor, ni dolor; porque las primeras cosas pasaron.'"},
+  {id:2567,difficulty:"dificil",category:"versiculos",question:"Según Ezequiel 36:26, ¿qué prometió Dios dar a su pueblo bajo el nuevo pacto?",options:["Nueva ley y mandamientos","Un corazón nuevo y un espíritu nuevo","Prosperidad y salud","Un templo glorioso"],correct:1,reference:"Ezequiel 36:26",explanation:"'Os daré corazón nuevo, y pondré espíritu nuevo dentro de vosotros; y quitaré de vuestra carne el corazón de piedra, y os daré un corazón de carne.'"},
+  {id:2568,difficulty:"dificil",category:"versiculos",question:"Según Mateo 6:33, ¿qué debemos buscar primero?",options:["Nuestras necesidades básicas","El reino de Dios y su justicia","La sabiduría y el entendimiento","La paz con todos los hombres"],correct:1,reference:"Mateo 6:33",explanation:"'Mas buscad primeramente el reino de Dios y su justicia, y todas estas cosas os serán añadidas.' Jesús llama a priorizar lo eterno sobre lo temporal."},
+  {id:2569,difficulty:"dificil",category:"versiculos",question:"Según Joel 2:28, ¿sobre quiénes derramaría Dios su Espíritu en los últimos días?",options:["Sobre los profetas","Sobre toda carne","Sobre los líderes de Israel","Sobre los que oren y ayunen"],correct:1,reference:"Joel 2:28",explanation:"'Y después de esto derramaré mi Espíritu sobre toda carne, y profetizarán vuestros hijos y vuestras hijas.' Pedro citó esto en Pentecostés (Hechos 2:17)."},
+  {id:2570,difficulty:"dificil",category:"versiculos",question:"Según Génesis 15:6, ¿qué fue contado a Abraham por justicia?",options:["Sus sacrificios y obediencia","Creyó a Dios","Sus buenas obras","Su circuncisión"],correct:1,reference:"Génesis 15:6",explanation:"'Y creyó a Jehová, y le fue contado por justicia.' Pablo usa este versículo en Romanos 4 para mostrar que Abraham fue justificado por fe, no por obras."},
+  {id:2571,difficulty:"experto",category:"versiculos",question:"Según Isaías 7:14, ¿qué señal daría Dios al rey Acaz?",options:["Un ejército que los liberaría","Una virgen concebirá y dará a luz un hijo llamado Emanuel","El sol se detendría en el cielo","Las aguas del Nilo se secarían"],correct:1,reference:"Isaías 7:14",explanation:"'He aquí que la virgen concebirá, y dará a luz un hijo, y llamará su nombre Emanuel.' Mateo 1:23 aplica esta profecía al nacimiento de Jesús."},
+  {id:2572,difficulty:"experto",category:"versiculos",question:"Según Salmos 22:1, ¿qué palabras de este salmo repitió Jesús en la cruz?",options:["En tus manos encomiendo mi espíritu","Dios mío, Dios mío, ¿por qué me has abandonado?","Tengo sed","Todo está cumplido"],correct:1,reference:"Salmos 22:1",explanation:"Jesús citó las palabras iniciales del Salmo 22: 'Dios mío, Dios mío, ¿por qué me has desamparado?', cumpliéndose así la profecía mesiánica del salmo."},
+  {id:2573,difficulty:"experto",category:"versiculos",question:"Según Zacarías 9:9, ¿cómo entraría el rey mesiánico a Jerusalén?",options:["En un caballo blanco de guerra","Montado en un asno, en un pollino hijo de asna","A pie entre el pueblo","Precedido por ángeles"],correct:1,reference:"Zacarías 9:9",explanation:"'He aquí tu rey vendrá a ti, justo y salvador, humilde, y cabalgando sobre un asno, sobre un pollino hijo de asna.' Los evangelios muestran el cumplimiento en Mateo 21:5."},
+  {id:2574,difficulty:"experto",category:"versiculos",question:"Según Salmos 16:10, ¿qué promesa mesiánica contiene que Pedro citó en Pentecostés?",options:["Mi corazón está alegre","No dejarás mi alma en el Seol ni permitirás que tu Santo vea corrupción","El Señor es mi porción","Me enseñarás el camino de la vida"],correct:1,reference:"Salmos 16:10",explanation:"'Porque no dejarás mi alma en el Seol, ni permitirás que tu Santo vea corrupción.' Pedro cita este salmo en Hechos 2:27 como profecía de la resurrección de Cristo."},
+  {id:2575,difficulty:"experto",category:"versiculos",question:"Según Números 21:8-9, ¿qué relación estableció Jesús entre la serpiente de bronce y sí mismo?",options:["Que Moisés tipificaba a los apóstoles","Que como fue levantada la serpiente, así debe ser levantado el Hijo del Hombre","Que la serpiente representaba el pecado vencido","Que Israel tipificaba a la iglesia"],correct:1,reference:"Juan 3:14",explanation:"Jesús dijo: 'Y como Moisés levantó la serpiente en el desierto, así es necesario que el Hijo del Hombre sea levantado', conectando la serpiente de bronce con su crucifixión."},
+
+  // ===================== ENSENANZAS =====================
+  {id:2576,difficulty:"facil",category:"ensenanzas",question:"¿Cuál es el mandamiento nuevo que Jesús dio a sus discípulos?",options:["Guardar el sábado","Amaos los unos a los otros como yo os he amado","Honrar al padre y a la madre","No mentir jamás"],correct:1,reference:"Juan 13:34",explanation:"Jesús dijo: 'Un mandamiento nuevo os doy: Que os améis unos a otros; como yo os he amado, que también os améis unos a otros.'"},
+  {id:2577,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que deben hacer sus seguidores con la otra mejilla?",options:["Defenderla","Presentarla también al que les golpeó","Alejarse del agresor","Pedir justicia al juez"],correct:1,reference:"Mateo 5:39",explanation:"Jesús enseñó: 'Al que te hiera en la mejilla derecha, vuélvele también la otra', enseñando una respuesta no violenta al agravio."},
+  {id:2578,difficulty:"facil",category:"ensenanzas",question:"¿Cómo llamó Jesús a los que hacen bienaventurados por ser misericordiosos?",options:["Recibirán la tierra por heredad","Alcanzarán misericordia","Verán a Dios","Serán llamados hijos de Dios"],correct:1,reference:"Mateo 5:7",explanation:"'Bienaventurados los misericordiosos, porque ellos alcanzarán misericordia.' Lo que damos a otros, Dios lo da a nosotros."},
+  {id:2579,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el tesoro en el cielo?",options:["Solo los ricos pueden tener tesoro en el cielo","Donde esté vuestro tesoro, allí estará también vuestro corazón","El tesoro celestial se gana con sacrificios","Acumula bienes espirituales cada día"],correct:1,reference:"Mateo 6:21",explanation:"Jesús declaró: 'Porque donde esté vuestro tesoro, allí estará también vuestro corazón', invitando a invertir en lo eterno más que en lo temporal."},
+  {id:2580,difficulty:"facil",category:"ensenanzas",question:"¿Cómo inicia Jesús la Oración del Señor?",options:["Dios todopoderoso en los cielos","Padre nuestro que estás en los cielos","Señor eterno y soberano","Santo Padre celestial"],correct:1,reference:"Mateo 6:9",explanation:"Jesús enseñó a orar: 'Padre nuestro que estás en los cielos, santificado sea tu nombre', estableciendo una relación filial con Dios."},
+  {id:2581,difficulty:"facil",category:"ensenanzas",question:"¿Cuántos mandamientos principales del Antiguo Testamento resumió Jesús?",options:["Uno","Dos","Cinco","Los diez"],correct:1,reference:"Mateo 22:37-40",explanation:"Jesús resumió todos los mandamientos en dos: amar a Dios con todo el corazón, alma y mente; y amar al prójimo como a uno mismo."},
+  {id:2582,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús que debemos hacer por nuestros enemigos?",options:["Evitarlos","Amarlos y orar por los que nos persiguen","Denunciarlos ante la autoridad","Enseñarles la verdad"],correct:1,reference:"Mateo 5:44",explanation:"'Amad a vuestros enemigos, bendecid a los que os maldicen, haced bien a los que os aborrecen, y orad por los que os ultrajan y os persiguen.'"},
+  {id:2583,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que recibirán los que lloran?",options:["La tierra como herencia","Serán consolados","Verán a Dios","Serán llamados hijos de Dios"],correct:1,reference:"Mateo 5:4",explanation:"'Bienaventurados los que lloran, porque ellos recibirán consolación.' Jesus prometió el consuelo divino a los que sufren."},
+  {id:2584,difficulty:"facil",category:"ensenanzas",question:"¿Sobre quién enseñó Jesús que llueve Dios y alumbra el sol?",options:["Solo sobre los justos","Solo sobre sus elegidos","Sobre malos y buenos, sobre justos e injustos","Solo sobre los que oran"],correct:2,reference:"Mateo 5:45",explanation:"'Que él hace salir su sol sobre malos y buenos, y que hace llover sobre justos e injustos', mostrando la gracia común de Dios para toda la humanidad."},
+  {id:2585,difficulty:"facil",category:"ensenanzas",question:"¿Cuántas veces enseñó Jesús que debemos perdonar a nuestro hermano?",options:["Siete veces","Setenta veces siete","Solo si se arrepiente","Tantas como Dios nos perdone"],correct:1,reference:"Mateo 18:22",explanation:"Pedro preguntó si debía perdonar hasta siete veces; Jesús respondió: 'No te digo hasta siete, sino aun hasta setenta veces siete.'"},
+  {id:2586,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús que ocurre cuando un ojo es la lámpara del cuerpo y está sano?",options:["Todo el cuerpo estará lleno de salud","Todo el cuerpo estará lleno de luz","El alma estará en paz","La mente pensará con claridad"],correct:1,reference:"Mateo 6:22",explanation:"Jesús enseñó: 'La lámpara del cuerpo es el ojo; así que, si tu ojo es bueno, todo tu cuerpo estará lleno de luz.'"},
+  {id:2587,difficulty:"intermedio",category:"ensenanzas",question:"Según la enseñanza de Jesús, ¿a quién le pertenece lo que tiene la imagen del César?",options:["Al pueblo de Dios","Al César","A quien lo encontró","Al que trabajó por ello"],correct:1,reference:"Mateo 22:21",explanation:"Jesús respondió: 'Dad al César lo que es del César, y a Dios lo que es de Dios', estableciendo la distinción entre deberes cívicos y religiosos."},
+  {id:2588,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué dijo Jesús que es más fácil que entre un rico al reino de Dios?",options:["Que un camello pase por el ojo de una aguja","Que un elefante entre por una puerta estrecha","Que la sal vuelva a ser salada","Que un árbol grande se mueva de lugar"],correct:0,reference:"Mateo 19:24",explanation:"'Es más fácil pasar un camello por el ojo de una aguja, que entrar un rico en el reino de Dios', mostrando el peligro espiritual de las riquezas."},
+  {id:2589,difficulty:"intermedio",category:"ensenanzas",question:"Según Jesús en Juan 8:32, ¿qué hace la verdad?",options:["Salva el alma","Os hará libres","Ilumina el camino","Vence al enemigo"],correct:1,reference:"Juan 8:32",explanation:"'Y conoceréis la verdad, y la verdad os hará libres.' Jesús prometía que conocer la verdad (Él mismo) trae libertad verdadera."},
+  {id:2590,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el amor en 1 Corintios 13:13?",options:["El amor es el más grande de todos los dones espirituales","Ahora permanecen la fe, la esperanza y el amor; el mayor de éstos es el amor","Sin amor todo lo demás es inútil","El amor nunca deja de ser"],correct:1,reference:"1 Corintios 13:13",explanation:"'Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor.'"},
+  {id:2591,difficulty:"intermedio",category:"ensenanzas",question:"Según la enseñanza de Jesús, ¿a quién se le dará más al que ya tiene?",options:["Al que tiene más necesidad","Al que ya tiene, y al que no tiene, aun lo que tiene se le quitará","Al que sirve con fidelidad","Al más humilde entre todos"],correct:1,reference:"Mateo 25:29",explanation:"'Porque al que tiene, le será dado, y tendrá más; y al que no tiene, aun lo que tiene le será quitado.' Principio de mayordomía fiel en el reino de Dios."},
+  {id:2592,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué dijo Pablo que debe gobernar el corazón del creyente según Colosenses 3:15?",options:["El amor de Cristo","La paz de Dios","El Espíritu Santo","La Palabra de Dios"],correct:1,reference:"Colosenses 3:15",explanation:"'Y la paz de Dios gobierne en vuestros corazones, a la que asimismo fuisteis llamados en un solo cuerpo; y sed agradecidos.'"},
+  {id:2593,difficulty:"intermedio",category:"ensenanzas",question:"Según Romanos 12:2, ¿qué no debemos hacer con este siglo?",options:["Amar al mundo","Amoldarnos (conformarnos) a él","Criticar a los incrédulos","Huir de sus tentaciones"],correct:1,reference:"Romanos 12:2",explanation:"'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento', enseña Pablo sobre la transformación espiritual."},
+  {id:2594,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el que quiera salvar su vida?",options:["Que debe protegerla con sabiduría","Que la perderá, pero el que la pierda por Jesús la hallará","Que la salve del pecado","Que la entregue en servicio a los demás"],correct:1,reference:"Mateo 16:25",explanation:"'Porque todo el que quiera salvar su vida, la perderá; y todo el que pierda su vida por causa de mí, la hallará.'"},
+  {id:2595,difficulty:"intermedio",category:"ensenanzas",question:"Según Hechos 2:38, ¿qué enseñó Pedro que debían hacer los que creyeron en Pentecostés?",options:["Orar y ayunar por 40 días","Arrepentirse y ser bautizados para recibir el Espíritu Santo","Vender sus bienes y unirse a la comunidad","Aprender la ley de Moisés"],correct:1,reference:"Hechos 2:38",explanation:"Pedro dijo: 'Arrepentíos, y bautícese cada uno de vosotros en el nombre de Jesucristo para perdón de los pecados; y recibiréis el don del Espíritu Santo.'"},
+  {id:2596,difficulty:"dificil",category:"ensenanzas",question:"Según la enseñanza de Jesús en Mateo 5:17, ¿para qué vino Jesús respecto a la Ley y los Profetas?",options:["Para abolirlos y establecer una nueva ley","No para abolirlos sino para cumplirlos","Para simplificarlos en dos mandamientos","Para revelar que ya no eran necesarios"],correct:1,reference:"Mateo 5:17",explanation:"Jesús declaró: 'No penséis que he venido para abrogar la ley o los profetas; no he venido para abrogar, sino para cumplir.'"},
+  {id:2597,difficulty:"dificil",category:"ensenanzas",question:"Según Romanos 5:8, ¿cuándo murió Cristo por nosotros?",options:["Cuando nos arrepentimos","Cuando éramos aún pecadores","Cuando creímos en Él","Cuando fuimos bautizados"],correct:1,reference:"Romanos 5:8",explanation:"'Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.' La gracia de Dios precede al arrepentimiento humano."},
+  {id:2598,difficulty:"dificil",category:"ensenanzas",question:"Según Efesios 6:11-12, ¿contra qué no es nuestra lucha?",options:["Contra las doctrinas falsas","Contra carne y sangre, sino contra principados y potestades","Contra las tentaciones del mundo","Contra los pecados de la carne"],correct:1,reference:"Efesios 6:12",explanation:"'Porque no tenemos lucha contra sangre y carne, sino contra principados, contra potestades, contra los gobernadores de las tinieblas de este siglo.'"},
+  {id:2599,difficulty:"dificil",category:"ensenanzas",question:"Según Juan 15:5, ¿qué dijo Jesús que podemos hacer separados de Él?",options:["Poco fruto","Nada","Algo con mucho esfuerzo","Solo lo que la carne permite"],correct:1,reference:"Juan 15:5",explanation:"Jesús declaró: 'Yo soy la vid, vosotros los pámpanos; el que permanece en mí, y yo en él, éste lleva mucho fruto; porque separados de mí nada podéis hacer.'"},
+  {id:2600,difficulty:"dificil",category:"ensenanzas",question:"Según Santiago 1:2-3, ¿cómo debemos recibir las diversas pruebas?",options:["Con resignación y paciencia","Con sumo gozo, porque la prueba de la fe produce paciencia","Con oración y ayuno","Pidiéndole a Dios que las quite"],correct:1,reference:"Santiago 1:2-3",explanation:"'Hermanos míos, tened por sumo gozo cuando os halléis en diversas pruebas, sabiendo que la prueba de vuestra fe produce paciencia.'"},
+  {id:2601,difficulty:"dificil",category:"ensenanzas",question:"Según Hebreos 12:2, ¿en quién debemos poner nuestra mirada como autor y consumador de la fe?",options:["En los apóstoles y profetas","En Jesús, autor y consumador de la fe","En el Espíritu Santo que nos guía","En la Escritura como palabra viva"],correct:1,reference:"Hebreos 12:2",explanation:"'Puestos los ojos en Jesús, el autor y consumador de la fe, el cual por el gozo puesto delante de él sufrió la cruz, menospreciando el oprobio.'"},
+  {id:2602,difficulty:"dificil",category:"ensenanzas",question:"Según 1 Pedro 5:8, ¿a quién debemos estar alerta porque anda como león rugiente?",options:["A los falsos profetas","Al diablo, nuestro adversario","A los perseguidores de la fe","A los que causan divisiones"],correct:1,reference:"1 Pedro 5:8",explanation:"'Sed sobrios, y velad; porque vuestro adversario el diablo, como león rugiente, anda alrededor buscando a quien devorar.'"},
+  {id:2603,difficulty:"experto",category:"ensenanzas",question:"Según Juan 6:53-54, ¿qué enseñó Jesús que escandalizó a muchos discípulos?",options:["Que debían vender todo lo que tenían","Que si no comen su carne y beben su sangre, no tienen vida en sí mismos","Que el templo sería destruido","Que sus padres no eran dignos de Dios"],correct:1,reference:"Juan 6:53-54",explanation:"Jesús dijo: 'El que come mi carne y bebe mi sangre, tiene vida eterna.' Esto causó que muchos discípulos lo abandonaran por ser una enseñanza muy difícil."},
+  {id:2604,difficulty:"experto",category:"ensenanzas",question:"Según Romanos 9:15-16, ¿de qué depende la misericordia de Dios?",options:["De las obras y méritos del creyente","No del que quiere ni del que corre, sino de Dios que tiene misericordia","De la fe y perseverancia del elegido","De la intercesión de Cristo"],correct:1,reference:"Romanos 9:16",explanation:"Pablo cita a Dios diciendo 'Tendré misericordia del que yo tenga misericordia', concluyendo que no depende del que quiere ni del que corre, sino de Dios."},
+  {id:2605,difficulty:"experto",category:"ensenanzas",question:"Según Mateo 24:14, ¿qué debe ocurrir antes del fin del mundo?",options:["La apostasía total de la iglesia","Este evangelio del reino será predicado en todo el mundo para testimonio a todas las naciones","La reconstrucción del templo de Jerusalén","La aparición del anticristo"],correct:1,reference:"Mateo 24:14",explanation:"Jesús declaró: 'Y será predicado este evangelio del reino en todo el mundo, para testimonio a todas las naciones; y entonces vendrá el fin.'"},
+
+  // ===================== PARABOLAS =====================
+  {id:2606,difficulty:"facil",category:"parabolas",question:"En la parábola del hijo pródigo, ¿a quién pidió el hijo menor su herencia?",options:["A sus hermanos","A su padre","Al administrador","Al jefe de la aldea"],correct:1,reference:"Lucas 15:12",explanation:"El hijo menor fue a su padre y le pidió la parte de la herencia que le correspondía, pidiendo en vida lo que normalmente se recibiría al morir el padre."},
+  {id:2607,difficulty:"facil",category:"parabolas",question:"En la parábola del buen samaritano, ¿quién ayudó al hombre herido en el camino?",options:["Un sacerdote","Un levita","Un samaritano","Un fariseo"],correct:2,reference:"Lucas 10:33",explanation:"Un samaritano, despreciado por los judíos, fue quien se apiadó del herido, le curó las heridas, lo llevó a una posada y pagó por su cuidado."},
+  {id:2608,difficulty:"facil",category:"parabolas",question:"En la parábola del sembrador, ¿qué representa la semilla que cayó junto al camino?",options:["El que oye pero no entiende","El que recibe con gozo pero no tiene raíz","El que oye pero el afán del mundo lo ahoga","El que da buen fruto"],correct:0,reference:"Mateo 13:19",explanation:"La semilla junto al camino representa al que oye la palabra del reino pero no la entiende, y viene el maligno y arrebata lo que fue sembrado."},
+  {id:2609,difficulty:"facil",category:"parabolas",question:"En la parábola de las diez vírgenes, ¿cuántas eran prudentes?",options:["Tres","Cuatro","Cinco","Siete"],correct:2,reference:"Mateo 25:2",explanation:"De las diez vírgenes, cinco eran prudentes y llevaron aceite extra en sus vasijas, mientras que las otras cinco fueron insensatas."},
+  {id:2610,difficulty:"facil",category:"parabolas",question:"En la parábola del hijo pródigo, ¿en qué trabajó el hijo cuando se quedó sin dinero?",options:["En una carpintería","Cuidando cerdos","En la pesca","Pastoreando ovejas"],correct:1,reference:"Lucas 15:15",explanation:"El hijo pródigo llegó a tal necesidad que fue a trabajar cuidando cerdos, animales impuros para los judíos."},
+  {id:2611,difficulty:"facil",category:"parabolas",question:"En la parábola de la oveja perdida, ¿cuántas ovejas tenía el pastor?",options:["Diez","Cincuenta","Cien","Trescientas"],correct:2,reference:"Lucas 15:4",explanation:"El pastor tenía cien ovejas; cuando una se perdió, dejó las noventa y nueve para ir a buscar la que se había perdido."},
+  {id:2612,difficulty:"facil",category:"parabolas",question:"En la parábola del trigo y la cizaña, ¿quién sembró la cizaña según Jesús?",options:["Los fariseos","Los escribas","El enemigo (el diablo)","Los siervos que descuidaron el campo"],correct:2,reference:"Mateo 13:39",explanation:"Jesús explicó que el enemigo que sembró la cizaña es el diablo, mientras que el campo es el mundo."},
+  {id:2613,difficulty:"facil",category:"parabolas",question:"En la parábola de los talentos, ¿qué hizo el siervo que recibió un solo talento?",options:["Lo comerció pero perdió","Lo donó a los pobres","Lo entregó al templo","Lo enterró en la tierra"],correct:3,reference:"Mateo 25:18",explanation:"El siervo que recibió un talento tuvo miedo y lo enterró en la tierra, en lugar de ponerlo a producir."},
+  {id:2614,difficulty:"facil",category:"parabolas",question:"En la parábola del grano de mostaza, ¿qué ocurre cuando la semilla crece?",options:["Produce mucho fruto","Las aves del cielo hacen nidos en sus ramas","Cubre toda la tierra","Da sombra a todo el campo"],correct:1,reference:"Mateo 13:32",explanation:"La semilla de mostaza crece hasta ser el mayor de los árboles del huerto, y las aves del cielo vienen y hacen nidos en sus ramas."},
+  {id:2615,difficulty:"facil",category:"parabolas",question:"En la parábola del fariseo y el publicano, ¿cuál de los dos salió justificado del templo?",options:["El fariseo por su obediencia","El publicano por su humildad","Los dos por igual","Ninguno de los dos"],correct:1,reference:"Lucas 18:14",explanation:"Jesús declaró que el publicano, que se humilló diciendo 'Dios, sé propicio a mí, pecador', salió justificado, no el fariseo que se vanagloriaba."},
+  {id:2616,difficulty:"intermedio",category:"parabolas",question:"En la parábola del hijo pródigo, ¿cómo reaccionó el hijo mayor al enterarse de la fiesta?",options:["Se alegró con la familia","Se enojó y no quiso entrar","Preguntó al padre por su hermano","Fue a buscar a su hermano"],correct:1,reference:"Lucas 15:28",explanation:"El hijo mayor se enojó y no quería entrar, representando a los religiosos que resisten la gracia extendida a los pecadores arrepentidos."},
+  {id:2617,difficulty:"intermedio",category:"parabolas",question:"En la parábola del rico y Lázaro, ¿quién era Lázaro?",options:["Un amigo del rico","Un pobre lleno de llagas que estaba a la puerta del rico","Un familiar del rico","Un sirviente del rico"],correct:1,reference:"Lucas 16:20",explanation:"Lázaro era el pobre lleno de llagas echado a la puerta del rico; es el único personaje de una parábola al que Jesús le da nombre."},
+  {id:2618,difficulty:"intermedio",category:"parabolas",question:"En la parábola del mayordomo infiel, ¿de qué fue acusado el mayordomo ante su señor?",options:["De robar el dinero","De malversar sus bienes","De traicionarle con sus enemigos","De descuidar la administración"],correct:1,reference:"Lucas 16:1",explanation:"El mayordomo fue acusado de malgastar (malversar) los bienes de su señor, por lo que este decidió despedirlo del cargo."},
+  {id:2619,difficulty:"intermedio",category:"parabolas",question:"En la parábola del tesoro escondido, ¿qué hizo el hombre al encontrarlo?",options:["Lo sacó y lo mostró a todos","Lo vendió y se fue rico","Lo volvió a esconder y vendió todo para comprar el campo","Lo reportó al dueño del campo"],correct:2,reference:"Mateo 13:44",explanation:"El hombre encontró el tesoro, lo volvió a esconder, y de alegría fue y vendió todo lo que tenía para comprar ese campo."},
+  {id:2620,difficulty:"intermedio",category:"parabolas",question:"En la parábola del juez injusto, ¿qué enseñanza principal da Jesús?",options:["Que Dios es justo con los buenos","La necesidad de orar siempre sin desanimarse","Que los jueces deben ser honestos","Que la viuda representa a Israel"],correct:1,reference:"Lucas 18:1",explanation:"Jesús contó esta parábola 'para enseñarles que deben orar siempre y no desanimarse', usando el ejemplo de una viuda persistente ante un juez injusto."},
+  {id:2621,difficulty:"intermedio",category:"parabolas",question:"En la parábola de los dos deudores, ¿cuánto debía el que más debía?",options:["Cincuenta denarios","Cien denarios","Quinientos denarios","Mil denarios"],correct:2,reference:"Lucas 7:41",explanation:"El acreedor tenía dos deudores: uno debía quinientos denarios y el otro cincuenta; cuando no pudieron pagar, les perdonó la deuda a los dos."},
+  {id:2622,difficulty:"dificil",category:"parabolas",question:"En la parábola del deudor inmisericorde, ¿cuánto le debía el siervo al rey?",options:["Cien denarios","Diez mil talentos","Quinientos denarios","Un millón de piezas"],correct:1,reference:"Mateo 18:24",explanation:"El primer siervo debía diez mil talentos, una suma astronómica e impagable, representando la enorme deuda del pecado humano que Dios perdona."},
+  {id:2623,difficulty:"dificil",category:"parabolas",question:"En la parábola de las minas (Lucas 19), ¿cuántas minas recibió cada siervo?",options:["Distintas según su capacidad","Cinco minas cada uno","Una mina cada uno","Tres minas cada uno"],correct:2,reference:"Lucas 19:13",explanation:"En la parábola de las minas, el noble dio una mina a cada uno de sus diez siervos, a diferencia de los talentos donde recibieron cantidades diferentes."},
+  {id:2624,difficulty:"experto",category:"parabolas",question:"¿En cuál de los cuatro evangelios NO aparece la parábola del sembrador?",options:["Mateo","Marcos","Lucas","Juan"],correct:3,reference:"Juan (no la incluye)",explanation:"La parábola del sembrador aparece en Mateo 13, Marcos 4 y Lucas 8, pero no en el evangelio de Juan, que tiene una selección de materiales muy diferente."},
+  {id:2625,difficulty:"experto",category:"parabolas",question:"¿Cuál es la única parábola de Jesús donde se menciona explícitamente el nombre del personaje principal?",options:["La del buen samaritano","La del hijo pródigo","La del rico y Lázaro","La de los talentos"],correct:2,reference:"Lucas 16:20",explanation:"En la parábola del rico y Lázaro, el pobre es llamado por nombre 'Lázaro', siendo el único personaje de todas las parábolas al que Jesús le asigna un nombre."},
+  {id:2626,difficulty:"facil",category:"parabolas",question:"En la parábola de la oveja perdida, ¿cuántas ovejas tenía el pastor?",options:["10","50","100","1000"],correct:2,reference:"Lucas 15:4",explanation:"Jesús dijo que si un hombre tiene cien ovejas y pierde una, deja las noventa y nueve y va a buscar la que se perdió."},
+  {id:2627,difficulty:"facil",category:"parabolas",question:"En la parábola de la moneda perdida, ¿cuántas monedas tenía la mujer?",options:["5","10","20","50"],correct:1,reference:"Lucas 15:8",explanation:"La mujer tenía diez monedas de plata; al perder una, barrió la casa y la buscó hasta encontrarla."},
+  {id:2628,difficulty:"facil",category:"parabolas",question:"¿Con qué comparó Jesús el reino de los cielos en la parábola del grano de mostaza?",options:["Un diamante pequeño","Una semilla de mostaza que se hace árbol grande","Un tesoro escondido","Una perla preciosa"],correct:1,reference:"Mateo 13:31",explanation:"El reino de los cielos es semejante a un grano de mostaza que, siendo la más pequeña de las semillas, crece hasta ser el mayor de los árboles."},
+  {id:2629,difficulty:"facil",category:"parabolas",question:"En la parábola del tesoro escondido, ¿dónde estaba el tesoro?",options:["En una cueva","En el fondo del mar","En el campo","En un cofre en la ciudad"],correct:2,reference:"Mateo 13:44",explanation:"El reino de los cielos es semejante a un tesoro escondido en un campo; quien lo encuentra lo vuelve a esconder y vende todo para comprar ese campo."},
+  {id:2630,difficulty:"facil",category:"parabolas",question:"En la parábola de la perla de gran precio, ¿quién buscaba buenas perlas?",options:["Un rey","Un pescador","Un mercader","Un fariseo"],correct:2,reference:"Mateo 13:45",explanation:"El reino de los cielos es semejante a un mercader que busca buenas perlas, y al encontrar una de gran precio, vende todo lo que tiene para comprarla."},
+  {id:2631,difficulty:"facil",category:"parabolas",question:"En la parábola del sembrador, ¿qué representa la semilla en buena tierra?",options:["Los que escuchan y olvidan","Los que creen por un tiempo pero caen","Los que oyen, entienden y dan fruto","Los perseguidos por la fe"],correct:2,reference:"Mateo 13:23",explanation:"La semilla en buena tierra representa al que oye la Palabra, la entiende y da fruto: uno a ciento, otro a sesenta y otro a treinta."},
+  {id:2632,difficulty:"facil",category:"parabolas",question:"En la parábola de los talentos, ¿cuántos talentos recibió el segundo siervo?",options:["1","2","5","10"],correct:1,reference:"Mateo 25:22",explanation:"Al segundo siervo le dieron dos talentos y ganó otros dos, siendo elogiado como fiel por su señor."},
+  {id:2633,difficulty:"facil",category:"parabolas",question:"En la parábola del hijo pródigo, ¿qué pidió el hijo menor antes de irse?",options:["Permiso para viajar","La parte de la herencia que le correspondía","Dinero prestado","Las llaves de la casa"],correct:1,reference:"Lucas 15:12",explanation:"El hijo menor dijo: 'Padre, dame la parte de los bienes que me corresponde.' Y el padre les repartió los bienes."},
+  {id:2634,difficulty:"facil",category:"parabolas",question:"¿Con qué animal celebró el padre el regreso de su hijo pródigo?",options:["Un cordero","Una cabra","Un ternero engordado","Un buey"],correct:2,reference:"Lucas 15:23",explanation:"El padre mandó matar el ternero engordado para celebrar que su hijo que estaba perdido fue hallado."},
+  {id:2635,difficulty:"intermedio",category:"parabolas",question:"En la parábola del buen samaritano, ¿en qué camino fue asaltado el hombre?",options:["De Nazaret a Capernaúm","De Jerusalén a Jericó","De Samaria a Judea","De Belén a Hebrón"],correct:1,reference:"Lucas 10:30",explanation:"Un hombre bajaba de Jerusalén a Jericó y cayó en manos de ladrones que lo dejaron medio muerto."},
+  {id:2636,difficulty:"intermedio",category:"parabolas",question:"En la parábola del buen samaritano, ¿qué le puso el samaritano sobre las heridas?",options:["Agua y sal","Aceite y vino","Miel y leche","Paños mojados"],correct:1,reference:"Lucas 10:34",explanation:"El samaritano vendó sus heridas echando aceite y vino, y lo llevó a una posada."},
+  {id:2637,difficulty:"intermedio",category:"parabolas",question:"En la parábola de los obreros de la viña, ¿qué jornal se acordó con los primeros obreros?",options:["Medio denario","Un denario","Dos denarios","Tres denarios"],correct:1,reference:"Mateo 20:2",explanation:"El dueño de la viña acordó con los primeros obreros un denario al día."},
+  {id:2638,difficulty:"intermedio",category:"parabolas",question:"En la parábola de los obreros de la viña, ¿a qué hora se contrató a los últimos obreros?",options:["A la tercera hora","A la sexta hora","A la novena hora","A la undécima hora"],correct:3,reference:"Mateo 20:6",explanation:"Al salir a la undécima hora (la última del día), el dueño encontró a otros desocupados y los envió a su viña."},
+  {id:2639,difficulty:"intermedio",category:"parabolas",question:"¿Cuál es el mensaje principal de la parábola del fariseo y el publicano?",options:["Que debemos orar en voz alta","Que el ayuno vale más que la oración","Que el que se humilla será exaltado","Que los fariseos son mejores"],correct:2,reference:"Lucas 18:14",explanation:"Jesús enseñó: el que se exalta será humillado, y el que se humilla será exaltado. El publicano salió justificado, no el fariseo."},
+  {id:2640,difficulty:"intermedio",category:"parabolas",question:"En la parábola de las diez vírgenes, ¿cuántas se quedaron sin aceite?",options:["3","4","5","6"],correct:2,reference:"Mateo 25:2-3",explanation:"Cinco eran prudentes y tomaron aceite; las otras cinco eran insensatas y no tomaron aceite consigo."},
+  {id:2641,difficulty:"intermedio",category:"parabolas",question:"¿Qué le hizo el señor al siervo que enterró su talento?",options:["Lo perdonó","Le quitó el talento y lo dio al que tenía diez","Lo echó de la casa","Lo mandó a la cárcel"],correct:1,reference:"Mateo 25:28",explanation:"El señor ordenó quitarle el talento y darlo al que tiene diez, pues al que tiene se le dará más."},
+  {id:2642,difficulty:"intermedio",category:"parabolas",question:"En la parábola de la levadura, ¿en cuántas medidas de harina la escondió la mujer?",options:["Dos","Tres","Cinco","Siete"],correct:1,reference:"Mateo 13:33",explanation:"Una mujer tomó levadura y la escondió en tres medidas de harina hasta que toda la masa fermentó."},
+  {id:2643,difficulty:"intermedio",category:"parabolas",question:"En la parábola de los labradores malvados, ¿qué hicieron al hijo del dueño?",options:["Lo encerraron","Lo enviaron de vuelta","Lo mataron y echaron fuera del viñedo","Lo hicieron siervo"],correct:2,reference:"Mateo 21:39",explanation:"Los labradores echaron al hijo fuera de la viña y lo mataron para apoderarse de la herencia."},
+  {id:2644,difficulty:"intermedio",category:"parabolas",question:"En la parábola del amigo a medianoche, ¿qué pedía el hombre a su amigo?",options:["Dinero prestado","Tres panes","Abrigo para dormir","Agua de su pozo"],correct:1,reference:"Lucas 11:5-6",explanation:"Un hombre fue a su amigo a medianoche y pidió: 'Préstame tres panes, pues un amigo mío llegó de viaje.'"},
+  {id:2645,difficulty:"intermedio",category:"parabolas",question:"En la parábola del rico insensato, ¿qué quería hacer con sus graneros?",options:["Venderlos","Derribarlos y construir otros más grandes","Compartirlos con los pobres","Donarlos al templo"],correct:1,reference:"Lucas 12:18",explanation:"El rico dijo: 'Derribaré mis graneros y edificaré otros mayores, y allí guardaré todos mis bienes.'"},
+  {id:2646,difficulty:"intermedio",category:"parabolas",question:"¿Qué dijo Dios al rico insensato la noche de sus planes?",options:["'Comparte lo que tienes'","'Te robarán todo'","'Esta noche vienen a pedirte tu alma'","'Tu cosecha se perderá'"],correct:2,reference:"Lucas 12:20",explanation:"Dios le dijo: 'Necio, esta noche vienen a pedirte tu alma; y lo que has provisto, ¿de quién será?'"},
+  {id:2647,difficulty:"intermedio",category:"parabolas",question:"En la parábola de la higuera estéril, ¿cuántos años esperó el dueño sin fruto?",options:["1","2","3","5"],correct:2,reference:"Lucas 13:7",explanation:"El dueño dijo: 'Hace tres años que vengo a buscar fruto en esta higuera y no lo hallo; córtala.'"},
+  {id:2648,difficulty:"intermedio",category:"parabolas",question:"¿Cuánto tiempo pidió el viñador para abonar la higuera estéril?",options:["Seis meses","Un año más","Dos años","Una temporada"],correct:1,reference:"Lucas 13:8",explanation:"El viñador pidió: 'Déjala todavía este año, hasta que yo cave alrededor de ella y la abone; si diere fruto, bien; si no, la cortarás.'"},
+  {id:2649,difficulty:"intermedio",category:"parabolas",question:"En la parábola del sembrador, ¿qué representa la semilla entre espinos?",options:["Los que nunca escuchan","Los que temen la persecución","Los que oyen pero las riquezas ahogan la Palabra","Los hipócritas"],correct:2,reference:"Mateo 13:22",explanation:"La semilla entre espinos representa al que oye pero las aflicciones del siglo y el engaño de las riquezas ahogan la Palabra."},
+  {id:2650,difficulty:"dificil",category:"parabolas",question:"En la parábola del mayordomo injusto, ¿por qué fue despedido?",options:["Por robar dinero","Por malgastar los bienes de su señor","Por desobedecer órdenes","Por mentir a los clientes"],correct:1,reference:"Lucas 16:1",explanation:"Fue informado al señor que su mayordomo estaba malgastando sus bienes y debía rendir cuentas."},
+  {id:2651,difficulty:"dificil",category:"parabolas",question:"¿Cuánto debía el compañero al siervo que fue perdonado de diez mil talentos?",options:["Diez talentos","Cien denarios","Quinientos denarios","Mil denarios"],correct:1,reference:"Mateo 18:28",explanation:"El siervo perdonado encontró a un compañero que le debía cien denarios y le exigió pagar la deuda."},
+  {id:2652,difficulty:"dificil",category:"parabolas",question:"En la parábola de los dos hijos (Mateo 21), ¿quién representa a los publicanos y pecadores?",options:["El que dijo sí pero no fue","El que dijo no pero luego fue","Ambos por igual","Ninguno de los dos"],correct:1,reference:"Mateo 21:29-31",explanation:"El hijo que dijo 'no' pero luego se arrepintió y fue, representa a los publicanos y pecadores que se arrepienten."},
+  {id:2653,difficulty:"dificil",category:"parabolas",question:"¿Cuántos invitados originales aceptaron el banquete de bodas de Mateo 22?",options:["Ninguno aceptó","Todos aceptaron","La mitad aceptó","Solo los pobres"],correct:0,reference:"Mateo 22:3",explanation:"El rey envió siervos a llamar a los invitados, pero todos se negaron a venir."},
+  {id:2654,difficulty:"dificil",category:"parabolas",question:"En la parábola de la semilla que crece sola (Marcos 4), ¿cómo crece la semilla?",options:["Con el esfuerzo del sembrador","Por milagro visible","Por sí sola mientras el hombre duerme y vela","Con ayuda de ángeles"],correct:2,reference:"Marcos 4:27",explanation:"El sembrador duerme y se levanta de noche y de día, y la semilla brota y crece sin que sepa cómo."},
+  {id:2655,difficulty:"dificil",category:"parabolas",question:"En la parábola del rico y Lázaro, ¿a dónde fue Lázaro al morir?",options:["Al paraíso","Al seno de Abraham","Al cielo directamente","A un lugar de espera"],correct:1,reference:"Lucas 16:22",explanation:"Murió el mendigo y fue llevado por los ángeles al seno de Abraham; el rico también murió y fue sepultado."},
+  {id:2656,difficulty:"dificil",category:"parabolas",question:"En la parábola del rico y Lázaro, ¿qué pidió el rico desde el Hades?",options:["Ser liberado","Que Lázaro mojara su dedo en agua para refrescar su lengua","Que le dieran comida","Que sus amigos fueran salvados"],correct:1,reference:"Lucas 16:24",explanation:"El rico exclamó: 'Ten misericordia de mí, y envía a Lázaro para que moje la punta de su dedo en agua y refresque mi lengua; estoy atormentado en esta llama.'"},
+  {id:2657,difficulty:"dificil",category:"parabolas",question:"En la parábola del juez injusto, ¿por qué el juez finalmente hizo justicia?",options:["Por compasión","Porque Dios le habló","Porque ella le dio dinero","Porque le molestaba que viniera continuamente"],correct:3,reference:"Lucas 18:5",explanation:"El juez dijo: 'Porque esta viuda me es molesta, le haré justicia, no sea que viniendo continuamente me agote.'"},
+  {id:2658,difficulty:"dificil",category:"parabolas",question:"¿Qué representa el aceite en la parábola de las diez vírgenes según la tradición?",options:["Las riquezas materiales","La preparación espiritual","Solo la oración","La gracia sacramental"],correct:1,reference:"Mateo 25:1-13",explanation:"El aceite representa la preparación espiritual: las vírgenes prudentes estaban listas para cuando llegara el novio."},
+  {id:2659,difficulty:"dificil",category:"parabolas",question:"En la parábola del banquete de bodas, ¿qué pasó al hombre sin traje de boda?",options:["Fue perdonado","Fue expulsado a las tinieblas de afuera","Fue convertido en siervo","Le dieron ropa nueva"],correct:1,reference:"Mateo 22:13",explanation:"El rey ordenó: 'Atadle de pies y manos y echadle en las tinieblas de afuera; allí será el lloro y el crujir de dientes.'"},
+  {id:2660,difficulty:"dificil",category:"parabolas",question:"¿Por qué alabó el señor al mayordomo injusto?",options:["Por ser honesto","Por actuar sagazmente para asegurar su futuro","Por pedir perdón","Por devolver lo robado"],correct:1,reference:"Lucas 16:8",explanation:"El señor alabó al mayordomo injusto por haber actuado sagazmente, porque los hijos de este siglo son más sagaces que los hijos de luz."},
+  {id:2661,difficulty:"experto",category:"parabolas",question:"¿Cuántos grupos contrató el dueño de la viña en la parábola de los obreros?",options:["Dos","Tres","Cuatro","Cinco"],correct:3,reference:"Mateo 20:1-9",explanation:"El dueño contrató obreros a la hora primera, tercera, sexta, novena y undécima: cinco grupos distintos."},
+  {id:2662,difficulty:"experto",category:"parabolas",question:"¿Cuántos talentos más ganó el siervo que recibió cinco?",options:["Cinco más","Diez más","Siete más","Tres más"],correct:0,reference:"Mateo 25:20",explanation:"El que recibió cinco talentos ganó otros cinco y los presentó a su señor."},
+  {id:2663,difficulty:"experto",category:"parabolas",question:"¿Por qué estaba enojado el hijo mayor en la parábola del hijo pródigo?",options:["Le dieron la mejor ropa a su hermano","Su hermano recibió herencia dos veces","Nunca le dieron ni un cabrito pero sí celebraron al hermano pródigo","Su padre dividió el resto de los bienes"],correct:2,reference:"Lucas 15:29",explanation:"El hijo mayor dijo: 'Tantos años te sirvo y nunca me has dado ni un cabrito para gozarme; pero cuando vino este tu hijo que consumió tus bienes, mataste el becerro gordo.'"},
+  {id:2664,difficulty:"experto",category:"parabolas",question:"¿Cuántos invitados sustitutos mencionó Jesús en la parábola del gran banquete (Lucas 14)?",options:["Solo un grupo de pobres","Dos grupos: los de la ciudad y los de los caminos","Solo los que estaban en la plaza","Solo los lisiados y ciegos"],correct:1,reference:"Lucas 14:21-23",explanation:"Primero se invitó a pobres, lisiados, cojos y ciegos de la ciudad; luego, al haber todavía lugar, fue a los caminos y cercas para llenar la casa."},
+  {id:2665,difficulty:"experto",category:"parabolas",question:"¿Qué dijo el hijo pródigo que haría cuando volvió en sí?",options:["'Buscaré trabajo en la ciudad'","'Me levantaré e iré a mi padre, y le diré: Padre, he pecado...'","'Pediré dinero a mis hermanos'","'Reclamaré mi herencia restante'"],correct:1,reference:"Lucas 15:18",explanation:"El hijo dijo: 'Me levantaré e iré a mi padre, y le diré: Padre, he pecado contra el cielo y ante ti; ya no soy digno de ser llamado tu hijo.'"},
+  {id:2666,difficulty:"experto",category:"parabolas",question:"¿Cómo redujo el mayordomo injusto las deudas de los deudores de su señor?",options:["Las eliminó por completo","Las redujo considerablemente (aceite de 100 a 50, trigo de 100 a 80)","Las duplicó para ganar más","Se las transfirió a otros"],correct:1,reference:"Lucas 16:5-7",explanation:"Al que debía cien barriles de aceite le dijo que pusiera cincuenta, y al que debía cien medidas de trigo, que pusiera ochenta."},
+  {id:2667,difficulty:"facil",category:"parabolas",question:"¿Qué encontraron las cinco vírgenes prudentes mientras las insensatas iban a comprar aceite?",options:["Que el novio ya no venía","Que la puerta estaba abierta","Que el novio llegó y la puerta se cerró","Que llegaron a tiempo"],correct:2,reference:"Mateo 25:10",explanation:"Mientras las insensatas iban a comprar aceite, llegó el esposo; las prudentes entraron con él a las bodas, y se cerró la puerta."},
+  {id:2668,difficulty:"facil",category:"parabolas",question:"¿Qué representa la 'cizaña' en la parábola del trigo y la cizaña?",options:["Los discípulos débiles","Los hijos del maligno","Los gentiles","Los fariseos"],correct:1,reference:"Mateo 13:38",explanation:"Jesús explicó: el campo es el mundo, la buena semilla son los hijos del reino, y la cizaña son los hijos del maligno."},
+  {id:2669,difficulty:"intermedio",category:"parabolas",question:"¿Cuándo se separarán el trigo y la cizaña?",options:["Cuando el agricultor decida","Al tiempo de la cosecha (fin del siglo)","Cuando llueva sobre ellos","Cuando broten los frutos"],correct:1,reference:"Mateo 13:30",explanation:"Jesús ordenó dejar crecer juntos hasta la siega; al fin del siglo los segadores recogerán la cizaña para quemarla y el trigo lo guardarán en el granero."},
+  {id:2670,difficulty:"intermedio",category:"parabolas",question:"¿Cuántas parábolas componen el grupo llamado 'parábolas de la pérdida' en Lucas 15?",options:["2","3","4","5"],correct:1,reference:"Lucas 15",explanation:"Lucas 15 contiene tres parábolas de la pérdida: la oveja perdida, la moneda perdida y el hijo pródigo."},
+  {id:2671,difficulty:"intermedio",category:"parabolas",question:"¿Cuál es la primera excusa dada en la parábola del gran banquete (Lucas 14)?",options:["Había comprado bueyes","Había comprado un campo y necesitaba verlo","Se había casado","Tenía que cuidar a sus hijos"],correct:1,reference:"Lucas 14:18",explanation:"El primero dijo: 'He comprado un campo, y necesito ir a verlo; te ruego que me excuses.'"},
+  {id:2672,difficulty:"intermedio",category:"parabolas",question:"¿Qué enseña la parábola del amigo a medianoche?",options:["La importancia de la amistad","La perseverancia en la oración","El deber de ayudar al prójimo","La generosidad con extranjeros"],correct:1,reference:"Lucas 11:8-9",explanation:"Jesús enseñó que por la insistencia el amigo se levantará; por eso: pedid y se os dará, buscad y hallaréis."},
+  {id:2673,difficulty:"dificil",category:"parabolas",question:"¿Qué representa el campo en la parábola del trigo y la cizaña, según Jesús?",options:["Israel","La iglesia","El mundo","El corazón humano"],correct:2,reference:"Mateo 13:38",explanation:"Jesús explicó: 'El campo es el mundo'; el reino abarca a toda la humanidad, no solo a un grupo étnico o religioso."},
+  {id:2674,difficulty:"dificil",category:"parabolas",question:"¿Cuántos siervos envió el dueño del viñedo antes de su hijo?",options:["Uno","Dos grupos sucesivos","Tres siervos","Cuatro siervos"],correct:1,reference:"Mateo 21:34-36",explanation:"El dueño envió primero un grupo de siervos; luego envió otros siervos más numerosos. A todos los maltrataron antes de enviar al hijo."},
+  {id:2675,difficulty:"experto",category:"parabolas",question:"¿Cuál es la parábola más larga registrada en los Evangelios?",options:["La del sembrador con explicación","La de los talentos","La del hijo pródigo","La de los labradores malvados"],correct:2,reference:"Lucas 15:11-32",explanation:"La parábola del hijo pródigo (Lucas 15:11-32) es la más extensa, con 22 versículos detallando el viaje del hijo, su regreso y la reacción del padre y del hermano mayor."},
+  {id:2676,difficulty:"facil",category:"ensenanzas",question:"¿Cuál es el mandamiento más importante según Jesús?",options:["Honrarás a tu padre y a tu madre","Amarás al Señor tu Dios con todo tu corazón","No matarás","Guardarás el sábado"],correct:1,reference:"Mateo 22:37",explanation:"Jesús dijo: 'Amarás al Señor tu Dios con todo tu corazón, y con toda tu alma, y con toda tu mente. Este es el primero y grande mandamiento.'"},
+  {id:2677,difficulty:"facil",category:"ensenanzas",question:"¿Cuál es el segundo mandamiento más importante según Jesús?",options:["No robarás","No cometerás adulterio","Amarás a tu prójimo como a ti mismo","Guardarás el ayuno"],correct:2,reference:"Mateo 22:39",explanation:"Jesús dijo: 'Y el segundo es semejante: Amarás a tu prójimo como a ti mismo. De estos dos mandamientos dependen toda la ley y los profetas.'"},
+  {id:2678,difficulty:"facil",category:"ensenanzas",question:"¿Qué es la 'Regla de Oro' que enseñó Jesús?",options:["Amar a Dios sobre todas las cosas","Haz a los demás lo que quieres que te hagan a ti","Perdona setenta veces siete","Poner la otra mejilla"],correct:1,reference:"Mateo 7:12",explanation:"Jesús enseñó: 'Así que, todas las cosas que queráis que los hombres hagan con vosotros, así también haced vosotros con ellos; porque esto es la ley y los profetas.'"},
+  {id:2679,difficulty:"facil",category:"ensenanzas",question:"¿Cuántas veces debemos perdonar a nuestro hermano según Jesús?",options:["7 veces","70 veces","77 veces","Setenta veces siete"],correct:3,reference:"Mateo 18:22",explanation:"Pedro preguntó si debía perdonar hasta siete veces. Jesús respondió: No hasta siete, sino hasta setenta veces siete, indicando un perdón sin límite."},
+  {id:2680,difficulty:"facil",category:"ensenanzas",question:"Según Jesús en el Sermón del Monte, ¿quiénes son bienaventurados los pobres en espíritu?",options:["Porque serán ricos","Porque de ellos es el reino de los cielos","Porque serán consolados","Porque verán a Dios"],correct:1,reference:"Mateo 5:3",explanation:"La primera bienaventuranza: 'Bienaventurados los pobres en espíritu, porque de ellos es el reino de los cielos.'"},
+  {id:2681,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre amar a los enemigos?",options:["Que es imposible pero hay que intentarlo","Que debemos orar por los que nos persiguen","Que solo debemos amarlos si se arrepienten","Que Dios los castigará por nosotros"],correct:1,reference:"Mateo 5:44",explanation:"Jesús dijo: 'Amad a vuestros enemigos, bendecid a los que os maldicen, haced bien a los que os aborrecen, y orad por los que os ultrajan y os persiguen.'"},
+  {id:2682,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre la oración en el Padrenuestro respecto al pan?",options:["'Danos pan para toda la semana'","'Danos hoy nuestro pan cotidiano'","'Danos abundancia de pan'","'Danos pan cuando lo necesitemos'"],correct:1,reference:"Mateo 6:11",explanation:"En el Padrenuestro, Jesús enseñó a pedir: 'El pan nuestro de cada día, dánoslo hoy', mostrando dependencia diaria de Dios."},
+  {id:2683,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre las riquezas y Dios en el Sermón del Monte?",options:["Que las riquezas son una bendición divina","Que no se puede servir a Dios y a las riquezas","Que debemos donar la mitad de nuestros bienes","Que las riquezas son neutrales"],correct:1,reference:"Mateo 6:24",explanation:"Jesús dijo: 'No podéis servir a Dios y a las riquezas (Mamón).' Nadie puede servir a dos señores."},
+  {id:2684,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué compara Jesús con 'buscar primero el reino de Dios' en el Sermón del Monte?",options:["Acumular riquezas","Preocuparse por la comida y la ropa","Ayunar regularmente","Ir al templo"],correct:1,reference:"Mateo 6:33",explanation:"Jesús enseñó que si buscamos primero el reino de Dios y su justicia, todas las cosas necesarias (comida, ropa) nos serán añadidas."},
+  {id:2685,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué dijo Jesús que deberíamos hacer con la 'otra mejilla'?",options:["Protegerla con el brazo","Ofrecerla también al que nos golpeó","Alejarnos del agresor","Pedir justicia a los líderes"],correct:1,reference:"Mateo 5:39",explanation:"Jesús dijo: 'Si alguno te hiriere en la mejilla derecha, vuélvele también la otra.' Esto enseña no resistir al malvado con violencia."},
+  {id:2686,difficulty:"intermedio",category:"ensenanzas",question:"¿Cuál fue la enseñanza de Jesús sobre el juicio a los demás?",options:["Que debemos juzgar con sabiduría","Que no juzguemos para no ser juzgados","Que solo los líderes pueden juzgar","Que Dios aprueba el juicio justo"],correct:1,reference:"Mateo 7:1",explanation:"Jesús enseñó: 'No juzguéis, para que no seáis juzgados. Porque con el juicio con que juzgáis, seréis juzgados.'"},
+  {id:2687,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué dijo Jesús sobre la 'viga' y la 'paja'?",options:["Que debemos ver bien para trabajar la madera","Que no veamos la paja en el ojo ajeno antes de quitar la viga del propio","Que la viga representa el pecado grave y la paja el pequeño","Opciones b y c son correctas"],correct:1,reference:"Mateo 7:3",explanation:"Jesús preguntó: '¿Por qué miras la paja en el ojo de tu hermano, y no echas de ver la viga en el ojo tuyo?'"},
+  {id:2688,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué dijo Jesús sobre los dos caminos (ancho y estrecho)?",options:["Que ambos llevan a Dios","Que el camino ancho lleva a la perdición y el estrecho a la vida","Que el camino depende de la fe de cada uno","Que el camino ancho es para los judíos"],correct:1,reference:"Mateo 7:13-14",explanation:"Jesús dijo: 'Ancha es la puerta y espacioso el camino que lleva a la perdición; estrecha la puerta y angosto el camino que lleva a la vida, y pocos son los que lo hallan.'"},
+  {id:2689,difficulty:"intermedio",category:"ensenanzas",question:"¿Cuál fue la enseñanza de Jesús sobre el 'árbol bueno' y el 'árbol malo'?",options:["Que debemos plantar árboles buenos","Que por sus frutos los conoceréis","Que los árboles malos deben cortarse inmediatamente","Que solo Dios puede hacer árboles buenos"],correct:1,reference:"Mateo 7:17-20",explanation:"Jesús enseñó: 'Por sus frutos los conoceréis. ¿Acaso se recogen uvas de los espinos, o higos de los abrojos? Todo árbol bueno da buenos frutos.'"},
+  {id:2690,difficulty:"intermedio",category:"ensenanzas",question:"¿Sobre qué fundamento dijo Jesús que debemos construir nuestra casa espiritual?",options:["Sobre la arena de la fe","Sobre la roca de sus palabras y obedecerlas","Sobre la tradición de los padres","Sobre la ley de Moisés"],correct:1,reference:"Mateo 7:24",explanation:"Jesús dijo: 'Todo aquel que me oye estas palabras y las hace, le compararé a un hombre prudente que edificó su casa sobre la roca.'"},
+  {id:2691,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el amor en 1 Corintios 13?",options:["Que el amor es el mayor de todos los dones","Que aunque hable lenguas y no tenga amor, nada soy","Que el amor nunca deja de ser, a diferencia de profecías y lenguas","Todo lo anterior"],correct:3,reference:"1 Corintios 13:1-13",explanation:"Pablo enseñó que sin amor no somos nada, y que el amor es sufrido, benigno, no busca lo suyo, no se irrita y nunca deja de ser."},
+  {id:2692,difficulty:"intermedio",category:"ensenanzas",question:"¿Cuáles son los frutos del Espíritu según Pablo en Gálatas 5?",options:["Fe, esperanza y amor","Amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre y templanza","Sabiduría, conocimiento y sanidad","Profecía, lenguas e interpretación"],correct:1,reference:"Gálatas 5:22-23",explanation:"El fruto del Espíritu es: amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre y templanza."},
+  {id:2693,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la armadura de Dios en Efesios 6?",options:["Que es solo para líderes espirituales","Que debemos vestirnos de toda la armadura de Dios para resistir al diablo","Que la armadura representa las virtudes del Antiguo Testamento","Que es una armadura literal que Dios nos da"],correct:1,reference:"Efesios 6:11",explanation:"Pablo enseñó: 'Vestíos de toda la armadura de Dios, para que podáis estar firmes contra las asechanzas del diablo.'"},
+  {id:2694,difficulty:"dificil",category:"ensenanzas",question:"¿Cuántas bienaventuranzas hay en el Sermón del Monte (Mateo 5)?",options:["7","8","9","12"],correct:1,reference:"Mateo 5:3-10",explanation:"Hay ocho bienaventuranzas en Mateo 5:3-10, comenzando con 'Bienaventurados los pobres en espíritu' y terminando con 'Bienaventurados los que padecen persecución por causa de la justicia.'"},
+  {id:2695,difficulty:"dificil",category:"ensenanzas",question:"¿Cuál bienaventuranza promete 'ver a Dios'?",options:["Los pobres en espíritu","Los que lloran","Los de limpio corazón","Los pacificadores"],correct:2,reference:"Mateo 5:8",explanation:"'Bienaventurados los de limpio corazón, porque ellos verán a Dios.'"},
+  {id:2696,difficulty:"dificil",category:"ensenanzas",question:"¿Cuál bienaventuranza promete ser llamado 'hijo de Dios'?",options:["Los misericordiosos","Los pacificadores","Los que tienen hambre de justicia","Los mansos"],correct:1,reference:"Mateo 5:9",explanation:"'Bienaventurados los pacificadores, porque ellos serán llamados hijos de Dios.'"},
+  {id:2697,difficulty:"dificil",category:"ensenanzas",question:"¿Qué dijo Jesús que no pasará del cielo y de la tierra hasta que se cumpla todo?",options:["Su palabra","Ni una jota ni una tilde de la ley","El tiempo","Sus mandamientos"],correct:1,reference:"Mateo 5:18",explanation:"Jesús dijo: 'Ni una jota ni una tilde pasará de la ley hasta que todo se haya cumplido.'"},
+  {id:2698,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el ayuno en el Sermón del Monte?",options:["Que debemos anunciarlo en la sinagoga","Que debemos desfigurar el rostro para que la gente lo note","Que debemos ungir la cabeza y lavarnos la cara para que no sea visto de los hombres","Que el ayuno es opcional"],correct:2,reference:"Mateo 6:17-18",explanation:"Jesús enseñó: cuando ayunas, unge tu cabeza y lava tu rostro, para no ser visto de los hombres sino de tu Padre que está en secreto."},
+  {id:2699,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre renovar la mente en Romanos 12?",options:["Que debemos estudiar más la Biblia","No os conforméis a este siglo sino transformaos por la renovación de vuestro entendimiento","Que debemos ir a la iglesia regularmente","Que la mente se renueva automáticamente con la fe"],correct:1,reference:"Romanos 12:2",explanation:"Pablo escribió: 'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento, para que comprobéis cuál sea la buena voluntad de Dios.'"},
+  {id:2700,difficulty:"dificil",category:"ensenanzas",question:"¿Cuál fue la enseñanza de Jesús sobre las luces del mundo?",options:["Que Él es la única luz del mundo","Que nosotros somos la luz del mundo y no debemos ocultar nuestra luz","Que la luz del mundo viene solo del templo","Que la Biblia es la luz del mundo"],correct:1,reference:"Mateo 5:14-16",explanation:"Jesús dijo: 'Vosotros sois la luz del mundo. Una ciudad asentada sobre un monte no se puede esconder... Así alumbre vuestra luz delante de los hombres.'"},
+  {id:2701,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre tesoros en el Sermón del Monte?",options:["Que debemos tener tesoros materiales para honrar a Dios","Que no acumulemos tesoros en la tierra sino en el cielo","Que los tesoros son neutrales si se dan a la iglesia","Que los ricos no pueden entrar al reino"],correct:1,reference:"Mateo 6:19-20",explanation:"Jesús enseñó: 'No os hagáis tesoros en la tierra... sino haceos tesoros en el cielo, donde ni la polilla ni el orín corrompen.'"},
+  {id:2702,difficulty:"experto",category:"ensenanzas",question:"¿Qué dijo Jesús sobre el 'ojo' como lámpara del cuerpo?",options:["Que debemos cuidar nuestra vista física","Si tu ojo es bueno, todo tu cuerpo estará lleno de luz","Que el ojo es el camino al pecado","Que debemos cerrar los ojos al mal"],correct:1,reference:"Mateo 6:22",explanation:"Jesús enseñó: 'La lámpara del cuerpo es el ojo; así que, si tu ojo es bueno, todo tu cuerpo estará lleno de luz.'"},
+  {id:2703,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre dar la capa cuando alguien quiere quitarle la túnica?",options:["Que debemos defender nuestra propiedad","Que debemos darle también la capa","Que debemos ir al juez","Que debemos pedir ayuda"],correct:1,reference:"Mateo 5:40",explanation:"Jesús dijo: 'Al que quiera ponerte a pleito y quitarte la túnica, déjale también la capa.'"},
+  {id:2704,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la fe, la esperanza y el amor en 1 Corintios 13?",options:["Que son igual de importantes","Que la fe es la mayor porque salva","Que el mayor de estos tres es el amor","Que la esperanza es la más duradera"],correct:2,reference:"1 Corintios 13:13",explanation:"Pablo concluye: 'Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor.'"},
+  {id:2705,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús en la Gran Comisión sobre el bautismo?",options:["Que bautizáramos solo a los judíos","Que hiciéramos discípulos de todas las naciones, bautizándoles en el nombre del Padre, del Hijo y del Espíritu Santo","Que el bautismo es opcional para los creyentes","Que bautizáramos primero en el Jordán"],correct:1,reference:"Mateo 28:19",explanation:"Jesús dijo: 'Id y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo.'"},
+  {id:2706,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que es la verdad y nos hace libres?",options:["La oración","La ley de Moisés","La verdad de Su Palabra","El amor de Dios"],correct:2,reference:"Juan 8:32",explanation:"Jesús dijo: 'Y conoceréis la verdad, y la verdad os hará libres.'"},
+  {id:2707,difficulty:"facil",category:"ensenanzas",question:"¿Qué prometió Jesús sobre el Espíritu Santo (Consolador)?",options:["Que vendría solo para los apóstoles","Que el Padre lo enviaría en el nombre de Jesús para enseñar todas las cosas","Que solo vive en el templo","Que viene una vez por generación"],correct:1,reference:"Juan 14:26",explanation:"Jesús prometió: 'El Consolador, el Espíritu Santo, a quien el Padre enviará en mi nombre, os enseñará todas las cosas y os recordará todo lo que yo os he dicho.'"},
+  {id:2708,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre pedir en oración?",options:["Que solo los perfectos reciben respuesta","Que pedid y se os dará, buscad y hallaréis, llamad y se os abrirá","Que debemos orar solo en el templo","Que Dios responde únicamente los domingos"],correct:1,reference:"Mateo 7:7",explanation:"Jesús prometió: 'Pedid y se os dará; buscad y hallaréis; llamad y se os abrirá.'"},
+  {id:2709,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la resurrección en 1 Corintios 15?",options:["Que es solo espiritual","Si Cristo no resucitó, vuestra fe es vana","Que solo los apóstoles resucitarán","Que la resurrección ocurrió en el pasado para todos"],correct:1,reference:"1 Corintios 15:17",explanation:"Pablo escribió: 'Y si Cristo no resucitó, vuestra fe es vana; aún estáis en vuestros pecados.'"},
+  {id:2710,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el nacimiento espiritual en Juan 3?",options:["Que debemos hacer muchas buenas obras","Que debemos nacer de nuevo (de agua y del Espíritu) para entrar al reino de Dios","Que el bautismo nos hace automáticamente salvos","Que solo los judíos pueden nacer de nuevo"],correct:1,reference:"Juan 3:5",explanation:"Jesús dijo a Nicodemo: 'El que no naciere de agua y del Espíritu, no puede entrar en el reino de Dios.'"},
+  {id:2711,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué comparó Jesús con el viento en su conversación con Nicodemo?",options:["La creación del mundo","El nacimiento espiritual del Espíritu","La voluntad de Dios","La oración efectiva"],correct:1,reference:"Juan 3:8",explanation:"Jesús dijo: 'El viento sopla de donde quiere, y oyes su sonido, mas ni sabes de dónde viene, ni a dónde va; así es todo aquel que es nacido del Espíritu.'"},
+  {id:2712,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el sábado?",options:["Que el sábado debe guardarse más estrictamente","El sábado fue hecho para el hombre y no el hombre para el sábado","Que el sábado ya no es necesario","Que solo los sacerdotes pueden guardar el sábado"],correct:1,reference:"Marcos 2:27",explanation:"Jesús dijo: 'El sábado fue hecho por causa del hombre, y no el hombre por causa del sábado.'"},
+  {id:2713,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre la sal que pierde su sabor?",options:["Que debe añadírsele más sal","Que ya no sirve para nada y se echa fuera","Que puede recuperar su sabor con oración","Que debe mezclarse con agua"],correct:1,reference:"Mateo 5:13",explanation:"Jesús dijo: 'Vosotros sois la sal de la tierra; pero si la sal se desvaneciere, ¿con qué será salada? No sirve más para nada, sino para ser echada fuera.'"},
+  {id:2714,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la justificación por la fe en Romanos 5?",options:["Que somos justificados por las obras","Justificados pues por la fe, tenemos paz para con Dios por nuestro Señor Jesucristo","Que la justificación viene del bautismo","Que solo los apóstoles son justificados plenamente"],correct:1,reference:"Romanos 5:1",explanation:"Pablo escribió: 'Justificados, pues, por la fe, tenemos paz para con Dios por medio de nuestro Señor Jesucristo.'"},
+  {id:2715,difficulty:"dificil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre quien quiere salvar su vida y quien la pierde?",options:["Que debemos cuidar la vida física sobre todo","El que quiera salvar su vida la perderá, y el que pierda su vida por Jesús la salvará","Que la vida eterna viene solo por el martirio","Que debemos protegernos a toda costa"],correct:1,reference:"Marcos 8:35",explanation:"Jesús dijo: 'Porque todo el que quiera salvar su vida, la perderá; y todo el que pierda su vida por causa de mí y del evangelio, la salvará.'"},
+  {id:2716,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el mayor en el reino de los cielos?",options:["Que es el más rico","El mayor es el que se humilla como un niño","Que es el más instruido en la ley","Que es el que hace más milagros"],correct:1,reference:"Mateo 18:4",explanation:"Jesús dijo: 'Así que, cualquiera que se humille como este niño, ese es el mayor en el reino de los cielos.'"},
+  {id:2717,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el significado de la fe en Hebreos 11:1?",options:["Que la fe es creer sin evidencia","Es la certeza de lo que se espera, la convicción de lo que no se ve","Que la fe es solo para los iniciados","Que la fe viene solo de leer la Biblia"],correct:1,reference:"Hebreos 11:1",explanation:"'Es, pues, la fe la certeza de lo que se espera, la convicción de lo que no se ve.'"},
+  {id:2718,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre los dones espirituales en 1 Corintios 12?",options:["Que todos deben tener los mismos dones","Que hay diversidad de dones pero el mismo Espíritu los da todos","Que los dones desaparecieron con los apóstoles","Que los dones se ganan con esfuerzo propio"],correct:1,reference:"1 Corintios 12:4",explanation:"Pablo escribió: 'Ahora bien, hay diversidad de dones, pero el Espíritu es el mismo; y hay diversidad de ministerios, pero el Señor es el mismo.'"},
+  {id:2719,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que debemos buscar primero?",options:["Nuestra prosperidad","El reino de Dios y su justicia","La paz con todos los hombres","La sabiduría"],correct:1,reference:"Mateo 6:33",explanation:"Jesús dijo: 'Mas buscad primeramente el reino de Dios y su justicia, y todas estas cosas os serán añadidas.'"},
+  {id:2720,difficulty:"facil",category:"ensenanzas",question:"¿Qué prometió Jesús a quienes se humillan como niños?",options:["Vida larga","El reino de los cielos","Riquezas","Sabiduría"],correct:1,reference:"Mateo 18:3-4",explanation:"Jesús dijo: 'Si no os volvéis y os hacéis como niños, no entraréis en el reino de los cielos.'"},
+  {id:2721,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Santiago sobre la fe sin obras?",options:["Que la fe sola es suficiente para salvarse","Que la fe sin obras es muerta","Que las obras son más importantes que la fe","Que la fe y las obras son independientes"],correct:1,reference:"Santiago 2:17",explanation:"Santiago escribió: 'Así también la fe, si no tiene obras, es muerta en sí misma.'"},
+  {id:2722,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pedro sobre el sufrimiento del creyente?",options:["Que es un castigo de Dios","Que debemos evitarlo a toda costa","Que si hacemos el bien y padecemos por ello, eso agrada a Dios","Que el creyente nunca sufrirá"],correct:2,reference:"1 Pedro 2:20",explanation:"Pedro escribió: 'Mas si haciendo lo bueno sufrís, y lo soportáis, esto ciertamente es aprobado delante de Dios.'"},
+  {id:2723,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre 'atar' y 'desatar' a Pedro?",options:["Que Pedro podía atar personas físicamente","Que lo que ates en la tierra será atado en el cielo","Que solo los obispos tienen esta autoridad","Que se refiere al perdón de pecados solamente"],correct:1,reference:"Mateo 16:19",explanation:"Jesús dijo: 'Y a ti te daré las llaves del reino de los cielos; y todo lo que atares en la tierra será atado en los cielos.'"},
+  {id:2724,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el matrimonio en 1 Corintios 7?",options:["Que todos deben casarse","Que es bueno para el hombre no tocar mujer, pero por causa de la fornicación cada uno tenga su esposa","Que el divorcio es permitido libremente","Que el matrimonio es superior al celibato siempre"],correct:1,reference:"1 Corintios 7:1-2",explanation:"Pablo escribió: 'Bueno le sería al hombre no tocar mujer; pero a causa de las fornicaciones, cada uno tenga su propia mujer.'"},
+  {id:2725,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Juan en su primera carta sobre el amor a Dios y al hermano?",options:["Que basta amar a Dios sin amar al hermano","Que el que no ama a su hermano al que ve, no puede amar a Dios al que no ve","Que el amor a Dios es más importante que el amor al prójimo","Que el amor al hermano reemplaza el amor a Dios"],correct:1,reference:"1 Juan 4:20",explanation:"Juan escribió: 'El que dice: Yo amo a Dios, y aborrece a su hermano, es mentiroso. Pues el que no ama a su hermano al que ha visto, ¿cómo puede amar a Dios al que no ha visto?'"},
+  {id:2726,difficulty:"facil",category:"versiculos",question:"¿Cómo comienza el Salmo 23?",options:["'El Señor es mi luz y mi salvación'","'Jehová es mi pastor; nada me faltará'","'Dios es nuestro amparo y fortaleza'","'El Señor es mi roca y mi libertador'"],correct:1,reference:"Salmos 23:1",explanation:"'Jehová es mi pastor; nada me faltará' es el comienzo del Salmo 23, el salmo más conocido de la Biblia."},
+  {id:2727,difficulty:"facil",category:"versiculos",question:"¿Qué dice Filipenses 4:13?",options:["'El amor todo lo sufre'","'Confía en el Señor con todo tu corazón'","'Todo lo puedo en Cristo que me fortalece'","'El Señor es mi luz y mi salvación'"],correct:2,reference:"Filipenses 4:13",explanation:"'Todo lo puedo en Cristo que me fortalece' es uno de los versículos más memorados del Nuevo Testamento."},
+  {id:2728,difficulty:"facil",category:"versiculos",question:"¿Qué dice Juan 14:6 que es Jesús?",options:["'Soy la luz del mundo'","'Soy el pan de vida'","'Soy la resurrección y la vida'","'Soy el camino, y la verdad, y la vida'"],correct:3,reference:"Juan 14:6",explanation:"Jesús dijo: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.'"},
+  {id:2729,difficulty:"facil",category:"versiculos",question:"¿Qué dice Romanos 8:28?",options:["'Sed llenos del Espíritu'","'A los que aman a Dios, todas las cosas les ayudan a bien'","'El amor de Cristo nos constriñe'","'Todo lo que es verdadero, en esto pensad'"],correct:1,reference:"Romanos 8:28",explanation:"'Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados.'"},
+  {id:2730,difficulty:"facil",category:"versiculos",question:"¿Dónde encontramos el versículo 'El Señor es mi luz y mi salvación; ¿a quién temeré?'",options:["Salmos 23:1","Salmos 27:1","Isaías 41:10","Josué 1:9"],correct:1,reference:"Salmos 27:1",explanation:"'Jehová es mi luz y mi salvación; ¿a quién temeré? Jehová es la fortaleza de mi vida; ¿de quién me he de atemorizar?'"},
+  {id:2731,difficulty:"facil",category:"versiculos",question:"¿Qué dice Jeremías 29:11?",options:["'Confía en Jehová con todo tu corazón'","'Yo sé los pensamientos que tengo acerca de vosotros... pensamientos de paz'","'Buscad a Jehová mientras puede ser hallado'","'El que en mí cree tiene vida eterna'"],correct:1,reference:"Jeremías 29:11",explanation:"'Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz y no de mal, para daros el fin que esperáis.'"},
+  {id:2732,difficulty:"facil",category:"versiculos",question:"¿Qué promesa contiene Isaías 40:31?",options:["Los que esperan en Jehová tendrán nuevas fuerzas; levantarán alas como las águilas","Los que creen en Dios nunca serán avergonzados","Dios es nuestro refugio y fortaleza","El que sigue a Jesús nunca andará en tinieblas"],correct:0,reference:"Isaías 40:31",explanation:"'Los que esperan a Jehová tendrán nuevas fuerzas; levantarán alas como las águilas; correrán y no se cansarán; caminarán y no se fatigarán.'"},
+  {id:2733,difficulty:"facil",category:"versiculos",question:"¿Qué dice 1 Juan 4:8 sobre Dios?",options:["Dios es poderoso","Dios es justo","Dios es amor","Dios es fuego consumidor"],correct:2,reference:"1 Juan 4:8",explanation:"'El que no ama, no ha conocido a Dios; porque Dios es amor.'"},
+  {id:2734,difficulty:"facil",category:"versiculos",question:"¿Qué dice Proverbios 3:5 que debemos hacer?",options:["Orar en todo tiempo","Confiar en Jehová con todo nuestro corazón y no apoyarnos en nuestra propia prudencia","Estudiar la Palabra día y noche","Amar a nuestro prójimo como a nosotros mismos"],correct:1,reference:"Proverbios 3:5",explanation:"'Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia.'"},
+  {id:2735,difficulty:"intermedio",category:"versiculos",question:"¿Dónde dice la Biblia: 'El salario del pecado es muerte'?",options:["Romanos 3:23","Romanos 6:23","Efesios 2:8","Gálatas 3:13"],correct:1,reference:"Romanos 6:23",explanation:"'Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro.'"},
+  {id:2736,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Efesios 2:8-9 sobre la salvación?",options:["Que viene por las obras de la ley","Que es por gracia mediante la fe, no por obras","Que requiere fe más bautismo","Que viene por la predestinación únicamente"],correct:1,reference:"Efesios 2:8-9",explanation:"'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios; no por obras, para que nadie se gloríe.'"},
+  {id:2737,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice 1 Pedro 5:7?",options:["Resistid al diablo y huirá de vosotros","Echad toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros","Estad siempre gozosos","Orad sin cesar"],correct:1,reference:"1 Pedro 5:7",explanation:"'Echando toda vuestra ansiedad sobre él, porque él tiene cuidado de vosotros.'"},
+  {id:2738,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice el versículo de Apocalipsis 3:20?",options:["'He aquí yo vengo pronto'","'He aquí, yo estoy a la puerta y llamo'","'Al que venciere, le daré corona de vida'","'Dios enjugará toda lágrima de los ojos de ellos'"],correct:1,reference:"Apocalipsis 3:20",explanation:"'He aquí, yo estoy a la puerta y llamo; si alguno oye mi voz y abre la puerta, entraré a él, y cenaré con él, y él conmigo.'"},
+  {id:2739,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Marcos 16:15 en la Gran Comisión?",options:["'Haced discípulos a todas las naciones'","'Id por todo el mundo y predicad el evangelio a toda criatura'","'Bautizadlos en el nombre del Padre, del Hijo y del Espíritu Santo'","'Yo estoy con vosotros todos los días'"],correct:1,reference:"Marcos 16:15",explanation:"Jesús dijo: 'Id por todo el mundo y predicad el evangelio a toda criatura.'"},
+  {id:2740,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Gálatas 2:20?",options:["'Porque por gracia sois salvos'","'Con Cristo estoy juntamente crucificado, y ya no vivo yo, mas vive Cristo en mí'","'El que en Cristo está, nueva criatura es'","'El justo por la fe vivirá'"],correct:1,reference:"Gálatas 2:20",explanation:"'Con Cristo estoy juntamente crucificado, y ya no vivo yo, mas vive Cristo en mí; y lo que ahora vivo en la carne, lo vivo en la fe del Hijo de Dios.'"},
+  {id:2741,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice 2 Crónicas 7:14 sobre el perdón de Dios?",options:["Que Dios perdona automáticamente","Si mi pueblo se humilla, ora, busca mi rostro y se convierte... yo sanaré su tierra","Que el arrepentimiento basta para el perdón","Que el perdón requiere sacrificio"],correct:1,reference:"2 Crónicas 7:14",explanation:"'Si se humillare mi pueblo, sobre el cual mi nombre es invocado, y oraren, y buscaren mi rostro, y se convirtieren de sus malos caminos; entonces yo oiré desde los cielos, y perdonaré sus pecados, y sanaré su tierra.'"},
+  {id:2742,difficulty:"intermedio",category:"versiculos",question:"¿Dónde dice: 'Sed llenos del Espíritu'?",options:["Romanos 8:9","Efesios 5:18","Gálatas 5:22","Hechos 2:38"],correct:1,reference:"Efesios 5:18",explanation:"'No os embriaguéis con vino, en lo cual hay disolución; antes bien sed llenos del Espíritu.'"},
+  {id:2743,difficulty:"dificil",category:"versiculos",question:"¿Qué versículo dice 'Todo lo que es verdadero... en esto pensad'?",options:["Romanos 12:2","Filipenses 4:8","Colosenses 3:2","1 Tesalonicenses 5:21"],correct:1,reference:"Filipenses 4:8",explanation:"'Todo lo que es verdadero, todo lo honesto, todo lo justo, todo lo puro, todo lo amable... en esto pensad.'"},
+  {id:2744,difficulty:"dificil",category:"versiculos",question:"¿Qué promete Salmos 91:11?",options:["Que nunca sufriremos calamidad","Que Dios mandará a sus ángeles para que nos guarden","Que el Señor es nuestro pastor","Que la salvación viene del Señor"],correct:1,reference:"Salmos 91:11",explanation:"'Pues a sus ángeles mandará acerca de ti, que te guarden en todos tus caminos.'"},
+  {id:2745,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Josué 1:9 que no debemos hacer?",options:["No pecar","No temer ni desmayar, porque Jehová estará con nosotros","No olvidar la ley","No desobedecer a los líderes"],correct:1,reference:"Josué 1:9",explanation:"'Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo en dondequiera que vayas.'"},
+  {id:2746,difficulty:"dificil",category:"versiculos",question:"¿Qué texto bíblico dice: 'Porque el Señor no mira lo que mira el hombre; pues el hombre mira lo que está delante de sus ojos, pero Jehová mira el corazón'?",options:["1 Samuel 16:7","Proverbios 21:2","Jeremías 17:10","Salmos 139:23"],correct:0,reference:"1 Samuel 16:7",explanation:"Cuando Samuel veía a los hijos de Isaí, Dios le dijo: 'No mires su aspecto... porque Jehová no mira lo que mira el hombre; pues el hombre mira lo que está delante de sus ojos, pero Jehová mira el corazón.'"},
+  {id:2747,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Isaías 41:10?",options:["'El que espera en Jehová tendrá nuevas fuerzas'","'No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios'","'Buscad a Jehová mientras puede ser hallado'","'Confía en Jehová y haz el bien'"],correct:1,reference:"Isaías 41:10",explanation:"'No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.'"},
+  {id:2748,difficulty:"dificil",category:"versiculos",question:"¿Dónde se encuentra: 'La paz de Dios que sobrepasa todo entendimiento'?",options:["Romanos 5:1","Filipenses 4:7","Juan 14:27","Colosenses 3:15"],correct:1,reference:"Filipenses 4:7",explanation:"'Y la paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones y vuestros pensamientos en Cristo Jesús.'"},
+  {id:2749,difficulty:"experto",category:"versiculos",question:"¿Qué dice Habacuc 2:4 sobre el justo?",options:["El justo vive por sus obras","El justo por su fe vivirá","El justo obedece la ley","El justo teme al Señor"],correct:1,reference:"Habacuc 2:4",explanation:"'Mas el justo por su fe vivirá.' Este versículo es citado por Pablo en Romanos 1:17, Gálatas 3:11 y Hebreos 10:38."},
+  {id:2750,difficulty:"experto",category:"versiculos",question:"¿Qué declara Deuteronomio 6:4, el Shemá?",options:["Amarás a tu prójimo como a ti mismo","Oye, Israel: Jehová nuestro Dios, Jehová uno es","No tendrás dioses ajenos delante de mí","Amarás a Jehová tu Dios con todo tu corazón"],correct:1,reference:"Deuteronomio 6:4",explanation:"'Oye, Israel: Jehová nuestro Dios, Jehová uno es.' Es la declaración central de fe del judaísmo."},
+  {id:2751,difficulty:"experto",category:"versiculos",question:"¿Qué dice Romanos 10:9-10 sobre la salvación?",options:["Que viene solo del bautismo","Que si confesares con tu boca que Jesús es el Señor y creyeres en tu corazón que Dios le resucitó, serás salvo","Que requiere guardar la ley perfectamente","Que Dios escoge a quienes salvar sin condición"],correct:1,reference:"Romanos 10:9",explanation:"'Que si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo.'"},
+  {id:2752,difficulty:"experto",category:"versiculos",question:"¿Qué dice Juan 10:10 sobre la misión de Jesús?",options:["'Vine para que tengan vida y la tengan en abundancia'","'Yo soy la puerta de las ovejas'","'Mis ovejas oyen mi voz'","'Yo soy el buen pastor que da su vida por las ovejas'"],correct:0,reference:"Juan 10:10",explanation:"Jesús dijo: 'El ladrón no viene sino para hurtar, matar y destruir; yo he venido para que tengan vida, y para que la tengan en abundancia.'"},
+  {id:2753,difficulty:"facil",category:"versiculos",question:"¿Qué dice Génesis 1:1?",options:["'En el principio era el Verbo'","'En el principio creó Dios los cielos y la tierra'","'El Señor formó al hombre del polvo de la tierra'","'Dios vio todo lo que había hecho, y era bueno en gran manera'"],correct:1,reference:"Génesis 1:1",explanation:"'En el principio creó Dios los cielos y la tierra.' Es el primer versículo de la Biblia."},
+  {id:2754,difficulty:"facil",category:"versiculos",question:"¿Cuál versículo dice: 'El Señor es mi pastor'?",options:["Salmos 91:1","Salmos 23:1","Salmos 27:1","Salmos 46:1"],correct:1,reference:"Salmos 23:1",explanation:"'Jehová es mi pastor; nada me faltará.' — Salmos 23:1"},
+  {id:2755,difficulty:"intermedio",category:"versiculos",question:"¿Dónde se encuentra la promesa: 'Pedid y se os dará'?",options:["Mateo 7:7","Lucas 11:9","Ambos (Mateo 7:7 y Lucas 11:9)","Juan 15:7"],correct:2,reference:"Mateo 7:7; Lucas 11:9",explanation:"La promesa 'Pedid y se os dará; buscad y hallaréis; llamad y se os abrirá' aparece tanto en Mateo 7:7 como en Lucas 11:9."},
+  {id:2756,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice 1 Juan 1:9 sobre el perdón?",options:["Que Dios perdona solo al arrepentido","Si confesamos nuestros pecados, él es fiel y justo para perdonar nuestros pecados y limpiarnos de toda maldad","Que el perdón requiere ayuno","Que debemos confesar ante un sacerdote"],correct:1,reference:"1 Juan 1:9",explanation:"'Si confesamos nuestros pecados, él es fiel y justo para perdonarnos nuestros pecados, y limpiarnos de toda maldad.'"},
+  {id:2757,difficulty:"dificil",category:"versiculos",question:"¿Cuál versículo dice: 'El corazón del hombre traza su rumbo, pero Jehová dirige sus pasos'?",options:["Proverbios 16:9","Proverbios 3:6","Salmos 37:23","Jeremías 10:23"],correct:0,reference:"Proverbios 16:9",explanation:"'El corazón del hombre piensa su camino; mas Jehová endereza sus pasos.'"},
+  {id:2758,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Salmos 119:105 sobre la Palabra de Dios?",options:["La Palabra de Dios permanece para siempre","Es lámpara a mis pies y lumbrera a mi camino","La Palabra purifica al que la lee","La Palabra de Dios es más dulce que la miel"],correct:1,reference:"Salmos 119:105",explanation:"'Lámpara es a mis pies tu palabra, y lumbrera a mi camino.'"},
+  {id:2759,difficulty:"experto",category:"versiculos",question:"¿Qué dice Isaías 53:5 sobre Jesús?",options:["Que Jesús vino como rey conquistador","Él fue herido por nuestras rebeliones, molido por nuestros pecados... y por su llaga fuimos nosotros curados","Que Jesús sufrió por los pecados de Israel únicamente","Que la curación viene de Dios sin necesidad de sufrimiento"],correct:1,reference:"Isaías 53:5",explanation:"'Mas él herido fue por nuestras rebeliones, molido por nuestros pecados; el castigo de nuestra paz fue sobre él, y por su llaga fuimos nosotros curados.'"},
+  {id:2760,difficulty:"experto",category:"versiculos",question:"¿Qué dice Juan 1:1?",options:["'En el principio creó Dios los cielos y la tierra'","'En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios'","'Dios envió a su Hijo unigénito al mundo'","'Todo fue hecho por medio de la Palabra'"],correct:1,reference:"Juan 1:1",explanation:"'En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios.'"},
+  {id:2761,difficulty:"facil",category:"lugares",question:"¿En qué ciudad nació Jesús según los Evangelios?",options:["Nazaret","Capernaúm","Belén","Hebrón"],correct:2,reference:"Lucas 2:11",explanation:"'Os ha nacido hoy, en la ciudad de David, un Salvador, que es Cristo el Señor.' La ciudad de David es Belén."},
+  {id:2762,difficulty:"facil",category:"lugares",question:"¿En qué ciudad creció Jesús?",options:["Belén","Nazaret","Jericó","Capernaúm"],correct:1,reference:"Lucas 2:51",explanation:"Jesús creció en Nazaret de Galilea, y por eso fue llamado 'el Nazareno' o 'el de Nazaret'."},
+  {id:2763,difficulty:"facil",category:"lugares",question:"¿En qué mar fue crucificado Jesús?",options:["Roma","Jericó","Jerusalén","Betania"],correct:2,reference:"Lucas 23:33",explanation:"Jesús fue crucificado en Jerusalén, en el lugar llamado la Calavera (Gólgota)."},
+  {id:2764,difficulty:"facil",category:"lugares",question:"¿Cuál es el río en el que fue bautizado Jesús?",options:["El Eufrates","El Nilo","El Jordán","El Tigris"],correct:2,reference:"Mateo 3:13",explanation:"Jesús vino desde Galilea al Jordán para ser bautizado por Juan."},
+  {id:2765,difficulty:"facil",category:"lugares",question:"¿En qué mar se abrió el camino para los israelitas al salir de Egipto?",options:["Mar Mediterráneo","Mar Rojo","Mar Muerto","Mar de Galilea"],correct:1,reference:"Éxodo 14:21",explanation:"Dios abrió el Mar Rojo (o mar de las Cañas) para que los israelitas cruzaran en seco."},
+  {id:2766,difficulty:"facil",category:"lugares",question:"¿En qué lugar Dios habló a Moisés desde la zarza ardiente?",options:["El Monte Sinaí","El Monte Carmelo","El Monte Horeb","El desierto de Sin"],correct:2,reference:"Éxodo 3:1-2",explanation:"Moisés estaba apacentando en el monte de Dios llamado Horeb cuando el ángel de Jehová se le apareció en la zarza ardiente."},
+  {id:2767,difficulty:"facil",category:"lugares",question:"¿En qué monte recibió Moisés los Diez Mandamientos?",options:["Monte Carmelo","Monte Sinaí","Monte Tabor","Monte Hermón"],correct:1,reference:"Éxodo 19:20",explanation:"Jehová descendió sobre el Monte Sinaí y llamó a Moisés para entregarle la ley."},
+  {id:2768,difficulty:"facil",category:"lugares",question:"¿En qué ciudad fue construido el primer templo de Israel?",options:["Hebrón","Siquem","Beerseba","Jerusalén"],correct:3,reference:"1 Reyes 6:1",explanation:"Salomón edificó el templo en Jerusalén en el año cuatrocientos ochenta de la salida de los israelitas de Egipto."},
+  {id:2769,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar Jesús realizó su primer milagro?",options:["Capernaúm","Jerusalén","Caná de Galilea","Betania"],correct:2,reference:"Juan 2:1",explanation:"En Caná de Galilea, Jesús convirtió el agua en vino durante una boda, siendo su primer milagro."},
+  {id:2770,difficulty:"intermedio",category:"lugares",question:"¿Qué significa el nombre 'Belén' en hebreo?",options:["Casa de la paz","Casa del pan","Ciudad del rey","Lugar de adoración"],correct:1,reference:"Génesis 35:19",explanation:"'Belén' (Beit Lechem) significa 'Casa del pan' en hebreo, lo cual es significativo dado que Jesús se identificó como el Pan de vida."},
+  {id:2771,difficulty:"intermedio",category:"lugares",question:"¿Cuál fue la primera ciudad que conquistó Israel en Canaán?",options:["Hai","Jericó","Hebrón","Siquem"],correct:1,reference:"Josué 6:20",explanation:"Jericó fue la primera ciudad conquistada en Canaán, cuando sus muros cayeron al sonido de las trompetas."},
+  {id:2772,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad se encontraba el palacio de Herodes donde fue juzgado Jesús?",options:["Jericó","Capernaúm","Jerusalén","Cesarea"],correct:2,reference:"Lucas 23:7",explanation:"Pilato, al saber que Jesús era galileo, lo envió a Herodes Antipas que estaba en Jerusalén durante la Pascua."},
+  {id:2773,difficulty:"intermedio",category:"lugares",question:"¿Dónde se encontraba el sepulcro donde fue enterrado Jesús?",options:["En el Monte de los Olivos","Fuera de las murallas de Jerusalén","En el huerto de Getsemaní","En el Monte Calvario de Galilea"],correct:1,reference:"Juan 19:41",explanation:"En el lugar donde fue crucificado había un huerto con un sepulcro nuevo, fuera de las murallas de Jerusalén."},
+  {id:2774,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar Jesús oró antes de su arresto?",options:["El Monte Sinaí","El templo de Jerusalén","El Huerto de Getsemaní","El Monte Tabor"],correct:2,reference:"Mateo 26:36",explanation:"Jesús fue con sus discípulos al lugar llamado Getsemaní y oró al Padre antes de ser arrestado."},
+  {id:2775,difficulty:"intermedio",category:"lugares",question:"¿Cuál era el nombre romano de la región donde vivió Jesús?",options:["Judea","Palestina","Samaria","Galilea"],correct:1,reference:"Mateo 2:22",explanation:"La región era conocida por los romanos como Palestina (del nombre filisteo); estaba dividida en Galilea, Samaria y Judea."},
+  {id:2776,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad vivió Abraham antes de emigrar a Canaán?",options:["Nínive","Babilonia","Ur de los Caldeos","Damasco"],correct:2,reference:"Génesis 11:31",explanation:"Taré tomó a su hijo Abram (Abraham) y salieron de Ur de los Caldeos para ir a la tierra de Canaán."},
+  {id:2777,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad del Antiguo Testamento habitó el profeta Jonás antes de su llamado?",options:["No se menciona su ciudad de origen","Gat-hefer en Galilea","Tecoa en Judá","Anatot en Benjamín"],correct:1,reference:"2 Reyes 14:25",explanation:"Jonás era hijo de Amitai, de Gat-hefer, una ciudad de Galilea en el territorio de Zabulón."},
+  {id:2778,difficulty:"dificil",category:"lugares",question:"¿Cuál era la capital del reino del norte de Israel?",options:["Jerusalén","Jericó","Samaria","Siquem"],correct:2,reference:"1 Reyes 16:24",explanation:"Omri compró el monte de Samaria y edificó en él una ciudad a la que llamó Samaria, que se convirtió en capital del reino del norte."},
+  {id:2779,difficulty:"dificil",category:"lugares",question:"¿En qué lugar específico fue transfigurado Jesús?",options:["Monte Sinaí","Monte Hermón","Un monte alto aparte (tradición: Monte Tabor)","Monte de los Olivos"],correct:2,reference:"Mateo 17:1",explanation:"Jesús llevó a Pedro, Jacobo y Juan a un monte alto aparte y se transfiguró delante de ellos. La tradición identifica este lugar como el Monte Tabor."},
+  {id:2780,difficulty:"dificil",category:"lugares",question:"¿Cuál fue la primera ciudad a donde Pablo y Bernabé llegaron en su primer viaje misionero?",options:["Antioquía de Pisidia","Chipre (Salamina)","Iconio","Listra"],correct:1,reference:"Hechos 13:4-5",explanation:"El primer destino del viaje misionero fue la isla de Chipre; comenzaron predicando en Salamina."},
+  {id:2781,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad fue fundada la primera iglesia de Europa según Hechos?",options:["Atenas","Corinto","Filipos","Tesalónica"],correct:2,reference:"Hechos 16:12-15",explanation:"Filipos fue la primera ciudad de Macedonia (Europa) donde Pablo predicó; allí se convirtió Lidia y su casa."},
+  {id:2782,difficulty:"dificil",category:"lugares",question:"¿En qué montaña huyó Elías de la reina Jezabel?",options:["Monte Sinaí (Horeb)","Monte Carmelo","Monte Tabor","Monte Hermón"],correct:0,reference:"1 Reyes 19:8",explanation:"Elías huyó al Monte Horeb (Sinaí), el monte de Dios, donde tuvo su encuentro con Jehová en la voz quieta y delicada."},
+  {id:2783,difficulty:"dificil",category:"lugares",question:"¿En qué lugar fue Pedro liberado milagrosamente de la prisión por un ángel?",options:["Roma","Cesarea","Jerusalén","Antioquía"],correct:2,reference:"Hechos 12:6-10",explanation:"Pedro fue encarcelado en Jerusalén por el rey Herodes; un ángel lo liberó milagrosamente durante la noche."},
+  {id:2784,difficulty:"experto",category:"lugares",question:"¿Cuál era el nombre del mar donde navegó Pablo cuando naufragó?",options:["Mar Mediterráneo (cerca de Malta)","Mar Rojo","Mar Adriático","Mar Negro"],correct:0,reference:"Hechos 27:41",explanation:"El barco de Pablo naufragó en aguas del Mediterráneo, cerca de la isla de Malta (Melita), donde los náufragos encontraron hospitalidad."},
+  {id:2785,difficulty:"experto",category:"lugares",question:"¿Cuál fue el primer lugar donde Dios le dijo a Abraham que detuviera su viaje?",options:["Hebrón","Siquem (junto al encino de Moré)","Beerseba","Mamré"],correct:1,reference:"Génesis 12:6",explanation:"Abram pasó por la tierra hasta el lugar de Siquem, junto al encino de Moré; allí Jehová se le apareció por primera vez en Canaán."},
+  {id:2786,difficulty:"experto",category:"lugares",question:"¿Cuál era el nombre del lugar donde Jacob luchó con el ángel?",options:["Peniel","Betel","Mahanaim","Siquem"],correct:0,reference:"Génesis 32:30",explanation:"Jacob llamó Peniel (que significa 'el rostro de Dios') al lugar donde luchó con el ángel, diciendo: 'Vi a Dios cara a cara y fue librada mi alma.'"},
+  {id:2787,difficulty:"experto",category:"lugares",question:"¿En qué ciudad fue apedreado Esteban, el primer mártir cristiano?",options:["Antioquía","Roma","Cesarea","Jerusalén"],correct:3,reference:"Hechos 7:58",explanation:"Esteban fue arrastrado fuera de Jerusalén y apedreado allí, convirtiéndose en el primer mártir del cristianismo."},
+  {id:2788,difficulty:"facil",category:"lugares",question:"¿En qué lugar recibió Juan las visiones del Apocalipsis?",options:["Roma","Efeso","La isla de Patmos","Jerusalén"],correct:2,reference:"Apocalipsis 1:9",explanation:"Juan estaba en la isla llamada Patmos cuando recibió las visiones del Apocalipsis."},
+  {id:2789,difficulty:"facil",category:"lugares",question:"¿En qué ciudad fue encarcelado Pablo y desde donde escribió varias cartas?",options:["Atenas","Roma","Corinto","Filipos"],correct:1,reference:"Filipenses 1:13",explanation:"Pablo escribió varias epístolas (Filipenses, Efesios, Colosenses, Filemón) durante su prisión en Roma."},
+  {id:2790,difficulty:"intermedio",category:"lugares",question:"¿Cuál es el mar de agua salada más bajo del mundo, mencionado en la Biblia?",options:["Mar Mediterráneo","Mar Rojo","Mar Muerto","Mar de Galilea"],correct:2,reference:"Génesis 14:3",explanation:"El Mar Muerto (llamado 'mar Salado' en la Biblia) es el punto más bajo de la Tierra y está en la frontera entre Israel y Jordania."},
+  {id:2791,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad predicó Pablo en el Areópago sobre 'el Dios no conocido'?",options:["Corinto","Filipos","Atenas","Efeso"],correct:2,reference:"Hechos 17:22-23",explanation:"En Atenas, en el Areópago (Colina de Ares), Pablo predicó sobre el Dios desconocido al que los griegos adoraban sin conocerlo."},
+  {id:2792,difficulty:"dificil",category:"lugares",question:"¿Cuál era la capital del Imperio Romano a donde Pablo apeló como ciudadano romano?",options:["Atenas","Alejandría","Roma","Efeso"],correct:2,reference:"Hechos 25:11",explanation:"Pablo apeló al César como ciudadano romano, lo que significó que fue enviado a Roma para ser juzgado."},
+  {id:2793,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad de Asia Menor se encontraba el famoso templo de Artemisa, mencionada en Hechos 19?",options:["Pérgamo","Esmirna","Efeso","Colosas"],correct:2,reference:"Hechos 19:27-28",explanation:"El templo de Artemisa (Diana) en Éfeso era uno de los siete maravillas del mundo antiguo, y su culto causó el tumulto contra Pablo."},
+  {id:2794,difficulty:"experto",category:"lugares",question:"¿En qué ciudad de Siria se convirtió Pablo y fue llamado por primera vez 'cristiano' el grupo de creyentes?",options:["Damasco","Antioquía de Siria","Tarso","Seleucia"],correct:1,reference:"Hechos 11:26",explanation:"En Antioquía de Siria los discípulos fueron llamados 'cristianos' por primera vez, y fue la base de los viajes misioneros de Pablo."},
+  {id:2795,difficulty:"experto",category:"lugares",question:"¿Cuál era la ciudad natal de Pablo el apóstol?",options:["Jerusalén","Corinto","Tarso de Cilicia","Antioquía"],correct:2,reference:"Hechos 21:39",explanation:"Pablo dijo: 'Yo de cierto soy hombre judío de Tarso, ciudadano de una ciudad no insignificante de Cilicia.'"},
+  {id:2796,difficulty:"facil",category:"lugares",question:"¿Cuál es el Monte en que Jesús pronunció el Sermón del Monte?",options:["Monte Tabor","Monte Hermón","Un monte en Galilea (sin nombre específico)","Monte de los Olivos"],correct:2,reference:"Mateo 5:1",explanation:"Mateo dice simplemente que Jesús subió al monte y se sentó; la tradición lo identifica como una colina cerca del Mar de Galilea."},
+  {id:2797,difficulty:"intermedio",category:"lugares",question:"¿Dónde se celebró la Última Cena?",options:["El patio del templo","El aposento alto de Jerusalén","La sinagoga de Capernaúm","La casa de Pedro"],correct:1,reference:"Lucas 22:12",explanation:"Jesús celebró la Última Cena en un aposento alto (sala grande) en Jerusalén, preparada por sus discípulos."},
+  {id:2798,difficulty:"dificil",category:"lugares",question:"¿Qué ciudad bíblica fue completamente destruida junto con Sodoma?",options:["Tiro","Gomorra","Jericó","Nínive"],correct:1,reference:"Génesis 19:24-25",explanation:"Jehová hizo llover azufre y fuego sobre Sodoma y Gomorra; destruyó esas ciudades y toda la llanura."},
+  {id:2799,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad hizo Pablo milagros y fue tomado por un dios?",options:["Listra","Iconio","Derbe","Antioquía"],correct:0,reference:"Hechos 14:11-12",explanation:"En Listra, después de sanar a un cojo, la gente creyó que los dioses habían bajado a ellos: llamaron a Bernabé Zeus y a Pablo Hermes."},
+  {id:2800,difficulty:"experto",category:"lugares",question:"¿En qué lugar específico fue sellado el pacto con Abraham mediante el fuego entre los animales divididos?",options:["Siquem","Beerseba","En el campo de Abraham, sin nombre específico","Hebrón"],correct:2,reference:"Génesis 15:17",explanation:"El ritual del pacto con Abraham (los animales divididos y el fuego que pasó entre ellos) ocurrió sin un nombre de lugar específico, durante la noche cuando Dios habló a Abraham."},
+  {id:2801,difficulty:"facil",category:"parabolas",question:"¿Qué hizo el padre al ver venir de lejos a su hijo pródigo?",options:["Esperó que llegara a la puerta","Corrió a su encuentro y lo abrazó","Lo recibió fríamente","Le dijo que regresara"],correct:1,reference:"Lucas 15:20",explanation:"Cuando todavía estaba lejos, el padre lo vio y tuvo compasión; corrió y se echó sobre su cuello y lo besó."},
+  {id:2802,difficulty:"facil",category:"parabolas",question:"En la parábola del sembrador, ¿qué representa la semilla que cae junto al camino?",options:["Los que nunca oyen la Palabra","Los que oyen pero el diablo arrebata lo sembrado","Los que tienen fe pero caen","Los que producen fruto tardío"],correct:1,reference:"Mateo 13:19",explanation:"La semilla junto al camino representa al que oye la Palabra del reino pero no la entiende; viene el maligno y arrebata lo sembrado en su corazón."},
+  {id:2803,difficulty:"facil",category:"parabolas",question:"En la parábola de las ovejas y las cabras, ¿quién separará a unos de otros?",options:["Los ángeles","El Hijo del Hombre como rey","Los apóstoles","Los profetas"],correct:1,reference:"Mateo 25:32",explanation:"El Hijo del Hombre, sentado en su trono de gloria, separará a los unos de los otros, como el pastor separa las ovejas de las cabras."},
+  {id:2804,difficulty:"intermedio",category:"parabolas",question:"¿A qué derecha e izquierda puso el rey a ovejas y cabras?",options:["Ovejas a la izquierda, cabras a la derecha","Ovejas a la derecha, cabras a la izquierda","Ambos lados son buenos","Las ovejas en el centro"],correct:1,reference:"Mateo 25:33",explanation:"El rey pondrá las ovejas a su derecha y las cabras a su izquierda. La derecha es el lugar de honor."},
+  {id:2805,difficulty:"intermedio",category:"parabolas",question:"En la parábola de la red, ¿qué hacen los ángeles con los peces malos?",options:["Los devuelven al mar","Los desechan fuera del recipiente","Los echan al horno de fuego","Los separan para examinarlos"],correct:2,reference:"Mateo 13:50",explanation:"Al fin del siglo, los ángeles echarán a los malos en el horno de fuego, donde habrá lloro y crujir de dientes."},
+  {id:2806,difficulty:"intermedio",category:"parabolas",question:"¿Cuál parábola ilustra la alegría del cielo por un pecador que se arrepiente?",options:["Solo la de la oveja perdida","Solo la del hijo pródigo","Las tres parábolas de Lucas 15","Solo la de la moneda perdida"],correct:2,reference:"Lucas 15:7,10,32",explanation:"Las tres parábolas de Lucas 15 (oveja, moneda e hijo pródigo) terminan con celebración y alegría, representando el gozo del cielo por el arrepentido."},
+  {id:2807,difficulty:"dificil",category:"parabolas",question:"¿Qué significa que el dueño de la viña dé lo mismo a todos los obreros?",options:["Que el trabajo duro no vale nada","Que la gracia de Dios no depende del tiempo que llevamos sirviendo","Que todos los pecadores son iguales","Que el dinero debe distribuirse igualmente"],correct:1,reference:"Mateo 20:14-15",explanation:"El dueño pregunta: '¿No me es lícito hacer lo que quiero con lo mío? ¿O tienes tú envidia porque yo soy bueno?' La gracia divina no es proporcional al mérito humano."},
+  {id:2808,difficulty:"dificil",category:"parabolas",question:"En la parábola del mayordomo injusto, ¿qué debía hacer el mayordomo que fue despedido?",options:["Buscar otro trabajo inmediatamente","Usar su posición restante para hacerse amigos que lo recibieran después","Devolver todo el dinero","Huir a otra ciudad"],correct:1,reference:"Lucas 16:4",explanation:"El mayordomo astuto dijo: 'Ya sé lo que haré... para que cuando me despidan, me reciban en sus casas.' Redujo las deudas para ganarse amigos."},
+  {id:2809,difficulty:"experto",category:"parabolas",question:"¿Cuál fue la respuesta de Jesús cuando Pedro preguntó si debía perdonar hasta siete veces, que llevó a contar la parábola del deudor?",options:["'No siete, sino setenta veces siete'","'Sí, siete veces basta'","'Depende de la gravedad de la ofensa'","'Tres veces es suficiente'"],correct:0,reference:"Mateo 18:22",explanation:"Jesús respondió: 'No te digo hasta siete, sino aun hasta setenta veces siete.' Luego contó la parábola del deudor inmisericorde para ilustrar la importancia del perdón."},
+  {id:2810,difficulty:"experto",category:"parabolas",question:"¿Cuánto tiempo faltaba para la boda cuando llegó el novio en la parábola de las vírgenes?",options:["Al amanecer","A medianoche","Al atardecer","Al mediodía"],correct:1,reference:"Mateo 25:6",explanation:"A la medianoche se oyó el clamor: '¡Aquí viene el esposo! ¡Salid a recibirle!'"},
+  {id:2811,difficulty:"facil",category:"ensenanzas",question:"¿Qué significa la frase 'nacer de nuevo' que enseñó Jesús?",options:["Regresar a la infancia","Tener un nuevo nacimiento espiritual por el Espíritu","Cambiar de religión","Ir a vivir a un nuevo lugar"],correct:1,reference:"Juan 3:3",explanation:"Jesús dijo a Nicodemo: 'El que no naciere de nuevo, no puede ver el reino de Dios.' Se refiere a un nuevo nacimiento espiritual."},
+  {id:2812,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que debemos hacer con nuestros enemigos, además de amarlos?",options:["Ignorarlos","Orar por los que nos persiguen","Evitar todo contacto con ellos","Confrontarlos con la verdad"],correct:1,reference:"Mateo 5:44",explanation:"Jesús dijo: 'Orad por los que os ultrajan y os persiguen.'"},
+  {id:2813,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre las aves del cielo en el Sermón del Monte?",options:["Que debemos cazar aves para comer","Que ni siembran ni siegan, pero el Padre las alimenta","Que son símbolo del Espíritu Santo","Que vuelan sin rumbo como los incrédulos"],correct:1,reference:"Mateo 6:26",explanation:"Jesús dijo: 'Mirad las aves del cielo, que no siembran, ni siegan, ni recogen en graneros; y vuestro Padre celestial las alimenta. ¿No valéis vosotros mucho más que ellas?'"},
+  {id:2814,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre los lirios del campo?",options:["Que debemos plantarlos en el templo","Que no trabajan ni hilan pero son más gloriosos que Salomón","Que representan el reino de los cielos","Que son símbolo de la resurrección"],correct:1,reference:"Mateo 6:28-29",explanation:"Jesús dijo: 'Considerad los lirios del campo... os digo que ni aun Salomón con toda su gloria se vistió así como uno de ellos.'"},
+  {id:2815,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la oración en 1 Tesalonicenses 5:17?",options:["Que debemos orar en la mañana y en la noche","Que debemos orar sin cesar","Que la oración en lenguas es la más efectiva","Que debemos orar en grupo siempre"],correct:1,reference:"1 Tesalonicenses 5:17",explanation:"Pablo escribió: 'Orad sin cesar.' Es una de las instrucciones más breves y profundas de toda la Biblia."},
+  {id:2816,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre estar contentos en toda circunstancia?",options:["Que la contentación viene automáticamente con la fe","He aprendido a contentarme cualquiera que sea mi situación","Que la pobreza es la mejor maestra","Que el contentamiento solo viene con la riqueza"],correct:1,reference:"Filipenses 4:11",explanation:"Pablo escribió: 'He aprendido a contentarme, cualquiera que sea mi situación. Sé vivir humildemente y sé tener abundancia.'"},
+  {id:2817,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el pensamiento cristiano en Filipenses 4:8?",options:["Que debemos evitar pensar en las cosas del mundo","En todo lo verdadero, honesto, justo, puro y amable, en esto pensad","Que el pensamiento negativo siempre viene del diablo","Que debemos memorizar toda la Biblia"],correct:1,reference:"Filipenses 4:8",explanation:"Pablo instruyó: 'Todo lo que es verdadero, todo lo honesto, todo lo justo, todo lo puro, todo lo amable... en esto pensad.'"},
+  {id:2818,difficulty:"dificil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre el que ama a su padre o madre más que a Él?",options:["Que eso está bien, la familia primero","Que no es digno de Jesús","Que debe honrar a la familia y también a Jesús","Que debe alejarse de la familia"],correct:1,reference:"Mateo 10:37",explanation:"Jesús dijo: 'El que ama a padre o madre más que a mí, no es digno de mí; el que ama a hijo o hija más que a mí, no es digno de mí.'"},
+  {id:2819,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la ira en Efesios 4:26?",options:["Que la ira siempre es pecado","Airarse pero no pecar; que el sol no se ponga sobre vuestra ira","Que debemos suprimir toda ira","Que la ira controlada es una virtud"],correct:1,reference:"Efesios 4:26",explanation:"Pablo escribió: 'Airaos, pero no pequéis; no se ponga el sol sobre vuestro enojo.'"},
+  {id:2820,difficulty:"dificil",category:"ensenanzas",question:"¿Qué instruyó Pablo sobre dar con generosidad?",options:["Que debemos dar el diezmo exactamente","Cada uno dé como propuso en su corazón, no con tristeza ni por necesidad, porque Dios ama al dador alegre","Que dar es obligatorio para los ricos","Que debemos dar en secreto siempre"],correct:1,reference:"2 Corintios 9:7",explanation:"Pablo escribió: 'Cada uno dé como propuso en su corazón: no con tristeza, ni por necesidad, porque Dios ama al dador alegre.'"},
+  {id:2821,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el siervo y el amo respecto al discipulado?",options:["Que el siervo es más importante que el amo","El discípulo no es más que su maestro, ni el siervo más que su señor","Que todos son iguales ante Dios","Que el que sirve tendrá más recompensas"],correct:1,reference:"Mateo 10:24",explanation:"Jesús dijo: 'El discípulo no es más que su maestro, ni el siervo más que su señor.' Debemos esperar trato similar al que recibió Jesús."},
+  {id:2822,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la circuncisión en Gálatas?",options:["Que es necesaria para la salvación","Que ya no importa pues lo que vale es la fe que obra por el amor","Que es una práctica que los gentiles deben adoptar","Que fue abolida por Jesús en la Cruz"],correct:1,reference:"Gálatas 5:6",explanation:"Pablo escribió: 'En Cristo Jesús ni la circuncisión vale algo, ni la incircuncisión, sino la fe que obra por el amor.'"},
+  {id:2823,difficulty:"facil",category:"ensenanzas",question:"¿Qué prometió Jesús a quienes le siguen?",options:["Riquezas en esta vida","Vida eterna","Un lugar preparado en la casa del Padre","Todo lo anterior más paz en este mundo"],correct:1,reference:"Juan 14:2-3",explanation:"Jesús prometió: 'En la casa de mi Padre muchas moradas hay... voy, pues, a preparar lugar para vosotros.'"},
+  {id:2824,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre la oración en privado?",options:["Que debemos orar solo en la sinagoga","Cuando ores entra a tu cuarto y ora al Padre en secreto","Que la oración pública es más efectiva","Que debemos orar tres veces al día mirando a Jerusalén"],correct:1,reference:"Mateo 6:6",explanation:"Jesús instruyó: 'Cuando ores, entra en tu cuarto, y cuando hayas cerrado la puerta, ora a tu Padre que está en secreto; y tu Padre que ve en lo secreto te recompensará.'"},
+  {id:2825,difficulty:"dificil",category:"ensenanzas",question:"¿Qué dijo Jesús que buscarían los que le siguen?",options:["Prosperidad y salud","Si alguno quiere venir en pos de mí, niéguese a sí mismo, tome su cruz y sígame","Señales y milagros","Conocimiento y sabiduría"],correct:1,reference:"Mateo 16:24",explanation:"Jesús dijo: 'Si alguno quiere venir en pos de mí, niéguese a sí mismo, tome su cruz y sígame.'"},
+  {id:2826,difficulty:"facil",category:"versiculos",question:"¿Qué dice Mateo 28:20 sobre la presencia de Jesús?",options:["'Enseñadlos a guardar todo lo que os he mandado'","'He aquí yo estoy con vosotros todos los días, hasta el fin del mundo'","'Id y haced discípulos a todas las naciones'","'Recibiréis poder cuando haya venido sobre vosotros el Espíritu'"],correct:1,reference:"Mateo 28:20",explanation:"Jesús prometió: 'He aquí yo estoy con vosotros todos los días, hasta el fin del mundo.'"},
+  {id:2827,difficulty:"facil",category:"versiculos",question:"¿Qué dice Hechos 1:8 sobre el Espíritu Santo?",options:["Que purifica el corazón","Recibiréis poder cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos","Que nos enseñará toda verdad","Que intercede por nosotros con gemidos indecibles"],correct:1,reference:"Hechos 1:8",explanation:"Jesús dijo: 'Recibiréis poder cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos en Jerusalén, en Judea, en Samaria, y hasta lo último de la tierra.'"},
+  {id:2828,difficulty:"facil",category:"versiculos",question:"¿Qué dice Romanos 3:23?",options:["'El justo por la fe vivirá'","'Por cuanto todos pecaron y están destituidos de la gloria de Dios'","'La paga del pecado es muerte'","'No hay condenación para los que están en Cristo'"],correct:1,reference:"Romanos 3:23",explanation:"'Por cuanto todos pecaron, y están destituidos de la gloria de Dios.' Este versículo establece la universalidad del pecado humano."},
+  {id:2829,difficulty:"facil",category:"versiculos",question:"¿Qué dice Colosenses 3:23 sobre el trabajo?",options:["Trabajad lo necesario para vivir","Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres","Que los siervos obedezcan a sus amos","Que el trabajo es una maldición del pecado"],correct:1,reference:"Colosenses 3:23",explanation:"'Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres.'"},
+  {id:2830,difficulty:"facil",category:"versiculos",question:"¿Qué dice Santiago 1:5 sobre la sabiduría?",options:["La sabiduría viene del estudio","Si alguno de vosotros tiene falta de sabiduría, pídala a Dios y le será dada","Que la sabiduría es el comienzo del temor de Jehová","Que debemos buscar sabios consejeros"],correct:1,reference:"Santiago 1:5",explanation:"'Y si alguno de vosotros tiene falta de sabiduría, pídala a Dios, el cual da a todos abundantemente y sin reproche, y le será dada.'"},
+  {id:2831,difficulty:"intermedio",category:"versiculos",question:"¿Dónde dice la Biblia: 'El temor de Jehová es el principio de la sabiduría'?",options:["Proverbios 1:7","Salmos 111:10","Ambos versículos lo dicen","Job 28:28"],correct:2,reference:"Proverbios 1:7; Salmos 111:10",explanation:"Tanto Proverbios 1:7 como Salmos 111:10 declaran: 'El temor de Jehová es el principio de la sabiduría.'"},
+  {id:2832,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice 2 Timoteo 3:16-17 sobre la Escritura?",options:["Que solo el Nuevo Testamento es inspirado","Toda la Escritura es inspirada por Dios y útil para enseñar, reprender, corregir e instruir","Que la Escritura es difícil de entender","Que solo los sacerdotes pueden interpretar la Escritura"],correct:1,reference:"2 Timoteo 3:16",explanation:"'Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia.'"},
+  {id:2833,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Hebreos 13:8 sobre Jesucristo?",options:["Jesús vendrá pronto","Jesucristo es el mismo ayer, y hoy, y por los siglos","Jesús intercede por nosotros","Jesús es la cabeza de la iglesia"],correct:1,reference:"Hebreos 13:8",explanation:"'Jesucristo es el mismo ayer, y hoy, y por los siglos.' Declara la inmutabilidad e intemporalidad de Cristo."},
+  {id:2834,difficulty:"intermedio",category:"versiculos",question:"¿Qué promete Mateo 11:28 a los cansados?",options:["Que Dios los sanarà","Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar","Que recibirán fuerza sobrenatural","Que el Espíritu les dará paz"],correct:1,reference:"Mateo 11:28",explanation:"Jesús dijo: 'Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar.'"},
+  {id:2835,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Romanos 1:16 sobre el evangelio?",options:["Que es solo para los judíos","No me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree","Que es una historia de vida","Que requiere obras además de fe"],correct:1,reference:"Romanos 1:16",explanation:"Pablo escribió: 'No me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego.'"},
+  {id:2836,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Miqueas 6:8 que Dios requiere?",options:["Muchos sacrificios","Solo hacer justicia, amar misericordia y caminar humildemente con tu Dios","Guardar todos los rituales","Construir un templo magnífico"],correct:1,reference:"Miqueas 6:8",explanation:"'Oh hombre, él te ha declarado lo que es bueno, y qué pide Jehová de ti: solamente hacer justicia, y amar misericordia, y humillarte ante tu Dios.'"},
+  {id:2837,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Salmos 46:10?",options:["'El Señor es mi pastor'","'Estad quietos y conoced que yo soy Dios'","'Buscad a Dios y viviréis'","'El Señor es fortaleza de mi vida'"],correct:1,reference:"Salmos 46:10",explanation:"'Estad quietos y conoced que yo soy Dios; seré exaltado entre las naciones.'"},
+  {id:2838,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Proverbios 22:6 sobre la educación de los hijos?",options:["Que los hijos aprenden solos","Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él","Que el padre debe educar con severidad","Que la madre tiene más responsabilidad en la educación"],correct:1,reference:"Proverbios 22:6",explanation:"'Instruye al niño en su camino, y aun cuando fuere viejo no se apartará de él.'"},
+  {id:2839,difficulty:"experto",category:"versiculos",question:"¿Qué dice Isaías 55:8-9 sobre los pensamientos de Dios?",options:["Que Dios piensa como nosotros pero mejor","Porque mis pensamientos no son vuestros pensamientos, ni vuestros caminos mis caminos, dice Jehová","Que podemos entender la mente de Dios con oración","Que los pensamientos de Dios están escritos en la ley"],correct:1,reference:"Isaías 55:8-9",explanation:"'Porque mis pensamientos no son vuestros pensamientos, ni vuestros caminos mis caminos... como son más altos los cielos que la tierra, así son mis caminos más altos que vuestros caminos.'"},
+  {id:2840,difficulty:"experto",category:"versiculos",question:"¿Qué dice Apocalipsis 21:4 sobre la nueva creación?",options:["Que habrá sol y luna nuevos","Enjugará Dios toda lágrima de los ojos de ellos; y ya no habrá muerte, llanto, clamor ni dolor","Que todos tendrán cuerpos nuevos perfectos","Que habrá una nueva Jerusalén en el cielo solamente"],correct:1,reference:"Apocalipsis 21:4",explanation:"'Enjugará Dios toda lágrima de los ojos de ellos; y ya no habrá muerte, ni habrá más llanto, ni clamor, ni dolor; porque las primeras cosas pasaron.'"},
+  {id:2841,difficulty:"facil",category:"versiculos",question:"¿Qué dice Juan 11:25 que Jesús es?",options:["'Yo soy el pan de vida'","'Yo soy la resurrección y la vida'","'Yo soy la luz del mundo'","'Yo soy el buen pastor'"],correct:1,reference:"Juan 11:25",explanation:"Jesús le dijo a Marta: 'Yo soy la resurrección y la vida; el que cree en mí, aunque esté muerto, vivirá.'"},
+  {id:2842,difficulty:"facil",category:"versiculos",question:"¿Qué dice Juan 6:35 que Jesús es?",options:["La resurrección y la vida","El pan de vida","La vid verdadera","La puerta de las ovejas"],correct:1,reference:"Juan 6:35",explanation:"Jesús dijo: 'Yo soy el pan de vida; el que a mí viene, nunca tendrá hambre; y el que en mí cree, no tendrá sed jamás.'"},
+  {id:2843,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Salmos 37:4 sobre los deseos del corazón?",options:["Que debemos controlar todos nuestros deseos","Deléitate en Jehová y él te concederá las peticiones de tu corazón","Que el corazón es engañoso sobre todo","Que debemos entregar nuestros deseos a Dios y olvidarlos"],correct:1,reference:"Salmos 37:4",explanation:"'Deléitate asimismo en Jehová, y él te concederá las peticiones de tu corazón.'"},
+  {id:2844,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Lucas 1:37?",options:["'Para Dios nada es imposible'","'Bienaventurada la que creyó'","'He aquí la sierva del Señor'","'El Espíritu Santo vendrá sobre ti'"],correct:0,reference:"Lucas 1:37",explanation:"El ángel Gabriel le dijo a María: 'Porque nada hay imposible para Dios.'"},
+  {id:2845,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Gálatas 6:7 sobre lo que sembramos?",options:["Que debemos sembrar en tierra buena","No os engañéis; Dios no puede ser burlado, pues todo lo que el hombre sembrare, eso también segará","Que Dios bendice toda siembra","Que la siembra espiritual es más importante que la material"],correct:1,reference:"Gálatas 6:7",explanation:"'No os engañéis; Dios no puede ser burlado: pues todo lo que el hombre sembrare, eso también segará.'"},
+  {id:2846,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Hebreos 4:12 sobre la Palabra de Dios?",options:["Que es útil para enseñar","La palabra de Dios es viva y eficaz, más cortante que toda espada de dos filos","Que es inspirada por el Espíritu","Que debe leerse en voz alta"],correct:1,reference:"Hebreos 4:12",explanation:"'Porque la palabra de Dios es viva y eficaz, y más cortante que toda espada de dos filos; y penetra hasta partir el alma y el espíritu.'"},
+  {id:2847,difficulty:"experto",category:"versiculos",question:"¿Qué versículo es conocido como el 'evangelio en miniatura'?",options:["Romanos 3:23","Juan 3:16","Efesios 2:8","Romanos 6:23"],correct:1,reference:"Juan 3:16",explanation:"Juan 3:16 es conocido como el 'evangelio en miniatura': 'Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.'"},
+  {id:2848,difficulty:"facil",category:"lugares",question:"¿En qué ciudad se reunieron los apóstoles el día de Pentecostés?",options:["Belén","Nazaret","Jerusalén","Capernaúm"],correct:2,reference:"Hechos 2:1",explanation:"Cuando llegó el día de Pentecostés, todos estaban unánimes juntos en Jerusalén y recibieron el Espíritu Santo."},
+  {id:2849,difficulty:"facil",category:"lugares",question:"¿En qué región de Israel vivía Juan el Bautista y predicaba?",options:["Galilea","Judea (desierto de Judea)","Samaria","Decápolis"],correct:1,reference:"Mateo 3:1",explanation:"En aquellos días vino Juan el Bautista predicando en el desierto de Judea."},
+  {id:2850,difficulty:"facil",category:"lugares",question:"¿En qué ciudad se refugiaron José y María con el niño Jesús cuando huyeron de Herodes?",options:["Siria","Babilonia","Egipto","Arabia"],correct:2,reference:"Mateo 2:13-14",explanation:"El ángel dijo a José: 'Levántate y toma al niño y a su madre, y huye a Egipto, y permanece allá hasta que yo te diga.'"},
+  {id:2851,difficulty:"intermedio",category:"lugares",question:"¿Qué ciudad Jesús lloró antes de entrar triunfalmente?",options:["Belén","Capernaúm","Nazaret","Jerusalén"],correct:3,reference:"Lucas 19:41",explanation:"Cuando Jesús se acercó y vio la ciudad (Jerusalén), lloró sobre ella, diciendo que vendría un tiempo de gran destrucción."},
+  {id:2852,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar ocurrió el Sermón de la Montaña según Mateo?",options:["En el templo de Jerusalén","En el Monte de los Olivos","En un monte en Galilea","En el desierto de Judea"],correct:2,reference:"Mateo 5:1",explanation:"Jesús subió a un monte (en Galilea) y se sentó para enseñar a sus discípulos el famoso Sermón del Monte."},
+  {id:2853,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar Pablo tuvo su visión de Jesús que lo convirtió?",options:["Jerusalén","En el camino a Damasco","En Tarso","En Antioquía"],correct:1,reference:"Hechos 9:3",explanation:"Yendo Pablo de camino, se acercó a Damasco; y de repente le rodeó un resplandor de luz del cielo y oyó la voz de Jesús."},
+  {id:2854,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad fue Pablo encadenado y enviado a Roma?",options:["Jerusalén","Antioquía","Cesarea","Atenas"],correct:2,reference:"Hechos 23:33",explanation:"Pablo fue llevado desde Jerusalén a Cesarea Marítima, donde fue juzgado por Félix y Festo antes de apelar al César y ser enviado a Roma."},
+  {id:2855,difficulty:"dificil",category:"lugares",question:"¿En qué lugar específico de Jerusalén fue juzgado Jesús ante Pilato?",options:["El templo","El Pretorio (Litóstrotos)","El palacio de Herodes","La puerta de la ciudad"],correct:1,reference:"Juan 19:13",explanation:"Pilato sacó a Jesús y se sentó en el tribunal en el lugar llamado Litóstrotos (Gábata), donde pronunció la sentencia."},
+  {id:2856,difficulty:"experto",category:"lugares",question:"¿Cuál era el nombre hebreo del lugar donde fue crucificado Jesús?",options:["Gólgota","Getsemaní","Gabbatá","Gehena"],correct:0,reference:"Juan 19:17",explanation:"Jesús salió llevando su cruz al lugar llamado de la Calavera, que en hebreo se dice Gólgota."},
+  {id:2857,difficulty:"experto",category:"lugares",question:"¿Qué ciudad del Antiguo Testamento fue capital de Egipto durante la estancia de José?",options:["Alejandría","Menfis (Nof)","Tebas","Gosén"],correct:1,reference:"Génesis 41:46",explanation:"José fue establecido en la corte del faraón; Menfis (Nof) era la capital del Antiguo Egipto en la época patriarcal."},
+  {id:2858,difficulty:"facil",category:"lugares",question:"¿En qué lugar Jesús alimentó a los 5,000?",options:["En el templo","En una aldea de Galilea","En un lugar desierto junto al Mar de Galilea","En Capernaúm"],correct:2,reference:"Lucas 9:10-12",explanation:"El milagro de los cinco panes y dos peces ocurrió en un lugar desierto cerca de la ciudad de Betsaida, junto al Mar de Galilea."},
+  {id:2859,difficulty:"intermedio",category:"lugares",question:"¿Cuál era la ciudad más importante de la región de Galilea en tiempos de Jesús?",options:["Nazaret","Tiberíades","Capernaúm","Séforis"],correct:2,reference:"Mateo 4:13",explanation:"Jesús, dejando Nazaret, se fue a vivir a Capernaúm, que era un importante centro comercial junto al Mar de Galilea."},
+  {id:2860,difficulty:"dificil",category:"lugares",question:"¿En qué monte Elías desafió a los 450 profetas de Baal?",options:["Monte Sinaí","Monte Tabor","Monte Carmelo","Monte Hermón"],correct:2,reference:"1 Reyes 18:19",explanation:"Elías convocó al pueblo y a los 450 profetas de Baal en el Monte Carmelo para el gran desafío donde el fuego de Dios consumió el holocausto."},
+  {id:2861,difficulty:"experto",category:"lugares",question:"¿Qué ciudad del NT fue llamada 'la Babilonia' simbólicamente por Pedro en su carta?",options:["Roma","Jerusalén","Antioquía","Éfeso"],correct:0,reference:"1 Pedro 5:13",explanation:"'La que está en Babilonia, elegida juntamente con vosotros, os saluda.' La mayoría de los estudiosos identifica 'Babilonia' como Roma, ciudad desde donde Pedro escribió."},
+  {id:2862,difficulty:"facil",category:"personajes",question:"¿Quién fue el primer rey ungido de Israel?",options:["David","Salomón","Saúl","Samuel"],correct:2,reference:"1 Samuel 10:1",explanation:"Samuel ungió a Saúl como el primer rey de Israel, tomando el frasco de aceite y derramándolo sobre su cabeza."},
+  {id:2863,difficulty:"facil",category:"personajes",question:"¿Quién construyó el arca de Noé?",options:["Sem","Abraham","Noé","Enoc"],correct:2,reference:"Génesis 6:14",explanation:"Dios le ordenó a Noé: 'Hazte un arca de madera de gofer.' Noé obedeció e hizo todo lo que Dios le mandó."},
+  {id:2864,difficulty:"facil",category:"personajes",question:"¿Cuál es el nombre del padre de Abraham?",options:["Nacor","Taré","Heber","Arfaxad"],correct:1,reference:"Génesis 11:26",explanation:"Taré fue el padre de Abram (Abraham), Nacor y Harán."},
+  {id:2865,difficulty:"facil",category:"personajes",question:"¿Quién fue la madre de Juan el Bautista?",options:["María","Ana","Elisabet","Débora"],correct:2,reference:"Lucas 1:13",explanation:"El ángel Gabriel le dijo a Zacarías: 'Tu mujer Elisabet te dará a luz un hijo, y llamarás su nombre Juan.'"},
+  {id:2866,difficulty:"intermedio",category:"personajes",question:"¿Cuál de los hijos de Jacob vendieron sus hermanos como esclavo?",options:["Rubén","Benjamín","José","Leví"],correct:2,reference:"Génesis 37:28",explanation:"Los hermanos de José lo vendieron a los ismaelitas por veinte piezas de plata, quienes lo llevaron a Egipto."},
+  {id:2867,difficulty:"intermedio",category:"personajes",question:"¿Quién fue el suegro de Moisés?",options:["Faraón","Aarón","Jetro (Reuel)","Balaam"],correct:2,reference:"Éxodo 3:1",explanation:"Moisés fue a pastar el rebaño de Jetro (también llamado Reuel), su suegro, sacerdote de Madián."},
+  {id:2868,difficulty:"intermedio",category:"personajes",question:"¿Cuál de los doce apóstoles era recaudador de impuestos antes de seguir a Jesús?",options:["Pedro","Zaqueo","Mateo (Leví)","Santiago"],correct:2,reference:"Mateo 9:9",explanation:"Jesús vio a un hombre llamado Mateo sentado en el banco de los tributos públicos, y le dijo: '¡Sígueme!'"},
+  {id:2869,difficulty:"intermedio",category:"personajes",question:"¿Quién fue el médico amado que acompañó a Pablo y escribió un Evangelio y Hechos?",options:["Marcos","Bernabé","Lucas","Timoteo"],correct:2,reference:"Colosenses 4:14",explanation:"Pablo saludó a 'Lucas el médico amado', quien también escribió el Evangelio de Lucas y los Hechos de los Apóstoles."},
+  {id:2870,difficulty:"dificil",category:"personajes",question:"¿Cuál fue el nombre original de Pablo antes de su conversión?",options:["Saulo","Simón","Silas","Silvano"],correct:0,reference:"Hechos 7:58",explanation:"Su nombre hebreo era Saulo (Saúl en español). Después de su conversión comenzó a ser conocido como Pablo, su nombre romano."},
+  {id:2871,difficulty:"dificil",category:"personajes",question:"¿Quién en la Biblia vivió más años: Matusalén, Adán o Noé?",options:["Adán (930 años)","Noé (950 años)","Matusalén (969 años)","Enoc (365 años)"],correct:2,reference:"Génesis 5:27",explanation:"Matusalén vivió 969 años, siendo el ser humano que más años vivió según el registro bíblico."},
+  {id:2872,difficulty:"experto",category:"personajes",question:"¿Quién fue Priscila y qué hizo con Apolos?",options:["Una profetisa que bautizó a muchos","Una mujer que con su esposo Aquila instruyó más exactamente a Apolos en el camino de Dios","La madre de Timoteo","Una discípula de María Magdalena"],correct:1,reference:"Hechos 18:26",explanation:"Priscila y Aquila, al oír a Apolos en la sinagoga, lo tomaron y le expusieron más exactamente el camino de Dios."},
+  {id:2873,difficulty:"facil",category:"historias",question:"¿Qué sucedió cuando los israelitas cruzaron el río Jordán para entrar a Canaán?",options:["Las aguas se dividieron cuando los sacerdotes pisaron el río","Moisés golpeó el río con su vara","Josué oró y el río se secó","Un ángel detuvo las aguas"],correct:0,reference:"Josué 3:15-16",explanation:"Cuando los pies de los sacerdotes que llevaban el arca se mojaron, las aguas que venían de arriba se detuvieron y el pueblo cruzó en seco."},
+  {id:2874,difficulty:"facil",category:"historias",question:"¿Qué alimento envió Dios desde el cielo para alimentar a los israelitas en el desierto?",options:["Pan y carne","Maná y codornices","Solo maná","Frutas y verduras"],correct:1,reference:"Éxodo 16:13-15",explanation:"Dios envió codornices por la tarde y maná por la mañana para alimentar a los israelitas durante 40 años en el desierto."},
+  {id:2875,difficulty:"intermedio",category:"historias",question:"¿Cuántos días y noches llovió en el diluvio de Noé?",options:["20 días y 20 noches","40 días y 40 noches","120 días","Un año completo"],correct:1,reference:"Génesis 7:12",explanation:"Llovió sobre la tierra cuarenta días y cuarenta noches, cubriendo todas las montañas."},
+  {id:2876,difficulty:"intermedio",category:"historias",question:"¿Qué aconteció en Babel según Génesis 11?",options:["Se construyó el primer templo","Dios confundió los idiomas y dispersó a la humanidad","Los hombres encontraron fuego","Se escribieron las primeras leyes"],correct:1,reference:"Génesis 11:7-8",explanation:"Dios confundió el lenguaje de los constructores de la torre de Babel y los dispersó desde allí por toda la tierra."},
+  {id:2877,difficulty:"dificil",category:"historias",question:"¿Qué ocurrió con la vara de Aarón en el tabernáculo?",options:["Se convirtió en serpiente","Reverdeció y dio almendras","Produjo maná","Se partió en dos"],correct:1,reference:"Números 17:8",explanation:"La vara de Aarón reverdeció, echó flores y produjo almendras, confirmando su sacerdocio ante todo el pueblo."},
+  {id:2878,difficulty:"experto",category:"historias",question:"¿Cuántos años gobernó el juez Otoniel, el primero de Israel?",options:["20 años","40 años","60 años","12 años"],correct:1,reference:"Jueces 3:11",explanation:"La tierra reposó cuarenta años bajo el gobierno de Otoniel, el primer juez de Israel, quien venció al rey de Mesopotamia."},
+  {id:2879,difficulty:"facil",category:"profetas",question:"¿A qué nación fue enviado Jonás a predicar?",options:["Babilonia","Egipto","Nínive (Asiria)","Moab"],correct:2,reference:"Jonás 1:2",explanation:"Dios dijo a Jonás: 'Levántate y ve a Nínive, aquella gran ciudad, y pregona contra ella.'"},
+  {id:2880,difficulty:"facil",category:"profetas",question:"¿Quién fue el profeta que ungió a David como rey?",options:["Elías","Isaías","Natán","Samuel"],correct:3,reference:"1 Samuel 16:13",explanation:"Samuel tomó el cuerno del aceite y ungió a David en medio de sus hermanos; y desde aquel día el Espíritu de Jehová estuvo sobre David."},
+  {id:2881,difficulty:"intermedio",category:"profetas",question:"¿Qué profeta anunció el nacimiento de Jesús en Belén?",options:["Isaías","Miqueas","Jeremías","Zacarías"],correct:1,reference:"Miqueas 5:2",explanation:"Miqueas profetizó: 'Pero tú, Belén Efrata, pequeña para estar entre las familias de Judá, de ti me saldrá el que será Señor en Israel.'"},
+  {id:2882,difficulty:"intermedio",category:"profetas",question:"¿Cuál fue el mensaje central del profeta Amós?",options:["La venida del Mesías","La justicia social y el juicio contra los opresores de los pobres","El retorno del exilio","La fidelidad al pacto mosaico"],correct:1,reference:"Amós 5:24",explanation:"Amós clamó: 'Corra el juicio como las aguas, y la justicia como impetuoso arroyo.' Su mensaje se centró en la justicia social."},
+  {id:2883,difficulty:"dificil",category:"profetas",question:"¿Cuándo profetizó Sofonías?",options:["Durante el reinado de Josías","Durante el exilio babilónico","Después del retorno del exilio","Durante el reinado de Manasés"],correct:0,reference:"Sofonías 1:1",explanation:"Sofonías profetizó en los días del rey Josías, hijo de Amón, en Judá, antes de la caída de Jerusalén."},
+  {id:2884,difficulty:"experto",category:"profetas",question:"¿Qué profeta fue llevado al cielo en un carro de fuego?",options:["Elías","Enoc","Isaías","Ezequiel"],correct:0,reference:"2 Reyes 2:11",explanation:"Mientras Elías y Eliseo iban andando y hablando, un carro de fuego con caballos de fuego los separó, y Elías subió al cielo en un torbellino."},
+  {id:2885,difficulty:"facil",category:"reyes",question:"¿Cuántos años reinó Salomón sobre Israel?",options:["20 años","30 años","40 años","50 años"],correct:2,reference:"1 Reyes 11:42",explanation:"El tiempo que Salomón reinó en Jerusalén sobre todo Israel fue cuarenta años."},
+  {id:2886,difficulty:"intermedio",category:"reyes",question:"¿Cuál fue el pecado principal de Salomón en su vejez?",options:["El asesinato","El robo del tesoro del templo","Sus mujeres extranjeras lo desviaron a adorar otros dioses","La pereza y el descuido del reino"],correct:2,reference:"1 Reyes 11:4",explanation:"Cuando Salomón era ya viejo, sus mujeres hicieron inclinar su corazón tras dioses ajenos; y su corazón no era perfecto para con Jehová su Dios."},
+  {id:2887,difficulty:"dificil",category:"reyes",question:"¿Quién fue el rey de Israel que hizo más mal que todos los reyes anteriores?",options:["Acab","Manasés","Jeroboam","Joram"],correct:1,reference:"2 Reyes 21:11",explanation:"Manasés hizo lo malo ante los ojos de Jehová; la Biblia dice que hizo más mal que todos los amorreos que le precedieron, con sus ídolos y abominaciones."},
+  {id:2888,difficulty:"facil",category:"milagros",question:"¿Qué milagro realizó Jesús en la boda de Caná?",options:["Sanó a un ciego","Resucitó a un muerto","Convirtió agua en vino","Caminó sobre el agua"],correct:2,reference:"Juan 2:9",explanation:"Jesús convirtió el agua en vino en la boda de Caná de Galilea, siendo esta su primera señal milagrosa."},
+  {id:2889,difficulty:"intermedio",category:"milagros",question:"¿Cuántas personas comieron del milagro de los panes y los peces?",options:["2000 hombres","3000 hombres","5000 hombres (sin contar mujeres y niños)","10000 personas"],correct:2,reference:"Mateo 14:21",explanation:"Los que comieron fueron como cinco mil hombres, sin contar mujeres y niños."},
+  {id:2890,difficulty:"dificil",category:"milagros",question:"¿En cuántas ocasiones registra la Biblia que Jesús resucitó a muertos?",options:["Una vez (Lázaro)","Dos veces","Tres veces","Cuatro veces"],correct:2,reference:"Lucas 7:14; Marcos 5:41; Juan 11:44",explanation:"Jesús resucitó tres personas: el hijo de la viuda de Naín (Lucas 7), la hija de Jairo (Marcos 5) y Lázaro de Betania (Juan 11)."},
+  {id:2891,difficulty:"facil",category:"cartas",question:"¿A quién está dirigida la carta más corta de Pablo en el Nuevo Testamento?",options:["A Timoteo","A Tito","A Filemón","A los Colosenses"],correct:2,reference:"Filemón 1:1",explanation:"La carta a Filemón es la más corta de Pablo, con solo 25 versículos, escrita a un cristiano sobre el regreso de su esclavo Onésimo."},
+  {id:2892,difficulty:"intermedio",category:"cartas",question:"¿Qué carta del Nuevo Testamento habla extensamente de la fe en Hebreos 11?",options:["La carta de Santiago","La carta a los Hebreos","La primera carta de Pedro","La primera carta de Juan"],correct:1,reference:"Hebreos 11",explanation:"Hebreos 11 es conocido como el 'capítulo de la fe', que lista los héroes de la fe desde Abel hasta los tiempos de la persecución."},
+  {id:2893,difficulty:"dificil",category:"libros",question:"¿Cuántos libros tiene el Nuevo Testamento?",options:["23","25","27","30"],correct:2,reference:"Canon del NT",explanation:"El Nuevo Testamento tiene 27 libros: 4 Evangelios, Hechos, 21 epístolas y el Apocalipsis."},
+  {id:2894,difficulty:"facil",category:"libros",question:"¿Cuál es el primer libro del Nuevo Testamento?",options:["Marcos","Lucas","Mateo","Hechos"],correct:2,reference:"Mateo 1:1",explanation:"El Evangelio de Mateo es el primer libro del Nuevo Testamento, comenzando con la genealogía de Jesucristo."},
+  {id:2895,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuántos años tenía Jesús cuando fue presentado en el templo y habló con los doctores?",options:["7 años","10 años","12 años","15 años"],correct:2,reference:"Lucas 2:42",explanation:"Cuando Jesús tenía doce años, sus padres subieron a Jerusalén para la fiesta de la Pascua; allí se quedó hablando con los doctores de la ley."},
+  {id:2896,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuántos días ayunó Jesús en el desierto antes de ser tentado?",options:["20 días","30 días","40 días","50 días"],correct:2,reference:"Mateo 4:2",explanation:"Jesús ayunó cuarenta días y cuarenta noches en el desierto; después tuvo hambre y fue tentado por el diablo."},
+  {id:2897,difficulty:"dificil",category:"vida_jesus",question:"¿Qué le respondió Jesús a sus padres cuando lo encontraron en el templo a los 12 años?",options:["'Lo siento, me perdí'","'¿No sabíais que en los negocios de mi Padre me es necesario estar?'","'Vine a aprender de los maestros'","'El Padre me llamó aquí'"],correct:1,reference:"Lucas 2:49",explanation:"Jesús les dijo: '¿Por qué me buscabais? ¿No sabíais que en los negocios de mi Padre me es necesario estar?' Ellos no entendieron."},
+  {id:2898,difficulty:"facil",category:"vida_jesus",question:"¿Cuántos discípulos eligió Jesús?",options:["7","10","12","70"],correct:2,reference:"Lucas 6:13",explanation:"Jesús escogió a doce de sus discípulos, a quienes llamó apóstoles, para que estuvieran con Él y para enviarlos a predicar."},
+  {id:2899,difficulty:"intermedio",category:"historias",question:"¿Cuántos espías envió Moisés a explorar Canaán?",options:["7","10","12","40"],correct:2,reference:"Números 13:2",explanation:"Jehová dijo a Moisés que enviara doce hombres, uno por cada tribu de Israel, para reconocer la tierra de Canaán."},
+  {id:2900,difficulty:"dificil",category:"historias",question:"¿Cuántos espías dieron un buen informe al regresar de Canaán?",options:["Solo 1 (Caleb)","Solo 2 (Caleb y Josué)","4 de los 12","La mitad (6)"],correct:1,reference:"Números 14:6-8",explanation:"Solo Caleb y Josué dieron un informe favorable, animando al pueblo a tomar la tierra; los otros diez espías desanimaron al pueblo."},
+  {id:2901,difficulty:"facil",category:"parabolas",question:"¿Qué compara Jesús con la entrada a la vida en Mateo 7?",options:["Un río ancho","Una puerta ancha y fácil","Una puerta estrecha y camino angosto","Un camino sin obstáculos"],correct:2,reference:"Mateo 7:13-14",explanation:"Jesús dijo: 'Entrad por la puerta estrecha... angosto el camino que lleva a la vida, y pocos son los que lo hallan.'"},
+  {id:2902,difficulty:"facil",category:"parabolas",question:"¿Cuántos panes y cuántos peces se usaron en la parábola o enseñanza del milagro de la alimentación?",options:["3 panes y 2 peces","5 panes y 2 peces","7 panes y 7 peces","10 panes y 5 peces"],correct:1,reference:"Mateo 14:17",explanation:"Los discípulos dijeron a Jesús: 'No tenemos aquí sino cinco panes y dos peces.' Con eso, Jesús alimentó a cinco mil."},
+  {id:2903,difficulty:"intermedio",category:"parabolas",question:"¿Qué enseñó Jesús con la parábola del rico y Lázaro respecto a los muertos que regresan?",options:["Que es posible que los muertos regresen a avisar a los vivos","Que si no oyeron a Moisés y los profetas, tampoco se convencerán si alguno resucita","Que Dios puede enviar mensajeros desde el más allá","Que los ángeles pueden transmitir mensajes de los difuntos"],correct:1,reference:"Lucas 16:31",explanation:"Abraham respondió al rico: 'Si no oyen a Moisés y a los profetas, tampoco se persuadirán aunque alguno se levantare de los muertos.'"},
+  {id:2904,difficulty:"intermedio",category:"parabolas",question:"¿Cuál fue la reacción del hermano mayor cuando el padre celebró el regreso del pródigo?",options:["Se alegró con todos","Se enojó y no quería entrar","Fue al campo a trabajar","Abrazó a su hermano"],correct:1,reference:"Lucas 15:28",explanation:"El hijo mayor se enojó y no quería entrar. Su padre salió y le rogaba, pero él respondió con queja por no haber recibido él mismo nada."},
+  {id:2905,difficulty:"dificil",category:"parabolas",question:"¿Qué respondió el dueño a los obreros que se quejaron por recibir el mismo salario que los últimos?",options:["'Tenéis razón, recibiréis más mañana'","'¿Acaso no me es lícito hacer lo que quiero con lo mío?'","'La ley es la ley, todos reciben lo mismo'","'Vosotros llegasteis tarde, no os quejéis'"],correct:1,reference:"Mateo 20:15",explanation:"El dueño respondió: '¿No me es lícito hacer lo que quiero con lo mío? ¿O tienes tú envidia porque yo soy bueno?' Y añadió: 'Los últimos serán primeros y los primeros últimos.'"},
+  {id:2906,difficulty:"experto",category:"parabolas",question:"¿Cuál es la enseñanza central de la parábola de la semilla de mostaza?",options:["Que los comienzos pequeños pueden crecer en algo grande","Que debemos tener fe como un grano de mostaza","Que el reino crece sin que lo veamos","Que el evangelio se esparce por todo el mundo"],correct:0,reference:"Mateo 13:31-32",explanation:"La parábola enseña que el reino de los cielos comienza de manera aparentemente insignificante (como una semilla de mostaza) pero crece hasta alcanzar proporciones magníficas."},
+  {id:2907,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que haría 'la verdad'?",options:["Protegernos de los enemigos","Hacernos libres","Darnos poder","Traernos prosperidad"],correct:1,reference:"Juan 8:32",explanation:"Jesús dijo: 'Y conoceréis la verdad, y la verdad os hará libres.'"},
+  {id:2908,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el amor a Dios con todas nuestras fuerzas?",options:["Es solo para los sacerdotes","Es el mandamiento más importante junto a amar al prójimo","Es imposible de cumplir perfectamente","Es una enseñanza solo del Antiguo Testamento"],correct:1,reference:"Marcos 12:30",explanation:"'Amarás al Señor tu Dios con todo tu corazón, y con toda tu alma, y con toda tu mente y con todas tus fuerzas. Este es el principal mandamiento.'"},
+  {id:2909,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre cómo tratar a los que nos persiguen?",options:["Pedir a Dios que los castigue","Bendecid a los que os persiguen; bendecid y no maldigáis","Evitar todo contacto con ellos","Confrontarlos públicamente"],correct:1,reference:"Romanos 12:14",explanation:"Pablo instruyó: 'Bendecid a los que os persiguen; bendecid y no maldigáis.'"},
+  {id:2910,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la vanidad de las riquezas en 1 Timoteo 6?",options:["Que las riquezas son una señal del favor divino","Que el amor al dinero es raíz de todos los males","Que debemos donar todo a la iglesia","Que la pobreza es una virtud divina"],correct:1,reference:"1 Timoteo 6:10",explanation:"Pablo escribió: 'Porque raíz de todos los males es el amor al dinero, el cual codiciando algunos, se extraviaron de la fe.'"},
+  {id:2911,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre ayudar a los pobres?",options:["Que debemos darles trabajos","Cuando hagas bienes, que no sepa tu mano izquierda lo que hace la derecha","Que debemos organizar una colecta oficial","Que la ayuda es responsabilidad del gobierno"],correct:1,reference:"Mateo 6:3",explanation:"Jesús enseñó: 'Cuando hagas limosna, no sepa tu mano izquierda lo que hace tu derecha, para que sea en secreto.'"},
+  {id:2912,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la santificación en 1 Tesalonicenses 4?",options:["Que la santificación viene automáticamente con la salvación","Esta es la voluntad de Dios, vuestra santificación: que os apartéis de fornicación","Que la santificación requiere largos periodos de ayuno","Que solo los líderes espirituales deben buscarla"],correct:1,reference:"1 Tesalonicenses 4:3",explanation:"Pablo escribió: 'Pues la voluntad de Dios es vuestra santificación; que os apartéis de fornicación.'"},
+  {id:2913,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el creyente que permanece en Él?",options:["Que nunca sufrirá tribulación","El que permanece en mí y yo en él, ese lleva mucho fruto","Que tendrá todos sus deseos cumplidos","Que nunca pecará"],correct:1,reference:"Juan 15:5",explanation:"Jesús dijo: 'El que permanece en mí, y yo en él, éste lleva mucho fruto; porque separados de mí nada podéis hacer.'"},
+  {id:2914,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre 'ponerse el nuevo hombre'?",options:["Que debemos cambiar de apariencia física","Que debemos renovarnos en el espíritu de nuestra mente y vestirnos del nuevo hombre creado según Dios","Que debemos adoptar una nueva cultura","Que se refiere al bautismo exclusivamente"],correct:1,reference:"Efesios 4:23-24",explanation:"Pablo enseñó: 'Renovaos en el espíritu de vuestra mente, y vestíos del nuevo hombre, creado según Dios en la justicia y santidad de la verdad.'"},
+  {id:2915,difficulty:"facil",category:"versiculos",question:"¿Qué dice 2 Corintios 5:17?",options:["'El amor de Cristo nos constriñe'","'Si alguno está en Cristo, nueva criatura es'","'Somos embajadores en nombre de Cristo'","'Dios estaba en Cristo reconciliando consigo al mundo'"],correct:1,reference:"2 Corintios 5:17",explanation:"'De modo que si alguno está en Cristo, nueva criatura es; las cosas viejas pasaron; he aquí todas son hechas nuevas.'"},
+  {id:2916,difficulty:"facil",category:"versiculos",question:"¿Qué dice Salmos 1:1 sobre el hombre bienaventurado?",options:["El que da limosna a los pobres","El que no anda en consejo de malos ni está en camino de pecadores","El que ora tres veces al día","El que guarda todos los mandamientos"],correct:1,reference:"Salmos 1:1",explanation:"'Bienaventurado el varón que no anduvo en consejo de malos, ni estuvo en camino de pecadores, ni en silla de escarnecedores se sentó.'"},
+  {id:2917,difficulty:"intermedio",category:"versiculos",question:"¿Qué promete Isaías 26:3 a quien tiene firme pensamiento en Dios?",options:["Riquezas y honor","Tú guardarás en completa paz a aquel cuyo pensamiento en ti persevera","Salud y larga vida","Victoria sobre sus enemigos"],correct:1,reference:"Isaías 26:3",explanation:"'Tú guardarás en completa paz a aquel cuyo pensamiento en ti persevera; porque en ti ha confiado.'"},
+  {id:2918,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Efesios 6:1 sobre los hijos?",options:["Que deben trabajar para sus padres","Hijos, obedeced en el Señor a vuestros padres, porque esto es justo","Que deben honrar solo a los padres creyentes","Que los padres deben obedecer a sus hijos también"],correct:1,reference:"Efesios 6:1",explanation:"'Hijos, obedeced en el Señor a vuestros padres, porque esto es justo.'"},
+  {id:2919,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Nehemías 8:10 sobre el gozo?",options:["El gozo es una elección personal","El gozo de Jehová es vuestra fuerza","El gozo viene de la oración","El gozo es fruto del ayuno"],correct:1,reference:"Nehemías 8:10",explanation:"Nehemías dijo al pueblo: 'El gozo de Jehová es vuestra fuerza.'"},
+  {id:2920,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Marcos 10:45 sobre la misión de Jesús?",options:["Que vino a ser servido","Que vino a dar su vida en rescate por muchos","Que vino a enseñar la ley","Que vino a restaurar el reino de Israel"],correct:1,reference:"Marcos 10:45",explanation:"Jesús dijo: 'El Hijo del Hombre no vino para ser servido, sino para servir, y para dar su vida en rescate por muchos.'"},
+  {id:2921,difficulty:"experto",category:"versiculos",question:"¿Qué dice Romanos 8:1?",options:["'El justo por la fe vivirá'","Ahora pues, ninguna condenación hay para los que están en Cristo Jesús","'Estamos persuadidos que ni la muerte... nos separará del amor de Dios'","'Somos más que vencedores por medio de aquel que nos amó'"],correct:1,reference:"Romanos 8:1",explanation:"'Ahora, pues, ninguna condenación hay para los que están en Cristo Jesús, los que no andan conforme a la carne, sino conforme al Espíritu.'"},
+  {id:2922,difficulty:"facil",category:"lugares",question:"¿En qué lago pescaban varios de los apóstoles antes de seguir a Jesús?",options:["El lago de Horeb","El Mar Muerto","El Mar (lago) de Galilea","El estanque de Betesda"],correct:2,reference:"Mateo 4:18",explanation:"Jesús vio dos hermanos (Simón llamado Pedro y Andrés) echando sus redes en el Mar de Galilea, porque eran pescadores."},
+  {id:2923,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad fue sanado el paralítico que llevaron por el techo bajándolo ante Jesús?",options:["Nazaret","Jericó","Capernaúm","Betania"],correct:2,reference:"Marcos 2:1",explanation:"Jesús estaba en una casa de Capernaúm cuando cuatro hombres trajeron a un paralítico, y al no poder acercarse por la multitud, abrieron el techo y lo bajaron."},
+  {id:2924,difficulty:"dificil",category:"lugares",question:"¿En qué lugar específico el ángel anunció a las mujeres la resurrección de Jesús?",options:["En el huerto de Getsemaní","En el Monte de los Olivos","Dentro del sepulcro abierto","En las puertas de Jerusalén"],correct:2,reference:"Mateo 28:5-6",explanation:"El ángel estaba sentado sobre la piedra removida del sepulcro y dijo a las mujeres: 'No temáis; sé que buscáis a Jesús... no está aquí, pues ha resucitado.'"},
+  {id:2925,difficulty:"experto",category:"lugares",question:"¿Cuál era el nombre del valle donde Josué derrotó a los cinco reyes amorreos con el sol detenido?",options:["Valle de Ajalón","Valle de Jezreel","Valle de Cedrón","Valle de Ela"],correct:0,reference:"Josué 10:12",explanation:"Josué clamó: 'Sol, detente en Gabaón; y tú, luna, en el valle de Ajalón.' Y el sol se detuvo y la luna paró."},
+  {id:2926,difficulty:"facil",category:"historias",question:"¿Qué comió Adán y Eva que les fue prohibido?",options:["Una manzana (fruto del árbol del bien y del mal)","Un fruto del árbol de la vida","Figs del jardín","Uvas de la vid"],correct:0,reference:"Génesis 3:6",explanation:"La mujer tomó del fruto del árbol del conocimiento del bien y del mal y comió; y dio también a su marido, y él comió. La Biblia no especifica que fuera manzana, pero la tradición lo asume."},
+  {id:2927,difficulty:"intermedio",category:"historias",question:"¿Cuántos años anduvo el pueblo de Israel en el desierto?",options:["20 años","30 años","40 años","50 años"],correct:2,reference:"Números 32:13",explanation:"La ira de Jehová se encendió contra Israel, e hizo que anduvieran cuarenta años por el desierto hasta que pereciera toda aquella generación que había hecho lo malo."},
+  {id:2928,difficulty:"dificil",category:"historias",question:"¿Qué sucedió con los compañeros de Daniel que no se postraron ante la estatua de Nabucodonosor?",options:["Fueron encarcelados","Fueron echados en el horno de fuego ardiendo","Fueron desterrados","Fueron ejecutados con la espada"],correct:1,reference:"Daniel 3:21",explanation:"Sadrach, Mesach y Abed-nego fueron echados en el horno de fuego ardiendo por no adorar la estatua de oro del rey Nabucodonosor."},
+  {id:2929,difficulty:"experto",category:"historias",question:"¿Cuántos días estuvo Daniel en el foso de los leones?",options:["1 noche","3 días","6 días","No se especifica el tiempo exacto"],correct:0,reference:"Daniel 6:19",explanation:"Daniel estuvo en el foso durante la noche, y al amanecer el rey Darío se levantó apresuradamente para ver si Dios lo había librado."},
+  {id:2930,difficulty:"facil",category:"profetas",question:"¿Qué profeta estuvo tres días en el vientre de un gran pez?",options:["Elías","Amós","Jonás","Oseas"],correct:2,reference:"Jonás 1:17",explanation:"Jehová había preparado un gran pez para que tragara a Jonás; y estuvo Jonás en el vientre del pez tres días y tres noches."},
+  {id:2931,difficulty:"intermedio",category:"profetas",question:"¿Qué profeta fue llamado el 'profeta del amor' por sus enseñanzas sobre el amor de Dios?",options:["Amós","Oseas","Miqueas","Sofonías"],correct:1,reference:"Oseas 1-3",explanation:"Oseas es conocido como el profeta del amor porque su propio matrimonio (con Gomer, una mujer infiel) fue una imagen del amor fiel de Dios hacia el pueblo infiel de Israel."},
+  {id:2932,difficulty:"dificil",category:"profetas",question:"¿Qué profeta vio la visión del valle de los huesos secos?",options:["Isaías","Jeremías","Ezequiel","Daniel"],correct:2,reference:"Ezequiel 37:1-4",explanation:"El Espíritu de Dios llevó a Ezequiel en visión al valle lleno de huesos secos; Dios le preguntó: '¿Vivirán estos huesos?' y le mandó profetizar sobre ellos."},
+  {id:2933,difficulty:"facil",category:"milagros",question:"¿Cómo cruzó el profeta Elías el Jordán antes de ser arrebatado al cielo?",options:["Caminando sobre el agua","Golpeando el río con su manto y dividiéndolo","Por un puente milagroso","Volando en el carro de fuego"],correct:1,reference:"2 Reyes 2:8",explanation:"Elías tomó su manto y lo enrolló e hirió las aguas, las cuales se apartaron a uno y otro lado, y pasaron ambos en seco."},
+  {id:2934,difficulty:"intermedio",category:"milagros",question:"¿Qué milagro hizo Pedro cuando Tabita (Dorcas) murió en Jope?",options:["La sanó de una enfermedad","La resucitó de entre los muertos","Le devolvió la vista","La liberó de un demonio"],correct:1,reference:"Hechos 9:40",explanation:"Pedro hincó las rodillas y oró; y volviéndose al cuerpo, dijo: 'Tabita, levántate.' Y ella abrió los ojos, y al ver a Pedro, se incorporó."},
+  {id:2935,difficulty:"dificil",category:"milagros",question:"¿Qué milagro realizó Pablo en la isla de Malta?",options:["Sanó a un ciego","Sobrevivió a la mordedura de una víbora de fuego sin daño, y luego sanó al padre de Publio","Caminó sobre el mar","Convirtió agua en vino"],correct:1,reference:"Hechos 28:3-9",explanation:"Pablo fue mordido por una víbora pero no sufrió daño, lo que maravilló a los isleños; luego oró sobre el padre de Publio y lo sanó, y otros enfermos de la isla también fueron sanados."},
+  {id:2936,difficulty:"facil",category:"cartas",question:"¿Cuál carta del Nuevo Testamento comienza con: 'Pablo, siervo de Jesucristo, llamado a ser apóstol'?",options:["Corintios","Gálatas","Romanos","Efesios"],correct:2,reference:"Romanos 1:1",explanation:"La carta a los Romanos comienza: 'Pablo, siervo de Jesucristo, llamado a ser apóstol, apartado para el evangelio de Dios.'"},
+  {id:2937,difficulty:"intermedio",category:"cartas",question:"¿Cuál es el versículo más conocido de la carta a los Efesios?",options:["'Porque por gracia sois salvos por medio de la fe'","'Vestíos de toda la armadura de Dios'","'Amadme los unos a los otros'","'No hay condenación para los que están en Cristo'"],correct:0,reference:"Efesios 2:8",explanation:"'Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios; no por obras, para que nadie se gloríe.'"},
+  {id:2938,difficulty:"facil",category:"libros",question:"¿Cuál es el último libro del Nuevo Testamento y de toda la Biblia?",options:["Judas","3 Juan","Hebreos","Apocalipsis"],correct:3,reference:"Apocalipsis 22:21",explanation:"El Apocalipsis (o Revelación) de Juan es el último libro del Nuevo Testamento y de la Biblia cristiana."},
+  {id:2939,difficulty:"intermedio",category:"libros",question:"¿Cuántos libros de profetas mayores tiene el Antiguo Testamento?",options:["3","4","5","6"],correct:2,reference:"Canon del AT",explanation:"Los cinco libros de profetas mayores son: Isaías, Jeremías, Lamentaciones, Ezequiel y Daniel."},
+  {id:2940,difficulty:"dificil",category:"libros",question:"¿Cuántos libros sapienciales o de sabiduría contiene el Antiguo Testamento?",options:["3","5","7","9"],correct:1,reference:"Canon del AT",explanation:"Los cinco libros sapienciales del Antiguo Testamento son: Job, Salmos, Proverbios, Eclesiastés y Cantares."},
+  {id:2941,difficulty:"facil",category:"vida_jesus",question:"¿Quién bautizó a Jesús?",options:["Pedro","El sumo sacerdote","Juan el Bautista","El Espíritu Santo directamente"],correct:2,reference:"Mateo 3:13-15",explanation:"Jesús vino de Galilea al Jordán para ser bautizado por Juan el Bautista, quien al principio se negaba por considerarse indigno."},
+  {id:2942,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuál fue el tercer milagro de Jesús según el Evangelio de Juan?",options:["La multiplicación de los panes","La sanidad del hijo del oficial del rey","La resurrección de Lázaro","La conversión del agua en vino"],correct:1,reference:"Juan 4:46-54",explanation:"El segundo signo de Jesús fue la sanidad del hijo del oficial del rey desde lejos en Caná; la multiplicación fue posterior."},
+  {id:2943,difficulty:"dificil",category:"vida_jesus",question:"¿Qué ciudad abandonó Jesús al saber que los fariseos intentaban matarlo?",options:["Jerusalén","Capernaúm","Nazaret","Jericó"],correct:0,reference:"Juan 10:39-40",explanation:"Al intentar los judíos prenderlo de nuevo, Jesús se escapó de sus manos y fue al otro lado del Jordán al lugar donde Juan había estado bautizando primero."},
+  {id:2944,difficulty:"experto",category:"vida_jesus",question:"¿Qué dijo Jesús en la cruz según el Evangelio de Lucas antes de morir?",options:["'Dios mío, Dios mío, ¿por qué me has abandonado?'","'En tus manos encomiendo mi espíritu'","'Todo está consumado'","'Tengo sed'"],correct:1,reference:"Lucas 23:46",explanation:"Jesús clamó a gran voz: 'Padre, en tus manos encomiendo mi espíritu.' Y habiendo dicho esto, expiró."},
+  {id:2945,difficulty:"facil",category:"personajes",question:"¿Cuál fue el nombre del discípulo que traicionó a Jesús?",options:["Tomás","Simón el Zelote","Judas Iscariote","Andrés"],correct:2,reference:"Mateo 26:14-16",explanation:"Judas Iscariote fue al encuentro de los principales sacerdotes para entregarles a Jesús por treinta piezas de plata."},
+  {id:2946,difficulty:"intermedio",category:"personajes",question:"¿Cuál de los doce apóstoles dudó de la resurrección de Jesús hasta verlo?",options:["Pedro","Santiago","Tomás","Felipe"],correct:2,reference:"Juan 20:25",explanation:"Tomás dijo: 'Si no viere en sus manos la señal de los clavos, y metiere mi dedo en el lugar de los clavos, y metiere mi mano en su costado, no creeré.'"},
+  {id:2947,difficulty:"dificil",category:"personajes",question:"¿Cuál fue el nombre hebreo de Ester?",options:["Míriam","Hadasa","Rebeca","Rut"],correct:1,reference:"Ester 2:7",explanation:"Mardoqueo había criado a Hadasa (es decir, Ester) hija de su tío. El nombre persa 'Ester' sustituyó a su nombre hebreo 'Hadasa' (mirto)."},
+  {id:2948,difficulty:"experto",category:"personajes",question:"¿Quién fue Melquisedec según Hebreos 7?",options:["Un profeta de Israel","Rey de Salem y sacerdote del Dios Altísimo, tipo de Cristo sacerdote eterno","El sacerdote que ungió a David","Un ángel en forma humana"],correct:1,reference:"Hebreos 7:1-3",explanation:"Melquisedec era rey de Salem y sacerdote del Dios Altísimo; sin padre, sin madre, sin genealogía, semejante al Hijo de Dios, permanece sacerdote para siempre."},
+  {id:2949,difficulty:"facil",category:"reyes",question:"¿Cuál fue el único rey de Israel que no pecó según la Biblia?",options:["David","Salomón","Ninguno, todos pecaron","Ezequías"],correct:2,reference:"1 Reyes 15:3-5",explanation:"Todos los reyes de Israel (norte) hicieron lo malo; de Judá, la mayoría también. La Biblia dice que David, aunque pecó gravemente, su corazón fue perfecto en comparación con muchos otros."},
+  {id:2950,difficulty:"intermedio",category:"reyes",question:"¿Quién fue el rey de Judá que destruyó los lugares altos y reformó el culto?",options:["Acaz","Josías","Jotam","Uzías"],correct:1,reference:"2 Reyes 23:4-5",explanation:"El rey Josías hizo la reforma religiosa más profunda de Judá: destruyó los altares de Baal, los lugares altos y renovó el pacto con Jehová."},
+  {id:2951,difficulty:"dificil",category:"reyes",question:"¿Cuántos años tenía Joás cuando fue coronado rey de Judá?",options:["5 años","7 años","10 años","12 años"],correct:1,reference:"2 Reyes 11:21",explanation:"Joás tenía siete años cuando comenzó a reinar, siendo uno de los reyes más jóvenes en la historia de Judá."},
+  {id:2952,difficulty:"facil",category:"historias",question:"¿Qué construyeron los israelitas para adorar mientras Moisés estaba en el Sinaí?",options:["Un templo de madera","Un altar de piedra","Un becerro de oro","Una imagen de Baal"],correct:2,reference:"Éxodo 32:4",explanation:"Aarón tomó el oro del pueblo y formó un becerro de oro, y el pueblo dijo: 'Israel, estos son tus dioses que te sacaron de Egipto.'"},
+  {id:2953,difficulty:"intermedio",category:"historias",question:"¿Cuántos israelitas murieron por la plaga después de adorar el becerro de oro?",options:["Mil","Tres mil","Veinte mil","Treinta mil"],correct:1,reference:"Éxodo 32:28",explanation:"Los hijos de Leví mataron aquel día a unos tres mil hombres del pueblo que habían participado en la adoración del becerro de oro."},
+  {id:2954,difficulty:"dificil",category:"historias",question:"¿Cuántos años gobernó Moisés al pueblo en el desierto aproximadamente?",options:["20 años","40 años","60 años","Menos de 10 años"],correct:1,reference:"Deuteronomio 34:7",explanation:"Moisés tenía 80 años cuando comenzó a guiar al pueblo fuera de Egipto y murió a los 120 años, habiendo liderado al pueblo durante unos 40 años en el desierto."},
+  {id:2955,difficulty:"facil",category:"profetas",question:"¿Cuál es el profeta conocido como el 'evangelista del Antiguo Testamento' por sus profecías sobre el Mesías?",options:["Jeremías","Ezequiel","Isaías","Daniel"],correct:2,reference:"Isaías 53",explanation:"Isaías es llamado el 'quinto evangelio' o 'evangelista del AT' por sus detalladas profecías sobre el Mesías sufriente (Isaías 53), el nacimiento virginal (7:14) y el reino de paz (9:6)."},
+  {id:2956,difficulty:"intermedio",category:"profetas",question:"¿Qué profeta del Antiguo Testamento predicó principalmente por medio de acciones simbólicas?",options:["Amós","Oseas","Ezequiel","Habacuc"],correct:2,reference:"Ezequiel 4-5",explanation:"Ezequiel es famoso por sus acciones simbólicas proféticas: acostarse sobre un lado por 390 días, quemar su cabello, representar el asedio de Jerusalén con una tableta, etc."},
+  {id:2957,difficulty:"facil",category:"milagros",question:"¿Qué fue lo milagroso que le pasó a la burra de Balaam?",options:["Voló sobre el ejército","Sanó a los enfermos","Habló y reprendió a su amo","Se multiplicó en tres burras"],correct:2,reference:"Números 22:28",explanation:"Jehová abrió la boca a la burra, la cual dijo a Balaam: '¿Qué te he hecho para que me hayas golpeado estas tres veces?'"},
+  {id:2958,difficulty:"intermedio",category:"milagros",question:"¿Cuántas personas sanó Jesús cuando entró en Capernaúm según Mateo 8?",options:["Una (el centurión)","Dos (el criado del centurión y la suegra de Pedro)","Muchos endemoniados y enfermos","Solo los que tenían fe"],correct:2,reference:"Mateo 8:16",explanation:"Al llegar la noche, trajeron a Jesús muchos endemoniados, y él echó fuera a los demonios con su palabra y sanó a todos los enfermos."},
+  {id:2959,difficulty:"dificil",category:"milagros",question:"¿En qué circunstancia Jesús caminó sobre el agua?",options:["Durante un desayuno en el lago","En la noche, cuando los discípulos navegaban contra el viento","Al amanecer, mientras pescaban","Durante la tormenta que Él calmó"],correct:1,reference:"Mateo 14:25",explanation:"A la cuarta vigilia de la noche (cerca del amanecer), Jesús fue a ellos andando sobre el mar, mientras sus discípulos luchaban contra el viento contrario en la barca."},
+  {id:2960,difficulty:"intermedio",category:"cartas",question:"¿Cuántas cartas del Nuevo Testamento escribió el apóstol Juan?",options:["1","2","3","4"],correct:2,reference:"1 Juan; 2 Juan; 3 Juan",explanation:"El apóstol Juan escribió tres epístolas: 1 Juan, 2 Juan y 3 Juan, además del Evangelio de Juan y el Apocalipsis."},
+  {id:2961,difficulty:"facil",category:"libros",question:"¿Cuántos Salmos hay en el libro de los Salmos?",options:["100","120","150","200"],correct:2,reference:"Salmos 150",explanation:"El libro de los Salmos tiene 150 Salmos, el Salmo 150 siendo el último que termina con 'Alabadle todo lo que respira.'"},
+  {id:2962,difficulty:"intermedio",category:"libros",question:"¿Quién escribió la mayoría de los Salmos?",options:["Moisés","Salomón","David","Asaf"],correct:2,reference:"Salmos 3:1 (superscripción)",explanation:"El rey David es el autor de la mayoría de los Salmos (73 de 150 llevan su nombre en la superscripción)."},
+  {id:2963,difficulty:"dificil",category:"libros",question:"¿Cuántos libros tiene la Biblia completa (protestante)?",options:["60","63","66","73"],correct:2,reference:"Canon bíblico",explanation:"La Biblia protestante tiene 66 libros: 39 del Antiguo Testamento y 27 del Nuevo Testamento."},
+  {id:2964,difficulty:"facil",category:"vida_jesus",question:"¿Qué hizo Jesús en el templo cuando vio a los cambistas?",options:["Les predicó","Les pidió que se fueran amablemente","Volcó las mesas y echó fuera a los vendedores","Llamó a la autoridad religiosa"],correct:2,reference:"Mateo 21:12",explanation:"Jesús entró en el templo y echó fuera a todos los que vendían y compraban en él, y volcó las mesas de los cambistas y las sillas de los que vendían palomas."},
+  {id:2965,difficulty:"intermedio",category:"vida_jesus",question:"¿Qué le dijo Jesús a la mujer samaritana sobre el agua viva?",options:["Que debía beber del pozo de Jacob","Cualquiera que bebiere del agua que yo le daré, no tendrá sed jamás","Que el agua es símbolo de la ley","Que debe ir a Jerusalén para encontrar agua viva"],correct:1,reference:"Juan 4:14",explanation:"Jesús dijo: 'Mas el que bebiere del agua que yo le daré, no tendrá sed jamás; sino que el agua que yo le daré será en él una fuente de agua que salte para vida eterna.'"},
+  {id:2966,difficulty:"facil",category:"parabolas",question:"¿En qué parábola enseñó Jesús que debemos reconciliarnos con nuestro adversario antes del juicio?",options:["La del deudor inmisericorde","La del rico y Lázaro","El consejo de ir con el adversario al magistrado","La del buen samaritano"],correct:2,reference:"Mateo 5:25",explanation:"Jesús enseñó: 'Ponte de acuerdo con tu adversario pronto, entre tanto que estás con él en el camino, no sea que el adversario te entregue al juez.' Esto ilustra la urgencia de la reconciliación."},
+  {id:2967,difficulty:"intermedio",category:"parabolas",question:"¿En qué contexto contó Jesús la parábola del tesoro escondido y la perla de gran precio?",options:["Respondiendo a una pregunta de los fariseos","Enseñando a sus discípulos sobre el reino de los cielos en parábolas","Predicando en la sinagoga de Capernaúm","Respondiendo al joven rico"],correct:1,reference:"Mateo 13:44-46",explanation:"Estas parábolas forman parte del discurso de Jesús sobre el reino de los cielos en Mateo 13, donde enseñó a sus discípulos mediante una serie de parábolas."},
+  {id:2968,difficulty:"dificil",category:"parabolas",question:"¿Cuál parábola enseñó Jesús en respuesta a la pregunta '¿quién es mi prójimo?'?",options:["La del hijo pródigo","La del buen samaritano","La de la oveja perdida","La del rico y Lázaro"],correct:1,reference:"Lucas 10:29-30",explanation:"Un intérprete de la ley preguntó '¿Y quién es mi prójimo?' Entonces Jesús contó la parábola del buen samaritano, mostrando que el prójimo es todo el que necesita ayuda."},
+  {id:2969,difficulty:"experto",category:"parabolas",question:"¿Cuántos talentos le fueron dados al siervo que los enterró?",options:["Uno","Dos","Tres","Cinco"],correct:0,reference:"Mateo 25:15",explanation:"Al primero le dio cinco talentos, al segundo dos, y al tercero uno, cada uno conforme a su capacidad. El que recibió uno fue el que lo enterró."},
+  {id:2970,difficulty:"facil",category:"parabolas",question:"¿Qué hizo el padre al ver a su hijo pródigo venir de lejos?",options:["Esperó en la puerta","Lo mandó llamar","Corrió, lo abrazó y besó","Le envió a los siervos a recibirlo"],correct:2,reference:"Lucas 15:20",explanation:"Cuando aún estaba lejos, el padre lo vio y tuvo compasión; corrió y se echó sobre su cuello y lo besó."},
+  {id:2971,difficulty:"intermedio",category:"parabolas",question:"¿Qué clase de personas se describe como las 'cabras' en la parábola del juicio final (Mateo 25)?",options:["Los que no conocieron la Biblia","Los que no ayudaron al prójimo necesitado","Los que no fueron bautizados","Los que robaron de otros"],correct:1,reference:"Mateo 25:41-43",explanation:"Las 'cabras' son los que no dieron de comer al hambriento, de beber al sediento, no hospedaron al forastero, no vistieron al desnudo ni visitaron al enfermo y al preso."},
+  {id:2972,difficulty:"dificil",category:"parabolas",question:"¿Qué enseñó la parábola del administrador astuto (Lucas 16) sobre el uso del dinero?",options:["Que debemos ahorrar para el futuro","Ganad amigos con las riquezas injustas para que cuando falte, os reciban en las moradas eternas","Que debemos dar todo a la iglesia","Que el dinero es siempre malo"],correct:1,reference:"Lucas 16:9",explanation:"Jesús concluye: 'Ganad amigos con las riquezas injustas, para que cuando esto falte, os reciban en las moradas eternas.' El dinero debe usarse con sabiduría eterna."},
+  {id:2973,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que debemos hacer para ser sus discípulos?",options:["Ir a la iglesia cada domingo","Negarnos a nosotros mismos y tomar nuestra cruz","Estudiar toda la Biblia","Bautizarnos y guardar la ley"],correct:1,reference:"Lucas 9:23",explanation:"Jesús dijo: 'Si alguno quiere venir en pos de mí, niéguese a sí mismo, tome su cruz cada día y sígame.'"},
+  {id:2974,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre la verdadera adoración en su conversación con la samaritana?",options:["Que debe hacerse en Jerusalén","Que los verdaderos adoradores adorarán al Padre en espíritu y en verdad","Que solo los judíos pueden adorar correctamente","Que el lugar de adoración es lo más importante"],correct:1,reference:"Juan 4:23",explanation:"Jesús dijo: 'Los verdaderos adoradores adorarán al Padre en espíritu y en verdad; porque también el Padre tales adoradores busca que le adoren.'"},
+  {id:2975,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el cuerpo como templo del Espíritu Santo?",options:["Que debemos cuidar nuestra salud física solamente","¿No sabéis que vuestro cuerpo es templo del Espíritu Santo? Glorificad a Dios en vuestro cuerpo","Que solo los creyentes llenos del Espíritu son templo","Que el cuerpo es la fuente del pecado que debe negarse"],correct:1,reference:"1 Corintios 6:19-20",explanation:"Pablo escribió: '¿O ignoráis que vuestro cuerpo es templo del Espíritu Santo, el cual está en vosotros, el cual tenéis de Dios, y que no sois vuestros?'"},
+  {id:2976,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el que jura?",options:["Que debemos jurar por lo más sagrado","Sea vuestro hablar: Sí, sí; No, no","Que los juramentos son necesarios en los tribunales","Que debemos jurar por el templo"],correct:1,reference:"Mateo 5:37",explanation:"Jesús enseñó: 'Pero sea vuestro hablar: Sí, sí; No, no; porque lo que es más de esto, de mal procede.'"},
+  {id:2977,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre la resurrección a los saduceos que negaban que había resurrección?",options:["Que deben leer más la ley","¿No erráis por esto, porque no conocéis las Escrituras ni el poder de Dios?","Que deben preguntar a los fariseos","Que la resurrección es un misterio que nadie puede entender"],correct:1,reference:"Marcos 12:24",explanation:"Jesús respondió a los saduceos: '¿No erráis por esto, porque ignoráis las Escrituras y el poder de Dios?'"},
+  {id:2978,difficulty:"facil",category:"versiculos",question:"¿Qué dice Filipenses 4:6 sobre la ansiedad?",options:["Que es normal tener ansiedad","Por nada estéis afanosos, sino presentad vuestras peticiones a Dios","Que debemos suprimir toda emoción","Que la ansiedad es señal de falta de fe"],correct:1,reference:"Filipenses 4:6",explanation:"'Por nada estéis afanosos, sino sean conocidas vuestras peticiones delante de Dios en toda oración y ruego, con acción de gracias.'"},
+  {id:2979,difficulty:"facil",category:"versiculos",question:"¿Qué dice Proverbios 18:10 sobre el nombre de Jehová?",options:["El nombre de Jehová es poderoso","El nombre de Jehová es torre fuerte; a él corre el justo y está a salvo","El nombre de Jehová es eterno","El nombre de Jehová es santo"],correct:1,reference:"Proverbios 18:10",explanation:"'Torre fuerte es el nombre de Jehová; a él correrá el justo, y será levantado.'"},
+  {id:2980,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Mateo 5:16 sobre nuestra luz?",options:["Que debemos esconder nuestra fe","Así alumbre vuestra luz delante de los hombres, para que vean vuestras buenas obras y glorifiquen a vuestro Padre","Que la luz viene solo de Dios","Que debemos buscar la luz en la oración"],correct:1,reference:"Mateo 5:16",explanation:"'Así alumbre vuestra luz delante de los hombres, para que vean vuestras buenas obras, y glorifiquen a vuestro Padre que está en los cielos.'"},
+  {id:2981,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice 1 Corintios 10:13 sobre la tentación?",options:["Que debemos evitar toda situación de tentación","No os ha sobrevenido ninguna tentación que no sea humana... Dios proveerá la salida","Que solo los débiles son tentados","Que la tentación viene solo del diablo"],correct:1,reference:"1 Corintios 10:13",explanation:"'No os ha sobrevenido ninguna tentación que no sea humana; pero fiel es Dios, que no os dejará ser tentados más de lo que podéis resistir, sino que dará también juntamente con la tentación la salida.'"},
+  {id:2982,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Romanos 12:20-21 sobre los enemigos?",options:["Que debemos ignorarlos","Si tu enemigo tuviere hambre, dale de comer... No seas vencido de lo malo, sino vence con el bien el mal","Que Dios los juzgará por nosotros","Que debemos confrontarlos con firmeza"],correct:1,reference:"Romanos 12:20-21",explanation:"'Si tu enemigo tuviere hambre, dale de comer; si tuviere sed, dale de beber... No seas vencido de lo malo, sino vence con el bien el mal.'"},
+  {id:2983,difficulty:"experto",category:"versiculos",question:"¿Qué versículo dice: 'Yo soy la vid verdadera, y mi Padre es el labrador'?",options:["Juan 10:11","Juan 15:1","Juan 14:6","Juan 6:35"],correct:1,reference:"Juan 15:1",explanation:"Jesús dijo: 'Yo soy la vid verdadera, y mi Padre es el labrador.' Esta es una de las siete declaraciones 'Yo Soy' del Evangelio de Juan."},
+  {id:2984,difficulty:"facil",category:"lugares",question:"¿En qué ciudad nació Juan el Bautista?",options:["Belén","Nazaret","Una ciudad de las montañas de Judea","Capernaúm"],correct:2,reference:"Lucas 1:39",explanation:"Zacarías y Elisabet vivían en una ciudad de las montañas de Judea donde nació Juan el Bautista."},
+  {id:2985,difficulty:"facil",category:"lugares",question:"¿En qué lugar subió Jesús cuando fue transfigurado?",options:["El Monte de los Olivos","Un monte alto aparte","El Monte Carmelo","El Monte Sinaí"],correct:1,reference:"Mateo 17:1",explanation:"Jesús tomó a Pedro, Jacobo y Juan y los llevó aparte a un monte alto, y se transfiguró delante de ellos."},
+  {id:2986,difficulty:"intermedio",category:"lugares",question:"¿Qué río cruzó el pueblo de Israel para entrar a la tierra prometida?",options:["El Eufrates","El Nilo","El Jordán","El Tigris"],correct:2,reference:"Josué 3:17",explanation:"Los sacerdotes que llevaban el arca del pacto se pararon en seco en medio del Jordán mientras todo el pueblo cruzaba."},
+  {id:2987,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad fue profetizado que el Mesías nacería?",options:["Nazaret","Jerusalén","Belén de Judá","Hebrón"],correct:2,reference:"Miqueas 5:2",explanation:"'Pero tú, Belén Efrata, pequeña para estar entre las familias de Judá, de ti me saldrá el que será Señor en Israel.'"},
+  {id:2988,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad del Nuevo Testamento se encontraban los 'siete' de Hechos 6 elegidos para servir?",options:["Antioquía","Éfeso","Jerusalén","Corinto"],correct:2,reference:"Hechos 6:1-5",explanation:"Los siete (incluyendo Esteban y Felipe) fueron elegidos por la comunidad de discípulos en Jerusalén para servir en la distribución diaria de alimentos."},
+  {id:2989,difficulty:"experto",category:"lugares",question:"¿Cuál era el nombre del estanque en Jerusalén donde Jesús sanó al paralítico que llevaba 38 años?",options:["Siloé","Betesda","Gihón","En-Rogel"],correct:1,reference:"Juan 5:2",explanation:"Hay en Jerusalén, cerca de la puerta de las ovejas, un estanque llamado Betesda, con cinco pórticos, donde Jesús sanó al paralítico."},
+  {id:2990,difficulty:"intermedio",category:"historias",question:"¿Qué sucedió cuando los israelitas miraban la serpiente de bronce en el desierto?",options:["Recibían comida del cielo","Eran sanados si los habían mordido serpientes","Recibían agua de la roca","Escuchaban la voz de Dios"],correct:1,reference:"Números 21:9",explanation:"Moisés hizo una serpiente de bronce y la puso en un asta; si alguno era mordido por serpiente y miraba la serpiente de bronce, vivía."},
+  {id:2991,difficulty:"dificil",category:"historias",question:"¿Cuántos días Josué y el pueblo marcharon alrededor de Jericó?",options:["3 días","5 días","7 días","14 días"],correct:2,reference:"Josué 6:14-15",explanation:"Durante seis días marcharon alrededor de la ciudad una vez; el séptimo día madrugaron y marcharon alrededor de la ciudad siete veces, y los muros cayeron."},
+  {id:2992,difficulty:"experto",category:"historias",question:"¿Cuántos años vivió Abraham?",options:["120 años","150 años","175 años","200 años"],correct:2,reference:"Génesis 25:7",explanation:"Los años de la vida de Abraham fueron ciento setenta y cinco años."},
+  {id:2993,difficulty:"facil",category:"profetas",question:"¿Cuál fue el mensaje de Juan el Bautista?",options:["'El reino de los cielos está lejos'","'Arrepentíos, porque el reino de los cielos se ha acercado'","'Guardar la ley es suficiente'","'El Mesías ya vendrá en el futuro'"],correct:1,reference:"Mateo 3:2",explanation:"Juan el Bautista predicaba: 'Arrepentíos, porque el reino de los cielos se ha acercado.'"},
+  {id:2994,difficulty:"intermedio",category:"profetas",question:"¿Qué profeta del NT fue el último de los profetas del Antiguo pacto?",options:["Isaías","Malaquías","Juan el Bautista","Ezequiel"],correct:2,reference:"Mateo 11:13-14",explanation:"Jesús dijo que Juan el Bautista era el Elías que había de venir, el último profeta del Antiguo pacto que preparó el camino para el Mesías."},
+  {id:2995,difficulty:"dificil",category:"profetas",question:"¿Cuál fue la señal de Isaías al rey Acaz sobre el Mesías?",options:["El sol retrocedería diez grados","Una virgen concebiría y daría a luz a un hijo llamado Emanuel","El ejército de Asiria sería derrotado","Un ángel aparecería en el templo"],correct:1,reference:"Isaías 7:14",explanation:"Isaías profetizó: 'Por tanto, el Señor mismo os dará señal: He aquí que la virgen concebirá, y dará a luz un hijo, y llamará su nombre Emanuel.'"},
+  {id:2996,difficulty:"facil",category:"milagros",question:"¿Qué milagro realizó Elías en Sarepta ante la viuda?",options:["Multiplicó el agua","Multiplicó la harina y el aceite que no se agotaron","Sanó a su hijo enfermo","Hizo caer fuego del cielo"],correct:1,reference:"1 Reyes 17:14",explanation:"El profeta Elías dijo a la viuda de Sarepta: 'La harina de la tinaja no escaseará, ni el aceite de la vasija disminuirá.' Y así fue durante el tiempo de sequía."},
+  {id:2997,difficulty:"intermedio",category:"milagros",question:"¿Cuántas personas comieron del milagro de los siete panes?",options:["Cuatro mil hombres","Cinco mil hombres","Siete mil hombres","Tres mil hombres"],correct:0,reference:"Mateo 15:38",explanation:"Los que comieron en la segunda multiplicación (siete panes y peces) fueron cuatro mil hombres, sin contar mujeres y niños."},
+  {id:2998,difficulty:"dificil",category:"milagros",question:"¿Cuántos panes sobraron del milagro de los siete panes?",options:["5 canastos","7 canastos","12 canastos","Ninguno"],correct:1,reference:"Mateo 15:37",explanation:"Recogieron lo que sobró de los pedazos, siete canastas llenas, después que los cuatro mil hombres (sin mujeres y niños) habían comido."},
+  {id:2999,difficulty:"intermedio",category:"cartas",question:"¿Cuál carta describe la carrera del creyente como una carrera atlética?",options:["Filipenses","Hebreos","1 Corintios","2 Timoteo"],correct:1,reference:"Hebreos 12:1",explanation:"'Por tanto, nosotros también, teniendo en derredor nuestro tan grande nube de testigos, corramos con paciencia la carrera que tenemos por delante.'"},
+  {id:3000,difficulty:"dificil",category:"libros",question:"¿Cuál es el libro más largo de la Biblia en número de versículos?",options:["Génesis","Jeremías","Salmos","Isaías"],correct:2,reference:"Salmos 119",explanation:"El libro de los Salmos es el más largo de la Biblia en número de versículos, con 2,461 versículos. El Salmo 119 por sí solo tiene 176 versículos."},
+  {id:3001,difficulty:"facil",category:"parabolas",question:"¿Qué enseñó Jesús sobre las casas construidas sobre roca versus arena?",options:["La de roca es más cara de construir","La de roca es mejor visualmente","La de roca permanece en la tormenta; la de arena cae","Ambas sobreviven si la fe es suficiente"],correct:2,reference:"Mateo 7:24-27",explanation:"Jesús enseñó: el que oye sus palabras y las pone en práctica edifica sobre roca; el que no las pone en práctica edifica sobre arena y cae al llegar la tormenta."},
+  {id:3002,difficulty:"intermedio",category:"parabolas",question:"¿Cuántas invitaciones envió el padre en la parábola del hijo pródigo antes de que el hijo regresara?",options:["Ninguna, el hijo regresó por voluntad propia","Una carta por medio de un siervo","Dos mensajeros","El padre fue personalmente a buscarlo"],correct:0,reference:"Lucas 15:17-20",explanation:"El hijo regresó por voluntad propia cuando 'volvió en sí'; el padre no lo buscó sino que lo esperó y lo vio venir de lejos."},
+  {id:3003,difficulty:"dificil",category:"parabolas",question:"¿Cuántas minas ganó el siervo más fiel en la parábola de las minas (Lucas 19)?",options:["Cinco minas más","Diez minas más (de una ganó diez)","Veinte minas","Cinco minas en total"],correct:1,reference:"Lucas 19:16",explanation:"El primer siervo dijo: 'Señor, tu mina ha producido diez minas más.' El señor le dio autoridad sobre diez ciudades."},
+  {id:3004,difficulty:"experto",category:"parabolas",question:"¿En qué parábola hay una referencia directa a Moisés y los profetas?",options:["La del sembrador","La del rico y Lázaro","La de los labradores malvados","La de los talentos"],correct:1,reference:"Lucas 16:29",explanation:"En la parábola del rico y Lázaro, Abraham dice al rico: 'A Moisés y a los profetas tienen; óiganlos.' Si no oyen a Moisés y los profetas, tampoco se convencerán aunque alguien resucite."},
+  {id:3005,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús que es más fácil que un camello pase que un rico entre al reino?",options:["Por el ojo de una aguja","Por un hueco en la muralla","Por la puerta estrecha","Por encima de un muro"],correct:0,reference:"Mateo 19:24",explanation:"Jesús dijo: 'Y otra vez os digo, que es más fácil pasar un camello por el ojo de una aguja, que entrar un rico en el reino de Dios.'"},
+  {id:3006,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué respondió Jesús cuando le preguntaron si debían pagar impuestos al César?",options:["Que no, porque solo Dios es rey","Dad al César lo que es del César, y a Dios lo que es de Dios","Que el pueblo de Dios no debe pagar tributo","Que debemos pagar lo mínimo posible"],correct:1,reference:"Mateo 22:21",explanation:"Jesús respondió: 'Dad, pues, al César lo que es del César, y a Dios lo que es de Dios.'"},
+  {id:3007,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el matrimonio y la soltería en 1 Corintios 7?",options:["Que el matrimonio es superior a la soltería","Que cada uno tiene su propio don de Dios; el que puede abstenerse mejor que se quede soltero","Que todos deben casarse para cumplir el mandato de Dios","Que el celibato es imposible sin un don especial"],correct:1,reference:"1 Corintios 7:7-8",explanation:"Pablo escribió que cada uno tiene su propio don de Dios, y que a los no casados y viudas les digo que bueno les fuera quedarse como él."},
+  {id:3008,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el papel de los líderes religiosos en Mateo 23?",options:["Que son los guías perfectos del pueblo","¡Ay de vosotros, escribas y fariseos, hipócritas! Que cerráis el reino de los cielos delante de los hombres","Que debemos honrarlos siempre","Que sus enseñanzas deben seguirse aunque no sus obras"],correct:1,reference:"Mateo 23:13",explanation:"Jesús pronunció siete ayes contra los escribas y fariseos hipócritas, comenzando con: '¡Ay de vosotros... que cerráis el reino de los cielos delante de los hombres!'"},
+  {id:3009,difficulty:"facil",category:"versiculos",question:"¿Qué dice Juan 8:12 que Jesús es para el mundo?",options:["El camino","La luz del mundo","El pan de vida","La puerta de las ovejas"],correct:1,reference:"Juan 8:12",explanation:"Jesús les habló otra vez, diciendo: 'Yo soy la luz del mundo; el que me sigue, no andará en tinieblas, sino que tendrá la luz de la vida.'"},
+  {id:3010,difficulty:"facil",category:"versiculos",question:"¿Qué dice Josué 24:15 sobre elegir a quién servir?",options:["Que todos deben servir a Dios obligatoriamente","Que cada uno puede elegir su propio dios","Escogeos hoy a quién sirváis... pero yo y mi casa serviremos a Jehová","Que los padres deciden por sus hijos"],correct:2,reference:"Josué 24:15",explanation:"Josué dijo al pueblo: 'Si os parece mal servir a Jehová, escogeos hoy a quién sirváis... pero yo y mi casa serviremos a Jehová.'"},
+  {id:3011,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Apocalipsis 22:13 sobre Jesús?",options:["Que Jesús viene pronto","Yo soy el Alfa y la Omega, el principio y el fin, el primero y el último","Que Jesús es el Rey de reyes","Que Jesús es el Cordero de Dios"],correct:1,reference:"Apocalipsis 22:13",explanation:"Jesús declara: 'Yo soy el Alfa y la Omega, el primero y el último, el principio y el fin.'"},
+  {id:3012,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Eclesiastés 12:13 sobre el fin de la sabiduría?",options:["Que la sabiduría es vanidad","Teme a Dios y guarda sus mandamientos, porque esto es el todo del hombre","Que debemos buscar el gozo","Que la riqueza es la prueba de la sabiduría"],correct:1,reference:"Eclesiastés 12:13",explanation:"El Predicador concluye: 'El fin de todo el discurso oído es este: Teme a Dios, y guarda sus mandamientos; porque esto es el todo del hombre.'"},
+  {id:3013,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Jeremías 17:9 sobre el corazón humano?",options:["Que el corazón es fuente de toda bondad","Engañoso es el corazón más que todas las cosas, y perverso; ¿quién lo conocerá?","Que el corazón puede purificarse por obras","Que el corazón del creyente es siempre recto"],correct:1,reference:"Jeremías 17:9",explanation:"'Engañoso es el corazón más que todas las cosas, y perverso; ¿quién lo conocerá? Yo Jehová, que escudriño la mente, que pruebo el corazón.'"},
+  {id:3014,difficulty:"experto",category:"versiculos",question:"¿Cuál versículo dice: 'No con ejército, ni con fuerza, sino con mi Espíritu, dice Jehová de los ejércitos'?",options:["Isaías 40:31","Zacarías 4:6","Miqueas 6:8","Habacuc 3:19"],correct:1,reference:"Zacarías 4:6",explanation:"El ángel dijo a Zacarías sobre Zorobabel: 'No con ejército, ni con fuerza, sino con mi Espíritu, dice Jehová de los ejércitos.'"},
+  {id:3015,difficulty:"facil",category:"lugares",question:"¿En qué ciudad del Nuevo Testamento residía María, Marta y Lázaro?",options:["Capernaúm","Betania","Nazaret","Belén"],correct:1,reference:"Juan 11:1",explanation:"Betania era la aldea donde vivían María, Marta y Lázaro; estaba cerca de Jerusalén, como a quince estadios."},
+  {id:3016,difficulty:"intermedio",category:"lugares",question:"¿Qué montaña es conocida en la Biblia como el lugar del sacrificio frustrado de Isaac?",options:["Monte Hermón","Monte Moriah","Monte Sinaí","Monte Carmelo"],correct:1,reference:"Génesis 22:2",explanation:"Dios dijo a Abraham: 'Toma ahora tu hijo... y ve a la tierra de Moriah, y ofrécelo allí en holocausto sobre uno de los montes que yo te diré.'"},
+  {id:3017,difficulty:"dificil",category:"lugares",question:"¿Cuál era el nombre del pozo donde Jesús habló con la mujer samaritana?",options:["El pozo de Abrahán","El pozo de Beerseba","El pozo de Jacob","El manantial de Sarepta"],correct:2,reference:"Juan 4:6",explanation:"Era el pozo de Jacob, donde Jesús, cansado del camino, se sentó junto al pozo y encontró a la mujer samaritana."},
+  {id:3018,difficulty:"experto",category:"lugares",question:"¿En qué ciudad asiria predicó Jonás con éxito logrando el arrepentimiento de toda la ciudad?",options:["Babilonia","Damasco","Nínive","Ur"],correct:2,reference:"Jonás 3:5",explanation:"El pueblo de Nínive creyó a Dios, y proclamaron ayuno, y se vistieron de cilicio desde el mayor hasta el menor de ellos."},
+  {id:3019,difficulty:"facil",category:"historias",question:"¿Quién escribió la ley en dos tablas de piedra que Moisés subió a buscar?",options:["Moisés mismo","Los ángeles","Dios","Aarón"],correct:2,reference:"Éxodo 31:18",explanation:"Cuando terminó de hablar con Moisés en el Monte Sinaí, Dios le dio dos tablas del testimonio, tablas de piedra escritas con el dedo de Dios."},
+  {id:3020,difficulty:"intermedio",category:"historias",question:"¿Qué hizo Sansón para matar a mil filisteos?",options:["Con una espada de oro","Con la quijada de un asno","Con piedras de un honda","Con sus propias manos"],correct:1,reference:"Jueces 15:15",explanation:"Sansón halló una quijada de asno fresca y extendiendo su mano la tomó y mató con ella a mil hombres."},
+  {id:3021,difficulty:"dificil",category:"historias",question:"¿Cuántos hijos tuvo Job al final de su restauración?",options:["Los mismos 7 hijos","14 hijos (el doble de los primeros)","7 hijos y 3 hijas (como antes)","10 hijos en total"],correct:2,reference:"Job 42:13",explanation:"Jehová bendijo a Job después de la prueba; tuvo siete hijos y tres hijas, los mismos números que al principio, pero también el doble de riquezas."},
+  {id:3022,difficulty:"facil",category:"profetas",question:"¿Qué profeta anunció el nuevo pacto que Dios haría con Israel?",options:["Amós","Miqueas","Jeremías","Sofonías"],correct:2,reference:"Jeremías 31:31",explanation:"Jeremías profetizó: 'He aquí que vienen días, dice Jehová, en los cuales haré nuevo pacto con la casa de Israel y con la casa de Judá.'"},
+  {id:3023,difficulty:"intermedio",category:"profetas",question:"¿Cuál profeta del Antiguo Testamento fue conocido por su mensaje sobre el valle de Gehinom?",options:["Amós","Isaías","Jeremías","Ezequiel"],correct:2,reference:"Jeremías 7:31-32",explanation:"Jeremías profetizó sobre el valle de Hinom (Gehinom/Gehena), donde se practicaban sacrificios de niños y que sería lugar de juicio."},
+  {id:3024,difficulty:"experto",category:"profetas",question:"¿Cuál fue el nombre del profeta que casó con Gomer, una mujer infiel, como símbolo del amor de Dios a Israel?",options:["Amós","Miqueas","Oseas","Joel"],correct:2,reference:"Oseas 1:2-3",explanation:"Jehová dijo a Oseas: 'Ve, tómate una mujer fornicaria.' Oseas tomó a Gomer; su matrimonio fue una parábola del amor de Dios hacia un Israel infiel."},
+  {id:3025,difficulty:"facil",category:"milagros",question:"¿Qué milagro ocurrió cuando los israelitas tocaron las trompetas en Jericó?",options:["El cielo se oscureció","Los muros de la ciudad cayeron","Un ángel destruyó la ciudad","El río Jordán se detuvo"],correct:1,reference:"Josué 6:20",explanation:"Cuando el pueblo escuchó el sonido de las trompetas, gritó con gran vocerío, y los muros de Jericó cayeron."},
+  {id:3026,difficulty:"intermedio",category:"milagros",question:"¿Qué milagro realizó el profeta Eliseo con un hacha que cayó al agua?",options:["Hizo que el hacha volara de regreso","Ordenó que saliera y el hierro flotó","Secó el río para encontrarla","Multiplicó el agua para buscarla"],correct:1,reference:"2 Reyes 6:6",explanation:"Eliseo cortó un palo y lo echó al agua, e hizo que el hierro del hacha flotara, lo cual fue un milagro notable pues el hierro no flota."},
+  {id:3027,difficulty:"dificil",category:"cartas",question:"¿Cuál fue el propósito principal de la carta a Filemón?",options:["Enseñar sobre la gracia","Pedir que recibiera de vuelta a su esclavo Onésimo como a un hermano en Cristo","Organizar una colecta para Jerusalén","Advertir sobre falsos maestros"],correct:1,reference:"Filemón 1:16",explanation:"Pablo intercedió por Onésimo, el esclavo fugitivo de Filemón, pidiéndole que lo recibiera 'no ya como esclavo, sino como más que esclavo, como hermano amado.'"},
+  {id:3028,difficulty:"intermedio",category:"libros",question:"¿Cuál libro del Antiguo Testamento relata el regreso de los judíos del exilio babilónico?",options:["Esdras","Ezequiel","Isaías","Malaquías"],correct:0,reference:"Esdras 1:1-3",explanation:"El libro de Esdras relata el decreto del rey Ciro permitiendo que los judíos regresaran a Jerusalén desde Babilonia para reconstruir el templo."},
+  {id:3029,difficulty:"facil",category:"vida_jesus",question:"¿Cuántas tentaciones enfrentó Jesús en el desierto?",options:["Una","Dos","Tres","Cuatro"],correct:2,reference:"Mateo 4:3-11",explanation:"Jesús fue tentado tres veces por el diablo en el desierto: convertir piedras en pan, lanzarse del templo y adorar al diablo a cambio de los reinos del mundo."},
+  {id:3030,difficulty:"intermedio",category:"vida_jesus",question:"¿Qué evento marcó el inicio del ministerio público de Jesús?",options:["La boda de Caná","Su bautismo en el Jordán","Su visita al templo a los 12 años","La llamada de los discípulos"],correct:1,reference:"Mateo 3:16-17",explanation:"Después de su bautismo, el cielo se abrió, el Espíritu descendió sobre Él como paloma y una voz del cielo dijo: 'Este es mi Hijo amado, en quien tengo complacencia.'"},
+  {id:3031,difficulty:"dificil",category:"personajes",question:"¿Quién fue Nicodemo y qué hizo después de la muerte de Jesús?",options:["Un fariseo que rechazó siempre a Jesús","Un fariseo que visitó a Jesús de noche y luego proveyó especias para sepultarlo","Un sacerdote que traicionó a Jesús","Un discípulo que negó conocer a Jesús"],correct:1,reference:"Juan 19:39",explanation:"Nicodemo, el que antes había visitado a Jesús de noche, vino trayendo una mezcla de mirra y áloes para la sepultura de Jesús."},
+  {id:3032,difficulty:"experto",category:"personajes",question:"¿Cuál fue el nombre del padre de los apóstoles Jacobo y Juan?",options:["Zebedeo","Alfeo","Jonás","Timeo"],correct:0,reference:"Mateo 4:21",explanation:"Jacobo y Juan eran hijos de Zebedeo; estaban en una barca con su padre remendando sus redes cuando Jesús los llamó."},
+  {id:3033,difficulty:"facil",category:"reyes",question:"¿Cuál fue el primero de los tres reyes que unificaron Israel?",options:["David","Salomón","Saúl","Jeroboam"],correct:2,reference:"1 Samuel 10:24",explanation:"Saúl fue el primer rey de Israel, ungido por Samuel. Reinó antes que David y Salomón."},
+  {id:3034,difficulty:"intermedio",category:"reyes",question:"¿Por qué Dios rechazó a Saúl como rey?",options:["Por cometer adulterio","Por ofrecer un sacrificio sin autorización y por no destruir todo lo de Amalec","Por robar tesoros del templo","Por casarse con mujeres extranjeras"],correct:1,reference:"1 Samuel 13:13-14; 15:23",explanation:"Samuel reprendió a Saúl por ofrecer el holocausto sin esperar a Samuel y luego por no destruir todo en Amalec. 'La rebelión es como pecado de adivinación.'"},
+  {id:3035,difficulty:"dificil",category:"reyes",question:"¿Cuántos reyes tuvo el reino dividido del norte (Israel) antes de caer ante Asiria?",options:["9","13","19","21"],correct:2,reference:"2 Reyes 17",explanation:"El reino del norte (Israel) tuvo 19 reyes desde Jeroboam hasta Oseas, todos haciendo lo malo ante los ojos de Jehová, antes de caer ante Asiria en 722 a.C."},
+  {id:3036,difficulty:"facil",category:"historias",question:"¿Qué evento separa el Antiguo del Nuevo Testamento en términos históricos?",options:["La construcción del templo de Salomón","El exilio a Babilonia","La vida, muerte y resurrección de Jesucristo","El regreso del exilio persa"],correct:2,reference:"Mateo 1:1",explanation:"La venida de Jesucristo es el punto central que divide la historia bíblica en Antiguo y Nuevo Testamento, el Antiguo preparando para su venida y el Nuevo relatándola."},
+  {id:3037,difficulty:"intermedio",category:"historias",question:"¿Cuántos años duró el reinado de David sobre todo Israel?",options:["7 años","20 años","33 años","40 años"],correct:3,reference:"2 Samuel 5:4",explanation:"David tenía treinta años cuando comenzó a reinar, y reinó cuarenta años: siete años en Hebrón sobre Judá, y treinta y tres sobre todo Israel y Judá en Jerusalén."},
+  {id:3038,difficulty:"facil",category:"profetas",question:"¿Cuál fue la primera palabra que Dios habló a Jeremías cuando lo llamó?",options:["'Ve y predica'","'Antes que te formase en el vientre te conocí'","'Arrepiéntete'","'Escribe mis palabras'"],correct:1,reference:"Jeremías 1:5",explanation:"Jehová dijo a Jeremías: 'Antes que te formase en el vientre te conocí, y antes que nacieses te santifiqué, te di por profeta a las naciones.'"},
+  {id:3039,difficulty:"dificil",category:"milagros",question:"¿Cómo ayudó milagrosamente Dios a Gedeón antes de la batalla contra los madianitas?",options:["Le envió un ejército de ángeles","Redujo su ejército de 32,000 a 300 hombres escogidos","Le dio una espada invencible","Le mostró visiones de victoria"],correct:1,reference:"Jueces 7:7",explanation:"Dios redujo el ejército de Gedeón de 32,000 a 300 para que Israel no se gloriara diciendo que su propia mano le había librado."},
+  {id:3040,difficulty:"intermedio",category:"cartas",question:"¿Cuál fue el propósito principal de la carta de Pablo a los Gálatas?",options:["Agradecer por su apoyo económico","Corregir a los que añadían la circuncisión y la ley a la gracia para salvarse","Organizar un viaje misionero","Enseñar sobre la segunda venida"],correct:1,reference:"Gálatas 1:6-7",explanation:"Pablo escribió a los gálatas porque se habían alejado del evangelio de gracia, al seguir a maestros que exigían la circuncisión y la ley como necesarias para la salvación."},
+  {id:3041,difficulty:"facil",category:"libros",question:"¿Cuál es el libro más corto del Antiguo Testamento en número de versículos?",options:["Rut","Abdías","Hageo","Filemón"],correct:1,reference:"Abdías",explanation:"El libro de Abdías, con solo 21 versículos, es el libro más corto del Antiguo Testamento."},
+  {id:3042,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Salmos 27:14 sobre esperar en Jehová?",options:["'Jehová es mi luz y mi salvación'","Aguarda a Jehová; esfuérzate y aliéntese tu corazón; sí, espera a Jehová","'El que espera en Jehová tendrá nuevas fuerzas'","'Confía en Jehová y él hará'"],correct:1,reference:"Salmos 27:14",explanation:"'Aguarda a Jehová; esfuérzate, y aliéntese tu corazón; sí, espera a Jehová.'"},
+  {id:3043,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Salmos 37:5 sobre encomendar nuestro camino a Jehová?",options:["'Deléitate en Jehová y él te dará los deseos'","Encomienda a Jehová tu camino, y confía en él; y él hará","'El Señor dirija tus pasos'","'Confía en Jehová con todo tu corazón'"],correct:1,reference:"Salmos 37:5",explanation:"'Encomienda a Jehová tu camino, y confía en él; y él hará.'"},
+  {id:3044,difficulty:"facil",category:"lugares",question:"¿En qué río fue encontrado el bebé Moisés?",options:["El Jordán","El Éufrates","El Nilo","El Tigris"],correct:2,reference:"Éxodo 2:3-5",explanation:"La madre de Moisés tomó una arquilla de juncos, la colocó entre los juncos a la orilla del Nilo; la hija del faraón la encontró allí."},
+  {id:3045,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar Elías escuchó la voz quieta y delicada de Dios?",options:["En el Monte Carmelo","En el Monte Horeb (Sinaí) dentro de una cueva","En el desierto de Judea","En el río Jordán"],correct:1,reference:"1 Reyes 19:9,12",explanation:"En el Monte Horeb, Elías se refugió en una cueva; allí, después del viento, el terremoto y el fuego, oyó una voz apacible y delicada."},
+  {id:3046,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad Pablo predicó en la sinagoga durante tres sábados seguidos antes de ser expulsado?",options:["Corinto","Atenas","Tesalónica","Filipos"],correct:2,reference:"Hechos 17:1-4",explanation:"En Tesalónica, Pablo predicó tres sábados en la sinagoga; muchos griegos piadosos y mujeres prominentes creyeron, pero los judíos celosos causaron un alboroto."},
+  {id:3047,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre el que pierde su vida por Él?",options:["Que será honrado en el cielo","Que la salvará","Que recibirá cien veces más en esta vida","Que encontrará el verdadero sentido"],correct:1,reference:"Marcos 8:35",explanation:"'Porque todo el que quiera salvar su vida, la perderá; y todo el que pierda su vida por causa de mí y del evangelio, la salvará.'"},
+  {id:3048,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la renovación diaria del hombre interior?",options:["Que el hombre interior no se renueva sino en el cielo","Aunque el hombre exterior se desgasta, el interior se renueva de día en día","Que solo los que oran mucho se renuevan","Que la renovación viene solo del bautismo"],correct:1,reference:"2 Corintios 4:16",explanation:"Pablo escribió: 'Por tanto, no desmayamos; antes aunque este nuestro hombre exterior se va desgastando, el interior no obstante se renueva de día en día.'"},
+  {id:3049,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el pan de vida en Juan 6?",options:["Que el pan físico es suficiente","Yo soy el pan vivo que descendió del cielo; si alguno comiere de este pan, vivirá para siempre","Que el pan del templo era sagrado","Que debemos ayunar más que comer"],correct:1,reference:"Juan 6:51",explanation:"Jesús dijo: 'Yo soy el pan vivo que descendió del cielo; si alguno comiere de este pan, vivirá para siempre; y el pan que yo daré es mi carne, la cual yo daré por la vida del mundo.'"},
+  {id:3050,difficulty:"facil",category:"versiculos",question:"¿Qué promete Dios en Malaquías 3:10 a los que dan el diezmo?",options:["Solo bendiciones espirituales","Derramaré sobre vosotros bendición hasta que sobreabunde","Que nunca faltará nada","Que serán libres de toda enfermedad"],correct:1,reference:"Malaquías 3:10",explanation:"Dios prometió: 'Traed todos los diezmos al alforje y haya alimento en mi casa; y probadme ahora en esto, dice Jehová de los ejércitos, si no os abriré las ventanas de los cielos, y derramaré sobre vosotros bendición hasta que sobreabunde.'"},
+  {id:3051,difficulty:"facil",category:"parabolas",question:"¿Qué perdió el padre en la parábola del hijo pródigo?",options:["Su riqueza","Su hijo mayor","Su hijo menor que se fue","Su viñedo"],correct:2,reference:"Lucas 15:24",explanation:"El padre dijo: 'Este mi hijo muerto era, y ha revivido; se había perdido, y es hallado.' La parábola trata del hijo menor que se fue."},
+  {id:3052,difficulty:"intermedio",category:"parabolas",question:"¿Cuántas veces menciona Jesús que el dueño encontró obreros sin trabajo en la parábola de los obreros de la viña?",options:["Una vez","Tres veces","Cuatro veces","Cinco veces saliendo a las horas 1, 3, 6, 9 y 11"],correct:3,reference:"Mateo 20:1-7",explanation:"El dueño salió a contratar obreros a la hora primera (6am), tercera (9am), sexta (12pm), novena (3pm) y undécima (5pm), cinco salidas en total."},
+  {id:3053,difficulty:"dificil",category:"parabolas",question:"¿Cuál fue la respuesta de la puerta cerrada a las vírgenes insensatas que llamaron?",options:["'Entrad, todavía hay tiempo'","'No os conozco; velad y sed prudentes'","'Os abriré mañana'","'En verdad os digo que no os conozco'"],correct:3,reference:"Mateo 25:12",explanation:"El señor respondió: 'De cierto os digo, que no os conozco.' Esta es la respuesta a todos los que lleguen sin preparación."},
+  {id:3054,difficulty:"experto",category:"parabolas",question:"En la parábola del sembrador, ¿a cuántas categorías de oyentes describió Jesús?",options:["Dos","Tres","Cuatro","Cinco"],correct:2,reference:"Mateo 13:18-23",explanation:"Jesús describió cuatro tipos de oyentes: el del camino (el maligno arrebata), el pedregoso (no tiene raíz), el espinoso (las preocupaciones ahogan) y el de buena tierra (da fruto)."},
+  {id:3055,difficulty:"facil",category:"ensenanzas",question:"¿Qué prometió Jesús a los que le buscan?",options:["Que los hará ricos","Que el que me busca me hallará","Que recibirán sabiduría","Que nunca sufrirán"],correct:1,reference:"Mateo 7:8",explanation:"Jesús prometió: 'Porque todo aquel que pide, recibe; y el que busca, halla; y al que llama, se le abrirá.'"},
+  {id:3056,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué dijo Jesús sobre honrar a los padres?",options:["Que es la primera bienaventuranza","Es uno de los diez mandamientos y Jesús lo reafirmó como mandamento de Dios","Que es secundario al amor a Dios","Que los padres no creyentes no merecen honor"],correct:1,reference:"Mateo 15:4",explanation:"Jesús reafirmó: 'Dios mandó diciendo: Honra a tu padre y a tu madre.' Y reprendió a los fariseos que usaban la 'corbán' para evitar este mandamiento."},
+  {id:3057,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre la oración en el nombre de Jesús?",options:["Que solo funciona en el templo","Si pedís algo al Padre en mi nombre, él os lo dará","Que el nombre de Jesús es una fórmula mágica","Que debemos usar el nombre de Jehová para orar"],correct:1,reference:"Juan 16:23",explanation:"Jesús prometió: 'De cierto, de cierto os digo, que todo cuanto pidiereis al Padre en mi nombre, os lo dará.'"},
+  {id:3058,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre 'estar muerto al pecado' en Romanos 6?",options:["Que los creyentes ya no pecan","Que debemos considerar al pecado como algo que ya no tiene dominio sobre nosotros","Que la muerte física libera del pecado","Que la santidad perfecta es alcanzable en esta vida"],correct:1,reference:"Romanos 6:11",explanation:"Pablo instruyó: 'Así también vosotros consideraos muertos al pecado, pero vivos para Dios en Cristo Jesús, Señor nuestro.'"},
+  {id:3059,difficulty:"facil",category:"versiculos",question:"¿Qué dice 1 Tesalonicenses 5:18 sobre dar gracias?",options:["Que debemos dar gracias en los días buenos","Dad gracias en todo, porque esta es la voluntad de Dios","Que la gratitud atrae bendiciones","Que agradecemos a Dios solo por lo bueno"],correct:1,reference:"1 Tesalonicenses 5:18",explanation:"'Dad gracias en todo, porque esta es la voluntad de Dios para con vosotros en Cristo Jesús.'"},
+  {id:3060,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Proverbios 4:23 sobre el corazón?",options:["Que el corazón engaña","Sobre toda cosa guardada, guarda tu corazón; porque de él mana la vida","Que el corazón debe entregarse a Dios","Que el corazón es el centro de la adoración"],correct:1,reference:"Proverbios 4:23",explanation:"'Sobre toda cosa guardada, guarda tu corazón; porque de él mana la vida.'"},
+  {id:3061,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Mateo 6:25 sobre preocuparse por la vida?",options:["Que debemos planificar con cuidado","Por tanto os digo: No os afanéis por vuestra vida, qué habéis de comer o qué habéis de beber","Que la preocupación es señal de responsabilidad","Que solo los ricos pueden despreocuparse"],correct:1,reference:"Mateo 6:25",explanation:"Jesús enseñó: 'Por tanto os digo: No os afanéis por vuestra vida, qué habéis de comer o qué habéis de beber; ni por vuestro cuerpo, qué habéis de vestir.'"},
+  {id:3062,difficulty:"experto",category:"versiculos",question:"¿Qué versículo es conocido como el resumen de toda la ley en el Antiguo Testamento?",options:["Génesis 1:1","Deuteronomio 6:4-5 (el Shemá)","Levítico 19:18","Éxodo 20:3"],correct:1,reference:"Deuteronomio 6:4-5",explanation:"El Shemá: 'Oye, Israel: Jehová nuestro Dios, Jehová uno es. Y amarás a Jehová tu Dios de todo tu corazón, y de toda tu alma, y con todas tus fuerzas.' Jesús lo citó como el primer mandamiento."},
+  {id:3063,difficulty:"facil",category:"lugares",question:"¿En qué ciudad fue fundada la primera iglesia cristiana?",options:["Antioquía","Roma","Jerusalén","Éfeso"],correct:2,reference:"Hechos 2:47",explanation:"La primera iglesia cristiana se formó en Jerusalén el día de Pentecostés, cuando 3,000 personas creyeron y fueron bautizadas."},
+  {id:3064,difficulty:"intermedio",category:"lugares",question:"¿En qué isla fue encadenado Juan y recibió el Apocalipsis?",options:["Creta","Chipre","Cos","Patmos"],correct:3,reference:"Apocalipsis 1:9",explanation:"Juan escribió: 'Yo Juan, vuestro hermano y copartícipe vuestro en la tribulación... estaba en la isla llamada Patmos, por causa de la Palabra de Dios y el testimonio de Jesucristo.'"},
+  {id:3065,difficulty:"dificil",category:"lugares",question:"¿En qué monte fue sepultado Moisés según Deuteronomio?",options:["Monte Pisga (Monte Nebo)","Monte Sinaí","Monte Hermón","Monte Carmelo"],correct:0,reference:"Deuteronomio 34:1,5-6",explanation:"Moisés murió en el monte Nebo (cumbre Pisga) y fue sepultado en el valle frente a Bet-peor; nadie conoce su sepultura hasta hoy."},
+  {id:3066,difficulty:"facil",category:"historias",question:"¿Cuánto tiempo estuvo Jonás en el vientre del pez?",options:["Un día","Dos días","Tres días y tres noches","Una semana"],correct:2,reference:"Jonás 1:17",explanation:"Jehová preparó un gran pez para que tragara a Jonás, y estuvo en el vientre del pez tres días y tres noches."},
+  {id:3067,difficulty:"intermedio",category:"historias",question:"¿Cómo murió Sansón al final?",options:["En batalla contra los filisteos","Derribó los pilares del templo de Dagón, muriendo con sus enemigos","Fue ejecutado por el rey","Murió de vejez"],correct:1,reference:"Jueces 16:30",explanation:"Sansón tomó los dos pilares del templo de Dagón y lo derribó sobre los principales y todo el pueblo, muriendo con más filisteos en su muerte que en toda su vida."},
+  {id:3068,difficulty:"dificil",category:"historias",question:"¿Cuántos años tardó Salomón en construir el templo?",options:["3 años","5 años","7 años","10 años"],correct:2,reference:"1 Reyes 6:38",explanation:"El templo fue edificado en siete años. Salomón comenzó a edificarlo el año cuarto de su reino y lo terminó en el año undécimo."},
+  {id:3069,difficulty:"experto",category:"historias",question:"¿Cuántos años tardó Salomón en construir su propio palacio?",options:["7 años","10 años","13 años","20 años"],correct:2,reference:"1 Reyes 7:1",explanation:"Salomón tardó trece años en edificar su propia casa, comparado con los siete años del templo, lo que fue notado por algunos como indicativo de sus prioridades."},
+  {id:3070,difficulty:"facil",category:"profetas",question:"¿Cuál profeta predijo: 'He aquí una virgen concebirá y dará a luz un hijo'?",options:["Jeremías","Miqueas","Isaías","Zacarías"],correct:2,reference:"Isaías 7:14",explanation:"Isaías profetizó: 'Por tanto, el Señor mismo os dará señal: He aquí que la virgen concebirá, y dará a luz un hijo, y llamará su nombre Emanuel.'"},
+  {id:3071,difficulty:"intermedio",category:"profetas",question:"¿Cuál fue la llamada del profeta Isaías, según Isaías 6?",options:["Una voz en el desierto","Una visión del trono de Dios donde se ofreció para ser enviado","Un sueño en la noche","La palabra de Dios en el campo"],correct:1,reference:"Isaías 6:1-8",explanation:"Isaías tuvo una visión del trono de Dios con serafines. Dios preguntó: '¿A quién enviaré?' Isaías respondió: 'Heme aquí, envíame a mí.'"},
+  {id:3072,difficulty:"dificil",category:"profetas",question:"¿Cuántos capítulos tiene el libro de Isaías?",options:["39","50","60","66"],correct:3,reference:"Isaías 66",explanation:"El libro de Isaías tiene 66 capítulos, número que coincide con los libros de la Biblia. Los primeros 39 capítulos son más proféticos-históricos y los últimos 27 son de consolación."},
+  {id:3073,difficulty:"facil",category:"milagros",question:"¿Qué milagro permitió que Pedro y Juan sanaran al cojo en la puerta del templo?",options:["Ungirlo con aceite","En el nombre de Jesucristo, ordenarle que se levantase y anduviese","Orar sobre él siete días","Darle un vaso de agua bendita"],correct:1,reference:"Hechos 3:6",explanation:"Pedro dijo: 'No tengo plata ni oro, pero lo que tengo te doy; en el nombre de Jesucristo de Nazaret, levántate y anda.'"},
+  {id:3074,difficulty:"intermedio",category:"milagros",question:"¿Cuántos leprosos sanó Jesús en Lucas 17 de camino a Jerusalén?",options:["3","7","10","12"],correct:2,reference:"Lucas 17:12-14",explanation:"Jesús encontró diez hombres leprosos que pedían misericordia; Jesús los sanó diciéndoles que se presentaran a los sacerdotes, y fueron limpios yendo."},
+  {id:3075,difficulty:"dificil",category:"milagros",question:"¿Cuántos de los diez leprosos sanados regresaron a dar gracias a Jesús?",options:["Ninguno","Solo uno (y era samaritano)","Tres","Cinco"],correct:1,reference:"Lucas 17:15-16",explanation:"Solo uno de ellos, al verse limpio, volvió glorificando a Dios a gran voz. Era samaritano. Jesús preguntó: '¿No son diez los que fueron limpios? Y los nueve, ¿dónde están?'"},
+  {id:3076,difficulty:"facil",category:"cartas",question:"¿Cuál carta del NT comienza con el 'himno al amor' en el capítulo 13?",options:["Efesios","Romanos","1 Corintios","Gálatas"],correct:2,reference:"1 Corintios 13",explanation:"1 Corintios 13 contiene el famoso 'himno al amor' de Pablo: 'El amor es sufrido, es benigno; el amor no tiene envidia...'"},
+  {id:3077,difficulty:"intermedio",category:"cartas",question:"¿Cuál fue la razón por la que Pablo escribió la carta a los Filipenses?",options:["Para corregir falsa doctrina","Para agradecer su apoyo y animarlos a tener gozo en Cristo","Para pedir dinero para su viaje","Para organizar la sucesión apostólica"],correct:1,reference:"Filipenses 1:3-5",explanation:"Pablo escribió para agradecer el apoyo de los filipenses y animarlos al gozo en Cristo; es conocida como la 'epístola del gozo'."},
+  {id:3078,difficulty:"dificil",category:"libros",question:"¿Cuál libro del AT habla de la conquista de la tierra prometida?",options:["Números","Deuteronomio","Josué","Jueces"],correct:2,reference:"Josué 1:1",explanation:"El libro de Josué relata la conquista de Canaán bajo el liderazgo de Josué, sucesor de Moisés."},
+  {id:3079,difficulty:"facil",category:"vida_jesus",question:"¿Con qué frase comenzó Jesús su ministerio de predicación?",options:["'Venid en pos de mí'","'Arrepentíos, porque el reino de los cielos se ha acercado'","'Yo soy el camino'","'El Espíritu del Señor está sobre mí'"],correct:1,reference:"Mateo 4:17",explanation:"Desde entonces comenzó Jesús a predicar y a decir: 'Arrepentíos, porque el reino de los cielos se ha acercado.'"},
+  {id:3080,difficulty:"intermedio",category:"vida_jesus",question:"¿Qué hizo Jesús con los niños que le traían?",options:["Los bendijo pero estaba ocupado con los adultos","Se enojó con los discípulos que los alejaban y los bendijo","Solo bendijo a los hijos de los creyentes","Pidió que esperaran"],correct:1,reference:"Marcos 10:14-16",explanation:"Jesús se enojó cuando los discípulos rechazaron a los niños y dijo: 'Dejad a los niños venir a mí.' Los abrazó y los bendijo imponiéndoles las manos."},
+  {id:3081,difficulty:"dificil",category:"vida_jesus",question:"¿Qué preguntó Jesús a sus discípulos en Cesarea de Filipo?",options:["'¿Cuánto tiempo lleváis conmigo?'","'¿Quién decís vosotros que soy yo?'","'¿Estáis listos para morir por mí?'","'¿Cuándo regresaré?'"],correct:1,reference:"Mateo 16:15",explanation:"En Cesarea de Filipo, Jesús preguntó: '¿Y vosotros, quién decís que soy yo?' Pedro respondió: 'Tú eres el Cristo, el Hijo del Dios viviente.'"},
+  {id:3082,difficulty:"facil",category:"personajes",question:"¿Quién fue el primer mártir cristiano mencionado en Hechos?",options:["Pablo","Pedro","Esteban","Jacobo hijo de Zebedeo"],correct:2,reference:"Hechos 7:60",explanation:"Esteban fue lapidado, convirtiéndose en el primer mártir de la iglesia cristiana; murió orando: 'Señor Jesús, recibe mi espíritu.'"},
+  {id:3083,difficulty:"intermedio",category:"personajes",question:"¿Cuáles eran los nombres de los padres de Juan el Bautista?",options:["José y María","Zacarías y Elisabet","Cleofás y María","Alfeo y Salomé"],correct:1,reference:"Lucas 1:5-7",explanation:"Zacarías era sacerdote del orden de Abías y su mujer Elisabet era descendiente de Aarón; ambos eran justos pero no tenían hijos."},
+  {id:3084,difficulty:"dificil",category:"personajes",question:"¿Cuál fue el verdadero nombre de la discípula llamada Dorcas?",options:["Marta","Tabita (Tabitha)","Lydia","Febe"],correct:1,reference:"Hechos 9:36",explanation:"En Jope había una discípula llamada Tabita, que traducido es Dorcas. Era llena de buenas obras y limosnas; Pedro la resucitó."},
+  {id:3085,difficulty:"facil",category:"reyes",question:"¿Cuántos años reinó David sobre toda Israel desde Jerusalén?",options:["20 años","33 años","40 años","50 años"],correct:1,reference:"2 Samuel 5:5",explanation:"David reinó sobre Judá siete años y seis meses, y sobre todo Israel y Judá desde Jerusalén treinta y tres años."},
+  {id:3086,difficulty:"intermedio",category:"reyes",question:"¿Qué rey de Israel mandó a matar a todos los profetas de Jehová?",options:["Acab","Jezabel (reina, no rey)","Joram","Jeroboam"],correct:1,reference:"1 Reyes 18:4",explanation:"Jezabel, la reina esposa de Acab, exterminó a los profetas de Jehová; Abdías escondió a cien profetas en cuevas de cincuenta en cincuenta."},
+  {id:3087,difficulty:"experto",category:"reyes",question:"¿Cuál rey de Judá destruyó la serpiente de bronce de Moisés?",options:["Josías","Ezequías","Asa","Joás"],correct:1,reference:"2 Reyes 18:4",explanation:"Ezequías destruyó la serpiente de bronce que había hecho Moisés, llamada Nehustán, porque los israelitas habían empezado a quemarle incienso."},
+  {id:3088,difficulty:"facil",category:"historias",question:"¿Cuál fue la señal del pacto de Dios con Noé después del diluvio?",options:["Una estrella en el cielo","El arcoíris","Una paloma","Un monte descubierto"],correct:1,reference:"Génesis 9:13-14",explanation:"Dios dijo: 'Mi arco he puesto en las nubes, el cual será por señal del pacto entre mí y la tierra.'"},
+  {id:3089,difficulty:"intermedio",category:"historias",question:"¿Qué evento marcó el fin del período de los jueces en Israel?",options:["La muerte de Sansón","La victoria sobre los filisteos","El pueblo pidió un rey a Samuel","La construcción del tabernáculo"],correct:2,reference:"1 Samuel 8:5",explanation:"Los ancianos de Israel le dijeron a Samuel: 'Constitúyenos ahora un rey que nos juzgue, como tienen todas las naciones.' Esto marcó la transición al período monárquico."},
+  {id:3090,difficulty:"facil",category:"profetas",question:"¿Cuál fue el mensaje del profeta Joel sobre el Espíritu Santo?",options:["Que solo los profetas tendrían el Espíritu","Derramaré mi Espíritu sobre toda carne; vuestros hijos e hijas profetizarán","Que el Espíritu Santo es el fuego eterno","Que solo los ancianos tendrán visiones"],correct:1,reference:"Joel 2:28",explanation:"Joel profetizó: 'Y después de esto derramaré mi Espíritu sobre toda carne, y profetizarán vuestros hijos y vuestras hijas; vuestros ancianos soñarán sueños, y vuestros jóvenes verán visiones.'"},
+  {id:3091,difficulty:"dificil",category:"profetas",question:"¿Qué profeta del Nuevo Testamento predijo una hambre que ocurriría en todo el mundo romano?",options:["Juan el Bautista","Agabo","Simeón","Ana"],correct:1,reference:"Hechos 11:28",explanation:"Agabo, un profeta de Jerusalén, predijo por el Espíritu que habría una gran hambre en todo el mundo habitado (el cual tuvo lugar bajo el imperio de Claudio César)."},
+  {id:3092,difficulty:"facil",category:"milagros",question:"¿Qué milagro ocurrió cuando Pablo y Silas oraban en la prisión de Filipos?",options:["Un ángel los liberó","Un terremoto abrió las puertas y soltó las cadenas","El carcelero se convirtió en un ángel","Jesús apareció y los liberó"],correct:1,reference:"Hechos 16:26",explanation:"A medianoche Pablo y Silas cantaban himnos a Dios; de repente hubo un gran terremoto, se sacudieron los cimientos, se abrieron las puertas y se soltaron las cadenas de todos."},
+  {id:3093,difficulty:"intermedio",category:"cartas",question:"¿Cuál es la carta más teológica del Nuevo Testamento según los estudiosos?",options:["Efesios","1 Corintios","Romanos","Hebreos"],correct:2,reference:"Romanos 1:1",explanation:"La carta a los Romanos es considerada la obra maestra teológica de Pablo, exponiendo sistemáticamente la doctrina de la justificación por la fe."},
+  {id:3094,difficulty:"intermedio",category:"libros",question:"¿Cuántos libros de historia contiene el Antiguo Testamento?",options:["9","12","17","20"],correct:1,reference:"Canon AT",explanation:"El Antiguo Testamento contiene 12 libros históricos: Josué, Jueces, Rut, 1 y 2 Samuel, 1 y 2 Reyes, 1 y 2 Crónicas, Esdras, Nehemías y Ester."},
+  {id:3095,difficulty:"dificil",category:"libros",question:"¿En qué orden está el libro de Apocalipsis en el Nuevo Testamento?",options:["Libro 25","Libro 27 (último)","Libro 26","Libro 28"],correct:1,reference:"Apocalipsis 22:21",explanation:"El Apocalipsis es el libro número 27, el último del Nuevo Testamento y de toda la Biblia."},
+  {id:3096,difficulty:"facil",category:"versiculos",question:"¿Qué dice Salmos 91:1?",options:["'El que habita al abrigo del Altísimo morará bajo la sombra del Omnipotente'","'El Señor es mi pastor'","'A Dios el Señor pondré por mi refugio'","'Jehová es mi luz y mi salvación'"],correct:0,reference:"Salmos 91:1",explanation:"'El que habita al abrigo del Altísimo morará bajo la sombra del Omnipotente.' Es el comienzo del Salmo de protección divina."},
+  {id:3097,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Proverbios 11:2 sobre el orgulloso y el humilde?",options:["'El orgulloso caerá'","Cuando viene la soberbia, viene también la deshonra; mas con los humildes está la sabiduría","'Dios resiste al soberbio'","'El humilde será exaltado'"],correct:1,reference:"Proverbios 11:2",explanation:"'Cuando viene la soberbia, viene también la deshonra; mas con los humildes está la sabiduría.'"},
+  {id:3098,difficulty:"dificil",category:"lugares",question:"¿En qué ciudad se realizó el primer Concilio apostólico para debatir si los gentiles debían circuncidarse?",options:["Antioquía","Éfeso","Jerusalén","Corinto"],correct:2,reference:"Hechos 15:2",explanation:"La disputa sobre la circuncisión de los gentiles fue llevada a los apóstoles y ancianos en Jerusalén, donde se celebró el primer Concilio apostólico."},
+  {id:3099,difficulty:"experto",category:"lugares",question:"¿Qué ciudad fue conocida en el NT por su biblioteca y su famosa escuela de filosofía donde predicó Pablo?",options:["Corinto","Éfeso","Atenas","Alejandría"],correct:2,reference:"Hechos 17:18",explanation:"En Atenas, Pablo disputó con filósofos epicúreos y estoicos; la ciudad era el centro de la filosofía griega con la escuela de Platón y Aristóteles."},
+  {id:3100,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la gratitud hacia Dios?",options:["Que debemos agradecer solo lo bueno","Que la gratitud es opcional","Dad gracias en todo, porque esta es la voluntad de Dios","Que la gratitud se demuestra con sacrificios"],correct:2,reference:"1 Tesalonicenses 5:18",explanation:"Pablo enseñó: 'Dad gracias en todo, porque esta es la voluntad de Dios para con vosotros en Cristo Jesús.'"},
+  {id:3101,difficulty:"facil",category:"parabolas",question:"¿Qué representa el 'enemigo' que sembró la cizaña en la parábola de Jesús?",options:["Los fariseos","El diablo","Los romanos","Los falsos profetas"],correct:1,reference:"Mateo 13:39",explanation:"Jesús explicó: 'El enemigo que la sembró es el diablo.' El diablo siembra falsedad entre los que Dios ha sembrado."},
+  {id:3102,difficulty:"intermedio",category:"parabolas",question:"¿Qué hizo el hombre cuando encontró el tesoro escondido en el campo?",options:["Lo tomó de inmediato","Lo volvió a esconder y vendió todo para comprar ese campo","Se lo contó a los vecinos","Lo donó al templo"],correct:1,reference:"Mateo 13:44",explanation:"El hombre volvió a esconder el tesoro y por el gozo de él fue y vendió todo lo que tenía y compró ese campo."},
+  {id:3103,difficulty:"dificil",category:"parabolas",question:"¿Qué respondió el padre cuando el hijo mayor se quejó de no recibir nada?",options:["'Tienes razón, compartiré mis bienes contigo'","'Hijo, tú siempre estás conmigo, y todas mis cosas son tuyas'","'Tu hermano merece más porque regresó'","'Habla con tu hermano cuando se calme'"],correct:1,reference:"Lucas 15:31",explanation:"El padre respondió: 'Hijo, tú siempre estás conmigo, y todas mis cosas son tuyas. Mas era necesario hacer fiesta y regocijarnos, porque este tu hermano era muerto y ha revivido.'"},
+  {id:3104,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el bautismo en la Gran Comisión?",options:["Que es opcional para los gentiles","Bautizadlos en el nombre del Padre, del Hijo y del Espíritu Santo","Que solo Pablo puede bautizar","Que se bautice solo en el nombre de Jesús"],correct:1,reference:"Mateo 28:19",explanation:"Jesús mandó: 'Id y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo.'"},
+  {id:3105,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el poder de la Palabra de Dios?",options:["Que la Palabra solo enseña pero no transforma","La Palabra de Dios es viva y eficaz y más cortante que toda espada de dos filos","Que la Palabra es solo para los eruditos","Que la Palabra pierde su poder con el tiempo"],correct:1,reference:"Hebreos 4:12",explanation:"'Porque la palabra de Dios es viva y eficaz, y más cortante que toda espada de dos filos; y penetra hasta partir el alma y el espíritu, las coyunturas y los tuétanos.'"},
+  {id:3106,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el que quiera ser el mayor entre sus discípulos?",options:["Que debe esforzarse más","El que quiera ser grande entre vosotros será vuestro servidor","Que debe tener más conocimiento","Que debe ganar más almas para Cristo"],correct:1,reference:"Mateo 20:26",explanation:"Jesús dijo: 'El que quiera hacerse grande entre vosotros será vuestro servidor, y el que quiera ser el primero entre vosotros será vuestro siervo.'"},
+  {id:3107,difficulty:"facil",category:"versiculos",question:"¿Qué dice 2 Crónicas 7:14 que Dios hará si su pueblo se humilla y ora?",options:["Les dará victorias militares","Perdonará sus pecados y sanará su tierra","Les enviará un profeta","Les dará prosperidad económica"],correct:1,reference:"2 Crónicas 7:14",explanation:"Dios prometió: 'Si se humillare mi pueblo... y oraren... entonces yo oiré desde los cielos, y perdonaré sus pecados, y sanaré su tierra.'"},
+  {id:3108,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Hebreos 11:6 sobre la fe?",options:["Que la fe es creer sin evidencia","Sin fe es imposible agradar a Dios; el que se acerca a Dios debe creer que él existe y que recompensa","Que la fe viene de oír la Palabra","Que la fe mueve montañas literalmente"],correct:1,reference:"Hebreos 11:6",explanation:"'Pero sin fe es imposible agradar a Dios; porque es necesario que el que se acerca a Dios crea que le hay, y que es galardonador de los que le buscan.'"},
+  {id:3109,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Isaías 53:6 sobre la naturaleza humana?",options:["Que los hombres son buenos en su mayoría","Todos nosotros nos descarriamos como ovejas, cada cual se apartó por su camino","Que solo los gentiles son pecadores","Que el pecado vino únicamente de Adán"],correct:1,reference:"Isaías 53:6",explanation:"'Todos nosotros nos descarriamos como ovejas, cada cual se apartó por su camino; mas Jehová cargó en él el pecado de todos nosotros.'"},
+  {id:3110,difficulty:"facil",category:"lugares",question:"¿En qué ciudad predicó Felipe al etíope que volvía de Jerusalén?",options:["En Jerusalén misma","En el camino a Gaza, en un desierto","En Samaria","En Jope"],correct:1,reference:"Hechos 8:26-27",explanation:"Un ángel dijo a Felipe: 'Levántate y ve al sur, por el camino que desciende de Jerusalén a Gaza.' Felipe encontró al eunuco etíope en ese camino."},
+  {id:3111,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar específico fue liberado el endemoniado 'Legión'?",options:["En el Mar de Galilea","En la región de los gadarenos","En la sinagoga de Capernaúm","En el desierto de Judea"],correct:1,reference:"Marcos 5:1",explanation:"Jesús y sus discípulos fueron a la región de los gadarenos (o gerasenos), donde encontraron al endemoniado que vivía entre los sepulcros."},
+  {id:3112,difficulty:"facil",category:"historias",question:"¿Cuántos días caminó el pueblo de Israel alrededor de Jericó antes de caer sus muros?",options:["5 días","7 días","10 días","14 días"],correct:1,reference:"Josué 6:15",explanation:"Durante seis días marcharon alrededor de la ciudad una vez; el séptimo día madrugaron y marcharon alrededor siete veces; al séptimo clamaron y los muros cayeron."},
+  {id:3113,difficulty:"intermedio",category:"historias",question:"¿Cuántos hijos de Jacob llegaron a Egipto para comprar trigo durante el hambre?",options:["Seis","Ocho","Diez","Once"],correct:2,reference:"Génesis 42:3-5",explanation:"Los diez hermanos de José (sin Benjamín) bajaron a Egipto para comprar trigo; José estaba allí como gobernador y los reconoció aunque ellos no lo reconocieron."},
+  {id:3114,difficulty:"dificil",category:"historias",question:"¿Cuántos años fue esclavo José en Egipto antes de ser exaltado al palacio del faraón?",options:["Aproximadamente 13 años","20 años","7 años","40 años"],correct:0,reference:"Génesis 37:2; 41:46",explanation:"José tenía 17 años cuando fue vendido como esclavo y 30 años cuando el faraón lo hizo gobernador, lo que indica aproximadamente 13 años de esclavitud y prisión."},
+  {id:3115,difficulty:"facil",category:"profetas",question:"¿Qué profeta dio el famoso sermón de los 'huesos secos' que cobran vida?",options:["Jeremías","Isaías","Ezequiel","Daniel"],correct:2,reference:"Ezequiel 37:4",explanation:"Dios dijo a Ezequiel: 'Profetiza sobre estos huesos y diles: Huesos secos, oíd la palabra de Jehová.' Profetizó y los huesos cobraron vida."},
+  {id:3116,difficulty:"intermedio",category:"profetas",question:"¿Cuál profeta del Antiguo Testamento fue contemporáneo de Daniel en Babilonia?",options:["Amós","Jeremías","Ezequiel","Nahúm"],correct:2,reference:"Ezequiel 14:14",explanation:"Ezequiel y Daniel fueron contemporáneos en el exilio babilónico; Ezequiel menciona a Daniel como un hombre de gran justicia."},
+  {id:3117,difficulty:"facil",category:"milagros",question:"¿Qué le pasó al sol durante la batalla de Josué en Gabaón?",options:["Se oscureció tres horas","Se detuvo (se paró) en el cielo","Se hizo más brillante","Salió por el oeste"],correct:1,reference:"Josué 10:13",explanation:"'Y el sol se paró, y la luna se detuvo, hasta que la gente se hubo vengado de sus enemigos.' El sol se detuvo casi un día entero."},
+  {id:3118,difficulty:"intermedio",category:"milagros",question:"¿Qué milagro realizó Jesús con una mujer que había estado enferma doce años?",options:["La resucitó","La sanó al tocar el borde de su manto","Le quitó un demonio","Le multiplicó su comida"],correct:1,reference:"Mateo 9:20-22",explanation:"Una mujer que padecía flujo de sangre hacía doce años se acercó por detrás y tocó el borde del manto de Jesús; al instante quedó sana."},
+  {id:3119,difficulty:"dificil",category:"milagros",question:"¿Cuántos hombres fueron sanados por la sombra de Pedro según Hechos 5?",options:["Un solo hombre","Una multitud de enfermos y atormentados","Los doce apóstoles fueron sanados también","Solo los que tocaban sus vestiduras"],correct:1,reference:"Hechos 5:15-16",explanation:"Sacaban a los enfermos a las calles para que al pasar Pedro, su sombra cayese sobre alguno de ellos. También de las ciudades vecinas traían enfermos y atormentados, y todos eran sanados."},
+  {id:3120,difficulty:"facil",category:"cartas",question:"¿Cuál carta del NT contiene el famoso pasaje sobre la armadura de Dios?",options:["Romanos","Gálatas","Efesios","Colosenses"],correct:2,reference:"Efesios 6:13-17",explanation:"Pablo describe la armadura de Dios en Efesios 6: el cinturón de la verdad, la coraza de justicia, el calzado del evangelio, el escudo de la fe, el yelmo de la salvación y la espada del Espíritu."},
+  {id:3121,difficulty:"intermedio",category:"libros",question:"¿Qué libro narra el regreso de los exiliados y la reconstrucción del muro de Jerusalén?",options:["Esdras","Rut","Nehemías","Ester"],correct:2,reference:"Nehemías 1:1",explanation:"El libro de Nehemías relata cómo Nehemías, copero del rey persa, obtuvo permiso para regresar y reconstruir los muros de Jerusalén."},
+  {id:3122,difficulty:"facil",category:"vida_jesus",question:"¿Quiénes fueron los primeros discípulos llamados por Jesús?",options:["Felipe y Bartolomé","Mateo y Lucas","Pedro y Andrés","Jacobo y Juan"],correct:2,reference:"Mateo 4:18-19",explanation:"Jesús vio a Simón (Pedro) y Andrés su hermano echando redes al mar; les dijo: 'Venid en pos de mí, y os haré pescadores de hombres.'"},
+  {id:3123,difficulty:"intermedio",category:"vida_jesus",question:"¿Qué hizo Jesús para demostrar la humildad a sus discípulos en la Última Cena?",options:["Sirvió la comida a cada uno","Lavó los pies de sus discípulos","Oró por cada uno individualmente","Se sentó en el lugar más bajo"],correct:1,reference:"Juan 13:5",explanation:"Jesús se levantó de la cena, se ciñó una toalla y comenzó a lavar los pies de los discípulos y a enjugarlos con la toalla."},
+  {id:3124,difficulty:"dificil",category:"vida_jesus",question:"¿Cuántas apariciones de Jesús después de la resurrección registra el NT?",options:["3","5","10 o más","Solo 2"],correct:2,reference:"1 Corintios 15:5-8",explanation:"Pablo menciona que Cristo se apareció a Pedro, luego a los doce, después a más de 500 hermanos, luego a Jacobo, luego a todos los apóstoles, y por último a Pablo. Son al menos 10 apariciones registradas en los evangelios y cartas."},
+  {id:3125,difficulty:"facil",category:"personajes",question:"¿Quién fue la madre de Salomón?",options:["Abigail","Betsabé","Miriam","Raquel"],correct:1,reference:"2 Samuel 12:24",explanation:"Salomón fue el hijo de David y Betsabé, la mujer que había sido esposa de Urías el heteo."},
+  {id:3126,difficulty:"intermedio",category:"personajes",question:"¿Cuál fue el nombre del general del rey Jabín a quien Débora ayudó a derrotar?",options:["Sísara","Goliat","Og","Sehón"],correct:0,reference:"Jueces 4:2",explanation:"Jabín, rey de Canaán, tenía a Sísara como capitán de su ejército. Débora, como jueza de Israel, ayudó a Barac a derrotar a Sísara."},
+  {id:3127,difficulty:"dificil",category:"personajes",question:"¿Cuál era la profesión de Aquila y Priscila, compañeros de Pablo?",options:["Pescadores","Médicos","Fabricantes de tiendas (tenteros)","Comerciantes de telas"],correct:2,reference:"Hechos 18:2-3",explanation:"Pablo encontró a Aquila y Priscila; y como era del mismo oficio, se quedó con ellos pues todos fabricaban tiendas."},
+  {id:3128,difficulty:"facil",category:"reyes",question:"¿Cuál fue la famosa mujer guerrera que fue jueza de Israel?",options:["Ester","Débora","Rut","Rahab"],correct:1,reference:"Jueces 4:4",explanation:"Débora, profetisa y jueza, gobernó a Israel y acompañó al ejército de Israel bajo Barac contra el ejército de Canaán."},
+  {id:3129,difficulty:"intermedio",category:"reyes",question:"¿Qué famoso rey extranjero permitió a los judíos regresar de Babilonia?",options:["Darío el Medo","Nabucodonosor","Ciro de Persia","Asuero"],correct:2,reference:"Esdras 1:1-2",explanation:"En el primer año de Ciro rey de Persia, Dios movió su corazón para que proclamara: 'Jehová me ha mandado que le edifique casa en Jerusalén.'"},
+  {id:3130,difficulty:"facil",category:"historias",question:"¿Qué pasó cuando José interpretó el sueño del faraón sobre las siete vacas gordas y las siete flacas?",options:["El faraón lo liberó de la prisión","El faraón lo nombró gobernador de Egipto","El faraón lo envió de vuelta con su padre","El faraón le dio riquezas"],correct:1,reference:"Génesis 41:41",explanation:"Después de la interpretación, el faraón dijo a José: 'Mira, yo te he puesto sobre toda la tierra de Egipto.' Y lo nombró segundo en el mando."},
+  {id:3131,difficulty:"intermedio",category:"historias",question:"¿Cómo vengó Dios a Israel cuando Faraón persiguió a los israelitas después de dejarlos ir?",options:["Los destruyó con granizo","El Mar Rojo se cerró sobre el ejército del faraón","Un ángel derrotó al ejército","Los israelitas ganaron la batalla"],correct:1,reference:"Éxodo 14:28",explanation:"Las aguas volvieron y cubrieron los carros y el ejército del faraón; no quedó ni uno de ellos en el Mar Rojo."},
+  {id:3132,difficulty:"dificil",category:"historias",question:"¿Cuántos años estuvo el pueblo de Israel en esclavitud en Egipto?",options:["200 años","400 años","430 años","500 años"],correct:2,reference:"Éxodo 12:40-41",explanation:"El tiempo que los hijos de Israel habitaron en Egipto fue cuatrocientos treinta años. Al cumplirse los cuatrocientos treinta años, salió todo el ejército de Jehová."},
+  {id:3133,difficulty:"facil",category:"versiculos",question:"¿Qué dice Marcos 11:24 sobre la oración de fe?",options:["Que debemos orar en el templo","Todo lo que pidiereis orando, creed que lo recibiréis y os vendrá","Que la oración de dos personas es más poderosa","Que debemos ayunar antes de pedir"],correct:1,reference:"Marcos 11:24",explanation:"Jesús dijo: 'Por tanto, os digo que todo lo que pidiereis orando, creed que lo recibiréis, y os vendrá.'"},
+  {id:3134,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Génesis 50:20 sobre los planes de Dios en el sufrimiento?",options:["Que Dios permite el sufrimiento sin propósito","Vosotros pensasteis mal contra mí, mas Dios lo encaminó a bien","Que el sufrimiento siempre es castigo","Que Dios solo actúa en las victorias"],correct:1,reference:"Génesis 50:20",explanation:"José dijo a sus hermanos: 'Vosotros pensasteis hacerme mal, pero Dios lo encaminó a bien, para hacer lo que vemos hoy, para mantener en vida a mucho pueblo.'"},
+  {id:3135,difficulty:"dificil",category:"versiculos",question:"¿Qué dice 1 Corintios 15:55 sobre la muerte?",options:["'La muerte es el fin de todo'","¿Dónde está, oh muerte, tu aguijón? ¿Dónde, oh sepulcro, tu victoria?","'La muerte es el comienzo de la vida eterna'","'Los muertos en Cristo resucitarán primero'"],correct:1,reference:"1 Corintios 15:55",explanation:"Pablo exclama en victoria sobre la muerte: '¿Dónde está, oh muerte, tu aguijón? ¿Dónde, oh sepulcro, tu victoria?'"},
+  {id:3136,difficulty:"facil",category:"lugares",question:"¿En qué mar caminó Jesús sobre las aguas?",options:["El Mar Mediterráneo","El Mar Muerto","El Mar de Galilea","El Mar Rojo"],correct:2,reference:"Mateo 14:25",explanation:"Jesús fue a ellos andando sobre el mar de Galilea (también llamado lago de Tiberias o lago de Genesaret)."},
+  {id:3137,difficulty:"intermedio",category:"lugares",question:"¿Cuál es el significado del nombre 'Getsemaní'?",options:["Huerto de rosas","Prensa de aceite","Jardín del rey","Valle de piedras"],correct:1,reference:"Mateo 26:36",explanation:"Getsemaní significa 'prensa de aceite' en arameo. Era un huerto al pie del Monte de los Olivos donde Jesús oró la noche de su arresto."},
+  {id:3138,difficulty:"dificil",category:"lugares",question:"¿Cuántas millas (estadios) estaba Betania de Jerusalén, según Juan?",options:["2 estadios","5 estadios","15 estadios","30 estadios"],correct:2,reference:"Juan 11:18",explanation:"Juan dice que Betania estaba cerca de Jerusalén, como a quince estadios (unos 3 kilómetros o casi 2 millas)."},
+  {id:3139,difficulty:"facil",category:"profetas",question:"¿Cuál profeta predijo que el Mesías entraría a Jerusalén sobre un asno?",options:["Isaías","Jeremías","Zacarías","Miqueas"],correct:2,reference:"Zacarías 9:9",explanation:"Zacarías profetizó: 'He aquí tu rey vendrá a ti, justo y salvador, humilde, y cabalgando sobre un asno.'"},
+  {id:3140,difficulty:"intermedio",category:"profetas",question:"¿Cuál profeta del AT profetizó que el Mesías sería traicionado por treinta piezas de plata?",options:["Isaías","Daniel","Zacarías","Jeremías"],correct:2,reference:"Zacarías 11:12-13",explanation:"Zacarías profetizó: 'Y le pesaron por mi salario treinta piezas de plata.' Esta suma fue exactamente el precio por el que Judas traicionó a Jesús."},
+  {id:3141,difficulty:"facil",category:"milagros",question:"¿Cuántos panes tenía el muchacho que encontraron los discípulos de Jesús para el milagro de la multiplicación?",options:["Tres panes y un pez","Cinco panes y dos peces","Siete panes y tres peces","Dos panes y cinco peces"],correct:1,reference:"Juan 6:9",explanation:"Un muchacho tenía cinco panes de cebada y dos peces. Andrés los presentó a Jesús, quien luego multiplicó ese alimento para alimentar a cinco mil."},
+  {id:3142,difficulty:"dificil",category:"milagros",question:"¿Qué milagro precedió la muerte de Jesús en la cruz según los evangelios?",options:["El terremoto en Jerusalén","Las tinieblas sobre toda la tierra de la hora sexta a la novena","El velo del templo se rasgó","Todos los anteriores ocurrieron"],correct:3,reference:"Mateo 27:45,51",explanation:"Al morir Jesús ocurrieron varios milagros simultáneos: tinieblas de la hora sexta a la novena, el velo del templo se rasgó de arriba abajo, hubo terremoto, y las rocas se partieron."},
+  {id:3143,difficulty:"facil",category:"cartas",question:"¿Cuál epístola habla de los peligros de la lengua y dice que 'la fe sin obras es muerta'?",options:["1 Juan","Judas","Santiago","Hebreos"],correct:2,reference:"Santiago 2:17; 3:5",explanation:"La carta de Santiago habla del peligro de la lengua ('la lengua es un pequeño miembro pero se jacta de grandes cosas') y de la fe sin obras."},
+  {id:3144,difficulty:"intermedio",category:"libros",question:"¿Cuál libro del AT es una colección de cantos de amor atribuidos a Salomón?",options:["Proverbios","Eclesiastés","Cantares","Salmos"],correct:2,reference:"Cantares 1:1",explanation:"El libro de los Cantares (Cantar de los Cantares) es atribuido a Salomón y contiene poemas de amor entre un pastor y su amada, interpretados también como alegoría del amor de Dios."},
+  {id:3145,difficulty:"facil",category:"vida_jesus",question:"¿Cuándo fue la última vez que Jesús apareció a sus discípulos antes de ascender?",options:["El día de la resurrección","40 días después de la resurrección","Un año después","Una semana después"],correct:1,reference:"Hechos 1:3",explanation:"Jesús se presentó a los apóstoles durante cuarenta días después de su resurrección, hablándoles acerca del reino de Dios, antes de ascender al cielo."},
+  {id:3146,difficulty:"intermedio",category:"personajes",question:"¿Quién fue el sucesor de Moisés como líder de Israel?",options:["Caleb","Aarón","Josué","Finees"],correct:2,reference:"Josué 1:1-2",explanation:"Después de la muerte de Moisés, Dios habló a Josué hijo de Nun, siervo de Moisés, diciendo: 'Ahora levántate y pasa este Jordán...'"},
+  {id:3147,difficulty:"dificil",category:"personajes",question:"¿Quién fue la única mujer que la Biblia llama explícitamente 'jueza' de Israel?",options:["Rut","Ester","Débora","Miriam"],correct:2,reference:"Jueces 4:4",explanation:"Débora, profetisa, mujer de Lapidot, juzgaba a Israel en aquel tiempo. Era la única jueza (en el sentido oficial de liderazgo militar y civil) mencionada en el libro de los Jueces."},
+  {id:3148,difficulty:"facil",category:"reyes",question:"¿Cuántos años duró el reinado de Salomón?",options:["20 años","30 años","40 años","50 años"],correct:2,reference:"1 Reyes 11:42",explanation:"El tiempo que Salomón reinó en Jerusalén sobre todo Israel fue cuarenta años."},
+  {id:3149,difficulty:"intermedio",category:"reyes",question:"¿Quién fue el rey babilónico que destruyó Jerusalén y el templo de Salomón?",options:["Ciro","Darío","Jerjes","Nabucodonosor"],correct:3,reference:"2 Reyes 25:8-9",explanation:"En el año decimonoveno de Nabucodonosor, el capitán de la guardia llegó a Jerusalén y quemó la casa de Jehová, la casa del rey y todas las casas de Jerusalén."},
+  {id:3150,difficulty:"facil",category:"historias",question:"¿En qué episodio bíblico el pueblo de Israel ganó una batalla mientras Moisés sostenía sus manos en alto?",options:["La batalla de Jericó","La batalla contra Amalec en Refidim","La batalla contra los amorreos","El cruce del Mar Rojo"],correct:1,reference:"Éxodo 17:11-12",explanation:"Cuando Moisés levantaba su mano, Israel prevalecía; cuando la bajaba, prevalecía Amalec. Aarón y Hur sostuvieron sus manos hasta que el sol se puso."},
+  {id:3151,difficulty:"facil",category:"parabolas",question:"En la parábola del sembrador, ¿qué tipo de semilla produce más fruto?",options:["La que cayó en el camino","La que cayó en pedregales","La que cayó entre espinos","La que cayó en buena tierra"],correct:3,reference:"Mateo 13:8",explanation:"La semilla que cayó en buena tierra dio fruto, uno a ciento, otro a sesenta y otro a treinta por uno, mientras las demás no produjeron nada."},
+  {id:3152,difficulty:"intermedio",category:"parabolas",question:"¿Qué parábola habla de un hombre que construyó una torre sin calcular el costo?",options:["La del hijo pródigo","La del rey que va a la guerra","La del hombre que construye una torre","Las parábolas b y c son sobre el discipulado costoso"],correct:3,reference:"Lucas 14:28-32",explanation:"Jesús contó dos parábolas del costo del discipulado: un hombre que no calculó el costo para edificar una torre, y un rey que no calculó sus fuerzas antes de ir a la guerra."},
+  {id:3153,difficulty:"dificil",category:"parabolas",question:"¿Cuánto debe perder un hombre para que el hallar su oveja sea motivo de gran alegría?",options:["El 1% de su rebaño (una de cien)","El 10% (una de diez)","El 50% (cinco de diez)","El 90% (nueve de diez)"],correct:0,reference:"Lucas 15:4",explanation:"Un hombre con cien ovejas que pierde una (1%) la busca hasta encontrarla; Jesús enseña que Dios valora cada alma individual sin importar cuántas le queden."},
+  {id:3154,difficulty:"experto",category:"parabolas",question:"¿Cuál parábola ilustra que los primeros serán últimos y los últimos primeros?",options:["La de las vírgenes","La de los obreros de la viña","La del hijo pródigo","La de los talentos"],correct:1,reference:"Mateo 20:16",explanation:"La parábola de los obreros de la viña termina con la enseñanza: 'Así los últimos serán primeros, y los primeros últimos; porque muchos son llamados, mas pocos escogidos.'"},
+  {id:3155,difficulty:"facil",category:"parabolas",question:"¿Qué animal representaba a los justos en la parábola del juicio final de Mateo 25?",options:["Las cabras","Los bueyes","Las ovejas","Los corderos"],correct:2,reference:"Mateo 25:33",explanation:"El rey pondrá las ovejas a su derecha y las cabras a su izquierda. Las ovejas representan a los justos que heredarán el reino."},
+  {id:3156,difficulty:"intermedio",category:"parabolas",question:"¿En qué parábola un hijo pide al padre 'lo que le corresponde' antes de tiempo?",options:["La de los talentos","La del deudor inmisericorde","La del hijo pródigo","La de los obreros"],correct:2,reference:"Lucas 15:12",explanation:"En la parábola del hijo pródigo, el hijo menor dijo: 'Padre, dame la parte de los bienes que me corresponde.' Era inusual pedir la herencia en vida del padre."},
+  {id:3157,difficulty:"dificil",category:"parabolas",question:"¿Cuál parábola Jesús dio en respuesta a la queja de los fariseos de que recibía pecadores?",options:["Solo la del hijo pródigo","Solo la de la oveja perdida","Las tres parábolas de Lucas 15 en respuesta a los fariseos","La del buen samaritano"],correct:2,reference:"Lucas 15:1-3",explanation:"Los fariseos y escribas murmuraban: 'Este a los pecadores recibe.' Jesús respondió con las tres parábolas de Lucas 15: la oveja, la moneda y el hijo pródigo."},
+  {id:3158,difficulty:"experto",category:"parabolas",question:"¿Cuál parábola usa la imagen de invitar a bodas para ilustrar el reino de Dios?",options:["Solo la de Mateo 22","Solo la de Lucas 14","Ambas parábolas del banquete (Mateo 22 y Lucas 14) con variaciones","La de las diez vírgenes"],correct:2,reference:"Mateo 22:2; Lucas 14:16",explanation:"Mateo 22 habla del banquete de bodas de un rey; Lucas 14 habla de un gran banquete. Ambas ilustran el llamado del reino y el rechazo de los invitados originales."},
+  {id:3159,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el nombre de Dios en el Padrenuestro?",options:["Que debemos usarlo con cuidado","Santificado sea tu nombre","Que el nombre de Dios es secreto","Que debemos repetirlo muchas veces"],correct:1,reference:"Mateo 6:9",explanation:"En el Padrenuestro, Jesús enseñó: 'Padre nuestro que estás en los cielos, santificado sea tu nombre.'"},
+  {id:3160,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué significa 'santificado sea tu nombre' en el Padrenuestro?",options:["Que el nombre de Dios sea pronunciado correctamente","Que el nombre de Dios sea honrado, reverenciado y glorificado","Que debemos aprender el nombre secreto de Dios","Que el nombre de Dios sea escritoen los muros"],correct:1,reference:"Mateo 6:9",explanation:"'Santificado sea tu nombre' significa que el nombre de Dios sea tratado como santo, reverenciado y glorificado en nuestra vida y en el mundo."},
+  {id:3161,difficulty:"dificil",category:"ensenanzas",question:"¿Cuántas peticiones contiene el Padrenuestro?",options:["5","6","7","9"],correct:1,reference:"Mateo 6:9-13",explanation:"El Padrenuestro contiene 6 peticiones: 1) Santificado sea tu nombre, 2) Venga tu reino, 3) Hágase tu voluntad, 4) El pan de cada día, 5) Perdona nuestras deudas, 6) No nos metas en tentación sino líbranos del mal."},
+  {id:3162,difficulty:"experto",category:"ensenanzas",question:"¿Cuál fue la condición que puso Jesús para perdonar las ofensas según el Padrenuestro?",options:["Que el ofensor se arrepienta","Que perdonemos también a los que nos ofenden","Que oremos por tres días por el ofensor","Que el pastor de la iglesia interceda"],correct:1,reference:"Mateo 6:12,14",explanation:"El Padrenuestro dice: 'Perdónanos nuestras deudas, como también nosotros perdonamos a nuestros deudores.' Jesús añadió: 'Porque si perdonáis a los hombres sus ofensas, os perdonará también a vosotros vuestro Padre celestial.'"},
+  {id:3163,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús al joven rico que preguntó cómo heredar la vida eterna?",options:["Solo creer en Él","Que guardara los mandamientos, vendiera todo y lo siguiera","Que donara la mitad al templo","Que se bautizara"],correct:1,reference:"Mateo 19:21",explanation:"Jesús le dijo: 'Si quieres ser perfecto, anda, vende lo que tienes, dalo a los pobres y tendrás tesoro en el cielo; y ven y sígueme.'"},
+  {id:3164,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre la oración cuando dos o tres se reúnen en su nombre?",options:["Que esa oración es más efectiva porque se multiplica","Allí estaré yo en medio de ellos","Que debe ser en voz alta para que Dios la oiga","Que solo funciona los domingos"],correct:1,reference:"Mateo 18:20",explanation:"Jesús prometió: 'Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos.'"},
+  {id:3165,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre ser 'más que vencedores'?",options:["Que los creyentes ganan todas las batallas físicas","En todas estas cosas somos más que vencedores por medio de aquel que nos amó","Que la victoria viene del esfuerzo propio","Que solo los líderes espirituales tienen esta promesa"],correct:1,reference:"Romanos 8:37",explanation:"Pablo escribió: 'Antes, en todas estas cosas somos más que vencedores por medio de aquel que nos amó.'"},
+  {id:3166,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el Espíritu Santo como Consolador en Juan 14-16?",options:["Que el Consolador solo vendría para los apóstoles","Que el Consolador (Paráclito) convencería al mundo de pecado, justicia y juicio, y guiaría a los creyentes a toda verdad","Que el Consolador es el mismo Jesús en forma espiritual","Que el Consolador solo habita en los templos"],correct:1,reference:"Juan 16:8,13",explanation:"Jesús enseñó que el Espíritu Santo convencería al mundo de pecado, justicia y juicio, y guiaría a los discípulos a toda la verdad."},
+  {id:3167,difficulty:"facil",category:"versiculos",question:"¿Qué promete Dios en Romanos 8:38-39?",options:["Que nunca sufriremos","Nada nos separará del amor de Dios en Cristo Jesús","Que venceremos a nuestros enemigos","Que tendremos salud y prosperidad"],correct:1,reference:"Romanos 8:38-39",explanation:"Pablo afirma: 'Ni la muerte, ni la vida, ni ángeles, ni principados... ni ninguna otra cosa creada nos podrá separar del amor de Dios, que es en Cristo Jesús Señor nuestro.'"},
+  {id:3168,difficulty:"facil",category:"versiculos",question:"¿Qué dice Proverbios 3:6 sobre reconocer a Dios?",options:["Que Dios nos mostrará riquezas","Reconócelo en todos tus caminos, y él enderezará tus veredas","Que Dios solo guía a los sabios","Que debemos consultar a Dios solo en decisiones grandes"],correct:1,reference:"Proverbios 3:6",explanation:"'Reconócelo en todos tus caminos, y él enderezará tus veredas.'"},
+  {id:3169,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Mateo 22:37-39 sobre el mayor mandamiento?",options:["Que es guardar el sábado","Amarás al Señor tu Dios con todo tu corazón y a tu prójimo como a ti mismo","Que es el bautismo","Que es predicar el evangelio"],correct:1,reference:"Mateo 22:37-39",explanation:"Jesús respondió: 'Amarás al Señor tu Dios con todo tu corazón... Este es el primero y grande mandamiento. Y el segundo es semejante: Amarás a tu prójimo como a ti mismo.'"},
+  {id:3170,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Hebreos 12:2 sobre Jesús?",options:["Que Jesús es el camino y la verdad","Puestos los ojos en Jesús, el autor y consumador de la fe","Que Jesús intercede por nosotros","Que Jesús vendrá pronto"],correct:1,reference:"Hebreos 12:2",explanation:"'Puestos los ojos en Jesús, el autor y consumador de la fe, el cual por el gozo puesto delante de él sufrió la cruz, menospreciando el oprobio.'"},
+  {id:3171,difficulty:"dificil",category:"versiculos",question:"¿Qué dice 1 Corintios 13:4-5 sobre el amor?",options:["Que el amor es un sentimiento","El amor es sufrido, es benigno, no tiene envidia, no busca lo suyo, no se irrita","Que el amor es solo entre esposos","Que el amor a Dios es suficiente"],correct:1,reference:"1 Corintios 13:4-5",explanation:"'El amor es sufrido, es benigno; el amor no tiene envidia, el amor no es jactancioso, no se envanece; no hace nada indebido, no busca lo suyo, no se irrita, no guarda rencor.'"},
+  {id:3172,difficulty:"experto",category:"versiculos",question:"¿Cuál versículo dice: 'Porque somos hechura suya, creados en Cristo Jesús para buenas obras'?",options:["Romanos 8:28","Efesios 2:10","Colosenses 3:10","Gálatas 2:20"],correct:1,reference:"Efesios 2:10",explanation:"'Porque somos hechura suya, creados en Cristo Jesús para buenas obras, las cuales Dios preparó de antemano para que anduviésemos en ellas.'"},
+  {id:3173,difficulty:"facil",category:"lugares",question:"¿En qué lugar predicó Jesús el famoso Discurso del Pan de Vida?",options:["En el templo de Jerusalén","En la sinagoga de Capernaúm","En el Monte de los Olivos","En Betania"],correct:1,reference:"Juan 6:59",explanation:"Jesús dijo estas cosas en la sinagoga de Capernaúm cuando enseñó en ella sobre ser el Pan de vida."},
+  {id:3174,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar Jesús encontró a Zaqueo?",options:["Capernaúm","Betania","Jericó","Samaria"],correct:2,reference:"Lucas 19:1-2",explanation:"Jesús entró en Jericó y pasaba por allí. Y sucedió que un varón llamado Zaqueo, que era jefe de los publicanos y era rico, subió a un árbol sicómoro para ver a Jesús."},
+  {id:3175,difficulty:"facil",category:"historias",question:"¿Cuántos hermanos tuvo José según Génesis?",options:["10","11","12","13"],correct:1,reference:"Génesis 35:22",explanation:"Jacob (Israel) tuvo doce hijos: Rubén, Simeón, Leví, Judá, Dan, Neftalí, Gad, Aser, Isacar, Zabulón, José y Benjamín. José tenía 11 hermanos."},
+  {id:3176,difficulty:"intermedio",category:"historias",question:"¿Qué señal puso Dios en Caín para que nadie lo matara?",options:["Una marca en la frente","Una señal en su cuerpo (no especificada)","Un sello en su mano","Una llama de fuego que lo rodeaba"],correct:1,reference:"Génesis 4:15",explanation:"Jehová puso una señal en Caín para que nadie lo matara; la naturaleza exacta de la señal no se especifica en el texto bíblico."},
+  {id:3177,difficulty:"dificil",category:"historias",question:"¿Por qué fue destruida la ciudad de Sodoma según Génesis 18-19?",options:["Por adorar ídolos","Por los pecados graves de sus habitantes","Por rechazar a los ángeles de Dios","Por robar a los viajeros"],correct:1,reference:"Génesis 18:20",explanation:"Jehová dijo: 'Por cuanto el clamor contra Sodoma y Gomorra se aumenta más y más, y el pecado de ellos se ha agravado en extremo, descenderé ahora.'"},
+  {id:3178,difficulty:"facil",category:"profetas",question:"¿Cuál fue el mensaje del profeta Hageo?",options:["Arrepentimiento por los pecados","Reconstruir el templo de Dios antes que sus propias casas","Que el Mesías vendría pronto","Que el exilio terminaría"],correct:1,reference:"Hageo 1:8",explanation:"Hageo llamó al pueblo a reconstruir el templo: '¿Es tiempo para vosotros de morar en vuestras casas con cielos rasos, mientras la casa del Señor sigue en ruinas?'"},
+  {id:3179,difficulty:"intermedio",category:"profetas",question:"¿Cuál es el profeta más breve del Antiguo Testamento?",options:["Abdías","Nahúm","Habacuc","Sofonías"],correct:0,reference:"Abdías 1",explanation:"Abdías, con un solo capítulo de 21 versículos, es el libro profético más corto del Antiguo Testamento, pronunciando juicio sobre Edom."},
+  {id:3180,difficulty:"facil",category:"milagros",question:"¿Qué milagro de sanidad realizó Jesús en la noche antes de ser arrestado, con el siervo del sumo sacerdote?",options:["Lo resucitó","Le devolvió la oreja que Pedro le había cortado","Lo sanó de la ceguera","Lo liberó de un demonio"],correct:1,reference:"Lucas 22:51",explanation:"Pedro cortó la oreja derecha del siervo del sumo sacerdote llamado Malco. Jesús tocó su oreja y la sanó."},
+  {id:3181,difficulty:"intermedio",category:"milagros",question:"¿Cuántas veces Cristo realizó resurrecciones de muertos según los Evangelios?",options:["Una (Lázaro)","Dos (Lázaro e hija de Jairo)","Tres (Lázaro, hija de Jairo e hijo de la viuda de Naín)","Cuatro veces"],correct:2,reference:"Juan 11; Marcos 5; Lucas 7",explanation:"Jesús resucitó a tres personas: Lázaro (Juan 11), la hija de Jairo (Marcos 5) y el hijo de la viuda de Naín (Lucas 7)."},
+  {id:3182,difficulty:"dificil",category:"cartas",question:"¿Cuál carta del NT fue escrita como una carta circular para varias iglesias?",options:["Gálatas","Romanos","Efesios","Filipenses"],correct:2,reference:"Efesios 1:1",explanation:"Se cree que la carta a los Efesios fue una carta circular enviada a varias iglesias de Asia Menor; el nombre 'en Éfeso' está ausente en algunos manuscritos antiguos."},
+  {id:3183,difficulty:"facil",category:"libros",question:"¿Cuál es el libro más corto del Nuevo Testamento en número de versículos?",options:["Filemón","3 Juan","2 Juan","Judas"],correct:1,reference:"3 Juan",explanation:"La Tercera carta de Juan, con solo 15 versículos, es el libro más corto del Nuevo Testamento."},
+  {id:3184,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuáles eran los tres discípulos más cercanos a Jesús?",options:["Pedro, Andrés y Juan","Pedro, Santiago y Juan","Mateo, Lucas y Juan","Tomás, Felipe y Bartolomé"],correct:1,reference:"Marcos 9:2",explanation:"Pedro, Santiago (Jacobo) y Juan formaban el círculo íntimo de Jesús; solo ellos estuvieron en la Transfiguración, en Getsemaní y con la hija de Jairo."},
+  {id:3185,difficulty:"dificil",category:"personajes",question:"¿Quién fue Felipe el evangelista y qué hizo en Samaria?",options:["Uno de los doce apóstoles que fue a Samaria","Uno de los siete diáconos que predicó en Samaria con gran éxito","Un profeta que curó a los samaritanos","El apóstol Felipe que fue a Galilea"],correct:1,reference:"Hechos 8:5-7",explanation:"Felipe, uno de los siete elegidos para servir, fue a Samaria y proclamó a Cristo; las multitudes escuchaban y muchos eran sanados."},
+  {id:3186,difficulty:"facil",category:"reyes",question:"¿Quién fue el rey que construyó el templo de Salomón?",options:["David","Salomón","Ezequías","Josías"],correct:1,reference:"1 Reyes 6:1",explanation:"Salomón comenzó a edificar la casa de Jehová; fue llamado el constructor del templo, aunque su padre David había reunido los materiales."},
+  {id:3187,difficulty:"intermedio",category:"reyes",question:"¿Cuál rey de Israel introdujo la adoración de los becerros de oro al dividirse el reino?",options:["Omri","Acab","Jeroboam hijo de Nabat","Peka"],correct:2,reference:"1 Reyes 12:28-29",explanation:"Jeroboam (I) hizo dos becerros de oro y dijo: 'Estos son tus dioses, Israel, los que te subieron de la tierra de Egipto', estableciéndolos en Betel y Dan."},
+  {id:3188,difficulty:"facil",category:"historias",question:"¿Cómo probó Dios a Abraham con su hijo Isaac?",options:["Mandándolo a un país lejano","Pidiéndole que lo ofreciera en sacrificio","Enviándolo al desierto","Mandándolo a predicar"],correct:1,reference:"Génesis 22:2",explanation:"Dios dijo a Abraham: 'Toma ahora tu hijo, tu único, Isaac, a quien amas, y ve a tierra de Moriah y ofrécelo allí en holocausto.' Abraham obedeció y Dios proveyó un carnero."},
+  {id:3189,difficulty:"intermedio",category:"historias",question:"¿Qué simbolizó el arcoíris que Dios puso después del diluvio?",options:["El final del diluvio","El pacto de Dios de no destruir la tierra con agua otra vez","La gloria de Dios","La renovación de la creación"],correct:1,reference:"Génesis 9:13",explanation:"Dios dijo: 'Mi arco he puesto en las nubes, el cual será por señal del pacto entre mí y la tierra... no habrá más diluvio de aguas para destruir toda carne.'"},
+  {id:3190,difficulty:"facil",category:"versiculos",question:"¿Qué dice 2 Corintios 12:9 sobre la gracia en la debilidad?",options:["Que la debilidad es pecado","Te basta mi gracia; porque mi poder se perfecciona en la debilidad","Que Dios sana toda debilidad","Que debemos ocultar nuestra debilidad"],correct:1,reference:"2 Corintios 12:9",explanation:"Dios le dijo a Pablo: 'Bástate mi gracia; porque mi poder se perfecciona en la debilidad.' Pablo respondió que de buena gana se gloriaría en sus debilidades para que el poder de Cristo reposara sobre él."},
+  {id:3191,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Juan 15:13 sobre el amor máximo?",options:["Que el amor de Dios es el mayor","Nadie tiene mayor amor que este, que ponga su vida por sus amigos","Que el amor se demuestra en las obras","Que el amor eterno es el de la familia"],correct:1,reference:"Juan 15:13",explanation:"Jesús dijo: 'Nadie tiene mayor amor que este, que uno ponga su vida por sus amigos.'"},
+  {id:3192,difficulty:"dificil",category:"versiculos",question:"¿Qué versículo dice 'Todo lo que el hombre sembrare, eso también segará'?",options:["Proverbios 11:18","Gálatas 6:7","Eclesiastés 3:1","Números 32:23"],correct:1,reference:"Gálatas 6:7",explanation:"'No os engañéis; Dios no puede ser burlado: pues todo lo que el hombre sembrare, eso también segará.'"},
+  {id:3193,difficulty:"experto",category:"versiculos",question:"¿Qué dice Jeremías 29:12-13 sobre buscar a Dios?",options:["Que Dios se esconde de los pecadores","Me invocaréis, y vendréis a mí y oraréis... y me buscaréis y me hallaréis, cuando me busquéis de todo vuestro corazón","Que Dios solo responde a los santos","Que debemos buscar a Dios en el templo"],correct:1,reference:"Jeremías 29:12-13",explanation:"Dios prometió: 'Entonces me invocaréis, y vendréis a mí y oraréis a mí, y yo os oiré; y me buscaréis y me hallaréis, porque me buscaréis de todo vuestro corazón.'"},
+  {id:3194,difficulty:"facil",category:"lugares",question:"¿En qué lugar Dios creó al hombre según Génesis?",options:["En el Monte Sinaí","En el jardín del Edén","En la tierra de Nod","En el huerto de Getsemaní"],correct:1,reference:"Génesis 2:8",explanation:"Dios plantó un huerto en Edén al oriente, y puso allí al hombre que había formado. El Edén es el lugar del origen de la humanidad."},
+  {id:3195,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad vivió Lot antes de que Dios destruyera Sodoma?",options:["En Gomorra","En Sodoma","En Hebrón","En Ur"],correct:1,reference:"Génesis 19:1",explanation:"Lot habitaba en Sodoma; cuando los ángeles llegaron, Lot los recibió en su casa antes de la destrucción de la ciudad."},
+  {id:3196,difficulty:"facil",category:"profetas",question:"¿Qué profeta del NT interpretó el Pentecostés como el cumplimiento de la profecía de Joel?",options:["Juan el Bautista","Esteban","Pedro","Bernabé"],correct:2,reference:"Hechos 2:16",explanation:"Pedro se levantó y dijo: 'Esto es lo dicho por el profeta Joel', y citó Joel 2:28-32 para explicar la venida del Espíritu Santo."},
+  {id:3197,difficulty:"intermedio",category:"milagros",question:"¿Cuántos días estuvo Lázaro en el sepulcro antes de que Jesús lo resucitara?",options:["1 día","2 días","3 días","4 días"],correct:3,reference:"Juan 11:39",explanation:"Marta dijo: 'Señor, hiede ya, porque es de cuatro días.' Lázaro llevaba cuatro días sepultado cuando Jesús lo llamó a salir."},
+  {id:3198,difficulty:"dificil",category:"cartas",question:"¿Cuál carta advierte específicamente sobre el peligro de la apostasía y de apartarse de la fe?",options:["Romanos","1 Corintios","Hebreos","Efesios"],correct:2,reference:"Hebreos 6:4-6",explanation:"Hebreos advierte severamente sobre el peligro de apartarse de la fe: 'Es imposible que los que una vez fueron iluminados... y recayeron, sean otra vez renovados para arrepentimiento.'"},
+  {id:3199,difficulty:"facil",category:"libros",question:"¿Cuál libro narra la historia de una mujer moabita fiel a su suegra y a Dios?",options:["Ester","Judit","Rut","Débora"],correct:2,reference:"Rut 1:16",explanation:"El libro de Rut narra la historia de Rut la moabita, quien dijo a su suegra Noemí: 'Tu pueblo será mi pueblo, y tu Dios mi Dios.'"},
+  {id:3200,difficulty:"intermedio",category:"vida_jesus",question:"¿Cómo se llamaba el huerto donde Jesús oró antes de ser arrestado?",options:["Jardín del Edén","Huerto de Betania","Getsemaní","Jardín de Siloé"],correct:2,reference:"Mateo 26:36",explanation:"Entonces llegó Jesús con ellos a un lugar que se llama Getsemaní y dijo a sus discípulos: 'Sentaos aquí, entre tanto que voy allí y oro.'"},
+  {id:3201,difficulty:"facil",category:"parabolas",question:"¿Qué ocurrió con la semilla en la parábola del grano de mostaza cuando creció?",options:["Se convirtió en un arbusto pequeño","Se hizo el mayor de los árboles y las aves anidaron en él","Produjo muchas semillas de mostaza","Se marchitó al segundo año"],correct:1,reference:"Mateo 13:32",explanation:"La semilla de mostaza crece y se hace árbol, 'de tal manera que vienen las aves del cielo y hacen nidos en sus ramas.'"},
+  {id:3202,difficulty:"intermedio",category:"parabolas",question:"¿Qué pidió el siervo a quien le debían cien denarios cuando su deudor no podía pagar?",options:["Tiempo para pagar","Lo echó a la cárcel","Le perdonó la deuda","Le vendió como esclavo"],correct:1,reference:"Mateo 18:30",explanation:"El siervo inmisericorde 'fue y le echó en la cárcel, hasta que pagase todo lo que le debía', a pesar de que él mismo acababa de ser perdonado de diez mil talentos."},
+  {id:3203,difficulty:"dificil",category:"parabolas",question:"En la parábola de la red, ¿qué tipo de cosas recogía la red?",options:["Solo peces buenos","Solo peces malos","Toda clase de peces, buenos y malos","Todos los peces del mar"],correct:2,reference:"Mateo 13:47",explanation:"Jesús dijo: 'El reino de los cielos es semejante a una red que echada en el mar, recoge toda clase de peces.'"},
+  {id:3204,difficulty:"facil",category:"parabolas",question:"¿Cuántas veces menciona el Padrenuestro el perdón?",options:["Una vez","Dos veces (pedir perdón y perdonar a otros)","Tres veces","No lo menciona"],correct:1,reference:"Mateo 6:12,14",explanation:"El Padrenuestro pide: 'Perdónanos nuestras deudas como perdonamos a nuestros deudores.' Jesús añadió la condición del perdón en los versículos 14-15."},
+  {id:3205,difficulty:"intermedio",category:"parabolas",question:"¿Cuántos días pasó el hijo pródigo con los cerdos antes de 'volver en sí'?",options:["El texto no especifica el tiempo exacto","Un día","Una semana","Un mes"],correct:0,reference:"Lucas 15:15-17",explanation:"La Biblia no especifica cuánto tiempo pasó el hijo con los cerdos antes de volver en sí; solo describe la situación de extrema miseria que lo llevó al arrepentimiento."},
+  {id:3206,difficulty:"experto",category:"parabolas",question:"¿Qué le dijo el padre al hijo mayor cuando este se quejó?",options:["'Tu hermano merece más que tú'","'Debes alegrar porque era muerto y ha revivido'","'Hijo, tú siempre estás conmigo, y todas mis cosas son tuyas... era necesario hacer fiesta'","'Ve y habla con tu hermano'"],correct:2,reference:"Lucas 15:31-32",explanation:"El padre dijo: 'Hijo, tú siempre estás conmigo, y todas mis cosas son tuyas. Mas era necesario hacer fiesta y regocijarnos, porque este tu hermano era muerto y ha revivido.'"},
+  {id:3207,difficulty:"facil",category:"parabolas",question:"¿Cuántas ovejas dejó el pastor para ir a buscar la perdida?",options:["Ninguna, cerró el redil","99 en el desierto","9 en casa","50 con otros pastores"],correct:1,reference:"Lucas 15:4",explanation:"Jesús dijo: 'El que tiene cien ovejas y pierde una de ellas, ¿no deja las noventa y nueve en el desierto, y va tras la que se había perdido, hasta encontrarla?'"},
+  {id:3208,difficulty:"intermedio",category:"parabolas",question:"¿Qué representa el 'campo' en la parábola del tesoro?",options:["La sinagoga","El templo","El mundo o la vida donde está escondida la salvación","Israel específicamente"],correct:2,reference:"Mateo 13:38,44",explanation:"En la explicación de la parábola del trigo y la cizaña, el campo es el mundo (Mateo 13:38), por lo que el campo del tesoro también representa el mundo donde se halla el tesoro del reino."},
+  {id:3209,difficulty:"dificil",category:"parabolas",question:"¿A cuántas personas en total menciona la parábola del buen samaritano que pasaron al lado del herido?",options:["2 (solo el sacerdote y el levita)","3 (sacerdote, levita, samaritano)","4 (sacerdote, levita, samaritano y el posadero)","5 incluyendo a los ladrones"],correct:1,reference:"Lucas 10:30-33",explanation:"Tres personas pasaron junto al hombre herido: un sacerdote, un levita y un samaritano. Solo el samaritano se detuvo a ayudarlo."},
+  {id:3210,difficulty:"facil",category:"ensenanzas",question:"¿Qué quiso decir Jesús con 'sed perfectos como vuestro Padre celestial es perfecto'?",options:["Que debemos ser sin pecado","Que debemos amar inclusive a los enemigos como lo hace Dios","Que debemos estudiar perfectamente la Biblia","Que debemos orar perfectamente"],correct:1,reference:"Mateo 5:48",explanation:"En el contexto, Jesús acababa de enseñar sobre amar a los enemigos; 'sed perfectos' significa amar con la misma completitud con la que Dios ama a todos."},
+  {id:3211,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el amor conyugal en Efesios 5?",options:["Que el esposo debe dominar a la esposa","Maridos, amad a vuestras mujeres así como Cristo amó a la iglesia","Que la esposa debe obedecer en todo","Que el matrimonio es solo un contrato social"],correct:1,reference:"Efesios 5:25",explanation:"Pablo instruye: 'Maridos, amad a vuestras mujeres, así como Cristo amó a la iglesia, y se entregó a sí mismo por ella.'"},
+  {id:3212,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre estar 'crucificado con Cristo' en Gálatas 2:20?",options:["Que debemos sufrir físicamente","Que la vieja naturaleza ha muerto en la Cruz con Cristo, y ahora Cristo vive en nosotros","Que debemos mortificar el cuerpo con penitencias","Que solo los mártires están crucificados con Cristo"],correct:1,reference:"Gálatas 2:20",explanation:"Pablo escribió: 'Con Cristo estoy juntamente crucificado, y ya no vivo yo, mas vive Cristo en mí; y lo que ahora vivo en la carne, lo vivo en la fe del Hijo de Dios.'"},
+  {id:3213,difficulty:"experto",category:"ensenanzas",question:"¿Cuál fue la enseñanza de Jesús sobre la 'blasfemia contra el Espíritu Santo'?",options:["Que es pecar mientras está lleno del Espíritu","Que es un pecado que no tiene perdón en ningún siglo","Que es el peor de todos los pecados perdonables","Que es una enseñanza solo para los líderes"],correct:1,reference:"Mateo 12:31-32",explanation:"Jesús enseñó: 'Pero el que blasfemare contra el Espíritu Santo, no tiene perdón jamás, sino que es reo de juicio eterno.' Este pecado parece referirse al rechazo permanente de la obra del Espíritu."},
+  {id:3214,difficulty:"facil",category:"versiculos",question:"¿Qué dice Juan 3:17 sobre la misión de Jesús?",options:["Que vino a juzgar al mundo","Que vino para salvar al mundo, no para juzgarlo","Que vino a enseñar la ley","Que vino a restaurar el templo"],correct:1,reference:"Juan 3:17",explanation:"'Porque no envió Dios a su Hijo al mundo para condenar al mundo, sino para que el mundo sea salvo por él.'"},
+  {id:3215,difficulty:"facil",category:"versiculos",question:"¿Qué dice 1 Juan 4:19 sobre por qué amamos a Dios?",options:["Porque hemos estudiado su Palabra","Nosotros le amamos a él, porque él nos amó primero","Porque Él nos creó","Porque es nuestro deber"],correct:1,reference:"1 Juan 4:19",explanation:"'Nosotros le amamos a él, porque él nos amó primero.' El amor a Dios es una respuesta al amor previo de Dios hacia nosotros."},
+  {id:3216,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Romanos 5:8 sobre el amor de Dios?",options:["Que Dios ama a los justos","Dios muestra su amor en que, siendo aún pecadores, Cristo murió por nosotros","Que el amor de Dios es incondicional solo en el cielo","Que Dios ama pero también juzga con severidad"],correct:1,reference:"Romanos 5:8",explanation:"'Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.'"},
+  {id:3217,difficulty:"dificil",category:"versiculos",question:"¿Qué dice el Salmo 22:1 que también citó Jesús en la Cruz?",options:["'El Señor es mi pastor'","'Dios mío, Dios mío, ¿por qué me has abandonado?'","'A ti clamaré y tú me responderás'","'En tus manos encomiendo mi espíritu'"],correct:1,reference:"Salmos 22:1; Mateo 27:46",explanation:"El Salmo 22 comienza: '¡Dios mío, Dios mío! ¿Por qué me has desamparado?' Jesús citó este versículo desde la Cruz según Mateo 27:46."},
+  {id:3218,difficulty:"experto",category:"versiculos",question:"¿Qué promesa contiene Isaías 43:1-2?",options:["Que Israel volverá del exilio","Cuando pases por las aguas, yo estaré contigo; y cuando pases por los ríos, no te ahogarán","Que el Mesías vendrá a salvar","Que la tierra de Israel será bendecida"],correct:1,reference:"Isaías 43:2",explanation:"'Cuando pases por las aguas, yo estaré contigo; y cuando pases por los ríos, no te ahogarán. Cuando andes por el fuego, no te quemarás, ni la llama arderá en ti.'"},
+  {id:3219,difficulty:"facil",category:"versiculos",question:"¿Qué dice el versículo de Filipenses 4:4?",options:["'Orad sin cesar'","'Regocijaos en el Señor siempre. Otra vez digo: ¡Regocijaos!'","'No os afanéis por nada'","'Presentad vuestras peticiones a Dios'"],correct:1,reference:"Filipenses 4:4",explanation:"'Regocijaos en el Señor siempre. Otra vez digo: ¡Regocijaos!' Pablo escribió esto desde la prisión, mostrando que el gozo cristiano no depende de las circunstancias."},
+  {id:3220,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Salmos 100:3 sobre quiénes somos?",options:["Que somos creados para servir al rey","Reconoced que Jehová es Dios; él nos hizo, y no nosotros a nosotros mismos; pueblo suyo somos","Que somos polvo y al polvo volveremos","Que somos vasijas de barro"],correct:1,reference:"Salmos 100:3",explanation:"'Reconoced que Jehová es Dios; él nos hizo, y no nosotros a nosotros mismos; pueblo suyo somos, y ovejas de su prado.'"},
+  {id:3221,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el primer y segundo mayor mandamiento?",options:["Amar a Dios y guardar el sábado","Amar a Dios con todo el ser y amar al prójimo como a uno mismo","Amar a Dios y no mentir","Amar a Dios y bautizarse"],correct:1,reference:"Mateo 22:37-39",explanation:"Jesús enseñó que el primero es amar a Dios con todo el corazón, alma y mente; y el segundo, semejante al primero, es amar al prójimo como a uno mismo."},
+  {id:3222,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el ayuno que los fariseos practicaban ostentosamente?",options:["Que el ayuno público tiene más mérito","Que no os pongáis cara triste como los hipócritas, sino que ayunéis en secreto","Que el ayuno es innecesario para los creyentes","Que debemos ayunar una vez a la semana"],correct:1,reference:"Mateo 6:16-17",explanation:"Jesús enseñó que al ayunar no debemos desfigurar el rostro como los hipócritas; debemos hacerlo en secreto para que solo el Padre que ve en lo secreto lo recompense."},
+  {id:3223,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre los que no proveen para su familia?",options:["Que deben recibir ayuda de la iglesia","El que no provee para los suyos, y mayormente para los de su casa, la fe ha negado y es peor que un incrédulo","Que la iglesia debe perdonarles","Que esta situación no es un pecado sino una circunstancia"],correct:1,reference:"1 Timoteo 5:8",explanation:"Pablo escribió: 'Porque si alguno no provee para los suyos, y mayormente para los de su casa, ha negado la fe, y es peor que un incrédulo.'"},
+  {id:3224,difficulty:"facil",category:"ensenanzas",question:"¿Cuál fue la enseñanza de Jesús sobre ser 'luz del mundo'?",options:["Que Jesús es la única luz","Que vosotros sois la luz del mundo y debéis dejar brillar vuestra luz","Que la luz del mundo es la Biblia","Que la luz del mundo es el templo"],correct:1,reference:"Mateo 5:14-16",explanation:"Jesús dijo: 'Vosotros sois la luz del mundo... Así alumbre vuestra luz delante de los hombres, para que vean vuestras buenas obras, y glorifiquen a vuestro Padre que está en los cielos.'"},
+  {id:3225,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el trato que debemos dar a todos los hombres en Gálatas 6:10?",options:["Que debemos ayudar solo a los creyentes","Hagamos bien a todos, y mayormente a los de la familia de la fe","Que debemos evangelizar a todos antes de ayudarlos","Que la caridad comienza por casa"],correct:1,reference:"Gálatas 6:10",explanation:"Pablo instruyó: 'Así que, según tengamos oportunidad, hagamos bien a todos, y mayormente a los de la familia de la fe.'"},
+  {id:3226,difficulty:"facil",category:"versiculos",question:"¿Qué dice Marcos 16:16 sobre la salvación?",options:["Solo la fe salva","El que creyere y fuere bautizado, será salvo; pero el que no creyere, será condenado","Que el bautismo solo es para los adultos","Que solo los que hacen obras serán salvos"],correct:1,reference:"Marcos 16:16",explanation:"Jesús dijo: 'El que creyere y fuere bautizado, será salvo; pero el que no creyere, será condenado.'"},
+  {id:3227,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice el Salmo 46:1 sobre Dios?",options:["El Señor es mi pastor","Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones","El Señor reina sobre todas las naciones","Jehová es mi roca y mi libertador"],correct:1,reference:"Salmos 46:1",explanation:"'Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.'"},
+  {id:3228,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Proverbios 14:12 sobre el camino que parece recto?",options:["Que todo camino de fe lleva a Dios","Hay camino que parece recto al hombre, pero su fin es camino de muerte","Que el hombre puede conocer el camino recto","Que solo la sabiduría enseña el camino recto"],correct:1,reference:"Proverbios 14:12",explanation:"'Hay camino que parece recto al hombre, pero su fin es camino de muerte.' Es una advertencia contra la confianza en nuestra propia sabiduría."},
+  {id:3229,difficulty:"facil",category:"lugares",question:"¿En qué ciudad recibió Pedro la visión del lienzo con animales que le enseñó que los gentiles también podían salvarse?",options:["Jerusalén","Jope","Cesarea","Antioquía"],correct:1,reference:"Hechos 10:9-11",explanation:"Pedro subió al terrado a orar en Jope cuando tuvo la visión del lienzo grande que descendía del cielo con toda clase de animales, y escuchó la voz: 'Levántate, Pedro, mata y come.'"},
+  {id:3230,difficulty:"intermedio",category:"lugares",question:"¿En qué lugar específico fue lapidado Esteban?",options:["Dentro del Sanedrín","Fuera de las puertas de Jerusalén","En el atrio del templo","En la cárcel romana"],correct:1,reference:"Hechos 7:58",explanation:"Echaron a Esteban fuera de la ciudad y le apedrearon; los testigos pusieron sus ropas a los pies de un joven llamado Saulo."},
+  {id:3231,difficulty:"facil",category:"historias",question:"¿En qué imagen fue creado el ser humano según Génesis 1?",options:["A imagen de los ángeles","A imagen de la naturaleza","A imagen y semejanza de Dios","A imagen del Señor de los cielos"],correct:2,reference:"Génesis 1:26",explanation:"Dios dijo: 'Hagamos al hombre a nuestra imagen, conforme a nuestra semejanza.' El ser humano fue creado único entre todos los seres vivientes."},
+  {id:3232,difficulty:"intermedio",category:"historias",question:"¿Cuántos años duró la esclavitud de Israel en Egipto según la Biblia?",options:["200 años","400 años","430 años","500 años"],correct:2,reference:"Éxodo 12:40",explanation:"La estancia de los hijos de Israel en Egipto fue de cuatrocientos treinta años. Génesis 15:13 habla de 400 años de aflicción."},
+  {id:3233,difficulty:"facil",category:"profetas",question:"¿Cuál profeta profetizó: 'Pero tú, Belén Efrata... de ti saldrá el que sea Señor en Israel'?",options:["Isaías","Jeremías","Miqueas","Zacarías"],correct:2,reference:"Miqueas 5:2",explanation:"Miqueas profetizó sobre el nacimiento del Mesías en Belén; esta profecía fue citada por los sacerdotes cuando los magos preguntaron dónde nacería el rey de los judíos."},
+  {id:3234,difficulty:"dificil",category:"profetas",question:"¿Cuál era el nombre del profeta conocido como el 'profeta llorón' por escribir Lamentaciones?",options:["Ezequiel","Isaías","Jeremías","Daniel"],correct:2,reference:"Lamentaciones 1:1",explanation:"Jeremías es conocido como el 'profeta llorón' porque escribió Lamentaciones, donde llora la destrucción de Jerusalén. También fue llamado a su ministerio desde el vientre materno."},
+  {id:3235,difficulty:"facil",category:"milagros",question:"¿Qué calmó Jesús con solo una palabra durante la tormenta en el mar?",options:["Las olas y el viento","La lluvia solamente","La tormenta de granizo","El trueno"],correct:0,reference:"Marcos 4:39",explanation:"Jesús se levantó, reprendió al viento y dijo al mar: '¡Calla, enmudece!' El viento cesó y se hizo una gran calma."},
+  {id:3236,difficulty:"intermedio",category:"milagros",question:"¿Cuántos panes sobraron del milagro de los cinco panes?",options:["7 canastos","5 canastos","12 canastos","Ninguno"],correct:2,reference:"Mateo 14:20",explanation:"Todos comieron y se saciaron; y recogieron lo que sobró de los pedazos, doce cestas llenas."},
+  {id:3237,difficulty:"facil",category:"cartas",question:"¿Cuál carta del NT habla de 'andar en el Espíritu' y no cumplir los deseos de la carne?",options:["Romanos","Efesios","Gálatas","Colosenses"],correct:2,reference:"Gálatas 5:16",explanation:"Pablo escribió a los Gálatas: 'Digo, pues: Andad en el Espíritu, y no satisfagáis los deseos de la carne.'"},
+  {id:3238,difficulty:"intermedio",category:"libros",question:"¿Qué tipo de literatura es predominante en los libros de Rut y Ester?",options:["Profecía","Poesía","Narrativa histórica con heroínas femeninas","Cartas apostólicas"],correct:2,reference:"Rut 1; Ester 1",explanation:"Tanto Rut como Ester son narrativas históricas protagonizadas por mujeres; son los únicos libros de la Biblia que llevan el nombre de una mujer."},
+  {id:3239,difficulty:"facil",category:"vida_jesus",question:"¿Cómo entró Jesús a Jerusalén en lo que se conoce como la Entrada Triunfal?",options:["A pie con sus discípulos","En un caballo blanco","Sobre un pollino (asno joven)","En un carro del templo"],correct:2,reference:"Mateo 21:7",explanation:"Los discípulos pusieron sobre el pollino sus mantos, y Jesús se sentó encima; la multitud tendía sus mantos en el camino y cortaba ramas de árboles."},
+  {id:3240,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuántos discípulos envió Jesús de dos en dos en el relato de Lucas 10?",options:["12","24","70 (o 72)","100"],correct:2,reference:"Lucas 10:1",explanation:"El Señor designó también a otros setenta, y los envió de dos en dos delante de él a toda ciudad y lugar donde él había de ir."},
+  {id:3241,difficulty:"facil",category:"personajes",question:"¿Cómo se llamaba la madre de Moisés?",options:["Miriam","Séfora","Jocabed","Zípora"],correct:2,reference:"Éxodo 6:20",explanation:"Amram tomó por mujer a Jocabed, su tía. Ella le dio a luz a Aarón y a Moisés."},
+  {id:3242,difficulty:"intermedio",category:"personajes",question:"¿Quién fue Bernabé y qué significa su nombre?",options:["Un sacerdote, 'Hijo de la Ley'","José, llamado Bernabé por los apóstoles, que significa 'Hijo de consolación'","Un fariseo, 'Hijo de profeta'","Un discípulo de Juan, 'Hijo de Dios'"],correct:1,reference:"Hechos 4:36",explanation:"José, a quien los apóstoles llamaban Bernabé (que significa 'Hijo de consolación'), era levita natural de Chipre; fue compañero de misión de Pablo."},
+  {id:3243,difficulty:"dificil",category:"personajes",question:"¿Quién fue Apolos y en qué se destacó?",options:["Un apóstol de Jesús","Un judío de Alejandría, elocuente y poderoso en las Escrituras","Un gentil convertido por Pablo","El primer obispo de Efeso"],correct:1,reference:"Hechos 18:24-25",explanation:"Apolos era judío, natural de Alejandría, varón elocuente, poderoso en las Escrituras. Había sido instruido en el camino del Señor, aunque solo conocía el bautismo de Juan."},
+  {id:3244,difficulty:"facil",category:"reyes",question:"¿Cuál reina del Antiguo Testamento salvó a su pueblo del exterminio?",options:["Débora","Rut","Ester","Rahab"],correct:2,reference:"Ester 4:14",explanation:"Ester, la reina judía del rey Asuero de Persia, arriesgó su vida para salvar a su pueblo del plan de exterminio de Amán."},
+  {id:3245,difficulty:"intermedio",category:"reyes",question:"¿Cuánto tiempo reinó el rey David sobre todo Israel?",options:["30 años","40 años","50 años","33 años"],correct:1,reference:"2 Samuel 5:4",explanation:"David tenía treinta años cuando comenzó a reinar y reinó cuarenta años."},
+  {id:3246,difficulty:"facil",category:"historias",question:"¿Qué creó Dios el primer día de la creación?",options:["El sol y la luna","Las aves y los peces","La luz","Los árboles y las plantas"],correct:2,reference:"Génesis 1:3-5",explanation:"Dios dijo: 'Sea la luz'; y fue la luz. Y separó Dios la luz de las tinieblas; llamó a la luz Día y a las tinieblas Noche. Esto fue el primer día."},
+  {id:3247,difficulty:"intermedio",category:"historias",question:"¿Qué señal pidió Gedeón para confirmar que Dios lo llamaba?",options:["Un sueño profético","El vellón de lana que se mojara de rocío pero el suelo quedara seco","Que el enemigo se retirara","Una visión en el templo"],correct:1,reference:"Jueces 6:37",explanation:"Gedeón dijo: 'He aquí que yo pondré un vellón de lana en la era; si el rocío estuviere en el vellón solamente, y todo el suelo estuviere seco, entonces entenderé que salvarás a Israel por mi mano.'"},
+  {id:3248,difficulty:"dificil",category:"historias",question:"¿Cuántos años vivió Noé después del diluvio?",options:["100 años","200 años","300 años","350 años"],correct:3,reference:"Génesis 9:28-29",explanation:"Después del diluvio vivió Noé trescientos cincuenta años. Todos los días de Noé fueron novecientos cincuenta años y murió."},
+  {id:3249,difficulty:"facil",category:"profetas",question:"¿Cuál fue la señal que Dios le dio a Ezequías de que se recuperaría?",options:["Que el sol retrocedería diez grados en el cuadrante de Acaz","Que enviaría un ángel a sanarlo","Que el templo brillaría","Que el ejército asirio huiría"],correct:0,reference:"2 Reyes 20:11",explanation:"Isaías clamó a Jehová, quien hizo retroceder la sombra diez grados en el cuadrante de Acaz como señal de que Ezequías se recuperaría y viviría quince años más."},
+  {id:3250,difficulty:"intermedio",category:"profetas",question:"¿Cuál era el mensaje principal del profeta Malaquías, el último del AT?",options:["La venida del exilio","Que Dios robará sus tesoros","El llamado a regresar a Dios con diezmos y ofrenda, y el anuncio del mensajero precursor del Mesías","El regreso de Israel desde Babilonia"],correct:2,reference:"Malaquías 3:1-10",explanation:"Malaquías llamó al pueblo a regresar a Dios mediante el diezmo y profetizó que Dios enviaría su mensajero que prepararía el camino, cumplido en Juan el Bautista."},
+  {id:3251,difficulty:"facil",category:"versiculos",question:"¿Qué dice Proverbios 16:3 sobre encomendar las obras a Dios?",options:["Que Dios hará lo que queremos","Encomienda a Jehová tus obras y tus pensamientos serán afirmados","Que debemos planificar con cuidado","Que Dios solo ayuda a los que se esfuerzan"],correct:1,reference:"Proverbios 16:3",explanation:"'Encomienda a Jehová tus obras, y tus pensamientos serán afirmados.'"},
+  {id:3252,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre el árbol que no da buen fruto?",options:["Que debe abonarse más","Todo árbol que no da buen fruto, es cortado y echado en el fuego","Que debe esperarse más tiempo","Que puede cambiar con oración"],correct:1,reference:"Mateo 7:19",explanation:"Jesús enseñó: 'Todo árbol que no da buen fruto, es cortado y echado en el fuego.' El fruto de nuestra vida revela lo que realmente somos."},
+  {id:3253,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la idolatría en 1 Corintios 10?",options:["Que solo los gentiles pueden caer en idolatría","No seáis idólatras... Todo lo que se vende en la carnicería, comedlo sin preguntar","Que los alimentos ofrecidos a ídolos siempre deben evitarse","Que los ídolos son peligrosos incluso para los fuertes"],correct:1,reference:"1 Corintios 10:7,25",explanation:"Pablo enseñó: 'No seáis idólatras' pero también que 'Todo lo que se vende en la carnicería, comedlo, sin preguntar nada por motivos de conciencia.' La libertad cristiana tiene límites en el amor."},
+  {id:3254,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre quién heredará la tierra?",options:["Los poderosos y fuertes","Los bienaventurados mansos","Los que dan limosna","Los que oran constantemente"],correct:1,reference:"Mateo 5:5",explanation:"'Bienaventurados los mansos, porque ellos recibirán la tierra por heredad.' Es la tercera bienaventuranza."},
+  {id:3255,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre 'guardarse del mal en toda forma' en 1 Tesalonicenses?",options:["Que debemos huir de todo lo que parezca malo","Absteneos de toda especie de mal","Que no debemos ir a lugares donde se hace el mal","Que la santidad requiere alejarse del mundo"],correct:1,reference:"1 Tesalonicenses 5:22",explanation:"Pablo instruyó: 'Absteneos de toda especie de mal.' Esta enseñanza es parte de las instrucciones finales de la carta sobre vida cristiana práctica."},
+  {id:3256,difficulty:"facil",category:"ensenanzas",question:"¿Qué prometió Jesús a los que creen en Él en Juan 6:40?",options:["Prosperidad en esta vida","Esta es la voluntad del Padre: que todo aquel que ve al Hijo y cree en él tenga vida eterna","Que serán preservados de toda enfermedad","Que recibirán la sabiduría perfecta"],correct:1,reference:"Juan 6:40",explanation:"Jesús dijo: 'Y esta es la voluntad del que me ha enviado: Que todo aquel que ve al Hijo, y cree en él, tenga vida eterna; y yo le resucitaré en el día postrero.'"},
+  {id:3257,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el noviazgo y la pureza sexual?",options:["Que el noviazgo largo lleva al pecado","Que cada uno sepa tener su propia esposa en santidad y honor","Que la pureza es imposible sin matrimonio","Que el Espíritu Santo da victoria automáticamente"],correct:1,reference:"1 Tesalonicenses 4:4",explanation:"Pablo escribió: 'que cada uno de vosotros sepa tener su propia esposa en santidad y honor.'"},
+  {id:3258,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre 'poner la mente en las cosas de arriba'?",options:["Que debemos pensar constantemente en el cielo","Poned la mira en las cosas de arriba, no en las de la tierra","Que debemos ignorar los problemas terrenales","Que solo los contemplativos pueden hacerlo"],correct:1,reference:"Colosenses 3:2",explanation:"'Poned la mira en las cosas de arriba, no en las de la tierra. Porque habéis muerto, y vuestra vida está escondida con Cristo en Dios.'"},
+  {id:3259,difficulty:"facil",category:"ensenanzas",question:"¿Qué dijo Jesús sobre los que hacen la voluntad de Dios?",options:["Que serán siempre prosperados","Estos son mis hermanos (mi madre y mis hermanos)","Que entrarán al cielo automáticamente","Que recibirán un ciento por uno"],correct:1,reference:"Mateo 12:50",explanation:"Jesús dijo: 'Porque todo aquel que hace la voluntad de mi Padre que está en los cielos, ese es mi hermano, y hermana, y madre.'"},
+  {id:3260,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el sufrimiento y la gloria futura?",options:["Que el sufrimiento no tiene sentido","Las aflicciones del tiempo presente no son comparables con la gloria venidera","Que el sufrimiento purifica al creyente","Que Dios elimina el sufrimiento de sus hijos"],correct:1,reference:"Romanos 8:18",explanation:"Pablo escribió: 'Pues tengo por cierto que las aflicciones del tiempo presente no son comparables con la gloria venidera que en nosotros ha de manifestarse.'"},
+  {id:3261,difficulty:"facil",category:"parabolas",question:"¿Qué tenían de especial las vírgenes prudentes en comparación con las insensatas?",options:["Tenían mejores lámparas","Habían pagado más por sus vestidos","Tenían aceite extra en sus vasijas","Llegaron más temprano a la boda"],correct:2,reference:"Mateo 25:4",explanation:"Las prudentes tomaron aceite en sus vasijas junto con sus lámparas; las insensatas tomaron sus lámparas pero no tomaron aceite consigo."},
+  {id:3262,difficulty:"intermedio",category:"parabolas",question:"¿Quién sembró la cizaña entre el trigo en la parábola de Jesús?",options:["Los siervos descuidados","El diablo (el enemigo)","Los fariseos","Los sacerdotes del templo"],correct:1,reference:"Mateo 13:39",explanation:"Jesús explicó: 'El enemigo que la sembró es el diablo; la siega es el fin del siglo, y los segadores son los ángeles.'"},
+  {id:3263,difficulty:"dificil",category:"parabolas",question:"¿Cuál parábola ilustra que Dios recompensará a sus elegidos que claman a Él día y noche?",options:["La del fariseo y el publicano","La del juez injusto","La de las vírgenes","La del amigo a medianoche"],correct:1,reference:"Lucas 18:7",explanation:"La parábola del juez injusto y la viuda persistente ilustra que si un juez injusto responde a la persistencia, ¿cuánto más Dios hará justicia a sus elegidos que claman a Él día y noche?"},
+  {id:3264,difficulty:"experto",category:"parabolas",question:"¿Cuántas parábolas de Jesús registra únicamente el Evangelio de Lucas sin paralelo en otros evangelios?",options:["5","10","Más de 15","Exactamente 7"],correct:2,reference:"Lucas 10-18",explanation:"Lucas registra más de 15 parábolas exclusivas: el buen samaritano, el hijo pródigo, el rico y Lázaro, el juez injusto, el fariseo y el publicano, la moneda perdida, el mayordomo injusto, la higuera estéril, entre otras."},
+  {id:3265,difficulty:"facil",category:"parabolas",question:"¿Qué quería hacer el hijo pródigo después de gastar toda su herencia?",options:["Trabajar para un prestamista","Volver a casa y pedir a su padre","Fue a trabajar con cerdos para un ciudadano de aquella región","Robar para sobrevivir"],correct:2,reference:"Lucas 15:15",explanation:"El hijo fue y se llegó a uno de los ciudadanos de aquella tierra, el cual lo envió a su hacienda para que apacentara cerdos."},
+  {id:3266,difficulty:"intermedio",category:"parabolas",question:"¿Qué significa 'el reino de los cielos es semejante a levadura' en la parábola?",options:["Que el reino se extiende lentamente como la levadura","Que el reino produce fermentación y cambio radical desde adentro","Que el reino tiene elementos impuros","Que el reino crece de manera invisible hasta afectar todo"],correct:3,reference:"Mateo 13:33",explanation:"La levadura que fermenta toda la masa enseña que el reino de Dios obra invisiblemente desde adentro hasta transformar por completo todo lo que toca, como la levadura en la harina."},
+  {id:3267,difficulty:"dificil",category:"parabolas",question:"¿Qué le dijo el señor al siervo que enterró su talento cuando volvió?",options:["'¿Por qué no lo invertiste?'","'Siervo malo y negligente, debías haber dado mi dinero a los banqueros'","'Te perdono esta vez'","'Da el talento a tu hermano'"],correct:1,reference:"Mateo 25:26-27",explanation:"El señor respondió: 'Siervo malo y negligente... debías haber dado mi dinero a los banqueros, y al venir yo, hubiera recibido lo que es mío con los intereses.'"},
+  {id:3268,difficulty:"facil",category:"parabolas",question:"¿En qué parábola Jesús enseñó sobre el costo de ser su discípulo?",options:["La del hijo pródigo","La del hombre que construye una torre y el rey que va a la guerra","La del sembrador","La de las vírgenes"],correct:1,reference:"Lucas 14:28-32",explanation:"Jesús usó dos parábolas del costo: el hombre que calcula antes de construir una torre, y el rey que calcula antes de ir a la guerra, para enseñar que debemos contar el costo del discipulado."},
+  {id:3269,difficulty:"intermedio",category:"parabolas",question:"¿Cuánto cobró el posadero en la parábola del buen samaritano?",options:["El posadero no cobró nada","El samaritano pagó dos denarios adelantados","Un talento de oro","Solo lo que costaba una noche"],correct:1,reference:"Lucas 10:35",explanation:"El samaritano sacó dos denarios y los dio al mesonero, diciéndole: 'Cuídamele; y todo lo que gastes de más, cuando regrese te lo pagaré.'"},
+  {id:3270,difficulty:"experto",category:"parabolas",question:"¿Cómo fue el recibimiento del rey cuando el hijo mayor llegó al banquete del hijo pródigo?",options:["El rey salió a recibirlo con honor","El hijo mayor llegó cuando venía del campo y oyó la música y el baile","El padre lo envió a buscar personalmente","El hijo mayor llegó tarde y encontró la fiesta terminada"],correct:1,reference:"Lucas 15:25-26",explanation:"El hijo mayor venía del campo; cuando llegó cerca de la casa, oyó la música y las danzas; llamó a uno de los criados y preguntó qué era aquello."},
+  {id:3271,difficulty:"facil",category:"versiculos",question:"¿Qué dice Isaías 40:8 sobre la Palabra de Dios?",options:["Que la Palabra es poderosa","La hierba se seca y la flor se cae, pero la palabra del Dios nuestro permanece para siempre","Que la Palabra juzgará a todas las naciones","Que la Palabra fue escrita por hombres inspirados"],correct:1,reference:"Isaías 40:8",explanation:"'Sécase la hierba, marchítase la flor; mas la palabra del Dios nuestro permanece para siempre.'"},
+  {id:3272,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice 1 Pedro 2:9 sobre los creyentes?",options:["Que somos esclavos de Cristo","Mas vosotros sois linaje escogido, real sacerdocio, nación santa, pueblo adquirido por Dios","Que somos peregrinos en la tierra","Que somos todos iguales ante Dios"],correct:1,reference:"1 Pedro 2:9",explanation:"'Mas vosotros sois linaje escogido, real sacerdocio, nación santa, pueblo adquirido por Dios, para que anunciéis las virtudes de aquel que os llamó de las tinieblas a su luz admirable.'"},
+  {id:3273,difficulty:"dificil",category:"versiculos",question:"¿Qué dice Apocalipsis 1:8 sobre Dios?",options:["Dios es amor","Yo soy el Alfa y la Omega, principio y fin, dice el Señor, el que es y el que era y el que ha de venir, el Todopoderoso","Dios es fuego consumidor","Dios es la roca eterna"],correct:1,reference:"Apocalipsis 1:8",explanation:"'Yo soy el Alfa y la Omega, principio y fin, dice el Señor, el que es y que era y que ha de venir, el Todopoderoso.'"},
+  {id:3274,difficulty:"facil",category:"versiculos",question:"¿Qué dice el Salmo 119:11 sobre guardar la Palabra de Dios?",options:["La Palabra es lámpara a mis pies","En mi corazón he guardado tus dichos para no pecar contra ti","La Palabra de Dios es perfecta","La Palabra me hace más sabio que mis enemigos"],correct:1,reference:"Salmos 119:11",explanation:"'En mi corazón he guardado tus dichos, para no pecar contra ti.'"},
+  {id:3275,difficulty:"experto",category:"versiculos",question:"¿Qué dice Hechos 4:12 sobre la salvación?",options:["Que la salvación viene por las obras","En ningún otro hay salvación; porque no hay otro nombre bajo el cielo dado a los hombres, en que podamos ser salvos","Que cada religión tiene su camino de salvación","Que la salvación viene de Dios directamente sin intermediario"],correct:1,reference:"Hechos 4:12",explanation:"'Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.' Pedro lo declaró ante el Sanedrín."},
+  {id:3276,difficulty:"facil",category:"historias",question:"¿Cuántos hombres comieron del milagro de los cinco panes y dos peces además de mujeres y niños?",options:["Dos mil","Cuatro mil","Cinco mil","Diez mil"],correct:2,reference:"Mateo 14:21",explanation:"'Y los que comieron fueron como cinco mil hombres, sin contar las mujeres y los niños.'"},
+  {id:3277,difficulty:"intermedio",category:"historias",question:"¿Qué captura la Biblia como primer mandato dado al ser humano en el jardín del Edén?",options:["Guardar el sábado","Fructificad y multiplicaos","No comer del árbol del bien y del mal","Nombrar a los animales"],correct:1,reference:"Génesis 1:28",explanation:"El primer mandato fue: 'Fructificad y multiplicaos; llenad la tierra, y sojuzgadla, y señoread en los peces del mar, en las aves de los cielos y en todas las bestias que se mueven sobre la tierra.'"},
+  {id:3278,difficulty:"facil",category:"vida_jesus",question:"¿Cuántos años tenía Jesús cuando comenzó su ministerio público?",options:["25 años","30 años","33 años","40 años"],correct:1,reference:"Lucas 3:23",explanation:"Jesús mismo al comenzar su ministerio era como de treinta años."},
+  {id:3279,difficulty:"intermedio",category:"personajes",question:"¿Cuál fue el primer país al que fue el apóstol Pablo en su primer viaje misionero?",options:["Grecia","Asia Menor","Chipre","Italia"],correct:2,reference:"Hechos 13:4",explanation:"Pablo y Bernabé, siendo enviados por el Espíritu Santo, descendieron a Seleucia y navegaron a Chipre."},
+  {id:3280,difficulty:"facil",category:"milagros",question:"¿Cuántos panes tenía Jesús cuando alimentó a los cuatro mil?",options:["Cinco panes","Siete panes","Doce panes","Diez panes"],correct:1,reference:"Mateo 15:34",explanation:"Jesús preguntó a sus discípulos: '¿Cuántos panes tenéis?' Ellos dijeron: 'Siete, y unos pocos pececillos.'"},
+  {id:3281,difficulty:"intermedio",category:"cartas",question:"¿Cuál carta del NT contiene el pasaje del 'aguijón en la carne' de Pablo?",options:["Filipenses","Efesios","2 Corintios","Colosenses"],correct:2,reference:"2 Corintios 12:7",explanation:"Pablo escribió en 2 Corintios: 'Para que la grandeza de las revelaciones no me exaltase desmedidamente, me fue dado un aguijón en mi carne, un mensajero de Satanás que me abofetee.'"},
+  {id:3282,difficulty:"facil",category:"libros",question:"¿Cuál libro del AT es reconocido como el más poético de toda la Biblia?",options:["Proverbios","Salmos","Cantares","Lamentaciones"],correct:1,reference:"Salmos 1",explanation:"El libro de los Salmos es considerado el libro más poético de la Biblia; es la gran colección de himnos y oraciones del pueblo de Dios."},
+  {id:3283,difficulty:"intermedio",category:"reyes",question:"¿Quién fue el primer juez de Israel mencionado en el libro de los Jueces?",options:["Débora","Gedeón","Otoniel","Sansón"],correct:2,reference:"Jueces 3:9",explanation:"Cuando clamaron a Jehová, Dios les levantó un libertador a los hijos de Israel, que los libró: Otoniel hijo de Cenaz, sobrino menor de Caleb."},
+  {id:3284,difficulty:"dificil",category:"historias",question:"¿Cuántos años pasaron desde la salida de Egipto hasta la construcción del templo de Salomón?",options:["200 años","480 años","300 años","100 años"],correct:1,reference:"1 Reyes 6:1",explanation:"En el año cuatrocientos ochenta después que los hijos de Israel salieron de Egipto, en el cuarto año del reinado de Salomón, él comenzó a edificar la casa de Jehová."},
+  {id:3285,difficulty:"facil",category:"profetas",question:"¿Cuál profeta predijo que el Mesías sería golpeado y humillado en Isaías 53?",options:["Jeremías","Miqueas","Zacarías","Isaías"],correct:3,reference:"Isaías 53:3-5",explanation:"Isaías profetizó detalladamente sobre el Siervo Sufriente: 'Despreciado y desechado entre los hombres... herido fue por nuestras rebeliones, molido por nuestros pecados.'"},
+  {id:3286,difficulty:"intermedio",category:"lugares",question:"¿En qué ciudad fue arrestado el apóstol Pablo en el templo por los judíos que lo acusaban?",options:["Cesarea","Antioquía","Jerusalén","Roma"],correct:2,reference:"Hechos 21:27-28",explanation:"Cuando se cumplían los siete días, unos judíos de Asia, al verle en el templo de Jerusalén, alborotaron a toda la multitud y le echaron mano."},
+  {id:3287,difficulty:"dificil",category:"milagros",question:"¿Cuál milagro del AT involucró una voz de Dios desde una zarza ardiente?",options:["La zarza ardiente de Moisés en el Monte Horeb","El fuego del cielo sobre el altar de Elías","El horno ardiente con los tres hebreos","El fuego del Sinaí cuando se dio la ley"],correct:0,reference:"Éxodo 3:2-4",explanation:"El ángel de Jehová se apareció a Moisés en una llama de fuego en medio de una zarza; la zarza ardía en fuego pero no se consumía, y Dios habló desde ella."},
+  {id:3288,difficulty:"facil",category:"versiculos",question:"¿Qué dice Mateo 6:34 sobre la ansiedad por el mañana?",options:["Que debemos planificar el futuro con cuidado","No os afanéis por el mañana; el mañana se afanará por sí mismo","Que el mañana puede traer buenas noticias","Que debemos prepararnos para el peor escenario"],correct:1,reference:"Mateo 6:34",explanation:"Jesús dijo: 'Así que, no os afanéis por el día de mañana, porque el día de mañana traerá su afán. Basta a cada día su propio mal.'"},
+  {id:3289,difficulty:"intermedio",category:"versiculos",question:"¿Qué dice Gálatas 5:22-23 sobre los frutos del Espíritu?",options:["Que son dones para los líderes","El fruto del Espíritu es amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre y templanza","Que son señales del bautismo en el Espíritu","Que solo los maduros los tienen"],correct:1,reference:"Gálatas 5:22-23",explanation:"'Mas el fruto del Espíritu es: amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre, templanza; contra tales cosas no hay ley.'"},
+  {id:3290,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la esperanza cristiana?",options:["Que la esperanza es solo para el cielo","Gozosos en la esperanza; sufridos en la tribulación; constantes en la oración","Que la esperanza viene de la fe perfecta","Que la esperanza es el primer fruto del Espíritu"],correct:1,reference:"Romanos 12:12",explanation:"Pablo instruyó: 'Gozosos en la esperanza; sufridos en la tribulación; constantes en la oración.'"},
+  {id:3291,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el 'hijo de paz' en Lucas 10?",options:["Que todos los samaritanos son hijos de paz","Si hubiere allí algún hijo de paz, vuestra paz reposará sobre él","Que los discípulos deben buscar personas receptivas","Opciones b y c son correctas"],correct:3,reference:"Lucas 10:6",explanation:"Jesús instruyó a los setenta: 'Y si hubiere allí algún hijo de paz, vuestra paz reposará sobre él; y si no, se volverá a vosotros.' Debían buscar personas receptivas al evangelio."},
+  {id:3292,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el que persevera hasta el fin?",options:["Que recibirá muchas recompensas en el cielo","El que persevere hasta el fin, este será salvo","Que será admirado por todos","Que recibirá el don de la profecía"],correct:1,reference:"Mateo 24:13",explanation:"Jesús prometió: 'Mas el que persevere hasta el fin, éste será salvo.' Es una advertencia sobre la necesidad de perseverar hasta el final."},
+  {id:3293,difficulty:"experto",category:"ensenanzas",question:"¿Cuál fue la enseñanza de Pablo sobre el evangelio que él predicaba en 1 Corintios 15?",options:["Que el evangelio es principalmente la enseñanza de Jesús","Que Cristo murió por nuestros pecados, fue sepultado y resucitó al tercer día según las Escrituras","Que el evangelio es la nueva ley de amor","Que el evangelio promete prosperidad a los creyentes"],correct:1,reference:"1 Corintios 15:3-4",explanation:"Pablo declaró: 'Os enseñé lo más importante: que Cristo murió por nuestros pecados, conforme a las Escrituras; y que fue sepultado, y que resucitó al tercer día, conforme a las Escrituras.'"},
+  {id:3294,difficulty:"facil",category:"parabolas",question:"¿Qué representa el 'campo' en la parábola del trigo y la cizaña?",options:["Israel","La iglesia","El mundo","El corazón humano"],correct:2,reference:"Mateo 13:38",explanation:"Jesús explicó: 'El campo es el mundo.' El trigo y la cizaña (buenos y malos) conviven en el mundo hasta la cosecha final."},
+  {id:3295,difficulty:"intermedio",category:"parabolas",question:"¿Qué representa el 'granero' al que va el trigo en la parábola del trigo y la cizaña?",options:["La iglesia en la tierra","El reino de Dios (el cielo)","Jerusalén","El templo"],correct:1,reference:"Mateo 13:30",explanation:"Jesús dijo que el trigo sería recogido en 'mi granero', que representa el reino de Dios donde entrarán los justos al fin del siglo."},
+  {id:3296,difficulty:"dificil",category:"parabolas",question:"¿Cuánto tiempo se tardó en hacer el banquete en la parábola del hijo pródigo?",options:["El texto no lo especifica pero fue inmediato","Tres días de preparación","Una semana","Un mes"],correct:0,reference:"Lucas 15:22-23",explanation:"El padre ordenó de inmediato: 'Sacad el mejor vestido... traed el becerro gordo y matadlo... comamos.' La fiesta comenzó sin demora."},
+  {id:3297,difficulty:"facil",category:"parabolas",question:"¿Qué pienso hicieron los malos labradores del viñedo cuando el dueño envió a su hijo?",options:["Lo rechazaron pacíficamente","Lo mataron para quedarse con la heredad","Lo enviaron de vuelta","Lo aceptaron como nuevo dueño"],correct:1,reference:"Mateo 21:38",explanation:"Los labradores dijeron entre sí: 'Este es el heredero; venid, matémosle, y apoderémonos de su heredad.' Y tomándole, lo echaron fuera de la viña y lo mataron."},
+  {id:3298,difficulty:"experto",category:"parabolas",question:"¿Cuál era el contexto inmediato antes de que Jesús contara la parábola del hijo pródigo?",options:["Los discípulos preguntaron sobre el perdón","Los fariseos y escribas murmuraban porque Jesús recibía pecadores","El pueblo pidió señales","Pedro preguntó sobre las ovejas perdidas"],correct:1,reference:"Lucas 15:1-3",explanation:"Los fariseos y escribas murmuraban: 'Este a los pecadores recibe, y con ellos come.' Jesús respondió con las tres parábolas de Lucas 15."},
+  {id:3299,difficulty:"facil",category:"historias",question:"¿Quién fue la primera persona creada por Dios?",options:["Eva","Abel","Adán","Shet"],correct:2,reference:"Génesis 2:7",explanation:"Jehová Dios formó al hombre del polvo de la tierra, y sopló en su nariz aliento de vida, y fue el hombre un ser viviente."},
+  {id:3300,difficulty:"intermedio",category:"historias",question:"¿Qué pasó con la ciudad de Nínive después de la predicación de Jonás?",options:["La ciudad fue destruida como Jonás predijo","Toda la ciudad se arrepintió y Dios no la destruyó","La mitad del pueblo creyó","El rey fue derrocado"],correct:1,reference:"Jonás 3:10",explanation:"Y vio Dios lo que hicieron, que se convirtieron de su mal camino; y se arrepintió del mal que había dicho que les haría, y no lo hizo."},
+  {id:3301,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el ayuno en el Sermón del Monte?",options:["Debe hacerse públicamente para que todos lo vean","No debe ser ostentoso sino en secreto ante el Padre","Es obligatorio cada semana","Solo los fariseos deben ayunar"],correct:1,reference:"Mateo 6:16-18",explanation:"Jesús enseñó que al ayunar no se debe desfigurar el rostro como los hipócritas, sino hacerlo en secreto para el Padre que ve en lo secreto."},
+  {id:3302,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el juicio en Mateo 7?",options:["Debemos juzgar a los demás constantemente","Con la medida que juzguemos seremos juzgados","Los santos no deben juzgar nunca","Solo Dios puede hacer juicios"],correct:1,reference:"Mateo 7:2",explanation:"Jesús dijo: 'Porque con el juicio con que juzgáis, seréis juzgados, y con la medida con que medís, os será medido.'"},
+  {id:3303,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre el amor a los enemigos?",options:["Solo hay que tolerarlos","Debemos amarlos y orar por ellos","Debemos evitarlos completamente","Solo perdonarlos una vez"],correct:1,reference:"Mateo 5:44",explanation:"Jesús enseñó: 'Amad a vuestros enemigos, bendecid a los que os maldicen, haced bien a los que os aborrecen, y orad por los que os ultrajan y os persiguen.'"},
+  {id:3304,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre la caridad en 1 Corintios 13?",options:["Es el más importante de los dones espirituales","Sin amor, nada de lo que se hace aprovecha nada","Es solo para los apóstoles","El amor es una emoción pasajera"],correct:1,reference:"1 Corintios 13:3",explanation:"Pablo escribió que aunque diéramos todos nuestros bienes a los pobres y entregáramos nuestro cuerpo para ser quemado, sin amor de nada nos aprovecha."},
+  {id:3305,difficulty:"dificil",category:"ensenanzas",question:"¿Qué enseñó Santiago sobre la fe sin obras?",options:["La fe sola es suficiente para la salvación","La fe sin obras está muerta","Las obras son más importantes que la fe","Solo la gracia importa"],correct:1,reference:"Santiago 2:26",explanation:"Santiago escribió: 'Porque como el cuerpo sin espíritu está muerto, así también la fe sin obras está muerta.'"},
+  {id:3306,difficulty:"facil",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre construir la casa sobre la roca?",options:["Quien escucha sus palabras y las hace es sabio","Quien es rico construye sobre roca","Solo los maestros de la ley entienden esto","La casa de Dios debe estar en Jerusalén"],correct:0,reference:"Mateo 7:24",explanation:"Jesús dijo que todo el que oye sus palabras y las hace es como un hombre prudente que edificó su casa sobre la roca, y no cayó cuando vinieron las lluvias y vientos."},
+  {id:3307,difficulty:"experto",category:"ensenanzas",question:"¿Qué enseñó Pablo sobre el vestirse de la armadura de Dios en Efesios 6?",options:["Es una enseñanza solo para soldados romanos","Para luchar contra principados y potestades en los lugares celestiales","Para protegerse de enemigos físicos","Para intimidar a los no creyentes"],correct:1,reference:"Efesios 6:12",explanation:"Pablo enseñó que nuestra lucha no es contra sangre ni carne, sino contra principados, potestades, contra los gobernadores de las tinieblas de este siglo."},
+  {id:3308,difficulty:"intermedio",category:"ensenanzas",question:"¿Qué enseñó Jesús sobre buscar primero el reino de Dios?",options:["Primero resolver los problemas económicos","Buscar primero el reino de Dios y su justicia, y todo lo demás se añadirá","Buscar primero la familia y luego Dios","El reino vendrá solo sin buscarlo"],correct:1,reference:"Mateo 6:33",explanation:"Jesús dijo: 'Mas buscad primeramente el reino de Dios y su justicia, y todas estas cosas os serán añadidas.'"},
+  {id:3309,difficulty:"facil",category:"parabolas",question:"¿Qué representa la semilla en la parábola del sembrador?",options:["El sembrador","La palabra de Dios","El fruto del Espíritu","Los ángeles"],correct:1,reference:"Mateo 13:19",explanation:"Jesús explicó que la semilla en la parábola del sembrador representa la palabra del reino, que es sembrada en diferentes tipos de corazones."},
+  {id:3310,difficulty:"intermedio",category:"parabolas",question:"¿Qué representa el terreno pedregoso en la parábola del sembrador?",options:["Los que nunca oyeron el evangelio","Los que oyen la palabra y al instante la reciben con gozo, pero no tienen raíz","Los que se ahogan con los afanes del mundo","Los que producen buen fruto"],correct:1,reference:"Mateo 13:20-21",explanation:"Jesús explicó que el terreno pedregoso son los que oyen la palabra y al instante la reciben con gozo, pero como no tienen raíz, tropiezan cuando viene tribulación o persecución."},
+  {id:3311,difficulty:"facil",category:"parabolas",question:"¿Cuántos talentos recibió el siervo perezoso en la parábola de los talentos?",options:["Cinco","Dos","Uno","Tres"],correct:2,reference:"Mateo 25:15",explanation:"Según la parábola, a uno dio cinco talentos, a otro dos, y al último uno; cada uno según su capacidad. El que recibió uno fue el que lo enterró."},
+  {id:3312,difficulty:"intermedio",category:"parabolas",question:"En la parábola de las diez vírgenes, ¿qué representaba el aceite?",options:["Las buenas obras visibles","La preparación y vigilancia espiritual","El dinero para el banquete","Los dones del Espíritu Santo"],correct:1,reference:"Mateo 25:1-13",explanation:"El aceite representa la preparación espiritual. Las cinco vírgenes prudentes tenían aceite (estaban preparadas), mientras las insensatas no se habían preparado para la llegada del esposo."},
+  {id:3313,difficulty:"facil",category:"parabolas",question:"¿Qué hizo el dueño de la viña con los trabajadores en la parábola de los obreros de la viña?",options:["Les pagó según las horas trabajadas","Les pagó a todos un denario, sin importar cuándo empezaron","Les pagó doble a los primeros","No les pagó a los que llegaron tarde"],correct:1,reference:"Mateo 20:9-10",explanation:"En esta parábola, el dueño pagó un denario a todos, tanto a los que trabajaron todo el día como a los que llegaron a la última hora, ilustrando la generosidad de Dios."},
+  {id:3314,difficulty:"dificil",category:"parabolas",question:"¿Cuál es el significado principal de la parábola del mayordomo infiel?",options:["Que la deshonestidad puede ser recompensada","Que los hijos de este siglo son más sagaces que los hijos de luz en cuanto a relaciones","Que debemos ser deshonestos para sobrevivir","Que el dinero siempre corrompe"],correct:1,reference:"Lucas 16:8",explanation:"Jesús dijo que el señor alabó al mayordomo infiel por haber obrado sagazmente. Los hijos de este siglo son más sagaces para con sus semejantes que los hijos de luz."},
+  {id:3315,difficulty:"facil",category:"parabolas",question:"¿Qué pasa con el hombre que encuentra un tesoro escondido en el campo?",options:["Se lo guarda en secreto","Vende todo lo que tiene y compra ese campo","Se lo dice a todos","Deja el tesoro donde está"],correct:1,reference:"Mateo 13:44",explanation:"Jesús dijo: 'El reino de los cielos es semejante a un tesoro escondido en un campo, el cual un hombre halla, y lo esconde de nuevo; y gozoso por ello va y vende todo lo que tiene, y compra aquel campo.'"},
+  {id:3316,difficulty:"intermedio",category:"parabolas",question:"¿Qué ilustra la parábola del grano de mostaza?",options:["Que algo pequeño puede crecer y convertirse en algo grande","Que la fe elimina montañas físicamente","Que los árboles son sagrados en la Biblia","Que el reino ya llegó en plenitud"],correct:0,reference:"Mateo 13:31-32",explanation:"Jesús comparó el reino de los cielos con un grano de mostaza que, siendo la más pequeña de las semillas, crece hasta convertirse en árbol, donde las aves hacen sus nidos."},
+  {id:3317,difficulty:"dificil",category:"parabolas",question:"En la parábola de los dos hijos, ¿cuál de ellos hizo la voluntad del padre?",options:["El que dijo sí pero no fue","El que dijo no pero después se arrepintió y fue","Los dos igualmente","Ninguno de los dos"],correct:1,reference:"Mateo 21:28-31",explanation:"Jesús preguntó: '¿Cuál de los dos hizo la voluntad de su padre?' Y respondieron: 'El primero', el que dijo no pero se arrepintió y fue. Jesús lo aplicó a los publicanos y rameras."},
+  {id:3318,difficulty:"facil",category:"parabolas",question:"¿Qué busca la mujer en la parábola de la moneda perdida?",options:["Una perla de gran precio","Una de sus diez monedas de plata","Su hijo menor","Una oveja de su rebaño"],correct:1,reference:"Lucas 15:8",explanation:"Jesús dijo: '¿O qué mujer que tiene diez dracmas, si pierde una dracma, no enciende la lámpara, y barre la casa, y busca con diligencia hasta encontrarla?'"},
+  {id:3319,difficulty:"intermedio",category:"parabolas",question:"¿Qué hizo el padre del hijo pródigo cuando lo vio volver desde lejos?",options:["Lo reprendió severamente","Corrió a su encuentro y lo besó","Esperó que llegara antes de recibirlo","Envió siervos a su encuentro"],correct:1,reference:"Lucas 15:20",explanation:"Cuando todavía estaba lejos, su padre lo vio y fue movido a misericordia, y corrió y se echó sobre su cuello y le besó."},
+  {id:3320,difficulty:"dificil",category:"parabolas",question:"¿Qué representan las cinco vírgenes insensatas en la parábola de las diez vírgenes?",options:["Los que fueron al cielo sin prepararse","Los que no estaban espiritualmente preparados para la venida de Cristo","Los que no tenían fe","Los fariseos del tiempo de Jesús"],correct:1,reference:"Mateo 25:11-12",explanation:"Las vírgenes insensatas representan a quienes no están espiritualmente preparados para la segunda venida de Cristo. Al llegar tarde, el señor les dijo: 'De cierto os digo, que no os conozco.'"},
+  {id:3321,difficulty:"facil",category:"parabolas",question:"¿Qué enseña la parábola de la levadura?",options:["Que el mal es inevitable en la iglesia","Que el reino de Dios penetra y transforma todo desde adentro","Que el pan es sagrado","Que las mujeres son más fieles que los hombres"],correct:1,reference:"Mateo 13:33",explanation:"Jesús dijo: 'El reino de los cielos es semejante a la levadura que tomó una mujer, y escondió en tres medidas de harina, hasta que todo fue leudado.' La levadura transforma toda la masa."},
+  {id:3322,difficulty:"intermedio",category:"parabolas",question:"En la parábola del rico y Lázaro, ¿dónde estaba el rico después de morir?",options:["En el paraíso con Lázaro","En el Hades, en tormentos","En el purgatorio","En un sueño hasta el juicio"],correct:1,reference:"Lucas 16:23",explanation:"El rico murió y fue sepultado, y en el Hades alzó sus ojos, estando en tormentos, y vio de lejos a Abraham, y a Lázaro en su seno."},
+  {id:3323,difficulty:"dificil",category:"parabolas",question:"¿Qué pidió el rico en tormentos a Abraham en la parábola del rico y Lázaro?",options:["Que lo sacara del Hades","Que enviara a Lázaro para mojar la punta de su dedo en agua y refrescar su lengua","Que le diera agua del paraíso directamente","Que le enviara ángeles"],correct:1,reference:"Lucas 16:24",explanation:"El rico clamó: 'Padre Abraham, ten misericordia de mí, y envía a Lázaro para que moje la punta de su dedo en agua, y refresque mi lengua; porque estoy atormentado en esta llama.'"},
+  {id:3324,difficulty:"experto",category:"parabolas",question:"¿Por qué no podía Abraham enviar a Lázaro al lado del rico en la parábola del rico y Lázaro?",options:["Lázaro no quería ir","Era imposible porque había una gran sima entre ellos","No tenían suficiente agua","Abraham no tenía autoridad para hacerlo"],correct:1,reference:"Lucas 16:26",explanation:"Abraham dijo: 'Además de todo esto, una gran sima está puesta entre nosotros y vosotros, de manera que los que quisieren pasar de aquí a vosotros, no pueden, ni de allá pasar acá.'"},
+  {id:3325,difficulty:"facil",category:"parabolas",question:"¿Qué buscó el mercader en la parábola de la perla de gran precio?",options:["Monedas de oro","Buenas perlas","Piedras preciosas","Tesoros escondidos"],correct:1,reference:"Mateo 13:45",explanation:"Jesús dijo: 'El reino de los cielos es semejante a un mercader que busca buenas perlas, que habiendo hallado una perla preciosa, fue y vendió todo lo que tenía, y la compró.'"},
+  {id:3326,difficulty:"intermedio",category:"parabolas",question:"¿Qué simboliza la red en la parábola de la red barredera?",options:["La iglesia visible que recoge buenos y malos","Solo a los creyentes genuinos","El infierno","La pesca de Galilea"],correct:0,reference:"Mateo 13:47-48",explanation:"Jesús comparó el reino de los cielos con una red que recoge peces de toda clase. Al final del siglo, los ángeles separarán a los malos de entre los justos."},
+  {id:3327,difficulty:"dificil",category:"parabolas",question:"¿Qué representa el campo en la parábola de la cizaña entre el trigo?",options:["Israel específicamente","El mundo","La iglesia local","Palestina en tiempo de Jesús"],correct:1,reference:"Mateo 13:38",explanation:"Jesús explicó: 'El campo es el mundo; la buena semilla son los hijos del reino, y la cizaña son los hijos del malo.' El campo representa el mundo, no solo la iglesia."},
+  {id:3328,difficulty:"facil",category:"parabolas",question:"¿Quién sembró la cizaña entre el trigo en la parábola de Mateo 13?",options:["Un enemigo del sembrador","Los siervos del sembrador","El viento","Las aves del cielo"],correct:0,reference:"Mateo 13:25",explanation:"Mientras los hombres dormían, vino su enemigo y sembró cizaña entre el trigo, y se fue. Jesús explicó que el enemigo que sembró la cizaña es el diablo."},
+  {id:3329,difficulty:"intermedio",category:"parabolas",question:"En la parábola del hijo pródigo, ¿qué representa el anillo que el padre puso en la mano del hijo?",options:["Riqueza material devuelta","Restauración de autoridad y dignidad en la familia","Un simple adorno","El perdón de las deudas"],correct:1,reference:"Lucas 15:22",explanation:"El anillo, junto con la mejor ropa y las sandalias, simbolizaba la plena restauración del hijo a su posición en la familia. No era solo un adorno sino un símbolo de autoridad."},
+  {id:3330,difficulty:"dificil",category:"parabolas",question:"¿Cuántas monedas de plata tenía la mujer en la parábola de la moneda perdida?",options:["Siete","Cinco","Diez","Doce"],correct:2,reference:"Lucas 15:8",explanation:"Jesús preguntó: '¿Qué mujer que tiene diez dracmas, si pierde una dracma, no enciende la lámpara?' La mujer tenía diez dracmas y perdió una."},
+  {id:3331,difficulty:"experto",category:"parabolas",question:"¿En qué se diferencia la parábola de los talentos de la parábola de las minas?",options:["Son exactamente la misma","En Mateo cada siervo recibe cantidades distintas; en Lucas cada siervo recibe la misma cantidad","En Lucas los siervos son tres; en Mateo son diez","No hay diferencia en el número de siervos"],correct:1,reference:"Mateo 25:15; Lucas 19:13",explanation:"En la parábola de los talentos, cada siervo recibe diferente cantidad según su capacidad. En la parábola de las minas, cada uno de los diez siervos recibe la misma cantidad: una mina."},
+  {id:3332,difficulty:"intermedio",category:"parabolas",question:"¿Qué hizo el siervo que recibió un talento con ese dinero?",options:["Lo invirtió pero perdió todo","Lo dio a los cambistas","Lo enterró en la tierra","Lo gastó en fiestas"],correct:2,reference:"Mateo 25:18",explanation:"Jesús dijo: 'Pero el que había recibido uno fue y cavó en la tierra, y escondió el dinero de su señor.' Cuando el señor regresó, le reprendió por no haberlo puesto con los banqueros."},
+  {id:3333,difficulty:"facil",category:"parabolas",question:"¿Qué parábola enseñó Jesús sobre orar siempre sin desmayar?",options:["La parábola del fariseo y el publicano","La parábola de la viuda y el juez injusto","La parábola del amigo a medianoche","Tanto B como C"],correct:3,reference:"Lucas 18:1; Lucas 11:5-8",explanation:"Jesús contó la parábola de la viuda y el juez injusto (Lucas 18:1) específicamente para enseñar que debemos orar siempre sin desmayar. La del amigo a medianoche también ilustra la persistencia en la oración."},
+  {id:3334,difficulty:"dificil",category:"parabolas",question:"¿Qué diferencia al fariseo del publicano en la parábola de Lucas 18?",options:["El fariseo era más pecador","El publicano se humilló ante Dios mientras el fariseo se enaltecía","El fariseo no oraba verdaderamente","El publicano era más rico"],correct:1,reference:"Lucas 18:13-14",explanation:"El publicano, de lejos, decía: 'Dios, sé propicio a mí, pecador.' Jesús dijo que éste descendió a su casa justificado antes que el fariseo, porque todo el que se enaltece será humillado."},
+  {id:3335,difficulty:"facil",category:"historias",question:"¿Cómo fue probada la fe de Abraham con su hijo Isaac?",options:["Dios le pidió que lo ofreciera en sacrificio","Dios le pidió que lo enviara a Egipto","Dios le pidió que lo casara con una cananea","Dios le pidió que lo enviara con Agar"],correct:0,reference:"Génesis 22:2",explanation:"Dios probó a Abraham diciéndole: 'Toma ahora tu hijo, tu único, Isaac, a quien amas, y vete a tierra de Moriah, y ofrécelo allí en holocausto.'"},
+  {id:3336,difficulty:"intermedio",category:"historias",question:"¿Qué evento marcó el inicio de los 40 años de Israel en el desierto?",options:["La salida de Egipto","El pecado del becerro de oro","El informe negativo de los doce espías","La muerte de Aarón"],correct:2,reference:"Números 14:33-34",explanation:"Cuando los israelitas creyeron el informe negativo de los espías y se rebelaron, Dios decretó que vagaran 40 años en el desierto, un año por cada día de la exploración."},
+  {id:3337,difficulty:"facil",category:"historias",question:"¿Quién vendió su primogenitura a Jacob por un plato de lentejas?",options:["Isaac","Labán","Esaú","Ismael"],correct:2,reference:"Génesis 25:31-33",explanation:"Jacob dijo a Esaú: 'Véndeme en este día tu primogenitura.' Y Esaú respondió: 'He aquí yo me voy a morir; ¿para qué me servirá la primogenitura?' Y vendió su primogenitura a Jacob."},
+  {id:3338,difficulty:"intermedio",category:"historias",question:"¿Qué sucedió en la batalla de Jericó que la hizo diferente a otras batallas?",options:["Israel usó catapultas","Israel marchó alrededor de la ciudad y tocó trompetas, y los muros cayeron","Israel atacó de noche","Israel hizo un túnel bajo los muros"],correct:1,reference:"Josué 6:20",explanation:"El pueblo gritó y los sacerdotes tocaron las trompetas, y aconteció que al oír el pueblo el sonido de la bocina, gritó con gran vocerío, y el muro se derrumbó."},
+  {id:3339,difficulty:"dificil",category:"historias",question:"¿Cuántos meses estuvo el arca del pacto en casa de Obed-edom antes de que David la trajera a Jerusalén?",options:["Un mes","Tres meses","Seis meses","Un año"],correct:1,reference:"2 Samuel 6:11",explanation:"Y estuvo el arca de Jehová en casa de Obed-edom geteo tres meses; y bendijo Jehová a Obed-edom y a toda su casa."},
+  {id:3340,difficulty:"facil",category:"historias",question:"¿Cuántos libros tiene el Nuevo Testamento?",options:["24","27","30","39"],correct:1,reference:"Canon Bíblico",explanation:"El Nuevo Testamento tiene 27 libros, que van desde Mateo hasta Apocalipsis. El Antiguo Testamento tiene 39 libros."},
+  {id:3341,difficulty:"intermedio",category:"historias",question:"¿En qué ciudad se produjo el primer concilio de la iglesia primitiva según Hechos 15?",options:["Antioquía","Roma","Corinto","Jerusalén"],correct:3,reference:"Hechos 15:2",explanation:"El primer concilio de la iglesia primitiva se realizó en Jerusalén para tratar la cuestión de si los gentiles debían ser circuncidados para ser salvos."},
+  {id:3342,difficulty:"facil",category:"personajes",question:"¿Qué discípulo de Jesús era un recaudador de impuestos antes de seguirle?",options:["Pedro","Juan","Mateo","Bartolomé"],correct:2,reference:"Mateo 9:9",explanation:"Jesús vio a un hombre llamado Mateo, que estaba sentado al banco de los tributos públicos, y le dijo: 'Sígueme.' Y se levantó y le siguió."},
+  {id:3343,difficulty:"intermedio",category:"personajes",question:"¿Qué característica especial tenía Sansón según la Biblia?",options:["Era el más alto de Israel","Su fuerza residía en su cabello largo","Era invulnerable a las flechas","Podía ver de noche"],correct:1,reference:"Jueces 16:17",explanation:"Sansón le reveló a Dalila: 'Navaja no llegó a mi cabeza, porque soy nazareo de Dios desde el vientre de mi madre. Si fuere rapado, mi fuerza se apartará de mí.'"},
+  {id:3344,difficulty:"facil",category:"personajes",question:"¿Cuál fue el nombre del primer rey de Israel?",options:["David","Salomón","Saúl","Samuel"],correct:2,reference:"1 Samuel 10:1",explanation:"Samuel tomó el vaso de aceite y lo derramó sobre la cabeza de Saúl, y le besó, y le dijo: '¿No te ha ungido Jehová por príncipe sobre su pueblo Israel?'"},
+  {id:3345,difficulty:"intermedio",category:"personajes",question:"¿Quién fue Priscila en el Nuevo Testamento?",options:["La suegra de Pedro","Colaboradora de Pablo y maestra del evangelio junto con su esposo Aquila","Una profetisa de Jerusalén","Una diaconisa de la iglesia de Roma"],correct:1,reference:"Hechos 18:26",explanation:"Priscila y su esposo Aquila tomaron aparte a Apolos y le expusieron más exactamente el camino de Dios. Fueron importantes colaboradores de Pablo en el ministerio."},
+  {id:3346,difficulty:"dificil",category:"personajes",question:"¿Quién fue Nicodemo y cuál fue su aportación más significativa en el evangelio de Juan?",options:["Un apóstol que negó a Jesús","Un fariseo que visitó a Jesús de noche y llevó mirra y áloes para su sepultura","Un sumo sacerdote que ordenó la crucifixión","Un gentil que creyó en Jesús"],correct:1,reference:"Juan 3:1; Juan 19:39",explanation:"Nicodemo era un principal de los judíos que visitó a Jesús de noche. Al final ayudó a sepultarle, trayendo una mezcla de mirra y áloes, como cien libras."},
+  {id:3347,difficulty:"facil",category:"personajes",question:"¿Quién fue Marta en el Nuevo Testamento?",options:["La esposa de Juan el Bautista","La hermana de María y Lázaro, amiga de Jesús","Una mujer que Jesús sanó de lepra","La suegra de Pedro"],correct:1,reference:"Lucas 10:38-39; Juan 11:1",explanation:"Marta era hermana de María y de Lázaro, que vivían en Betania. Jesús los amaba. Marta aparece ocupada en el servicio mientras su hermana María escuchaba a Jesús."},
+  {id:3348,difficulty:"experto",category:"personajes",question:"¿Qué misionero acompañó a Pablo en su segundo viaje misionero después de la separación con Bernabé?",options:["Tito","Timoteo","Silas","Lucas"],correct:2,reference:"Hechos 15:40",explanation:"Pablo escogió a Silas y salió, siendo encomendado por los hermanos a la gracia del Señor. Silas sustituyó a Bernabé como compañero de Pablo en el segundo viaje."},
+  {id:3349,difficulty:"facil",category:"milagros",question:"¿Cómo sanó Jesús al ciego Bartimeo?",options:["Lo ungió con aceite","Le dijo: 'Recibe la vista, tu fe te ha salvado'","Le hizo barro y lo puso en sus ojos","Le tocó los ojos dos veces"],correct:1,reference:"Lucas 18:42",explanation:"Jesús le dijo: 'Recibe la vista, tu fe te ha salvado.' Y luego vio, y le seguía, glorificando a Dios; y todo el pueblo, cuando lo vio, dio alabanza a Dios."},
+  {id:3350,difficulty:"intermedio",category:"milagros",question:"¿Qué milagro realizó Elías en el monte Carmelo frente a los profetas de Baal?",options:["Hizo que lloviera inmediatamente","Llamó fuego del cielo que consumió el sacrificio empapado en agua","Resucitó a un muerto","Hizo que el mar se dividiera"],correct:1,reference:"1 Reyes 18:38",explanation:"Entonces cayó fuego de Jehová, y consumió el holocausto, la leña, las piedras y el polvo, y aun lamió el agua que estaba en la zanja."},
+  {id:3351,difficulty:"facil",category:"milagros",question:"¿Qué primer milagro realizó Jesús según el evangelio de Juan?",options:["Sanar a un ciego de nacimiento","Transformar el agua en vino en las bodas de Caná","Resucitar a Lázaro","Caminar sobre el agua"],correct:1,reference:"Juan 2:11",explanation:"Este principio de señales hizo Jesús en Caná de Galilea, y manifestó su gloria; y sus discípulos creyeron en él. Las bodas de Caná marcan el primer milagro registrado en Juan."},
+  {id:3352,difficulty:"intermedio",category:"milagros",question:"¿Cuántos años llevaba enferma la mujer que tocó el manto de Jesús?",options:["7 años","12 años","15 años","20 años"],correct:1,reference:"Marcos 5:25",explanation:"Y una mujer que desde hacía doce años padecía de flujo de sangre, y había sufrido mucho de muchos médicos, y gastado todo lo que tenía, tocó el manto de Jesús y fue sanada."},
+  {id:3353,difficulty:"dificil",category:"milagros",question:"¿Qué dijo Jesús cuando resucitó a la hija de Jairo?",options:["'Levántate y anda'","'Talita cumi' (niña, levántate)","'Lázaro, ven fuera'","'Tu fe te ha salvado'"],correct:1,reference:"Marcos 5:41",explanation:"Tomando la mano de la niña, le dijo: 'Talita cumi'; que traducido es: Niña, a ti te digo, levántate. Y la niña se levantó y anduvo."},
+  {id:3354,difficulty:"facil",category:"milagros",question:"¿Cómo sanó Jesús al siervo del centurión en Capernaum?",options:["Fue personalmente a la casa del centurión","Sanó al siervo desde distancia con solo su palabra","Ordenó a sus discípulos que fueran a orar por él","Le envió aceite para ungirlo"],correct:1,reference:"Mateo 8:13",explanation:"Jesús dijo al centurión: 'Ve, y como creíste, te sea hecho.' Y su criado fue sanado en aquella misma hora, demostrando que la fe puede traer sanidad a distancia."},
+  {id:3355,difficulty:"experto",category:"milagros",question:"¿Qué milagro realizó el apóstol Pablo en Tróade según Hechos 20?",options:["Sanó a un cojo","Resucitó a un joven llamado Eutico que cayó de una ventana","Expulsó un demonio de una esclava","Multiplicó el pan para una multitud"],correct:1,reference:"Hechos 20:9-12",explanation:"Un joven llamado Eutico, que estaba sentado en la ventana, se quedó dormido y cayó del tercer piso. Pablo descendió y abrazándole dijo: 'No os alarméis, pues está vivo.' Y lo resucitó."},
+  {id:3356,difficulty:"facil",category:"profetas",question:"¿Cuál fue el primer milagro de Eliseo después de recibir el espíritu de Elías?",options:["Resucitar a un niño","Dividir el río Jordán con el manto de Elías","Sanar el agua amarga de Jericó","Multiplicar el aceite de una viuda"],correct:1,reference:"2 Reyes 2:14",explanation:"Eliseo tomó el manto de Elías, hirió las aguas y dijo: '¿Dónde está Jehová, el Dios de Elías?' Las aguas se dividieron, y Eliseo pasó."},
+  {id:3357,difficulty:"intermedio",category:"profetas",question:"¿Qué profeta fue conocido como el 'profeta llorón' por sus lamentos por Judá?",options:["Isaías","Ezequiel","Jeremías","Oseas"],correct:2,reference:"Jeremías 9:1",explanation:"Jeremías es conocido como el 'profeta llorón' por sus intensas lamentaciones. Escribió: '¡Oh, si mi cabeza se hiciese aguas, y mis ojos fuentes de lágrimas, para llorar día y noche...'"},
+  {id:3358,difficulty:"dificil",category:"profetas",question:"¿Cuántos años de cautiverio babilónico profetizó Jeremías para Judá?",options:["40 años","50 años","70 años","100 años"],correct:2,reference:"Jeremías 25:11",explanation:"Jeremías profetizó: 'Toda esta tierra será puesta en ruinas y en espanto; y servirán estas naciones al rey de Babilonia setenta años.'"},
+  {id:3359,difficulty:"facil",category:"profetas",question:"¿Cuál es el libro profético más largo de la Biblia?",options:["Jeremías","Isaías","Ezequiel","Daniel"],correct:1,reference:"Libro de Isaías",explanation:"Isaías es el libro profético más largo de la Biblia con 66 capítulos. También es conocido como el 'pequeño Biblia' porque sus 66 capítulos corresponden simbólicamente a los 66 libros de la Biblia."},
+  {id:3360,difficulty:"intermedio",category:"profetas",question:"¿Qué visión tuvo el profeta Ezequiel al comienzo de su ministerio?",options:["Una rueda dentro de otra rueda y cuatro seres vivientes","Un serafín con carbón ardiente","Una olla hirviendo desde el norte","Un campo de huesos secos"],correct:0,reference:"Ezequiel 1:4-28",explanation:"Ezequiel vio una gran nube con un fuego envolvente, cuatro seres vivientes y ruedas dentro de ruedas. Esta visión inaugural describía la gloria de Dios de forma compleja y majestuosa."},
+  {id:3361,difficulty:"experto",category:"profetas",question:"¿Cuál fue la señal que Dios le dio al profeta Ezequiel cuando murió su esposa?",options:["Que debía llorar públicamente en el templo","Que no debía llorar ni hacer duelo, para ser señal para Israel","Que debía rasgar sus vestiduras","Que debía ayunar 40 días"],correct:1,reference:"Ezequiel 24:15-17",explanation:"Dios dijo a Ezequiel: 'He aquí que yo te quito de golpe el deleite de tus ojos; no endeches ni llores... suspira en silencio.' Esto sería señal para Israel de la pérdida del templo."},
+  {id:3362,difficulty:"facil",category:"reyes",question:"¿Cuál fue el pecado principal del rey Salomón que lo alejó de Dios en su vejez?",options:["El asesinato de Urías","La idolatría promovida por sus esposas extranjeras","El robo del templo","La rebelión contra su padre David"],correct:1,reference:"1 Reyes 11:4",explanation:"Cuando Salomón era ya viejo, sus mujeres inclinaron su corazón tras dioses ajenos, y su corazón no era perfecto con Jehová su Dios, como el corazón de su padre David."},
+  {id:3363,difficulty:"intermedio",category:"reyes",question:"¿Quién fue el rey que dividió el reino de Israel después de Salomón?",options:["Jeroboam I tomó el norte; Roboam se quedó con Judá","Roboam dividió voluntariamente el reino","Jeroboam conquistó todo Israel","Asa dividió el reino"],correct:0,reference:"1 Reyes 12:20",explanation:"Cuando Roboam rechazó el consejo de los ancianos y aumentó las cargas sobre el pueblo, Jeroboam fue hecho rey sobre todo Israel. Solo la tribu de Judá siguió a la casa de David."},
+  {id:3364,difficulty:"dificil",category:"reyes",question:"¿Cuántos años reinó David en Jerusalén sobre todo Israel?",options:["7 años y 6 meses","20 años","33 años","40 años"],correct:2,reference:"2 Samuel 5:5",explanation:"David reinó siete años y seis meses en Hebrón sobre Judá, y treinta y tres años en Jerusalén sobre todo Israel y Judá. Total: 40 años, de los cuales 33 fueron sobre todo Israel."},
+  {id:3365,difficulty:"facil",category:"reyes",question:"¿Cuál fue el rey que mandó construir la ciudad de Samaria como capital del reino del norte?",options:["Jeroboam","Acab","Omri","Jehú"],correct:2,reference:"1 Reyes 16:24",explanation:"Omri compró el monte de Samaria a Semer por dos talentos de plata, y edificó en el monte, y llamó el nombre de la ciudad que edificó Samaria."},
+  {id:3366,difficulty:"intermedio",category:"reyes",question:"¿Qué rey de Judá halló el libro de la ley y celebró la Pascua más grande en la historia de Israel?",options:["Ezequías","Josías","Asa","Joás"],correct:1,reference:"2 Reyes 22-23",explanation:"Josías fue el rey que halló el libro de la ley en el templo, lo leyó al pueblo, renovó el pacto con Dios y celebró una Pascua que ningún rey anterior había celebrado igual."},
+  {id:3367,difficulty:"experto",category:"reyes",question:"¿Cuántos reyes malvados tuvo el reino del norte (Israel)?",options:["Todos los 19 reyes de Israel fueron malvados; Judá tuvo mezcla","Israel tuvo más buenos reyes que Judá","Solo Jeroboam y Acab fueron malvados en el norte","Los dos reinos tuvieron igual proporción"],correct:0,reference:"1-2 Reyes",explanation:"Los 19 reyes del reino del norte fueron todos considerados malvados en los ojos de Dios. En contraste, el reino del sur (Judá) tuvo una mezcla de reyes buenos y malos entre sus 20 monarcas."},
+  {id:3368,difficulty:"facil",category:"vida_jesus",question:"¿Cuántos días ayunó Jesús en el desierto antes de ser tentado por el diablo?",options:["3 días","7 días","40 días","40 años"],correct:2,reference:"Mateo 4:2",explanation:"Y después de haber ayunado cuarenta días y cuarenta noches, tuvo hambre. Entonces el tentador se le acercó y le dijo: 'Si eres Hijo de Dios, di que estas piedras se conviertan en pan.'"},
+  {id:3369,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuáles fueron las tres tentaciones que el diablo presentó a Jesús en el desierto?",options:["Riqueza, fama y poder","Convertir piedras en pan, tirarse del templo, recibir todos los reinos del mundo","Negarle a Dios, adorar ídolos, matar a sus discípulos","Comer, beber y descansar en exceso"],correct:1,reference:"Mateo 4:3-10",explanation:"El diablo tentó a Jesús a: 1) convertir piedras en pan, 2) tirarse desde el pináculo del templo para ser rescatado por ángeles, 3) adorarle a cambio de todos los reinos del mundo."},
+  {id:3370,difficulty:"facil",category:"vida_jesus",question:"¿Qué ocurrió cuando Jesús fue bautizado y salió del agua?",options:["Una voz del cielo dijo: 'Este es mi Hijo amado, en quien tengo complacencia'","Jesús mismo declaró ser el Hijo de Dios","Un ángel apareció y lo ungió","La multitud proclamó que era el Mesías"],correct:0,reference:"Mateo 3:17",explanation:"Y hubo una voz de los cielos, que decía: 'Este es mi Hijo amado, en quien tengo complacencia.' El bautismo de Jesús fue acompañado por la apertura de los cielos y el descenso del Espíritu como paloma."},
+  {id:3371,difficulty:"dificil",category:"vida_jesus",question:"¿Qué dijo Jesús sobre ser el primero entre sus seguidores?",options:["'El primero entre vosotros será vuestro siervo'","'El que quiera ser el primero será el postrero de todos'","'El que se humille será enaltecido'","Todas las anteriores son enseñanzas de Jesús sobre humildad"],correct:3,reference:"Marcos 9:35; Mateo 23:11; Lucas 14:11",explanation:"Jesús enseñó sobre la humildad en múltiples ocasiones con frases similares. En Marcos 9:35 dijo: 'Si alguno quiere ser el primero, será el postrero de todos.' Todas estas citas son auténticas enseñanzas de Jesús."},
+  {id:3372,difficulty:"facil",category:"vida_jesus",question:"¿A qué ciudad fue Jesús para encontrarse con Zaqueo el publicano?",options:["Capernaum","Jericó","Nazaret","Betania"],correct:1,reference:"Lucas 19:1",explanation:"Habiendo entrado Jesús en Jericó, iba pasando por la ciudad. Y sucedió que un varón llamado Zaqueo, que era jefe de los publicanos, subió a un árbol sicómoro para ver a Jesús."},
+  {id:3373,difficulty:"intermedio",category:"vida_jesus",question:"¿Cuál fue la reacción de Jesús al ver las mesas de los cambistas en el templo?",options:["Les predicó sobre el amor al dinero","Derribó las mesas y echó fuera a los que vendían y compraban","Les cobró un impuesto para el templo","Ignoró la situación y siguió enseñando"],correct:1,reference:"Mateo 21:12",explanation:"Jesús entró al templo, y echó fuera a todos los que vendían y compraban en el templo, y volcó las mesas de los cambistas, y las sillas de los que vendían palomas."},
+  {id:3374,difficulty:"facil",category:"cartas",question:"¿A qué iglesia le escribió Pablo: 'Todo lo puedo en Cristo que me fortalece'?",options:["A los corintios","A los filipenses","A los efesios","A los romanos"],correct:1,reference:"Filipenses 4:13",explanation:"Esta famosa cita se encuentra en la carta de Pablo a los filipenses: 'Todo lo puedo en Cristo que me fortalece.' Pablo escribió esta carta mientras estaba en prisión."},
+  {id:3375,difficulty:"intermedio",category:"cartas",question:"¿Cuál es el tema central de la carta de Pablo a los Gálatas?",options:["La segunda venida de Cristo","La justificación por la fe, no por las obras de la ley","La organización de la iglesia local","El uso correcto de los dones espirituales"],correct:1,reference:"Gálatas 2:16",explanation:"La carta a los Gálatas defiende enérgicamente la justificación por la fe en Cristo, no por las obras de la ley. Pablo reprochó incluso a Pedro por hipocresía sobre este tema."},
+  {id:3376,difficulty:"dificil",category:"cartas",question:"¿A quién escribió Pablo la carta de Filemón?",options:["Al líder de la iglesia de Corinto","A un creyente para pedirle que recibiera a su esclavo fugitivo Onésimo","Al obispo de Éfeso","A un converso gentil de Antioquía"],correct:1,reference:"Filemón 1:10-16",explanation:"Pablo escribió a Filemón pidiendo que recibiera a Onésimo, su esclavo que había huido pero se había convertido. Pablo pedía que lo recibiese ya no como esclavo sino como hermano amado."},
+  {id:3377,difficulty:"facil",category:"cartas",question:"¿Qué fruto del Espíritu menciona Pablo en primer lugar en Gálatas 5:22?",options:["Gozo","Fe","Amor","Paz"],correct:2,reference:"Gálatas 5:22",explanation:"Pablo escribió: 'Mas el fruto del Espíritu es: amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre, templanza.' El amor es el primero en la lista."},
+  {id:3378,difficulty:"intermedio",category:"cartas",question:"¿A qué iglesia del Apocalipsis se le escribió: 'Eres tibio, y no frío ni caliente'?",options:["Éfeso","Esmirna","Sardis","Laodicea"],correct:3,reference:"Apocalipsis 3:16",explanation:"A la iglesia de Laodicea Juan escribió: 'Pero por cuanto eres tibio, y no frío ni caliente, te vomitaré de mi boca.' Era la séptima de las siete iglesias de Asia."},
+  {id:3379,difficulty:"experto",category:"cartas",question:"¿Cuáles son los dos temas principales de la primera carta de Juan?",options:["La creación y el juicio final","El amor fraternal y la prueba de los espíritus para distinguir verdad del error","La organización eclesiástica y el bautismo","La oración y el ayuno"],correct:1,reference:"1 Juan 4:1; 1 Juan 4:7",explanation:"La primera carta de Juan gira en torno a dos temas mayores: la prueba de los espíritus (para discernir la verdad del error) y el amor fraternal como evidencia de vida en Dios."},
+  {id:3380,difficulty:"facil",category:"libros",question:"¿Cuántos salmos tiene el libro de los Salmos?",options:["100","120","150","200"],correct:2,reference:"Libro de Salmos",explanation:"El libro de los Salmos tiene 150 salmos y está dividido en cinco libros. Es el libro más largo de la Biblia y fue escrito por varios autores, principalmente David."},
+  {id:3381,difficulty:"intermedio",category:"libros",question:"¿Qué libros del Nuevo Testamento escribió el médico Lucas?",options:["Solo el evangelio de Lucas","El evangelio de Lucas y los Hechos de los Apóstoles","Solo los Hechos","El evangelio de Juan y Hechos"],correct:1,reference:"Lucas 1:1-3; Hechos 1:1",explanation:"Lucas escribió tanto el evangelio que lleva su nombre como los Hechos de los Apóstoles, dedicando ambas obras a Teófilo. Es el autor humano que más contribuyó al Nuevo Testamento en volumen."},
+  {id:3382,difficulty:"facil",category:"libros",question:"¿Cuál es el versículo más corto de la Biblia?",options:["'Dios es amor'","'Jesús lloró'","'Orad sin cesar'","'Regocijaos siempre'"],correct:1,reference:"Juan 11:35",explanation:"'Jesús lloró' (Juan 11:35) es considerado el versículo más corto de la Biblia. Este versículo muestra la humanidad y compasión de Jesús ante la muerte de Lázaro."},
+  {id:3383,difficulty:"intermedio",category:"libros",question:"¿Cuál es el único libro histórico del Nuevo Testamento?",options:["Romanos","Hebreos","Hechos de los Apóstoles","Apocalipsis"],correct:2,reference:"Hechos 1:1",explanation:"Los Hechos de los Apóstoles es el único libro histórico del Nuevo Testamento. Narra la historia de la iglesia primitiva desde la ascensión de Jesús hasta el cautiverio de Pablo en Roma."},
+  {id:3384,difficulty:"dificil",category:"libros",question:"¿Qué libro del Antiguo Testamento es principalmente una colección de dichos sabios para la vida práctica?",options:["Eclesiastés","Job","Proverbios","Cantares"],correct:2,reference:"Proverbios 1:1",explanation:"Proverbios es principalmente una colección de máximas y dichos sabios para la vida práctica, a diferencia de Job (drama), Eclesiastés (reflexión filosófica) y Cantares (poesía amorosa)."},
+  {id:3385,difficulty:"experto",category:"libros",question:"¿Cuántos autores distintos se identifican en el libro de los Salmos?",options:["Solo David","David y Salomón","Al menos diez, incluyendo David, Asaf, los hijos de Coré y Moisés","Solo tres: David, Salomón y Asaf"],correct:2,reference:"Encabezados de los Salmos",explanation:"Los encabezados de los Salmos identifican múltiples autores: David (73), Asaf (12), hijos de Coré (11), Salomón (2), Moisés (1), Hemán (1), Etán (1), y otros sin atribución. Son al menos diez autores identificados."},
+  {id:3386,difficulty:"facil",category:"versiculos",question:"¿Qué versículo dice: 'El Señor es mi pastor; nada me faltará'?",options:["Salmos 1:1","Salmos 23:1","Proverbios 3:5","Isaías 40:31"],correct:1,reference:"Salmos 23:1",explanation:"El Salmo 23, escrito por David, comienza: 'Jehová es mi pastor; nada me faltará.' Es uno de los salmos más conocidos y amados de toda la Biblia."},
+  {id:3387,difficulty:"intermedio",category:"versiculos",question:"¿Dónde dice la Biblia: 'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento'?",options:["1 Corintios 2:2","Romanos 12:2","Efesios 4:23","Colosenses 3:2"],correct:1,reference:"Romanos 12:2",explanation:"Pablo escribió en Romanos 12:2: 'No os conforméis a este siglo, sino transformaos por medio de la renovación de vuestro entendimiento, para que comprobéis cuál sea la buena voluntad de Dios.'"},
+  {id:3388,difficulty:"facil",category:"versiculos",question:"¿Cuál es el versículo que dice: 'Porque separados de mí nada podéis hacer'?",options:["Juan 14:6","Juan 15:5","Filipenses 4:13","Mateo 11:28"],correct:1,reference:"Juan 15:5",explanation:"Jesús dijo: 'Yo soy la vid, vosotros los pámpanos; el que permanece en mí, y yo en él, éste lleva mucho fruto; porque separados de mí nada podéis hacer.'"},
+  {id:3389,difficulty:"intermedio",category:"versiculos",question:"¿Qué versículo dice: 'Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús'?",options:["Romanos 3:23","Romanos 6:23","Juan 3:16","Efesios 2:8"],correct:1,reference:"Romanos 6:23",explanation:"Romanos 6:23: 'Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro.'"},
+  {id:3390,difficulty:"dificil",category:"versiculos",question:"¿Qué versículo dice: 'En él vivimos, y nos movemos, y somos'?",options:["Colosenses 1:17","Juan 14:20","Hechos 17:28","Salmos 139:7"],correct:2,reference:"Hechos 17:28",explanation:"Pablo cita esta frase en su discurso en el Areópago de Atenas: 'Porque en él vivimos, y nos movemos, y somos.' Señalaba que incluso los poetas griegos reconocían la omnipresencia de Dios."},
+  {id:3391,difficulty:"facil",category:"versiculos",question:"¿En qué versículo dice Jesús: 'Yo soy el camino, la verdad y la vida'?",options:["Juan 10:9","Juan 14:6","Juan 11:25","Juan 8:12"],correct:1,reference:"Juan 14:6",explanation:"Jesús respondió a Tomás: 'Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.' Es una de las siete declaraciones 'Yo soy' de Jesús en el evangelio de Juan."},
+  {id:3392,difficulty:"intermedio",category:"versiculos",question:"¿En qué cartas aparece el saludo 'Gracia y paz a vosotros, de Dios nuestro Padre y del Señor Jesucristo'?",options:["Es el saludo típico de las cartas de Pablo","Solo aparece en Romanos 1:7","Solo aparece en 1 Corintios 1:3","Solo aparece en Filipenses 1:2"],correct:0,reference:"Romanos 1:7; 1 Corintios 1:3 y otras",explanation:"'Gracia y paz a vosotros de Dios nuestro Padre y del Señor Jesucristo' es el saludo característico de Pablo, que aparece en casi todas sus cartas, incluyendo Romanos, Corintios, Gálatas, Efesios y Filipenses."},
+  {id:3393,difficulty:"facil",category:"lugares",question:"¿En qué ciudad nació el apóstol Pablo?",options:["Jerusalén","Damasco","Tarso","Antioquía"],correct:2,reference:"Hechos 22:3",explanation:"Pablo dijo: 'Yo de cierto soy judío, nacido en Tarso de Cilicia, pero criado en esta ciudad [Jerusalén], instruido a los pies de Gamaliel.'"},
+  {id:3394,difficulty:"intermedio",category:"lugares",question:"¿Cuál fue el significado del lugar llamado Getsemaní?",options:["Jardín de flores silvestres","Lugar de lagar de aceite","Valle de lágrimas","Monte de la bendición"],correct:1,reference:"Mateo 26:36",explanation:"Getsemaní significa 'lagar de aceite' en arameo. Era un huerto al pie del Monte de los Olivos donde Jesús fue a orar antes de su arresto, y donde fue traicionado por Judas."},
+  {id:3395,difficulty:"dificil",category:"lugares",question:"¿En cuál de las siete iglesias del Apocalipsis estaba el 'trono de Satanás'?",options:["Éfeso","Esmirna","Pérgamo","Tiatira"],correct:2,reference:"Apocalipsis 2:13",explanation:"A la iglesia de Pérgamo se le escribió: 'Yo conozco tus obras, y dónde moras, donde está el trono de Satanás.' Pérgamo era famosa por sus templos paganos, incluyendo uno dedicado a Augusto."},
+  {id:3396,difficulty:"facil",category:"lugares",question:"¿En qué mar ocurrió el naufragio del apóstol Pablo narrado en Hechos 27?",options:["Mar Rojo","Mar de Galilea","Mar Mediterráneo","Mar Muerto"],correct:2,reference:"Hechos 27:41",explanation:"El naufragio de Pablo ocurrió en el Mar Mediterráneo, cerca de la isla de Malta. Pablo y todos los pasajeros llegaron a salvo a tierra, cumpliéndose la promesa de Dios."},
+  {id:3397,difficulty:"intermedio",category:"lugares",question:"¿Cuál era el nombre del monte donde Moisés recibió los Diez Mandamientos?",options:["Monte Nebo","Monte Sion","Monte Sinaí","Monte Hermón"],correct:2,reference:"Éxodo 19:20",explanation:"Y Jehová descendió sobre el monte Sinaí, sobre la cumbre del monte; y llamó Jehová a Moisés a la cumbre del monte, y Moisés subió. Allí le fueron dadas las tablas de la ley."},
+  {id:3398,difficulty:"dificil",category:"lugares",question:"¿En qué lugar fue transfigurado Jesús ante Pedro, Jacobo y Juan?",options:["Monte Hermón","Monte Tabor","Monte de los Olivos","Monte Sion"],correct:1,reference:"Mateo 17:1-2",explanation:"La tradición cristiana identifica el Monte Tabor como el lugar de la transfiguración, aunque el texto bíblico dice 'un monte alto' sin nombrarlo. Allí Jesús fue transfigurado y apareció con Moisés y Elías."}
 ];
-
-
 
 // Versiculos diarios
 
-
-
 const DAILY_VERSES = [
-
-
 
   // 1-32: Versiculos ya existentes
 
-
-
   { text: "Porque de tal manera amo Dios al mundo, que ha dado a su Hijo unigenito, para que todo aquel que en el cree, no se pierda, mas tenga vida eterna.", ref: "Juan 3:16" },
-
-
 
   { text: "Todo lo puedo en Cristo que me fortalece.", ref: "Filipenses 4:13" },
 
-
-
   { text: "Jehova es mi pastor; nada me faltara.", ref: "Salmos 23:1" },
-
-
 
   { text: "Confia en Jehova con todo tu corazon, y no te apoyes en tu propia prudencia.", ref: "Proverbios 3:5" },
 
-
-
   { text: "Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mi.", ref: "Juan 14:6" },
-
-
 
   { text: "Esforzaos y cobrad animo; no temais, ni tengais miedo de ellos, porque Jehova tu Dios es el que va contigo.", ref: "Deuteronomio 31:6" },
 
-
-
   { text: "Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien.", ref: "Romanos 8:28" },
-
-
 
   { text: "Mas buscad primeramente el reino de Dios y su justicia, y todas estas cosas os seran anadidas.", ref: "Mateo 6:33" },
 
-
-
   { text: "No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo.", ref: "Isaias 41:10" },
-
-
 
   { text: "El principio de la sabiduria es el temor de Jehova.", ref: "Proverbios 9:10" },
 
-
-
   { text: "Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.", ref: "Efesios 2:8" },
-
-
 
   { text: "Fiel es Dios, por el cual fuisteis llamados a la comunion con su Hijo Jesucristo nuestro Senor.", ref: "1 Corintios 1:9" },
 
-
-
   { text: "Clama a mi, y yo te respondere, y te ensenare cosas grandes y ocultas que tu no conoces.", ref: "Jeremias 33:3" },
-
-
 
   { text: "De modo que si alguno esta en Cristo, nueva criatura es; las cosas viejas pasaron; he aqui todas son hechas nuevas.", ref: "2 Corintios 5:17" },
 
-
-
   { text: "Lampara es a mis pies tu palabra, y lumbrera a mi camino.", ref: "Salmos 119:105" },
-
-
 
   { text: "El amor es paciente, es bondadoso. El amor no es envidioso ni jactancioso ni orgulloso.", ref: "1 Corintios 13:4" },
 
-
-
   { text: "Venid a mi todos los que estais trabajados y cargados, y yo os hare descansar.", ref: "Mateo 11:28" },
-
-
 
   { text: "?Que, pues, diremos a esto? Si Dios es por nosotros, ?quien contra nosotros?", ref: "Romanos 8:31" },
 
-
-
   { text: "Dad gracias en todo, porque esta es la voluntad de Dios para con vosotros en Cristo Jesus.", ref: "1 Tesalonicenses 5:18" },
-
-
 
   { text: "He aqui, yo estoy a la puerta y llamo; si alguno oye mi voz y abre la puerta, entrare a el.", ref: "Apocalipsis 3:20" },
 
-
-
   { text: "Pedid, y se os dara; buscad, y hallareis; llamad, y se os abrira.", ref: "Mateo 7:7" },
-
-
 
   { text: "Los que esperan en Jehova tendran nuevas fuerzas; levantaran alas como las aguilas.", ref: "Isaias 40:31" },
 
-
-
   { text: "Yo he venido para que tengan vida, y para que la tengan en abundancia.", ref: "Juan 10:10" },
-
-
 
   { text: "Mas el fruto del Espiritu es amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre, templanza.", ref: "Galatas 5:22-23" },
 
-
-
   { text: "Bienaventurados los de limpio corazon, porque ellos veran a Dios.", ref: "Mateo 5:8" },
-
-
 
   { text: "Jehova te bendiga, y te guarde; Jehova haga resplandecer su rostro sobre ti.", ref: "Numeros 6:24-25" },
 
-
-
   { text: "El Senor no retarda su promesa, segun algunos la tienen por tardanza.", ref: "2 Pedro 3:9" },
-
-
 
   { text: "Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.", ref: "Salmos 46:1" },
 
-
-
   { text: "Porque yo se los pensamientos que tengo acerca de vosotros, dice Jehova, pensamientos de paz.", ref: "Jeremias 29:11" },
-
-
 
   { text: "Jesus le dijo: Yo soy la resurreccion y la vida; el que cree en mi, aunque este muerto, vivira.", ref: "Juan 11:25" },
 
-
-
   { text: "El cielo y la tierra pasaran, pero mis palabras no pasaran.", ref: "Mateo 24:35" },
-
-
 
   // 33-365: Estructura base para completar
 
-
-
   ...Array.from({length: 365-32}, (_, i) => ({ text: "", ref: "" }))
-
-
 
 ];
 
-
-
 // ============================================================
-
-
 
 // BANCO DE PALABRAS PARA MODO IMPOSTOR
 
-
-
 // ============================================================
-
-
 
 const IMPOSTOR_WORDS = {
 
-
-
   personajes: [
-
-
 
     "Adan", "Eva", "Noe", "Abraham", "Sara", "Isaac", "Jacob", "Esau",
 
-
-
     "Jose", "Moises", "Aaron", "Josue", "Sanson", "Rut", "Samuel",
-
-
 
     "David", "Salomon", "Elias", "Eliseo", "Daniel", "Jonas", "Job",
 
-
-
     "Ester", "Nehemias", "Gedeon", "Debora", "Cain", "Abel",
-
-
 
     "Lot", "Rebeca", "Raquel", "Lea", "Benjamin", "Juda",
 
-
-
     "Caleb", "Booz", "Naomi", "Ezequias", "Josias", "Zorobabel"
 
-
-
   ],
-
-
 
   libros: [
 
-
-
     "Genesis", "Exodo", "Levitico", "Numeros", "Deuteronomio",
-
-
 
     "Josue", "Jueces", "Rut", "Salmos", "Proverbios",
 
-
-
     "Eclesiastes", "Cantares", "Isaias", "Jeremias", "Ezequiel",
-
-
 
     "Daniel", "Mateo", "Marcos", "Lucas", "Juan",
 
-
-
     "Hechos", "Romanos", "Galatas", "Efesios", "Filipenses",
-
-
 
     "Colosenses", "Hebreos", "Santiago", "Apocalipsis", "Lamentaciones"
 
-
-
   ],
-
-
 
   historias: [
 
-
-
     "El Diluvio", "La Torre de Babel", "El Exodo de Egipto",
-
-
 
     "Cruce del Mar Rojo", "Las 10 Plagas", "Los 10 Mandamientos",
 
-
-
     "David y Goliat", "Daniel en el foso de leones",
-
-
 
     "Jonas y la ballena", "La caida de Jerico",
 
-
-
     "El arca de Noe", "La zarza ardiente",
-
-
 
     "La escalera de Jacob", "El becerro de oro",
 
-
-
     "La burra de Balaam", "Sodoma y Gomorra",
-
-
 
     "El sacrificio de Isaac", "Jose vendido por sus hermanos",
 
-
-
     "Las bodas de Cana", "La ultima cena",
-
-
 
     "La traicion de Judas", "La batalla de Jerico",
 
-
-
     "El sueno de Nabucodonosor", "El mana del cielo"
 
-
-
   ],
-
-
 
   reyes: [
 
-
-
     "Saul", "David", "Salomon", "Roboam", "Jeroboam",
-
-
 
     "Acab", "Josafat", "Ezequias", "Josias", "Manases",
 
-
-
     "Asa", "Amasias", "Uzias", "Jotam", "Acaz",
-
-
 
     "Nabucodonosor", "Ciro", "Herodes", "Faraon", "Belsasar",
 
-
-
     "Dario", "Asuero", "Abias", "Omri", "Zimri"
 
-
-
   ],
-
-
 
   profetas: [
 
-
-
     "Isaias", "Jeremias", "Ezequiel", "Daniel", "Oseas",
-
-
 
     "Joel", "Amos", "Abdias", "Jonas", "Miqueas",
 
-
-
     "Nahum", "Habacuc", "Sofonias", "Hageo", "Zacarias",
-
-
 
     "Malaquias", "Elias", "Eliseo", "Samuel", "Natan",
 
-
-
     "Gad", "Debora", "Hulda", "Agabo", "Juan el Bautista"
 
-
-
   ],
-
-
 
   vida_jesus: [
 
-
-
     "Belen", "Nazaret", "Bautismo", "Tentacion en el desierto",
-
-
 
     "Sermon del Monte", "Transfiguracion", "ultima Cena",
 
-
-
     "Getsemani", "Crucifixion", "Resurreccion", "Ascension",
-
-
 
     "Bienaventuranzas", "Padre Nuestro", "Las parabolas",
 
-
-
     "Entrada triunfal", "Lavamiento de pies",
-
-
 
     "La oracion en el huerto", "El camino a Emaus",
 
-
-
     "Multiplicacion de panes", "Caminar sobre el agua",
-
-
 
     "La pesca milagrosa", "Lazaro resucitado"
 
-
-
   ],
-
-
 
   milagros: [
 
-
-
     "Agua en vino", "Multiplicacion de panes y peces",
-
-
 
     "Caminar sobre el agua", "Calmar la tempestad",
 
-
-
     "Resurreccion de Lazaro", "Curacion del ciego",
-
-
 
     "El leproso sanado", "La hija de Jairo",
 
-
-
     "Pesca milagrosa", "El paralitico sanado",
-
-
 
     "La vara de Moises", "El Mar Rojo partido",
 
-
-
     "El mana del cielo", "Agua de la roca",
-
-
 
     "La zarza que no se consume", "El sol detenido",
 
-
-
     "El hacha que floto", "Fuego del cielo de Elias",
-
-
 
     "La sombra de Pedro sana", "Las murallas de Jerico"
 
-
-
   ],
-
-
 
   cartas: [
 
-
-
     "Romanos", "1 Corintios", "2 Corintios", "Galatas",
-
-
 
     "Efesios", "Filipenses", "Colosenses", "1 Tesalonicenses",
 
-
-
     "2 Tesalonicenses", "1 Timoteo", "2 Timoteo", "Tito",
-
-
 
     "Filemon", "Hebreos", "Santiago", "1 Pedro", "2 Pedro",
 
-
-
     "1 Juan", "2 Juan", "3 Juan", "Judas", "Apocalipsis",
-
-
 
     "Fruto del Espiritu", "Armadura de Dios", "Fe esperanza y amor"
 
-
-
   ]
 
-
-
 };
-
-
 
 // Exponer globalmente para acceso entre scripts
 // NOTA: CATEGORIES, DIFFICULTIES y BADGES se definen en definitions.js
 
-
-
 window.IMPOSTOR_WORDS = IMPOSTOR_WORDS;
 
-
-
 window.QUESTIONS_DB = QUESTIONS_DB;
-
-
-
 

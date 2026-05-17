@@ -617,6 +617,15 @@
       </button>
     </div>
     <div class="quiz-content-wrapper">
+      <!-- Barra de oponente ranked (solo visible en modo ranked) -->
+      <div id="ranked-opponent-bar" class="ranked-opponent-bar hidden">
+        <div class="ranked-opp-info">
+          <span class="ranked-opp-label">⚔️ <span id="ranked-opp-name-bar">Oponente</span></span>
+          <span id="ranked-opp-score-bar" class="ranked-opp-score">0 pts</span>
+        </div>
+        <div id="ranked-opp-indicators" class="ranked-opp-indicators"></div>
+      </div>
+
       <div class="question-card">
         <div id="category-big-icon" class="category-big-icon"></div>
         <div id="question-category-tag" class="question-category-tag"></div>
@@ -1175,6 +1184,7 @@
       </div>
       <div class="setting-item">
         <div class="account-buttons">
+          <button id="btn-sync-progress" class="btn-account btn-sync">🔄 Sincronizar Progreso</button>
           <button id="btn-change-password-settings" class="btn-account">🔐 Cambiar contraseña</button>
           <button id="btn-logout-settings" class="btn-account">🚪 Cerrar sesión</button>
         </div>
@@ -2090,6 +2100,38 @@
   </div>
 </div>
 
+<!-- Overlay: oponente encontrado -->
+<div id="ranked-found-overlay" class="phase-overlay hidden">
+  <div class="phase-card ranked-found-card">
+    <div class="ranked-found-icon">⚔️</div>
+    <h2>¡Oponente encontrado!</h2>
+    <div class="ranked-found-vs">
+      <div class="ranked-found-player me">
+        <div class="found-avatar">🙋</div>
+        <div class="found-name">Tú</div>
+      </div>
+      <div class="found-vs-text">VS</div>
+      <div class="ranked-found-player opponent">
+        <div class="found-avatar">👤</div>
+        <div id="ranked-found-opponent-name" class="found-name">Oponente</div>
+        <div id="ranked-found-opponent-trophies" class="found-trophies">0 🏆</div>
+      </div>
+    </div>
+    <button id="ranked-ready-btn" class="btn-primary" style="margin-top:20px;">¡Listo!</button>
+    <p class="found-auto-note">Auto-inicia en 3 segundos...</p>
+  </div>
+</div>
+
+<!-- Overlay: esperando que el oponente esté listo -->
+<div id="ranked-waiting-overlay" class="phase-overlay hidden">
+  <div class="phase-card" style="text-align:center;">
+    <div class="ranked-search-spinner"></div>
+    <h2>Preparando partida...</h2>
+    <p id="ranked-waiting-text" style="color:var(--text-muted);margin-top:10px;">Esperando al oponente...</p>
+    <div id="ranked-opponent-ready-badge" class="hidden" style="color:var(--success);font-size:1.1rem;margin-top:10px;">✅ ¡Oponente listo!</div>
+  </div>
+</div>
+
 <!-- Overlay de búsqueda de partida -->
 <div id="ranked-search-overlay" class="phase-overlay hidden">
   <div class="phase-card ranked-search-card">
@@ -2191,7 +2233,9 @@
   <span id="shield-timer-text">Escudo: 5:00</span>
 </div>
 
-<script src="js/backend.js?v=1" defer></script>
+<!-- Socket.io cliente para 1v1 en tiempo real -->
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="js/backend.js?v=2" defer></script>
 <script src="js/auth.js?v=1" defer></script>
 <script src="js/social.js?v=70" defer></script>
 <script src="js/questions.js?v=52" defer></script>
@@ -2202,7 +2246,7 @@
 <script src="js/seasons.js?v=5" defer></script>
 <script src="js/ads.js?v=51" defer></script>
 <script src="js/notifications.js?v=51" defer></script>
-<script src="js/app.js?v=101" defer></script>
+<script src="js/app.js?v=102" defer></script>
 
 <script>
   if ('serviceWorker' in navigator) {

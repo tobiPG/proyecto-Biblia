@@ -1,6 +1,79 @@
 // BibliaQuiz - Definiciones con iconos estilizados
 // Version con simbolos Unicode decorativos
 
+// Imágenes por categoría (gratuitas de Unsplash)
+window.CATEGORY_IMAGES = {
+  personajes: [
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop", // rostros
+    "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop", // grupo personas
+    "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=400&h=300&fit=crop", // comunidad
+    "https://images.unsplash.com/photo-1560439514-4e9645039924?w=400&h=300&fit=crop", // siluetas
+    "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&h=300&fit=crop"  // personas orando
+  ],
+  libros: [
+    "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=300&fit=crop", // biblioteca
+    "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop", // libros antiguos
+    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=300&fit=crop", // libro abierto
+    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=300&fit=crop", // estante libros
+    "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop"  // estudio
+  ],
+  historias: [
+    "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop", // pergamino
+    "https://images.unsplash.com/photo-1461360370896-922624d12a74?w=400&h=300&fit=crop", // desierto
+    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop", // naturaleza épica
+    "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=300&fit=crop", // luz divina
+    "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&h=300&fit=crop"  // biblia antigua
+  ],
+  reyes: [
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop", // corona
+    "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=300&fit=crop", // trono/castillo
+    "https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?w=400&h=300&fit=crop", // palacio
+    "https://images.unsplash.com/photo-1564429238535-b3749f1a15ac?w=400&h=300&fit=crop", // cetro/oro
+    "https://images.unsplash.com/photo-1533282960533-51328aa49826?w=400&h=300&fit=crop"  // arquitectura real
+  ],
+  profetas: [
+    "https://images.unsplash.com/photo-1507692049790-de58290a4334?w=400&h=300&fit=crop", // cielo dramático
+    "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=400&h=300&fit=crop", // montaña mística
+    "https://images.unsplash.com/photo-1489549132488-d00b7eee80f1?w=400&h=300&fit=crop", // fuego
+    "https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=400&h=300&fit=crop", // tormenta
+    "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=400&h=300&fit=crop"  // desierto profético
+  ],
+  vida_jesus: [
+    "https://images.unsplash.com/photo-1515162305285-0293e4767cc2?w=400&h=300&fit=crop", // cruz
+    "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop", // manos orando
+    "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=400&h=300&fit=crop", // amanecer esperanza
+    "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=300&fit=crop", // iglesia
+    "https://images.unsplash.com/photo-1499652848871-1527a310b13a?w=400&h=300&fit=crop"  // luz celestial
+  ],
+  milagros: [
+    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop", // mar/agua
+    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&h=300&fit=crop", // montaña majestuosa
+    "https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=400&h=300&fit=crop", // luz milagrosa
+    "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&h=300&fit=crop", // naturaleza divina
+    "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=400&h=300&fit=crop"  // amanecer glorioso
+  ],
+  cartas: [
+    "https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=300&fit=crop", // carta antigua
+    "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400&h=300&fit=crop", // escribiendo
+    "https://images.unsplash.com/photo-1517842645767-c639042777db?w=400&h=300&fit=crop", // pluma y papel
+    "https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?w=400&h=300&fit=crop", // escritura
+    "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop"  // manuscrito
+  ],
+  aleatorio: [
+    "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=400&h=300&fit=crop", // biblia
+    "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=400&h=300&fit=crop", // cruz luz
+    "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop", // montañas
+    "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400&h=300&fit=crop", // flores
+    "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=300&fit=crop"  // cielo estrellado
+  ]
+};
+
+// Función para obtener imagen aleatoria de categoría
+window.getCategoryImage = function(category) {
+  const images = CATEGORY_IMAGES[category] || CATEGORY_IMAGES.aleatorio;
+  return images[Math.floor(Math.random() * images.length)];
+};
+
 // Categorias con iconos bonitos e imágenes decorativas
 window.CATEGORIES = {
   personajes: { name: "Personajes", icon: "🧑‍🤝‍🧑", color: "#4CAF50", bigIcon: "👨‍👩‍👧‍👦" },
@@ -176,7 +249,177 @@ window.DAILY_VERSES = [
   
   // Timoteo
   { text: "Porque no nos ha dado Dios espíritu de cobardía, sino de poder, de amor y de dominio propio.", ref: "2 Timoteo 1:7" },
-  { text: "Pelea la buena batalla de la fe, echa mano de la vida eterna.", ref: "1 Timoteo 6:12" }
+  { text: "Pelea la buena batalla de la fe, echa mano de la vida eterna.", ref: "1 Timoteo 6:12" },
+  
+  // === VERSÍCULOS ADICIONALES (54-120+) ===
+  
+  // Más de Juan
+  { text: "En él estaba la vida, y la vida era la luz de los hombres.", ref: "Juan 1:4" },
+  { text: "A lo suyo vino, y los suyos no le recibieron.", ref: "Juan 1:11" },
+  { text: "Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios.", ref: "Juan 1:12" },
+  { text: "De cierto, de cierto te digo, que el que no naciere de nuevo, no puede ver el reino de Dios.", ref: "Juan 3:3" },
+  { text: "Respondió Jesús y le dijo: Cualquiera que bebiere de esta agua, volverá a tener sed.", ref: "Juan 4:13" },
+  { text: "Mas la hora viene, y ahora es, cuando los verdaderos adoradores adorarán al Padre en espíritu y en verdad.", ref: "Juan 4:23" },
+  { text: "Yo soy el pan de vida; el que a mí viene, nunca tendrá hambre.", ref: "Juan 6:35" },
+  { text: "El ladrón no viene sino para hurtar y matar y destruir; yo he venido para que tengan vida.", ref: "Juan 10:10" },
+  { text: "Yo soy el buen pastor; el buen pastor su vida da por las ovejas.", ref: "Juan 10:11" },
+  { text: "Mis ovejas oyen mi voz, y yo las conozco, y me siguen.", ref: "Juan 10:27" },
+  { text: "El que cree en mí, como dice la Escritura, de su interior correrán ríos de agua viva.", ref: "Juan 7:38" },
+  { text: "Un mandamiento nuevo os doy: Que os améis unos a otros; como yo os he amado.", ref: "Juan 13:34" },
+  { text: "Yo soy la vid verdadera, y mi Padre es el labrador.", ref: "Juan 15:1" },
+  { text: "Nadie tiene mayor amor que este, que uno ponga su vida por sus amigos.", ref: "Juan 15:13" },
+  { text: "Y conoceréis la verdad, y la verdad os hará libres.", ref: "Juan 8:32" },
+  
+  // Más de Salmos
+  { text: "Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos.", ref: "Salmos 19:1" },
+  { text: "La ley de Jehová es perfecta, que convierte el alma.", ref: "Salmos 19:7" },
+  { text: "Sean gratos los dichos de mi boca y la meditación de mi corazón delante de ti.", ref: "Salmos 19:14" },
+  { text: "Jehová es mi fortaleza y mi escudo; en él confió mi corazón.", ref: "Salmos 28:7" },
+  { text: "Espera en Jehová, y guarda su camino, y él te exaltará.", ref: "Salmos 37:34" },
+  { text: "Como el ciervo brama por las corrientes de las aguas, así clama por ti, oh Dios, el alma mía.", ref: "Salmos 42:1" },
+  { text: "Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.", ref: "Salmos 46:1" },
+  { text: "Crea en mí, oh Dios, un corazón limpio, y renueva un espíritu recto dentro de mí.", ref: "Salmos 51:10" },
+  { text: "Ten misericordia de mí, oh Dios, conforme a tu misericordia.", ref: "Salmos 51:1" },
+  { text: "Echa sobre Jehová tu carga, y él te sustentará.", ref: "Salmos 55:22" },
+  { text: "Porque mejor es un día en tus atrios que mil fuera de ellos.", ref: "Salmos 84:10" },
+  { text: "Tú guardarás en completa paz a aquel cuyo pensamiento en ti persevera.", ref: "Isaías 26:3" },
+  { text: "Él sana a los quebrantados de corazón, y venda sus heridas.", ref: "Salmos 147:3" },
+  { text: "Te alabaré, porque formidables, maravillosas son tus obras.", ref: "Salmos 139:14" },
+  { text: "Tus ojos vieron mi cuerpo en formación; todo eso estaba escrito en tu libro.", ref: "Salmos 139:16" },
+  
+  // Más de Proverbios
+  { text: "En todo camino reconócele, y él enderezará tus veredas.", ref: "Proverbios 3:6" },
+  { text: "Porque Jehová da la sabiduría, y de su boca viene el conocimiento y la inteligencia.", ref: "Proverbios 2:6" },
+  { text: "Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia.", ref: "Proverbios 3:5" },
+  { text: "Hijo mío, no menosprecies la disciplina de Jehová, ni te fatigues de su corrección.", ref: "Proverbios 3:11" },
+  { text: "Guarda tu corazón con toda diligencia, porque de él mana la vida.", ref: "Proverbios 4:23" },
+  { text: "El camino de los impíos es como la oscuridad; no saben en qué tropiezan.", ref: "Proverbios 4:19" },
+  { text: "La lengua apacible es árbol de vida; mas la perversidad de ella es quebrantamiento de espíritu.", ref: "Proverbios 15:4" },
+  { text: "Mejor es lo poco con el temor de Jehová, que el gran tesoro donde hay turbación.", ref: "Proverbios 15:16" },
+  { text: "Del hombre son las disposiciones del corazón; mas de Jehová es la respuesta de la lengua.", ref: "Proverbios 16:1" },
+  { text: "El corazón alegre constituye buen remedio; mas el espíritu triste seca los huesos.", ref: "Proverbios 17:22" },
+  
+  // Más de Mateo
+  { text: "Bienaventurados los pobres en espíritu, porque de ellos es el reino de los cielos.", ref: "Mateo 5:3" },
+  { text: "Bienaventurados los mansos, porque ellos recibirán la tierra por heredad.", ref: "Mateo 5:5" },
+  { text: "Bienaventurados los que tienen hambre y sed de justicia, porque ellos serán saciados.", ref: "Mateo 5:6" },
+  { text: "Bienaventurados los misericordiosos, porque ellos alcanzarán misericordia.", ref: "Mateo 5:7" },
+  { text: "Bienaventurados los pacificadores, porque ellos serán llamados hijos de Dios.", ref: "Mateo 5:9" },
+  { text: "Vosotros sois la sal de la tierra; pero si la sal se desvaneciere, ¿con qué será salada?", ref: "Mateo 5:13" },
+  { text: "Vosotros sois la luz del mundo; una ciudad asentada sobre un monte no se puede esconder.", ref: "Mateo 5:14" },
+  { text: "No os afanéis por vuestra vida, qué habéis de comer o qué habéis de beber.", ref: "Mateo 6:25" },
+  { text: "Mirad las aves del cielo, que no siembran, ni siegan, ni recogen en graneros.", ref: "Mateo 6:26" },
+  { text: "No juzguéis, para que no seáis juzgados.", ref: "Mateo 7:1" },
+  
+  // Más de Romanos
+  { text: "Por tanto, somos sepultados juntamente con él para muerte por el bautismo.", ref: "Romanos 6:4" },
+  { text: "Porque el ocuparse de la carne es muerte, pero el ocuparse del Espíritu es vida y paz.", ref: "Romanos 8:6" },
+  { text: "Porque si vivís conforme a la carne, moriréis; mas si por el Espíritu hacéis morir las obras de la carne, viviréis.", ref: "Romanos 8:13" },
+  { text: "Y si hijos, también herederos; herederos de Dios y coherederos con Cristo.", ref: "Romanos 8:17" },
+  { text: "¿Qué, pues, diremos a esto? Si Dios es por nosotros, ¿quién contra nosotros?", ref: "Romanos 8:31" },
+  { text: "Ni lo alto, ni lo profundo, ni ninguna otra cosa creada nos podrá separar del amor de Dios.", ref: "Romanos 8:39" },
+  { text: "Que si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón, serás salvo.", ref: "Romanos 10:9" },
+  { text: "El amor sea sin fingimiento. Aborreced lo malo, seguid lo bueno.", ref: "Romanos 12:9" },
+  { text: "Gozosos en la esperanza; sufridos en la tribulación; constantes en la oración.", ref: "Romanos 12:12" },
+  { text: "Bendecid a los que os persiguen; bendecid, y no maldigáis.", ref: "Romanos 12:14" },
+  
+  // Más de Corintios
+  { text: "Porque la palabra de la cruz es locura a los que se pierden; pero a los que se salvan, es poder de Dios.", ref: "1 Corintios 1:18" },
+  { text: "Antes bien, como está escrito: Cosas que ojo no vio, ni oído oyó.", ref: "1 Corintios 2:9" },
+  { text: "¿No sabéis que sois templo de Dios, y que el Espíritu de Dios mora en vosotros?", ref: "1 Corintios 3:16" },
+  { text: "Y ahora permanecen la fe, la esperanza y el amor, estos tres; pero el mayor de ellos es el amor.", ref: "1 Corintios 13:13" },
+  { text: "Velad, estad firmes en la fe; portaos varonilmente, y esforzaos.", ref: "1 Corintios 16:13" },
+  { text: "Bendito sea el Dios y Padre de nuestro Señor Jesucristo, Padre de misericordias.", ref: "2 Corintios 1:3" },
+  { text: "Porque nuestra leve tribulación momentánea produce en nosotros un cada vez más excelente y eterno peso de gloria.", ref: "2 Corintios 4:17" },
+  { text: "Porque por fe andamos, no por vista.", ref: "2 Corintios 5:7" },
+  { text: "Y me ha dicho: Bástate mi gracia; porque mi poder se perfecciona en la debilidad.", ref: "2 Corintios 12:9" },
+  
+  // Más de Efesios
+  { text: "Bendito sea el Dios y Padre de nuestro Señor Jesucristo, que nos bendijo con toda bendición espiritual.", ref: "Efesios 1:3" },
+  { text: "Porque somos hechura suya, creados en Cristo Jesús para buenas obras.", ref: "Efesios 2:10" },
+  { text: "Por esta causa doblo mis rodillas ante el Padre de nuestro Señor Jesucristo.", ref: "Efesios 3:14" },
+  { text: "Un cuerpo, y un Espíritu, como fuisteis también llamados en una misma esperanza de vuestra vocación.", ref: "Efesios 4:4" },
+  { text: "Antes sed benignos unos con otros, misericordiosos, perdonándoos unos a otros.", ref: "Efesios 4:32" },
+  { text: "Sed, pues, imitadores de Dios como hijos amados.", ref: "Efesios 5:1" },
+  { text: "Andad como hijos de luz.", ref: "Efesios 5:8" },
+  { text: "Orando en todo tiempo con toda oración y súplica en el Espíritu.", ref: "Efesios 6:18" },
+  
+  // Más de Filipenses
+  { text: "Estando persuadido de esto, que el que comenzó en vosotros la buena obra, la perfeccionará.", ref: "Filipenses 1:6" },
+  { text: "Porque para mí el vivir es Cristo, y el morir es ganancia.", ref: "Filipenses 1:21" },
+  { text: "Ocupaos en vuestra salvación con temor y temblor.", ref: "Filipenses 2:12" },
+  { text: "Prosigo a la meta, al premio del supremo llamamiento de Dios en Cristo Jesús.", ref: "Filipenses 3:14" },
+  { text: "Regocijaos en el Señor siempre. Otra vez digo: ¡Regocijaos!", ref: "Filipenses 4:4" },
+  
+  // Más de Colosenses
+  { text: "Él es la imagen del Dios invisible, el primogénito de toda creación.", ref: "Colosenses 1:15" },
+  { text: "En quien están escondidos todos los tesoros de la sabiduría y del conocimiento.", ref: "Colosenses 2:3" },
+  { text: "Poned la mira en las cosas de arriba, no en las de la tierra.", ref: "Colosenses 3:2" },
+  { text: "La palabra de Cristo more en abundancia en vosotros.", ref: "Colosenses 3:16" },
+  
+  // Más de Hebreos
+  { text: "Dios, habiendo hablado muchas veces y de muchas maneras en otro tiempo a los padres por los profetas.", ref: "Hebreos 1:1" },
+  { text: "Pero sin fe es imposible agradar a Dios.", ref: "Hebreos 11:6" },
+  { text: "Por tanto, nosotros también, teniendo en derredor nuestro tan grande nube de testigos.", ref: "Hebreos 12:1" },
+  { text: "Puestos los ojos en Jesús, el autor y consumador de la fe.", ref: "Hebreos 12:2" },
+  { text: "Permanezca el amor fraternal.", ref: "Hebreos 13:1" },
+  { text: "No os olvidéis de la hospitalidad, porque por ella algunos, sin saberlo, hospedaron ángeles.", ref: "Hebreos 13:2" },
+  
+  // Más de Santiago
+  { text: "Hermanos míos, tened por sumo gozo cuando os halléis en diversas pruebas.", ref: "Santiago 1:2" },
+  { text: "Bienaventurado el varón que soporta la tentación; porque cuando haya resistido la prueba, recibirá la corona de vida.", ref: "Santiago 1:12" },
+  { text: "Toda buena dádiva y todo don perfecto desciende de lo alto, del Padre de las luces.", ref: "Santiago 1:17" },
+  { text: "Por esto, mis amados hermanos, todo hombre sea pronto para oír, tardo para hablar, tardo para airarse.", ref: "Santiago 1:19" },
+  { text: "Pero sed hacedores de la palabra, y no tan solamente oidores.", ref: "Santiago 1:22" },
+  { text: "Acercaos a Dios, y él se acercará a vosotros.", ref: "Santiago 4:8" },
+  
+  // Más de Pedro
+  { text: "Bendito el Dios y Padre de nuestro Señor Jesucristo, que según su grande misericordia nos hizo renacer.", ref: "1 Pedro 1:3" },
+  { text: "Siendo renacidos, no de simiente corruptible, sino de incorruptible, por la palabra de Dios.", ref: "1 Pedro 1:23" },
+  { text: "Desead, como niños recién nacidos, la leche espiritual no adulterada.", ref: "1 Pedro 2:2" },
+  { text: "Porque también Cristo padeció una sola vez por los pecados, el justo por los injustos.", ref: "1 Pedro 3:18" },
+  { text: "Sed sobrios, y velad; porque vuestro adversario el diablo, como león rugiente, anda alrededor buscando a quien devorar.", ref: "1 Pedro 5:8" },
+  { text: "El Señor no retarda su promesa, según algunos la tienen por tardanza.", ref: "2 Pedro 3:9" },
+  
+  // Más de 1 Juan
+  { text: "Lo que era desde el principio, lo que hemos oído, lo que hemos visto con nuestros ojos.", ref: "1 Juan 1:1" },
+  { text: "Si andamos en luz, como él está en luz, tenemos comunión unos con otros.", ref: "1 Juan 1:7" },
+  { text: "Hijitos míos, estas cosas os escribo para que no pequéis.", ref: "1 Juan 2:1" },
+  { text: "No améis al mundo, ni las cosas que están en el mundo.", ref: "1 Juan 2:15" },
+  { text: "Mirad cuál amor nos ha dado el Padre, para que seamos llamados hijos de Dios.", ref: "1 Juan 3:1" },
+  { text: "Amados, amémonos unos a otros; porque el amor es de Dios.", ref: "1 Juan 4:7" },
+  { text: "En el amor no hay temor, sino que el perfecto amor echa fuera el temor.", ref: "1 Juan 4:18" },
+  { text: "Y esta es la confianza que tenemos en él, que si pedimos alguna cosa conforme a su voluntad, él nos oye.", ref: "1 Juan 5:14" },
+  
+  // Más de Apocalipsis
+  { text: "Yo soy el Alfa y la Omega, principio y fin, dice el Señor.", ref: "Apocalipsis 1:8" },
+  { text: "No temas; yo soy el primero y el último.", ref: "Apocalipsis 1:17" },
+  { text: "Sé fiel hasta la muerte, y yo te daré la corona de la vida.", ref: "Apocalipsis 2:10" },
+  { text: "Al que venciere, le daré que se siente conmigo en mi trono.", ref: "Apocalipsis 3:21" },
+  { text: "Vi un cielo nuevo y una tierra nueva; porque el primer cielo y la primera tierra pasaron.", ref: "Apocalipsis 21:1" },
+  { text: "Y no habrá más maldición; y el trono de Dios y del Cordero estará en ella.", ref: "Apocalipsis 22:3" },
+  
+  // Más de Isaías
+  { text: "Todos nosotros nos descarriamos como ovejas, cada cual se apartó por su camino.", ref: "Isaías 53:6" },
+  { text: "Mas él herido fue por nuestras rebeliones, molido por nuestros pecados.", ref: "Isaías 53:5" },
+  { text: "A todos los sedientos: Venid a las aguas; y los que no tienen dinero, venid, comprad y comed.", ref: "Isaías 55:1" },
+  { text: "Buscad a Jehová mientras puede ser hallado, llamadle en tanto que está cercano.", ref: "Isaías 55:6" },
+  { text: "Porque mis pensamientos no son vuestros pensamientos, ni vuestros caminos mis caminos.", ref: "Isaías 55:8" },
+  { text: "Así será mi palabra que sale de mi boca; no volverá a mí vacía.", ref: "Isaías 55:11" },
+  
+  // Más de Génesis
+  { text: "Y dijo Dios: Hagamos al hombre a nuestra imagen, conforme a nuestra semejanza.", ref: "Génesis 1:26" },
+  { text: "Y vio Dios todo lo que había hecho, y he aquí que era bueno en gran manera.", ref: "Génesis 1:31" },
+  { text: "No es bueno que el hombre esté solo; le haré ayuda idónea para él.", ref: "Génesis 2:18" },
+  { text: "Creyó Abraham a Dios, y le fue contado por justicia.", ref: "Génesis 15:6" },
+  
+  // Más libros diversos
+  { text: "Amarás a Jehová tu Dios de todo tu corazón, y de toda tu alma, y con todas tus fuerzas.", ref: "Deuteronomio 6:5" },
+  { text: "Escribe la visión, y declárala en tablas, para que corra el que leyere en ella.", ref: "Habacuc 2:2" },
+  { text: "Porque tú formaste mis entrañas; tú me hiciste en el vientre de mi madre.", ref: "Salmos 139:13" },
+  { text: "He aquí que satisfaré de grasa el alma del sacerdote, y mi pueblo será satisfecho de mi bien.", ref: "Jeremías 31:14" },
+  { text: "Edificad casas, y habitad en ellas; y plantad huertos, y comed del fruto de ellos.", ref: "Jeremías 29:5" },
+  { text: "Hasta que de lo alto sea derramado sobre nosotros el Espíritu.", ref: "Isaías 32:15" }
 ];
 
-console.log('[BibliaQuiz] Definiciones cargadas correctamente');
+console.log('[BibliaQuiz] Definiciones cargadas correctamente - ' + window.DAILY_VERSES.length + ' versículos');

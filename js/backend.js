@@ -7,7 +7,7 @@
 // Detecta automáticamente si estamos en producción o desarrollo
 // Para producción: cambiar PRODUCTION_API_URL a tu dominio real
 
-const PRODUCTION_API_URL = 'https://tu-backend.onrender.com/api'; // ← CAMBIAR: pegar URL del backend desplegado (ej: https://bibliaquiz-api.onrender.com/api)
+const PRODUCTION_API_URL = 'https://bibliaquiz-api.onrender.com/api';
 const DEVELOPMENT_API_URL = 'http://localhost:3001/api';
 
 // Detectar entorno automáticamente

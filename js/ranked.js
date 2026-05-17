@@ -73,7 +73,7 @@ window.Ranked = {
 
       const SOCKET_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
         ? 'http://localhost:3001'
-        : 'https://tu-backend.onrender.com'; // ← CAMBIAR: pegar URL del backend desplegado (sin /api, solo el dominio)
+        : 'https://bibliaquiz-api.onrender.com';
 
       this.socket = io(SOCKET_URL, {
         auth: { token },

@@ -15,8 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=75">
-  <link rel="stylesheet" href="css/login-auth.css?v=1">
+  <link rel="stylesheet" href="css/styles.css?v=66">
 </head>
 <body>
 
@@ -49,70 +48,45 @@
   </div>
 </div>
 
-<div id="main-content" class="app-container">
+<div class="app-container">
 
   <div id="home" class="screen active">
     <header class="app-header">
       <div class="app-logo">📖</div>
       <h1 class="app-title">BibliaQuiz</h1>
-      <p id="user-greeting" class="user-greeting">!Bienvenido!</p>
+      <p class="app-subtitle">✨ Aprende Jugando ✨</p>
     </header>
 
-    <!-- Barra de estado compacta -->
-    <div id="home-lives-card" class="home-stats-bar">
-      <div class="stats-left">
-        <div class="stat-item lives">
-          <span class="stat-icon">∞</span>
-          <span id="home-lives-count" class="stat-value">Infinitas</span>
-        </div>
-        <div class="stat-item coins">
-          <img src="icons/coin.png" alt="moneda" class="stat-coin-icon">
-          <span id="home-coins-count" class="stat-value">0</span>
-          <span id="coin-multiplier-badge" class="coin-multiplier-badge mult-1">x1</span>
-        </div>
+    <div id="home-lives-card" class="home-lives-card">
+      <div class="home-lives-left">
+        <span id="home-lives-hearts" class="home-lives-hearts">❤️❤️❤️❤️❤️</span>
+        <span id="home-lives-count" class="home-lives-count">5/5</span>
       </div>
-      <div class="stats-right">
-        <button id="btn-shop" class="quick-action-btn shop" aria-label="Tienda">Tienda</button>
-        <button id="btn-ranked" class="quick-action-btn ranked hidden" aria-label="Ranked">Ranked</button>
-        <button id="btn-social" class="quick-action-btn social" aria-label="Social">
-          Social
-          <span id="social-notification-badge" class="notification-badge hidden">0</span>
-        </button>
-        <button id="btn-about" class="quick-action-btn info" aria-label="Acerca de">Info</button>
+      <div class="home-coins-display">
+        <div class="coin-icon-wrapper">
+          <img src="icons/coin.png" alt="moneda" class="home-coins-icon">
+        </div>
+        <span id="home-coins-count" class="home-coins-count">0</span>
+        <span id="coin-multiplier-badge" class="coin-multiplier-badge mult-1">x1</span>
       </div>
-    </div>
-
-    <div id="home-lives-timer-wrap" class="home-lives-timer-wrap hidden">
-      <span class="home-lives-timer-icon">Próxima vida:</span>
-      <span id="home-lives-timer" class="home-lives-timer">00:00</span>
+      <div id="home-lives-timer-wrap" class="home-lives-timer-wrap hidden">
+        <span class="home-lives-timer-icon">⏱️</span>
+        <span id="home-lives-timer" class="home-lives-timer">00:00</span>
+      </div>
+      <button id="btn-shop" class="home-lives-shop-btn" aria-label="Tienda">🛒 Tienda</button>
+      <!-- Ranked oculto temporalmente - pendiente de implementación con bots -->
+      <button id="btn-ranked" class="home-lives-shop-btn ranked-btn hidden" aria-label="Ranked">⚔️ Ranked</button>
+      <button id="btn-social" class="home-lives-shop-btn social-btn" aria-label="Social">
+        🏆 Social
+        <span id="social-notification-badge" class="notification-badge hidden">0</span>
+      </button>
+      <button id="btn-about" class="home-lives-shop-btn" aria-label="Acerca de">ℹ️</button>
     </div>
 
     <!-- Banner de inicio de sesión para usuarios que ya tienen cuenta -->
     <div id="login-prompt-banner" class="login-prompt-banner hidden">
-      <div class="login-prompt-content">
-        <h3 class="login-prompt-title">¿Ya tienes cuenta?</h3>
-        
-        <div id="login-form-container" class="login-form-container">
-          <input type="email" id="login-email" class="login-input" placeholder="Correo electrónico" />
-          <input type="password" id="login-password" class="login-input" placeholder="Contraseña" />
-          <button id="btn-login" class="btn-login">🔑 Iniciar sesión</button>
-        </div>
-        
-        <div id="register-form-container" class="login-form-container hidden">
-          <input type="email" id="register-email" class="login-input" placeholder="Correo electrónico" />
-          <input type="password" id="register-password" class="login-input" placeholder="Contraseña" />
-          <input type="text" id="register-name" class="login-input" placeholder="Nombre de usuario (opcional)" />
-          <button id="btn-register" class="btn-login">📝 Crear cuenta</button>
-        </div>
-        
-        <div class="login-form-toggle">
-          <span id="toggle-form-text">¿No tienes cuenta?</span>
-          <button id="btn-toggle-form" class="btn-toggle-form">Registrarse</button>
-        </div>
-        
-        <div id="login-error" class="login-error hidden"></div>
-        <button id="btn-close-login" class="btn-close-login">✕</button>
-      </div>
+      <span class="login-prompt-text">¿Ya tienes cuenta?</span>
+      <button id="btn-quick-signin" class="btn-quick-signin">🔑 Iniciar sesión con Google</button>
     </div>
 
     <div id="verse-card" class="verse-card">
@@ -147,60 +121,35 @@
     </button>
 
     <div class="menu-grid" role="navigation" aria-label="Menú principal">
-      <!-- Botón principal JUGAR -->
       <button id="btn-play" class="menu-btn play-btn" aria-label="Jugar">
         <span class="menu-icon" aria-hidden="true">🎮</span>
-        <span class="menu-label">JUGAR</span>
+        <span class="menu-label">Jugar</span>
       </button>
-
-      <!-- Modos de juego -->
-      <div class="menu-section">
-        <h3 class="menu-section-title">Modos de Juego</h3>
-        <div class="menu-section-grid">
-          <button id="btn-challenge" class="menu-btn mini challenge-btn" aria-label="Contrarreloj">
-            <span class="menu-icon" aria-hidden="true">⏱️</span>
-            <span class="menu-label">Contrarreloj</span>
-          </button>
-          <button id="btn-study" class="menu-btn mini study-btn" aria-label="Repaso">
-            <span class="menu-icon" aria-hidden="true">📚</span>
-            <span class="menu-label">Repaso</span>
-          </button>
-          <button id="btn-duo" class="menu-btn mini duo-btn" aria-label="2 Jugadores">
-            <span class="menu-icon" aria-hidden="true">👥</span>
-            <span class="menu-label">2 Jugadores</span>
-          </button>
-          <button id="btn-impostor" class="menu-btn mini impostor-btn" aria-label="Modo Impostor">
-            <span class="menu-icon" aria-hidden="true">🕵️</span>
-            <span class="menu-label">Impostor</span>
-          </button>
-          <button id="btn-spelling" class="menu-btn mini spelling-btn" aria-label="Deletrear">
-            <span class="menu-icon" aria-hidden="true">🔤</span>
-            <span class="menu-label">Deletrear</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mi perfil -->
-      <div class="menu-section">
-        <h3 class="menu-section-title">Mi Perfil</h3>
-        <div class="menu-section-grid cols-3">
-          <button id="btn-progress" class="menu-btn mini" aria-label="Progreso">
-            <span class="menu-icon" aria-hidden="true">📊</span>
-            <span class="menu-label">Progreso</span>
-          </button>
-          <button id="btn-achievements" class="menu-btn mini" aria-label="Logros">
-            <span class="menu-icon" aria-hidden="true">🏆</span>
-            <span class="menu-label">Logros</span>
-          </button>
-          <button id="btn-settings" class="menu-btn mini" aria-label="Configuración">
-            <span class="menu-icon" aria-hidden="true">⚙️</span>
-            <span class="menu-label">Ajustes</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Devoción -->
-      <button id="btn-verse" class="menu-btn verse-btn" aria-label="Versículos">
+      <button id="btn-challenge" class="menu-btn challenge-btn" aria-label="Contrarreloj">
+        <span class="menu-icon" aria-hidden="true">⏱️</span>
+        <span class="menu-label">Contrarreloj</span>
+      </button>
+      <button id="btn-study" class="menu-btn study-btn" aria-label="Repaso">
+        <span class="menu-icon" aria-hidden="true">📚</span>
+        <span class="menu-label">Repaso</span>
+      </button>
+      <button id="btn-duo" class="menu-btn duo-btn" aria-label="2 Jugadores">
+        <span class="menu-icon" aria-hidden="true">👥</span>
+        <span class="menu-label">2 Jugadores</span>
+      </button>
+      <button id="btn-impostor" class="menu-btn impostor-btn" aria-label="Modo Impostor">
+        <span class="menu-icon" aria-hidden="true">🕵️</span>
+        <span class="menu-label">Impostor</span>
+      </button>
+      <button id="btn-progress" class="menu-btn" aria-label="Progreso">
+        <span class="menu-icon" aria-hidden="true">📊</span>
+        <span class="menu-label">Progreso</span>
+      </button>
+      <button id="btn-settings" class="menu-btn" aria-label="Configuración">
+        <span class="menu-icon" aria-hidden="true">⚙️</span>
+        <span class="menu-label">Ajustes</span>
+      </button>
+      <button id="btn-verse" class="menu-btn" aria-label="Versículos">
         <span class="menu-icon" aria-hidden="true">✝️</span>
         <span class="menu-label">Versículos</span>
       </button>
@@ -215,7 +164,7 @@
     <div class="shop-container">
       <!-- Estado actual de vidas -->
       <div class="shop-lives-display">
-        <span id="shop-lives-hearts" class="shop-lives-hearts" style="color:#e74c3c">&#9829;&#9829;&#9829;&#9829;&#9829;</span>
+        <span id="shop-lives-hearts" class="shop-lives-hearts">❤️❤️❤️❤️❤️</span>
         <span id="shop-lives-text" class="shop-lives-text">5/5 vidas</span>
       </div>
 
@@ -616,54 +565,39 @@
         <span class="quiz-powerup-count">x<span id="quiz-doubleCoins-count">0</span></span>
       </button>
     </div>
-    <div class="quiz-content-wrapper">
-      <!-- Barra de oponente ranked (solo visible en modo ranked) -->
-      <div id="ranked-opponent-bar" class="ranked-opponent-bar hidden">
-        <div class="ranked-opp-info">
-          <span class="ranked-opp-label">⚔️ <span id="ranked-opp-name-bar">Oponente</span></span>
-          <span id="ranked-opp-score-bar" class="ranked-opp-score">0 pts</span>
-        </div>
-        <div id="ranked-opp-indicators" class="ranked-opp-indicators"></div>
-      </div>
-
-      <div class="question-card">
-        <div id="category-big-icon" class="category-big-icon"></div>
-        <div id="question-category-tag" class="question-category-tag"></div>
-        <div id="question-image-container" class="question-image-container hidden">
-          <img id="question-image" class="question-image" alt="Imagen de la pregunta" />
-        </div>
-        <p id="question-text" class="question-text"></p>
-      </div>
-      <div id="options-container" class="options-container"></div>
-      <div id="reference-card" class="reference-card hidden">
-        <span class="ref-icon">📖</span>
-        <span id="ref-text" class="ref-text"></span>
-      </div>
-      <button id="next-btn" class="next-btn hidden">Siguiente →</button>
+    <div class="question-card">
+      <div id="question-category-tag" class="question-category-tag"></div>
+      <p id="question-text" class="question-text"></p>
     </div>
+    <div id="options-container" class="options-container"></div>
+    <div id="reference-card" class="reference-card hidden">
+      <span class="ref-icon">📖</span>
+      <span id="ref-text" class="ref-text"></span>
+    </div>
+    <button id="next-btn" class="next-btn hidden">Siguiente →</button>
 
     <div id="phase-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
       <div class="phase-card">
-        <div id="phase-icon" class="phase-icon" style="font-size:48px;color:#ffd700">&#9733;</div>
-        <h2 id="phase-title" class="phase-title">Fase 1 Completada!</h2>
+        <div id="phase-icon" class="phase-icon">🎉</div>
+        <h2 id="phase-title" class="phase-title">¡Fase 1 Completada!</h2>
         <p id="phase-subtitle" class="phase-subtitle hidden"></p>
         <p id="phase-diff-label" class="phase-diff-label hidden"></p>
         <div class="phase-stats">
           <div class="phase-stat">
             <span id="phase-correct" class="phase-stat-value" style="color:var(--success)">0</span>
-            <span class="phase-stat-label">Correctas</span>
+            <span class="phase-stat-label">✓ Correctas</span>
           </div>
           <div class="phase-stat">
             <span id="phase-wrong" class="phase-stat-value" style="color:var(--danger)">0</span>
-            <span class="phase-stat-label">X Incorrectas</span>
+            <span class="phase-stat-label">✗ Incorrectas</span>
           </div>
           <div class="phase-stat">
             <span id="phase-points" class="phase-stat-value" style="color:var(--accent)">0</span>
-            <span class="phase-stat-label">&#9733; Puntos</span>
+            <span class="phase-stat-label">⭐ Puntos</span>
           </div>
           <div class="phase-stat">
             <span id="phase-streak" class="phase-stat-value" style="color:var(--primary-light)">0</span>
-            <span class="phase-stat-label">&#9670; Racha</span>
+            <span class="phase-stat-label">🔥 Racha</span>
           </div>
           <div class="phase-stat">
             <span id="phase-coins" class="phase-stat-value" style="color:#FFD700">0</span>
@@ -671,7 +605,7 @@
           </div>
           <div class="phase-stat">
             <span id="phase-multiplier" class="phase-multiplier-badge mult-1">x1</span>
-            <span class="phase-stat-label">&#9650; Multiplicador</span>
+            <span class="phase-stat-label">📈 Multiplicador</span>
           </div>
         </div>
         <div class="phase-actions">
@@ -683,13 +617,13 @@
 
     <div id="gameover-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
       <div class="phase-card gameover-card">
-        <div class="phase-icon" style="font-size:48px;color:#e74c3c">&#9888;</div>
-        <h2 class="gameover-title">Se acabaron las vidas!</h2>
+        <div class="phase-icon">💔</div>
+        <h2 class="gameover-title">¡Se acabaron las vidas!</h2>
         <p class="gameover-subtitle">Llegaste hasta la Fase <span id="gameover-phase">1</span></p>
         <div class="phase-stats">
           <div class="phase-stat">
             <span id="gameover-correct" class="phase-stat-value" style="color:var(--success)">0</span>
-            <span class="phase-stat-label">Correctas</span>
+            <span class="phase-stat-label">✓ Correctas</span>
           </div>
           <div class="phase-stat">
             <span id="gameover-wrong" class="phase-stat-value" style="color:var(--danger)">0</span>
@@ -728,19 +662,19 @@
     <!-- Overlay de Resultados del Reto Social -->
     <div id="challenge-result-overlay" class="phase-overlay hidden" role="dialog" aria-modal="true">
       <div class="phase-card challenge-result-card">
-        <div id="challenge-result-icon" class="phase-icon"><span style="font-size:48px;color:#ffd700">&#9733;</span></div>
+        <div id="challenge-result-icon" class="phase-icon">⚔️</div>
         <h2 id="challenge-result-title" class="phase-title">Resultados del Reto</h2>
         <p id="challenge-result-subtitle" class="phase-subtitle"></p>
         
         <!-- Comparación de jugadores -->
         <div class="challenge-comparison">
           <div class="challenge-player me">
-            <div class="player-avatar" style="font-size:32px;color:#ffa500">&#9787;</div>
-            <div class="player-name">Tu</div>
+            <div class="player-avatar">🙋</div>
+            <div class="player-name">Tú</div>
             <div id="my-challenge-score" class="player-score">0</div>
             <div class="player-label">puntos</div>
-            <div id="my-challenge-correct" class="player-detail">0 correctas</div>
-            <div id="my-challenge-time" class="player-detail">0s</div>
+            <div id="my-challenge-correct" class="player-detail">0 ✓</div>
+            <div id="my-challenge-time" class="player-detail">0s ⏱️</div>
           </div>
           
           <div class="challenge-vs">
@@ -748,15 +682,15 @@
           </div>
           
           <div class="challenge-player opponent">
-            <div class="player-avatar" style="font-size:32px;color:#888">&#9786;</div>
+            <div class="player-avatar">👤</div>
             <div id="opponent-name" class="player-name">Oponente</div>
             <div id="opponent-challenge-score" class="player-score">
               <span id="opponent-score-value">--</span>
               <span id="opponent-waiting" class="waiting-text hidden">Esperando...</span>
             </div>
             <div class="player-label">puntos</div>
-            <div id="opponent-challenge-correct" class="player-detail">--</div>
-            <div id="opponent-challenge-time" class="player-detail">--</div>
+            <div id="opponent-challenge-correct" class="player-detail">-- ✓</div>
+            <div id="opponent-challenge-time" class="player-detail">-- ⏱️</div>
           </div>
         </div>
         
@@ -857,73 +791,6 @@
     </div>
   </div>
 
-  <!-- PANTALLA MODO DELETREAR -->
-  <div id="spelling" class="screen">
-    <div class="spelling-top-bar">
-      <button class="back-btn" data-target="home">←</button>
-      <span class="spelling-title">🔤 Deletrear</span>
-      <div class="spelling-stats">
-        <span id="spelling-lives" class="spelling-lives">❤️❤️❤️❤️❤️</span>
-        <span id="spelling-score" class="spelling-score">0 pts</span>
-      </div>
-    </div>
-    
-    <div class="spelling-progress-bar">
-      <div id="spelling-progress-fill" class="spelling-progress-fill" style="width: 0%"></div>
-    </div>
-
-    <div class="spelling-question-card">
-      <span id="spelling-counter" class="spelling-counter">1/10</span>
-      <p id="spelling-hint" class="spelling-hint">Cargando pista...</p>
-      <p id="spelling-reference" class="spelling-reference"></p>
-    </div>
-
-    <div id="spelling-boxes" class="spelling-boxes">
-      <!-- Los cuadros de letras se generan dinámicamente -->
-    </div>
-
-    <div id="spelling-feedback" class="spelling-feedback hidden">
-      <span id="spelling-feedback-icon" class="feedback-icon">✓</span>
-      <span id="spelling-feedback-text" class="feedback-text">¡Correcto!</span>
-    </div>
-
-    <div id="spelling-keyboard" class="spelling-keyboard">
-      <!-- Teclado se genera dinámicamente con letras mezcladas -->
-    </div>
-
-    <div class="spelling-actions">
-      <button id="spelling-clear" class="spelling-btn clear">🗑️ Borrar</button>
-      <button id="spelling-skip" class="spelling-btn skip">⏭️ Saltar</button>
-    </div>
-  </div>
-
-  <!-- RESULTADOS DEL MODO DELETREAR -->
-  <div id="spelling-results" class="screen">
-    <div class="results-container">
-      <div class="results-icon">🔤</div>
-      <h2 class="results-title">¡Modo Deletrear Completado!</h2>
-      <p id="spelling-results-subtitle" class="results-subtitle"></p>
-      <div class="results-stats">
-        <div class="stat-card">
-          <div id="spelling-stat-correct" class="stat-value" style="color: var(--success)">0</div>
-          <div class="stat-label">✓ Correctas</div>
-        </div>
-        <div class="stat-card">
-          <div id="spelling-stat-skipped" class="stat-value" style="color: var(--warning)">0</div>
-          <div class="stat-label">⏭️ Saltadas</div>
-        </div>
-        <div class="stat-card">
-          <div id="spelling-stat-points" class="stat-value" style="color: var(--accent)">0</div>
-          <div class="stat-label">⭐ Puntos</div>
-        </div>
-      </div>
-      <div class="results-actions">
-        <button id="btn-spelling-replay" class="btn-primary">🔄 Jugar de Nuevo</button>
-        <button id="btn-spelling-home" class="btn-secondary">🏠 Menú</button>
-      </div>
-    </div>
-  </div>
-
   <div id="progress" class="screen">
     <div class="section-header">
       <button class="back-btn" data-target="home">←</button>
@@ -944,45 +811,17 @@
       <div class="stats-grid">
         <div class="mini-stat">
           <div id="stat-total-points" class="ms-value">0</div>
-          <div class="ms-label">&#9733; Puntos</div>
+          <div class="ms-label">⭐ Puntos</div>
         </div>
         <div class="mini-stat">
           <div id="stat-games-played" class="ms-value">0</div>
-          <div class="ms-label">&#127918; Partidas</div>
+          <div class="ms-label">🎮 Partidas</div>
         </div>
         <div class="mini-stat">
           <div id="stat-best-streak" class="ms-value">0</div>
-          <div class="ms-label">&#128293; Mejor Racha</div>
-        </div>
-        <div class="mini-stat">
-          <div id="stat-daily-streak" class="ms-value">0</div>
-          <div class="ms-label">&#128197; Dias Seguidos</div>
+          <div class="ms-label">🔥 Mejor Racha</div>
         </div>
       </div>
-      
-      <!-- Estadisticas mejoradas -->
-      <div class="advanced-stats-section">
-        <h3>&#128200; Estadisticas Avanzadas</h3>
-        <div class="stats-grid stats-grid-2">
-          <div class="mini-stat stat-highlight">
-            <div id="stat-total-correct" class="ms-value">0</div>
-            <div class="ms-label">Respuestas Correctas</div>
-          </div>
-          <div class="mini-stat stat-highlight">
-            <div id="stat-total-answered" class="ms-value">0</div>
-            <div class="ms-label">Preguntas Respondidas</div>
-          </div>
-          <div class="mini-stat">
-            <div id="stat-perfect-games" class="ms-value">0</div>
-            <div class="ms-label">Partidas Perfectas</div>
-          </div>
-          <div class="mini-stat">
-            <div id="stat-avg-per-game" class="ms-value">0</div>
-            <div class="ms-label">Promedio/Partida</div>
-          </div>
-        </div>
-      </div>
-      
       <div class="accuracy-section">
         <h3>📈 Porcentaje de Acierto</h3>
         <div class="accuracy-bar-bg">
@@ -1015,13 +854,7 @@
         <div id="category-stats-grid" class="category-stats-grid"></div>
       </div>
       <div class="accuracy-section">
-        <div class="section-header-row">
-          <h3>&#128197; Progreso</h3>
-          <div class="period-selector">
-            <button class="period-btn active" data-period="weekly">Semanal</button>
-            <button class="period-btn" data-period="monthly">Mensual</button>
-          </div>
-        </div>
+        <h3>📅 Progreso Semanal</h3>
         <div class="chart-container">
           <canvas id="progress-chart" width="400" height="200"></canvas>
         </div>
@@ -1177,18 +1010,6 @@
         <p id="promo-code-result" class="promo-result hidden"></p>
       </div>
       <button id="btn-reset" class="btn-danger">🗑️ Borrar Todo</button>
-      
-      <!-- Sección de Cuenta -->
-      <div class="setting-section-title">
-        <h3>🔐 Mi Cuenta</h3>
-      </div>
-      <div class="setting-item">
-        <div class="account-buttons">
-          <button id="btn-sync-progress" class="btn-account btn-sync">🔄 Sincronizar Progreso</button>
-          <button id="btn-change-password-settings" class="btn-account">🔐 Cambiar contraseña</button>
-          <button id="btn-logout-settings" class="btn-account">🚪 Cerrar sesión</button>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -1398,7 +1219,6 @@
   <div id="duo-quiz" class="screen">
     <div class="quiz-top-bar">
       <div class="quiz-progress-info">
-        <button id="btn-duo-exit" class="back-btn" style="width:36px;height:36px;font-size:1rem;">←</button>
         <span id="duo-quiz-player" class="duo-quiz-player">🔵 J1</span>
         <span id="duo-quiz-counter" class="question-counter">1/10</span>
       </div>
@@ -1521,33 +1341,6 @@
       <div class="impostor-reveal-actions">
         <button id="btn-impostor-again" class="btn-primary">🔄 Jugar Otra Vez</button>
         <button id="btn-impostor-back" class="btn-secondary">🏠 Menú</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANTALLA LOGROS -->
-  <div id="achievements" class="screen">
-    <div class="section-header">
-      <button class="back-btn" data-target="home">←</button>
-      <h2 class="section-title">🏆 Logros</h2>
-    </div>
-    <div class="achievements-container">
-      <div class="achievements-summary">
-        <div class="achievements-count">
-          <span id="achievements-unlocked">0</span>/<span id="achievements-total">31</span>
-        </div>
-        <p class="achievements-label">Insignias Desbloqueadas</p>
-        <div class="achievements-progress-bar">
-          <div id="achievements-progress-fill" class="achievements-progress-fill" style="width: 0%"></div>
-        </div>
-      </div>
-      <div class="achievements-tabs">
-        <button class="achievements-tab active" data-tab="all">Todas</button>
-        <button class="achievements-tab" data-tab="unlocked">Desbloqueadas</button>
-        <button class="achievements-tab" data-tab="locked">Bloqueadas</button>
-      </div>
-      <div id="achievements-grid" class="achievements-grid">
-        <!-- Se llena dinámicamente -->
       </div>
     </div>
   </div>
@@ -1916,102 +1709,87 @@
 
 <!-- Pantalla Social -->
 <div id="social-screen" class="screen-overlay hidden" onclick="if(event.target === this) this.classList.add('hidden')">
-  <div class="social-container redesigned">
-    <header class="social-header-new">
-      <button id="btn-close-social" class="close-social-btn" onclick="event.stopPropagation();document.getElementById('social-screen').classList.add('hidden')">
-        <span>✕</span>
-      </button>
-      <h2 class="social-title-new">🏆 Social</h2>
+  <div class="social-container">
+    <header class="social-header">
+      <button id="btn-close-social" style="width:40px;height:40px;border-radius:50%;background:#e74c3c;border:none;color:white;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;" onclick="event.stopPropagation();document.getElementById('social-screen').classList.add('hidden')">✕</button>
+      <h2 class="social-title">🏆 Social</h2>
     </header>
 
-    <!-- Mi perfil mejorado -->
-    <div class="my-profile-card-new">
-      <div class="profile-main">
-        <div id="my-avatar" class="my-avatar-new">
-          <span class="my-avatar-placeholder">J</span>
-        </div>
-        <div class="my-profile-info-new">
-          <span id="my-display-name" class="my-name-new">Jugador</span>
-          <div class="my-code-row-new">
-            <span class="code-label">Mi código:</span>
-            <span id="my-friend-code" class="my-code-new">------</span>
-            <button id="btn-copy-code" class="btn-copy-code-new" title="Copiar código">📋</button>
-          </div>
+    <!-- Mi perfil -->
+    <div class="my-profile-card">
+      <div id="my-avatar" class="my-avatar">
+        <span class="my-avatar-placeholder">J</span>
+      </div>
+      <div class="my-profile-info">
+        <span id="my-display-name" class="my-name">Jugador</span>
+        <div class="my-code-row">
+          <span class="my-code-label">Mi código:</span>
+          <span id="my-friend-code" class="my-code">------</span>
+          <button id="btn-copy-code" class="btn-copy-code" title="Copiar código">📋</button>
         </div>
       </div>
-      <div class="profile-actions-new">
-        <button id="btn-go-settings" class="btn-settings-new" title="Configuración">⚙️</button>
+      <div class="my-profile-actions">
+        <button id="btn-change-name" class="btn-profile-action">✏️</button>
+        <button id="btn-link-google" class="btn-profile-action btn-google">🔗 Vincular</button>
+        <button id="btn-signin-google" class="btn-profile-action btn-google btn-signin hidden">🔑 Iniciar sesión</button>
       </div>
     </div>
 
-    <!-- Tabs rediseñados -->
-    <div class="social-tabs-new">
-      <button class="social-tab-new active" data-tab="leaderboard">
-        <span class="tab-icon">🏅</span>
-        <span class="tab-text">Clasificación</span>
+    <!-- Tabs -->
+    <div class="social-tabs">
+      <button class="social-tab active" data-tab="leaderboard">
+        🏅 Clasificación
       </button>
-      <button class="social-tab-new" data-tab="friends">
-        <span class="tab-icon">👥</span>
-        <span class="tab-text">Amigos</span>
-        <span id="friends-badge" class="tab-badge-new hidden">0</span>
+      <button class="social-tab" data-tab="friends">
+        👥 Amigos
+        <span id="friends-badge" class="tab-badge hidden">0</span>
       </button>
-      <button class="social-tab-new" data-tab="challenges">
-        <span class="tab-icon">⚔️</span>
-        <span class="tab-text">Retos</span>
-        <span id="challenges-badge" class="tab-badge-new hidden">0</span>
+      <button class="social-tab" data-tab="challenges">
+        ⚔️ Retos
+        <span id="challenges-badge" class="tab-badge hidden">0</span>
       </button>
     </div>
 
     <!-- Tab: Clasificación -->
-    <div id="tab-leaderboard" class="social-tab-content-new">
-      <div id="leaderboard-list" class="leaderboard-list-new">
-        <div class="loading-spinner-new">Cargando...</div>
+    <div id="tab-leaderboard" class="social-tab-content">
+      <div id="leaderboard-list" class="leaderboard-list">
+        <div class="loading-spinner">Cargando...</div>
       </div>
     </div>
 
     <!-- Tab: Amigos -->
-    <div id="tab-friends" class="social-tab-content-new hidden">
+    <div id="tab-friends" class="social-tab-content hidden">
       <!-- Buscar amigo -->
-      <div class="add-friend-section-new">
-        <h4 class="section-subtitle-new">Agregar amigo</h4>
-        <div class="friend-search-row-new">
-          <input type="text" id="input-friend-code" class="input-friend-code-new" placeholder="Código de amigo" maxlength="6">
-          <button id="btn-search-friend" class="btn-search-friend-new">Buscar</button>
+      <div class="add-friend-section">
+        <h4 class="section-subtitle">Agregar amigo</h4>
+        <div class="friend-search-row">
+          <input type="text" id="input-friend-code" class="input-friend-code" placeholder="Código de amigo" maxlength="6">
+          <button id="btn-search-friend" class="btn-search-friend">Buscar</button>
         </div>
-        <div id="friend-search-result" class="friend-search-result-new hidden"></div>
+        <div id="friend-search-result" class="friend-search-result hidden"></div>
       </div>
 
       <!-- Solicitudes pendientes -->
-      <div id="friend-requests-list" class="friend-requests-list-new hidden"></div>
+      <div id="friend-requests-list" class="friend-requests-list hidden"></div>
 
       <!-- Lista de amigos -->
-      <div id="friends-list" class="friends-list-new">
-        <div class="loading-spinner-new">Cargando...</div>
+      <div id="friends-list" class="friends-list">
+        <div class="loading-spinner">Cargando...</div>
       </div>
     </div>
 
     <!-- Tab: Retos -->
-    <div id="tab-challenges" class="social-tab-content-new hidden">
-      <div id="pending-challenges" class="pending-challenges-new">
-        <div class="loading-spinner-new">Cargando...</div>
+    <div id="tab-challenges" class="social-tab-content hidden">
+      <div id="pending-challenges" class="pending-challenges">
+        <div class="loading-spinner">Cargando...</div>
       </div>
-      <div id="my-challenges" class="my-challenges-new"></div>
+      <div id="my-challenges" class="my-challenges"></div>
     </div>
     
-    <!-- Botón Volver -->
-    <button class="btn-back-social" onclick="document.getElementById('social-screen').classList.add('hidden')">
+    <!-- Botón Volver grande -->
+    <button onclick="document.getElementById('social-screen').classList.add('hidden')" style="width:100%;padding:16px;margin-top:20px;background:#e74c3c;border:none;border-radius:12px;color:white;font-size:1.1rem;font-weight:bold;cursor:pointer;">
       ← Volver al Juego
     </button>
-  </div>
-</div>
-
-<!-- Modal Ver Perfil de Amigo -->
-<div id="friend-profile-modal" class="modal-overlay hidden">
-  <div class="modal-content friend-profile-content">
-    <button class="modal-close-btn" onclick="document.getElementById('friend-profile-modal').classList.add('hidden')">✕</button>
-    <div id="friend-profile-view">
-      <!-- Se llena dinámicamente -->
-    </div>
   </div>
 </div>
 
@@ -2069,13 +1847,13 @@
 <div id="challenge-results-modal" class="modal-overlay hidden">
   <div class="modal-content challenge-results-content">
     <div id="challenge-winner-banner" class="winner-banner">
-      <span class="winner-emoji"></span>
-      <h3 id="challenge-winner-text" class="winner-text">Resultado</h3>
+      <span class="winner-emoji">🏆</span>
+      <h3 id="challenge-winner-text" class="winner-text">¡Ganaste!</h3>
     </div>
     
     <div class="results-comparison">
       <div class="result-player result-me">
-        <span class="result-label">Tu</span>
+        <span class="result-label">Tú</span>
         <span id="result-my-score" class="result-score">0</span>
         <span class="result-sublabel">puntos</span>
       </div>
@@ -2088,47 +1866,15 @@
     </div>
     
     <div class="results-details">
-      <p id="result-category-text">Categoria: Aleatorio</p>
+      <p id="result-category-text">Categoría: Aleatorio</p>
       <p id="result-difficulty-text">Dificultad: Normal</p>
     </div>
     
     <div class="post-challenge-actions">
-      <button id="btn-rematch" class="btn-rematch">Revancha</button>
-      <button id="btn-new-challenge" class="btn-new-challenge">Cambiar Config</button>
-      <button id="btn-close-results" class="btn-close-results">Cerrar</button>
+      <button id="btn-rematch" class="btn-rematch">🔄 Revancha</button>
+      <button id="btn-new-challenge" class="btn-new-challenge">⚙️ Cambiar Config</button>
+      <button id="btn-close-results" class="btn-close-results">✓ Cerrar</button>
     </div>
-  </div>
-</div>
-
-<!-- Overlay: oponente encontrado -->
-<div id="ranked-found-overlay" class="phase-overlay hidden">
-  <div class="phase-card ranked-found-card">
-    <div class="ranked-found-icon">⚔️</div>
-    <h2>¡Oponente encontrado!</h2>
-    <div class="ranked-found-vs">
-      <div class="ranked-found-player me">
-        <div class="found-avatar">🙋</div>
-        <div class="found-name">Tú</div>
-      </div>
-      <div class="found-vs-text">VS</div>
-      <div class="ranked-found-player opponent">
-        <div class="found-avatar">👤</div>
-        <div id="ranked-found-opponent-name" class="found-name">Oponente</div>
-        <div id="ranked-found-opponent-trophies" class="found-trophies">0 🏆</div>
-      </div>
-    </div>
-    <button id="ranked-ready-btn" class="btn-primary" style="margin-top:20px;">¡Listo!</button>
-    <p class="found-auto-note">Auto-inicia en 3 segundos...</p>
-  </div>
-</div>
-
-<!-- Overlay: esperando que el oponente esté listo -->
-<div id="ranked-waiting-overlay" class="phase-overlay hidden">
-  <div class="phase-card" style="text-align:center;">
-    <div class="ranked-search-spinner"></div>
-    <h2>Preparando partida...</h2>
-    <p id="ranked-waiting-text" style="color:var(--text-muted);margin-top:10px;">Esperando al oponente...</p>
-    <div id="ranked-opponent-ready-badge" class="hidden" style="color:var(--success);font-size:1.1rem;margin-top:10px;">✅ ¡Oponente listo!</div>
   </div>
 </div>
 
@@ -2233,20 +1979,16 @@
   <span id="shield-timer-text">Escudo: 5:00</span>
 </div>
 
-<!-- Socket.io cliente para 1v1 en tiempo real -->
-<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
-<script src="js/backend.js?v=2" defer></script>
-<script src="js/auth.js?v=1" defer></script>
-<script src="js/social.js?v=70" defer></script>
-<script src="js/questions.js?v=52" defer></script>
+<script src="js/firebase.js?v=68" defer></script>
+<script src="js/social.js?v=65" defer></script>
+<script src="js/questions.js?v=51" defer></script>
 <script src="js/definitions.js?v=51" defer></script>
 <script src="js/storage.js?v=51" defer></script>
-<script src="js/sounds.js?v=1" defer></script>
 <script src="js/billing.js?v=52" defer></script>
-<script src="js/seasons.js?v=5" defer></script>
+<script src="js/seasons.js?v=4" defer></script>
 <script src="js/ads.js?v=51" defer></script>
 <script src="js/notifications.js?v=51" defer></script>
-<script src="js/app.js?v=102" defer></script>
+<script src="js/app.js?v=88" defer></script>
 
 <script>
   if ('serviceWorker' in navigator) {

@@ -308,6 +308,12 @@ window.FirebaseService = {
       console.log('[Firebase] Sincronizando datos desde la nube...', forceFromCloud ? '(forzado)' : '');
       console.log('[Firebase] Datos del perfil - Monedas:', this.userProfile.coins, 'Amigos:', this.userProfile.friends?.length || 0);
       
+      // Si es login forzado (Google), cargar TODOS los datos de la nube
+      if (forceFromCloud) {
+        console.log('[Firebase] Login con Google detectado, cargando progreso completo...');
+        await this.loadFullProgressFromCloud();
+      }
+      
       // Sincronizar monedas
       if (typeof Storage !== 'undefined') {
         const localCoins = Storage.getCoins();
@@ -1198,6 +1204,264 @@ window.FirebaseService = {
       }
     });
     this.challengeListeners = [];
+  },
+
+  // ============================================
+  // SINCRONIZACIÓN COMPLETA DEL PROGRESO
+  // ============================================
+
+  // Guardar TODO el progreso del usuario en Firebase
+  async saveFullProgressToCloud() {
+    if (!this.currentUser || typeof Storage === 'undefined') {
+      console.log('[Firebase] No se puede guardar progreso: sin usuario o Storage');
+      return false;
+    }
+    
+    try {
+      console.log('[Firebase] Guardando progreso completo en la nube...');
+      
+      // Recopilar todos los datos locales
+      const fullProgress = {
+        // Datos del jugador
+        player: Storage.getPlayer(),
+        stats: Storage.getStats(),
+        coins: Storage.getCoins(),
+        
+        // Historial y preguntas
+        history: Storage.getHistory(),
+        answered: Storage.getAnswered(),
+        wrong: Storage.getWrongAnswers(),
+        
+        // Rachas y desafíos
+        dailyStreak: Storage.getDailyStreak(),
+        dailyChallenge: Storage.getDailyChallenge(),
+        challengeRecords: Storage.getChallengeRecords(),
+        
+        // Estadísticas detalladas
+        categoryStats: Storage.getCategoryStats(),
+        speedStats: Storage.getSpeedStats(),
+        categoryComplete: Storage.getCategoryComplete(),
+        
+        // Insignias y configuraciones
+        badges: Storage.getBadges(),
+        settings: Storage.getSettings(),
+        
+        // Versículos favoritos
+        favoriteVerses: Storage.getFavoriteVerses(),
+        
+        // Vidas
+        lives: Storage.getLives(),
+        
+        // Metadata
+        lastSaved: new Date().toISOString(),
+        version: 1
+      };
+      
+      // Guardar en subcolección del usuario
+      const progressRef = this.db.collection('users').doc(this.currentUser.uid)
+                             .collection('progress').doc('fullData');
+      
+      await progressRef.set(fullProgress, { merge: true });
+      
+      console.log('[Firebase] Progreso completo guardado exitosamente');
+      console.log('[Firebase] - Preguntas respondidas:', fullProgress.answered?.length || 0);
+      console.log('[Firebase] - Insignias:', fullProgress.badges?.length || 0);
+      console.log('[Firebase] - Racha días:', fullProgress.dailyStreak?.days || 0);
+      
+      return true;
+    } catch (error) {
+      console.error('[Firebase] Error guardando progreso completo:', error);
+      return false;
+    }
+  },
+
+  // Cargar TODO el progreso desde Firebase
+  async loadFullProgressFromCloud() {
+    if (!this.currentUser || typeof Storage === 'undefined') {
+      console.log('[Firebase] No se puede cargar progreso: sin usuario o Storage');
+      return false;
+    }
+    
+    try {
+      console.log('[Firebase] Cargando progreso completo desde la nube...');
+      
+      const progressRef = this.db.collection('users').doc(this.currentUser.uid)
+                             .collection('progress').doc('fullData');
+      
+      const progressSnap = await progressRef.get({ source: 'server' });
+      
+      if (!progressSnap.exists) {
+        console.log('[Firebase] No hay progreso guardado en la nube');
+        return false;
+      }
+      
+      const cloudData = progressSnap.data();
+      console.log('[Firebase] Progreso encontrado, última sincronización:', cloudData.lastSaved);
+      
+      // Restaurar datos locales con los de la nube
+      // Solo sobrescribir si hay datos válidos
+      
+      if (cloudData.player) {
+        const currentPlayer = Storage.getPlayer();
+        // Combinar datos, priorizando nube pero manteniendo lo que no existe
+        Storage.savePlayer({ ...currentPlayer, ...cloudData.player });
+      }
+      
+      if (cloudData.stats) {
+        const currentStats = Storage.getStats();
+        // Usar el mayor valor para estadísticas
+        Storage.saveStats({
+          totalPoints: Math.max(currentStats.totalPoints || 0, cloudData.stats.totalPoints || 0),
+          totalCorrect: Math.max(currentStats.totalCorrect || 0, cloudData.stats.totalCorrect || 0),
+          totalWrong: Math.max(currentStats.totalWrong || 0, cloudData.stats.totalWrong || 0),
+          totalAnswered: Math.max(currentStats.totalAnswered || 0, cloudData.stats.totalAnswered || 0),
+          totalGames: Math.max(currentStats.totalGames || 0, cloudData.stats.totalGames || 0),
+          bestStreak: Math.max(currentStats.bestStreak || 0, cloudData.stats.bestStreak || 0),
+          perfectGames: Math.max(currentStats.perfectGames || 0, cloudData.stats.perfectGames || 0),
+          expertCorrect: Math.max(currentStats.expertCorrect || 0, cloudData.stats.expertCorrect || 0),
+          categoriesPlayed: Math.max(currentStats.categoriesPlayed || 0, cloudData.stats.categoriesPlayed || 0),
+          categoriesSet: cloudData.stats.categoriesSet || currentStats.categoriesSet || []
+        });
+      }
+      
+      if (cloudData.coins) {
+        const currentCoins = Storage.getCoins();
+        // Usar el mayor total de monedas
+        if ((cloudData.coins.total || 0) >= (currentCoins.total || 0)) {
+          Storage.saveCoins(cloudData.coins);
+        }
+      }
+      
+      // Historial: combinar sin duplicar
+      if (cloudData.history && Array.isArray(cloudData.history)) {
+        const currentHistory = Storage.getHistory();
+        const combined = [...cloudData.history];
+        currentHistory.forEach(local => {
+          const exists = combined.some(cloud => 
+            cloud.date === local.date && cloud.points === local.points
+          );
+          if (!exists) combined.push(local);
+        });
+        combined.sort((a, b) => new Date(b.date) - new Date(a.date));
+        Storage.saveHistory(combined.slice(0, 50));
+      }
+      
+      // Preguntas respondidas: combinar arrays
+      if (cloudData.answered && Array.isArray(cloudData.answered)) {
+        const currentAnswered = Storage.getAnswered();
+        const combined = [...new Set([...cloudData.answered, ...currentAnswered])];
+        Storage.saveAnswered(combined);
+        console.log('[Firebase] Preguntas respondidas restauradas:', combined.length);
+      }
+      
+      // Respuestas incorrectas
+      if (cloudData.wrong && Array.isArray(cloudData.wrong)) {
+        Storage.saveWrongAnswers(cloudData.wrong);
+      }
+      
+      // Racha diaria
+      if (cloudData.dailyStreak) {
+        const currentStreak = Storage.getDailyStreak();
+        // Usar la racha más alta
+        if ((cloudData.dailyStreak.days || 0) >= (currentStreak.days || 0)) {
+          Storage.saveDailyStreak(cloudData.dailyStreak);
+        }
+      }
+      
+      // Desafío diario
+      if (cloudData.dailyChallenge) {
+        Storage.saveDailyChallenge(cloudData.dailyChallenge);
+      }
+      
+      // Récords de contrarreloj
+      if (cloudData.challengeRecords) {
+        const currentRecords = Storage.getChallengeRecords();
+        const combined = { ...currentRecords };
+        // Combinar, manteniendo el mejor récord de cada tipo
+        Object.keys(cloudData.challengeRecords).forEach(key => {
+          if (!combined[key] || 
+              cloudData.challengeRecords[key].correct > combined[key].correct ||
+              (cloudData.challengeRecords[key].correct === combined[key].correct && 
+               cloudData.challengeRecords[key].points > combined[key].points)) {
+            combined[key] = cloudData.challengeRecords[key];
+          }
+        });
+        Storage.saveChallengeRecords(combined);
+      }
+      
+      // Estadísticas por categoría
+      if (cloudData.categoryStats) {
+        const currentCatStats = Storage.getCategoryStats();
+        const combined = { ...currentCatStats };
+        Object.keys(cloudData.categoryStats).forEach(cat => {
+          if (!combined[cat]) {
+            combined[cat] = cloudData.categoryStats[cat];
+          } else {
+            combined[cat] = {
+              correct: Math.max(combined[cat].correct || 0, cloudData.categoryStats[cat].correct || 0),
+              wrong: Math.max(combined[cat].wrong || 0, cloudData.categoryStats[cat].wrong || 0),
+              total: Math.max(combined[cat].total || 0, cloudData.categoryStats[cat].total || 0)
+            };
+          }
+        });
+        Storage.saveCategoryStats(combined);
+      }
+      
+      // Estadísticas de velocidad
+      if (cloudData.speedStats) {
+        Storage.saveSpeedStats(cloudData.speedStats);
+      }
+      
+      // Categorías completadas
+      if (cloudData.categoryComplete) {
+        Storage.saveCategoryComplete(cloudData.categoryComplete);
+      }
+      
+      // Insignias: combinar sin duplicar
+      if (cloudData.badges && Array.isArray(cloudData.badges)) {
+        const currentBadges = Storage.getBadges();
+        const combined = [...new Set([...cloudData.badges, ...currentBadges])];
+        Storage.saveBadges(combined);
+        console.log('[Firebase] Insignias restauradas:', combined.length);
+      }
+      
+      // Configuraciones
+      if (cloudData.settings) {
+        Storage.saveSettings(cloudData.settings);
+      }
+      
+      // Versículos favoritos
+      if (cloudData.favoriteVerses && Array.isArray(cloudData.favoriteVerses)) {
+        Storage.saveFavoriteVerses(cloudData.favoriteVerses);
+        console.log('[Firebase] Versículos favoritos restaurados:', cloudData.favoriteVerses.length);
+      }
+      
+      // Vidas: no sobrescribir si tiene más localmente
+      if (cloudData.lives) {
+        const currentLives = Storage.getLives();
+        if ((cloudData.lives.lives || 0) > (currentLives.lives || 0)) {
+          Storage.saveLives(cloudData.lives);
+        }
+      }
+      
+      console.log('[Firebase] Progreso completo restaurado exitosamente');
+      return true;
+    } catch (error) {
+      console.error('[Firebase] Error cargando progreso completo:', error);
+      return false;
+    }
+  },
+
+  // Auto-guardar progreso (llamar periódicamente o después de partidas)
+  _autoSaveTimeout: null,
+  scheduleProgressSave() {
+    // Debounce: esperar 5 segundos antes de guardar
+    if (this._autoSaveTimeout) {
+      clearTimeout(this._autoSaveTimeout);
+    }
+    this._autoSaveTimeout = setTimeout(() => {
+      this.saveFullProgressToCloud();
+    }, 5000);
   }
 };
 

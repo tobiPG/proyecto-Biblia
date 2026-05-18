@@ -69,7 +69,7 @@
   --radius-sm: 10px;
   --radius-xs: 6px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-main: 'Nunito', 'Segoe UI', sans-serif;
+  --font-main: 'Nunito', 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
 }
 
 /* === LIGHT MODE === */
@@ -105,6 +105,24 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Asegurar que los emojis se muestren correctamente */
+.menu-icon,
+.streak-card-icon,
+.daily-icon,
+.shop-item-icon,
+.achievement-icon,
+.verse-action-btn,
+.home-lives-hearts,
+.shop-lives-hearts,
+.home-lives-timer-icon,
+.home-lives-shop-btn,
+.app-logo,
+.splash-logo,
+.redeem-life-btn,
+[aria-hidden="true"] {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Android Emoji', 'EmojiSymbols', sans-serif;
 }
 
 /* Background Decoration - ESTILO CLASH ROYALE */

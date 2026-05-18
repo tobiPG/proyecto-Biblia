@@ -15,30 +15,10 @@ import authRoutes from './routes/auth.js';
 import rankedRoutes from './routes/ranked.js';
 import { initSocket } from './socket/gameSocket.js';
 
-// Función para conectar a MongoDB con fallback en memoria
 async function connectDB() {
-  const atlasUri = process.env.MONGODB_URI;
-
-  if (atlasUri && !atlasUri.includes('localhost')) {
-    try {
-      await mongoose.connect(atlasUri, { serverSelectionTimeoutMS: 5000 });
-      console.log('✅ Conectado a MongoDB Atlas');
-      return;
-    } catch (err) {
-      console.warn('⚠️  Atlas no disponible:', err.message);
-      console.log('🔄 Usando MongoDB en memoria para pruebas...');
-    }
-  }
-
-  try {
-    const { MongoMemoryServer } = await import('mongodb-memory-server');
-    const memServer = await MongoMemoryServer.create();
-    const memUri = memServer.getUri();
-    await mongoose.connect(memUri);
-    console.log('✅ MongoDB en memoria iniciado (datos temporales - solo para pruebas)');
-  } catch (memErr) {
-    console.error('❌ No se pudo iniciar MongoDB en memoria:', memErr.message);
-  }
+  const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/bibliaquiz';
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 10000 });
+  console.log('✅ Conectado a MongoDB:', uri.includes('localhost') ? 'local' : 'Atlas');
 }
 
 const app = express();

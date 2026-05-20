@@ -905,7 +905,7 @@ const App = {
       this.renderHome();
     });
     // Botón salir durante partida duo
-    document.getElementById('btn-duo-exit').addEventListener('click', () => {
+    document.getElementById('btn-duo-exit')?.addEventListener('click', () => {
       this.stopDuoTimer();
       if (confirm('¿Seguro que quieres salir? Se perderá el progreso de la partida.')) {
         this.showScreen('home');
@@ -971,7 +971,7 @@ const App = {
       this.renderHome();
     });
     // --- SPELLING MODE (DELETREAR) ---
-    document.getElementById('btn-spelling').addEventListener('click', () => {
+    document.getElementById('btn-spelling')?.addEventListener('click', () => {
       this.startSpellingMode();
     });
     // Shop button

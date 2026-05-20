@@ -788,7 +788,7 @@ const App = {
       this.renderProgress();
       this.showScreen('progress');
     });
-    document.getElementById('btn-achievements').addEventListener('click', () => {
+    document.getElementById('btn-achievements')?.addEventListener('click', () => {
       this.renderAchievements();
       this.showScreen('achievements');
     });

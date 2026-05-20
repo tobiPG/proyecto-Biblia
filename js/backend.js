@@ -16,6 +16,7 @@ const isProduction = window.location.hostname !== 'localhost' &&
                      !window.location.hostname.includes('192.168.');
 
 const API_BASE_URL = isProduction ? PRODUCTION_API_URL : DEVELOPMENT_API_URL;
+window.API_BASE_URL = API_BASE_URL;
 
 console.log(`[Config] Entorno: ${isProduction ? 'PRODUCCIÓN' : 'DESARROLLO'}`);
 console.log(`[Config] API URL: ${API_BASE_URL}`);

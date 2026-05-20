@@ -2637,33 +2637,26 @@ const App = {
       bigIconEl.classList.add('hidden');
     }
     
-    // Question image - SIEMPRE mostrar imagen (específica o de categoría)
+    // Question image - siempre mostrar placeholder con icono de categoría
     const imgContainer = document.getElementById('question-image-container');
-    const imgEl = document.getElementById('question-image');
-    
-    // Usar imagen específica de la pregunta, o imagen aleatoria de la categoría
-    const imageUrl = q.image || (typeof getCategoryImage === 'function' ? getCategoryImage(q.category) : null);
-    
-    if (imageUrl) {
-      imgEl.src = imageUrl;
-      imgEl.alt = q.imageAlt || `Imagen de ${cat.name}`;
-      imgEl.onerror = () => {
-        // Si falla la imagen, mostrar placeholder con color de categoría
-        imgContainer.innerHTML = `
-          <div class="image-placeholder" style="background: linear-gradient(135deg, ${cat.color}44, ${cat.color}22);">
-            <span class="placeholder-icon">${cat.bigIcon || cat.icon}</span>
-          </div>
-        `;
-      };
-      imgContainer.classList.remove('hidden');
-    } else {
-      // Fallback: mostrar icono grande si no hay imágenes
+    if (imgContainer) {
+      const imageUrl = q.image || (typeof getCategoryImage === 'function' ? getCategoryImage(q.category) : null);
+      // Siempre resetear con placeholder para no dejar elementos huérfanos
       imgContainer.innerHTML = `
         <div class="image-placeholder" style="background: linear-gradient(135deg, ${cat.color}44, ${cat.color}22);">
           <span class="placeholder-icon">${cat.bigIcon || cat.icon}</span>
         </div>
       `;
       imgContainer.classList.remove('hidden');
+      // Si hay imagen específica, crearla sobre el placeholder
+      if (imageUrl) {
+        const img = document.createElement('img');
+        img.className = 'question-image';
+        img.src = imageUrl;
+        img.alt = q.imageAlt || `Imagen de ${cat.name}`;
+        img.onerror = () => img.remove();
+        imgContainer.prepend(img);
+      }
     }
     // Question text
     document.getElementById('question-text').textContent = q.question;

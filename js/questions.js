@@ -19960,14 +19960,6 @@ const QUESTIONS_DB = [
     image: "images/questions/viajes-pablo.jpg",
     imageAlt: "Mapa de los viajes misioneros de Pablo"
   },
-  {
-    id: 2105, difficulty: "facil", category: "personajes",
-    question: "¿Qué representa esta imagen en la historia de Moisés?",
-    options: ["La zarza ardiente", "Las tablas de la ley", "La serpiente de bronce", "El maná del cielo"],
-    correct: 0, reference: "Éxodo 3:2",
-    image: "images/questions/zarza-ardiente.jpg",
-    imageAlt: "Ilustración de la zarza ardiente"
-  },
 
   // ===================== NUEVAS PREGUNTAS 2106+ =====================
   

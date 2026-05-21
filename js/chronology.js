@@ -237,9 +237,7 @@ const ChronologyManager = {
       `).join('');
     }
 
-    // Hide verify button initially
-    const verifyBtn = document.getElementById('btn-chrono-verify');
-    if (verifyBtn) verifyBtn.classList.add('hidden');
+    // Verify button permanece oculto (se usa auto-verificación)
 
     // Hide result feedback
     const feedbackEl = document.getElementById('chrono-feedback');
@@ -275,14 +273,9 @@ const ChronologyManager = {
       if (item) item.classList.add('selected');
     }
 
-    // Show verify button when all items selected
-    const verifyBtn = document.getElementById('btn-chrono-verify');
-    if (verifyBtn) {
-      if (this.userOrder.length === this.currentQuestion.items.length) {
-        verifyBtn.classList.remove('hidden');
-      } else {
-        verifyBtn.classList.add('hidden');
-      }
+    // Auto-verificar cuando se colocan todos los ítems
+    if (this.userOrder.length === this.currentQuestion.items.length) {
+      setTimeout(() => this.checkAnswer(), 500);
     }
   },
 
@@ -358,9 +351,7 @@ const ChronologyManager = {
     const scoreEl = document.getElementById('chrono-score');
     if (scoreEl) scoreEl.textContent = this.score + ' pts';
 
-    // Hide verify, show next
-    const verifyBtn = document.getElementById('btn-chrono-verify');
-    if (verifyBtn) verifyBtn.classList.add('hidden');
+    // Verify button permanece oculto
 
     const nextBtn = document.getElementById('btn-chrono-next');
     if (nextBtn) {

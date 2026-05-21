@@ -2675,25 +2675,26 @@ const App = {
       bigIconEl.classList.add('hidden');
     }
     
-    // Question image - siempre mostrar placeholder con icono de categoría
+    // Question image - solo mostrar si hay imagen real
     const imgContainer = document.getElementById('question-image-container');
     if (imgContainer) {
-      const imageUrl = q.image || (typeof getCategoryImage === 'function' ? getCategoryImage(q.category) : null);
-      // Siempre resetear con placeholder para no dejar elementos huérfanos
-      imgContainer.innerHTML = `
-        <div class="image-placeholder" style="background: linear-gradient(135deg, ${cat.color}44, ${cat.color}22);">
-          <span class="placeholder-icon">${cat.bigIcon || cat.icon}</span>
-        </div>
-      `;
-      imgContainer.classList.remove('hidden');
-      // Si hay imagen específica, crearla sobre el placeholder
+      const imageUrl = q.image || null; // solo imágenes específicas, no decorativas por categoría
       if (imageUrl) {
+        imgContainer.innerHTML = `
+          <div class="image-placeholder" style="background: linear-gradient(135deg, ${cat.color}44, ${cat.color}22);">
+            <span class="placeholder-icon">${cat.bigIcon || cat.icon}</span>
+          </div>
+        `;
         const img = document.createElement('img');
         img.className = 'question-image';
         img.src = imageUrl;
         img.alt = q.imageAlt || `Imagen de ${cat.name}`;
         img.onerror = () => img.remove();
         imgContainer.prepend(img);
+        imgContainer.classList.remove('hidden');
+      } else {
+        imgContainer.innerHTML = '';
+        imgContainer.classList.add('hidden');
       }
     }
     // Question text
@@ -4332,7 +4333,8 @@ const App = {
       CampaignManager.saveChapterResult(
         this.campaignMode.chapterId,
         this.sessionCorrect,
-        this.currentQuestions.length
+        this.currentQuestions.length,
+        this.sessionPoints
       );
       this.campaignMode = null;
       return; // campaign result screen shown by CampaignManager

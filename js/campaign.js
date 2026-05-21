@@ -2,6 +2,28 @@
 // MODO CAMPAÑA BÍBLICA - BibliaQuiz
 // ============================================================
 
+// Palabras clave de libros bíblicos por mundo — se buscan en el campo `reference` de cada pregunta
+const WORLD_BOOKS = {
+  w1: ['genesis', 'gen ', 'gén', 'gen.'],                                         // Génesis
+  w2: ['exodo', 'éxodo', 'exodus', 'levitico', 'levítico', 'numeros', 'números',
+       'deuteronomio', 'ex ', 'lev ', 'num ', 'deut'],                            // Pentateuco sin Génesis
+  w3: ['josue', 'josué', 'jueces', '1 samuel', '2 samuel', '1 reyes', '2 reyes',
+       '1samuel', '2samuel', '1reyes', '2reyes'],                                  // Josué→Reyes
+  w4: ['salmo', 'psalm', 'proverbio', 'prov', 'eclesiastes', 'eclesiastés',
+       'job ', 'job.', 'cantares', 'cant'],                                        // Libros poéticos
+  w5: ['isaias', 'isaías', 'jeremias', 'jeremías', 'ezequiel', 'daniel',
+       'oseas', 'joel', 'amos', 'amós', 'abdias', 'jonas', 'jonás',
+       'miqueas', 'nahum', 'nahúm', 'habacuc', 'sofonias', 'hageo',
+       'zacarias', 'zacarías', 'malaquias', 'malaquías'],                          // Profetas
+  w6: ['mateo', 'marcos', 'lucas', 'juan ', 'juan.', 'mt ', 'mc ', 'lc ',
+       'jn ', 'evangelio'],                                                         // Evangelios
+  w7: ['hechos', 'romanos', 'corintios', 'galatas', 'gálatas', 'efesios',
+       'filipenses', 'colosenses', 'tesalonicenses', 'timoteo', 'tito',
+       'filemon', 'hebreos', 'santiago', '1 pedro', '2 pedro', '1 juan',
+       '2 juan', '3 juan', 'judas', 'hch'],                                        // Hechos + Epístolas
+  w8: ['apocalipsis', 'revelation', 'apoc']                                        // Apocalipsis
+};
+
 const CAMPAIGN_WORLDS = [
   {
     id: 'w1',
@@ -131,7 +153,7 @@ const CampaignManager = {
   },
 
   // Save chapter result
-  saveChapterResult(chapterId, correctCount, totalCount) {
+  saveChapterResult(chapterId, correctCount, totalCount, sessionPoints = 0) {
     const progress = this.getProgress();
     const percentage = totalCount > 0 ? (correctCount / totalCount) * 100 : 0;
     let stars = 0;
@@ -142,7 +164,7 @@ const CampaignManager = {
     const existing = progress[chapterId];
     const newStars = Math.max(stars, existing ? existing.stars : 0);
     const newScore = Math.max(
-      correctCount * 100,
+      sessionPoints || correctCount * 100,
       existing ? (existing.score || 0) : 0
     );
 
@@ -209,12 +231,28 @@ const CampaignManager = {
     const world = CAMPAIGN_WORLDS[worldIndex];
     const chapter = world.chapters[chapterIndex];
 
-    // Filter questions by categories and difficulty
-    const eligible = (window.QUESTIONS_DB || []).filter(q => {
-      const catMatch = chapter.categories.includes(q.category);
-      const diffMatch = q.difficulty === chapter.difficulty;
-      return catMatch && diffMatch;
+    // Filter questions by categories, difficulty AND libros bíblicos del mundo
+    const worldBooks = WORLD_BOOKS[world.id] || [];
+    const allDB = window.QUESTIONS_DB || [];
+
+    const matchesBook = (q) => {
+      if (worldBooks.length === 0) return true;
+      const ref = (q.reference || '').toLowerCase();
+      return worldBooks.some(kw => ref.includes(kw));
+    };
+
+    let eligible = allDB.filter(q => {
+      return chapter.categories.includes(q.category) &&
+             q.difficulty === chapter.difficulty &&
+             matchesBook(q);
     });
+
+    // Si no hay suficientes con filtro de libro, relajar solo el filtro de libro
+    if (eligible.length < 5) {
+      eligible = allDB.filter(q =>
+        chapter.categories.includes(q.category) && q.difficulty === chapter.difficulty
+      );
+    }
 
     if (eligible.length < 5) {
       App.showToast('⚠️ No hay suficientes preguntas para este capítulo');

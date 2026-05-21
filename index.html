@@ -1991,16 +1991,9 @@
       <div class="legend-item"><span class="legend-lose">✖</span> Derrota: -20 (o -5 si <200)</div>
     </div>
   </div>
-</div>
-
-<!-- Indicador de escudo activo -->
-<div id="shield-active-indicator" class="shield-active-indicator hidden">
-  <span>🛡️</span>
-  <span id="shield-timer-text">Escudo: 5:00</span>
-</div>
 
 <!-- ============================================================ -->
-<!-- FEATURE 1: MODO CAMPAÑA BÍBLICA                             -->
+<!-- FEATURES: CAMPAÑA, CRONOLOGÍA, CLANES, TORNEOS (dentro)     -->
 <!-- ============================================================ -->
 
 <div id="campaign" class="screen">
@@ -2076,7 +2069,7 @@
   <div id="chrono-feedback" class="chrono-feedback hidden"></div>
   <div id="chrono-correct-order" class="chrono-correct-order hidden"></div>
   <div class="chrono-actions">
-    <button id="btn-chrono-verify" class="btn-primary hidden" onclick="ChronologyManager.checkAnswer()">✓ Verificar</button>
+    <button id="btn-chrono-verify" class="btn-primary hidden" style="display:none!important" onclick="ChronologyManager.checkAnswer()">✓ Verificar</button>
     <button id="btn-chrono-next" class="btn-secondary hidden" onclick="ChronologyManager.nextQuestion()">Siguiente →</button>
   </div>
 </div>
@@ -2151,6 +2144,14 @@
     <p style="text-align:center;padding:2rem">Cargando torneo...</p>
   </div>
 </div>
+
+<!-- Indicador de escudo activo (fixed, fuera del flujo) -->
+<div id="shield-active-indicator" class="shield-active-indicator hidden">
+  <span>🛡️</span>
+  <span id="shield-timer-text">Escudo: 5:00</span>
+</div>
+
+</div><!-- /app-container -->
 
 <script src="js/backend.js?v=2" defer></script>
 <script src="js/social.js?v=65" defer></script>

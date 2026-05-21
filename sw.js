@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliaquiz-v88';
+const CACHE_NAME = 'bibliaquiz-v89';
 const ASSETS = [
   './',
   './index.html',
@@ -14,6 +14,11 @@ const ASSETS = [
   './js/seasons.js',
   './js/firebase.js',
   './js/social.js',
+  './js/campaign.js',
+  './js/chronology.js',
+  './js/clans.js',
+  './js/tournament.js',
+  './js/backend.js',
   './manifest.json',
   './icons/icon-72.png',
   './icons/icon-96.png',
@@ -28,7 +33,7 @@ const ASSETS = [
 ];
 
 // Files that should always fetch fresh from network
-const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js'];
+const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js', 'campaign.js', 'chronology.js', 'clans.js', 'tournament.js', 'backend.js'];
 
 // Install - cache all essential assets
 self.addEventListener('install', event => {

@@ -84,6 +84,14 @@ const userSchema = new mongoose.Schema({
   // 🆕 Versículos favoritos
   favoriteVerses: { type: mongoose.Schema.Types.Mixed, default: [] },
   
+  // Clanes
+  clanId: { type: mongoose.Schema.Types.ObjectId, ref: 'Clan', default: null },
+  clanTag: { type: String, default: null },
+  clanWeeklyPoints: { type: Number, default: 0 },
+
+  // Progreso de campaña
+  campaignProgress: { type: mongoose.Schema.Types.Mixed, default: {} },
+
   // Sistema de amigos
   friendCode: {
     type: String,

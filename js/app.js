@@ -284,6 +284,8 @@ const App = {
   challengeAutoAdvance: null,
   challengeAnswerTimes: [],
   challengeQuestionStart: 0,
+  // Campaign mode
+  campaignMode: null,
   // Social challenge mode (reto contra amigo)
   isSocialChallenge: false,
   socialChallengeData: null,
@@ -1370,6 +1372,42 @@ const App = {
     // View favorites button
     document.getElementById('btn-view-favorites')?.addEventListener('click', () => {
       this.showScreen('verses');
+    });
+    // --- CAMPAÑA BÍBLICA ---
+    document.getElementById('btn-campaign')?.addEventListener('click', () => {
+      if (window.CampaignManager) {
+        CampaignManager.renderWorlds();
+        const totalStarsEl = document.getElementById('campaign-total-stars');
+        if (totalStarsEl) totalStarsEl.textContent = CampaignManager.getTotalStars();
+      }
+      this.showScreen('campaign');
+    });
+    // --- CRONOLOGÍA ---
+    document.getElementById('btn-chronology')?.addEventListener('click', () => {
+      if (window.ChronologyManager) {
+        ChronologyManager.startGame();
+      } else {
+        this.showScreen('chronology');
+      }
+    });
+    // --- CLANES ---
+    document.getElementById('btn-clans')?.addEventListener('click', () => {
+      this.showScreen('clans');
+      if (window.ClanManager) {
+        ClanManager.loadClan();
+      }
+    });
+    // --- TORNEOS ---
+    document.getElementById('btn-tournament')?.addEventListener('click', () => {
+      this.showScreen('tournament');
+      if (window.TournamentManager) {
+        TournamentManager.loadTournament();
+      }
+    });
+    // Campaign chapters back button
+    document.getElementById('campaign-chapters')?.querySelector('.back-btn')?.addEventListener('click', () => {
+      this.showScreen('campaign');
+      if (window.CampaignManager) CampaignManager.renderWorlds();
     });
   },
   // === HOME ===
@@ -4289,6 +4327,22 @@ const App = {
         setTimeout(() => this.showAchievementPopup(badge), 1000 + (i * 2500));
       });
     }
+    // --- CAMPAIGN MODE HOOK ---
+    if (this.campaignMode && window.CampaignManager) {
+      CampaignManager.saveChapterResult(
+        this.campaignMode.chapterId,
+        this.sessionCorrect,
+        this.currentQuestions.length
+      );
+      this.campaignMode = null;
+      return; // campaign result screen shown by CampaignManager
+    }
+
+    // --- CLAN POINTS HOOK ---
+    if (window.ClanManager && this.sessionPoints > 0) {
+      ClanManager.addPointsFromQuiz(this.sessionPoints).catch(() => {});
+    }
+
     // Render results
     this.renderResults(newBadges);
     this.showScreen('results');

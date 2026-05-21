@@ -13,6 +13,8 @@ import userRoutes from './routes/users.js';
 import challengeRoutes from './routes/challenges.js';
 import authRoutes from './routes/auth.js';
 import rankedRoutes from './routes/ranked.js';
+import clanRoutes from './routes/clans.js';
+import tournamentRoutes from './routes/tournaments.js';
 import { initSocket } from './socket/gameSocket.js';
 
 async function connectDB() {
@@ -75,13 +77,15 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/challenges', challengeRoutes);
 app.use('/api/ranked', rankedRoutes);
+app.use('/api/clans', clanRoutes);
+app.use('/api/tournaments', tournamentRoutes);
 
 app.get('/', (req, res) => {
   res.json({
     message: 'BibliaQuiz API Backend',
     version: '2.0.0',
     features: ['REST API', 'Socket.io real-time 1v1'],
-    endpoints: { auth: '/api/auth', users: '/api/users', challenges: '/api/challenges', ranked: '/api/ranked' }
+    endpoints: { auth: '/api/auth', users: '/api/users', challenges: '/api/challenges', ranked: '/api/ranked', clans: '/api/clans', tournaments: '/api/tournaments' }
   });
 });
 

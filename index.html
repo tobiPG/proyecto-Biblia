@@ -153,6 +153,22 @@
         <span class="menu-icon" aria-hidden="true">✝️</span>
         <span class="menu-label">Versículos</span>
       </button>
+      <button id="btn-campaign" class="menu-btn campaign-menu-btn" aria-label="Campaña Bíblica">
+        <span class="menu-icon" aria-hidden="true">🗺️</span>
+        <span class="menu-label">Campaña</span>
+      </button>
+      <button id="btn-chronology" class="menu-btn chronology-menu-btn" aria-label="Cronología">
+        <span class="menu-icon" aria-hidden="true">📋</span>
+        <span class="menu-label">Cronología</span>
+      </button>
+      <button id="btn-clans" class="menu-btn clans-menu-btn" aria-label="Clanes">
+        <span class="menu-icon" aria-hidden="true">⛪</span>
+        <span class="menu-label">Clanes</span>
+      </button>
+      <button id="btn-tournament" class="menu-btn tournament-menu-btn" aria-label="Torneos">
+        <span class="menu-icon" aria-hidden="true">🏆</span>
+        <span class="menu-label">Torneos</span>
+      </button>
     </div>
   </div>
 
@@ -1983,6 +1999,159 @@
   <span id="shield-timer-text">Escudo: 5:00</span>
 </div>
 
+<!-- ============================================================ -->
+<!-- FEATURE 1: MODO CAMPAÑA BÍBLICA                             -->
+<!-- ============================================================ -->
+
+<div id="campaign" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="home">←</button>
+    <h2 class="section-title">🗺️ Campaña Bíblica</h2>
+  </div>
+  <div class="campaign-header-info">
+    <div class="campaign-total-stars">
+      ⭐ <span id="campaign-total-stars">0</span> estrellas totales
+    </div>
+  </div>
+  <div id="campaign-worlds-list" class="campaign-worlds-list">
+    <!-- Generado dinámicamente por CampaignManager.renderWorlds() -->
+  </div>
+</div>
+
+<div id="campaign-chapters" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="campaign">←</button>
+    <h2 id="campaign-chapters-title" class="section-title">Capítulos</h2>
+  </div>
+  <div id="campaign-chapters-grid" class="campaign-chapters-grid">
+    <!-- Generado dinámicamente -->
+  </div>
+</div>
+
+<div id="campaign-result" class="screen">
+  <div class="campaign-result-container">
+    <div class="campaign-result-icon">⭐</div>
+    <h2 class="campaign-result-title">Capítulo Completado</h2>
+    <div class="result-stars">
+      <span class="result-star" id="camp-star-1">★</span>
+      <span class="result-star" id="camp-star-2">★</span>
+      <span class="result-star" id="camp-star-3">★</span>
+    </div>
+    <div id="campaign-result-msg" class="campaign-result-msg"></div>
+    <div class="campaign-result-stats">
+      <div class="camp-result-stat">
+        <span id="campaign-result-correct">0</span> / <span id="campaign-result-total">10</span> correctas
+      </div>
+      <div class="camp-result-stat camp-result-pct">
+        <span id="campaign-result-pct">0%</span>
+      </div>
+    </div>
+    <div class="campaign-result-actions">
+      <button class="btn-primary" id="btn-campaign-result-continue" onclick="App.showScreen('campaign'); CampaignManager.renderWorlds();">Continuar</button>
+      <button class="btn-secondary" onclick="App.showScreen('home'); App.renderHome();">Inicio</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FEATURE 2: CRONOLOGÍA                                        -->
+<!-- ============================================================ -->
+
+<div id="chronology" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="home">←</button>
+    <h2 class="section-title">📋 Cronología Bíblica</h2>
+    <div class="chrono-meta">
+      <span id="chrono-progress">1 / 15</span>
+      <span id="chrono-score">0 pts</span>
+    </div>
+  </div>
+  <div class="chronology-question-card">
+    <p id="chrono-question-text" class="chrono-question-text">Cargando pregunta...</p>
+    <p class="chrono-instruction">Toca los eventos en el orden cronológico correcto</p>
+  </div>
+  <div id="chrono-items" class="chrono-items-grid">
+    <!-- Generado dinámicamente -->
+  </div>
+  <div id="chrono-feedback" class="chrono-feedback hidden"></div>
+  <div id="chrono-correct-order" class="chrono-correct-order hidden"></div>
+  <div class="chrono-actions">
+    <button id="btn-chrono-verify" class="btn-primary hidden" onclick="ChronologyManager.checkAnswer()">✓ Verificar</button>
+    <button id="btn-chrono-next" class="btn-secondary hidden" onclick="ChronologyManager.nextQuestion()">Siguiente →</button>
+  </div>
+</div>
+
+<div id="chronology-result" class="screen">
+  <div class="chronology-result-container">
+    <div class="chrono-result-icon">📋</div>
+    <h2>Cronología Completada</h2>
+    <div class="chrono-result-score-display">
+      <div class="chrono-result-big-score" id="chrono-result-score">0</div>
+      <div class="chrono-result-score-label">puntos</div>
+    </div>
+    <div class="chrono-result-pct-display" id="chrono-result-pct">0%</div>
+    <div id="chrono-result-msg" class="chrono-result-msg"></div>
+    <div class="chrono-result-actions">
+      <button class="btn-primary" onclick="ChronologyManager.startGame()">🔄 Jugar de Nuevo</button>
+      <button class="btn-secondary" onclick="App.showScreen('home'); App.renderHome();">🏠 Inicio</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FEATURE 3: CLANES                                            -->
+<!-- ============================================================ -->
+
+<div id="clans" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="home">←</button>
+    <h2 class="section-title">⛪ Clanes</h2>
+  </div>
+  <div id="clan-home-content" class="clan-home-content">
+    <!-- Generado dinámicamente por ClanManager.renderClanHome() -->
+    <p style="text-align:center;padding:2rem">Cargando...</p>
+  </div>
+</div>
+
+<div id="clan-search" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="clans">←</button>
+    <h2 class="section-title">🔍 Buscar Clan</h2>
+  </div>
+  <div class="clan-search-bar">
+    <input type="text" id="clan-search-input" placeholder="Nombre del clan..." class="clan-search-input">
+    <button class="btn-primary" onclick="ClanManager.searchClans()">Buscar</button>
+  </div>
+  <div id="clan-search-results" class="clan-search-results">
+    <p class="clan-search-hint">Escribe el nombre de un clan para buscarlo</p>
+  </div>
+</div>
+
+<div id="clan-leaderboard" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="clans">←</button>
+    <h2 class="section-title">🏆 Ranking de Clanes</h2>
+  </div>
+  <div id="clan-leaderboard-list" class="clan-lb-list">
+    <!-- Generado dinámicamente -->
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FEATURE 4: TORNEOS SEMANALES                                 -->
+<!-- ============================================================ -->
+
+<div id="tournament" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="home">←</button>
+    <h2 class="section-title">🏆 Torneo Semanal</h2>
+  </div>
+  <div id="tournament-content" class="tournament-content">
+    <!-- Generado dinámicamente por TournamentManager -->
+    <p style="text-align:center;padding:2rem">Cargando torneo...</p>
+  </div>
+</div>
+
 <script src="js/backend.js?v=2" defer></script>
 <script src="js/social.js?v=65" defer></script>
 <script src="js/questions.js?v=52" defer></script>
@@ -1992,6 +2161,10 @@
 <script src="js/seasons.js?v=4" defer></script>
 <script src="js/ads.js?v=51" defer></script>
 <script src="js/notifications.js?v=51" defer></script>
+<script src="js/campaign.js?v=1" defer></script>
+<script src="js/chronology.js?v=1" defer></script>
+<script src="js/clans.js?v=1" defer></script>
+<script src="js/tournament.js?v=1" defer></script>
 <script src="js/app.js?v=93" defer></script>
 
 <script>

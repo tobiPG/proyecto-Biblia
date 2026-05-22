@@ -408,13 +408,18 @@ window.Ranked = {
   generateRankedQuestions(category, trophies = 0, count = RANKED_CONFIG.questionsPerMatch) {
     if (!window.QUESTIONS_DB) return [];
 
+    // Mapeo: ID de categoría ranked → nombre de categoría en questions.js
+    const categoryMap = {
+      'eventos':           'historias',
+      'salmos-proverbios': 'versiculos'
+    };
+    const qCategory = categoryMap[category] || category;
+
     const diffDist = this.getDifficultyByTrophies(trophies);
 
-    let pool = category === 'aleatorio'
+    let pool = qCategory === 'aleatorio'
       ? [...window.QUESTIONS_DB]
-      : window.QUESTIONS_DB.filter(q => q.category === category);
-
-    if (pool.length < count) pool = [...window.QUESTIONS_DB];
+      : window.QUESTIONS_DB.filter(q => q.category === qCategory);
 
     const easy   = pool.filter(q => q.difficulty === 'facil');
     const medium = pool.filter(q => q.difficulty === 'intermedio');

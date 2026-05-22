@@ -995,7 +995,7 @@ const App = {
     // Ranked result buttons
     document.getElementById('btn-ranked-play-again')?.addEventListener('click', () => {
       document.getElementById('ranked-result-overlay').classList.add('hidden');
-      this.showScreen('ranked');
+      this.openRankedScreen();
     });
     document.getElementById('btn-ranked-done')?.addEventListener('click', () => {
       document.getElementById('ranked-result-overlay').classList.add('hidden');
@@ -4457,7 +4457,7 @@ const App = {
       const avg = stats.totalGames > 0 ? Math.round(stats.totalPoints / stats.totalGames) : 0;
       avgPerGameEl.textContent = avg;
     }
-    if (totalCoinsEl) totalCoinsEl.textContent = Storage.getCoins().toLocaleString();
+    if (totalCoinsEl) totalCoinsEl.textContent = (Storage.getCoins().total || 0).toLocaleString();
     
     // Accuracy
     const accuracy = stats.totalAnswered > 0 ? Math.round((stats.totalCorrect / stats.totalAnswered) * 100) : 0;

@@ -42,7 +42,7 @@ const RANKED_CONFIG = {
   protectionThreshold: 200,
   trophiesTie: 5,
   questionsPerMatch: 10,
-  questionTime: 8,
+  questionTime: 13,
   matchmakingInitialRange: 100,
   matchmakingExpandInterval: 10000,
   matchmakingExpandAmount: 100,
@@ -116,9 +116,11 @@ window.Ranked = {
   _bindSocketEvents() {
     if (!this.socket) return;
 
-    // Oponente encontrado → servidor nos emparejó
+    // Oponente encontrado → servidor nos emparejó (jugador real tiene prioridad)
     this.socket.on('match_found', (data) => {
-      console.log('[Ranked] ¡Oponente encontrado!', data);
+      console.log('[Ranked] ¡Oponente real encontrado!', data);
+      this._realPlayerMatched = true;
+      if (this._botSearchTimeout) { clearTimeout(this._botSearchTimeout); this._botSearchTimeout = null; }
       this._stopSearchTimer();
       this.currentMatchId = data.matchId;
       this._onMatchFound(data);
@@ -130,11 +132,19 @@ window.Ranked = {
       this.updateSearchUI();
     });
 
-    // Timeout de búsqueda
+    // Timeout de búsqueda del servidor → lanzar bot como fallback
     this.socket.on('search_timeout', () => {
+      if (this._realPlayerMatched) return;
       this._stopSearchTimer();
-      this.hideSearchingUI();
-      this.showToast('No se encontró oponente. Intenta de nuevo.', 'info');
+      if (this._botSearchTimeout) { clearTimeout(this._botSearchTimeout); this._botSearchTimeout = null; }
+      const category = this._currentSearchCategory;
+      if (category) {
+        const myTrophies = this.getLocalTrophies(category);
+        const bot = this.generateBot(myTrophies);
+        this._launchBotMatch(category, bot, myTrophies);
+      } else {
+        this.hideSearchingUI();
+      }
     });
 
     // El oponente confirmó que está listo
@@ -564,9 +574,41 @@ window.Ranked = {
   async searchMatchWithBot(category) {
     const myTrophies = this.getLocalTrophies(category);
     const myRank = this.getRankByTrophies(myTrophies);
+    this._currentSearchCategory = category;
+    this._realPlayerMatched = false;
     this.showSearchingUI(category, myRank, myTrophies);
     this.searchStartTime = Date.now();
     if (this._botSearchTimeout) clearTimeout(this._botSearchTimeout);
+
+    // Si hay token: intentar jugador real primero (20s), luego bot como fallback
+    if (window.BackendService?.token) {
+      this._botSearchTimeout = setTimeout(() => {
+        if (!this._realPlayerMatched) {
+          if (this.socket?.connected) this.socket.emit('leave_queue');
+          this._stopSearchTimer();
+          const bot = this.generateBot(myTrophies);
+          this._launchBotMatch(category, bot, myTrophies);
+        }
+      }, 20000);
+
+      try {
+        await this.connectSocket();
+        this.currentRange = RANKED_CONFIG.matchmakingInitialRange;
+        this.socket.emit('join_queue', { category, trophies: myTrophies, rankId: myRank.id });
+        console.log('[Ranked] Buscando jugador real (20s) luego bot...');
+      } catch {
+        clearTimeout(this._botSearchTimeout);
+        this._botSearchTimeout = null;
+        // Sin conexión: bot directo
+        setTimeout(() => {
+          const bot = this.generateBot(myTrophies);
+          this._launchBotMatch(category, bot, myTrophies);
+        }, 2000 + Math.random() * 1500);
+      }
+      return true;
+    }
+
+    // Sin token: bot después de 2.5-4.5s
     this._botSearchTimeout = setTimeout(() => {
       this._stopSearchTimer();
       const bot = this.generateBot(myTrophies);
@@ -579,6 +621,8 @@ window.Ranked = {
     this._stopSearchTimer();
     if (this._botSearchTimeout) { clearTimeout(this._botSearchTimeout); this._botSearchTimeout = null; }
     if (this.socket?.connected) this.socket.emit('leave_queue');
+    this._realPlayerMatched = false;
+    this._currentSearchCategory = null;
     this.hideSearchingUI();
   },
 

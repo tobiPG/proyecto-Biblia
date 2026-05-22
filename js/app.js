@@ -2187,16 +2187,21 @@ const App = {
     
     grid.innerHTML = window.RANKED_CATEGORIES.map(cat => {
       const ranking = myRankings[cat.id] || { trophies: 0 };
-      const rank = window.Ranked.getRankByTrophies(ranking.trophies);
-      
+      const t = ranking.trophies;
+      const rank = window.Ranked.getRankByTrophies(t);
+      const pct = rank.maxTrophies === Infinity ? 100
+        : Math.round(((t - rank.minTrophies) / (rank.maxTrophies - rank.minTrophies)) * 100);
+      const toNext = rank.maxTrophies === Infinity ? '' : `${rank.maxTrophies - t} para subir`;
       return `
         <div class="ranked-category-card" data-category="${cat.id}">
           <span class="ranked-category-icon">${cat.icon}</span>
           <span class="ranked-category-name">${cat.name}</span>
-          <div class="ranked-category-trophies">
-            <span>${ranking.trophies} T</span>
+          <div class="ranked-category-trophies">🏆 <strong>${t}</strong></div>
+          <div class="ranked-cat-bar-wrap">
+            <div class="ranked-cat-bar-fill" style="width:${pct}%;background:${rank.color}"></div>
           </div>
-          <span class="ranked-category-rank" style="color: ${rank.color}">${rank.icon} ${rank.name}</span>
+          <span class="ranked-category-rank" style="color:${rank.color}">${rank.icon} ${rank.name}</span>
+          ${toNext ? `<span class="ranked-cat-to-next">${toNext}</span>` : ''}
         </div>
       `;
     }).join('');
@@ -2587,17 +2592,21 @@ const App = {
     const category = document.getElementById('leaderboard-category-select')?.value || 'personajes';
     const allCategories = ['personajes', 'lugares', 'eventos', 'profetas', 'reyes', 'milagros', 'parabolas', 'salmos-proverbios'];
     
-    // Obtener trofeos del usuario para mostrar su rango
+    // Obtener trofeos del usuario (backend o local)
     let myTrophies = 0;
     if (window.BackendService?.token) {
       if (category === 'aleatorio') {
         const allRankings = await window.BackendService.getMyRankings();
-        for (const cat of allCategories) {
-          myTrophies += allRankings[cat]?.trophies || 0;
-        }
+        for (const cat of allCategories) myTrophies += allRankings[cat]?.trophies || 0;
       } else {
         const catRanking = await window.BackendService.getCategoryRanking(category);
         myTrophies = catRanking?.trophies || 0;
+      }
+    } else if (window.Ranked) {
+      if (category === 'aleatorio') {
+        for (const cat of allCategories) myTrophies += window.Ranked.getLocalTrophies(cat);
+      } else {
+        myTrophies = window.Ranked.getLocalTrophies(category);
       }
     }
     
@@ -2613,26 +2622,26 @@ const App = {
     const list = document.getElementById('ranked-leaderboard-list');
     if (!list) return;
 
+    const medals = ['🥇', '🥈', '🥉'];
     list.innerHTML = leaderboard.map((player, index) => {
       const position = index + 1;
       const posClass = position === 1 ? 'gold' : position === 2 ? 'silver' : position === 3 ? 'bronze' : '';
-      const isMe = player.userId === myUserId;
-      
+      const isMe = player.userId === 'local' || player.name === '★ Tú';
+      const rank = window.Ranked ? window.Ranked.getRankByTrophies(player.trophies) : { icon: '🥉', color: '#CD7F32' };
+      const posLabel = medals[index] || `${position}`;
+      const winRate = player.gamesPlayed > 0 ? Math.round((player.wins / player.gamesPlayed) * 100) : 0;
       return `
-        <div class="leaderboard-item ${isMe ? 'me' : ''}">
-          <span class="leaderboard-position ${posClass}">${position}</span>
-          <span class="leaderboard-name">${player.name}</span>
-          <div class="leaderboard-trophies">
-            <span>${player.trophies}</span>
-            <span>T</span>
-          </div>
-          <span class="leaderboard-stats">${player.wins}W ${player.losses}L</span>
+        <div class="leaderboard-item ${isMe ? 'me' : ''} ${posClass}">
+          <span class="leaderboard-position">${posLabel}</span>
+          <span class="leaderboard-name">${isMe ? `<strong>${player.name}</strong>` : player.name}</span>
+          <div class="leaderboard-trophies">🏆 ${player.trophies}</div>
+          <span class="leaderboard-stats" style="color:${rank.color}">${rank.icon}</span>
         </div>
       `;
     }).join('');
-    
+
     if (leaderboard.length === 0) {
-      list.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">No hay jugadores en este rango</p>';
+      list.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:20px">Juega partidas para ver la clasificación</p>';
     }
   },
   

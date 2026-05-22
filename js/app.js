@@ -3067,7 +3067,17 @@ const App = {
     // CAMPAÑA - Ir directo al resultado de capítulo
     // ============================================
     if (this.campaignMode) {
-      this.showResults();
+      Storage.addXP(this.sessionPoints);
+      ['phase-overlay','gameover-overlay','ad-overlay','catcomplete-overlay'].forEach(id => {
+        document.getElementById(id)?.classList.add('hidden');
+      });
+      CampaignManager.saveChapterResult(
+        this.campaignMode.chapterId,
+        this.sessionCorrect,
+        this.currentQuestions.length,
+        this.sessionPoints
+      );
+      this.campaignMode = null;
       return;
     }
 

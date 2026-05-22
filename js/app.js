@@ -2129,6 +2129,7 @@ const App = {
 
   // Abrir pantalla de ranked
   async openRankedScreen() {
+    document.getElementById('ranked-opponent-bar')?.classList.add('hidden');
     await this.loadRankedData();
     this.showScreen('ranked');
   },
@@ -2317,8 +2318,8 @@ const App = {
     this.answered = false;
     this.infiniteLives = true;
 
-    // Timer de 8s para ranked
-    this.timerMax = window.RANKED_CONFIG?.questionTime || 8;
+    // Timer ranked (configurable, por defecto 13s)
+    this.timerMax = window.RANKED_CONFIG?.questionTime || 13;
 
     // Mostrar y configurar barra del oponente
     const oppBar = document.getElementById('ranked-opponent-bar');
@@ -2326,6 +2327,8 @@ const App = {
       oppBar.classList.remove('hidden');
       const nameEl = document.getElementById('ranked-opp-name-bar');
       if (nameEl) nameEl.textContent = matchData.opponent?.userName || 'Oponente';
+      const scoreBarEl = document.getElementById('ranked-opp-score-bar');
+      if (scoreBarEl) scoreBarEl.textContent = '0 pts';
       // Crear indicadores por pregunta
       const indContainer = document.getElementById('ranked-opp-indicators');
       if (indContainer) {
@@ -4516,8 +4519,8 @@ const App = {
     if (history.length === 0) {
       historyList.innerHTML = `
         <div class="empty-state">
-          <div class="empty-icon">iv>
-          <div class="empty-text">Aun no has jugado ninguna partida</div>
+          <div class="empty-icon">📜</div>
+          <div class="empty-text">Aún no has jugado ninguna partida</div>
         </div>
       `;
     } else {

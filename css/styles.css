@@ -333,6 +333,15 @@ body::after {
   font-weight: 700;
 }
 
+.user-greeting {
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-top: 4px;
+  font-weight: 600;
+  opacity: 0.85;
+  min-height: 1em;
+}
+
 /* === VERSE CARD (Home) - ESTILO CULT-UI === */
 .verse-card {
   background: rgba(255,255,255,0.03);

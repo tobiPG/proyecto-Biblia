@@ -6634,14 +6634,25 @@ button:focus:not(:focus-visible) {
 .daily-challenge-card:hover { transform: translateY(-2px); }
 .daily-challenge-card.completed {
   background: linear-gradient(135deg, var(--success), #388E3C);
-  opacity: 0.85;
+  opacity: 0.9;
   cursor: default;
+}
+.daily-challenge-card:not(.completed) {
+  animation: dailyPulse 3s ease-in-out infinite;
+}
+@keyframes dailyPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(var(--primary-rgb, 74,144,226), 0.3); }
+  50% { box-shadow: 0 4px 24px rgba(var(--primary-rgb, 74,144,226), 0.6); }
 }
 .daily-icon { font-size: 2rem; }
 .daily-info { flex: 1; }
 .daily-info h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 2px; }
 .daily-info p { font-size: 0.8rem; opacity: 0.85; }
 .daily-arrow { font-size: 1.2rem; opacity: 0.7; }
+/* Streak card milestone glow */
+.streak-card[data-milestone="7"] { box-shadow: 0 4px 20px rgba(255,100,0,0.5); }
+.streak-card[data-milestone="14"] { box-shadow: 0 4px 20px rgba(255,200,0,0.5); background: linear-gradient(135deg,#e65c00,#f9d423); }
+.streak-card[data-milestone="30"] { box-shadow: 0 4px 24px rgba(180,0,255,0.5); background: linear-gradient(135deg,#6a0dad,#c471ed); }
 
 /* ============================================================
    SPEED STAT

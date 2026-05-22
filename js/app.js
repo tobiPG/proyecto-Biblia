@@ -520,6 +520,7 @@ const App = {
       this.initKeyboard();
       this.initDailyStreak();
       this.renderDailyChallengeCard();
+      this.scheduleMidnightRefresh();
       this.initNotifications();
       try {
         this.initPowerupListeners();
@@ -1430,6 +1431,9 @@ const App = {
     this.renderHomeLives();
     // Update coins display
     this.updateCoinsDisplay();
+    // Always refresh daily cards on home
+    this.renderDailyChallengeCard();
+    this.renderDailyStreakCard(Storage.getDailyStreak());
   },
   showDailyVerse() {
     // Verificar que DAILY_VERSES exista y tenga contenido
@@ -3036,7 +3040,7 @@ const App = {
     const newMultiplier = Storage.updateCoinMultiplier(phasePerfect);
     this.coinMultiplier = newMultiplier;
     
-    // If daily challenge, save completion and show different UI
+    // If daily challenge, save completion, give bonus and show different UI
     if (this.isDailyChallenge) {
       const today = new Date().toISOString().split('T')[0];
       Storage.saveDailyChallenge({
@@ -3044,9 +3048,14 @@ const App = {
         completed: true,
         score: this.sessionPoints
       });
+      // Bonus coins for daily challenge
+      const dailyBonus = 50 + Math.floor(this.sessionPoints / 10);
+      Storage.addCoins(dailyBonus);
       this.isDailyChallenge = false;
-      // Render daily card as completed
       this.renderDailyChallengeCard();
+      setTimeout(() => {
+        this.showToast(`🎯 ¡Desafío del día completado! +${dailyBonus} monedas bonus`, 'success');
+      }, 800);
     }
     
     // ============================================
@@ -6057,10 +6066,17 @@ const App = {
     }
     Storage.saveDailyStreak(streak);
     this.renderDailyStreakCard(streak);
-    // Show a toast for streaks
-    if (streak.days > 1) {
+    // Milestone rewards and toasts
+    const milestones = { 3: 30, 7: 75, 14: 150, 30: 400, 60: 1000, 100: 2500 };
+    if (milestones[streak.days]) {
+      const bonus = milestones[streak.days];
+      Storage.addCoins(bonus);
       setTimeout(() => {
-        this.showToast(` !Racha de ${streak.days} dias! !Sigue asi!`);
+        this.showToast(`🏆 ¡Racha de ${streak.days} días! +${bonus} monedas de regalo`, 'success');
+      }, 1500);
+    } else if (streak.days > 1) {
+      setTimeout(() => {
+        this.showToast(`🔥 ¡Racha de ${streak.days} días! ¡Sigue así!`);
       }, 1500);
     }
   },
@@ -6069,16 +6085,31 @@ const App = {
     if (!card || !streak || streak.days < 1) return;
     card.classList.remove('hidden');
     document.getElementById('streak-card-days').textContent = streak.days;
+    const iconEl = card.querySelector('.streak-card-icon');
     if (streak.days >= 30) {
-      document.getElementById('streak-card-title').textContent = 'Racha legendaria!';
+      document.getElementById('streak-card-title').textContent = '¡Racha legendaria!';
+      if (iconEl) iconEl.textContent = '👑';
+      card.dataset.milestone = '30';
+    } else if (streak.days >= 14) {
+      document.getElementById('streak-card-title').textContent = '¡Racha increíble!';
+      if (iconEl) iconEl.textContent = '⚡';
+      card.dataset.milestone = '14';
     } else if (streak.days >= 7) {
-      document.getElementById('streak-card-title').textContent = 'Gran racha semanal!';
+      document.getElementById('streak-card-title').textContent = '¡Racha semanal!';
+      if (iconEl) iconEl.textContent = '🔥';
+      card.dataset.milestone = '7';
+    } else if (streak.days >= 3) {
+      document.getElementById('streak-card-title').textContent = '¡Vas bien!';
+      if (iconEl) iconEl.textContent = '🔥';
+      card.dataset.milestone = '';
     } else {
-      document.getElementById('streak-card-title').textContent = ' Racha diaria';
+      document.getElementById('streak-card-title').textContent = 'Racha diaria';
+      if (iconEl) iconEl.textContent = '🔥';
+      card.dataset.milestone = '';
     }
     document.getElementById('streak-card-desc').textContent =
-      streak.days === 1 ? '!Primer dia! Vuelve manana' :
-      `Mejor racha: ${streak.best || streak.days} dias`;
+      streak.days === 1 ? '¡Primer día! Vuelve mañana' :
+      `Mejor racha: ${streak.best || streak.days} días`;
   },
   // ============================================================
   // DAILY CHALLENGE
@@ -6089,13 +6120,30 @@ const App = {
     const challenge = Storage.getDailyChallenge();
     const today = new Date().toISOString().split('T')[0];
     btn.classList.remove('hidden', 'completed');
+    // Clear any previous countdown interval
+    if (this._dailyChallengeCountdownInterval) {
+      clearInterval(this._dailyChallengeCountdownInterval);
+      this._dailyChallengeCountdownInterval = null;
+    }
     if (challenge.date === today && challenge.completed) {
       btn.classList.add('completed');
-      document.getElementById('daily-challenge-desc').textContent =
-        ` Completado - ${challenge.score} pts`;
+      const descEl = document.getElementById('daily-challenge-desc');
+      const updateCountdown = () => {
+        const now = new Date();
+        const midnight = new Date(now);
+        midnight.setHours(24, 0, 0, 0);
+        const diff = midnight - now;
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        descEl.textContent = `✓ ${challenge.score} pts · Nuevo en ${h}h ${m}m`;
+      };
+      updateCountdown();
+      this._dailyChallengeCountdownInterval = setInterval(updateCountdown, 60000);
     } else {
+      const iconEl = btn.querySelector('.daily-icon');
+      if (iconEl) iconEl.textContent = '🎯';
       document.getElementById('daily-challenge-desc').textContent =
-        '10 preguntas unicas cada dia';
+        '10 preguntas únicas · Bonus de monedas';
     }
   },
   startDailyChallenge() {
@@ -6178,6 +6226,21 @@ const App = {
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
+  },
+  // ============================================================
+  // MIDNIGHT REFRESH
+  // ============================================================
+  scheduleMidnightRefresh() {
+    if (this._midnightRefreshTimeout) clearTimeout(this._midnightRefreshTimeout);
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24, 0, 5, 0);
+    const ms = midnight - now;
+    this._midnightRefreshTimeout = setTimeout(() => {
+      this.initDailyStreak();
+      this.renderDailyChallengeCard();
+      this.scheduleMidnightRefresh();
+    }, ms);
   },
   // ============================================================
   // SPEED STATISTICS

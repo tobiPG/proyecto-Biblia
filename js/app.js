@@ -1425,7 +1425,7 @@ const App = {
     const player = Storage.getPlayer();
     const greeting = document.getElementById('user-greeting');
     if (greeting) {
-      greeting.textContent = `!Hola, ${player.name}! Nivel ${player.level}`;
+      greeting.textContent = `¡Hola, ${player.name}! Nivel ${player.level}`;
     }
     // Update home lives card
     this.renderHomeLives();
@@ -3140,7 +3140,7 @@ const App = {
         diffLabelEl.classList.add('hidden');
       }
     } else if (this.categoryExhausted) {
-      subtitleEl.textContent = '?? !Categoria completada!';
+      subtitleEl.textContent = '✅ ¡Categoría completada!';
       diffLabelEl.textContent = 'Se mezclaran preguntas de todas las categorias';
       diffLabelEl.style.color = 'var(--accent)';
       subtitleEl.classList.remove('hidden');
@@ -3832,7 +3832,7 @@ const App = {
         this.lives = Math.min(this.maxLives, this.lives + 1);
         this.saveLivesState();
         this.playSound('correct');
-        this.showToast('?? +1 vida obtenida');
+        this.showToast('💖 +1 vida obtenida');
         break;
         
       case 'life_full':
@@ -3864,7 +3864,7 @@ const App = {
         Storage.addCoins(500);
         this.updateCoinsDisplay();
         this.playSound('correct');
-        this.showToast('?? +500 monedas');
+        this.showToast('💰 +500 monedas');
         if (window.BackendService?.currentUser) {
           window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
@@ -3874,7 +3874,7 @@ const App = {
         Storage.addCoins(1650); // 1500 + 10% bonus
         this.updateCoinsDisplay();
         this.playSound('correct');
-        this.showToast('?? +1,650 monedas (+10% bonus)');
+        this.showToast('💰 +1,650 monedas (+10% bonus)');
         if (window.BackendService?.currentUser) {
           window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
@@ -3884,7 +3884,7 @@ const App = {
         Storage.addCoins(6250); // 5000 + 25% bonus
         this.updateCoinsDisplay();
         this.playSound('complete');
-        this.showToast('?? +6,250 monedas (+25% bonus)');
+        this.showToast('💰 +6,250 monedas (+25% bonus)');
         if (window.BackendService?.currentUser) {
           window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
@@ -3894,7 +3894,7 @@ const App = {
         Storage.addCoins(16800); // 12000 + 40% bonus
         this.updateCoinsDisplay();
         this.playSound('complete');
-        this.showToast('?? +16,800 monedas (+40% bonus)');
+        this.showToast('💰 +16,800 monedas (+40% bonus)');
         if (window.BackendService?.currentUser) {
           window.BackendService?.syncCoinsToCloud(Storage.getCoins());
         }
@@ -3941,7 +3941,7 @@ const App = {
     if (result) {
       const cancelResult = await Billing.cancelSubscription();
       if (cancelResult.success) {
-        this.showToast('?? ' + cancelResult.message);
+        this.showToast('✅ ' + cancelResult.message);
         this.renderShop();
       } else {
         this.showToast('? ' + cancelResult.error, 'error');
@@ -4212,13 +4212,13 @@ const App = {
     // Mensaje motivador
     let motivation, icon;
     if (percentage >= 90) {
-      icon = '*'; motivation = '!Increible! Vas como un verdadero sabio biblico.';
+      icon = '⭐'; motivation = '¡Increíble! Vas como un verdadero sabio bíblico.';
     } else if (percentage >= 70) {
-      icon = '+'; motivation = '!Muy bien! Tu conocimiento brilla con fuerza.';
+      icon = '👍'; motivation = '¡Muy bien! Tu conocimiento brilla con fuerza.';
     } else if (percentage >= 50) {
-      icon = '~'; motivation = '!Sigue adelante! La Palabra de Dios te guia.';
+      icon = '📖'; motivation = '¡Sigue adelante! La Palabra de Dios te guía.';
     } else {
-      icon = '-'; motivation = '!No te rindas! Cada pregunta es una oportunidad de aprender.';
+      icon = '💪'; motivation = '¡No te rindas! Cada pregunta es una oportunidad de aprender.';
     }
     document.getElementById('pause-icon').textContent = icon;
     document.getElementById('pause-motivation').textContent = motivation;
@@ -4290,7 +4290,7 @@ const App = {
       // Subio de nivel!
       this.playSound('levelup');
       setTimeout(() => {
-        this.showToast(`!Subiste al nivel ${playerAfter.level}!`, 'success');
+        this.showToast(`🎉 ¡Subiste al nivel ${playerAfter.level}!`, 'success');
       }, 1500);
     }
     // Save to history
@@ -4372,11 +4372,11 @@ const App = {
     // Icon & title based on score
     let icon, title, subtitle;
     if (percentage === 100) {
-      icon = '*'; title = '!PERFECTO!'; subtitle = '!No has fallado ninguna!';
+      icon = '🏆'; title = '¡PERFECTO!'; subtitle = '¡No has fallado ninguna!';
     } else if (percentage >= 80) {
-      icon = '*'; title = '!Excelente!'; subtitle = '!Conoces muy bien la Biblia!';
+      icon = '⭐'; title = '¡Excelente!'; subtitle = '¡Conoces muy bien la Biblia!';
     } else if (percentage >= 60) {
-      icon = '+'; title = '!Bien hecho!'; subtitle = 'Sigue estudiando la Palabra';
+      icon = '👍'; title = '¡Bien hecho!'; subtitle = 'Sigue estudiando la Palabra';
     } else if (percentage >= 40) {
       icon = '~'; title = 'Puedes mejorar'; subtitle = 'No te rindas, sigue aprendiendo';
     } else {
@@ -4804,7 +4804,7 @@ const App = {
   showShieldProtectionEffect() {
     const popup = document.createElement('div');
     popup.className = 'point-popup shield-protection';
-    popup.textContent = '??? Protegido';
+    popup.textContent = '🛡️ Protegido';
     popup.style.color = '#4CAF50';
     document.body.appendChild(popup);
     setTimeout(() => popup.remove(), 1200);
@@ -5210,7 +5210,7 @@ const App = {
       // Subio de nivel!
       this.playSound('levelup');
       setTimeout(() => {
-        this.showToast(`!Subiste al nivel ${playerAfter.level}!`, 'success');
+        this.showToast(`🎉 ¡Subiste al nivel ${playerAfter.level}!`, 'success');
       }, 1500);
     }
     // Save to history
@@ -5231,15 +5231,15 @@ const App = {
     const pct = total > 0 ? Math.round((this.challengeCorrect / total) * 100) : 0;
     let icon, title, subtitle;
     if (this.challengeCorrect >= 20) {
-      icon = '*'; title = '!INCREIBLE!'; subtitle = `${this.challengeCorrect} respuestas correctas  !Eres imparable!`;
+      icon = '🏆'; title = '¡INCREÍBLE!'; subtitle = `${this.challengeCorrect} respuestas correctas · ¡Eres imparable!`;
     } else if (this.challengeCorrect >= 15) {
-      icon = '*'; title = '!Excelente!'; subtitle = `${this.challengeCorrect} correctas  !Gran desempeno!`;
+      icon = '⭐'; title = '¡Excelente!'; subtitle = `${this.challengeCorrect} correctas · ¡Gran desempeño!`;
     } else if (this.challengeCorrect >= 10) {
-      icon = '+'; title = '!Bien hecho!'; subtitle = `${this.challengeCorrect} correctas  !Sigue mejorando!`;
+      icon = '👍'; title = '¡Bien hecho!'; subtitle = `${this.challengeCorrect} correctas · ¡Sigue mejorando!`;
     } else if (this.challengeCorrect >= 5) {
-      icon = '~'; title = '!Buen intento!'; subtitle = `${this.challengeCorrect} correctas  !Puedes mas!`;
+      icon = '📖'; title = '¡Buen intento!'; subtitle = `${this.challengeCorrect} correctas · ¡Puedes más!`;
     } else {
-      icon = '-'; title = 'A practicar'; subtitle = `${this.challengeCorrect} correctas  !No te rindas!`;
+      icon = '💪'; title = 'A practicar'; subtitle = `${this.challengeCorrect} correctas · ¡No te rindas!`;
     }
     document.getElementById('cr-icon').textContent = icon;
     document.getElementById('cr-title').textContent = title;
@@ -5711,7 +5711,7 @@ const App = {
       navigator.share({ title: 'BibliaQuiz', text }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text).then(() => {
-        this.showToast('?? Resultado copiado al portapapeles', 'success');
+        this.showToast('✅ Resultado copiado al portapapeles', 'success');
       }).catch(() => {
         this.showToast('No se pudo copiar', 'error');
       });
@@ -5749,7 +5749,7 @@ const App = {
     ctx.fillStyle = '#fff';
     ctx.font = 'bold 32px Nunito, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('?? BibliaQuiz', 300, 55);
+    ctx.fillText('✝️ BibliaQuiz', 300, 55);
     
     // Score circle
     ctx.beginPath();
@@ -5805,7 +5805,7 @@ const App = {
         a.download = 'bibliaquiz-resultado.png';
         a.click();
         URL.revokeObjectURL(url);
-        this.showToast('?? Imagen descargada');
+        this.showToast('✅ Imagen descargada');
       }
     } catch (e) {
       console.error('[Share] Error sharing image:', e);
@@ -5914,7 +5914,7 @@ const App = {
     a.download = `bibliaquiz-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    this.showToast('?? Respaldo exportado correctamente', 'success');
+    this.showToast('✅ Respaldo exportado correctamente', 'success');
   },
   importData(event) {
     const file = event.target.files[0];
@@ -6170,7 +6170,7 @@ const App = {
     // Verificar vidas antes de iniciar
     this.loadLives();
     if (!this.infiniteLives && this.lives <= 0) {
-      this.showToast('?? No tienes vidas. Espera a que se regeneren', 'error');
+      this.showToast('❤️ No tienes vidas. Espera a que se regeneren', 'error');
       return;
     }
     // Seed-based daily question selection
@@ -6266,7 +6266,7 @@ const App = {
   showStreakPopup(streak) {
     const popup = document.createElement('div');
     popup.className = 'streak-popup';
-    popup.textContent = ` !Racha de ${streak}! +50%`;
+    popup.textContent = `🔥 ¡Racha de ${streak}! +50%`;
     document.body.appendChild(popup);
     // Sonido de racha
     this.playSound('streak');
@@ -6489,7 +6489,7 @@ const App = {
         if (accHeight > 40) {
           ctx.fillStyle = '#fff';
           ctx.font = '10px Nunito, sans-serif';
-          ctx.fillText(`?? ${day.games}`, x + barW / 2, padT + chartH - accHeight + 32);
+          ctx.fillText(`${day.games}`, x + barW / 2, padT + chartH - accHeight + 32);
         }
       }
       

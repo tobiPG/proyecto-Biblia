@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliaquiz-v94';
+const CACHE_NAME = 'bibliaquiz-v96';
 
 // Archivos críticos que deben cachearse en el install
 const CRITICAL_ASSETS = [
@@ -26,6 +26,7 @@ const OPTIONAL_ASSETS = [
   './js/clans.js',
   './js/tournament.js',
   './js/backend.js',
+  './js/sounds.js',
   './icons/icon-72.png',
   './icons/icon-96.png',
   './icons/icon-128.png',
@@ -43,7 +44,7 @@ const OPTIONAL_ASSETS = [
 ];
 
 // Files that should always fetch fresh from network
-const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'definitions.js', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js', 'campaign.js', 'chronology.js', 'clans.js', 'tournament.js', 'backend.js'];
+const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'definitions.js', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js', 'campaign.js', 'chronology.js', 'clans.js', 'tournament.js', 'backend.js', 'sounds.js', 'ranked.js'];
 
 // Install — solo bloquea en críticos, opcionales en background
 self.addEventListener('install', event => {

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#2d2060"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a96e"/>
+      <stop offset="100%" stop-color="#a07840"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e6fa5"/>
+      <stop offset="100%" stop-color="#0d4a7a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="600" height="320" fill="url(#sky)"/>
+
+  <!-- Mar Mediterráneo (arriba) -->
+  <ellipse cx="300" cy="30" rx="320" ry="55" fill="url(#sea)" opacity="0.8"/>
+  <text x="300" y="25" text-anchor="middle" fill="#7dd3f0" font-size="11" font-family="serif" font-style="italic">Mar Mediterráneo</text>
+
+  <!-- Egipto (izquierda) -->
+  <rect x="20" y="60" width="140" height="200" rx="8" fill="#b8864e" opacity="0.9"/>
+  <text x="90" y="90" text-anchor="middle" fill="#fff8e0" font-size="15" font-family="serif" font-weight="bold">EGIPTO</text>
+  <!-- Pirámides -->
+  <polygon points="55,170 90,120 125,170" fill="#e8c87a" stroke="#a07030" stroke-width="1.5"/>
+  <polygon points="75,170 100,135 125,170" fill="#d4a855" stroke="#a07030" stroke-width="1.5"/>
+  <!-- Ciudad (Ramsés) -->
+  <rect x="55" y="185" width="70" height="35" rx="3" fill="#c8986a"/>
+  <text x="90" y="207" text-anchor="middle" fill="#fff8e0" font-size="10" font-family="serif">Ramsés</text>
+
+  <!-- Mar Rojo -->
+  <path d="M160 60 Q185 160 175 270" stroke="url(#sea)" stroke-width="28" fill="none" opacity="0.9"/>
+  <text x="172" y="165" text-anchor="middle" fill="#7dd3f0" font-size="10" font-family="serif" font-style="italic" transform="rotate(-75,172,165)">Mar Rojo</text>
+
+  <!-- Desierto del Sinaí -->
+  <path d="M200 80 Q300 70 390 90 L400 270 Q300 280 200 270 Z" fill="#c8a96e" opacity="0.95"/>
+  <text x="295" y="105" text-anchor="middle" fill="#6b3a1a" font-size="13" font-family="serif" font-weight="bold">DESIERTO</text>
+  <text x="295" y="120" text-anchor="middle" fill="#6b3a1a" font-size="13" font-family="serif" font-weight="bold">DEL SINAÍ</text>
+  <!-- Monte Sinaí -->
+  <polygon points="270,240 300,185 330,240" fill="#8b5e3c" stroke="#5a3520" stroke-width="2"/>
+  <text x="300" y="260" text-anchor="middle" fill="#4a2010" font-size="10" font-family="serif">Monte Sinaí</text>
+
+  <!-- Canaán (derecha) -->
+  <rect x="400" y="60" width="180" height="200" rx="8" fill="#7aad5c" opacity="0.9"/>
+  <text x="490" y="90" text-anchor="middle" fill="#fff8e0" font-size="15" font-family="serif" font-weight="bold">CANAÁN</text>
+  <!-- Ciudad Canaán -->
+  <rect x="445" y="140" width="90" height="50" rx="4" fill="#5a8a3a"/>
+  <text x="490" y="170" text-anchor="middle" fill="#fff8e0" font-size="11" font-family="serif">Tierra Prometida</text>
+
+  <!-- Ruta del Éxodo (línea punteada) -->
+  <path d="M160 200 Q185 230 200 210 Q230 180 280 200 Q320 215 360 200 Q385 188 400 160"
+        stroke="#FFD700" stroke-width="3" fill="none" stroke-dasharray="10,6"
+        stroke-linecap="round"/>
+  <!-- Flecha final -->
+  <polygon points="400,160 390,152 395,165" fill="#FFD700"/>
+
+  <!-- Personas (icono simple) -->
+  <circle cx="240" cy="195" r="5" fill="#4a2010"/>
+  <circle cx="255" cy="193" r="5" fill="#4a2010"/>
+  <circle cx="248" cy="207" r="5" fill="#4a2010"/>
+
+  <!-- Leyenda -->
+  <rect x="15" y="275" width="570" height="35" rx="6" fill="#1a1a3e" opacity="0.85"/>
+  <line x1="30" y1="292" x2="70" y2="292" stroke="#FFD700" stroke-width="3" stroke-dasharray="8,4"/>
+  <text x="80" y="296" fill="#FFD700" font-size="11" font-family="serif">Ruta del Éxodo</text>
+  <text x="300" y="296" text-anchor="middle" fill="#fff8e0" font-size="12" font-family="serif" font-weight="bold">🗺️ Moisés guía al pueblo de Egipto a Canaán — Éxodo 13:17</text>
+</svg>

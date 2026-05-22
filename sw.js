@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliaquiz-v91';
+const CACHE_NAME = 'bibliaquiz-v92';
 const ASSETS = [
   './',
   './index.html',
@@ -29,7 +29,11 @@ const ASSETS = [
   './icons/icon-256.png',
   './icons/icon-384.png',
   './icons/icon-512.png',
-  './icons/icon-512.svg'
+  './icons/icon-512.svg',
+  './images/questions/mapa-exodo.svg',
+  './images/questions/mapa-israel.svg',
+  './images/questions/carnero-abraham.svg',
+  './images/questions/viajes-pablo.svg'
 ];
 
 // Files that should always fetch fresh from network

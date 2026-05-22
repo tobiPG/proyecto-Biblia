@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#2d2060"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="600" height="320" fill="url(#bg3)"/>
+
+  <!-- Mar Mediterráneo -->
+  <path d="M0 0 L600 0 L600 320 L0 320 Z" fill="#1e5a8a" opacity="0.5"/>
+
+  <!-- TURQUÍA / Asia Menor -->
+  <path d="M180 30 Q280 20 390 35 Q450 45 490 55 Q510 70 500 100 Q485 120 460 115 Q420 110 380 120 Q340 130 300 115 Q260 100 230 110 Q200 120 185 105 Q170 90 175 65 Z"
+        fill="#6a8a4a" opacity="0.92"/>
+  <text x="335" y="80" text-anchor="middle" fill="#fff8e0" font-size="13" font-family="serif" font-weight="bold">ASIA MENOR</text>
+  <text x="335" y="95" text-anchor="middle" fill="#d4f0c0" font-size="10" font-family="serif">(Turquía actual)</text>
+
+  <!-- GRECIA -->
+  <path d="M60 100 Q90 90 120 95 Q140 100 145 120 Q148 140 130 150 Q115 160 100 155 Q80 150 70 140 Q55 125 60 100 Z"
+        fill="#6a8a4a" opacity="0.92"/>
+  <text x="102" y="128" text-anchor="middle" fill="#fff8e0" font-size="12" font-family="serif" font-weight="bold">GRECIA</text>
+
+  <!-- SIRIA / Antioquía -->
+  <path d="M490 55 Q540 45 580 55 Q590 75 580 100 Q560 110 530 105 Q505 100 495 85 Z"
+        fill="#7a9a5a" opacity="0.88"/>
+  <text x="538" y="83" text-anchor="middle" fill="#fff8e0" font-size="11" font-family="serif">SIRIA</text>
+
+  <!-- ISRAEL / Judea -->
+  <path d="M500 150 Q530 145 555 155 Q560 175 545 185 Q525 190 505 182 Q495 170 500 150 Z"
+        fill="#8a9a5a" opacity="0.88"/>
+  <text x="527" y="170" text-anchor="middle" fill="#fff8e0" font-size="10" font-family="serif">JUDEA</text>
+
+  <!-- CHIPRE (isla) -->
+  <ellipse cx="370" cy="145" rx="35" ry="16" fill="#6a8a4a" opacity="0.85"/>
+  <text x="370" y="149" text-anchor="middle" fill="#fff8e0" font-size="9" font-family="serif">CHIPRE</text>
+
+  <!-- CRETA (isla) -->
+  <ellipse cx="195" cy="190" rx="48" ry="16" fill="#6a8a4a" opacity="0.85"/>
+  <text x="195" y="194" text-anchor="middle" fill="#fff8e0" font-size="9" font-family="serif">CRETA</text>
+
+  <!-- MALTA (isla pequeña) -->
+  <ellipse cx="120" cy="220" rx="15" ry="8" fill="#6a8a4a" opacity="0.8"/>
+  <text x="120" y="234" text-anchor="middle" fill="#d4f0c0" font-size="8" font-family="serif">Malta</text>
+
+  <!-- ============ CIUDADES ============ -->
+  <!-- Antioquía (origen) -->
+  <circle cx="530" cy="68" r="7" fill="#FFD700" stroke="white" stroke-width="1.5"/>
+  <text x="530" y="57" text-anchor="middle" fill="#FFD700" font-size="9" font-family="serif" font-weight="bold">Antioquía</text>
+
+  <!-- Iconio -->
+  <circle cx="380" cy="78" r="5" fill="#ff9966" stroke="white" stroke-width="1"/>
+  <text x="380" y="68" text-anchor="middle" fill="#ffddcc" font-size="8" font-family="serif">Iconio</text>
+
+  <!-- Éfeso -->
+  <circle cx="255" cy="95" r="5" fill="#ff9966" stroke="white" stroke-width="1"/>
+  <text x="255" y="84" text-anchor="middle" fill="#ffddcc" font-size="8" font-family="serif">Éfeso</text>
+
+  <!-- Filipos -->
+  <circle cx="155" cy="90" r="5" fill="#ff9966" stroke="white" stroke-width="1"/>
+  <text x="155" y="79" text-anchor="middle" fill="#ffddcc" font-size="8" font-family="serif">Filipos</text>
+
+  <!-- Corinto -->
+  <circle cx="100" cy="148" r="5" fill="#ff9966" stroke="white" stroke-width="1"/>
+  <text x="100" y="138" text-anchor="middle" fill="#ffddcc" font-size="8" font-family="serif">Corinto</text>
+
+  <!-- Roma -->
+  <circle cx="45" cy="130" r="7" fill="#cc3333" stroke="white" stroke-width="1.5"/>
+  <text x="45" y="119" text-anchor="middle" fill="#ff9999" font-size="9" font-family="serif" font-weight="bold">Roma</text>
+
+  <!-- Tarso -->
+  <circle cx="450" cy="85" r="5" fill="#ff9966" stroke="white" stroke-width="1"/>
+  <text x="450" y="74" text-anchor="middle" fill="#ffddcc" font-size="8" font-family="serif">Tarso</text>
+
+  <!-- ============ RUTAS ============ -->
+  <!-- 1er viaje: Antioquía → Chipre → Iconio → Antioquía -->
+  <path d="M530 68 Q450 120 370 145 Q415 112 380 78 Q460 70 530 68"
+        stroke="#FFD700" stroke-width="2.5" fill="none" stroke-dasharray="8,4" opacity="0.85"/>
+
+  <!-- 2do viaje: Antioquía → Tarso → Éfeso → Filipos → Corinto → Roma -->
+  <path d="M530 68 Q490 75 450 85 Q350 88 255 95 Q200 92 155 90 Q128 118 100 148 Q72 139 45 130"
+        stroke="#66ccff" stroke-width="2.5" fill="none" stroke-dasharray="8,4" opacity="0.85"/>
+
+  <!-- 3er viaje (retorno) -->
+  <path d="M45 130 Q80 170 120 220 Q155 210 195 190 Q280 175 370 145 Q460 130 500 150 Q520 140 530 68"
+        stroke="#ff66cc" stroke-width="2" fill="none" stroke-dasharray="6,5" opacity="0.7"/>
+
+  <!-- Leyenda -->
+  <rect x="10" y="265" width="580" height="48" rx="8" fill="#0d0d2e" opacity="0.92"/>
+  <line x1="22" y1="280" x2="55" y2="280" stroke="#FFD700" stroke-width="2.5" stroke-dasharray="7,3"/>
+  <text x="60" y="283" fill="#FFD700" font-size="10" font-family="serif">1er viaje</text>
+  <line x1="115" y1="280" x2="148" y2="280" stroke="#66ccff" stroke-width="2.5" stroke-dasharray="7,3"/>
+  <text x="153" y="283" fill="#66ccff" font-size="10" font-family="serif">2do viaje</text>
+  <line x1="208" y1="280" x2="241" y2="280" stroke="#ff66cc" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="246" y="283" fill="#ff66cc" font-size="10" font-family="serif">3er viaje</text>
+  <circle cx="320" cy="279" r="5" fill="#FFD700"/>
+  <text x="330" y="283" fill="#fff8e0" font-size="10" font-family="serif">Antioquía (inicio)</text>
+  <circle cx="445" cy="279" r="5" fill="#cc3333"/>
+  <text x="455" y="283" fill="#fff8e0" font-size="10" font-family="serif">Roma (final)</text>
+  <text x="295" y="303" text-anchor="middle" fill="#aaa8d0" font-size="10" font-family="serif">🗺️ Viajes Misioneros de Pablo — Hechos 13–14</text>
+</svg>

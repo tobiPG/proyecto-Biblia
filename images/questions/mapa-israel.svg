@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#2d2060"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="600" height="320" fill="url(#bg2)"/>
+
+  <!-- Mar Mediterráneo (izquierda) -->
+  <path d="M0 0 L170 0 Q130 80 120 160 Q115 240 125 320 L0 320 Z" fill="#1e6fa5" opacity="0.9"/>
+  <text x="60" y="160" text-anchor="middle" fill="#7dd3f0" font-size="10" font-family="serif" font-style="italic" transform="rotate(-90,60,160)">Mar Mediterráneo</text>
+
+  <!-- Río Jordán -->
+  <path d="M370 0 Q365 80 370 160 Q372 240 368 320" stroke="#1e6fa5" stroke-width="8" fill="none" opacity="0.9"/>
+  <text x="388" y="165" fill="#7dd3f0" font-size="10" font-family="serif" font-style="italic" transform="rotate(90,388,165)">Río Jordán</text>
+
+  <!-- Mar de Galilea -->
+  <ellipse cx="380" cy="105" rx="22" ry="30" fill="#1e6fa5" opacity="0.85"/>
+  <text x="418" y="108" fill="#7dd3f0" font-size="9" font-family="serif">Mar de</text>
+  <text x="418" y="119" fill="#7dd3f0" font-size="9" font-family="serif">Galilea</text>
+
+  <!-- Mar Muerto -->
+  <ellipse cx="375" cy="240" rx="18" ry="28" fill="#1e6fa5" opacity="0.75"/>
+  <text x="400" y="244" fill="#7dd3f0" font-size="9" font-family="serif">Mar</text>
+  <text x="400" y="255" fill="#7dd3f0" font-size="9" font-family="serif">Muerto</text>
+
+  <!-- GALILEA (norte) -->
+  <path d="M125 10 L365 10 L365 80 Q300 90 240 85 Q180 90 125 80 Z" fill="#5a9e4a" opacity="0.9"/>
+  <text x="245" y="52" text-anchor="middle" fill="#fff8e0" font-size="16" font-family="serif" font-weight="bold">GALILEA</text>
+  <!-- Ciudad: Nazaret -->
+  <circle cx="215" cy="65" r="5" fill="#FFD700"/>
+  <text x="215" y="78" text-anchor="middle" fill="#fff8e0" font-size="9" font-family="serif">Nazaret</text>
+
+  <!-- SAMARIA (centro) -->
+  <path d="M125 90 L365 90 L362 175 Q300 185 240 180 Q180 185 128 175 Z" fill="#c8a030" opacity="0.9"/>
+  <text x="245" y="140" text-anchor="middle" fill="#fff8e0" font-size="16" font-family="serif" font-weight="bold">SAMARIA</text>
+
+  <!-- JUDEA (sur) -->
+  <path d="M128 183 L362 183 L358 290 Q295 300 240 295 Q180 300 132 290 Z" fill="#a07040" opacity="0.9"/>
+  <text x="245" y="245" text-anchor="middle" fill="#fff8e0" font-size="16" font-family="serif" font-weight="bold">JUDEA</text>
+
+  <!-- DECÁPOLIS (este) -->
+  <path d="M370 80 L530 80 L530 200 L370 200 Z" fill="#7a9060" opacity="0.8"/>
+  <text x="450" y="148" text-anchor="middle" fill="#fff8e0" font-size="14" font-family="serif" font-weight="bold">DECÁPOLIS</text>
+
+  <!-- JERUSALÉN (estrella) -->
+  <polygon points="273,220 277,232 290,232 280,240 284,252 273,244 262,252 266,240 256,232 269,232"
+           fill="#FFD700" stroke="#c8a000" stroke-width="1"/>
+  <text x="273" y="265" text-anchor="middle" fill="#FFD700" font-size="11" font-family="serif" font-weight="bold">Jerusalén</text>
+
+  <!-- Belén -->
+  <circle cx="268" cy="278" r="4" fill="#ff9966"/>
+  <text x="268" y="291" text-anchor="middle" fill="#ffddcc" font-size="9" font-family="serif">Belén</text>
+
+  <!-- Título -->
+  <rect x="430" y="270" width="160" height="42" rx="6" fill="#1a1a3e" opacity="0.9"/>
+  <text x="510" y="287" text-anchor="middle" fill="#FFD700" font-size="11" font-family="serif" font-weight="bold">🗺️ Regiones</text>
+  <text x="510" y="302" text-anchor="middle" fill="#fff8e0" font-size="10" font-family="serif">de Israel — Lc. 2:22</text>
+
+  <!-- Leyenda estrella -->
+  <polygon points="20,298 23,306 31,306 25,311 27,319 20,314 13,319 15,311 9,306 17,306" fill="#FFD700"/>
+  <text x="38" y="312" fill="#FFD700" font-size="10" font-family="serif">= Jerusalén</text>
+</svg>

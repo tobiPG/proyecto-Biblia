@@ -19933,7 +19933,7 @@ const QUESTIONS_DB = [
     question: "Observa el mapa: ¿Cuál era la ruta del Éxodo desde Egipto?",
     options: ["Por el norte hacia Fenicia", "Por el desierto del Sinaí", "Por barco atravesando el mar", "Directamente hacia Canaán"],
     correct: 1, reference: "Éxodo 13:17-18",
-    image: "images/questions/mapa-exodo.jpg",
+    image: "images/questions/mapa-exodo.svg",
     imageAlt: "Mapa de la ruta del Éxodo"
   },
   {
@@ -19941,7 +19941,7 @@ const QUESTIONS_DB = [
     question: "¿En qué región estaba ubicada Jerusalén?",
     options: ["Galilea", "Samaria", "Judea", "Decápolis"],
     correct: 2, reference: "Lucas 2:22",
-    image: "images/questions/mapa-israel.jpg",
+    image: "images/questions/mapa-israel.svg",
     imageAlt: "Mapa de las regiones de Israel"
   },
   {
@@ -19949,7 +19949,7 @@ const QUESTIONS_DB = [
     question: "¿Qué animal aparece en la imagen y fue sacrificado en lugar de Isaac?",
     options: ["Un cordero", "Un carnero", "Un toro", "Una paloma"],
     correct: 1, reference: "Génesis 22:13",
-    image: "images/questions/carnero-abraham.jpg",
+    image: "images/questions/carnero-abraham.svg",
     imageAlt: "Ilustración del sacrificio de Abraham"
   },
   {
@@ -19957,7 +19957,7 @@ const QUESTIONS_DB = [
     question: "¿Cuáles eran las ciudades del viaje misionero de Pablo mostradas en el mapa?",
     options: ["Solo ciudades de Judea", "Ciudades de Asia Menor y Grecia", "Ciudades de Egipto", "Ciudades de Roma únicamente"],
     correct: 1, reference: "Hechos 13-14",
-    image: "images/questions/viajes-pablo.jpg",
+    image: "images/questions/viajes-pablo.svg",
     imageAlt: "Mapa de los viajes misioneros de Pablo"
   },
 

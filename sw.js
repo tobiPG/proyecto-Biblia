@@ -118,8 +118,8 @@ self.addEventListener('push', event => {
   let data = {
     title: '📖 BibliaQuiz',
     body: '¡Tienes un nuevo desafío esperándote!',
-    icon: '/icons/icon-192.png',
-    badge: '/icons/icon-96.png'
+    icon: self.registration.scope + 'icons/icon-192.png',
+    badge: self.registration.scope + 'icons/icon-96.png'
   };
   if (event.data) {
     try { data = { ...data, ...event.data.json() }; }
@@ -146,7 +146,7 @@ self.addEventListener('push', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   if (event.action === 'dismiss') return;
-  const urlToOpen = event.notification.data?.url || '/';
+  const urlToOpen = event.notification.data?.url || self.registration.scope;
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
       for (const client of clientList) {

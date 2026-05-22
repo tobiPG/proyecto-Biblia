@@ -303,6 +303,10 @@ const CampaignManager = {
     });
     if (App.cleanOverlayTraps) App.cleanOverlayTraps();
 
+    // Prevenir cuadros negros: forzar hidden en contenedores de imagen
+    ['question-image-container', 'category-big-icon'].forEach(id => {
+      document.getElementById(id)?.classList.add('hidden');
+    });
     App.showScreen('quiz');
     if (App.playSound) App.playSound('gameStart');
     App.renderLives();
@@ -316,30 +320,48 @@ const CampaignManager = {
 
     const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
 
-    // Update stars
+    // Reset stars first
     const starEls = screen.querySelectorAll('.result-star');
-    starEls.forEach((el, i) => {
-      el.classList.toggle('filled', i < stars);
-    });
+    starEls.forEach(el => el.classList.remove('filled'));
 
     // Update stats
     const correctEl = screen.querySelector('#campaign-result-correct');
     const totalEl = screen.querySelector('#campaign-result-total');
     const pctEl = screen.querySelector('#campaign-result-pct');
     const msgEl = screen.querySelector('#campaign-result-msg');
+    const iconEl = screen.querySelector('.campaign-result-icon');
 
     if (correctEl) correctEl.textContent = correct;
     if (totalEl) totalEl.textContent = total;
     if (pctEl) pctEl.textContent = percentage + '%';
 
-    let msg = '';
-    if (stars === 3) msg = '¡Perfecto! ¡3 estrellas!';
-    else if (stars === 2) msg = '¡Muy bien! ¡2 estrellas!';
-    else if (stars === 1) msg = '¡Capítulo completado!';
-    else msg = 'No has obtenido estrellas. ¡Inténtalo de nuevo!';
+    let msg = '', icon = '⭐';
+    if (stars === 3) { msg = '¡Perfecto! ¡3 estrellas! 🎉'; icon = '🏆'; }
+    else if (stars === 2) { msg = '¡Muy bien! ¡2 estrellas!'; icon = '⭐'; }
+    else if (stars === 1) { msg = '¡Capítulo completado!'; icon = '✅'; }
+    else { msg = '¡Sigue intentando! Necesitas 60% para ganar 1 estrella'; icon = '💪'; }
     if (msgEl) msgEl.textContent = msg;
+    if (iconEl) iconEl.textContent = icon;
+
+    // Bonus de monedas por estrellas
+    const coinBonus = [0, 20, 50, 100][stars] || 0;
+    if (coinBonus > 0 && window.Storage) {
+      Storage.addCoins(coinBonus);
+      setTimeout(() => App.showToast(`⭐ ¡Capítulo completado! +${coinBonus} monedas`, 'success'), 1200);
+    }
 
     App.showScreen('campaign-result');
+
+    // Animación escalonada de estrellas
+    starEls.forEach((el, i) => {
+      if (i < stars) {
+        setTimeout(() => el.classList.add('filled'), 400 + i * 300);
+      }
+    });
+
+    // Actualizar contador de estrellas en la pantalla principal
+    const totalStarsEl = document.getElementById('campaign-total-stars');
+    if (totalStarsEl) totalStarsEl.textContent = this.getTotalStars();
   },
 
   // Render world list

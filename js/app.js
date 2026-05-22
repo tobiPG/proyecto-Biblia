@@ -3061,6 +3061,14 @@ const App = {
     }
     
     // ============================================
+    // CAMPAÑA - Ir directo al resultado de capítulo
+    // ============================================
+    if (this.campaignMode) {
+      this.showResults();
+      return;
+    }
+
+    // ============================================
     // RETO SOCIAL - Mostrar pantalla de resultados
     // ============================================
     if (this.isSocialChallenge && this.socialChallengeData) {
@@ -4341,6 +4349,12 @@ const App = {
     }
     // --- CAMPAIGN MODE HOOK ---
     if (this.campaignMode && window.CampaignManager) {
+      // Dar XP antes de salir
+      Storage.addXP(this.sessionPoints);
+      // Limpiar overlays del quiz para evitar cuadros negros
+      ['phase-overlay','gameover-overlay','ad-overlay','catcomplete-overlay'].forEach(id => {
+        document.getElementById(id)?.classList.add('hidden');
+      });
       CampaignManager.saveChapterResult(
         this.campaignMode.chapterId,
         this.sessionCorrect,
@@ -4348,7 +4362,9 @@ const App = {
         this.sessionPoints
       );
       this.campaignMode = null;
-      return; // campaign result screen shown by CampaignManager
+      this.isRankedMatch = false;
+      this.isDailyChallenge = false;
+      return;
     }
 
     // --- CLAN POINTS HOOK ---

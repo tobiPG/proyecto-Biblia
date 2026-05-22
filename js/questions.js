@@ -9032,7 +9032,7 @@ const QUESTIONS_DB = [
 
     question: "¿Que gritaba la multitud cuando Jesus entro a Jerusalen el Domingo de Ramos?",
 
-    options: ["!Amen!", "!Aleluya!", "!Hosanna al Hijo de David!", "!Gloria a Dios!"],
+    options: ["¡Amén!", "¡Aleluya!", "¡Hosanna al Hijo de David!", "¡Gloria a Dios!"],
 
     correct: 2, reference: "Mateo 21:9"
 

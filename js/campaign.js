@@ -192,6 +192,10 @@ const CampaignManager = {
       }).catch(err => console.error('[Campaign] Error syncing progress:', err));
     }
 
+    // Guardar índices para botón de repetir
+    this._lastWorldIndex = App.campaignMode?.worldIndex ?? null;
+    this._lastChapterIndex = App.campaignMode?.chapterIndex ?? null;
+
     // Show campaign result screen
     this.showCampaignResult(stars, correctCount, totalCount, chapterId);
   },
@@ -348,6 +352,19 @@ const CampaignManager = {
     if (coinBonus > 0 && window.Storage) {
       Storage.addCoins(coinBonus);
       setTimeout(() => App.showToast(`⭐ ¡Capítulo completado! +${coinBonus} monedas`, 'success'), 1200);
+    }
+
+    // Botón de repetir capítulo
+    const retryBtn = document.getElementById('btn-campaign-result-retry');
+    if (retryBtn) {
+      const wi = this._lastWorldIndex;
+      const ci = this._lastChapterIndex;
+      if (wi !== null && ci !== null) {
+        retryBtn.classList.remove('hidden');
+        retryBtn.onclick = () => this.startChapter(wi, ci);
+      } else {
+        retryBtn.classList.add('hidden');
+      }
     }
 
     App.showScreen('campaign-result');

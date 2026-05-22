@@ -346,7 +346,28 @@ window.Ranked = {
   },
 
   async getLeaderboard(category, limit = 100) {
+    if (!window.BackendService?.token) {
+      return this._generateLocalLeaderboard(category, limit);
+    }
     return await window.BackendService.getRankedLeaderboard(category, limit);
+  },
+
+  _generateLocalLeaderboard(category, limit = 20) {
+    const myTrophies = this.getLocalTrophies(category);
+    const names = [...this.BOT_NAMES];
+    for (let i = names.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [names[i], names[j]] = [names[j], names[i]];
+    }
+    const spread = Math.max(myTrophies * 0.6, 80);
+    const players = names.slice(0, Math.min(19, limit - 1)).map(name => {
+      const t = Math.max(0, myTrophies + Math.floor((Math.random() - 0.5) * spread));
+      const wins = Math.floor(Math.random() * 25) + 3;
+      const losses = Math.floor(Math.random() * 15) + 1;
+      return { name: name.replace(/_/g, ' '), trophies: t, wins, losses, gamesPlayed: wins + losses };
+    });
+    players.push({ name: '★ Tú', trophies: myTrophies, wins: 0, losses: 0, gamesPlayed: 0, userId: 'local' });
+    return players.sort((a, b) => b.trophies - a.trophies).slice(0, limit);
   },
 
   // ============================================

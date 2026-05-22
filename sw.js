@@ -1,8 +1,15 @@
-const CACHE_NAME = 'bibliaquiz-v93';
-const ASSETS = [
+const CACHE_NAME = 'bibliaquiz-v94';
+
+// Archivos críticos que deben cachearse en el install
+const CRITICAL_ASSETS = [
   './',
   './index.html',
   './css/styles.css',
+  './manifest.json'
+];
+
+// Archivos opcionales — se cachean en background, si uno falla no rompe el SW
+const OPTIONAL_ASSETS = [
   './js/questions.js',
   './js/definitions.js',
   './js/storage.js',
@@ -19,7 +26,6 @@ const ASSETS = [
   './js/clans.js',
   './js/tournament.js',
   './js/backend.js',
-  './manifest.json',
   './icons/icon-72.png',
   './icons/icon-96.png',
   './icons/icon-128.png',
@@ -37,46 +43,51 @@ const ASSETS = [
 ];
 
 // Files that should always fetch fresh from network
-const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js', 'campaign.js', 'chronology.js', 'clans.js', 'tournament.js', 'backend.js'];
+const NETWORK_FIRST = ['app.js', 'storage.js', 'styles.css', 'definitions.js', 'questions.js', 'billing.js', 'ads.js', 'notifications.js', 'seasons.js', 'firebase.js', 'social.js', 'campaign.js', 'chronology.js', 'clans.js', 'tournament.js', 'backend.js'];
 
-// Install - cache all essential assets
+// Install — solo bloquea en críticos, opcionales en background
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(ASSETS);
+    caches.open(CACHE_NAME).then(async cache => {
+      // Cachear críticos — si falla, el install falla (correcto)
+      await cache.addAll(CRITICAL_ASSETS);
+      // Cachear opcionales uno a uno — si uno falla, continúa
+      const results = await Promise.allSettled(
+        OPTIONAL_ASSETS.map(url =>
+          fetch(url).then(res => {
+            if (res.ok) return cache.put(url, res);
+          })
+        )
+      );
+      const failed = results.filter(r => r.status === 'rejected').length;
+      if (failed > 0) console.log(`[SW] ${failed} archivos opcionales no se cachearon (continuando)`);
     })
   );
   self.skipWaiting();
 });
 
-// Activate - clean old caches
+// Activate — limpiar caches viejos
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    )
   );
   self.clients.claim();
 });
 
-// Fetch - network-first for JS/CSS, stale-while-revalidate for rest
+// Fetch — network-first para JS/CSS, stale-while-revalidate para el resto
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
-  
-  // Ignorar requests de extensiones de Chrome y otros esquemas no soportados
+
   if (!url.protocol.startsWith('http')) return;
-  
-  // Ignorar requests externos (solo cachear nuestro dominio)
   if (url.origin !== location.origin) return;
-  
+
   const isNetworkFirst = NETWORK_FIRST.some(f => url.pathname.endsWith(f));
 
   if (isNetworkFirst) {
-    // Network-first: always get latest code
     event.respondWith(
       fetch(event.request).then(response => {
         if (response.ok) {
@@ -87,7 +98,6 @@ self.addEventListener('fetch', event => {
       }).catch(() => caches.match(event.request, { ignoreSearch: true }))
     );
   } else {
-    // Stale-while-revalidate for static assets
     event.respondWith(
       caches.match(event.request, { ignoreSearch: true }).then(cached => {
         const fetchPromise = fetch(event.request).then(response => {
@@ -103,7 +113,7 @@ self.addEventListener('fetch', event => {
   }
 });
 
-// Push Notification - mostrar notificación cuando llegue del servidor
+// Push Notification
 self.addEventListener('push', event => {
   let data = {
     title: '📖 BibliaQuiz',
@@ -111,15 +121,10 @@ self.addEventListener('push', event => {
     icon: '/icons/icon-192.png',
     badge: '/icons/icon-96.png'
   };
-
   if (event.data) {
-    try {
-      data = { ...data, ...event.data.json() };
-    } catch (e) {
-      data.body = event.data.text();
-    }
+    try { data = { ...data, ...event.data.json() }; }
+    catch (e) { data.body = event.data.text(); }
   }
-
   event.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,
@@ -137,29 +142,20 @@ self.addEventListener('push', event => {
   );
 });
 
-// Notification Click - manejar click en notificación
+// Notification Click
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-
-  if (event.action === 'dismiss') {
-    return;
-  }
-
+  if (event.action === 'dismiss') return;
   const urlToOpen = event.notification.data?.url || '/';
-
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
-      // Si ya hay una ventana abierta, enfocarla
       for (const client of clientList) {
         if (client.url.includes(self.location.origin) && 'focus' in client) {
           client.postMessage({ type: 'notification-click', action: event.action });
           return client.focus();
         }
       }
-      // Si no hay ventana, abrir una nueva
-      if (clients.openWindow) {
-        return clients.openWindow(urlToOpen);
-      }
+      if (clients.openWindow) return clients.openWindow(urlToOpen);
     })
   );
 });

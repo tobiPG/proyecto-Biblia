@@ -312,16 +312,36 @@ window.Ranked = {
   },
 
   // ============================================
-  // ESTADÍSTICAS (vía BackendService REST)
+  // TROFEOS LOCALES (modo offline / bots)
+  // ============================================
+
+  getLocalTrophies(category) {
+    return parseInt(localStorage.getItem(`rtroph_${category}`) || '0', 10);
+  },
+  saveLocalTrophies(category, trophies) {
+    localStorage.setItem(`rtroph_${category}`, Math.max(0, trophies).toString());
+  },
+  getLocalAllTrophies() {
+    const result = {};
+    for (const cat of RANKED_CATEGORIES) {
+      result[cat.id] = { trophies: this.getLocalTrophies(cat.id) };
+    }
+    return result;
+  },
+
+  // ============================================
+  // ESTADÍSTICAS (vía BackendService REST, con fallback local)
   // ============================================
 
   async getMyRankings() {
-    if (!window.BackendService?.token) return {};
+    if (!window.BackendService?.token) return this.getLocalAllTrophies();
     return await window.BackendService.getMyRankings();
   },
 
   async getCategoryRanking(category) {
-    if (!window.BackendService?.token) return { trophies: 0, wins: 0, losses: 0, ties: 0, highestTrophies: 0, gamesPlayed: 0 };
+    if (!window.BackendService?.token) {
+      return { trophies: this.getLocalTrophies(category), wins: 0, losses: 0, ties: 0, highestTrophies: 0, gamesPlayed: 0 };
+    }
     return await window.BackendService.getCategoryRanking(category);
   },
 
@@ -489,6 +509,114 @@ window.Ranked = {
     if (answeredCorrectly) this._opponentCorrect++;
     const scoreEl = document.getElementById('ranked-opp-score-bar');
     if (scoreEl) scoreEl.textContent = `${this._opponentCorrect * 10} pts`;
+  },
+
+  // ============================================
+  // SISTEMA DE BOTS
+  // ============================================
+
+  BOT_NAMES: [
+    'Pedro_Pescador','MariaMagdalena','JuanEvangelista','PabloTarso',
+    'TimoteoFiel','SilasBible','BarnabasAyuda','RutFiel',
+    'DebOraJueza','EliasProf','DavidSalmista','SalomonSabio',
+    'MoisesLibera','JosuaConq','AbrahHamFe','JacobIsrael',
+    'JoseBello','EzequielVis','DanielOrac','JeremiasPro',
+    'AmosPastor','NehemiasConst','EsdrasMaestro','ZacariasPro'
+  ],
+
+  generateBot(myTrophies) {
+    const name = this.BOT_NAMES[Math.floor(Math.random() * this.BOT_NAMES.length)];
+    const spread = Math.max(60, Math.floor(myTrophies * 0.15));
+    const offset = (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * spread);
+    return { userName: name, trophies: Math.max(0, myTrophies + offset), isBot: true };
+  },
+
+  getBotAccuracy(trophies) {
+    if (trophies < 300)  return 0.38;
+    if (trophies < 800)  return 0.52;
+    if (trophies < 1500) return 0.63;
+    if (trophies < 2500) return 0.72;
+    if (trophies < 4000) return 0.80;
+    return 0.88;
+  },
+
+  async searchMatchWithBot(category) {
+    const myTrophies = this.getLocalTrophies(category);
+    const myRank = this.getRankByTrophies(myTrophies);
+    this.showSearchingUI(category, myRank, myTrophies);
+    this.searchStartTime = Date.now();
+    if (this._botSearchTimeout) clearTimeout(this._botSearchTimeout);
+    this._botSearchTimeout = setTimeout(() => {
+      this._stopSearchTimer();
+      const bot = this.generateBot(myTrophies);
+      this._launchBotMatch(category, bot, myTrophies);
+    }, 2500 + Math.random() * 2000);
+    return true;
+  },
+
+  cancelSearch() {
+    this._stopSearchTimer();
+    if (this._botSearchTimeout) { clearTimeout(this._botSearchTimeout); this._botSearchTimeout = null; }
+    if (this.socket?.connected) this.socket.emit('leave_queue');
+    this.hideSearchingUI();
+  },
+
+  _launchBotMatch(category, bot, myTrophies) {
+    this.hideSearchingUI();
+    this._showFoundScreen(bot, () => {
+      const questions = this.generateRankedQuestions(category, myTrophies);
+      const botAccuracy = this.getBotAccuracy(bot.trophies);
+      this._botMatchData = { bot, botAccuracy, questions, category, myTrophies };
+      this._showWaitingScreen();
+      setTimeout(() => {
+        this._hideWaitingScreen();
+        if (window.App?.startRankedMode) {
+          window.App.startRankedMode({ id: 'bot_' + Date.now(), category, questions, opponent: bot, isBot: true });
+        }
+        this._simulateBotAnswers(questions, botAccuracy);
+      }, 1200);
+    });
+  },
+
+  _simulateBotAnswers(questions, accuracy) {
+    if (this._botAnswerTimeouts) this._botAnswerTimeouts.forEach(clearTimeout);
+    this._botAnswerTimeouts = [];
+    this._botCorrectCount = 0;
+    questions.forEach((_, index) => {
+      const cumulative = index * (3500 + Math.random() * 3000);
+      const delay = cumulative + 1000 + Math.random() * 4500;
+      const t = setTimeout(() => {
+        const correct = Math.random() < accuracy;
+        if (correct) this._botCorrectCount++;
+        this._updateOpponentProgress(index, correct);
+      }, delay);
+      this._botAnswerTimeouts.push(t);
+    });
+  },
+
+  cancelBotSimulation() {
+    if (this._botAnswerTimeouts) { this._botAnswerTimeouts.forEach(clearTimeout); this._botAnswerTimeouts = []; }
+  },
+
+  finalizeBotMatch(myScore, category) {
+    const data = this._botMatchData;
+    if (!data) return;
+    this.cancelBotSimulation();
+    const botScore = (this._botCorrectCount || 0) * 10;
+    const isWinner = myScore > botScore;
+    const isTie = myScore === botScore;
+    let trophyChange;
+    if (isTie)         trophyChange = RANKED_CONFIG.trophiesTie;
+    else if (isWinner) trophyChange = RANKED_CONFIG.trophiesWin;
+    else               trophyChange = data.myTrophies <= RANKED_CONFIG.protectionThreshold
+                         ? -RANKED_CONFIG.trophiesLoseProtected
+                         : -RANKED_CONFIG.trophiesLose;
+    const newTrophies = Math.max(0, data.myTrophies + trophyChange);
+    this.saveLocalTrophies(category, newTrophies);
+    if (window.App?.showRankedResult) {
+      window.App.showRankedResult({ isWinner, isTie, opponentScore: botScore, newTrophies, trophyChange });
+    }
+    this._botMatchData = null;
   },
 
   // ============================================

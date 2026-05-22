@@ -12,75 +12,75 @@ const SoundManager = {
   soundDefinitions: {
     correct: {
       type: 'success',
-      frequencies: [523.25, 659.25, 783.99], // Do-Mi-Sol
-      duration: 0.15,
-      delay: 0.1
+      frequencies: [523.25, 659.25, 783.99], // Do-Mi-Sol acorde mayor
+      duration: 0.18,
+      delay: 0.09
     },
     incorrect: {
-      type: 'error', 
-      frequencies: [200, 150],
-      duration: 0.2,
-      delay: 0.15
+      type: 'error',
+      frequencies: [330, 220],
+      duration: 0.25,
+      delay: 0.18
     },
     levelUp: {
       type: 'fanfare',
-      frequencies: [392, 440, 494, 523, 587, 659, 784],
-      duration: 0.12,
-      delay: 0.08
+      frequencies: [392, 494, 587, 659, 784, 988],
+      duration: 0.13,
+      delay: 0.09
     },
     achievement: {
       type: 'achievement',
-      frequencies: [523, 587, 659, 784, 880, 988, 1047],
-      duration: 0.1,
+      frequencies: [523, 659, 784, 1047, 1319],
+      duration: 0.12,
       delay: 0.1
     },
     timerLow: {
       type: 'warning',
-      frequencies: [440],
-      duration: 0.1,
+      frequencies: [880],
+      duration: 0.07,
       delay: 0
     },
     click: {
       type: 'click',
-      frequencies: [800],
-      duration: 0.05,
+      frequencies: [1000],
+      duration: 0.04,
       delay: 0
     },
     gameStart: {
       type: 'start',
-      frequencies: [262, 330, 392, 523],
-      duration: 0.15,
-      delay: 0.12
+      frequencies: [330, 415, 494, 659, 784],
+      duration: 0.14,
+      delay: 0.11
     },
     gameOver: {
       type: 'gameover',
-      frequencies: [392, 330, 262, 196],
-      duration: 0.25,
-      delay: 0.2
+      frequencies: [440, 370, 311, 233],
+      duration: 0.28,
+      delay: 0.22
     },
     streak: {
       type: 'streak',
-      frequencies: [523, 659, 784, 1047],
-      duration: 0.08,
-      delay: 0.06
+      frequencies: [659, 784, 988, 1319],
+      duration: 0.09,
+      delay: 0.07
     },
     perfect: {
       type: 'perfect',
-      frequencies: [523, 659, 784, 880, 988, 1047, 1175, 1319],
-      duration: 0.1,
-      delay: 0.08
+      frequencies: [523, 659, 784, 1047, 1319, 1568],
+      duration: 0.11,
+      delay: 0.09
     },
     countdown: {
       type: 'tick',
-      frequencies: [600],
-      duration: 0.08,
+      frequencies: [700],
+      duration: 0.06,
       delay: 0
     },
     bonus: {
       type: 'bonus',
-      frequencies: [392, 523, 659, 784],
-      duration: 0.1,
-      delay: 0.08
+      frequencies: [440, 554, 659, 880],
+      duration: 0.11,
+      delay: 0.09
     }
   },
   
@@ -149,20 +149,26 @@ const SoundManager = {
   playSynthSound(soundDef) {
     const ctx = this.audioContext;
     const now = ctx.currentTime;
-    
+    const isRich = ['success','achievement','fanfare','perfect','start','streak','bonus'].includes(soundDef.type);
+
     soundDef.frequencies.forEach((freq, index) => {
       const oscillator = ctx.createOscillator();
       const gainNode = ctx.createGain();
-      
-      // Configurar tipo de onda segun el tipo de sonido
+
       switch (soundDef.type) {
         case 'success':
         case 'achievement':
         case 'fanfare':
         case 'perfect':
+        case 'streak':
+        case 'bonus':
+        case 'start':
           oscillator.type = 'sine';
           break;
         case 'error':
+        case 'gameover':
+          oscillator.type = 'sawtooth';
+          break;
         case 'warning':
           oscillator.type = 'square';
           break;
@@ -173,25 +179,28 @@ const SoundManager = {
         default:
           oscillator.type = 'sine';
       }
-      
-      oscillator.frequency.setValueAtTime(freq, now + (index * soundDef.delay));
-      
-      // Configurar envolvente de volumen
+
       const startTime = now + (index * soundDef.delay);
-      const attackTime = 0.01;
+      const attackTime = 0.012;
       const decayTime = soundDef.duration;
-      
+
+      oscillator.frequency.setValueAtTime(freq, startTime);
+
+      // Pequeño portamento ascendente en sonidos de éxito
+      if (isRich) {
+        oscillator.frequency.linearRampToValueAtTime(freq * 1.02, startTime + decayTime * 0.5);
+      }
+
+      const peakVol = this.volume * (isRich ? 0.28 : 0.22);
       gainNode.gain.setValueAtTime(0, startTime);
-      gainNode.gain.linearRampToValueAtTime(this.volume * 0.3, startTime + attackTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + attackTime + decayTime);
-      
-      // Conectar nodos
+      gainNode.gain.linearRampToValueAtTime(peakVol, startTime + attackTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + attackTime + decayTime);
+
       oscillator.connect(gainNode);
       gainNode.connect(ctx.destination);
-      
-      // Reproducir
+
       oscillator.start(startTime);
-      oscillator.stop(startTime + attackTime + decayTime + 0.1);
+      oscillator.stop(startTime + attackTime + decayTime + 0.05);
     });
   },
   

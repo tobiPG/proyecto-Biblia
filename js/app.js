@@ -2129,14 +2129,6 @@ const App = {
 
   // Abrir pantalla de ranked
   async openRankedScreen() {
-    if (!window.BackendService?.token) {
-      this.showToast('Debes iniciar sesion para jugar Ranked', 'error');
-      if (window.Social) {
-        Social.openSocialModal();
-      }
-      return;
-    }
-    
     await this.loadRankedData();
     this.showScreen('ranked');
   },
@@ -2218,14 +2210,13 @@ const App = {
     });
   },
 
-  // Iniciar bsqueda de partida ranked
+  // Iniciar búsqueda de partida ranked (bots cuando no hay servidor)
   async startRankedSearch(category) {
     if (!window.Ranked) {
       this.showToast('Sistema ranked no disponible', 'error');
       return;
     }
-    
-    await window.Ranked.searchMatch(category);
+    await window.Ranked.searchMatchWithBot(category);
   },
 
   // Mostrar overlay de todos los rangos
@@ -2385,7 +2376,18 @@ const App = {
     const trophyEl = document.getElementById('ranked-trophy-change');
     if (trophyEl) trophyEl.style.display = 'none';
 
-    // Enviar resultado al servidor via socket (el servidor calculará el ganador y emitirá game_over)
+    // Bot match: calcular resultado localmente sin socket
+    if (this.rankedMatchData?.isBot) {
+      const category = this.rankedMatchData.category;
+      this.isRankedMatch = false;
+      this.rankedMatchData = null;
+      this.rankedMatchStartTime = null;
+      this.infiniteLives = false;
+      document.getElementById('ranked-opponent-bar')?.classList.add('hidden');
+      setTimeout(() => { if (window.Ranked) window.Ranked.finalizeBotMatch(score, category); }, 400);
+      return;
+    }
+    // Partida online: enviar resultado al servidor via socket
     window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers);
 
     // Guardar categoría para showRankedResult

@@ -192,9 +192,13 @@ const CampaignManager = {
       }).catch(err => console.error('[Campaign] Error syncing progress:', err));
     }
 
-    // Guardar índices para botón de repetir
+    // Guardar contexto para pantalla de resultado
     this._lastWorldIndex = App.campaignMode?.worldIndex ?? null;
     this._lastChapterIndex = App.campaignMode?.chapterIndex ?? null;
+    this._lastWorldName = App.campaignMode?.worldName ?? '';
+    this._lastChapterName = App.campaignMode?.chapterName ?? '';
+    this._lastSessionPoints = sessionPoints || 0;
+    this._isNewRecord = !existing || stars > (existing.stars || 0);
 
     // Show campaign result screen
     this.showCampaignResult(stars, correctCount, totalCount, chapterId);
@@ -338,6 +342,32 @@ const CampaignManager = {
     if (correctEl) correctEl.textContent = correct;
     if (totalEl) totalEl.textContent = total;
     if (pctEl) pctEl.textContent = percentage + '%';
+
+    // Subtítulo con mundo y capítulo
+    const subtitleEl = document.getElementById('campaign-result-subtitle');
+    if (subtitleEl) {
+      const worldName = this._lastWorldName || '';
+      const chapName = this._lastChapterName || '';
+      subtitleEl.textContent = worldName && chapName ? `${worldName} · ${chapName}` : chapName || worldName;
+    }
+
+    // XP ganado
+    const xpSection = document.getElementById('campaign-result-xp');
+    const xpValEl = document.getElementById('campaign-result-xp-val');
+    const xpGained = this._lastSessionPoints || 0;
+    if (xpSection && xpValEl && xpGained > 0) {
+      xpValEl.textContent = xpGained;
+      xpSection.classList.remove('hidden');
+    } else if (xpSection) {
+      xpSection.classList.add('hidden');
+    }
+
+    // Badge de récord
+    const recordEl = document.getElementById('campaign-result-record');
+    if (recordEl) {
+      if (this._isNewRecord && stars > 0) recordEl.classList.remove('hidden');
+      else recordEl.classList.add('hidden');
+    }
 
     let msg = '', icon = '⭐';
     if (stars === 3) { msg = '¡Perfecto! ¡3 estrellas! 🎉'; icon = '🏆'; }

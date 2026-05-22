@@ -829,6 +829,26 @@
           <div id="stat-best-streak" class="ms-value">0</div>
           <div class="ms-label">🔥 Mejor Racha</div>
         </div>
+        <div class="mini-stat">
+          <div id="stat-daily-streak" class="ms-value">0</div>
+          <div class="ms-label">📅 Racha Diaria</div>
+        </div>
+        <div class="mini-stat">
+          <div id="stat-total-correct" class="ms-value">0</div>
+          <div class="ms-label">✅ Correctas</div>
+        </div>
+        <div class="mini-stat">
+          <div id="stat-perfect-games" class="ms-value">0</div>
+          <div class="ms-label">💎 Perfectas</div>
+        </div>
+        <div class="mini-stat">
+          <div id="stat-total-coins" class="ms-value">0</div>
+          <div class="ms-label">🪙 Monedas</div>
+        </div>
+        <div class="mini-stat">
+          <div id="stat-avg-per-game" class="ms-value">0</div>
+          <div class="ms-label">📊 Pts/Partida</div>
+        </div>
       </div>
       <div class="accuracy-section">
         <h3>📈 Porcentaje de Acierto</h3>
@@ -869,7 +889,7 @@
       </div>
       <div class="accuracy-section">
         <h3>🏅 Mejores Puntuaciones</h3>
-        <div id="leaderboard-list" class="leaderboard-list"></div>
+        <div id="progress-leaderboard-list" class="leaderboard-list"></div>
       </div>
       <div class="history-section">
         <h3>📜 Historial</h3>
@@ -1602,7 +1622,7 @@
       <div id="leaderboard-rank-title" class="leaderboard-rank-title">
         Clasificación: <span id="leaderboard-current-rank">Cargando...</span>
       </div>
-      <div id="leaderboard-list" class="leaderboard-list">
+      <div id="ranked-leaderboard-list" class="leaderboard-list">
         <!-- Generado dinámicamente -->
       </div>
     </div>
@@ -1760,7 +1780,7 @@
 
     <!-- Tab: Clasificación -->
     <div id="tab-leaderboard" class="social-tab-content">
-      <div id="leaderboard-list" class="leaderboard-list">
+      <div id="social-leaderboard-list" class="leaderboard-list">
         <div class="loading-spinner">Cargando...</div>
       </div>
     </div>
@@ -2014,11 +2034,13 @@
   <div class="campaign-result-container">
     <div class="campaign-result-icon">⭐</div>
     <h2 class="campaign-result-title">Capítulo Completado</h2>
+    <p id="campaign-result-subtitle" class="campaign-result-subtitle"></p>
     <div class="result-stars">
       <span class="result-star" id="camp-star-1">★</span>
       <span class="result-star" id="camp-star-2">★</span>
       <span class="result-star" id="camp-star-3">★</span>
     </div>
+    <div id="campaign-result-record" class="campaign-result-record hidden">🏆 ¡Nuevo récord!</div>
     <div id="campaign-result-msg" class="campaign-result-msg"></div>
     <div class="campaign-result-stats">
       <div class="camp-result-stat">
@@ -2026,6 +2048,9 @@
       </div>
       <div class="camp-result-stat camp-result-pct">
         <span id="campaign-result-pct">0%</span>
+      </div>
+      <div id="campaign-result-xp" class="camp-result-stat camp-result-xp hidden">
+        +<span id="campaign-result-xp-val">0</span> XP
       </div>
     </div>
     <div class="campaign-result-actions">

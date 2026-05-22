@@ -613,7 +613,7 @@ window.Social = {
 
   // Cargar tabla de clasificación
   async loadLeaderboard() {
-    const container = document.getElementById('leaderboard-list');
+    const container = document.getElementById('social-leaderboard-list');
     if (!container) return;
 
     container.innerHTML = '<div class="loading-spinner">Cargando...</div>';

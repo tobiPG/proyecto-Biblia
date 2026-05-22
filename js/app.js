@@ -2610,9 +2610,9 @@ const App = {
     
     const leaderboard = await window.Ranked.getLeaderboard(category);
     
-    const list = document.getElementById('leaderboard-list');
+    const list = document.getElementById('ranked-leaderboard-list');
     if (!list) return;
-    
+
     list.innerHTML = leaderboard.map((player, index) => {
       const position = index + 1;
       const posClass = position === 1 ? 'gold' : position === 2 ? 'silver' : position === 3 ? 'bronze' : '';
@@ -4424,7 +4424,10 @@ const App = {
     const history = Storage.getHistory();
     const earnedBadges = Storage.getBadges();
     // Player card
-    document.getElementById('progress-avatar').textContent = player.avatar;
+    const avatarEl = document.getElementById('progress-avatar');
+    avatarEl.textContent = player.avatar || player.name?.charAt(0)?.toUpperCase() || '?';
+    avatarEl.style.background = player.avatar ? '' : 'linear-gradient(135deg,#667eea,#764ba2)';
+    avatarEl.style.color = player.avatar ? '' : '#fff';
     document.getElementById('progress-name').textContent = player.name;
     document.getElementById('progress-email').textContent = player.email ? ` ${player.email}` : '';
     document.getElementById('progress-age').textContent = player.age ? ` ${player.age} anos` : '';
@@ -4440,23 +4443,21 @@ const App = {
     // Daily streak
     const dailyStreak = Storage.getDailyStreak();
     const dailyStreakEl = document.getElementById('stat-daily-streak');
-    if (dailyStreakEl) {
-      dailyStreakEl.textContent = dailyStreak.count || 0;
-    }
-    
+    if (dailyStreakEl) dailyStreakEl.textContent = dailyStreak.count || 0;
+
     // Advanced stats
     const totalCorrectEl = document.getElementById('stat-total-correct');
-    const totalAnsweredEl = document.getElementById('stat-total-answered');
     const perfectGamesEl = document.getElementById('stat-perfect-games');
     const avgPerGameEl = document.getElementById('stat-avg-per-game');
-    
+    const totalCoinsEl = document.getElementById('stat-total-coins');
+
     if (totalCorrectEl) totalCorrectEl.textContent = stats.totalCorrect.toLocaleString();
-    if (totalAnsweredEl) totalAnsweredEl.textContent = stats.totalAnswered.toLocaleString();
     if (perfectGamesEl) perfectGamesEl.textContent = stats.perfectGames || 0;
     if (avgPerGameEl) {
       const avg = stats.totalGames > 0 ? Math.round(stats.totalPoints / stats.totalGames) : 0;
       avgPerGameEl.textContent = avg;
     }
+    if (totalCoinsEl) totalCoinsEl.textContent = Storage.getCoins().toLocaleString();
     
     // Accuracy
     const accuracy = stats.totalAnswered > 0 ? Math.round((stats.totalCorrect / stats.totalAnswered) * 100) : 0;
@@ -6363,7 +6364,7 @@ const App = {
   // ============================================================
   renderLeaderboard() {
     const lb = Storage.getLeaderboard();
-    const container = document.getElementById('leaderboard-list');
+    const container = document.getElementById('progress-leaderboard-list');
     if (!lb || lb.length === 0) {
       container.innerHTML = '<div class="leaderboard-empty">Juega partidas para llenar el ranking</div>';
       return;

@@ -84,6 +84,10 @@ window.CATEGORIES = {
   vida_jesus: { name: "Vida de Jesús", icon: "✝️", color: "#E91E63", bigIcon: "✝️" },
   milagros: { name: "Milagros", icon: "✨", color: "#00BCD4", bigIcon: "🌟" },
   cartas: { name: "Cartas", icon: "💌", color: "#795548", bigIcon: "✉️" },
+  lugares: { name: "Lugares", icon: "🗺️", color: "#3F51B5", bigIcon: "🏛️" },
+  versiculos: { name: "Versículos", icon: "📖", color: "#8BC34A", bigIcon: "📜" },
+  ensenanzas: { name: "Enseñanzas", icon: "📝", color: "#FF5722", bigIcon: "🕊️" },
+  parabolas: { name: "Parábolas", icon: "🌾", color: "#009688", bigIcon: "🌿" },
   aleatorio: { name: "Aleatorio", icon: "🎲", color: "#607D8B", bigIcon: "🎲" }
 };
 

@@ -410,8 +410,7 @@ window.Ranked = {
 
     // Mapeo: ID de categoría ranked → nombre de categoría en questions.js
     const categoryMap = {
-      'eventos':           'historias',
-      'salmos-proverbios': 'versiculos'
+      'eventos': 'historias'
     };
     const qCategory = categoryMap[category] || category;
 

@@ -2689,7 +2689,7 @@ const App = {
         img.className = 'question-image';
         img.src = imageUrl;
         img.alt = q.imageAlt || `Imagen de ${cat.name}`;
-        img.onerror = () => img.remove();
+        img.onerror = () => { imgContainer.innerHTML = ''; imgContainer.classList.add('hidden'); };
         imgContainer.prepend(img);
         imgContainer.classList.remove('hidden');
       } else {

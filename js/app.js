@@ -2410,12 +2410,7 @@ const App = {
     this.rankedMatchStartTime = null;
     this.infiniteLives = false;
 
-    // Botones
-    const doneBtn = document.getElementById('btn-ranked-done');
-    if (doneBtn) doneBtn.onclick = () => { if (overlay) overlay.classList.add('hidden'); this.showScreen('home'); };
-
-    const againBtn = document.getElementById('btn-ranked-play-again');
-    if (againBtn) againBtn.onclick = () => { if (overlay) overlay.classList.add('hidden'); this.showScreen('ranked'); this.loadRankedData(); };
+    // Botones (handlers están en init() via addEventListener)
   },
 
   // Llamado por socket 'game_over' — resultado calculado por el servidor
@@ -2606,11 +2601,7 @@ const App = {
         myTrophies = catRanking?.trophies || 0;
       }
     } else if (window.Ranked) {
-      if (category === 'aleatorio') {
-        for (const cat of allCategories) myTrophies += window.Ranked.getLocalTrophies(cat);
-      } else {
-        myTrophies = window.Ranked.getLocalTrophies(category);
-      }
+      myTrophies = window.Ranked.getLocalTrophies(category);
     }
     
     // Mostrar el rango actual en el t�tulo

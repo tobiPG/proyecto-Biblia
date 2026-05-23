@@ -11688,8 +11688,21 @@ button:focus:not(:focus-visible) {
 /* TEMPORADA / PASE DE BATALLA                                   */
 /* ============================================================ */
 
-.season-menu-btn { background: linear-gradient(135deg, rgba(234,179,8,0.15) 0%, rgba(251,191,36,0.1) 100%); border-color: rgba(234,179,8,0.3); }
+.season-menu-btn { background: linear-gradient(135deg, rgba(234,179,8,0.15) 0%, rgba(251,191,36,0.1) 100%); border-color: rgba(234,179,8,0.3); position: relative; }
 .season-menu-btn:hover { background: linear-gradient(135deg, rgba(234,179,8,0.3) 0%, rgba(251,191,36,0.2) 100%); }
+.menu-new-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 900;
+  padding: 1px 4px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
 
 .season-content { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
 

@@ -11683,3 +11683,150 @@ button:focus:not(:focus-visible) {
   70% { transform: scale(1.1); }
   100% { transform: scale(1); opacity: 1; }
 }
+
+/* ============================================================ */
+/* TEMPORADA / PASE DE BATALLA                                   */
+/* ============================================================ */
+
+.season-menu-btn { background: linear-gradient(135deg, rgba(234,179,8,0.15) 0%, rgba(251,191,36,0.1) 100%); border-color: rgba(234,179,8,0.3); }
+.season-menu-btn:hover { background: linear-gradient(135deg, rgba(234,179,8,0.3) 0%, rgba(251,191,36,0.2) 100%); }
+
+.season-content { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+
+.season-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(234,179,8,0.12) 0%, rgba(245,158,11,0.06) 100%);
+  border: 1px solid rgba(234,179,8,0.3);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+.season-card-icon { font-size: 2.5rem; flex-shrink: 0; }
+.season-card-name { font-size: 1rem; font-weight: 800; color: #fbbf24; }
+.season-card-days { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Battle Pass */
+.season-bp-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+.season-bp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.season-bp-title { font-size: 0.95rem; font-weight: 800; }
+.season-bp-level { font-size: 0.85rem; color: #fbbf24; font-weight: 700; }
+.season-bp-bar { height: 10px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; margin-bottom: 4px; }
+.season-bp-fill { height: 100%; background: linear-gradient(90deg, #f59e0b, #fbbf24); border-radius: 99px; transition: width 0.4s ease; }
+.season-bp-xp { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 14px; }
+
+/* Reward Track */
+.season-track { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+.season-track-level {
+  flex-shrink: 0;
+  width: 90px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
+}
+.season-track-level.current { border-color: #f59e0b; background: rgba(245,158,11,0.08); }
+.season-track-level.passed { border-color: rgba(16,185,129,0.3); }
+.season-track-num { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+.season-track-free, .season-track-premium {
+  font-size: 0.72rem;
+  padding: 5px 4px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  margin-bottom: 4px;
+  position: relative;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.season-track-premium { background: rgba(234,179,8,0.08); border: 1px solid rgba(234,179,8,0.2); }
+.season-track-premium.locked { opacity: 0.45; }
+.season-track-free.ready, .season-track-premium.ready { animation: pulse-gold 1.5s infinite; }
+.season-track-free.claimed, .season-track-premium.claimed { opacity: 0.4; }
+.season-lock { font-size: 0.65rem; position: absolute; top: 2px; right: 3px; }
+.season-mini-claim {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(245,158,11,0); }
+}
+
+.season-premium-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #1a1000;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.season-premium-btn:hover { opacity: 0.9; }
+.season-premium-owned {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+/* Missions */
+.season-missions-section { display: flex; flex-direction: column; gap: 10px; }
+.season-section-title { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); margin: 0 0 6px; }
+.season-mission {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 12px;
+  transition: border-color 0.2s;
+}
+.season-mission.claimable { border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.05); }
+.season-mission.claimed { opacity: 0.5; }
+.season-mission-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.season-mission-icon { font-size: 1.3rem; flex-shrink: 0; }
+.season-mission-info { flex: 1; }
+.season-mission-name { font-size: 0.88rem; font-weight: 700; }
+.season-mission-desc { font-size: 0.75rem; color: var(--text-muted); }
+.season-mission-xp { font-size: 0.8rem; font-weight: 700; color: #fbbf24; flex-shrink: 0; }
+.season-mission-progress-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+.season-mission-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #818cf8); border-radius: 99px; transition: width 0.4s ease; }
+.season-mission.claimable .season-mission-fill { background: linear-gradient(90deg, #10b981, #34d399); }
+.season-mission-footer { display: flex; justify-content: space-between; align-items: center; }
+.season-mission-count { font-size: 0.75rem; color: var(--text-muted); }
+.season-claim-btn {
+  padding: 5px 12px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.season-claimed-badge { font-size: 0.75rem; color: var(--text-muted); }

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=71">
+  <link rel="stylesheet" href="css/styles.css?v=72">
 </head>
 <body>
 
@@ -151,6 +151,10 @@
       <button id="btn-tournament" class="menu-btn tournament-menu-btn" aria-label="Torneos">
         <span class="menu-icon" aria-hidden="true">🏆</span>
         <span class="menu-label">Torneos</span>
+      </button>
+      <button id="btn-season" class="menu-btn season-menu-btn" aria-label="Temporada">
+        <span class="menu-icon" aria-hidden="true">🌟</span>
+        <span class="menu-label">Temporada</span>
       </button>
     </div>
   </div>
@@ -2158,6 +2162,20 @@
   <div id="tournament-content" class="tournament-content">
     <!-- Generado dinámicamente por TournamentManager -->
     <p style="text-align:center;padding:2rem">Cargando torneo...</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FEATURE 5: TEMPORADA / PASE DE BATALLA                       -->
+<!-- ============================================================ -->
+
+<div id="season" class="screen">
+  <div class="section-header">
+    <button class="back-btn" data-target="home">←</button>
+    <h2 class="section-title">🌟 Temporada</h2>
+  </div>
+  <div id="season-content" class="season-content">
+    <p style="text-align:center;padding:2rem;color:var(--text-muted)">Cargando...</p>
   </div>
 </div>
 

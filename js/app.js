@@ -4329,6 +4329,11 @@ const App = {
       if (this.sessionCorrect === this.currentQuestions.length && this.currentQuestions.length > 0) {
         SeasonSystem.updateMissionProgress('perfect', 1);
       }
+      // Categoría única jugada
+      if (this.selectedCategory) {
+        SeasonSystem.updateMissionProgress('category', 1);
+        SeasonSystem.updateMissionProgress('categories', 1);
+      }
     }
     const playerAfter = Storage.getPlayer();
     if (playerAfter.level > levelBefore) {

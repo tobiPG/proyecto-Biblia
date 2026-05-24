@@ -1959,21 +1959,21 @@ const App = {
     document.getElementById('challenge-result-subtitle').textContent = 'Esperando al oponente...';
     document.getElementById('challenge-result-icon').innerHTML = '<span style="font-size:48px">&#9876;</span>';
     
-    // Enviar resultado a BackendService
+    // Enviar resultado a Firebase (los retos viven en Firestore)
     try {
-      const result = await BackendService.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
+      const result = await FirebaseService.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
       console.log('[App] Resultado enviado:', result);
-      
+
       if (result.success && result.completed) {
-        // Ambos terminaron - mostrar comparación
+        // Ambos terminaron - mostrar comparación inmediatamente
         this.showChallengeComparison(result, score, timeSpent, correctAnswers, result.opponentCorrect);
       } else {
-        // Esperando al oponente - iniciar polling
+        // Esperando al oponente - escuchar en tiempo real con Firestore
         this.listenForOpponentResult(challengeId, score, timeSpent, correctAnswers);
       }
     } catch (error) {
       console.error('[App] Error enviando resultado:', error);
-      document.getElementById('challenge-status-message').innerHTML = 
+      document.getElementById('challenge-status-message').innerHTML =
         '<span style="color: var(--danger)">Error al enviar resultado</span>';
     }
     
@@ -1995,80 +1995,46 @@ const App = {
     };
   },
   
-  // Escuchar cuando el oponente termine (polling)
+  // Escuchar cuando el oponente termine (listener en tiempo real de Firestore)
   listenForOpponentResult(challengeId, myScore, myTime, myCorrect) {
-    // Limpiar polling anterior si existe
+    // Cancelar listener anterior si existe
+    if (this._challengeUnsubscribe) {
+      this._challengeUnsubscribe();
+      this._challengeUnsubscribe = null;
+    }
+    // Cancelar cualquier polling viejo
     if (this._challengePollingInterval) {
       clearInterval(this._challengePollingInterval);
+      this._challengePollingInterval = null;
     }
-    
-    console.log('[App] ====== INICIANDO POLLING ======');
-    console.log('[App] challengeId:', challengeId);
-    console.log('[App] myScore:', myScore, 'myTime:', myTime);
-    
-    const pollForResults = async () => {
-      console.log('[App] Polling tick...');
-      try {
-        const challenge = await BackendService.getChallenge(challengeId);
-        console.log('[App] Challenge data:', JSON.stringify(challenge));
-        console.log('[App] Status:', challenge?.status);
-        
-        if (!challenge) {
-          console.log('[App] ERROR: Challenge es null');
-          return;
-        }
-        
-        if (challenge.status === 'completed') {
-          console.log('[App] ¡RETO COMPLETADO! Deteniendo polling...');
-          // El reto está completado - detener polling y mostrar resultados
-          clearInterval(this._challengePollingInterval);
-          this._challengePollingInterval = null;
-          
-          const myUid = BackendService.currentUser?.uid || BackendService.currentUser?.id;
-          const iAmCreator = challenge.creatorId === myUid;
-          
-          console.log('[App] myUid:', myUid);
-          console.log('[App] creatorId:', challenge.creatorId);
-          console.log('[App] iAmCreator:', iAmCreator);
-          
-          const opponentScore = iAmCreator ? challenge.opponentScore : challenge.creatorScore;
-          const opponentTime = iAmCreator ? challenge.opponentTime : challenge.creatorTime;
-          const opponentCorrect = iAmCreator ? challenge.opponentCorrect : challenge.creatorCorrect;
-          
-          console.log('[App] opponentScore:', opponentScore);
-          console.log('[App] opponentTime:', opponentTime);
-          
-          const result = {
-            completed: true,
-            winner: challenge.winner,
-            myScore: myScore,
-            opponentScore: opponentScore,
-            myTime: myTime,
-            opponentTime: opponentTime
-          };
-          
-          console.log('[App] Llamando showChallengeComparison con:', result);
-          this.showChallengeComparison(result, myScore, myTime, myCorrect, opponentCorrect);
-        } else {
-          console.log('[App] Todavía esperando... status:', challenge.status);
-        }
-      } catch (err) {
-        console.error('[App] ERROR en polling:', err);
-      }
-    };
-    
-    // Ejecutar inmediatamente y luego cada 2 segundos
-    pollForResults();
-    this._challengePollingInterval = setInterval(pollForResults, 2000);
-    
-    // Guardar referencia para poder cancelar
-    this._challengeUnsubscribe = () => {
-      console.log('[App] Cancelando polling...');
-      if (this._challengePollingInterval) {
-        clearInterval(this._challengePollingInterval);
-        this._challengePollingInterval = null;
-      }
-    };
+
+    const myUid = FirebaseService.currentUser?.uid;
+
+    // Listener en tiempo real — Firestore notifica en cuanto el oponente termina
+    const unsubscribe = FirebaseService.subscribeToChallenge(challengeId, (challenge) => {
+      if (challenge.status !== 'completed') return;
+
+      unsubscribe();
+      this._challengeUnsubscribe = null;
+
+      const iAmCreator = challenge.creatorId === myUid;
+      const opponentScore   = iAmCreator ? challenge.opponentScore   : challenge.creatorScore;
+      const opponentTime    = iAmCreator ? challenge.opponentTime    : challenge.creatorTime;
+      const opponentCorrect = iAmCreator ? challenge.opponentCorrect : challenge.creatorCorrect;
+
+      const result = {
+        completed: true,
+        winner: challenge.winner,
+        myScore,
+        opponentScore,
+        myTime,
+        opponentTime
+      };
+
+      this.showChallengeComparison(result, myScore, myTime, myCorrect, opponentCorrect);
+    });
+
+    this._challengeUnsubscribe = unsubscribe;
   },
   
   // Mostrar comparaci�n de resultados

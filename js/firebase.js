@@ -658,17 +658,22 @@ window.FirebaseService = {
   async getLeaderboard(limitCount = 50) {
     console.log('[Firebase] getLeaderboard llamado');
     try {
+      // Traemos más entradas para compensar los anónimos que filtramos
       const snapshot = await this.db.collection('users')
         .orderBy('totalPoints', 'desc')
-        .limit(limitCount)
+        .limit(limitCount * 3)
         .get();
-      
+
       console.log('[Firebase] snapshot obtenido, size:', snapshot.size);
       const leaderboard = [];
       snapshot.forEach((doc) => {
-        leaderboard.push({ id: doc.id, ...doc.data() });
+        const data = doc.data();
+        // Excluir usuarios anónimos del ranking público
+        if (!data.isAnonymous) {
+          leaderboard.push({ id: doc.id, ...data });
+        }
       });
-      return leaderboard;
+      return leaderboard.slice(0, limitCount);
     } catch (error) {
       console.error('[Firebase] Error obteniendo leaderboard:', error);
       return [];

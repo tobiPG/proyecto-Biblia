@@ -874,9 +874,9 @@ window.FirebaseService = {
       // ============================================
       let questionIds = [];
       
-      if (typeof QUESTIONS_DB !== 'undefined' && QUESTIONS_DB.length > 0) {
-        console.log('[Firebase] QUESTIONS_DB disponible con', QUESTIONS_DB.length, 'preguntas');
-        let pool = [...QUESTIONS_DB];
+      if (window.QUESTIONS_DB && window.QUESTIONS_DB.length > 0) {
+        console.log('[Firebase] QUESTIONS_DB disponible con', window.QUESTIONS_DB.length, 'preguntas');
+        let pool = [...window.QUESTIONS_DB];
         
         // Filtrar por categoría
         if (category && category !== 'random') {
@@ -893,7 +893,7 @@ window.FirebaseService = {
         
         // Si no hay suficientes preguntas, expandir el pool
         if (pool.length < questionsCount) {
-          pool = [...QUESTIONS_DB];
+          pool = [...window.QUESTIONS_DB];
           if (category && category !== 'random' && category !== 'aleatorio') {
             pool = pool.filter(q => q.category === category);
           }

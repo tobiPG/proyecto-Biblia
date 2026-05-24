@@ -3684,22 +3684,27 @@ const App = {
   },
   // ========== HOME LIVES DISPLAY + TIMER ==========
   loadInfiniteLives() {
-    // Verificar desde el backend_user (tiene prioridad)
     try {
       const backendUser = JSON.parse(localStorage.getItem('backend_user') || '{}');
-      if (backendUser.infiniteLives === true || backendUser.isPremium === true) {
-        this.infiniteLives = true;
-        localStorage.setItem('bq_infiniteLives', 'true');
-        // Aplicar premium y sin anuncios también
-        if (typeof Billing !== 'undefined') {
-          if (backendUser.isPremium) {
-            Billing.isPremium = true;
-            localStorage.setItem(Billing.STORAGE_KEYS.PREMIUM, 'true');
+      // Solo si hay un usuario autenticado del backend
+      if (backendUser.uid) {
+        if (backendUser.infiniteLives === true || backendUser.isPremium === true) {
+          this.infiniteLives = true;
+          localStorage.setItem('bq_infiniteLives', 'true');
+          if (typeof Billing !== 'undefined') {
+            if (backendUser.isPremium) {
+              Billing.isPremium = true;
+              localStorage.setItem(Billing.STORAGE_KEYS.PREMIUM, 'true');
+            }
+            if (backendUser.adsRemoved) {
+              Billing.adsRemoved = true;
+              localStorage.setItem(Billing.STORAGE_KEYS.ADS_REMOVED, 'true');
+            }
           }
-          if (backendUser.adsRemoved) {
-            Billing.adsRemoved = true;
-            localStorage.setItem(Billing.STORAGE_KEYS.ADS_REMOVED, 'true');
-          }
+        } else {
+          // Usuario sin premium — resetear por si quedó de otra sesión
+          this.infiniteLives = false;
+          localStorage.setItem('bq_infiniteLives', 'false');
         }
         return;
       }

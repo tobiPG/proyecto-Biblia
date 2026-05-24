@@ -135,10 +135,15 @@ router.post('/login', async (req, res) => {
     });
     await session.save();
     
+    // Auto-activar vidas infinitas para la cuenta del propietario
+    if (user.email === 'o.agg1130@gmail.com' && !user.infiniteLives) {
+      user.infiniteLives = true;
+    }
+
     // Actualizar lastActive
     user.lastActive = new Date();
     await user.save();
-    
+
     res.json({
       token: session.token,
       user: {
@@ -148,7 +153,10 @@ router.post('/login', async (req, res) => {
         level: user.level,
         xp: user.xp,
         coins: user.coins,
-        isAnonymous: user.isAnonymous
+        isAnonymous: user.isAnonymous,
+        infiniteLives: user.infiniteLives || false,
+        isPremium: user.isPremium || false,
+        adsRemoved: user.adsRemoved || false
       }
     });
   } catch (error) {

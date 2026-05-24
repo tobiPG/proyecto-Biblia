@@ -3684,6 +3684,15 @@ const App = {
   },
   // ========== HOME LIVES DISPLAY + TIMER ==========
   loadInfiniteLives() {
+    // Verificar desde el backend_user (tiene prioridad)
+    try {
+      const backendUser = JSON.parse(localStorage.getItem('backend_user') || '{}');
+      if (backendUser.infiniteLives === true) {
+        this.infiniteLives = true;
+        localStorage.setItem('bq_infiniteLives', 'true');
+        return;
+      }
+    } catch(e) {}
     this.infiniteLives = localStorage.getItem('bq_infiniteLives') === 'true';
   },
   saveInfiniteLives() {

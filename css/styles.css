@@ -5407,7 +5407,6 @@ select {
   background: rgba(255,255,255,0.07);
   border-radius: var(--radius-full);
   margin-bottom: var(--space-5);
-  overflow: hidden;
 }
 .ranked-progress-bar { height: 100%; background: var(--gradient-gold); border-radius: var(--radius-full); transition: width 0.8s var(--ease-out); box-shadow: 0 0 12px var(--accent-glow); }
 .ranked-progress-text { position: absolute; right: var(--space-3); top: 50%; transform: translateY(-50%); font-size: var(--font-size-xs); font-weight: 800; color: var(--accent); }
@@ -5610,3 +5609,481 @@ select {
 .quiz-coins-value { font-weight: 900; }
 .legend-tie { color: var(--text-muted); }
 .challenge-player.opponent .player-score { color: var(--danger); }
+
+/* ============================================================
+   45. BILLING MODAL (generado por billing.js)
+   ============================================================ */
+.billing-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+}
+.billing-modal-overlay.active { opacity: 1; }
+
+.billing-modal {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  max-width: 380px;
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  transform: translateY(20px);
+  transition: transform 0.3s var(--ease-out);
+}
+.billing-modal-overlay.active .billing-modal { transform: translateY(0); }
+
+.billing-modal-header { text-align: center; margin-bottom: var(--space-5); }
+.billing-modal-icon { font-size: 3rem; margin-bottom: var(--space-2); filter: drop-shadow(0 4px 16px var(--accent-glow)); }
+.billing-modal-title { font-size: var(--font-size-xl); font-weight: 900; color: var(--text-primary); margin-bottom: var(--space-2); }
+.billing-modal-desc { font-size: var(--font-size-sm); color: var(--text-muted); }
+
+.billing-modal-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.06));
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+}
+.billing-price-amount { font-size: var(--font-size-3xl); font-weight: 900; color: var(--primary-light); }
+.billing-price-period { font-size: var(--font-size-sm); color: var(--text-muted); }
+
+.billing-modal-features { display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+.billing-feature { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); color: var(--text-secondary); font-weight: 600; }
+
+.billing-modal-methods { margin-bottom: var(--space-5); }
+.billing-methods-title { font-size: var(--font-size-sm); font-weight: 700; color: var(--text-muted); margin-bottom: var(--space-3); }
+.billing-methods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+
+.billing-method-btn {
+  padding: var(--space-4);
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-main);
+  text-align: center;
+}
+.billing-method-btn:hover { background: rgba(99,102,241,0.08); border-color: var(--border-hover); color: var(--text-primary); }
+.billing-method-btn.selected { background: rgba(99,102,241,0.15); border-color: var(--primary); color: var(--primary-light); box-shadow: 0 0 12px var(--primary-glow); }
+
+.billing-modal-actions { display: flex; gap: var(--space-3); margin-bottom: var(--space-4); }
+
+.billing-btn-cancel {
+  flex: 1;
+  padding: 13px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-main);
+}
+.billing-btn-cancel:hover { background: rgba(255,255,255,0.1); color: var(--text-primary); }
+
+.billing-btn-confirm {
+  flex: 2;
+  padding: 13px;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-size: var(--font-size-base);
+  font-weight: 900;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-main);
+  box-shadow: 0 4px 16px var(--primary-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.billing-btn-confirm:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+.billing-btn-confirm:not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--primary-glow); }
+
+.billing-modal-secure { font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; }
+
+.billing-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: var(--radius-full);
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============================================================
+   46. COMPONENTES JS — Category Stats · Ranked Cards · Season
+       Achievement Popup · Active Powerups · Study Cards
+   ============================================================ */
+
+/* ---- Category stats (rendered by renderCategoryStats) ---- */
+.cat-stat-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  transition: var(--transition-base);
+}
+.cat-stat-item:hover { background: rgba(99,102,241,0.06); border-color: var(--border-hover); }
+
+.cat-stat-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-2); }
+.cat-stat-name { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-sm); font-weight: 800; color: var(--text-primary); }
+.csn-icon { font-size: 1.1rem; }
+
+.cat-stat-pct {
+  padding: 3px var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 900;
+}
+
+.cat-stat-bar-bg { height: 8px; background: rgba(255,255,255,0.07); border-radius: var(--radius-full); overflow: hidden; margin-bottom: var(--space-2); }
+.cat-stat-bar-fill { height: 100%; border-radius: var(--radius-full); transition: width 0.6s var(--ease-out); }
+
+.cat-stat-details { display: flex; justify-content: space-between; font-size: var(--font-size-xs); color: var(--text-muted); }
+
+/* ---- Ranked Category Cards ---- */
+.ranked-category-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+.ranked-category-card:hover { background: rgba(99,102,241,0.08); border-color: var(--border-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.ranked-category-icon { font-size: 1.8rem; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+.ranked-category-name { font-size: var(--font-size-sm); font-weight: 800; color: var(--text-primary); }
+.ranked-category-trophies { font-size: var(--font-size-xs); color: var(--text-muted); font-weight: 700; }
+
+.ranked-cat-bar-wrap { width: 100%; height: 6px; background: rgba(255,255,255,0.07); border-radius: var(--radius-full); overflow: hidden; }
+.ranked-cat-bar-fill { height: 100%; border-radius: var(--radius-full); transition: width 0.6s var(--ease-out); }
+
+.ranked-category-rank { font-size: var(--font-size-xs); font-weight: 900; }
+.ranked-cat-to-next { font-size: 10px; color: var(--text-muted); }
+
+/* ---- Rank List Items (ranks overview) ---- */
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+}
+.rank-item.current { background: rgba(245,158,11,0.08); border-color: var(--border-accent); }
+.rank-item.locked { opacity: 0.45; }
+.rank-item.achieved { border-color: rgba(16,185,129,0.25); }
+
+.rank-icon { font-size: 1.5rem; flex-shrink: 0; }
+.rank-info { flex: 1; }
+.rank-name { display: block; font-size: var(--font-size-sm); font-weight: 900; margin-bottom: 2px; }
+.rank-trophies { font-size: var(--font-size-xs); color: var(--text-muted); }
+
+.rank-current-badge {
+  padding: 4px var(--space-3);
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* ---- Season Screen ---- */
+.season-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.08));
+  border: 1px solid rgba(139,92,246,0.3);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-5);
+}
+.season-card-icon { font-size: 2.5rem; filter: drop-shadow(0 4px 12px rgba(139,92,246,0.5)); flex-shrink: 0; }
+.season-card-info { flex: 1; }
+.season-card-name { font-size: var(--font-size-base); font-weight: 900; color: var(--secondary-light); margin-bottom: 4px; }
+.season-card-days { font-size: var(--font-size-xs); color: var(--text-muted); }
+
+.season-bp-section {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+.season-bp-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3); }
+.season-bp-title { font-size: var(--font-size-base); font-weight: 900; color: var(--text-primary); }
+.season-bp-level { font-size: var(--font-size-sm); font-weight: 800; color: var(--secondary-light); }
+
+.season-bp-bar { height: 12px; background: rgba(255,255,255,0.07); border-radius: var(--radius-full); overflow: hidden; margin-bottom: var(--space-2); }
+.season-bp-fill { height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full); transition: width 0.8s var(--ease-out); box-shadow: 0 0 10px var(--primary-glow); }
+
+.season-bp-xp { font-size: var(--font-size-xs); color: var(--text-muted); text-align: center; margin-bottom: var(--space-4); }
+
+.season-track {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: var(--space-4);
+}
+.season-track::-webkit-scrollbar { display: none; }
+
+.season-track-level {
+  flex-shrink: 0;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.season-track-level.current .season-track-num { background: var(--gradient-primary); color: #fff; box-shadow: 0 0 12px var(--primary-glow); }
+.season-track-level.passed .season-track-num { background: rgba(16,185,129,0.2); border-color: var(--success-border); color: var(--success); }
+
+.season-track-num {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 900;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-strong);
+  background: rgba(255,255,255,0.05);
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.season-track-free, .season-track-premium {
+  width: 56px;
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  position: relative;
+  text-align: center;
+}
+.season-track-free.ready, .season-track-premium.ready {
+  background: rgba(16,185,129,0.12);
+  border-color: var(--success-border);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+.season-track-free.claimed, .season-track-premium.claimed { opacity: 0.5; }
+.season-track-premium.locked { opacity: 0.4; }
+
+.season-mini-claim {
+  width: 20px;
+  height: 20px;
+  background: var(--gradient-success);
+  border: none;
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+.season-mini-claim:hover { transform: scale(1.15); }
+.season-lock { font-size: 0.7rem; }
+
+.season-premium-btn {
+  width: 100%;
+  padding: var(--space-4);
+  background: var(--gradient-gold);
+  border: none;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  font-size: var(--font-size-base);
+  font-weight: 900;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-main);
+  box-shadow: var(--shadow-gold);
+}
+.season-premium-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.4); }
+
+.season-premium-owned {
+  text-align: center;
+  padding: var(--space-3);
+  color: var(--accent);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  background: rgba(245,158,11,0.08);
+  border-radius: var(--radius-md);
+}
+
+.season-missions-section { margin-bottom: var(--space-5); }
+.season-section-title { font-size: var(--font-size-sm); font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-3); }
+
+.season-mission {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  transition: var(--transition-base);
+}
+.season-mission.claimable { border-color: var(--success-border); background: var(--success-bg); }
+.season-mission.claimed { opacity: 0.6; }
+
+.season-mission-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+.season-mission-icon { font-size: 1.5rem; flex-shrink: 0; }
+.season-mission-info { flex: 1; }
+.season-mission-name { font-size: var(--font-size-sm); font-weight: 800; color: var(--text-primary); margin-bottom: 2px; }
+.season-mission-desc { font-size: var(--font-size-xs); color: var(--text-muted); }
+.season-mission-xp { font-size: var(--font-size-sm); font-weight: 900; color: var(--secondary-light); flex-shrink: 0; }
+
+.season-mission-progress-bar { height: 8px; background: rgba(255,255,255,0.07); border-radius: var(--radius-full); overflow: hidden; margin-bottom: var(--space-2); }
+.season-mission-fill { height: 100%; background: var(--gradient-primary); border-radius: var(--radius-full); transition: width 0.6s var(--ease-out); }
+.season-mission.claimable .season-mission-fill { background: var(--gradient-success); }
+
+.season-mission-footer { display: flex; align-items: center; justify-content: space-between; }
+.season-mission-count { font-size: var(--font-size-xs); color: var(--text-muted); font-weight: 700; }
+
+.season-claim-btn {
+  padding: 7px var(--space-4);
+  background: var(--gradient-success);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-weight: 900;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-main);
+  box-shadow: 0 2px 8px rgba(16,185,129,0.3);
+}
+.season-claim-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(16,185,129,0.4); }
+
+.season-claimed-badge { font-size: var(--font-size-xs); color: var(--success); font-weight: 800; }
+
+/* ---- Achievement Popup ---- */
+.achievement-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 4000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.achievement-overlay.show { opacity: 1; pointer-events: auto; }
+
+.achievement-popup {
+  position: fixed;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-6);
+  max-width: 340px;
+  width: 90%;
+  z-index: 4001;
+  text-align: center;
+  box-shadow: var(--shadow-gold);
+  transition: bottom 0.4s var(--ease-spring);
+}
+.achievement-popup.show { bottom: var(--space-8); }
+
+.achievement-popup-title { font-size: var(--font-size-xs); font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: var(--space-3); }
+.achievement-popup-icon { font-size: 3rem; margin-bottom: var(--space-2); filter: drop-shadow(0 4px 16px var(--accent-glow)); }
+.achievement-popup-name { font-size: var(--font-size-lg); font-weight: 900; color: var(--text-primary); margin-bottom: var(--space-2); }
+.achievement-popup-desc { font-size: var(--font-size-sm); color: var(--text-muted); margin-bottom: var(--space-4); }
+
+.achievement-popup-close {
+  padding: 10px var(--space-6);
+  background: var(--gradient-gold);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-main);
+}
+.achievement-popup-close:hover { transform: translateY(-1px); }
+
+/* ---- Achievement Cards (progress screen) ---- */
+.achievement-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  transition: var(--transition-base);
+}
+.achievement-card.unlocked { border-color: rgba(245,158,11,0.3); background: rgba(245,158,11,0.05); }
+.achievement-card.locked { opacity: 0.45; }
+
+.achievement-icon { font-size: 1.8rem; flex-shrink: 0; }
+.achievement-name { font-size: var(--font-size-sm); font-weight: 800; color: var(--text-primary); margin-bottom: 2px; }
+.achievement-desc { font-size: var(--font-size-xs); color: var(--text-muted); }
+
+/* ---- Active Powerup Items ---- */
+.active-powerup-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: var(--radius-sm);
+}
+.active-powerup-icon { font-size: 1.2rem; flex-shrink: 0; }
+.active-powerup-info { display: flex; flex-direction: column; gap: 1px; }
+.active-powerup-name { font-size: var(--font-size-xs); font-weight: 800; color: var(--accent); }
+.active-powerup-timer { font-size: 10px; color: var(--text-muted); font-weight: 700; }
+.active-powerup-timer.expiring { color: var(--danger); animation: timerPulse 1s ease-in-out infinite; }

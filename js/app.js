@@ -3687,9 +3687,20 @@ const App = {
     // Verificar desde el backend_user (tiene prioridad)
     try {
       const backendUser = JSON.parse(localStorage.getItem('backend_user') || '{}');
-      if (backendUser.infiniteLives === true) {
+      if (backendUser.infiniteLives === true || backendUser.isPremium === true) {
         this.infiniteLives = true;
         localStorage.setItem('bq_infiniteLives', 'true');
+        // Aplicar premium y sin anuncios también
+        if (typeof Billing !== 'undefined') {
+          if (backendUser.isPremium) {
+            Billing.isPremium = true;
+            localStorage.setItem(Billing.STORAGE_KEYS.PREMIUM, 'true');
+          }
+          if (backendUser.adsRemoved) {
+            Billing.adsRemoved = true;
+            localStorage.setItem(Billing.STORAGE_KEYS.ADS_REMOVED, 'true');
+          }
+        }
         return;
       }
     } catch(e) {}

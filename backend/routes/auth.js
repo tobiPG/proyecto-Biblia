@@ -135,9 +135,17 @@ router.post('/login', async (req, res) => {
     });
     await session.save();
     
-    // Auto-activar vidas infinitas para la cuenta del propietario
-    if (user.email === 'o.agg1130@gmail.com' && !user.infiniteLives) {
+    // Auto-activar Premium permanente para la cuenta del propietario
+    if (user.email === 'o.agg1130@gmail.com') {
       user.infiniteLives = true;
+      user.isPremium = true;
+      user.adsRemoved = true;
+      // Renovar expiración a 10 años si está próxima o no existe
+      const tenYearsFromNow = new Date();
+      tenYearsFromNow.setFullYear(tenYearsFromNow.getFullYear() + 10);
+      if (!user.premiumExpiry || user.premiumExpiry < new Date()) {
+        user.premiumExpiry = tenYearsFromNow;
+      }
     }
 
     // Actualizar lastActive

@@ -6689,27 +6689,43 @@ const App = {
   // PWA INSTALL PROMPT
   // ============================================================
   initInstallPrompt() {
+    const isStandalone = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches;
+    if (isStandalone) return; // Ya instalada
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    if (isIOS) {
+      // iOS no soporta beforeinstallprompt — mostrar instrucciones manuales
+      const dismissed = sessionStorage.getItem('ios_install_dismissed');
+      if (!dismissed) {
+        setTimeout(() => {
+          document.getElementById('ios-install-banner')?.classList.remove('hidden');
+        }, 3000);
+      }
+      document.getElementById('ios-install-dismiss')?.addEventListener('click', () => {
+        document.getElementById('ios-install-banner')?.classList.add('hidden');
+        sessionStorage.setItem('ios_install_dismissed', '1');
+      });
+      return;
+    }
+
+    // Android / Chrome
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       this.deferredInstallPrompt = e;
-      // Show install banner
-      const banner = document.getElementById('install-banner');
-      if (banner) banner.classList.remove('hidden');
+      document.getElementById('install-banner')?.classList.remove('hidden');
     });
     document.getElementById('btn-install')?.addEventListener('click', async () => {
       if (!this.deferredInstallPrompt) return;
       this.deferredInstallPrompt.prompt();
       const { outcome } = await this.deferredInstallPrompt.userChoice;
-      if (outcome === 'accepted') {
-        this.showToast('App instalada!');
-      }
+      if (outcome === 'accepted') this.showToast('¡App instalada!');
       this.deferredInstallPrompt = null;
       document.getElementById('install-banner')?.classList.add('hidden');
     });
     document.getElementById('btn-install-dismiss')?.addEventListener('click', () => {
       document.getElementById('install-banner')?.classList.add('hidden');
     });
-    // Hide banner if app is already installed
     window.addEventListener('appinstalled', () => {
       document.getElementById('install-banner')?.classList.add('hidden');
       this.deferredInstallPrompt = null;

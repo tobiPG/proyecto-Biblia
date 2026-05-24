@@ -6688,6 +6688,24 @@ const App = {
   // ============================================================
   handleUrlShortcuts() {
     const params = new URLSearchParams(window.location.search);
+
+    // Manejar retorno de Stripe Checkout
+    const payment = params.get('payment');
+    if (payment === 'success') {
+      const sessionId = params.get('session_id');
+      const productId = params.get('productId');
+      window.history.replaceState({}, '', window.location.pathname);
+      if (sessionId && productId && typeof Billing !== 'undefined') {
+        Billing.verifyStripeSession(sessionId, productId);
+      }
+      return;
+    }
+    if (payment === 'cancelled') {
+      window.history.replaceState({}, '', window.location.pathname);
+      this.showToast('❌ Pago cancelado');
+      return;
+    }
+
     const mode = params.get('mode');
     if (!mode || !Storage.isRegistered()) return;
     switch (mode) {

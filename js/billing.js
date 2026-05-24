@@ -49,7 +49,7 @@ const Billing = {
       id: 'remove_ads',
       name: 'Quitar Anuncios',
       description: 'Elimina los anuncios para siempre',
-      price: 4.99,
+      price: 5.99,
       currency: 'USD',
       type: 'non-consumable',
       icon: '🚫'
@@ -355,36 +355,86 @@ const Billing = {
     }
   },
 
-  // === COMPRA WEB (Stripe/PayPal/Simulación) ===
+  // === COMPRA WEB (Stripe Checkout) ===
   async purchaseWeb(productId) {
-    const product = this.PRODUCTS[productId];
-    
-    // Por ahora, mostrar modal de pago simulado
-    // En producción, aquí se integraría Stripe, PayPal, etc.
-    
-    return new Promise((resolve) => {
-      this.showPaymentModal(product, (result) => {
-        if (result.success) {
-          const purchaseRecord = {
-            productId,
-            token: 'web_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-            date: new Date().toISOString(),
-            status: 'completed',
-            platform: 'web'
-          };
+    try {
+      const token = localStorage.getItem('backend_token');
+      if (!token) {
+        if (typeof App !== 'undefined') App.showToast('⚠️ Debes iniciar sesión para comprar');
+        return { success: false, error: 'No autenticado' };
+      }
 
-          if (product.type === 'subscription') {
-            purchaseRecord.expiryDate = this.calculateExpiryDate(product.period);
-            purchaseRecord.status = 'active';
-          }
-
-          this.processPurchase(purchaseRecord);
-          resolve({ success: true, purchase: purchaseRecord });
-        } else {
-          resolve({ success: false, error: result.error || 'Compra cancelada' });
-        }
+      const apiBase = window.API_BASE_URL || 'http://localhost:3001/api';
+      const res = await fetch(apiBase + '/payments/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify({ productId })
       });
-    });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al iniciar pago');
+
+      // Redirigir a Stripe Checkout
+      window.location.href = data.url;
+      return new Promise(() => {}); // La página se redirige, no resuelve
+    } catch (err) {
+      console.error('[Billing] Error iniciando Stripe:', err);
+      if (typeof App !== 'undefined') App.showToast('❌ ' + err.message);
+      return { success: false, error: err.message };
+    }
+  },
+
+  // === VERIFICAR SESIÓN DE STRIPE (llamado al volver del checkout) ===
+  async verifyStripeSession(sessionId, productId) {
+    try {
+      const token = localStorage.getItem('backend_token');
+      const apiBase = window.API_BASE_URL || 'http://localhost:3001/api';
+      const res = await fetch(`${apiBase}/payments/verify-session?session_id=${sessionId}&productId=${productId}`, {
+        headers: { 'Authorization': 'Bearer ' + (token || '') }
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Error al verificar pago');
+
+      // Aplicar localmente también
+      this.applyPurchaseLocally(productId);
+
+      const product = this.PRODUCTS[productId];
+      if (typeof App !== 'undefined') {
+        App.showToast('✅ ¡' + (product?.name || 'Compra') + ' activado!');
+      }
+      return { success: true };
+    } catch (err) {
+      console.error('[Billing] Error verificando sesión:', err);
+      if (typeof App !== 'undefined') App.showToast('⚠️ Pago recibido — recarga si no ves los cambios');
+      return { success: false };
+    }
+  },
+
+  // === APLICAR COMPRA LOCALMENTE ===
+  applyPurchaseLocally(productId) {
+    switch (productId) {
+      case 'premium_monthly':
+      case 'premium_yearly':
+        this.isPremium = true;
+        this.adsRemoved = true;
+        localStorage.setItem(this.STORAGE_KEYS.PREMIUM, 'true');
+        localStorage.setItem(this.STORAGE_KEYS.ADS_REMOVED, 'true');
+        break;
+      case 'remove_ads':
+        this.adsRemoved = true;
+        localStorage.setItem(this.STORAGE_KEYS.ADS_REMOVED, 'true');
+        break;
+      case 'life_1':
+        if (typeof App !== 'undefined') App.addLives(1);
+        break;
+      case 'life_full':
+        if (typeof App !== 'undefined') App.fillLives();
+        break;
+    }
   },
 
   // === PROCESAR COMPRA ===

@@ -15,6 +15,7 @@ import authRoutes from './routes/auth.js';
 import rankedRoutes from './routes/ranked.js';
 import clanRoutes from './routes/clans.js';
 import tournamentRoutes from './routes/tournaments.js';
+import paymentsRouter, { handleStripeWebhook } from './routes/payments.js';
 import { initSocket } from './socket/gameSocket.js';
 
 async function connectDB() {
@@ -53,6 +54,9 @@ const io = new Server(httpServer, {
 // Inicializar lógica de sockets
 initSocket(io);
 
+// Stripe webhook — must be registered BEFORE express.json() to receive raw body
+app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), handleStripeWebhook);
+
 // Middleware
 app.use(cors({
   origin: function(origin, callback) {
@@ -79,6 +83,7 @@ app.use('/api/challenges', challengeRoutes);
 app.use('/api/ranked', rankedRoutes);
 app.use('/api/clans', clanRoutes);
 app.use('/api/tournaments', tournamentRoutes);
+app.use('/api/payments', paymentsRouter);
 
 app.get('/', (req, res) => {
   res.json({

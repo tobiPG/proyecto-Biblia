@@ -102,6 +102,12 @@ const userSchema = new mongoose.Schema({
   friendRequests: [String], // Solicitudes recibidas
   sentRequests: [String], // Solicitudes enviadas
   
+  // Pagos / Premium
+  isPremium: { type: Boolean, default: false },
+  premiumExpiry: { type: Date, default: null },
+  adsRemoved: { type: Boolean, default: false },
+  infiniteLives: { type: Boolean, default: false },
+
   // Auth
   isAnonymous: { type: Boolean, default: true },
   password: String, // Para login local (si lo implementas)

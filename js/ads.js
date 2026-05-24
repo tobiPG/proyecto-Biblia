@@ -7,10 +7,10 @@ const AdsManager = {
   config: {
     // IDs de AdMob (reemplazar con tus IDs reales de producción)
     admob: {
-      appId: 'ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY',
-      bannerId: 'ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ',
-      interstitialId: 'ca-app-pub-XXXXXXXXXXXXXXXX/AAAAAAAAAA',
-      rewardedId: 'ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB'
+      appId: 'ca-app-pub-8273373986558258~YYYYYYYYYY',
+      bannerId: 'ca-app-pub-8273373986558258/ZZZZZZZZZZ',
+      interstitialId: 'ca-app-pub-8273373986558258/AAAAAAAAAA',
+      rewardedId: 'ca-app-pub-8273373986558258/BBBBBBBBBB'
     },
     // IDs de prueba de AdMob (usar durante desarrollo)
     admobTest: {

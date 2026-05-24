@@ -4122,6 +4122,13 @@ const App = {
     const countdownEl = document.getElementById('ad-countdown');
     closeBtn.classList.add('hidden');
     closeBtn.disabled = true;
+    // Cargar anuncio AdSense
+    try {
+      const adUnit = overlay.querySelector('.adsbygoogle');
+      if (adUnit && !adUnit.dataset.adsbygoogleStatus) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch(e) {}
     closeBtn.setAttribute('aria-disabled', 'true');
     overlay.classList.remove('hidden');
     // Bloquear cierre con Escape o click fuera

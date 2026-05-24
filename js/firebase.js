@@ -658,22 +658,30 @@ window.FirebaseService = {
   async getLeaderboard(limitCount = 50) {
     console.log('[Firebase] getLeaderboard llamado');
     try {
-      // Traemos más entradas para compensar los anónimos que filtramos
+      // Traemos extra para deduplicar nombres repetidos
       const snapshot = await this.db.collection('users')
         .orderBy('totalPoints', 'desc')
         .limit(limitCount * 3)
         .get();
 
       console.log('[Firebase] snapshot obtenido, size:', snapshot.size);
-      const leaderboard = [];
+
+      // Deduplicar por displayName: si hay dos cuentas con el mismo nombre
+      // (ej: anónima del cel + real del PC), conservar la de mayor puntuación
+      const seen = new Map();
       snapshot.forEach((doc) => {
         const data = doc.data();
-        // Excluir usuarios anónimos del ranking público
-        if (!data.isAnonymous) {
-          leaderboard.push({ id: doc.id, ...data });
+        const name = (data.displayName || '').trim();
+        if (!name) return; // ignorar cuentas sin nombre
+        const existing = seen.get(name);
+        if (!existing || (data.totalPoints || 0) > (existing.totalPoints || 0)) {
+          seen.set(name, { id: doc.id, ...data });
         }
       });
-      return leaderboard.slice(0, limitCount);
+
+      return Array.from(seen.values())
+        .sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0))
+        .slice(0, limitCount);
     } catch (error) {
       console.error('[Firebase] Error obteniendo leaderboard:', error);
       return [];

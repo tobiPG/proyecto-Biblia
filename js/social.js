@@ -87,29 +87,37 @@ window.Social = {
     // Cuando el OPONENTE ya jugó (soy el creador)
     FirebaseService.onEvent('opponentPlayed', (challenge) => {
       console.log('[Social] El oponente ya jugó. Mi turno.', challenge);
-      
-      // IMPORTANTE: Si ya estoy jugando este reto, NO interrumpir
-      if (window.App && window.App.isSocialChallenge && 
-          window.App.socialChallengeData?.id === challenge.id) {
-        console.log('[Social] Ya estoy jugando este reto, ignorando evento opponentPlayed');
-        return;
-      }
-      
+
+      // Si ya estoy jugando este reto ahora mismo, no interrumpir
+      if (window.App && window.App.isSocialChallenge &&
+          window.App.socialChallengeData?.id === challenge.id) return;
+
+      // Si yo (creador) ya envié mi resultado, no mostrar "es tu turno"
+      if (challenge.creatorScore !== null && challenge.creatorScore !== undefined) return;
+
+      // Si el overlay de resultados ya está visible, ignorar
+      const resultOverlay = document.getElementById('challenge-result-overlay');
+      if (resultOverlay && !resultOverlay.classList.contains('hidden')) return;
+
       this.showToast('⚔️ ¡' + challenge.opponentName + ' ya jugó! Es tu turno.', 'info');
       this.showPlayPrompt(challenge, 'yourTurn');
     });
-    
+
     // Cuando el CREADOR ya jugó (soy el oponente)
     FirebaseService.onEvent('creatorPlayed', (challenge) => {
       console.log('[Social] El creador ya jugó. Mi turno.', challenge);
-      
-      // IMPORTANTE: Si ya estoy jugando este reto, NO interrumpir
-      if (window.App && window.App.isSocialChallenge && 
-          window.App.socialChallengeData?.id === challenge.id) {
-        console.log('[Social] Ya estoy jugando este reto, ignorando evento creatorPlayed');
-        return;
-      }
-      
+
+      // Si ya estoy jugando este reto ahora mismo, no interrumpir
+      if (window.App && window.App.isSocialChallenge &&
+          window.App.socialChallengeData?.id === challenge.id) return;
+
+      // Si yo (oponente) ya envié mi resultado, no mostrar "es tu turno"
+      if (challenge.opponentScore !== null && challenge.opponentScore !== undefined) return;
+
+      // Si el overlay de resultados ya está visible, ignorar
+      const resultOverlay = document.getElementById('challenge-result-overlay');
+      if (resultOverlay && !resultOverlay.classList.contains('hidden')) return;
+
       this.showToast('⚔️ ¡' + challenge.creatorName + ' ya jugó! Es tu turno.', 'info');
       this.showPlayPrompt(challenge, 'yourTurn');
     });

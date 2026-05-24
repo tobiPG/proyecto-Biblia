@@ -344,8 +344,21 @@ window.Ranked = {
   // ============================================
 
   async getMyRankings() {
-    if (!window.BackendService?.token) return this.getLocalAllTrophies();
-    return await window.BackendService.getMyRankings();
+    const local = this.getLocalAllTrophies();
+    if (!window.BackendService?.token) return local;
+    try {
+      const backend = await window.BackendService.getMyRankings();
+      // Merge local and backend: take max trophies per category so bot matches are always visible
+      const merged = {};
+      for (const cat of RANKED_CATEGORIES) {
+        const localT = local[cat.id]?.trophies || 0;
+        const be = backend[cat.id] || {};
+        merged[cat.id] = { wins: 0, losses: 0, ties: 0, gamesPlayed: 0, ...be, trophies: Math.max(localT, be.trophies || 0) };
+      }
+      return merged;
+    } catch {
+      return local;
+    }
   },
 
   async getCategoryRanking(category) {

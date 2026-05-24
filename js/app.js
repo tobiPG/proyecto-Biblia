@@ -2484,6 +2484,11 @@ const App = {
       }
     }
 
+    // Sync trophies to localStorage so ranked screen reflects them even when logged in
+    if (result.newTrophies !== undefined && window.Ranked) {
+      window.Ranked.saveLocalTrophies(category, result.newTrophies);
+    }
+
     this.playSound(result.isWinner || result.isTie ? 'phase' : 'wrong');
   },
 

@@ -695,6 +695,15 @@ window.Ranked = {
                          : -RANKED_CONFIG.trophiesLose;
     const newTrophies = Math.max(0, data.myTrophies + trophyChange);
     this.saveLocalTrophies(category, newTrophies);
+    // Sincronizar trofeos al backend
+    if (window.BackendService?.token) {
+      window.BackendService.updateRankedResult(category, { won: isWinner, tied: isTie })
+        .then(result => {
+          if (result?.trophies !== undefined) {
+            this.saveLocalTrophies(category, result.trophies);
+          }
+        }).catch(() => {});
+    }
     if (window.App?.showRankedResult) {
       window.App.showRankedResult({ isWinner, isTie, opponentScore: botScore, newTrophies, trophyChange });
     }

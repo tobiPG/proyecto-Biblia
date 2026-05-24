@@ -1098,6 +1098,20 @@ window.BackendService = {
     }
   },
 
+  async updateRankedResult(category, { won, tied }) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ranked/rankings/${category}`, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${this.token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ won, tied })
+      });
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (e) {
+      return null;
+    }
+  },
+
   async getRankedLeaderboard(category, limit = 100) {
     try {
       const response = await fetch(`${API_BASE_URL}/ranked/leaderboard/${category}?limit=${limit}`);

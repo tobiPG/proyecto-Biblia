@@ -24,3 +24,4 @@ backend/.env.production
 # Build outputs
 dist/
 build/
+.vercel

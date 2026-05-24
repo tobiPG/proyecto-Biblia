@@ -491,6 +491,17 @@ const App = {
       if (typeof Storage.initVersioning === 'function') {
         Storage.initVersioning();
       }
+      // Sync backend username to Storage so Firebase picks it up
+      try {
+        const backendUser = JSON.parse(localStorage.getItem('backend_user') || '{}');
+        if (backendUser.displayName) {
+          const player = Storage.getPlayer();
+          if (!player.name || player.name !== backendUser.displayName) {
+            player.name = backendUser.displayName;
+            Storage.savePlayer(player);
+          }
+        }
+      } catch(e) {}
       this.bindEvents();
       console.log('[BibliaQuiz] Events bound');
       this.loadLives();
@@ -1196,6 +1207,10 @@ const App = {
     });
     document.getElementById('import-file').addEventListener('change', (e) => {
       this.importData(e);
+    });
+    // Logout
+    document.getElementById('btn-logout')?.addEventListener('click', () => {
+      this.logout();
     });
     // Reset confirm
     document.getElementById('btn-reset').addEventListener('click', () => {
@@ -4827,6 +4842,12 @@ const App = {
     
     document.getElementById('setting-name').value = userName;
     document.getElementById('setting-email').value = userEmail;
+
+    // Show logged-in account info next to logout button
+    const loggedInInfo = document.getElementById('logged-in-user-info');
+    if (loggedInInfo && userEmail) {
+      loggedInInfo.textContent = `Sesión: ${userEmail}`;
+    }
     
     // Si hay usuario autenticado, el email es de solo lectura
     const emailInput = document.getElementById('setting-email');
@@ -4881,6 +4902,26 @@ const App = {
     // Just ensure defaults exist
     Storage.getSettings();
     Storage.getPlayer();
+  },
+
+  async logout() {
+    const token = localStorage.getItem('backend_token');
+    if (token) {
+      try {
+        const apiBase = window.API_BASE_URL || 'http://localhost:3001/api';
+        await fetch(apiBase + '/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+      } catch (e) {}
+    }
+    localStorage.removeItem('backend_token');
+    localStorage.removeItem('backend_user');
+    // Sign out from Firebase too if available
+    if (window.FirebaseService?.auth) {
+      try { await FirebaseService.auth.signOut(); } catch (e) {}
+    }
+    location.reload();
   },
   // === UTILIDADES ===
   shuffle(array) {

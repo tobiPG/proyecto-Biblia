@@ -443,16 +443,8 @@ async function updateUserTrophies(userId, category, won, tied, change, currentTr
 // GENERAR IDs DE PREGUNTAS EN SERVIDOR
 // ------------------------------------------
 function generateServerQuestions(category, trophies, count) {
-  // El servidor no tiene QUESTIONS_DB, devuelve IDs aleatorios
-  // El frontend tiene la BD de preguntas y usará estos IDs para filtrar
-  // Usamos rangos por trofeos para definir dificultad
-  const ranges = {
-    facil:     trophies < 1000,
-    intermedio: trophies >= 500 && trophies < 3000,
-    dificil:   trophies >= 1500 && trophies < 5000,
-    experto:   trophies >= 3000
-  };
-
-  // Devolver configuración de dificultad para que el cliente genere las preguntas
-  return { category, trophies, count, ranges };
+  // El servidor envía una semilla aleatoria para que ambos clientes
+  // generen exactamente las mismas preguntas de forma determinista
+  const seed = Math.floor(Math.random() * 2147483647);
+  return { category, trophies, count, seed };
 }

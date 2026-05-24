@@ -387,14 +387,18 @@ window.Social = {
   updateLoginBanner() {
     const banner = document.getElementById('login-prompt-banner');
     if (!banner) return;
-    
+
+    // Users logged in via MongoDB backend don't need the "link with Google" banner
+    const hasBackendAuth = !!localStorage.getItem('backend_token');
+    if (hasBackendAuth) {
+      banner.classList.add('hidden');
+      return;
+    }
+
     const profile = FirebaseService.userProfile;
-    
     if (profile && profile.isAnonymous) {
-      // Usuario anónimo - mostrar banner
       banner.classList.remove('hidden');
     } else {
-      // Usuario vinculado - ocultar banner
       banner.classList.add('hidden');
     }
   },
@@ -1272,23 +1276,25 @@ window.Social = {
       }
     }
 
-    // Estado de vinculación y botones de Google
+    // Hide Google auth buttons for MongoDB-authenticated users
     const linkGoogleBtn = document.getElementById('btn-link-google');
     const signInGoogleBtn = document.getElementById('btn-signin-google');
-    
+    const hasBackendAuth = !!localStorage.getItem('backend_token');
+
     if (linkGoogleBtn && signInGoogleBtn) {
-      if (!profile.isAnonymous) {
-        // Usuario ya vinculado con Google
+      if (hasBackendAuth) {
+        // MongoDB user — hide Google auth buttons
+        linkGoogleBtn.classList.add('hidden');
+        signInGoogleBtn.classList.add('hidden');
+      } else if (!profile.isAnonymous) {
         linkGoogleBtn.textContent = '✓ Vinculado';
         linkGoogleBtn.disabled = true;
         linkGoogleBtn.classList.remove('hidden');
         signInGoogleBtn.classList.add('hidden');
       } else {
-        // Usuario anónimo - mostrar ambas opciones
         linkGoogleBtn.textContent = '🔗 Vincular';
         linkGoogleBtn.disabled = false;
         linkGoogleBtn.classList.remove('hidden');
-        // Mostrar botón de iniciar sesión para usuarios que puedan tener cuenta existente
         signInGoogleBtn.classList.remove('hidden');
       }
     }

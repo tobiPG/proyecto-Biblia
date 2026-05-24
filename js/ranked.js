@@ -64,21 +64,34 @@ window.Ranked = {
   // CONEXIÓN SOCKET
   // ============================================
 
-  connectSocket() {
+  async connectSocket() {
     if (this.socket?.connected) return Promise.resolve();
 
+    const token = localStorage.getItem('backend_token');
+    if (!token) return Promise.reject(new Error('Sin token'));
+
+    const SOCKET_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? 'http://localhost:3001'
+      : 'https://bibliaquiz-api.onrender.com';
+
+    // Ping para despertar el servidor (Render free tier duerme tras 15 min)
+    let wakeTimer = null;
+    try {
+      wakeTimer = setTimeout(() => {
+        this.showToast('Despertando servidor... espera unos segundos ⏳', 'info');
+      }, 3000);
+      await fetch(`${SOCKET_URL}/api/health`, { signal: AbortSignal.timeout(50000) });
+      clearTimeout(wakeTimer);
+    } catch {
+      clearTimeout(wakeTimer);
+      // continuar igual, el socket intentará conectar
+    }
+
     return new Promise((resolve, reject) => {
-      const token = localStorage.getItem('backend_token');
-      if (!token) return reject(new Error('Sin token'));
-
-      const SOCKET_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? 'http://localhost:3001'
-        : 'https://bibliaquiz-api.onrender.com';
-
       this.socket = io(SOCKET_URL, {
         auth: { token },
         transports: ['websocket', 'polling'],
-        timeout: 10000
+        timeout: 45000
       });
 
       this.socket.on('connect', () => {
@@ -406,25 +419,29 @@ window.Ranked = {
     return                      { easy: 0,   medium: 20, hard: 80 };
   },
 
-  generateRankedQuestionsFromConfig(config) {
-    // config puede ser { category, trophies, count } del servidor
-    // o un array de IDs (legacy)
-    if (!window.QUESTIONS_DB) return [];
-
-    const category = config?.category || 'aleatorio';
-    const trophies = config?.trophies || 0;
-    const count = config?.count || RANKED_CONFIG.questionsPerMatch;
-
-    return this.generateRankedQuestions(category, trophies, count);
+  // PRNG determinista — misma semilla = mismo resultado en ambos clientes
+  _seededRng(seed) {
+    let s = seed >>> 0;
+    return function() {
+      s = Math.imul(s, 1664525) + 1013904223 | 0;
+      return (s >>> 0) / 0xFFFFFFFF;
+    };
   },
 
-  generateRankedQuestions(category, trophies = 0, count = RANKED_CONFIG.questionsPerMatch) {
+  generateRankedQuestionsFromConfig(config) {
+    if (!window.QUESTIONS_DB) return [];
+    const category = config?.category || 'aleatorio';
+    const trophies = config?.trophies || 0;
+    const count    = config?.count    || RANKED_CONFIG.questionsPerMatch;
+    const seed     = config?.seed     ?? Date.now();
+    return this.generateRankedQuestions(category, trophies, count, seed);
+  },
+
+  generateRankedQuestions(category, trophies = 0, count = RANKED_CONFIG.questionsPerMatch, seed = null) {
     if (!window.QUESTIONS_DB) return [];
 
     // Mapeo: ID de categoría ranked → nombre de categoría en questions.js
-    const categoryMap = {
-      'eventos': 'historias'
-    };
+    const categoryMap = { 'eventos': 'historias' };
     const qCategory = categoryMap[category] || category;
 
     const diffDist = this.getDifficultyByTrophies(trophies);
@@ -437,7 +454,8 @@ window.Ranked = {
     const medium = pool.filter(q => q.difficulty === 'intermedio');
     const hard   = pool.filter(q => q.difficulty === 'dificil' || q.difficulty === 'experto');
 
-    const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
+    const rng = seed !== null ? this._seededRng(seed) : Math.random.bind(Math);
+    const shuffle = arr => [...arr].sort(() => rng() - 0.5);
 
     let numEasy   = Math.round(count * diffDist.easy / 100);
     let numMedium = Math.round(count * diffDist.medium / 100);
@@ -597,25 +615,26 @@ window.Ranked = {
     this.searchStartTime = Date.now();
     if (this._botSearchTimeout) clearTimeout(this._botSearchTimeout);
 
-    // Si hay token: intentar jugador real primero (20s), luego bot como fallback
+    // Si hay token: intentar jugador real primero, luego bot como fallback
     if (window.BackendService?.token) {
-      this._botSearchTimeout = setTimeout(() => {
-        if (!this._realPlayerMatched) {
-          if (this.socket?.connected) this.socket.emit('leave_queue');
-          this._stopSearchTimer();
-          const bot = this.generateBot(myTrophies);
-          this._launchBotMatch(category, bot, myTrophies);
-        }
-      }, 20000);
-
       try {
+        // connectSocket incluye el wake-up ping — esperamos aquí antes de fijar el timeout
         await this.connectSocket();
+
+        // Socket conectado → ahora sí iniciar el temporizador de bot (20s desde aquí)
+        this._botSearchTimeout = setTimeout(() => {
+          if (!this._realPlayerMatched) {
+            if (this.socket?.connected) this.socket.emit('leave_queue');
+            this._stopSearchTimer();
+            const bot = this.generateBot(myTrophies);
+            this._launchBotMatch(category, bot, myTrophies);
+          }
+        }, 20000);
+
         this.currentRange = RANKED_CONFIG.matchmakingInitialRange;
         this.socket.emit('join_queue', { category, trophies: myTrophies, rankId: myRank.id });
         console.log('[Ranked] Buscando jugador real (20s) luego bot...');
       } catch {
-        clearTimeout(this._botSearchTimeout);
-        this._botSearchTimeout = null;
         // Sin conexión: bot directo
         setTimeout(() => {
           const bot = this.generateBot(myTrophies);

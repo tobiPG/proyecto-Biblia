@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=79">
+  <link rel="stylesheet" href="css/styles.css?v=80">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8273373986558258" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -1047,6 +1047,11 @@
         </div>
         <p id="promo-code-result" class="promo-result hidden"></p>
       </div>
+      <div class="setting-item" id="logout-section">
+        <label>🔐 Cuenta</label>
+        <div id="logged-in-user-info" style="color:#aaa;font-size:0.85rem;margin-bottom:8px;"></div>
+        <button id="btn-logout" class="btn-danger" style="background:linear-gradient(135deg,#e74c3c,#c0392b);margin-bottom:0;">🚪 Cerrar Sesión</button>
+      </div>
       <button id="btn-reset" class="btn-danger">🗑️ Borrar Todo</button>
     </div>
   </div>
@@ -1755,6 +1760,24 @@
   </div>
 </div>
 
+<!-- Notificación de reto en tiempo real -->
+<div id="challenge-notification" class="challenge-notif-banner hidden" role="alert">
+  <div class="challenge-notif-timer-bar-wrap">
+    <div id="challenge-notif-timer-bar" class="challenge-notif-timer-bar"></div>
+  </div>
+  <div class="challenge-notif-body">
+    <div class="challenge-notif-icon">⚔️</div>
+    <div class="challenge-notif-info">
+      <div id="challenge-notif-from" class="challenge-notif-from">Nuevo reto</div>
+      <div id="challenge-notif-details" class="challenge-notif-details">10P • Aleatorio</div>
+    </div>
+    <div class="challenge-notif-actions">
+      <button id="btn-notif-accept" class="btn-notif-accept">Aceptar</button>
+      <button id="btn-notif-reject" class="btn-notif-reject">Ignorar</button>
+    </div>
+  </div>
+</div>
+
 <!-- Pantalla Social -->
 <div id="social-screen" class="screen-overlay hidden" onclick="if(event.target === this) this.classList.add('hidden')">
   <div class="social-container">
@@ -2203,7 +2226,8 @@
 </div><!-- /app-container -->
 
 <script src="js/backend.js?v=3" defer></script>
-<script src="js/social.js?v=65" defer></script>
+<script src="js/firebase.js?v=2" defer></script>
+<script src="js/social.js?v=66" defer></script>
 <script src="js/questions.js?v=54" defer></script>
 <script src="js/definitions.js?v=51" defer></script>
 <script src="js/storage.js?v=51" defer></script>
@@ -2216,7 +2240,7 @@
 <script src="js/clans.js?v=3" defer></script>
 <script src="js/tournament.js?v=3" defer></script>
 <script src="js/sounds.js?v=1" defer></script>
-<script src="js/app.js?v=102" defer></script>
+<script src="js/app.js?v=103" defer></script>
 
 <script>
   if ('serviceWorker' in navigator) {

@@ -6,9 +6,9 @@ const ClanManager = {
   myClan: null,
   searchResults: [],
 
-  // Get API base URL
+  // Get API base URL (already includes /api in production)
   get apiBase() {
-    return window.API_BASE_URL || 'http://localhost:3001';
+    return window.API_BASE_URL || 'http://localhost:3001/api';
   },
 
   // Get auth headers
@@ -23,7 +23,7 @@ const ClanManager = {
   // Load user's clan from backend
   async loadClan() {
     try {
-      const res = await fetch(this.apiBase + '/api/clans/my', { headers: this.headers });
+      const res = await fetch(this.apiBase + '/clans/my', { headers: this.headers });
       if (!res.ok) throw new Error('Error al cargar clan');
       const data = await res.json();
       this.myClan = data.clan;
@@ -169,7 +169,7 @@ const ClanManager = {
     }
 
     try {
-      const res = await fetch(this.apiBase + '/api/clans/create', {
+      const res = await fetch(this.apiBase + '/clans/create', {
         method: 'POST',
         headers: this.headers,
         body: JSON.stringify({ name, description, emoji, isOpen })
@@ -209,7 +209,7 @@ const ClanManager = {
     if (container) container.innerHTML = '<p>Buscando...</p>';
 
     try {
-      const res = await fetch(this.apiBase + '/api/clans/search?q=' + encodeURIComponent(q), { headers: this.headers });
+      const res = await fetch(this.apiBase + '/clans/search?q=' + encodeURIComponent(q), { headers: this.headers });
       const data = await res.json();
       this.searchResults = data.clans || [];
       this.renderSearchResults();
@@ -244,7 +244,7 @@ const ClanManager = {
   // Join clan
   async joinClan(tag) {
     try {
-      const res = await fetch(this.apiBase + '/api/clans/join/' + tag, {
+      const res = await fetch(this.apiBase + '/clans/join/' + tag, {
         method: 'POST',
         headers: this.headers
       });
@@ -265,7 +265,7 @@ const ClanManager = {
     if (!confirm('¿Seguro que quieres salir del clan?')) return;
 
     try {
-      const res = await fetch(this.apiBase + '/api/clans/leave', {
+      const res = await fetch(this.apiBase + '/clans/leave', {
         method: 'POST',
         headers: this.headers
       });
@@ -294,7 +294,7 @@ const ClanManager = {
     container.innerHTML = '<p>Cargando...</p>';
 
     try {
-      const res = await fetch(this.apiBase + '/api/clans/leaderboard', { headers: this.headers });
+      const res = await fetch(this.apiBase + '/clans/leaderboard', { headers: this.headers });
       const data = await res.json();
       const clans = data.clans || [];
 
@@ -323,7 +323,7 @@ const ClanManager = {
   async addPointsFromQuiz(points) {
     if (!points || points <= 0) return;
     try {
-      await fetch(this.apiBase + '/api/clans/addPoints', {
+      await fetch(this.apiBase + '/clans/addPoints', {
         method: 'POST',
         headers: this.headers,
         body: JSON.stringify({ points })

@@ -6,8 +6,9 @@ const TournamentManager = {
   currentTournament: null,
   myUid: null,
 
+  // Get API base URL (already includes /api in production)
   get apiBase() {
-    return window.API_BASE_URL || 'http://localhost:3001';
+    return window.API_BASE_URL || 'http://localhost:3001/api';
   },
 
   get headers() {
@@ -34,7 +35,7 @@ const TournamentManager = {
     if (container) container.innerHTML = '<p class="tournament-loading">Cargando torneo...</p>';
 
     try {
-      const res = await fetch(this.apiBase + '/api/tournaments/current', { headers: this.headers });
+      const res = await fetch(this.apiBase + '/tournaments/current', { headers: this.headers });
       const data = await res.json();
       this.currentTournament = data.tournament;
       this.renderTournament();
@@ -214,7 +215,7 @@ const TournamentManager = {
   // Join tournament
   async joinTournament() {
     try {
-      const res = await fetch(this.apiBase + '/api/tournaments/join', {
+      const res = await fetch(this.apiBase + '/tournaments/join', {
         method: 'POST',
         headers: this.headers
       });

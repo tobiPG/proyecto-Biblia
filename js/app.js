@@ -2392,6 +2392,7 @@ const App = {
     // Bot match: calcular resultado localmente sin socket
     if (this.rankedMatchData?.isBot) {
       const category = this.rankedMatchData.category;
+      this._rankedCategory = category;
       this.isRankedMatch = false;
       this.rankedMatchData = null;
       this.rankedMatchStartTime = null;

@@ -260,6 +260,8 @@ window.BackendService = {
         const data = await response.json();
         this.currentUser = data.user;
         this.userProfile = data.user;
+        // Sincronizar backend_user en localStorage para que loadInfiniteLives tenga datos frescos
+        localStorage.setItem('backend_user', JSON.stringify(data.user));
         return true;
       }
       return false;

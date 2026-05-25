@@ -164,7 +164,8 @@ router.post('/login', async (req, res) => {
         isAnonymous: user.isAnonymous,
         infiniteLives: user.infiniteLives || false,
         isPremium: user.isPremium || false,
-        adsRemoved: user.adsRemoved || false
+        adsRemoved: user.adsRemoved || false,
+        premiumExpiry: user.premiumExpiry ? user.premiumExpiry.toISOString() : null
       }
     });
   } catch (error) {

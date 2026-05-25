@@ -3706,9 +3706,26 @@ const App = {
           this.infiniteLives = true;
           localStorage.setItem('bq_infiniteLives', 'true');
           if (typeof Billing !== 'undefined') {
-            if (backendUser.isPremium) {
+                if (backendUser.isPremium) {
               Billing.isPremium = true;
               localStorage.setItem(Billing.STORAGE_KEYS.PREMIUM, 'true');
+              // Sincronizar fecha de expiración y registro de compra anual
+              if (backendUser.premiumExpiry) {
+                localStorage.setItem(Billing.STORAGE_KEYS.PREMIUM_EXPIRY, backendUser.premiumExpiry);
+                const purchases = JSON.parse(localStorage.getItem(Billing.STORAGE_KEYS.PURCHASES) || '[]');
+                const hasActive = purchases.some(p => (p.productId === 'premium_yearly' || p.productId === 'premium_monthly') && p.status === 'active');
+                if (!hasActive) {
+                  purchases.push({
+                    id: 'server_' + Date.now(),
+                    productId: 'premium_yearly',
+                    price: 0,
+                    purchaseDate: new Date().toISOString(),
+                    expiryDate: backendUser.premiumExpiry,
+                    status: 'active'
+                  });
+                  localStorage.setItem(Billing.STORAGE_KEYS.PURCHASES, JSON.stringify(purchases));
+                }
+              }
             }
             if (backendUser.adsRemoved) {
               Billing.adsRemoved = true;
@@ -4407,8 +4424,18 @@ const App = {
       streak: this.currentStreak
     });
     
+    // Sincronizar puntos con Firestore para el leaderboard social
+    if (window.FirebaseService?.currentUser) {
+      FirebaseService.updateStats({
+        points: this.sessionPoints,
+        totalCorrect: this.sessionCorrect,
+        totalGames: 1,
+        streak: this.sessionBestStreak
+      }).catch(err => console.error('Error sincronizando stats a Firestore:', err));
+    }
+
     // Sincronizar progreso completo con MongoDB (valores absolutos desde localStorage)
-    // Se usa solo syncFullProgress para evitar race condition con $inc vs $set
+    // Se usa syncFullProgress para evitar race condition con $inc vs $set
     if (window.BackendService && BackendService.token) {
       console.log('[BibliaQuiz] 💾 Sincronizando progreso a MongoDB...');
       BackendService.syncFullProgress()
@@ -4758,22 +4785,27 @@ const App = {
   },
   
   showAchievementPopup(badge) {
-    // Create overlay if not exists
+    // Cancelar cierre automático previo para que no mate el badge actual
+    if (this._achievementAutoClose) {
+      clearTimeout(this._achievementAutoClose);
+      this._achievementAutoClose = null;
+    }
+
     let overlay = document.querySelector('.achievement-overlay');
     let popup = document.querySelector('.achievement-popup');
-    
+
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.className = 'achievement-overlay';
       document.body.appendChild(overlay);
     }
-    
+
     if (!popup) {
       popup = document.createElement('div');
       popup.className = 'achievement-popup';
       document.body.appendChild(popup);
     }
-    
+
     popup.innerHTML = `
       <div class="achievement-popup-title">Nuevo Logro!</div>
       <div class="achievement-popup-icon">${badge.icon}</div>
@@ -4781,27 +4813,25 @@ const App = {
       <div class="achievement-popup-desc">${badge.description}</div>
       <button class="achievement-popup-close">Genial!</button>
     `;
-    
-    // Sonido de logro
+
     this.playSound('achievement');
-    
-    // Show
+
     setTimeout(() => {
       overlay.classList.add('show');
       popup.classList.add('show');
     }, 100);
-    
-    // Close button
-    popup.querySelector('.achievement-popup-close').onclick = () => {
+
+    const close = () => {
       overlay.classList.remove('show');
       popup.classList.remove('show');
+      if (this._achievementAutoClose) {
+        clearTimeout(this._achievementAutoClose);
+        this._achievementAutoClose = null;
+      }
     };
-    
-    // Auto close after 5 seconds
-    setTimeout(() => {
-      overlay.classList.remove('show');
-      popup.classList.remove('show');
-    }, 5000);
+
+    popup.querySelector('.achievement-popup-close').onclick = close;
+    this._achievementAutoClose = setTimeout(close, 5000);
   },
   // === CONFIGURACION ===
   renderSettings() {
@@ -5330,6 +5360,17 @@ const App = {
       stats.bestStreak = this.challengeBestStreak;
     }
     Storage.saveStats(stats);
+
+    // Sincronizar puntos con Firestore para el leaderboard social
+    if (window.FirebaseService?.currentUser) {
+      FirebaseService.updateStats({
+        points: this.challengePoints,
+        totalCorrect: this.challengeCorrect,
+        totalGames: 1,
+        streak: this.challengeBestStreak
+      }).catch(err => console.error('Error sincronizando stats a Firestore:', err));
+    }
+
     // Add XP and check for level up
     const playerBefore = Storage.getPlayer();
     const levelBefore = playerBefore.level;

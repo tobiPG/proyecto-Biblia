@@ -1405,34 +1405,38 @@
     <div class="about-container">
       <div class="about-logo">📖</div>
       <h1 class="about-title">BibliaQuiz</h1>
-      <p class="about-version">Versión 1.0.0</p>
-      
+      <p class="about-version">Versión 2.0.0</p>
+
       <div class="about-section">
         <h3>📱 Sobre la App</h3>
-        <p>BibliaQuiz es una aplicación educativa diseñada para ayudarte a aprender y memorizar la Biblia de forma divertida a través de preguntas interactivas.</p>
+        <p>BibliaQuiz es una aplicación educativa diseñada para ayudarte a aprender y memorizar la Biblia de forma divertida a través de preguntas interactivas, retos entre amigos y clasificaciones globales.</p>
       </div>
-      
+
       <div class="about-section">
         <h3>🎮 Características</h3>
         <ul class="about-features">
-          <li>✓ Más de 1,600 preguntas bíblicas</li>
-          <li>✓ 8 categorías diferentes</li>
+          <li>✓ Más de 2,900 preguntas bíblicas</li>
+          <li>✓ 10 categorías (AT, NT, Personajes, Lugares, Milagros, Parábolas, Profetas, Reyes, Salmos y más)</li>
           <li>✓ 4 niveles de dificultad</li>
           <li>✓ 5 modos de juego</li>
+          <li>✓ Modo Ranked competitivo con trofeos</li>
+          <li>✓ Retos entre amigos en tiempo real</li>
+          <li>✓ Clasificación global (leaderboard)</li>
+          <li>✓ Campaña de capítulos bíblicos</li>
           <li>✓ 31 insignias por desbloquear</li>
-          <li>✓ Funciona sin conexión</li>
+          <li>✓ Progreso guardado en la nube</li>
         </ul>
       </div>
-      
+
       <div class="about-section">
         <h3>📊 Estadísticas</h3>
         <div class="about-stats">
           <div class="about-stat">
-            <span id="about-total-questions" class="about-stat-value">1600+</span>
+            <span id="about-total-questions" class="about-stat-value">2900+</span>
             <span class="about-stat-label">Preguntas</span>
           </div>
           <div class="about-stat">
-            <span class="about-stat-value">8</span>
+            <span class="about-stat-value">10</span>
             <span class="about-stat-label">Categorías</span>
           </div>
           <div class="about-stat">
@@ -1441,18 +1445,19 @@
           </div>
         </div>
       </div>
-      
+
       <div class="about-section">
         <h3>💌 Contacto</h3>
-        <p>¿Tienes sugerencias o encontraste un error? Escríbenos.</p>
+        <p>¿Tienes sugerencias, encontraste un error o necesitas ayuda con tu cuenta?</p>
+        <p style="margin-top:.5rem"><strong>📧 o.agg1130@gmail.com</strong></p>
       </div>
-      
+
       <div class="about-actions">
         <button id="btn-privacy" class="btn-secondary">🔒 Política de Privacidad</button>
         <button id="btn-terms" class="btn-secondary">📜 Términos de Uso</button>
         <button id="btn-rate" class="btn-primary">⭐ Valorar App</button>
       </div>
-      
+
       <p class="about-footer">Hecho con ❤️ para la gloria de Dios</p>
     </div>
   </div>
@@ -1465,37 +1470,58 @@
     </div>
     <div class="privacy-container">
       <h2>Política de Privacidad</h2>
-      <p class="privacy-date">Última actualización: Febrero 2026</p>
-      
+      <p class="privacy-date">Última actualización: Mayo 2026</p>
+
       <div class="privacy-section">
-        <h3>📱 Datos que Recopilamos</h3>
-        <p>BibliaQuiz <strong>NO</strong> recopila ningún dato personal. Toda la información se almacena exclusivamente en tu dispositivo.</p>
-      </div>
-      
-      <div class="privacy-section">
-        <h3>💾 Almacenamiento Local</h3>
-        <p>La app guarda en tu dispositivo:</p>
+        <h3>📋 Datos que Recopilamos</h3>
+        <p>Al registrarte en BibliaQuiz recopilamos:</p>
         <ul>
-          <li>Tu nombre y avatar (opcional)</li>
-          <li>Progreso del juego y estadísticas</li>
-          <li>Insignias desbloqueadas</li>
-          <li>Preferencias de configuración</li>
+          <li><strong>Nombre de jugador</strong> — visible en la clasificación global</li>
+          <li><strong>Correo electrónico</strong> — usado solo para acceder a tu cuenta</li>
+          <li><strong>Contraseña</strong> — almacenada cifrada (nunca en texto plano)</li>
+          <li><strong>Progreso del juego</strong> — puntos, partidas, insignias, historial</li>
+          <li><strong>Estadísticas de juego</strong> — preguntas respondidas, rachas, categorías</li>
         </ul>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>🌐 Conexión a Internet</h3>
-        <p>La app funciona completamente sin conexión. No enviamos datos a ningún servidor externo.</p>
+        <h3>☁️ Dónde se Guardan tus Datos</h3>
+        <p>Tu información se almacena en dos lugares seguros:</p>
+        <ul>
+          <li><strong>Servidor propio (MongoDB)</strong> — bibliaquiz-api.onrender.com, alojado en Render (EE. UU.). Aquí se guarda tu cuenta, puntos y progreso.</li>
+          <li><strong>Firebase / Firestore (Google)</strong> — usado para las funciones sociales: retos entre amigos, clasificaciones y solicitudes de amistad.</li>
+          <li><strong>Tu dispositivo</strong> — copia local para que la app funcione sin conexión.</li>
+        </ul>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>🗑️ Eliminar Datos</h3>
-        <p>Puedes borrar todos tus datos en cualquier momento desde Ajustes → Borrar Todo.</p>
+        <h3>👁️ Quién Puede Ver tus Datos</h3>
+        <ul>
+          <li>Tu <strong>nombre de jugador</strong> y <strong>puntos</strong> son visibles públicamente en la clasificación global.</li>
+          <li>Tu <strong>correo electrónico y contraseña</strong> son privados. Solo el administrador de la app tiene acceso al sistema.</li>
+          <li>Nunca vendemos ni compartimos tus datos con terceros.</li>
+        </ul>
       </div>
-      
+
+      <div class="privacy-section">
+        <h3>📊 Google Analytics</h3>
+        <p>Usamos Google Analytics para conocer cuántos usuarios usa la app, qué pantallas visitan y desde qué país. Esta información es anónima y agregada, no te identifica personalmente.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>🗑️ Eliminar tu Cuenta</h3>
+        <p>Puedes solicitar la eliminación completa de tu cuenta y datos escribiendo a:<br><strong>📧 o.agg1130@gmail.com</strong></p>
+        <p style="margin-top:.5rem">También puedes borrar los datos locales del dispositivo desde <strong>Ajustes → Borrar Todo</strong>.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>🔐 Seguridad</h3>
+        <p>Las contraseñas se almacenan usando cifrado bcrypt. Todas las comunicaciones entre la app y el servidor usan HTTPS.</p>
+      </div>
+
       <div class="privacy-section">
         <h3>📧 Contacto</h3>
-        <p>Si tienes preguntas sobre esta política, contáctanos.</p>
+        <p>Para cualquier consulta sobre esta política escríbenos a:<br><strong>o.agg1130@gmail.com</strong></p>
       </div>
     </div>
   </div>
@@ -1508,46 +1534,61 @@
     </div>
     <div class="privacy-container">
       <h2>Términos y Condiciones</h2>
-      <p class="privacy-date">Última actualización: Febrero 2026</p>
-      
+      <p class="privacy-date">Última actualización: Mayo 2026</p>
+
       <div class="privacy-section">
         <h3>1. Aceptación</h3>
-        <p>Al usar BibliaQuiz, aceptas estos términos. Si no estás de acuerdo, por favor no uses la aplicación.</p>
+        <p>Al registrarte y usar BibliaQuiz aceptas estos términos. Si no estás de acuerdo, por favor no uses la aplicación.</p>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>2. Uso de la Aplicación</h3>
-        <p>BibliaQuiz es una herramienta educativa gratuita diseñada para ayudar a los usuarios a aprender sobre la Biblia. Debes usar la app de manera responsable y respetuosa.</p>
+        <h3>2. Registro y Cuenta</h3>
+        <p>Para usar BibliaQuiz es necesario crear una cuenta con nombre de jugador, correo electrónico y contraseña. Eres responsable de mantener la seguridad de tu contraseña y de toda la actividad que ocurra en tu cuenta.</p>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>3. Contenido</h3>
-        <p>Las preguntas y respuestas están basadas en la Biblia. El contenido es solo educativo y no reemplaza el estudio bíblico personal o la guía pastoral.</p>
+        <h3>3. Clasificación Pública</h3>
+        <p>Tu <strong>nombre de jugador y puntos</strong> aparecen en la clasificación global visible para todos los usuarios de la app. Al registrarte aceptas esta visibilidad. Si deseas un nombre diferente puedes cambiarlo desde Ajustes.</p>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>4. Compras dentro de la App</h3>
-        <p>Algunas funciones premium pueden requerir pago. Las compras son finales y no reembolsables, excepto donde lo requiera la ley.</p>
+        <h3>4. Uso Adecuado</h3>
+        <p>BibliaQuiz es una herramienta educativa gratuita. Debes usarla de manera responsable y respetuosa. Está prohibido:</p>
+        <ul>
+          <li>Crear cuentas falsas o suplantación de identidad</li>
+          <li>Intentar manipular puntuaciones o el sistema de clasificación</li>
+          <li>Usar la app para cualquier fin diferente al educativo</li>
+        </ul>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>5. Propiedad Intelectual</h3>
-        <p>Todo el contenido de BibliaQuiz (diseño, código, preguntas) es propiedad del desarrollador. No está permitida su reproducción sin autorización.</p>
+        <h3>5. Contenido</h3>
+        <p>Las preguntas y respuestas están basadas en la Biblia. El contenido es educativo y no reemplaza el estudio bíblico personal ni la guía pastoral.</p>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>6. Limitación de Responsabilidad</h3>
-        <p>BibliaQuiz se proporciona "tal cual". No garantizamos que la app esté libre de errores o interrupciones.</p>
+        <h3>6. Compras dentro de la App</h3>
+        <p>Algunas funciones premium pueden requerir pago. Las compras son finales y no reembolsables, salvo donde lo exija la ley aplicable.</p>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>7. Modificaciones</h3>
-        <p>Podemos actualizar estos términos en cualquier momento. El uso continuado de la app implica la aceptación de los nuevos términos.</p>
+        <h3>7. Propiedad Intelectual</h3>
+        <p>Todo el contenido de BibliaQuiz (diseño, código, preguntas, logotipos) es propiedad del desarrollador. No está permitida su reproducción o distribución sin autorización expresa.</p>
       </div>
-      
+
       <div class="privacy-section">
-        <h3>8. Contacto</h3>
-        <p>Para cualquier consulta sobre estos términos, contáctanos.</p>
+        <h3>8. Limitación de Responsabilidad</h3>
+        <p>BibliaQuiz se proporciona "tal cual". No garantizamos disponibilidad continua ni ausencia de errores. No somos responsables de pérdida de datos por fallos técnicos o de conectividad.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>9. Modificaciones</h3>
+        <p>Podemos actualizar estos términos en cualquier momento. El uso continuado de la app tras los cambios implica la aceptación de los nuevos términos.</p>
+      </div>
+
+      <div class="privacy-section">
+        <h3>10. Contacto</h3>
+        <p>Para cualquier consulta sobre estos términos escríbenos a:<br><strong>📧 o.agg1130@gmail.com</strong></p>
       </div>
     </div>
   </div>

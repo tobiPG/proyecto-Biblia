@@ -632,16 +632,45 @@ window.Social = {
     console.log('[Social] Cargando leaderboard...');
 
     try {
-      const leaderboard = await FirebaseService.getLeaderboard(50);
+      // Usar BackendService si está disponible (MongoDB es la fuente de verdad para puntos)
+      const service = (window.BackendService && window.BackendService.isReady)
+        ? window.BackendService
+        : window.FirebaseService;
+      const leaderboard = await service.getLeaderboard(50);
       console.log('[Social] Leaderboard recibido:', leaderboard);
+
+      // Parchar la entrada del usuario actual con datos locales frescos
+      // (el sync al backend es async y puede no haber llegado todavía)
+      const myId = (window.BackendService?.currentUser?.uid) || (window.FirebaseService?.currentUser?.uid);
+      if (myId && typeof Storage !== 'undefined') {
+        const localStats = Storage.getStats();
+        const localPlayer = Storage.getPlayer();
+        const myProfile = service.userProfile || {};
+        const myEntry = {
+          id: myId,
+          displayName: myProfile.displayName || localPlayer.name || 'Jugador',
+          totalPoints: localStats.totalPoints || 0,
+          totalGames: localStats.totalGames || 0,
+          level: localPlayer.level || 1,
+          photoURL: myProfile.photoURL || null
+        };
+        const myIndex = leaderboard.findIndex(u => u.id === myId);
+        if (myIndex >= 0) {
+          leaderboard[myIndex] = myEntry;
+        } else if (myEntry.totalPoints > 0) {
+          leaderboard.push(myEntry);
+        }
+        // Reordenar con la entrada actualizada
+        leaderboard.sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0));
+        if (leaderboard.length > 50) leaderboard.length = 50;
+      }
+
       this.cachedLeaderboard = leaderboard;
-      
+
       if (leaderboard.length === 0) {
         container.innerHTML = '<p class="empty-state">No hay jugadores aún. ¡Juega para aparecer!</p>';
         return;
       }
-
-      const myId = FirebaseService.currentUser?.uid;
       let myRank = leaderboard.findIndex(u => u.id === myId) + 1;
 
       container.innerHTML = leaderboard.map((user, index) => {

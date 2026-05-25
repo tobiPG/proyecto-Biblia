@@ -334,10 +334,7 @@ window.BackendService = {
       this.userProfile.totalPoints = result.totalPoints;
       this.userProfile.totalCorrect = result.totalCorrect;
       this.userProfile.totalGames = result.totalGames;
-      
-      // ✅ NUEVA: Sincronizar TODO el progreso después de actualizar stats
-      await this.syncFullProgress();
-      
+
       return true;
     } catch (error) {
       console.error('[Backend] Error actualizando stats:', error);

@@ -636,7 +636,7 @@ window.FirebaseService = {
       await userRef.update({
         totalPoints: firebase.firestore.FieldValue.increment(stats.points || 0),
         totalCorrect: firebase.firestore.FieldValue.increment(stats.totalCorrect || 0),
-        totalGames: firebase.firestore.FieldValue.increment(stats.totalGames || 0),
+        totalGames: firebase.firestore.FieldValue.increment(stats.totalGames || stats.games || 0),
         bestStreak: Math.max(this.userProfile.bestStreak || 0, stats.streak || 0),
         level: newLevel,
         lastActive: firebase.firestore.FieldValue.serverTimestamp()
@@ -666,20 +666,17 @@ window.FirebaseService = {
 
       console.log('[Firebase] snapshot obtenido, size:', snapshot.size);
 
-      // Deduplicar por displayName: si hay dos cuentas con el mismo nombre
-      // (ej: anónima del cel + real del PC), conservar la de mayor puntuación
-      const seen = new Map();
+      // Deduplicar por userId (doc.id): cada documento de Firestore es único por UID.
+      // La deduplicación por nombre causaba pérdida de puntos cuando el mismo usuario
+      // tenía dos cuentas y se descartaba la cuenta con más puntos.
+      const players = [];
       snapshot.forEach((doc) => {
         const data = doc.data();
-        const name = (data.displayName || '').trim();
-        if (!name) return; // ignorar cuentas sin nombre
-        const existing = seen.get(name);
-        if (!existing || (data.totalPoints || 0) > (existing.totalPoints || 0)) {
-          seen.set(name, { id: doc.id, ...data });
-        }
+        if (!(data.displayName || '').trim()) return; // ignorar cuentas sin nombre
+        players.push({ id: doc.id, ...data });
       });
 
-      return Array.from(seen.values())
+      return players
         .sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0))
         .slice(0, limitCount);
     } catch (error) {

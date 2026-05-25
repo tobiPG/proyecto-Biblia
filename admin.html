@@ -118,6 +118,45 @@
       </table>
     </div>
 
+    <!-- GESTIÓN DE USUARIOS (MongoDB) -->
+    <div class="section" id="section-user-mgmt">
+      <h2>Gestión de usuarios (MongoDB)</h2>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem">
+
+        <div style="flex:1;min-width:260px;background:#0f172a;padding:1rem;border-radius:.5rem">
+          <div style="font-size:.85rem;color:#94a3b8;margin-bottom:.5rem;font-weight:600">Renombrar jugador</div>
+          <input id="rename-from" type="text" placeholder="Nombre actual (ej: juaro)"
+            style="width:100%;padding:.5rem .75rem;border-radius:.4rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;margin-bottom:.5rem;font-size:.9rem">
+          <input id="rename-to" type="text" placeholder="Nombre nuevo (ej: mile)"
+            style="width:100%;padding:.5rem .75rem;border-radius:.4rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;margin-bottom:.75rem;font-size:.9rem">
+          <button onclick="renameUser()"
+            style="width:100%;padding:.5rem;border-radius:.4rem;border:none;background:#6366f1;color:#fff;cursor:pointer;font-weight:600;font-size:.9rem">
+            Renombrar
+          </button>
+          <div id="rename-msg" style="margin-top:.5rem;font-size:.8rem;color:#4ade80"></div>
+        </div>
+
+        <div style="flex:1;min-width:260px;background:#0f172a;padding:1rem;border-radius:.5rem">
+          <div style="font-size:.85rem;color:#94a3b8;margin-bottom:.5rem;font-weight:600">Eliminar jugador del ranking</div>
+          <input id="delete-name" type="text" placeholder="Nombre a eliminar (ej: juaro)"
+            style="width:100%;padding:.5rem .75rem;border-radius:.4rem;border:1px solid #334155;background:#1e293b;color:#e2e8f0;margin-bottom:.75rem;font-size:.9rem">
+          <button onclick="deleteUser()"
+            style="width:100%;padding:.5rem;border-radius:.4rem;border:none;background:#dc2626;color:#fff;cursor:pointer;font-weight:600;font-size:.9rem">
+            Eliminar usuario
+          </button>
+          <div id="delete-msg" style="margin-top:.5rem;font-size:.8rem;color:#4ade80"></div>
+        </div>
+
+      </div>
+
+      <div style="font-size:.8rem;color:#64748b;margin-bottom:.75rem">Usuarios en MongoDB (top 50 por puntos):</div>
+      <button class="refresh-btn" style="margin-bottom:.5rem" onclick="loadMongoUsers()">↻ Cargar usuarios</button>
+      <table id="table-mongo-users">
+        <thead><tr><th>#</th><th>Nombre</th><th>Email</th><th>Puntos</th><th>Partidas</th><th>Tipo</th><th>Última actividad</th></tr></thead>
+        <tbody><tr><td colspan="7" class="loading">Pulsa "Cargar usuarios"</td></tr></tbody>
+      </table>
+    </div>
+
   </main>
 </div>
 
@@ -262,6 +301,87 @@
 
   function esc(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // ============================================
+  // GESTIÓN DE USUARIOS (MongoDB)
+  // ============================================
+  const API = window.location.hostname === 'localhost'
+    ? 'http://localhost:3001/api'
+    : 'https://bibliaquiz-api.onrender.com/api';
+
+  async function adminFetch(path, method = 'GET', body = null) {
+    const opts = {
+      method,
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': ADMIN_PASSWORD }
+    };
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(`${API}${path}`, opts);
+    return r.json();
+  }
+
+  async function loadMongoUsers() {
+    const tbody = document.querySelector('#table-mongo-users tbody');
+    tbody.innerHTML = '<tr><td colspan="7" class="loading">Cargando...</td></tr>';
+    try {
+      const users = await adminFetch('/users/admin/users?limit=50');
+      if (!Array.isArray(users) || users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="loading">Sin usuarios</td></tr>';
+        return;
+      }
+      tbody.innerHTML = users.map((u, i) => `<tr>
+        <td>${i+1}</td>
+        <td><strong>${esc(u.displayName || '—')}</strong></td>
+        <td style="color:#64748b;font-size:.8rem">${esc(u.email || '—')}</td>
+        <td>${(u.totalPoints||0).toLocaleString()}</td>
+        <td>${u.totalGames||0}</td>
+        <td>${u.isAnonymous ? '<span class="badge badge-purple">Anónimo</span>' : '<span class="badge badge-green">Registrado</span>'}</td>
+        <td style="font-size:.8rem;color:#64748b">${u.lastActive ? new Date(u.lastActive).toLocaleDateString('es') : '—'}</td>
+      </tr>`).join('');
+    } catch (e) {
+      tbody.innerHTML = `<tr><td colspan="7" style="color:#f87171">Error: ${e.message}</td></tr>`;
+    }
+  }
+
+  async function renameUser() {
+    const from = document.getElementById('rename-from').value.trim();
+    const to   = document.getElementById('rename-to').value.trim();
+    const msg  = document.getElementById('rename-msg');
+    if (!from || !to) { msg.textContent = 'Rellena ambos campos'; msg.style.color='#f87171'; return; }
+    msg.textContent = 'Procesando...'; msg.style.color='#94a3b8';
+    try {
+      const res = await adminFetch('/users/admin/users/rename', 'PUT', { currentName: from, newName: to });
+      if (res.success) {
+        msg.textContent = `✓ ${res.message}`; msg.style.color='#4ade80';
+        document.getElementById('rename-from').value = '';
+        document.getElementById('rename-to').value = '';
+        loadMongoUsers();
+      } else {
+        msg.textContent = `✗ ${res.error}`; msg.style.color='#f87171';
+      }
+    } catch (e) {
+      msg.textContent = `✗ Error: ${e.message}`; msg.style.color='#f87171';
+    }
+  }
+
+  async function deleteUser() {
+    const name = document.getElementById('delete-name').value.trim();
+    const msg  = document.getElementById('delete-msg');
+    if (!name) { msg.textContent = 'Ingresa un nombre'; msg.style.color='#f87171'; return; }
+    if (!confirm(`¿Eliminar permanentemente al usuario "${name}"? Esta acción no se puede deshacer.`)) return;
+    msg.textContent = 'Eliminando...'; msg.style.color='#94a3b8';
+    try {
+      const res = await adminFetch('/users/admin/users/by-name', 'DELETE', { displayName: name });
+      if (res.success) {
+        msg.textContent = `✓ ${res.message}`; msg.style.color='#4ade80';
+        document.getElementById('delete-name').value = '';
+        loadMongoUsers();
+      } else {
+        msg.textContent = `✗ ${res.error}`; msg.style.color='#f87171';
+      }
+    } catch (e) {
+      msg.textContent = `✗ Error: ${e.message}`; msg.style.color='#f87171';
+    }
   }
 </script>
 </body>

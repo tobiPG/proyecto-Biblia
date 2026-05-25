@@ -4382,17 +4382,8 @@ const App = {
       streak: this.currentStreak
     });
     
-    // Sincronizar stats con BackendService
-    if (window.BackendService?.token) {
-      BackendService.updateStats({
-        points: this.sessionPoints,
-        correct: this.sessionCorrect,
-        games: 1,
-        streak: this.sessionBestStreak
-      }).catch(err => console.error('Error sincronizando stats:', err));
-    }
-    
-    // 🆕 Sincronizar con BackendService (MongoDB)
+    // Sincronizar progreso completo con MongoDB (valores absolutos desde localStorage)
+    // Se usa solo syncFullProgress para evitar race condition con $inc vs $set
     if (window.BackendService && BackendService.token) {
       console.log('[BibliaQuiz] 💾 Sincronizando progreso a MongoDB...');
       BackendService.syncFullProgress()

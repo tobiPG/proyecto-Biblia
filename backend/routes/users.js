@@ -604,4 +604,73 @@ router.get('/me/progress', authMiddleware, async (req, res) => {
   }
 });
 
+// ============================================
+// ENDPOINTS ADMIN — requieren X-Admin-Password
+// ============================================
+const ADMIN_PASSWORD = 'biblia2024';
+
+function requireAdmin(req, res, next) {
+  const pw = req.headers['x-admin-password'];
+  if (pw !== ADMIN_PASSWORD) return res.status(403).json({ error: 'No autorizado' });
+  next();
+}
+
+// Listar todos los usuarios (para gestión)
+router.get('/admin/users', requireAdmin, async (req, res) => {
+  try {
+    const limit = parseInt(req.query.limit) || 100;
+    const users = await User.find()
+      .select('uid displayName email totalPoints totalGames level isAnonymous createdAt lastActive')
+      .sort({ totalPoints: -1 })
+      .limit(limit);
+    res.json(users.map(u => ({
+      id: u.uid,
+      displayName: u.displayName,
+      email: u.email || null,
+      totalPoints: u.totalPoints,
+      totalGames: u.totalGames,
+      level: u.level,
+      isAnonymous: u.isAnonymous,
+      createdAt: u.createdAt,
+      lastActive: u.lastActive
+    })));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Renombrar usuario por displayName actual
+router.put('/admin/users/rename', requireAdmin, async (req, res) => {
+  try {
+    const { currentName, newName } = req.body;
+    if (!currentName || !newName) {
+      return res.status(400).json({ error: 'Se requieren currentName y newName' });
+    }
+    const user = await User.findOneAndUpdate(
+      { displayName: currentName },
+      { displayName: newName.trim(), updatedAt: new Date() },
+      { new: true }
+    );
+    if (!user) return res.status(404).json({ error: `Usuario '${currentName}' no encontrado` });
+    res.json({ success: true, message: `Renombrado de '${currentName}' a '${newName}'`, uid: user.uid });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Eliminar usuario por displayName (lo quita del leaderboard)
+router.delete('/admin/users/by-name', requireAdmin, async (req, res) => {
+  try {
+    const { displayName } = req.body;
+    if (!displayName) return res.status(400).json({ error: 'Se requiere displayName' });
+    const result = await User.deleteOne({ displayName });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: `Usuario '${displayName}' no encontrado` });
+    }
+    res.json({ success: true, message: `Usuario '${displayName}' eliminado` });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 export default router;

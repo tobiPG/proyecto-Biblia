@@ -720,54 +720,79 @@ const App = {
     const overlay = document.getElementById('register-overlay');
     if (!overlay) return;
     overlay.classList.remove('hidden');
-    const submitBtn = document.getElementById('register-submit');
-    const nameInput = document.getElementById('register-name');
-    const emailInput = document.getElementById('register-email');
-    const ageInput = document.getElementById('register-age');
-    const genderSelect = document.getElementById('register-gender');
-    const errorMsg = document.getElementById('register-error');
-    submitBtn.addEventListener('click', () => {
-      const name = nameInput.value.trim();
-      const email = emailInput.value.trim();
-      const age = parseInt(ageInput.value);
-      const gender = genderSelect.value;
-      // Validate required: name, email, age
+    const submitBtn    = document.getElementById('register-submit');
+    const nameInput    = document.getElementById('register-name');
+    const emailInput   = document.getElementById('register-email');
+    const errorMsg     = document.getElementById('register-error');
+
+    submitBtn.addEventListener('click', async () => {
+      const name     = nameInput.value.trim();
+      const email    = emailInput.value.trim();
+      const password = passwordInput ? passwordInput.value.trim() : '';
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!name || !email || !emailRegex.test(email) || !age || age < 5 || age > 120) {
-        errorMsg.textContent = !name ? 'Escribe tu nombre' :
-          (!email || !emailRegex.test(email)) ? 'Escribe un correo valido' :
-          'Escribe una edad valida (5-120)';
+
+      // Validar los 3 campos obligatorios
+      if (!name) {
+        errorMsg.textContent = 'Escribe tu nombre de jugador';
         errorMsg.classList.remove('hidden');
-        if (!name) nameInput.focus();
-        else if (!email || !emailRegex.test(email)) emailInput.focus();
-        else ageInput.focus();
+        nameInput.focus();
+        return;
+      }
+      if (!email || !emailRegex.test(email)) {
+        errorMsg.textContent = 'Escribe un correo electrónico válido';
+        errorMsg.classList.remove('hidden');
+        emailInput.focus();
+        return;
+      }
+      if (!password || password.length < 6) {
+        errorMsg.textContent = 'La contraseña debe tener al menos 6 caracteres';
+        errorMsg.classList.remove('hidden');
+        if (passwordInput) passwordInput.focus();
         return;
       }
       errorMsg.classList.add('hidden');
-      // Save player data
+
+      // Deshabilitar botón mientras se registra
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creando cuenta...';
+
+      // Registrar en MongoDB (BackendService)
+      if (window.BackendService) {
+        const result = await BackendService.register(email, password, name);
+        if (!result.success) {
+          errorMsg.textContent = result.error === 'El email ya está registrado'
+            ? 'Ese correo ya tiene una cuenta. ¿Ya te registraste antes?'
+            : (result.error || 'Error al crear cuenta. Intenta de nuevo.');
+          errorMsg.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '🚀 ¡Crear cuenta!';
+          return;
+        }
+      }
+
+      // Guardar datos locales
       const player = Storage.getPlayer();
-      player.name = name;
+      player.name  = name;
       player.email = email;
-      player.age = age;
-      player.gender = gender;
       player.registered = true;
       player.registeredAt = new Date().toISOString();
       Storage.savePlayer(player);
-      // Close overlay with animation
+
+      // Cerrar overlay con animación y entrar
       overlay.style.animation = 'fadeOut 0.4s ease forwards';
       setTimeout(() => {
         overlay.classList.add('hidden');
         overlay.style.animation = '';
-        // Now show home and onboarding
         this.showScreen('home');
         this.renderHome();
         this.loadSettings();
         this.initOnboarding();
-        this.showToast(`Bienvenido, ${name}! `);
+        this.showToast(`¡Bienvenido, ${name}!`);
       }, 400);
     });
+
     // Enter key support
-    [nameInput, emailInput, ageInput].forEach(input => {
+    [nameInput, emailInput, passwordInput].filter(Boolean).forEach(input => {
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') submitBtn.click();
       });

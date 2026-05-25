@@ -1737,34 +1737,24 @@
   <div class="register-container">
     <div class="register-icon">👤</div>
     <h2 class="register-title">¡Bienvenido!</h2>
-    <p class="register-subtitle">Regístrate para personalizar tu experiencia</p>
+    <p class="register-subtitle">Crea tu cuenta para guardar tu progreso</p>
     <div class="register-form">
       <div class="register-field">
-        <label for="register-name">Nombre</label>
-        <input type="text" id="register-name" placeholder="Tu nombre" maxlength="30">
+        <label for="register-name">Nombre de jugador</label>
+        <input type="text" id="register-name" placeholder="¿Cómo te llamamos?" maxlength="30" autocomplete="nickname">
       </div>
       <div class="register-field">
-        <label for="register-email">Correo</label>
-        <input type="email" id="register-email" placeholder="tucorreo@ejemplo.com">
+        <label for="register-email">Correo electrónico</label>
+        <input type="email" id="register-email" placeholder="tucorreo@ejemplo.com" autocomplete="email">
       </div>
-      <div class="register-row">
-        <div class="register-field register-field-half">
-          <label for="register-age">Edad</label>
-          <input type="number" id="register-age" placeholder="Años" min="5" max="120">
-        </div>
-        <div class="register-field register-field-half">
-          <label for="register-gender">Género</label>
-          <select id="register-gender">
-            <option value="" disabled selected>Seleccionar</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-          </select>
-        </div>
+      <div class="register-field">
+        <label for="register-password">Contraseña</label>
+        <input type="password" id="register-password" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
       </div>
       <p id="register-error" class="register-error hidden">Completa los campos</p>
-      <button id="register-submit" class="btn-primary register-btn">🚀 ¡Comenzar!</button>
+      <button id="register-submit" class="btn-primary register-btn">🚀 ¡Crear cuenta!</button>
     </div>
-    <p class="register-privacy">🔒 Tu info se guarda solo en tu dispositivo</p>
+    <p class="register-privacy">🔒 Tu progreso se guarda en tu cuenta segura</p>
   </div>
 </div>
 

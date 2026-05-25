@@ -347,8 +347,26 @@ window.FirebaseService = {
           Storage.savePlayer(localPlayer);
           console.log('[Firebase] Nivel/XP restaurado desde nube:', localPlayer.level, localPlayer.xp);
         }
+
+        // Sincronizar totalPoints al leaderboard: si local tiene más, empujar a Firestore
+        if (!forceFromCloud) {
+          const localStats = Storage.getStats();
+          const cloudPoints = this.userProfile.totalPoints || 0;
+          const localPoints = localStats.totalPoints || 0;
+          if (localPoints > cloudPoints) {
+            console.log('[Firebase] Sincronizando totalPoints al leaderboard:', localPoints, '(Firestore tenía:', cloudPoints + ')');
+            const userRef = this.db.collection('users').doc(this.currentUser.uid);
+            await userRef.update({
+              totalPoints: localPoints,
+              totalGames: Math.max(localStats.totalGames || 0, this.userProfile.totalGames || 0),
+              totalCorrect: Math.max(localStats.totalCorrect || 0, this.userProfile.totalCorrect || 0),
+              bestStreak: Math.max(localStats.bestStreak || 0, this.userProfile.bestStreak || 0),
+            });
+            this.userProfile.totalPoints = localPoints;
+          }
+        }
       }
-      
+
       console.log('[Firebase] Sincronización completada');
     } catch (error) {
       console.error('[Firebase] Error sincronizando datos:', error);

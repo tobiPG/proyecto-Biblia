@@ -14,7 +14,7 @@ const RANKED_CONFIG = {
   protectionThreshold: 200,
   trophiesTie: 5,
   questionsPerMatch: 10,
-  matchmakingInitialRange: 100,
+  matchmakingInitialRange: 200,
   matchmakingExpandAmount: 100,
   matchmakingMaxRange: 500,
   matchmakingTimeout: 60000
@@ -74,6 +74,10 @@ export function initSocket(io) {
 
         connectedPlayers.set(socket.id, { userId: myId, userName, trophies, matchId: null });
         console.log(`[Socket] ${userName} buscando partida en ${category} (${trophies} trofeos)`);
+
+        // Emitir conteo de jugadores buscando en esta categoría
+        const queueCount = await MatchmakingQueue.countDocuments({ category, status: 'searching' });
+        socket.emit('queue_update', { count: queueCount });
 
         // Buscar oponente inmediatamente
         await tryMatchmaking(io, socket, myId, category, trophies, RANKED_CONFIG.matchmakingInitialRange);

@@ -52,6 +52,14 @@ const RANKED_CONFIG = {
 
 window.RANKED_CONFIG = RANKED_CONFIG;
 
+const BOT_PERSONALITIES = [
+  { id: 'equilibrado', accuracyMod: 0.00, baseMs: 3000, jitterMs: 3000 },
+  { id: 'rapido',      accuracyMod: 0.00, baseMs: 2000, jitterMs: 2000 },
+  { id: 'agresivo',    accuracyMod:-0.08, baseMs: 1500, jitterMs: 2500 },
+  { id: 'experto',     accuracyMod: 0.12, baseMs: 4500, jitterMs: 4000 },
+  { id: 'novato',      accuracyMod:-0.15, baseMs: 3500, jitterMs: 5000 }
+];
+
 window.Ranked = {
   socket: null,
   currentMatchId: null,
@@ -142,6 +150,12 @@ window.Ranked = {
     // Actualización de rango de búsqueda
     this.socket.on('search_range_update', ({ range }) => {
       this.currentRange = range;
+      this.updateSearchUI();
+    });
+
+    // Cantidad de jugadores buscando en esta categoría
+    this.socket.on('queue_update', ({ count }) => {
+      this._queueCount = count;
       this.updateSearchUI();
     });
 
@@ -517,6 +531,11 @@ window.Ranked = {
   updateSearchUI() {
     const rangeEl = document.getElementById('ranked-search-range');
     if (rangeEl) rangeEl.textContent = `±${this.currentRange} trofeos`;
+    const countEl = document.getElementById('ranked-search-count');
+    if (countEl) {
+      const n = this._queueCount || 0;
+      countEl.textContent = n > 1 ? `${n} jugadores buscando ahora` : 'Esperando jugadores...';
+    }
   },
 
   hideSearchingUI() {
@@ -596,28 +615,56 @@ window.Ranked = {
   // ============================================
 
   BOT_NAMES: [
-    'Pedro_Pescador','MariaMagdalena','JuanEvangelista','PabloTarso',
-    'TimoteoFiel','SilasBible','BarnabasAyuda','RutFiel',
-    'DebOraJueza','EliasProf','DavidSalmista','SalomonSabio',
-    'MoisesLibera','JosuaConq','AbrahHamFe','JacobIsrael',
-    'JoseBello','EzequielVis','DanielOrac','JeremiasPro',
-    'AmosPastor','NehemiasConst','EsdrasMaestro','ZacariasPro'
+    // Apóstoles y discípulos
+    'Pedro_Pescador','JuanEvangelista','PabloTarso','TimoteoFiel',
+    'SilasBible','BarnabasAyuda','FilipeEvan','AndresCalled',
+    'BartolomeVerd','MateoPublicano','TomásGemelo','SimonZelote',
+    'TadeoFiel','MatíasElegido','ApollosElocuente','PriscilaFiel',
+    // Profetas
+    'EliasProf','EliaseoSucesor','IsaiasVidente','JeremiasPro',
+    'EzequielVis','DanielOrac','AmosPastor','OseasProfeta',
+    'MiqueasJusto','NahumGuerra','HabacucFe','SofoniasDay',
+    'ZacariasPro','HageoTemple','MalaquiasFinal','JoelRestaura',
+    'AbdiasFiel','JonasMisionero',
+    // Reyes y líderes
+    'DavidSalmista','SalomonSabio','JosuaConq','NehemiasConst',
+    'EsdrasMaestro','ZorobabelConst','JosiasRey','EzequiasRey',
+    'AsaFiel','JosafatRey','CalebValiente','GideonFiel',
+    'SansónFuerza','JeftéGuerra',
+    // Patriarcas
+    'AbrahHamFe','JacobIsrael','JoseBello','MoisesLibera',
+    'IsaacPromesa','NoéFiel','HenochCamina','SetemLinaje',
+    // Mujeres bíblicas
+    'MariaMagdalena','RutFiel','DebOraJueza','EsterReina',
+    'SaraPromet','RaquelAmada','LeaFiel','AnaOra',
+    'MiriamCanta','AbigailSabia','NoemiFiel','JudithGuerra',
+    // Otros
+    'FilemonAmigo','TitoFiel','LucasMedico','MarcoEvan',
+    'EstefanMartir','CornelioCent','LidiaVendedora','AquilaTent'
   ],
 
   generateBot(myTrophies) {
+    const personality = BOT_PERSONALITIES[Math.floor(Math.random() * BOT_PERSONALITIES.length)];
     const name = this.BOT_NAMES[Math.floor(Math.random() * this.BOT_NAMES.length)];
     const spread = Math.max(60, Math.floor(myTrophies * 0.15));
     const offset = (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * spread);
-    return { userName: name, trophies: Math.max(0, myTrophies + offset), isBot: true };
+    return {
+      userName: name.replace(/_/g, ' '),
+      trophies: Math.max(0, myTrophies + offset),
+      isBot: true,
+      personality: personality.id
+    };
   },
 
-  getBotAccuracy(trophies) {
-    if (trophies < 300)  return 0.38;
-    if (trophies < 800)  return 0.52;
-    if (trophies < 1500) return 0.63;
-    if (trophies < 2500) return 0.72;
-    if (trophies < 4000) return 0.80;
-    return 0.88;
+  getBotAccuracy(trophies, personality = 'equilibrado') {
+    const base =
+      trophies < 300  ? 0.38 :
+      trophies < 800  ? 0.52 :
+      trophies < 1500 ? 0.63 :
+      trophies < 2500 ? 0.72 :
+      trophies < 4000 ? 0.80 : 0.88;
+    const mod = BOT_PERSONALITIES.find(p => p.id === personality)?.accuracyMod ?? 0;
+    return Math.max(0.15, Math.min(0.96, base + mod));
   },
 
   async searchMatchWithBot(category) {
@@ -635,7 +682,7 @@ window.Ranked = {
         // connectSocket incluye el wake-up ping — esperamos aquí antes de fijar el timeout
         await this.connectSocket();
 
-        // Socket conectado → ahora sí iniciar el temporizador de bot (20s desde aquí)
+        // Socket conectado → ahora sí iniciar el temporizador de bot (35s desde aquí)
         this._botSearchTimeout = setTimeout(() => {
           if (!this._realPlayerMatched) {
             if (this.socket?.connected) this.socket.emit('leave_queue');
@@ -643,7 +690,7 @@ window.Ranked = {
             const bot = this.generateBot(myTrophies);
             this._launchBotMatch(category, bot, myTrophies);
           }
-        }, 20000);
+        }, 35000);
 
         this.currentRange = RANKED_CONFIG.matchmakingInitialRange;
         this.socket.emit('join_queue', { category, trophies: myTrophies, rankId: myRank.id });
@@ -680,7 +727,7 @@ window.Ranked = {
     this.hideSearchingUI();
     this._showFoundScreen(bot, () => {
       const questions = this.generateRankedQuestions(category, myTrophies);
-      const botAccuracy = this.getBotAccuracy(bot.trophies);
+      const botAccuracy = this.getBotAccuracy(bot.trophies, bot.personality);
       this._botMatchData = { bot, botAccuracy, questions, category, myTrophies };
       this._showWaitingScreen();
       setTimeout(() => {
@@ -688,18 +735,19 @@ window.Ranked = {
         if (window.App?.startRankedMode) {
           window.App.startRankedMode({ id: 'bot_' + Date.now(), category, questions, opponent: bot, isBot: true });
         }
-        this._simulateBotAnswers(questions, botAccuracy);
+        this._simulateBotAnswers(questions, botAccuracy, bot.personality);
       }, 1200);
     });
   },
 
-  _simulateBotAnswers(questions, accuracy) {
+  _simulateBotAnswers(questions, accuracy, personality = 'equilibrado') {
     if (this._botAnswerTimeouts) this._botAnswerTimeouts.forEach(clearTimeout);
     this._botAnswerTimeouts = [];
     this._botCorrectCount = 0;
+    const p = BOT_PERSONALITIES.find(x => x.id === personality) || BOT_PERSONALITIES[0];
     questions.forEach((_, index) => {
-      const cumulative = index * (3500 + Math.random() * 3000);
-      const delay = cumulative + 1000 + Math.random() * 4500;
+      const cumulative = index * (p.baseMs + Math.random() * p.jitterMs);
+      const delay = cumulative + 800 + Math.random() * 2000;
       const t = setTimeout(() => {
         const correct = Math.random() < accuracy;
         if (correct) this._botCorrectCount++;

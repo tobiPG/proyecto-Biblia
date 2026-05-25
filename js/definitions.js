@@ -132,6 +132,12 @@ window.BADGES = [
   { id: "lives_0", name: "Sin Margen de Error", icon: "💪", description: "Gana una partida sin perder vidas", condition: (stats) => stats.gamesNoLivesLost >= 1 },
   { id: "challenge_win", name: "Contrarreloj", icon: "⏰", description: "Gana un desafío diario", condition: (stats) => stats.dailyChallengesWon >= 1 },
   { id: "impostor_win", name: "Detective", icon: "🔍", description: "Gana una partida en modo Impostor", condition: (stats) => stats.impostorWins >= 1 },
+  // Insignias de misiones permanentes
+  { id: "mission_principiante", name: "Iniciado", icon: "🌱", description: "Completa todas las misiones de Principiante", condition: () => false },
+  { id: "mission_estudioso",    name: "Discípulo",    icon: "📚", description: "Completa todas las misiones de Estudioso",    condition: () => false },
+  { id: "mission_guerrero",     name: "Guerrero de la Fe",      icon: "⚔️", description: "Completa todas las misiones de Guerrero",     condition: () => false },
+  { id: "mission_campeon",      name: "Campeón Bíblico",    icon: "🏆", description: "Completa todas las misiones de Campeón",      condition: () => false },
+  { id: "mission_maestro",      name: "Maestro de las Escrituras", icon: "👑", description: "Completa todas las misiones de Maestro",      condition: () => false },
 ];
 
 // Versículos diarios

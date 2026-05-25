@@ -154,24 +154,64 @@ const BATTLE_PASS_REWARDS = [
   { level: 50, free: { type: 'coins', amount: 1000, bonus: 'season_frame' }, premium: { type: 'legendary', item: 'champion_pack' } }
 ];
 
-// === MISIONES (DIARIAS Y SEMANALES) ===
-const MISSIONS = {
-  daily: [
-    { id: 'daily_win_3', name: 'Victoria Triple', description: 'Gana 3 partidas', target: 3, xp: 100, icon: '🏆' },
-    { id: 'daily_answer_20', name: 'Estudioso', description: 'Responde 20 preguntas', target: 20, xp: 50, icon: '📖' },
-    { id: 'daily_streak_5', name: 'En Racha', description: 'Consigue racha de 5', target: 5, xp: 75, icon: '🔥' },
-    { id: 'daily_ranked', name: 'Competidor', description: 'Juega una partida Ranked', target: 1, xp: 100, icon: '⚔️' },
-    { id: 'daily_perfect', name: 'Perfección', description: 'Consigue 10/10 en una partida', target: 1, xp: 150, icon: '💯' },
-    { id: 'daily_category', name: 'Explorador', description: 'Juega en 2 categorías distintas', target: 2, xp: 60, icon: '🗺️' }
-  ],
-  weekly: [
-    { id: 'weekly_win_10', name: 'Campeón Semanal', description: 'Gana 10 partidas Ranked', target: 10, xp: 500, icon: '🏅' },
-    { id: 'weekly_categories', name: 'Maestro de Categorías', description: 'Juega en 5 categorías', target: 5, xp: 300, icon: '📚' },
-    { id: 'weekly_trophies', name: 'Escalador', description: 'Consigue 500 trofeos', target: 500, xp: 400, icon: '🏆' },
-    { id: 'weekly_streak_10', name: 'Imparable', description: 'Racha de 10 correctas', target: 10, xp: 350, icon: '⚡' },
-    { id: 'weekly_answer_100', name: 'Dedicación', description: 'Responde 100 preguntas', target: 100, xp: 250, icon: '✏️' }
-  ]
-};
+// === MISIONES PERMANENTES (5 NIVELES PROGRESIVOS) ===
+const MISSION_TIERS = [
+  {
+    id: 'principiante', name: 'Principiante', icon: '🌱', color: '#4CAF50',
+    badgeId: 'mission_principiante',
+    missions: [
+      { id: 'm_p1', name: 'Primer Paso',      description: 'Juega 5 partidas',                       type: 'games',        target: 5,   xp: 100, coins: 50,  icon: '🎮' },
+      { id: 'm_p2', name: 'Buen Estudiante',  description: 'Responde 25 preguntas correctamente',     type: 'correct',      target: 25,  xp: 100, coins: 50,  icon: '📖' },
+      { id: 'm_p3', name: 'En Racha',         description: 'Consigue una racha de 3 respuestas',      type: 'streak',       target: 3,   xp: 125, coins: 75,  icon: '🔥' },
+      { id: 'm_p4', name: 'Debut Ranked',     description: 'Juega 1 partida Ranked',                  type: 'ranked',       target: 1,   xp: 150, coins: 100, icon: '⚔️' },
+    ]
+  },
+  {
+    id: 'estudioso', name: 'Estudioso', icon: '📚', color: '#2196F3',
+    badgeId: 'mission_estudioso',
+    missions: [
+      { id: 'm_e1', name: 'Dedicado',          description: 'Juega 20 partidas',                      type: 'games',        target: 20,  xp: 200, coins: 125, icon: '🎮' },
+      { id: 'm_e2', name: 'Multitema',         description: 'Juega en 3 categorías distintas',         type: 'categories',   target: 3,   xp: 175, coins: 100, icon: '🗺️' },
+      { id: 'm_e3', name: 'Primera Perfección',description: 'Consigue una partida 10/10',              type: 'perfect',      target: 1,   xp: 250, coins: 175, icon: '💯' },
+      { id: 'm_e4', name: 'Trofeos Iniciales', description: 'Llega a 200 trofeos en Ranked',           type: 'trophies_max', target: 200, xp: 200, coins: 125, icon: '🏆' },
+      { id: 'm_e5', name: 'Racha de 5',        description: 'Consigue una racha de 5 respuestas',      type: 'streak',       target: 5,   xp: 175, coins: 100, icon: '🔥' },
+    ]
+  },
+  {
+    id: 'guerrero', name: 'Guerrero', icon: '⚔️', color: '#FF9800',
+    badgeId: 'mission_guerrero',
+    missions: [
+      { id: 'm_g1', name: 'Veterano',          description: 'Juega 50 partidas',                      type: 'games',        target: 50,  xp: 400, coins: 250, icon: '🎮' },
+      { id: 'm_g2', name: 'Rival Ranked',      description: 'Gana 5 partidas Ranked',                 type: 'ranked_wins',  target: 5,   xp: 350, coins: 225, icon: '🏅' },
+      { id: 'm_g3', name: 'Trofeos de Plata',  description: 'Llega a 500 trofeos en Ranked',           type: 'trophies_max', target: 500, xp: 400, coins: 250, icon: '🥈' },
+      { id: 'm_g4', name: 'Respondedor',       description: 'Responde 200 preguntas correctamente',    type: 'correct',      target: 200, xp: 350, coins: 200, icon: '📖' },
+      { id: 'm_g5', name: 'En Llamas',         description: 'Consigue una racha de 8 respuestas',      type: 'streak',       target: 8,   xp: 300, coins: 175, icon: '🔥' },
+    ]
+  },
+  {
+    id: 'campeon', name: 'Campeón', icon: '🏆', color: '#9C27B0',
+    badgeId: 'mission_campeon',
+    missions: [
+      { id: 'm_c1', name: 'Centenario',        description: 'Juega 100 partidas',                     type: 'games',        target: 100, xp: 600, coins: 400, icon: '🎮' },
+      { id: 'm_c2', name: 'Gladiador',         description: 'Gana 20 partidas Ranked',                type: 'ranked_wins',  target: 20,  xp: 550, coins: 375, icon: '🏅' },
+      { id: 'm_c3', name: 'Trofeos de Oro',    description: 'Llega a 1500 trofeos en Ranked',          type: 'trophies_max', target: 1500,xp: 600, coins: 400, icon: '🥇' },
+      { id: 'm_c4', name: 'Explorador Total',  description: 'Juega en las 9 categorías',               type: 'categories',   target: 9,   xp: 500, coins: 325, icon: '🗺️' },
+      { id: 'm_c5', name: 'Triple Perfección', description: 'Consigue 5 partidas perfectas',           type: 'perfect',      target: 5,   xp: 650, coins: 425, icon: '💯' },
+    ]
+  },
+  {
+    id: 'maestro', name: 'Maestro', icon: '👑', color: '#F44336',
+    badgeId: 'mission_maestro',
+    missions: [
+      { id: 'm_m1', name: 'Leyenda',           description: 'Juega 200 partidas',                     type: 'games',        target: 200, xp: 1000,coins: 750, icon: '🎮' },
+      { id: 'm_m2', name: 'Conquistador',      description: 'Gana 50 partidas Ranked',                type: 'ranked_wins',  target: 50,  xp: 900, coins: 650, icon: '🏅' },
+      { id: 'm_m3', name: 'Gran Trofeo',       description: 'Llega a 3000 trofeos en Ranked',          type: 'trophies_max', target: 3000,xp: 1000,coins: 700, icon: '🏆' },
+      { id: 'm_m4', name: 'Racha Épica',       description: 'Consigue una racha de 15 respuestas',     type: 'streak',       target: 15,  xp: 800, coins: 550, icon: '🔥' },
+      { id: 'm_m5', name: 'Maestro Absoluto',  description: 'Consigue 20 partidas perfectas',          type: 'perfect',      target: 20,  xp: 1000,coins: 750, icon: '💯' },
+    ]
+  }
+];
+window.MISSION_TIERS = MISSION_TIERS;
 
 // === RECOMPENSAS POR RANGO AL FINAL DE TEMPORADA ===
 const SEASON_RANK_REWARDS = {
@@ -590,114 +630,168 @@ const SeasonSystem = {
     this.saveCosmetics(cosmetics);
   },
 
-  // === MISIONES ===
-  getMissions() {
-    const data = localStorage.getItem(this.STORAGE_KEYS.MISSIONS);
-    if (data) {
-      const missions = JSON.parse(data);
-      // Verificar si necesita reset
-      const now = new Date();
-      if (missions.dailyReset && new Date(missions.dailyReset) < now) {
-        missions.daily = this.generateDailyMissions();
-        missions.dailyReset = this.getNextDailyReset();
-      }
-      if (missions.weeklyReset && new Date(missions.weeklyReset) < now) {
-        missions.weekly = this.generateWeeklyMissions();
-        missions.weeklyReset = this.getNextWeeklyReset();
-      }
-      localStorage.setItem(this.STORAGE_KEYS.MISSIONS, JSON.stringify(missions));
-      return missions;
+  // === MISIONES PERMANENTES ===
+
+  getMissionData() {
+    const raw = localStorage.getItem(this.STORAGE_KEYS.MISSIONS);
+    if (raw) {
+      try {
+        const d = JSON.parse(raw);
+        // Migrar formato antiguo (daily/weekly) al nuevo
+        if (d.daily || d.weekly) {
+          const stats = typeof Storage !== 'undefined' ? Storage.getStats() : {};
+          return this._buildFreshMissionData(stats);
+        }
+        if (!d.progress) d.progress = this._emptyProgress();
+        if (!d.claimed) d.claimed = [];
+        if (!d.unlockedTiers) d.unlockedTiers = ['principiante'];
+        if (!d.claimedTierBadges) d.claimedTierBadges = [];
+        return d;
+      } catch {}
     }
-    
-    // Crear misiones nuevas
-    const newMissions = {
-      daily: this.generateDailyMissions(),
-      weekly: this.generateWeeklyMissions(),
-      dailyReset: this.getNextDailyReset(),
-      weeklyReset: this.getNextWeeklyReset()
+    const stats = typeof Storage !== 'undefined' ? Storage.getStats() : {};
+    return this._buildFreshMissionData(stats);
+  },
+
+  _emptyProgress() {
+    return { games: 0, correct: 0, ranked: 0, ranked_wins: 0, perfect: 0, streak: 0, trophies_max: 0, categories: [] };
+  },
+
+  _buildFreshMissionData(stats) {
+    const d = {
+      progress: {
+        games:        stats.totalGames   || 0,
+        correct:      stats.totalCorrect || 0,
+        ranked:       0,
+        ranked_wins:  0,
+        perfect:      stats.perfectGames || 0,
+        streak:       stats.bestStreak   || 0,
+        trophies_max: 0,
+        categories:   Array.isArray(stats.categoriesSet) ? [...stats.categoriesSet] : []
+      },
+      claimed: [],
+      unlockedTiers: ['principiante'],
+      claimedTierBadges: []
     };
-    localStorage.setItem(this.STORAGE_KEYS.MISSIONS, JSON.stringify(newMissions));
-    return newMissions;
+    localStorage.setItem(this.STORAGE_KEYS.MISSIONS, JSON.stringify(d));
+    return d;
   },
 
-  generateDailyMissions() {
-    // Seleccionar 3 misiones aleatorias
-    const shuffled = [...MISSIONS.daily].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 3).map(m => ({
-      ...m,
-      progress: 0,
-      claimed: false
+  saveMissionData(d) {
+    localStorage.setItem(this.STORAGE_KEYS.MISSIONS, JSON.stringify(d));
+  },
+
+  // Devuelve los tiers con progreso actual aplicado
+  getMissions() {
+    const d = this.getMissionData();
+    const p = d.progress;
+    return MISSION_TIERS.map(tier => ({
+      ...tier,
+      unlocked: d.unlockedTiers.includes(tier.id),
+      badgeClaimed: d.claimedTierBadges.includes(tier.id),
+      missions: tier.missions.map(m => {
+        const raw = m.type === 'categories' ? (p.categories || []).length : (p[m.type] || 0);
+        const progress = Math.min(raw, m.target);
+        return { ...m, progress, claimed: d.claimed.includes(m.id), done: raw >= m.target };
+      })
     }));
   },
 
-  generateWeeklyMissions() {
-    // Seleccionar 3 misiones semanales aleatorias
-    const shuffled = [...MISSIONS.weekly].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 3).map(m => ({
-      ...m,
-      progress: 0,
-      claimed: false
+  updateMissionProgress(type, value) {
+    const d = this.getMissionData();
+    const p = d.progress;
+
+    // Snapshot de qué misiones ya estaban completas (para detectar las recién completadas)
+    const wasComplete = {};
+    MISSION_TIERS.forEach(tier => tier.missions.forEach(m => {
+      const v = m.type === 'categories' ? (p.categories || []).length : (p[m.type] || 0);
+      wasComplete[m.id] = v >= m.target;
     }));
-  },
 
-  getNextDailyReset() {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(0, 0, 0, 0);
-    return tomorrow.toISOString();
-  },
+    // Aplicar actualización
+    if (type === 'categories') {
+      if (!Array.isArray(p.categories)) p.categories = [];
+      if (value && !p.categories.includes(value)) p.categories.push(value);
+    } else if (type === 'streak' || type === 'trophies_max') {
+      p[type] = Math.max(p[type] || 0, Number(value) || 0);
+    } else {
+      p[type] = (p[type] || 0) + (Number(value) || 0);
+    }
+    d.progress = p;
+    this.saveMissionData(d);
 
-  getNextWeeklyReset() {
-    const nextMonday = new Date();
-    nextMonday.setDate(nextMonday.getDate() + (8 - nextMonday.getDay()) % 7);
-    nextMonday.setHours(0, 0, 0, 0);
-    return nextMonday.toISOString();
-  },
-
-  // Actualizar progreso de misión
-  updateMissionProgress(missionType, amount = 1) {
-    const missions = this.getMissions();
-    let updated = false;
-    
-    // Buscar misiones que coincidan
-    ['daily', 'weekly'].forEach(period => {
-      missions[period].forEach(mission => {
-        if (mission.id.includes(missionType) && !mission.claimed && mission.progress < mission.target) {
-          mission.progress = Math.min(mission.progress + amount, mission.target);
-          updated = true;
-          
-          // Verificar si está completa
-          if (mission.progress >= mission.target) {
-            console.log('[Season] Misión completada:', mission.name);
-            if (window.App && window.App.showToast) {
-              window.App.showToast(`✅ Misión completada: ${mission.name}`, 'success');
-            }
-          }
+    // Toasts para misiones recién completadas (solo tiers desbloqueados)
+    MISSION_TIERS.forEach(tier => {
+      if (!d.unlockedTiers.includes(tier.id)) return;
+      tier.missions.forEach(m => {
+        if (d.claimed.includes(m.id) || wasComplete[m.id]) return;
+        const v = m.type === 'categories' ? (p.categories || []).length : (p[m.type] || 0);
+        if (v >= m.target) {
+          window.App?.showToast?.(`✅ ¡Misión lista: ${m.name}! Reclama tu recompensa`, 'success');
         }
       });
     });
-    
-    if (updated) {
-      localStorage.setItem(this.STORAGE_KEYS.MISSIONS, JSON.stringify(missions));
-    }
-    return missions;
+
+    this._checkTierUnlocks(d);
+    return d;
   },
 
-  // Reclamar recompensa de misión
   claimMissionReward(missionId) {
-    const missions = this.getMissions();
-    
-    for (const period of ['daily', 'weekly']) {
-      const mission = missions[period].find(m => m.id === missionId);
-      if (mission && mission.progress >= mission.target && !mission.claimed) {
-        mission.claimed = true;
-        this.addBattlePassXP(mission.xp);
-        localStorage.setItem(this.STORAGE_KEYS.MISSIONS, JSON.stringify(missions));
-        return { success: true, xp: mission.xp };
+    const d = this.getMissionData();
+    const allMissions = MISSION_TIERS.flatMap(t => t.missions);
+    const mission = allMissions.find(m => m.id === missionId);
+    if (!mission) return { success: false, error: 'Misión no encontrada' };
+    if (d.claimed.includes(missionId)) return { success: false, error: 'Ya reclamada' };
+
+    const raw = mission.type === 'categories'
+      ? (d.progress.categories || []).length
+      : (d.progress[mission.type] || 0);
+    if (raw < mission.target) return { success: false, error: 'Misión no completada' };
+
+    this.addBattlePassXP(mission.xp);
+    if (typeof Storage !== 'undefined') Storage.addCoins(mission.coins);
+
+    d.claimed.push(missionId);
+    this.saveMissionData(d);
+    this._checkTierCompletion(d);
+    this._checkTierUnlocks(d);
+
+    return { success: true, xp: mission.xp, coins: mission.coins };
+  },
+
+  _checkTierUnlocks(d) {
+    const order = ['principiante', 'estudioso', 'guerrero', 'campeon', 'maestro'];
+    for (let i = 0; i < order.length - 1; i++) {
+      const nextId = order[i + 1];
+      if (d.unlockedTiers.includes(nextId)) continue;
+      const tier = MISSION_TIERS.find(t => t.id === order[i]);
+      if (tier && tier.missions.every(m => d.claimed.includes(m.id))) {
+        d.unlockedTiers.push(nextId);
+        this.saveMissionData(d);
+        const next = MISSION_TIERS.find(t => t.id === nextId);
+        window.App?.showToast?.(`🔓 ¡Categoría desbloqueada: ${next?.icon} ${next?.name}!`, 'success');
       }
     }
-    
-    return { success: false, error: 'Misión no completada o ya reclamada' };
+  },
+
+  _checkTierCompletion(d) {
+    if (!d.claimedTierBadges) d.claimedTierBadges = [];
+    MISSION_TIERS.forEach(tier => {
+      if (d.claimedTierBadges.includes(tier.id)) return;
+      if (!d.unlockedTiers.includes(tier.id)) return;
+      if (!tier.missions.every(m => d.claimed.includes(m.id))) return;
+      d.claimedTierBadges.push(tier.id);
+      this.saveMissionData(d);
+      // Otorgar insignia
+      if (typeof Storage !== 'undefined') {
+        const badges = Storage.getBadges();
+        if (!badges.includes(tier.badgeId)) {
+          badges.push(tier.badgeId);
+          Storage.saveBadges(badges);
+        }
+      }
+      window.App?.showToast?.(`🏅 ¡Insignia desbloqueada: ${tier.icon} ${tier.name}!`, 'success');
+    });
   },
 
   // === COMPRAR EN TIENDA ===

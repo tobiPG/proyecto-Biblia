@@ -2499,8 +2499,8 @@ const App = {
 
     // Misiones de temporada con resultado conocido (partida online)
     if (typeof SeasonSystem !== 'undefined') {
-      if (result.isWinner) SeasonSystem.updateMissionProgress('win_10', 1);
-      if (result.trophyChange > 0) SeasonSystem.updateMissionProgress('trophies', result.trophyChange);
+      if (result.isWinner) SeasonSystem.updateMissionProgress('ranked_wins', 1);
+      if (result.newTrophies !== undefined) SeasonSystem.updateMissionProgress('trophies_max', result.newTrophies);
     }
     window.logGA?.('ranked_match', { result: result.isWinner ? 'win' : result.isTie ? 'tie' : 'loss', trophy_change: result.trophyChange });
 
@@ -4391,18 +4391,14 @@ const App = {
     if (typeof SeasonSystem !== 'undefined') {
       const bpXP = Math.max(10, Math.floor(this.sessionPoints / 5));
       SeasonSystem.addBattlePassXP(bpXP);
-      SeasonSystem.updateMissionProgress('answer', this.sessionCorrect);
+      SeasonSystem.updateMissionProgress('games', 1);
+      SeasonSystem.updateMissionProgress('correct', this.sessionCorrect);
       SeasonSystem.updateMissionProgress('streak', this.sessionBestStreak || this.currentStreak || 0);
-      if (this.sessionCorrect >= Math.ceil(this.currentQuestions.length * 0.6)) {
-        SeasonSystem.updateMissionProgress('win', 1);
-      }
       if (this.sessionCorrect === this.currentQuestions.length && this.currentQuestions.length > 0) {
         SeasonSystem.updateMissionProgress('perfect', 1);
       }
-      // Categoría única jugada
       if (this.selectedCategory) {
-        SeasonSystem.updateMissionProgress('category', 1);
-        SeasonSystem.updateMissionProgress('categories', 1);
+        SeasonSystem.updateMissionProgress('categories', this.selectedCategory);
       }
     }
     const playerAfter = Storage.getPlayer();
@@ -7553,7 +7549,7 @@ const App = {
               <div class="season-mission-name">${m.name}</div>
               <div class="season-mission-desc">${m.description}</div>
             </div>
-            <div class="season-mission-xp">+${m.xp} XP</div>
+            <div class="season-mission-xp">+${m.xp} XP ${m.coins ? `· +${m.coins} 🪙` : ''}</div>
           </div>
           <div class="season-mission-progress-bar">
             <div class="season-mission-fill" style="width:${pct}%"></div>
@@ -7622,17 +7618,26 @@ const App = {
         ` : `<div class="season-premium-owned">👑 Pase Premium Activo</div>`}
       </div>
 
-      <!-- Misiones Diarias -->
-      <div class="season-missions-section">
-        <h4 class="season-section-title">📅 Misiones Diarias</h4>
-        ${missions.daily.map(m => missionBar(m)).join('')}
-      </div>
-
-      <!-- Misiones Semanales -->
-      <div class="season-missions-section">
-        <h4 class="season-section-title">📆 Misiones Semanales</h4>
-        ${missions.weekly.map(m => missionBar(m)).join('')}
-      </div>
+      <!-- Misiones por Niveles -->
+      ${missions.map(tier => {
+        const isLocked = !tier.unlocked;
+        const allClaimed = tier.missions.every(m => m.claimed);
+        const tierBadgeClaimed = tier.badgeClaimed;
+        return `
+          <div class="season-missions-section ${isLocked ? 'tier-locked' : ''}" style="border-left: 4px solid ${tier.color};">
+            <h4 class="season-section-title">
+              ${tier.icon} ${tier.name}
+              ${isLocked ? ' 🔒' : ''}
+              ${allClaimed && !tierBadgeClaimed ? ` <span class="tier-badge-ready">🏅 Insignia disponible</span>` : ''}
+              ${tierBadgeClaimed ? ` <span class="tier-badge-done">🏅 Completado</span>` : ''}
+            </h4>
+            ${isLocked
+              ? `<div class="tier-locked-msg">Completa el nivel anterior para desbloquear</div>`
+              : tier.missions.map(m => missionBar(m)).join('')
+            }
+          </div>
+        `;
+      }).join('')}
     `;
   },
 
@@ -7640,7 +7645,9 @@ const App = {
     if (typeof SeasonSystem === 'undefined') return;
     const result = SeasonSystem.claimMissionReward(missionId);
     if (result.success) {
-      this.showToast(`🎉 +${result.xp} XP al Pase de Batalla!`, 'success');
+      const coinsMsg = result.coins ? ` · +${result.coins} 🪙` : '';
+      this.showToast(`🎉 +${result.xp} XP${coinsMsg}`, 'success');
+      this.updateCoinsDisplay();
       this.renderSeasonScreen();
     } else {
       this.showToast('❌ ' + (result.error || 'Error'), 'error');

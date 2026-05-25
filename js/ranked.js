@@ -782,8 +782,8 @@ window.Ranked = {
     if (typeof SeasonSystem !== 'undefined') {
       SeasonSystem.addBattlePassXP(75);
       SeasonSystem.updateMissionProgress('ranked', 1);
-      if (isWinner) SeasonSystem.updateMissionProgress('win_10', 1);
-      if (trophyChange > 0) SeasonSystem.updateMissionProgress('trophies', trophyChange);
+      if (isWinner) SeasonSystem.updateMissionProgress('ranked_wins', 1);
+      SeasonSystem.updateMissionProgress('trophies_max', newTrophies);
     }
     // Sincronizar trofeos al backend
     if (window.BackendService?.token) {

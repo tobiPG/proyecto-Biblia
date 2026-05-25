@@ -6452,7 +6452,11 @@ select {
   border-radius: var(--radius-md);
 }
 
-.season-missions-section { margin-bottom: var(--space-5); }
+.season-missions-section { margin-bottom: var(--space-5); border-radius: var(--radius-md); padding: var(--space-3); background: rgba(255,255,255,0.02); }
+.season-missions-section.tier-locked { opacity: 0.5; filter: grayscale(0.6); }
+.tier-locked-msg { font-size: var(--font-size-xs); color: var(--text-muted); padding: var(--space-2) 0; font-style: italic; }
+.tier-badge-ready { font-size: 0.7em; color: #f59e0b; font-weight: 700; vertical-align: middle; }
+.tier-badge-done { font-size: 0.7em; color: var(--text-muted); font-weight: 600; vertical-align: middle; }
 .season-section-title { font-size: var(--font-size-sm); font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--space-3); }
 
 .season-mission {

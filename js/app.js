@@ -235,8 +235,8 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
 const App = {
   // --- Estado ---
   // Sistema de vidas
-  lives: 5,
-  maxLives: 5,
+  lives: 12,
+  maxLives: 12,
   infiniteLives: false,
   lifeRegenInterval: null,
   homeLivesTimerInterval: null,
@@ -3289,7 +3289,7 @@ const App = {
   // ========== SISTEMA DE VIDAS ==========
   loadLives() {
     const data = Storage.getLives();
-    this.lives = typeof data.lives === 'number' && !isNaN(data.lives) ? data.lives : 5;
+    this.lives = typeof data.lives === 'number' && !isNaN(data.lives) ? data.lives : 12;
     // Regenerar vidas por tiempo transcurrido
     if (data.lastLostTime && this.lives < this.maxLives) {
       const elapsed = Date.now() - data.lastLostTime;

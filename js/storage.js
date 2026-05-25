@@ -300,7 +300,7 @@ const Storage = {
   },
 
   // --- LIVES ---
-  getLives() { this.initVersioning(); return this._parse(this.KEYS.LIVES, { lives: 5, lastLostTime: null }); },
+  getLives() { this.initVersioning(); return this._parse(this.KEYS.LIVES, { lives: 12, lastLostTime: null }); },
   saveLives(livesData) { this._save(this.KEYS.LIVES, livesData); },
 
   // --- CATEGORY COMPLETION ---

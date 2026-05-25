@@ -382,10 +382,24 @@ window.Ranked = {
   },
 
   async getLeaderboard(category, limit = 100) {
-    if (!window.BackendService?.token) {
-      return this._generateLocalLeaderboard(category, limit);
+    // Firestore siempre disponible — usar como fuente primaria
+    if (window.FirebaseService?.db) {
+      const result = await window.FirebaseService.getRankedLeaderboard(category, Math.min(limit, 50));
+      if (result && result.length > 0) {
+        // Marcar al usuario actual
+        const myUid = window.FirebaseService.currentUser?.uid;
+        return result.map(p => ({
+          ...p,
+          name: p.userId === myUid ? `★ ${p.name}` : p.name
+        }));
+      }
     }
-    return await window.BackendService.getRankedLeaderboard(category, limit);
+    // Fallback: backend MongoDB
+    if (window.BackendService?.token) {
+      const result = await window.BackendService.getRankedLeaderboard(category, limit);
+      if (result && result.length > 0) return result;
+    }
+    return this._generateLocalLeaderboard(category, limit);
   },
 
   _generateLocalLeaderboard(category, limit = 20) {
@@ -714,12 +728,22 @@ window.Ranked = {
                          : -RANKED_CONFIG.trophiesLose;
     const newTrophies = Math.max(0, data.myTrophies + trophyChange);
     this.saveLocalTrophies(category, newTrophies);
+    // Guardar trofeos en Firestore para el leaderboard global
+    window.FirebaseService?.updateRankedTrophies?.(category, newTrophies);
+    // Misiones de temporada para partidas con bot
+    if (typeof SeasonSystem !== 'undefined') {
+      SeasonSystem.addBattlePassXP(75);
+      SeasonSystem.updateMissionProgress('ranked', 1);
+      if (isWinner) SeasonSystem.updateMissionProgress('win_10', 1);
+      if (trophyChange > 0) SeasonSystem.updateMissionProgress('trophies', trophyChange);
+    }
     // Sincronizar trofeos al backend
     if (window.BackendService?.token) {
       window.BackendService.updateRankedResult(category, { won: isWinner, tied: isTie })
         .then(result => {
           if (result?.trophies !== undefined) {
             this.saveLocalTrophies(category, result.trophies);
+            window.FirebaseService?.updateRankedTrophies?.(category, result.trophies);
           }
         }).catch(() => {});
     }

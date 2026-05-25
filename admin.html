@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BibliaQuiz — Panel Admin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+
+    #gate { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    #gate-box { background: #1e293b; padding: 2rem; border-radius: 1rem; width: 320px; text-align: center; }
+    #gate-box h2 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+    #gate-box input { width: 100%; padding: .75rem 1rem; border-radius: .5rem; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; font-size: 1rem; margin-bottom: 1rem; }
+    #gate-box button { width: 100%; padding: .75rem; border-radius: .5rem; border: none; background: #6366f1; color: #fff; font-size: 1rem; cursor: pointer; font-weight: 600; }
+    #gate-box button:hover { background: #4f46e5; }
+    #gate-error { color: #f87171; margin-top: .75rem; font-size: .9rem; }
+
+    #app { display: none; }
+    header { background: #1e293b; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #334155; }
+    header h1 { font-size: 1.25rem; }
+    header span { font-size: .85rem; color: #94a3b8; }
+
+    main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+    h2 { font-size: 1.1rem; color: #94a3b8; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .05em; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .card { background: #1e293b; border-radius: .75rem; padding: 1.5rem; }
+    .card-label { font-size: .8rem; color: #94a3b8; margin-bottom: .5rem; }
+    .card-value { font-size: 2rem; font-weight: 700; color: #f1f5f9; }
+    .card-sub { font-size: .8rem; color: #64748b; margin-top: .25rem; }
+
+    .section { background: #1e293b; border-radius: .75rem; padding: 1.5rem; margin-bottom: 2rem; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th { text-align: left; padding: .5rem .75rem; color: #64748b; border-bottom: 1px solid #334155; font-weight: 600; }
+    td { padding: .6rem .75rem; border-bottom: 1px solid #1e293b; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #0f172a33; }
+    .badge { display: inline-block; padding: .2rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+    .badge-green { background: #14532d; color: #4ade80; }
+    .badge-blue  { background: #1e3a5f; color: #60a5fa; }
+    .badge-purple{ background: #3b0764; color: #c084fc; }
+
+    .refresh-btn { background: #334155; border: none; color: #e2e8f0; padding: .4rem .9rem; border-radius: .5rem; cursor: pointer; font-size: .85rem; margin-left: auto; display: block; margin-bottom: 1rem; }
+    .refresh-btn:hover { background: #475569; }
+
+    .loading { color: #64748b; text-align: center; padding: 2rem; }
+
+    #ga-link { display: inline-block; margin-top: .5rem; background: #14532d; color: #4ade80; padding: .4rem .9rem; border-radius: .5rem; text-decoration: none; font-size: .85rem; }
+    #ga-link:hover { background: #166534; }
+  </style>
+</head>
+<body>
+
+<!-- GATE -->
+<div id="gate">
+  <div id="gate-box">
+    <h2>📖 Admin Panel</h2>
+    <input type="password" id="pw-input" placeholder="Contraseña" />
+    <button onclick="checkPassword()">Entrar</button>
+    <div id="gate-error"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <h1>📖 BibliaQuiz — Panel Admin</h1>
+    <span id="last-updated">Cargando...</span>
+  </header>
+  <main>
+
+    <div style="margin-bottom:2rem">
+      <h2>Google Analytics (tráfico web)</h2>
+      <p style="color:#94a3b8;font-size:.9rem">Visitas, sesiones, páginas vistas, dispositivos, países y más.</p>
+      <a id="ga-link" href="https://analytics.google.com" target="_blank">Abrir Google Analytics →</a>
+    </div>
+
+    <h2>Resumen en tiempo real (Firestore)</h2>
+    <div class="cards" id="cards">
+      <div class="card"><div class="card-label">Usuarios registrados</div><div class="card-value" id="stat-users">—</div></div>
+      <div class="card"><div class="card-label">Partidas jugadas (total)</div><div class="card-value" id="stat-games">—</div></div>
+      <div class="card"><div class="card-label">Retos creados</div><div class="card-value" id="stat-challenges">—</div></div>
+      <div class="card"><div class="card-label">Puntos totales (suma)</div><div class="card-value" id="stat-points">—</div></div>
+    </div>
+
+    <button class="refresh-btn" onclick="loadAll()">↻ Actualizar</button>
+
+    <div class="section">
+      <h2>Top 20 jugadores por puntos</h2>
+      <table id="table-top">
+        <thead><tr><th>#</th><th>Nombre</th><th>Puntos</th><th>Partidas</th><th>Nivel</th></tr></thead>
+        <tbody><tr><td colspan="5" class="loading">Cargando...</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Top 20 jugadores por trofeos ranked (suma de categorías)</h2>
+      <table id="table-ranked">
+        <thead><tr><th>#</th><th>Nombre</th><th>Trofeos totales</th></tr></thead>
+        <tbody><tr><td colspan="3" class="loading">Cargando...</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Últimos 20 usuarios registrados</h2>
+      <table id="table-recent">
+        <thead><tr><th>Nombre</th><th>Email</th><th>Puntos</th><th>Registro</th></tr></thead>
+        <tbody><tr><td colspan="4" class="loading">Cargando...</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Últimos 20 retos</h2>
+      <table id="table-challenges">
+        <thead><tr><th>Creador</th><th>Oponente</th><th>Categoría</th><th>Estado</th><th>Fecha</th></tr></thead>
+        <tbody><tr><td colspan="5" class="loading">Cargando...</td></tr></tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<!-- Firebase compat -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+<script>
+  // ============================
+  // CONTRASEÑA — cámbiala aquí
+  // ============================
+  const ADMIN_PASSWORD = 'biblia2024';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA06c1-_1rlF_vpGRdK1L91PHmp8E53P60",
+    authDomain: "proyecto-biblia-e0489.firebaseapp.com",
+    projectId: "proyecto-biblia-e0489",
+    storageBucket: "proyecto-biblia-e0489.firebasestorage.app",
+    messagingSenderId: "1041693792411",
+    appId: "1:1041693792411:web:0b9b138ec8b3207d6e4e3e"
+  };
+
+  let db;
+
+  function checkPassword() {
+    const val = document.getElementById('pw-input').value;
+    if (val === ADMIN_PASSWORD) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      initFirebase();
+    } else {
+      document.getElementById('gate-error').textContent = 'Contraseña incorrecta';
+    }
+  }
+
+  document.getElementById('pw-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+  });
+
+  function initFirebase() {
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    loadAll();
+  }
+
+  async function loadAll() {
+    document.getElementById('last-updated').textContent = 'Actualizando...';
+    await Promise.all([loadStats(), loadTopPlayers(), loadRankedTop(), loadRecentUsers(), loadRecentChallenges()]);
+    document.getElementById('last-updated').textContent = 'Actualizado: ' + new Date().toLocaleTimeString('es');
+  }
+
+  async function loadStats() {
+    // Usuarios y totales
+    const snap = await db.collection('users').get();
+    let totalGames = 0, totalPoints = 0;
+    snap.forEach(doc => {
+      const d = doc.data();
+      totalGames  += d.totalGames  || 0;
+      totalPoints += d.totalPoints || 0;
+    });
+    document.getElementById('stat-users').textContent  = snap.size.toLocaleString();
+    document.getElementById('stat-games').textContent  = totalGames.toLocaleString();
+    document.getElementById('stat-points').textContent = totalPoints.toLocaleString();
+
+    // Retos
+    const chalSnap = await db.collection('challenges').get();
+    document.getElementById('stat-challenges').textContent = chalSnap.size.toLocaleString();
+  }
+
+  async function loadTopPlayers() {
+    const snap = await db.collection('users').orderBy('totalPoints', 'desc').limit(20).get();
+    const rows = [];
+    let i = 1;
+    snap.forEach(doc => {
+      const d = doc.data();
+      if (!d.displayName) return;
+      const medal = i === 1 ? '🥇' : i === 2 ? '🥈' : i === 3 ? '🥉' : i;
+      rows.push(`<tr>
+        <td>${medal}</td>
+        <td>${esc(d.displayName)}</td>
+        <td><strong>${(d.totalPoints||0).toLocaleString()}</strong></td>
+        <td>${d.totalGames||0}</td>
+        <td><span class="badge badge-blue">Nv ${d.level||1}</span></td>
+      </tr>`);
+      i++;
+    });
+    document.querySelector('#table-top tbody').innerHTML = rows.join('') || '<tr><td colspan="5" class="loading">Sin datos</td></tr>';
+  }
+
+  async function loadRankedTop() {
+    const snap = await db.collection('users').get();
+    const players = [];
+    snap.forEach(doc => {
+      const d = doc.data();
+      if (!d.displayName || !d.rankedTrophies) return;
+      const total = Object.values(d.rankedTrophies).reduce((s, v) => s + (v||0), 0);
+      if (total > 0) players.push({ name: d.displayName, total });
+    });
+    players.sort((a,b) => b.total - a.total);
+    const rows = players.slice(0, 20).map((p, i) => {
+      const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i+1;
+      return `<tr><td>${medal}</td><td>${esc(p.name)}</td><td><strong>🏆 ${p.total.toLocaleString()}</strong></td></tr>`;
+    });
+    document.querySelector('#table-ranked tbody').innerHTML = rows.join('') || '<tr><td colspan="3" class="loading">Aún no hay datos ranked. Se llenan al jugar partidas.</td></tr>';
+  }
+
+  async function loadRecentUsers() {
+    const snap = await db.collection('users').orderBy('createdAt', 'desc').limit(20).get();
+    const rows = [];
+    snap.forEach(doc => {
+      const d = doc.data();
+      const fecha = d.createdAt?.toDate ? d.createdAt.toDate().toLocaleDateString('es') : '—';
+      rows.push(`<tr>
+        <td>${esc(d.displayName||'Sin nombre')}</td>
+        <td style="color:#64748b">${esc(d.email||'—')}</td>
+        <td>${(d.totalPoints||0).toLocaleString()}</td>
+        <td>${fecha}</td>
+      </tr>`);
+    });
+    document.querySelector('#table-recent tbody').innerHTML = rows.join('') || '<tr><td colspan="4" class="loading">Sin datos</td></tr>';
+  }
+
+  async function loadRecentChallenges() {
+    const snap = await db.collection('challenges').orderBy('createdAt', 'desc').limit(20).get();
+    const rows = [];
+    snap.forEach(doc => {
+      const d = doc.data();
+      const fecha = d.createdAt?.toDate ? d.createdAt.toDate().toLocaleDateString('es') : '—';
+      const badge = d.status === 'completed'
+        ? '<span class="badge badge-green">Completado</span>'
+        : '<span class="badge badge-blue">Pendiente</span>';
+      rows.push(`<tr>
+        <td>${esc(d.creatorName||'—')}</td>
+        <td>${esc(d.opponentName||'—')}</td>
+        <td>${esc(d.category||'—')}</td>
+        <td>${badge}</td>
+        <td>${fecha}</td>
+      </tr>`);
+    });
+    document.querySelector('#table-challenges tbody').innerHTML = rows.join('') || '<tr><td colspan="5" class="loading">Sin retos</td></tr>';
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+</script>
+</body>
+</html>

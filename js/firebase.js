@@ -913,7 +913,7 @@ window.FirebaseService = {
       const challenge = {
         id: challengeRef.id,
         creatorId: this.currentUser.uid,
-        creatorName: this.userProfile.displayName,
+        creatorName: (this.userProfile?.displayName) || (this.currentUser.displayName) || 'Jugador',
         opponentId: friendId,
         opponentName: opponentName,
         category,
@@ -933,7 +933,7 @@ window.FirebaseService = {
       };
       
       await challengeRef.set(challenge);
-      
+      window.logGA?.('challenge_created', { category, difficulty });
       return { success: true, challengeId: challengeRef.id };
     } catch (error) {
       console.error('Error creando reto:', error);
@@ -1128,6 +1128,49 @@ window.FirebaseService = {
         callback({ id: doc.id, ...doc.data() });
       }
     });
+  },
+
+  // Guardar trofeos ranked en Firestore para el leaderboard global
+  async updateRankedTrophies(category, trophies) {
+    if (!this.currentUser || !this.db || trophies === undefined) return;
+    try {
+      await this.db.collection('users').doc(this.currentUser.uid).update({
+        [`rankedTrophies.${category}`]: Math.max(0, trophies)
+      });
+    } catch (e) {
+      console.warn('[Firebase] Error guardando trofeos ranked:', e);
+    }
+  },
+
+  // Leaderboard ranked desde Firestore (por categoría, ordenado por trofeos)
+  async getRankedLeaderboard(category, limit = 50) {
+    if (!this.db) return [];
+    try {
+      const field = `rankedTrophies.${category}`;
+      const snapshot = await this.db.collection('users')
+        .orderBy(field, 'desc')
+        .limit(limit)
+        .get();
+      const players = [];
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const t = data.rankedTrophies?.[category] || 0;
+        if (t > 0) {
+          players.push({
+            name: data.displayName || 'Jugador',
+            trophies: t,
+            userId: doc.id,
+            wins: 0,
+            losses: 0,
+            gamesPlayed: 0
+          });
+        }
+      });
+      return players;
+    } catch (e) {
+      console.warn('[Firebase] Error obteniendo leaderboard ranked:', e);
+      return [];
+    }
   },
 
   // Agregar listener de eventos

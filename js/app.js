@@ -1762,6 +1762,7 @@ const App = {
     }
     // Track category
     Storage.updateCategoryPlayed(this.selectedCategory);
+    window.logGA?.('game_start', { category: this.selectedCategory, difficulty: this.selectedDifficulty });
     // Ocultar overlays
     document.getElementById('phase-overlay').classList.add('hidden');
     document.getElementById('gameover-overlay').classList.add('hidden');
@@ -1806,25 +1807,25 @@ const App = {
     // Si el reto tiene questionIds, usar exactamente esas preguntas
     if (challengeData.questionIds && challengeData.questionIds.length > 0) {
       console.log('[App] Usando preguntas del reto:', challengeData.questionIds);
-      console.log('[App] Total preguntas en DB:', QUESTIONS_DB ? QUESTIONS_DB.length : 0);
-      
+      console.log('[App] Total preguntas en DB:', window.QUESTIONS_DB ? window.QUESTIONS_DB.length : 0);
+
       // Buscar las preguntas por ID en el orden correcto
       this.currentQuestions = [];
       for (const qId of challengeData.questionIds) {
         // Convertir a número si viene como string
         const numId = typeof qId === 'string' ? parseInt(qId, 10) : qId;
-        const question = QUESTIONS_DB.find(q => q.id === numId);
+        const question = window.QUESTIONS_DB.find(q => q.id === numId);
         console.log('[App] Buscando ID:', qId, '(numId:', numId, ') encontrada:', !!question);
         if (question) {
           this.currentQuestions.push(question);
         }
       }
-      
+
       // Si faltan preguntas (por si acaso), completar con aleatorias
       if (this.currentQuestions.length < numQuestions) {
         console.warn('[BibliaQuiz] Faltan preguntas, completando...');
         const existingIds = this.currentQuestions.map(q => q.id);
-        const extraQuestions = QUESTIONS_DB
+        const extraQuestions = window.QUESTIONS_DB
           .filter(q => !existingIds.includes(q.id))
           .sort(() => Math.random() - 0.5)
           .slice(0, numQuestions - this.currentQuestions.length);
@@ -1833,9 +1834,9 @@ const App = {
     } else {
       // Fallback: generar preguntas aleatorias (para retos antiguos sin questionIds)
       console.log('[BibliaQuiz] Reto sin questionIds, generando aleatorias');
-      
+
       // Filtrar preguntas por categora
-      let pool = [...QUESTIONS_DB];
+      let pool = [...window.QUESTIONS_DB];
       if (category !== 'aleatorio') {
         pool = pool.filter(q => q.category === category);
       }
@@ -1847,7 +1848,7 @@ const App = {
       
       // Si no hay suficientes preguntas, usar todas las disponibles
       if (pool.length < numQuestions) {
-        pool = [...QUESTIONS_DB];
+        pool = [...window.QUESTIONS_DB];
         if (category !== 'aleatorio') {
           pool = pool.filter(q => q.category === category);
         }
@@ -2382,11 +2383,10 @@ const App = {
       setTimeout(() => { if (window.Ranked) window.Ranked.finalizeBotMatch(score, category); }, 400);
       return;
     }
-    // Battle pass: partida ranked completada
+    // Battle pass: partida ranked completada (win_10 se actualiza en showRankedResult cuando llega el resultado)
     if (typeof SeasonSystem !== 'undefined') {
       SeasonSystem.addBattlePassXP(75);
       SeasonSystem.updateMissionProgress('ranked', 1);
-      SeasonSystem.updateMissionProgress('win_10', 1);
     }
     // Partida online: enviar resultado al servidor via socket
     window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers);
@@ -2466,10 +2466,18 @@ const App = {
       }
     }
 
-    // Sync trophies to localStorage so ranked screen reflects them even when logged in
+    // Sync trophies to localStorage and Firestore
     if (result.newTrophies !== undefined && window.Ranked) {
       window.Ranked.saveLocalTrophies(category, result.newTrophies);
+      window.FirebaseService?.updateRankedTrophies?.(category, result.newTrophies);
     }
+
+    // Misiones de temporada con resultado conocido (partida online)
+    if (typeof SeasonSystem !== 'undefined') {
+      if (result.isWinner) SeasonSystem.updateMissionProgress('win_10', 1);
+      if (result.trophyChange > 0) SeasonSystem.updateMissionProgress('trophies', result.trophyChange);
+    }
+    window.logGA?.('ranked_match', { result: result.isWinner ? 'win' : result.isTie ? 'tie' : 'loss', trophy_change: result.trophyChange });
 
     this.playSound(result.isWinner || result.isTie ? 'phase' : 'wrong');
   },
@@ -4336,6 +4344,7 @@ const App = {
     const playerBefore = Storage.getPlayer();
     const levelBefore = playerBefore.level;
     Storage.addXP(this.sessionPoints);
+    window.logGA?.('game_complete', { category: this.selectedCategory, score: this.sessionPoints, correct: this.sessionCorrect });
     // Battle pass XP + missions
     if (typeof SeasonSystem !== 'undefined') {
       const bpXP = Math.max(10, Math.floor(this.sessionPoints / 5));

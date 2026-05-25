@@ -127,7 +127,7 @@ window.BackendService = {
       
       localStorage.setItem('backend_token', this.token);
       this.notifyListeners('auth', { user: this.userProfile });
-      
+      window.logGA?.('sign_up', { method: 'email' });
       // ✅ NUEVA: Cargar progreso completo después de register
       await this.loadFullProgress();
       
@@ -200,7 +200,7 @@ window.BackendService = {
       
       localStorage.setItem('backend_token', this.token);
       this.notifyListeners('auth', { user: this.userProfile });
-      
+      window.logGA?.('login', { method: 'email' });
       // ✅ NUEVA: Cargar progreso completo después de login
       await this.loadFullProgress();
       

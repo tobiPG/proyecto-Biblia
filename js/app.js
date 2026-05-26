@@ -1968,8 +1968,8 @@ const App = {
     document.getElementById('my-challenge-correct').textContent = `${correctAnswers} correctas`;
     document.getElementById('my-challenge-time').textContent = `${timeSpent}s`;
     
-    // Nombre del oponente
-    const myUid = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    // Nombre del oponente (creatorId es Firebase UID, usar Firebase para comparar)
+    const myUid = FirebaseService.currentUser?.uid || BackendService.currentUser?.uid || BackendService.currentUser?.id;
     const isCreator = this.socialChallengeData.creatorId === myUid;
     const opponentName = isCreator ? this.socialChallengeData.opponentName : this.socialChallengeData.creatorName;
     document.getElementById('opponent-name').textContent = opponentName || 'Oponente';
@@ -2083,7 +2083,7 @@ const App = {
     myCard.classList.remove('winner', 'loser');
     opponentCard.classList.remove('winner', 'loser');
     
-    const myUid = BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const myUid = FirebaseService.currentUser?.uid || BackendService.currentUser?.uid || BackendService.currentUser?.id;
     const iWon = result.winner === myUid;
     const isTie = result.winner === 'tie';
     

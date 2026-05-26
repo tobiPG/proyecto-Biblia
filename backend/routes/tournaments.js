@@ -5,86 +5,99 @@ import { authMiddleware } from '../middleware/auth.js';
 
 const router = express.Router();
 
-function getISOWeek(date) {
-  const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
-  d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
-  const week1 = new Date(d.getFullYear(), 0, 4);
-  return 1 + Math.round(((d - week1) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
-}
+const TOURNAMENT_DURATION_DAYS = 7;
+const CYCLE_DAYS = 10; // 7 active + 3 rest before next
 
-async function getOrCreateCurrentTournament() {
-  const now = new Date();
-  const weekNumber = getISOWeek(now);
-  const year = now.getFullYear();
+// Award coins to top 3 and save winners list
+async function finalizeTournament(tournament) {
+  if (tournament.status === 'completed') return;
 
-  let tournament = await Tournament.findOne({ weekNumber, year, status: { $ne: 'completed' } });
+  const sorted = [...tournament.participants].sort((a, b) => b.points - a.points);
+  const prizes = [tournament.prizes.first, tournament.prizes.second, tournament.prizes.third];
+  const winners = [];
 
-  if (!tournament) {
-    const startDate = new Date(now);
-    const endDate = new Date(now);
-    endDate.setDate(endDate.getDate() + 7);
-
-    tournament = new Tournament({
-      weekNumber,
-      year,
-      status: 'registration',
-      participants: [],
-      bracket: [],
-      startDate,
-      endDate
-    });
-    await tournament.save();
-  }
-
-  return tournament;
-}
-
-function buildBracket(participants) {
-  const bracket = [];
-  const count = participants.length;
-  if (count < 2) return bracket;
-
-  // Generate single-elimination bracket rounds
-  let roundParticipants = [...participants];
-  let round = 1;
-  let matchIndex = 0;
-
-  while (roundParticipants.length > 1) {
-    const nextRound = [];
-    for (let i = 0; i < roundParticipants.length; i += 2) {
-      const p1 = roundParticipants[i];
-      const p2 = roundParticipants[i + 1] || null;
-      bracket.push({
-        round,
-        matchIndex: matchIndex++,
-        player1Uid: p1.uid,
-        player2Uid: p2 ? p2.uid : null,
-        score1: 0,
-        score2: 0,
-        winner: p2 ? null : p1.uid, // bye
-        status: p2 ? 'pending' : 'completed'
-      });
-      if (!p2) {
-        nextRound.push(p1);
-      } else {
-        nextRound.push({ uid: `tbd_${matchIndex}` });
-      }
+  for (let i = 0; i < Math.min(3, sorted.length); i++) {
+    const p = sorted[i];
+    if (!p || !p.uid) continue;
+    const coins = prizes[i] || 0;
+    winners.push({ place: i + 1, uid: p.uid, displayName: p.displayName, coins });
+    try {
+      await User.findOneAndUpdate({ uid: p.uid }, { $inc: { coins, coinsEarned: coins } });
+    } catch (e) {
+      console.error('[Tournament] Error awarding coins to', p.uid, e.message);
     }
-    roundParticipants = nextRound;
-    round++;
   }
 
-  return bracket;
+  tournament.winners = winners;
+  tournament.status = 'completed';
+  await tournament.save();
+  console.log('[Tournament] Finalizado #' + tournament.number + ' — ganadores:', winners.map(w => w.displayName).join(', '));
+}
+
+// Find current active tournament, finalizing expired ones and creating the next if enough time has passed
+async function getCurrentTournament() {
+  const now = new Date();
+
+  // Look for active tournament
+  let active = await Tournament.findOne({ status: 'active' }).sort({ number: -1 });
+
+  if (active) {
+    // If it has expired, finalize it
+    if (now >= new Date(active.endDate)) {
+      await finalizeTournament(active);
+      active = null;
+    } else {
+      return active;
+    }
+  }
+
+  // No active tournament — check if rest period is over
+  const lastCompleted = await Tournament.findOne({ status: 'completed' }).sort({ number: -1 });
+
+  let nextNumber = 1;
+  if (lastCompleted) {
+    const restEnd = new Date(lastCompleted.endDate);
+    restEnd.setDate(restEnd.getDate() + (CYCLE_DAYS - TOURNAMENT_DURATION_DAYS));
+    if (now < restEnd) {
+      // Still in rest period, no tournament yet
+      return { restUntil: restEnd, status: 'rest', number: lastCompleted.number + 1 };
+    }
+    nextNumber = lastCompleted.number + 1;
+  }
+
+  // Create new tournament
+  const startDate = new Date(now);
+  const endDate = new Date(now);
+  endDate.setDate(endDate.getDate() + TOURNAMENT_DURATION_DAYS);
+
+  const newTournament = new Tournament({
+    number: nextNumber,
+    status: 'active',
+    participants: [],
+    prizes: { first: 1000, second: 500, third: 250 },
+    winners: [],
+    startDate,
+    endDate
+  });
+  await newTournament.save();
+  console.log('[Tournament] Nuevo torneo creado #' + nextNumber);
+  return newTournament;
 }
 
 // GET /api/tournaments/current
 router.get('/current', async (req, res) => {
   try {
-    const tournament = await getOrCreateCurrentTournament();
+    const tournament = await getCurrentTournament();
+    if (!tournament) return res.json({ tournament: null });
+
+    // Sort leaderboard by points
+    if (tournament.participants) {
+      tournament.participants.sort((a, b) => b.points - a.points);
+    }
+
     res.json({ tournament });
   } catch (error) {
-    console.error('Error getting tournament:', error);
+    console.error('[Tournament] Error GET /current:', error);
     res.status(500).json({ error: 'Error al obtener el torneo' });
   }
 });
@@ -94,14 +107,9 @@ router.post('/join', authMiddleware, async (req, res) => {
   try {
     if (!req.user) return res.status(401).json({ error: 'No autenticado' });
 
-    const tournament = await getOrCreateCurrentTournament();
-
-    if (tournament.status !== 'registration') {
-      return res.status(400).json({ error: 'El torneo ya ha comenzado o terminado' });
-    }
-
-    if (tournament.participants.length >= tournament.maxParticipants) {
-      return res.status(400).json({ error: 'El torneo está lleno' });
+    const tournament = await getCurrentTournament();
+    if (!tournament || tournament.status !== 'active') {
+      return res.status(400).json({ error: 'No hay torneo activo en este momento' });
     }
 
     const alreadyJoined = tournament.participants.find(p => p.uid === req.user.uid);
@@ -112,81 +120,50 @@ router.post('/join', authMiddleware, async (req, res) => {
     tournament.participants.push({
       uid: req.user.uid,
       displayName: req.user.displayName || 'Jugador',
-      seed: tournament.participants.length + 1,
-      eliminated: false
+      points: 0,
+      gamesPlayed: 0
     });
 
-    // If we've reached max participants, start the tournament and build bracket
-    if (tournament.participants.length >= tournament.maxParticipants) {
-      tournament.status = 'active';
-      tournament.bracket = buildBracket(tournament.participants);
-    }
-
     await tournament.save();
-
     res.json({ success: true, tournament });
   } catch (error) {
-    console.error('Error joining tournament:', error);
+    console.error('[Tournament] Error POST /join:', error);
     res.status(500).json({ error: 'Error al unirse al torneo' });
   }
 });
 
-// POST /api/tournaments/submit-match
-router.post('/submit-match', authMiddleware, async (req, res) => {
+// POST /api/tournaments/submit-score
+// Called after each game by enrolled participants
+router.post('/submit-score', authMiddleware, async (req, res) => {
   try {
     if (!req.user) return res.status(401).json({ error: 'No autenticado' });
 
-    const { tournamentId, matchIndex, score } = req.body;
-
-    const tournament = await Tournament.findById(tournamentId);
-    if (!tournament) return res.status(404).json({ error: 'Torneo no encontrado' });
-    if (tournament.status !== 'active') return res.status(400).json({ error: 'El torneo no está activo' });
-
-    const match = tournament.bracket[matchIndex];
-    if (!match) return res.status(404).json({ error: 'Partida no encontrada' });
-    if (match.status === 'completed') return res.status(400).json({ error: 'Esta partida ya terminó' });
-
-    const isPlayer1 = match.player1Uid === req.user.uid;
-    const isPlayer2 = match.player2Uid === req.user.uid;
-    if (!isPlayer1 && !isPlayer2) return res.status(403).json({ error: 'No eres parte de esta partida' });
-
-    if (isPlayer1) match.score1 = score;
-    if (isPlayer2) match.score2 = score;
-
-    // If both scores submitted, determine winner
-    if (match.score1 > 0 || match.score2 > 0) {
-      match.winner = match.score1 >= match.score2 ? match.player1Uid : match.player2Uid;
-      match.status = 'completed';
-
-      // Check if tournament is over
-      const pendingMatches = tournament.bracket.filter(m => m.status !== 'completed');
-      if (pendingMatches.length === 0) {
-        tournament.status = 'completed';
-        const finalMatch = tournament.bracket[tournament.bracket.length - 1];
-        tournament.champion = finalMatch?.winner;
-      }
+    const { points } = req.body;
+    if (typeof points !== 'number' || points < 0) {
+      return res.status(400).json({ error: 'Puntos inválidos' });
     }
 
-    tournament.markModified('bracket');
+    const tournament = await getCurrentTournament();
+    if (!tournament || tournament.status !== 'active') {
+      return res.json({ success: false, reason: 'no_active_tournament' });
+    }
+
+    const participant = tournament.participants.find(p => p.uid === req.user.uid);
+    if (!participant) {
+      return res.json({ success: false, reason: 'not_enrolled' });
+    }
+
+    participant.points += points;
+    participant.gamesPlayed += 1;
+    tournament.markModified('participants');
     await tournament.save();
 
-    res.json({ success: true, tournament });
+    // Return sorted leaderboard so client can update
+    const leaderboard = [...tournament.participants].sort((a, b) => b.points - a.points);
+    res.json({ success: true, totalPoints: participant.points, leaderboard });
   } catch (error) {
-    console.error('Error submitting match:', error);
-    res.status(500).json({ error: 'Error al enviar resultado' });
-  }
-});
-
-// GET /api/tournaments/bracket/:id
-router.get('/bracket/:id', async (req, res) => {
-  try {
-    const tournament = await Tournament.findById(req.params.id);
-    if (!tournament) return res.status(404).json({ error: 'Torneo no encontrado' });
-
-    res.json({ tournament });
-  } catch (error) {
-    console.error('Error getting bracket:', error);
-    res.status(500).json({ error: 'Error al obtener el bracket' });
+    console.error('[Tournament] Error POST /submit-score:', error);
+    res.status(500).json({ error: 'Error al enviar puntuación' });
   }
 });
 

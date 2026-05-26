@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliaquiz-v134';
+const CACHE_NAME = 'bibliaquiz-v135';
 
 // Archivos críticos que deben cachearse en el install
 const CRITICAL_ASSETS = [

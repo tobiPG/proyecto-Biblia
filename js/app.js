@@ -4401,6 +4401,10 @@ const App = {
         SeasonSystem.updateMissionProgress('categories', this.selectedCategory);
       }
     }
+    // Torneo: acumular puntos si está inscrito (fire-and-forget)
+    if (this.sessionPoints > 0 && typeof TournamentManager !== 'undefined') {
+      TournamentManager.submitScore(this.sessionPoints);
+    }
     const playerAfter = Storage.getPlayer();
     if (playerAfter.level > levelBefore) {
       // Subio de nivel!

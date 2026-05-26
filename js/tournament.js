@@ -1,12 +1,12 @@
 // ============================================================
-// TORNEOS SEMANALES - BibliaQuiz
+// TORNEOS LIGA - BibliaQuiz
 // ============================================================
 
 const TournamentManager = {
   currentTournament: null,
   myUid: null,
+  _refreshInterval: null,
 
-  // Get API base URL (already includes /api in production)
   get apiBase() {
     return window.API_BASE_URL || 'http://localhost:3001/api';
   },
@@ -21,198 +21,157 @@ const TournamentManager = {
 
   getMyUid() {
     try {
-      const user = JSON.parse(localStorage.getItem('backend_user') || '{}');
-      return user.uid || '';
-    } catch (e) {
-      return '';
-    }
+      return JSON.parse(localStorage.getItem('backend_user') || '{}').uid || '';
+    } catch { return ''; }
   },
 
-  // Load current tournament
   async loadTournament() {
     this.myUid = this.getMyUid();
     const container = document.getElementById('tournament-content');
     if (container) container.innerHTML = '<p class="tournament-loading">Cargando torneo...</p>';
+    this._stopRefresh();
 
     try {
       const res = await fetch(this.apiBase + '/tournaments/current', { headers: this.headers });
       const data = await res.json();
       this.currentTournament = data.tournament;
       this.renderTournament();
+      if (this.currentTournament?.status === 'active') {
+        this._startRefresh();
+      }
     } catch (err) {
       console.error('[Tournament] Error:', err);
-      if (container) container.innerHTML = '<p class="tournament-error">Error al cargar el torneo</p>';
+      if (container) container.innerHTML = '<p class="tournament-error">No se pudo conectar al servidor.<br>El servidor puede estar iniciando, intenta en unos segundos.</p>';
     }
   },
 
-  // Render tournament based on status
   renderTournament() {
     const t = this.currentTournament;
-    if (!t) return;
+    const container = document.getElementById('tournament-content');
+    if (!container) return;
 
-    if (t.status === 'registration') {
-      this.renderRegistration();
+    if (!t) {
+      container.innerHTML = '<p class="tournament-error">No hay información del torneo.</p>';
+      return;
+    }
+
+    if (t.status === 'rest') {
+      this.renderRestPeriod(t);
     } else if (t.status === 'active') {
-      this.renderBracket();
+      this.renderActive(t);
     } else if (t.status === 'completed') {
-      this.renderCompleted();
+      this.renderCompleted(t);
     }
   },
 
-  // Render registration screen
-  renderRegistration() {
-    const t = this.currentTournament;
+  renderRestPeriod(t) {
     const container = document.getElementById('tournament-content');
-    if (!container) return;
-
-    const isJoined = t.participants.some(p => p.uid === this.myUid);
-    const spotsLeft = (t.maxParticipants || 16) - t.participants.length;
-    const startDate = t.startDate ? new Date(t.startDate).toLocaleDateString('es-ES') : 'Próximamente';
-
+    const restEnd = new Date(t.restUntil);
     container.innerHTML = `
-      <div class="tournament-registration">
-        <div class="tournament-banner">
-          <div class="tournament-trophy">🏆</div>
-          <div class="tournament-title-info">
-            <h3>Torneo Semanal</h3>
-            <p>Semana ${t.weekNumber} · ${t.year}</p>
-          </div>
-        </div>
-
-        <div class="tournament-prize">
-          <div class="tournament-prize-icon">🪙</div>
-          <div class="tournament-prize-info">
-            <div class="tournament-prize-amount">${t.prizeCoins || 500}</div>
-            <div class="tournament-prize-label">Monedas al Campeón</div>
-          </div>
-        </div>
-
-        <div class="tournament-info-grid">
-          <div class="tournament-info-item">
-            <span class="info-icon">👥</span>
-            <span>${t.participants.length} / ${t.maxParticipants || 16} jugadores</span>
-          </div>
-          <div class="tournament-info-item">
-            <span class="info-icon">📅</span>
-            <span>Inicia: ${startDate}</span>
-          </div>
-          <div class="tournament-info-item">
-            <span class="info-icon">⚔️</span>
-            <span>Eliminación directa</span>
-          </div>
-        </div>
-
-        <div class="tournament-participants-preview">
-          <h4>Participantes inscritos (${t.participants.length}/${t.maxParticipants || 16})</h4>
-          <div class="tournament-participants-list">
-            ${t.participants.map((p, i) => `
-              <div class="tournament-participant ${p.uid === this.myUid ? 'me' : ''}">
-                <span class="participant-num">${i + 1}</span>
-                <span class="participant-name">${p.displayName || 'Jugador'}${p.uid === this.myUid ? ' (Tú)' : ''}</span>
-              </div>
-            `).join('') || '<p class="no-participants">Sé el primero en inscribirte</p>'}
-          </div>
-        </div>
-
-        ${isJoined
-          ? `<div class="tournament-joined-msg">✅ Ya estás inscrito. Espera a que el torneo comience.</div>`
-          : spotsLeft > 0
-            ? `<button class="btn-primary tournament-join-btn" onclick="TournamentManager.joinTournament()">🏆 Inscribirme al Torneo</button>`
-            : `<div class="tournament-full-msg">El torneo está lleno. El torneo comenzará pronto.</div>`
-        }
+      <div class="tournament-rest">
+        <div class="tournament-trophy">⏳</div>
+        <h3>Próximo Torneo</h3>
+        <p class="tournament-rest-msg">El siguiente torneo comenzará el</p>
+        <div class="tournament-rest-date">${restEnd.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'long' })}</div>
+        <p class="tournament-rest-sub">¡Prepárate para competir!</p>
       </div>
     `;
   },
 
-  // Render active bracket
-  renderBracket() {
-    const t = this.currentTournament;
+  renderActive(t) {
     const container = document.getElementById('tournament-content');
-    if (!container) return;
+    const myParticipant = t.participants.find(p => p.uid === this.myUid);
+    const isEnrolled = !!myParticipant;
+    const endDate = new Date(t.endDate);
+    const timeLeft = this._formatCountdown(endDate - Date.now());
+    const myRank = t.participants.findIndex(p => p.uid === this.myUid) + 1;
 
-    // Group matches by round
-    const rounds = {};
-    (t.bracket || []).forEach(match => {
-      if (!rounds[match.round]) rounds[match.round] = [];
-      rounds[match.round].push(match);
-    });
+    const podiumColors = ['#FFD700', '#C0C0C0', '#CD7F32'];
+    const podiumLabels = ['🥇', '🥈', '🥉'];
+    const prizes = [t.prizes?.first || 1000, t.prizes?.second || 500, t.prizes?.third || 250];
 
-    const roundNames = { 1: 'Cuartos de Final', 2: 'Semifinales', 3: 'Final' };
-
-    // Build participant map
-    const participantMap = {};
-    (t.participants || []).forEach(p => { participantMap[p.uid] = p.displayName; });
-
-    const getPlayerName = (uid) => {
-      if (!uid) return 'BYE';
-      if (uid.startsWith('tbd_')) return 'Por determinar';
-      return participantMap[uid] || uid;
+    const rowHtml = (p, i) => {
+      const isMe = p.uid === this.myUid;
+      const medal = i < 3 ? podiumLabels[i] : `${i + 1}`;
+      return `
+        <tr class="tournament-row ${isMe ? 'tournament-row-me' : ''} ${i < 3 ? 'tournament-row-top' : ''}">
+          <td class="tournament-rank" style="${i < 3 ? `color:${podiumColors[i]};font-weight:900` : ''}">${medal}</td>
+          <td class="tournament-name">${p.displayName || 'Jugador'}${isMe ? ' <span class="you-badge">Tú</span>' : ''}</td>
+          <td class="tournament-pts">${p.points.toLocaleString()}</td>
+          <td class="tournament-games">${p.gamesPlayed}</td>
+          ${i < 3 ? `<td class="tournament-prize-col">+${prizes[i]} 🪙</td>` : '<td></td>'}
+        </tr>
+      `;
     };
 
-    const bracketHtml = Object.keys(rounds).sort((a, b) => a - b).map(round => {
-      const roundMatches = rounds[round];
-      return `
-        <div class="bracket-round">
-          <div class="bracket-round-title">${roundNames[round] || 'Ronda ' + round}</div>
-          <div class="bracket-matches">
-            ${roundMatches.map(match => `
-              <div class="bracket-match ${match.status}">
-                <div class="bracket-player ${match.winner === match.player1Uid ? 'winner' : match.status === 'completed' ? 'loser' : ''}">
-                  <span class="player-name">${getPlayerName(match.player1Uid)}</span>
-                  <span class="player-score">${match.score1 || 0}</span>
-                </div>
-                <div class="bracket-vs">vs</div>
-                <div class="bracket-player ${match.winner === match.player2Uid ? 'winner' : match.status === 'completed' ? 'loser' : ''}">
-                  <span class="player-name">${getPlayerName(match.player2Uid)}</span>
-                  <span class="player-score">${match.score2 || 0}</span>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }).join('');
-
     container.innerHTML = `
-      <div class="tournament-active">
-        <div class="tournament-banner">
-          <div class="tournament-trophy">🏆</div>
-          <div class="tournament-title-info">
-            <h3>Torneo Activo</h3>
-            <p>Semana ${t.weekNumber} · ${t.year}</p>
-          </div>
-        </div>
-        <div class="bracket-container">
-          ${bracketHtml || '<p>El bracket no está disponible todavía</p>'}
+      <div class="tournament-header">
+        <div class="tournament-trophy">🏆</div>
+        <div>
+          <div class="tournament-title">Torneo #${t.number}</div>
+          <div class="tournament-countdown">⏳ ${timeLeft}</div>
         </div>
       </div>
+
+      <div class="tournament-prizes-strip">
+        <div class="prize-item"><span class="prize-place">🥇</span><span class="prize-coins">${prizes[0]} 🪙</span></div>
+        <div class="prize-item"><span class="prize-place">🥈</span><span class="prize-coins">${prizes[1]} 🪙</span></div>
+        <div class="prize-item"><span class="prize-place">🥉</span><span class="prize-coins">${prizes[2]} 🪙</span></div>
+      </div>
+
+      ${isEnrolled && myRank > 0 ? `
+        <div class="tournament-myrank">Tu posición: <strong>#${myRank}</strong> · ${myParticipant.points.toLocaleString()} pts · ${myParticipant.gamesPlayed} partidas</div>
+      ` : ''}
+
+      <div class="tournament-table-wrap">
+        ${t.participants.length === 0
+          ? '<p class="tournament-empty">Nadie inscrito aún. ¡Sé el primero!</p>'
+          : `<table class="tournament-table">
+              <thead><tr>
+                <th>#</th><th>Jugador</th><th>Puntos</th><th>Partidas</th><th>Premio</th>
+              </tr></thead>
+              <tbody>${t.participants.map((p, i) => rowHtml(p, i)).join('')}</tbody>
+            </table>`
+        }
+      </div>
+
+      ${isEnrolled
+        ? `<div class="tournament-enrolled-msg">✅ Inscrito — tus puntos se acumulan automáticamente al jugar</div>`
+        : this.myUid
+          ? `<button class="btn-primary tournament-join-btn" onclick="TournamentManager.joinTournament()">⚔️ Inscribirme al Torneo</button>`
+          : `<p class="tournament-login-msg">Inicia sesión para participar</p>`
+      }
     `;
   },
 
-  // Render completed tournament
-  renderCompleted() {
-    const t = this.currentTournament;
+  renderCompleted(t) {
     const container = document.getElementById('tournament-content');
-    if (!container) return;
+    const podiumLabels = ['🥇', '🥈', '🥉'];
+    const podiumColors = ['#FFD700', '#C0C0C0', '#CD7F32'];
 
-    const participantMap = {};
-    (t.participants || []).forEach(p => { participantMap[p.uid] = p.displayName; });
-    const championName = t.champion ? (participantMap[t.champion] || 'Desconocido') : 'Nadie';
+    const myWin = t.winners?.find(w => w.uid === this.myUid);
 
     container.innerHTML = `
       <div class="tournament-completed">
-        <div class="tournament-champion-display">
-          <div class="champion-trophy">🏆</div>
-          <h3>¡Campeón!</h3>
-          <div class="champion-name">${championName}</div>
-          <div class="champion-prize">+${t.prizeCoins || 500} 🪙</div>
+        <div class="tournament-trophy">🏆</div>
+        <h3>Torneo #${t.number} Finalizado</h3>
+
+        <div class="tournament-podium">
+          ${(t.winners || []).map((w, i) => `
+            <div class="podium-item" style="border-color:${podiumColors[i]}">
+              <div class="podium-medal">${podiumLabels[i]}</div>
+              <div class="podium-name">${w.displayName}</div>
+              <div class="podium-prize" style="color:${podiumColors[i]}">+${w.coins} 🪙</div>
+            </div>
+          `).join('')}
         </div>
-        <p class="tournament-next">El próximo torneo comenzará la siguiente semana. ¡Prepárate!</p>
+
+        ${myWin ? `<div class="tournament-my-prize">🎉 ¡Ganaste ${myWin.coins} monedas! Ya están en tu cuenta.</div>` : ''}
+        <p class="tournament-next">El próximo torneo comenzará en los próximos días. ¡Prepárate!</p>
       </div>
     `;
   },
 
-  // Join tournament
   async joinTournament() {
     try {
       const res = await fetch(this.apiBase + '/tournaments/join', {
@@ -220,14 +179,58 @@ const TournamentManager = {
         headers: this.headers
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Error al unirse al torneo');
-
+      if (!res.ok) throw new Error(data.error || 'Error al unirse');
       this.currentTournament = data.tournament;
-      App.showToast('✅ ¡Inscrito en el torneo!');
+      window.App?.showToast?.('✅ ¡Inscrito en el torneo! Tus puntos se acumularán al jugar.', 'success');
       this.renderTournament();
     } catch (err) {
-      App.showToast('❌ ' + err.message);
+      window.App?.showToast?.('❌ ' + err.message, 'error');
     }
+  },
+
+  // Called from app.js endGame() — fire-and-forget
+  async submitScore(points) {
+    if (!points || points <= 0) return;
+    if (!localStorage.getItem('backend_token')) return;
+    try {
+      const res = await fetch(this.apiBase + '/tournaments/submit-score', {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify({ points })
+      });
+      const data = await res.json();
+      if (data.success) {
+        // Update local cache so leaderboard is fresh next time they open it
+        if (this.currentTournament && data.leaderboard) {
+          this.currentTournament.participants = data.leaderboard;
+        }
+      }
+    } catch { /* silent — not critical */ }
+  },
+
+  _formatCountdown(ms) {
+    if (ms <= 0) return 'Finalizando...';
+    const days = Math.floor(ms / 86400000);
+    const hours = Math.floor((ms % 86400000) / 3600000);
+    const mins = Math.floor((ms % 3600000) / 60000);
+    if (days > 0) return `${days}d ${hours}h restantes`;
+    if (hours > 0) return `${hours}h ${mins}m restantes`;
+    return `${mins}m restantes`;
+  },
+
+  _startRefresh() {
+    this._refreshInterval = setInterval(() => {
+      // Only refresh countdown in UI, full reload every 5 min
+      const el = document.querySelector('.tournament-countdown');
+      if (this.currentTournament?.endDate) {
+        const left = this._formatCountdown(new Date(this.currentTournament.endDate) - Date.now());
+        if (el) el.textContent = '⏳ ' + left;
+      }
+    }, 60000);
+  },
+
+  _stopRefresh() {
+    if (this._refreshInterval) { clearInterval(this._refreshInterval); this._refreshInterval = null; }
   }
 };
 

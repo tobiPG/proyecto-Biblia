@@ -41,6 +41,9 @@ const userSchema = new mongoose.Schema({
   
   // 🆕 Insignias ganadas
   badges: { type: [String], default: [] },
+
+  // Insignias de torneos (dinámicas, una por torneo)
+  tournamentBadges: { type: mongoose.Schema.Types.Mixed, default: [] },
   
   // 🆕 Preguntas respondidas y falladas
   answeredQuestions: { type: [Number], default: [] },

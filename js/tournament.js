@@ -146,8 +146,9 @@ const TournamentManager = {
 
   renderCompleted(t) {
     const container = document.getElementById('tournament-content');
-    const podiumLabels = ['🥇', '🥈', '🥉'];
     const podiumColors = ['#FFD700', '#C0C0C0', '#CD7F32'];
+    const tierNames = ['gold', 'silver', 'bronze'];
+    const badgeIcons = ['👑', '🥈', '🥉'];
 
     const myWin = t.winners?.find(w => w.uid === this.myUid);
 
@@ -158,15 +159,20 @@ const TournamentManager = {
 
         <div class="tournament-podium">
           ${(t.winners || []).map((w, i) => `
-            <div class="podium-item" style="border-color:${podiumColors[i]}">
-              <div class="podium-medal">${podiumLabels[i]}</div>
+            <div class="podium-item podium-item-${tierNames[i]}" style="border-color:${podiumColors[i]}">
+              <div class="podium-medal">${badgeIcons[i]}</div>
               <div class="podium-name">${w.displayName}</div>
               <div class="podium-prize" style="color:${podiumColors[i]}">+${w.coins} 🪙</div>
+              <div class="podium-badge-note" style="color:${podiumColors[i]}">+ insignia exclusiva</div>
             </div>
           `).join('')}
         </div>
 
-        ${myWin ? `<div class="tournament-my-prize">🎉 ¡Ganaste ${myWin.coins} monedas! Ya están en tu cuenta.</div>` : ''}
+        <div class="podium-badge-info">
+          🎖️ Los primeros 100 jugadores reciben una insignia permanente de este torneo
+        </div>
+
+        ${myWin ? `<div class="tournament-my-prize">🎉 ¡Ganaste ${myWin.coins} monedas + insignia ${['👑 Campeón', '🥈 2.º Lugar', '🥉 3.er Lugar'][myWin.place - 1]}! Revisa tus Logros.</div>` : ''}
         <p class="tournament-next">El próximo torneo comenzará en los próximos días. ¡Prepárate!</p>
       </div>
     `;

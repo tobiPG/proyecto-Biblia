@@ -4657,12 +4657,42 @@ const App = {
   renderAchievements(filter = 'all') {
     const earnedBadges = Storage.getBadges();
     const stats = this.getAchievementStats();
-    
+
+    // Tournament badges (dynamic, from backend_user)
+    let tournamentBadges = [];
+    try {
+      const bu = JSON.parse(localStorage.getItem('backend_user') || '{}');
+      tournamentBadges = Array.isArray(bu.tournamentBadges) ? bu.tournamentBadges : [];
+    } catch {}
+
     // Summary
-    document.getElementById('achievements-unlocked').textContent = earnedBadges.length;
+    document.getElementById('achievements-unlocked').textContent = earnedBadges.length + tournamentBadges.length;
     document.getElementById('achievements-total').textContent = BADGES.length;
     const progressPercent = (earnedBadges.length / BADGES.length) * 100;
     document.getElementById('achievements-progress-fill').style.width = `${progressPercent}%`;
+
+    // Render tournament badges section if any
+    const grid = document.getElementById('achievements-grid');
+    let tournamentSection = '';
+    if (tournamentBadges.length > 0) {
+      // Sort: gold first, then by place ascending
+      const sorted = [...tournamentBadges].sort((a, b) => a.place - b.place || a.tournamentNumber - b.tournamentNumber);
+      tournamentSection = `
+        <div class="tournament-badges-section">
+          <div class="tournament-badges-title">🏆 Insignias de Torneos</div>
+          <div class="tournament-badges-grid">
+            ${sorted.map(b => `
+              <div class="tbadge tbadge-${b.tier}">
+                <div class="tbadge-ribbon">#${b.tournamentNumber}</div>
+                <div class="tbadge-icon">${b.icon}</div>
+                <div class="tbadge-name">${b.name}</div>
+                <div class="tbadge-desc">${b.description}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
     
     // Tabs
     document.querySelectorAll('.achievements-tab').forEach(tab => {
@@ -4679,16 +4709,15 @@ const App = {
     }
     
     // Grid
-    const grid = document.getElementById('achievements-grid');
-    if (filteredBadges.length === 0) {
-      grid.innerHTML = `<div class="empty-state" style="grid-column: 1/-1; padding: 40px; text-align: center;">
+    if (filteredBadges.length === 0 && tournamentBadges.length === 0) {
+      grid.innerHTML = `${tournamentSection}<div class="empty-state" style="grid-column: 1/-1; padding: 40px; text-align: center;">
         <div style="font-size: 3rem; margin-bottom: 12px;">${filter === 'unlocked' ? '🔒' : '🏆'}</div>
         <p style="color: var(--text-muted);">${filter === 'unlocked' ? 'Aun no has desbloqueado logros' : 'Has desbloqueado todos los logros!'}</p>
       </div>`;
       return;
     }
-    
-    grid.innerHTML = filteredBadges.map(badge => {
+
+    const badgeCards = filteredBadges.map(badge => {
       const isEarned = earnedBadges.includes(badge.id);
       return `
         <div class="achievement-card ${isEarned ? 'unlocked' : 'locked'}">
@@ -4698,6 +4727,8 @@ const App = {
         </div>
       `;
     }).join('');
+
+    grid.innerHTML = tournamentSection + badgeCards;
   },
   
   getAchievementStats() {

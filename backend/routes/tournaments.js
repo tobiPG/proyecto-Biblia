@@ -8,7 +8,30 @@ const router = express.Router();
 const TOURNAMENT_DURATION_DAYS = 7;
 const CYCLE_DAYS = 10; // 7 active + 3 rest before next
 
-// Award coins to top 3 and save winners list
+function buildTournamentBadge(tournament, place) {
+  const endDate = new Date(tournament.endDate);
+  const monthYear = endDate.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' });
+
+  let icon, name, tier;
+  if      (place === 1) { icon = '👑'; name = `Campeón · Torneo #${tournament.number}`;    tier = 'gold'; }
+  else if (place === 2) { icon = '🥈'; name = `2.º Lugar · Torneo #${tournament.number}`;  tier = 'silver'; }
+  else if (place === 3) { icon = '🥉'; name = `3.er Lugar · Torneo #${tournament.number}`; tier = 'bronze'; }
+  else if (place <= 10) { icon = '🏆'; name = `Top 10 · Torneo #${tournament.number}`;     tier = 'elite'; }
+  else                  { icon = '🎖️'; name = `Top 100 · Torneo #${tournament.number}`;    tier = 'member'; }
+
+  return {
+    id: `tournament_${tournament.number}_${place}`,
+    tournamentNumber: tournament.number,
+    place,
+    tier,
+    icon,
+    name,
+    description: `Puesto ${place} de ${tournament.participants.length} · ${monthYear}`,
+    date: endDate.toISOString()
+  };
+}
+
+// Award coins to top 3 and badges to top 100, then save winners list
 async function finalizeTournament(tournament) {
   if (tournament.status === 'completed') return;
 
@@ -16,16 +39,25 @@ async function finalizeTournament(tournament) {
   const prizes = [tournament.prizes.first, tournament.prizes.second, tournament.prizes.third];
   const winners = [];
 
-  for (let i = 0; i < Math.min(3, sorted.length); i++) {
+  for (let i = 0; i < sorted.length; i++) {
     const p = sorted[i];
     if (!p || !p.uid) continue;
-    const coins = prizes[i] || 0;
-    winners.push({ place: i + 1, uid: p.uid, displayName: p.displayName, coins });
+    const place = i + 1;
+    const badge = buildTournamentBadge(tournament, place);
+
     try {
-      await User.findOneAndUpdate({ uid: p.uid }, { $inc: { coins, coinsEarned: coins } });
+      const update = { $push: { tournamentBadges: badge } };
+      if (i < 3) {
+        const coins = prizes[i] || 0;
+        update.$inc = { coins, coinsEarned: coins };
+        winners.push({ place, uid: p.uid, displayName: p.displayName, coins });
+      }
+      await User.findOneAndUpdate({ uid: p.uid }, update);
     } catch (e) {
-      console.error('[Tournament] Error awarding coins to', p.uid, e.message);
+      console.error('[Tournament] Error awarding to', p.uid, e.message);
     }
+
+    if (place >= 100) break; // only top 100 get badges
   }
 
   tournament.winners = winners;

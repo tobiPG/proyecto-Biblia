@@ -165,7 +165,8 @@ router.post('/login', async (req, res) => {
         infiniteLives: user.infiniteLives || false,
         isPremium: user.isPremium || false,
         adsRemoved: user.adsRemoved || false,
-        premiumExpiry: user.premiumExpiry ? user.premiumExpiry.toISOString() : null
+        premiumExpiry: user.premiumExpiry ? user.premiumExpiry.toISOString() : null,
+        tournamentBadges: user.tournamentBadges || []
       }
     });
   } catch (error) {

@@ -2376,6 +2376,11 @@ const App = {
     const matchId = this.rankedMatchData?.id;
     const opponent = this.rankedMatchData?.opponent;
 
+    // Torneo: acumular puntos de la partida ranked
+    if (score > 0 && typeof TournamentManager !== 'undefined') {
+      TournamentManager.submitScore(score);
+    }
+
     // Mostrar overlay
     const overlay = document.getElementById('ranked-result-overlay');
     if (overlay) overlay.classList.remove('hidden');

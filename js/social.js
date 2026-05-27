@@ -1,6 +1,18 @@
 // Social Features - BibliaQuiz
 // Manejo de UI para clasificación, amigos y retos
 
+function _renderAvatarHtml(avatarKey, avatarColor, photoURL, cssClass) {
+  if (photoURL) return `<img src="${photoURL}" alt="" class="${cssClass}-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+  const chars = window.AVATAR_CHARACTERS || [];
+  const ch = chars.find(c => c.key === avatarKey);
+  if (ch) {
+    const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+    return `<img src="${base}${ch.seed}${ch.p||''}" alt="" class="${cssClass}-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" loading="lazy">`;
+  }
+  const initial = (avatarKey && avatarKey.length === 1) ? avatarKey : '?';
+  return `<span class="${cssClass}-placeholder">${initial}</span>`;
+}
+
 window.Social = {
   isInitialized: false,
   currentTab: 'leaderboard',
@@ -682,10 +694,7 @@ window.Social = {
           <div class="leaderboard-item ${isMe ? 'is-me' : ''}" data-user-id="${user.id}">
             <span class="lb-rank ${rank <= 3 ? 'top-3' : ''}">${medal}</span>
             <div class="lb-avatar">
-              ${user.photoURL 
-                ? `<img src="${user.photoURL}" alt="" class="lb-avatar-img">` 
-                : `<span class="lb-avatar-placeholder">${(user.displayName || 'J')[0].toUpperCase()}</span>`
-              }
+              ${_renderAvatarHtml(user.avatar, user.avatarColor, user.photoURL, 'lb-avatar')}
             </div>
             <div class="lb-info">
               <span class="lb-name">${this.escapeHtml(user.displayName || 'Jugador')}</span>
@@ -743,10 +752,7 @@ window.Social = {
             ${pendingRequests.map(user => `
               <div class="friend-request-item" data-user-id="${user.id}">
                 <div class="fr-avatar">
-                  ${user.photoURL 
-                    ? `<img src="${user.photoURL}" alt="" class="fr-avatar-img">` 
-                    : `<span class="fr-avatar-placeholder">${(user.displayName || 'J')[0].toUpperCase()}</span>`
-                  }
+                  ${_renderAvatarHtml(user.avatar, user.avatarColor, user.photoURL, 'fr-avatar')}
                 </div>
                 <div class="fr-info">
                   <span class="fr-name">${this.escapeHtml(user.displayName || 'Jugador')}</span>
@@ -784,10 +790,7 @@ window.Social = {
         <div class="friend-item" data-user-id="${friend.id}">
           <span class="friend-rank">#${index + 1}</span>
           <div class="friend-avatar">
-            ${friend.photoURL 
-              ? `<img src="${friend.photoURL}" alt="" class="friend-avatar-img">` 
-              : `<span class="friend-avatar-placeholder">${(friend.displayName || 'J')[0].toUpperCase()}</span>`
-            }
+            ${_renderAvatarHtml(friend.avatar, friend.avatarColor, friend.photoURL, 'friend-avatar')}
           </div>
           <div class="friend-info">
             <span class="friend-name">${this.escapeHtml(friend.displayName || 'Jugador')}</span>
@@ -1068,10 +1071,7 @@ window.Social = {
       resultContainer.innerHTML = `
         <div class="search-result-item">
           <div class="sr-avatar">
-            ${user.photoURL 
-              ? `<img src="${user.photoURL}" alt="" class="sr-avatar-img">` 
-              : `<span class="sr-avatar-placeholder">${(user.displayName || 'J')[0].toUpperCase()}</span>`
-            }
+            ${_renderAvatarHtml(user.avatar, user.avatarColor, user.photoURL, 'sr-avatar')}
           </div>
           <div class="sr-info">
             <span class="sr-name">${this.escapeHtml(user.displayName || 'Jugador')}</span>
@@ -1313,18 +1313,30 @@ window.Social = {
     const myAvatarEl = document.getElementById('my-avatar');
     if (myAvatarEl) {
       const photoURL = profile?.photoURL;
+      const avatarKey = localPlayer?.avatar || profile?.avatar || '';
+      const avatarColor = localPlayer?.avatarColor || profile?.avatarColor || 'indigo';
+      const colors = window.AVATAR_COLORS || {};
+      const color = colors[avatarColor] || colors.indigo || {};
+      const grad = color.grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
+      const glow = color.glow || 'rgba(99,102,241,0.6)';
+      const chars = window.AVATAR_CHARACTERS || [];
+      const ch = chars.find(c => c.key === avatarKey);
       if (photoURL) {
-        myAvatarEl.innerHTML = `<img src="${photoURL}" alt="" class="my-avatar-img">`;
         myAvatarEl.style.background = '';
+        myAvatarEl.style.boxShadow = '';
+        myAvatarEl.innerHTML = `<img src="${photoURL}" alt="" class="my-avatar-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+      } else if (ch) {
+        const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+        myAvatarEl.style.background = '#1a1a2e';
+        myAvatarEl.style.boxShadow = `0 0 0 3px ${glow}, 0 4px 20px ${glow}`;
+        myAvatarEl.style.overflow = 'hidden';
+        myAvatarEl.innerHTML = `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
       } else {
         const displayName = profile?.displayName || localPlayer?.name || 'J';
-        const figure = localPlayer?.avatar || displayName[0].toUpperCase();
-        const colorKey = localPlayer?.avatarColor || 'indigo';
-        const colors = window.AVATAR_COLORS || {};
-        const grad = (colors[colorKey] || {}).grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
-        myAvatarEl.innerHTML = '';
-        myAvatarEl.textContent = figure;
         myAvatarEl.style.background = grad;
+        myAvatarEl.style.boxShadow = `0 4px 20px ${glow}`;
+        myAvatarEl.innerHTML = '';
+        myAvatarEl.textContent = displayName[0].toUpperCase();
         myAvatarEl.style.fontSize = '1.8rem';
         myAvatarEl.style.display = 'flex';
         myAvatarEl.style.alignItems = 'center';

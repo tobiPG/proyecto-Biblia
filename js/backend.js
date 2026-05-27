@@ -312,6 +312,20 @@ window.BackendService = {
     }
   },
 
+  async updateAvatar(avatar, avatarColor) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/me`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.token}` },
+        body: JSON.stringify({ avatar, avatarColor })
+      });
+      if (!response.ok) return false;
+      const user = await response.json();
+      this.userProfile = { ...this.userProfile, ...user };
+      return true;
+    } catch { return false; }
+  },
+
   // Actualizar estadísticas
   async updateStats(stats) {
     try {

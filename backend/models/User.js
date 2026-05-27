@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema({
     default: 'Jugador'
   },
   photoURL: String,
-  
+  avatar: { type: String, default: '' },
+  avatarColor: { type: String, default: 'indigo' },
+
   // Progresión
   level: { type: Number, default: 1 },
   xp: { type: Number, default: 0 },

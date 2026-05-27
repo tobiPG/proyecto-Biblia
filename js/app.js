@@ -3406,6 +3406,7 @@ const App = {
         figGrid.querySelectorAll('.char-figure-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
         this.applyAvatarStyle(document.getElementById('avatar-preview'), p);
+        window.BackendService?.updateAvatar(p.avatar, p.avatarColor);
       });
     });
     const colGrid = document.getElementById('avatar-color-grid');
@@ -3433,6 +3434,7 @@ const App = {
         chk.textContent = '✓';
         btn.appendChild(chk);
         this.applyAvatarStyle(document.getElementById('avatar-preview'), p);
+        window.BackendService?.updateAvatar(p.avatar, p.avatarColor);
       });
     });
     this.applyAvatarStyle(document.getElementById('avatar-preview'), player);

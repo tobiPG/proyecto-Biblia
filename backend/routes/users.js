@@ -40,22 +40,26 @@ router.put('/me', authMiddleware, async (req, res) => {
       return res.status(401).json({ error: 'No autenticado' });
     }
     
-    const { displayName, photoURL } = req.body;
-    
+    const { displayName, photoURL, avatar, avatarColor } = req.body;
+
     const user = await User.findOneAndUpdate(
       { uid: req.user.uid },
       {
         ...(displayName && { displayName }),
         ...(photoURL && { photoURL }),
+        ...(avatar !== undefined && { avatar }),
+        ...(avatarColor !== undefined && { avatarColor }),
         updatedAt: new Date()
       },
       { new: true }
     );
-    
+
     res.json({
       id: user.uid,
       displayName: user.displayName,
       photoURL: user.photoURL,
+      avatar: user.avatar,
+      avatarColor: user.avatarColor,
       email: user.email,
       level: user.level,
       xp: user.xp,
@@ -144,17 +148,19 @@ router.get('/leaderboard', async (req, res) => {
     const limit = parseInt(req.query.limit) || 50;
     
     const leaderboard = await User.find()
-      .select('uid displayName totalPoints level photoURL totalGames')
+      .select('uid displayName totalPoints level photoURL totalGames avatar avatarColor')
       .sort({ totalPoints: -1 })
       .limit(limit);
-    
+
     res.json(leaderboard.map(u => ({
       id: u.uid,
       displayName: u.displayName,
       totalPoints: u.totalPoints,
       level: u.level,
       photoURL: u.photoURL,
-      totalGames: u.totalGames
+      totalGames: u.totalGames,
+      avatar: u.avatar || '',
+      avatarColor: u.avatarColor || 'indigo'
     })));
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -174,8 +180,11 @@ router.get('/find/:code', async (req, res) => {
       id: user.uid,
       displayName: user.displayName,
       photoURL: user.photoURL,
+      avatar: user.avatar || '',
+      avatarColor: user.avatarColor || 'indigo',
       level: user.level,
-      totalPoints: user.totalPoints
+      totalPoints: user.totalPoints,
+      friendCode: user.friendCode
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -305,15 +314,16 @@ router.get('/friends', authMiddleware, async (req, res) => {
     }
     
     const friends = await User.find({ uid: { $in: req.user.friends || [] } })
-      .select('uid displayName photoURL totalPoints level totalGames friendCode');
-    
-    // Mapear uid a id para el frontend
+      .select('uid displayName photoURL avatar avatarColor totalPoints level totalGames friendCode');
+
     const mappedFriends = friends
       .sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0))
       .map(f => ({
         id: f.uid,
         displayName: f.displayName,
         photoURL: f.photoURL,
+        avatar: f.avatar || '',
+        avatarColor: f.avatarColor || 'indigo',
         totalPoints: f.totalPoints,
         level: f.level,
         totalGames: f.totalGames,
@@ -334,13 +344,14 @@ router.get('/friend-requests', authMiddleware, async (req, res) => {
     }
     
     const requesters = await User.find({ uid: { $in: req.user.friendRequests || [] } })
-      .select('uid displayName photoURL totalPoints level friendCode');
-    
-    // Mapear uid a id para el frontend
+      .select('uid displayName photoURL avatar avatarColor totalPoints level friendCode');
+
     const mappedRequesters = requesters.map(r => ({
       id: r.uid,
       displayName: r.displayName,
       photoURL: r.photoURL,
+      avatar: r.avatar || '',
+      avatarColor: r.avatarColor || 'indigo',
       totalPoints: r.totalPoints,
       level: r.level,
       friendCode: r.friendCode

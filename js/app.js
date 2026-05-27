@@ -2497,9 +2497,7 @@ const App = {
       setTimeout(() => { if (window.Ranked) window.Ranked.finalizeBotMatch(score, category); }, 400);
       return;
     }
-    // Battle pass: partida ranked completada (win_10 se actualiza en showRankedResult cuando llega el resultado)
     if (typeof SeasonSystem !== 'undefined') {
-      SeasonSystem.addBattlePassXP(75);
       SeasonSystem.updateMissionProgress('ranked', 1);
     }
     // Partida online: enviar resultado al servidor via socket
@@ -4570,10 +4568,8 @@ const App = {
     const levelBefore = playerBefore.level;
     Storage.addXP(this.sessionPoints);
     window.logGA?.('game_complete', { category: this.selectedCategory, score: this.sessionPoints, correct: this.sessionCorrect });
-    // Battle pass XP + missions
+    // Misiones
     if (typeof SeasonSystem !== 'undefined') {
-      const bpXP = Math.max(10, Math.floor(this.sessionPoints / 5));
-      SeasonSystem.addBattlePassXP(bpXP);
       SeasonSystem.updateMissionProgress('games', 1);
       SeasonSystem.updateMissionProgress('correct', this.sessionCorrect);
       SeasonSystem.updateMissionProgress('streak', this.sessionBestStreak || this.currentStreak || 0);
@@ -7725,32 +7721,7 @@ const App = {
     const container = document.getElementById('season-content');
     if (!container) return;
 
-    const season = SeasonSystem.getCurrentSeason();
-    const daysLeft = SeasonSystem.getDaysRemaining();
-    const bp = SeasonSystem.getBattlePassData();
     const missions = SeasonSystem.getMissions();
-    const xpNeeded = SeasonSystem.getXPForLevel(bp.level);
-    const xpPct = bp.level >= 50 ? 100 : Math.min(100, Math.round((bp.xp / xpNeeded) * 100));
-
-    // Reward track: show 5 levels centered on current
-    const startLevel = Math.max(1, Math.min(bp.level, 48));
-    const levelRange = [];
-    for (let l = startLevel; l <= Math.min(startLevel + 4, 50); l++) levelRange.push(l);
-
-    const rewardIcon = (reward) => {
-      if (!reward) return '';
-      if (reward.type === 'coins') return `🪙 ${reward.amount}`;
-      if (reward.type === 'life') return `❤️ x${reward.amount}`;
-      if (reward.type === 'powerup') {
-        const icons = { shield: '🛡️', reveal: '💡', doubleCoins: '✨', extraTime: '⏳', fiftyFifty: '🎯' };
-        return `${icons[reward.item] || '🎁'} x${reward.amount}`;
-      }
-      if (reward.type === 'avatar') return '👤 Avatar';
-      if (reward.type === 'frame') return '🖼️ Marco';
-      if (reward.type === 'title') return '📛 Título';
-      if (reward.type === 'legendary') return '🏆 Pack';
-      return '🎁';
-    };
 
     const missionBar = (m) => {
       const pct = Math.min(100, Math.round((m.progress / m.target) * 100));
@@ -7763,7 +7734,7 @@ const App = {
               <div class="season-mission-name">${m.name}</div>
               <div class="season-mission-desc">${m.description}</div>
             </div>
-            <div class="season-mission-xp">+${m.xp} XP ${m.coins ? `· +${m.coins} 🪙` : ''}</div>
+            <div class="season-mission-xp">${m.coins ? `+${m.coins} 🪙` : ''}</div>
           </div>
           <div class="season-mission-progress-bar">
             <div class="season-mission-fill" style="width:${pct}%"></div>
@@ -7780,79 +7751,25 @@ const App = {
       `;
     };
 
-    container.innerHTML = `
-      <!-- Temporada actual -->
-      <div class="season-card">
-        <div class="season-card-icon">${season.icon}</div>
-        <div class="season-card-info">
-          <div class="season-card-name">Temporada: ${season.name}</div>
-          <div class="season-card-days">⏳ ${daysLeft} días restantes</div>
+    container.innerHTML = missions.map(tier => {
+      const isLocked = !tier.unlocked;
+      const allClaimed = tier.missions.every(m => m.claimed);
+      const tierBadgeClaimed = tier.badgeClaimed;
+      return `
+        <div class="season-missions-section ${isLocked ? 'tier-locked' : ''}" style="border-left: 4px solid ${tier.color};">
+          <h4 class="season-section-title">
+            ${tier.icon} ${tier.name}
+            ${isLocked ? ' 🔒' : ''}
+            ${allClaimed && !tierBadgeClaimed ? `<span class="tier-badge-ready">🏅 Insignia disponible</span>` : ''}
+            ${tierBadgeClaimed ? `<span class="tier-badge-done">🏅 Completado</span>` : ''}
+          </h4>
+          ${isLocked
+            ? `<div class="tier-locked-msg">Completa el nivel anterior para desbloquear</div>`
+            : tier.missions.map(m => missionBar(m)).join('')
+          }
         </div>
-      </div>
-
-      <!-- Pase de Batalla -->
-      <div class="season-bp-section">
-        <div class="season-bp-header">
-          <span class="season-bp-title">⚔️ Pase de Batalla</span>
-          <span class="season-bp-level">Nivel ${bp.level}/50</span>
-        </div>
-        <div class="season-bp-bar">
-          <div class="season-bp-fill" style="width:${xpPct}%"></div>
-        </div>
-        <div class="season-bp-xp">${bp.level < 50 ? `${bp.xp} / ${xpNeeded} XP` : '¡Nivel máximo!'}</div>
-
-        <div class="season-track">
-          ${levelRange.map(l => {
-            const rd = (window.BATTLE_PASS_REWARDS || []).find(r => r.level === l);
-            const isCurrent = l === bp.level;
-            const isPassed = l < bp.level;
-            const freeClaimable = isPassed && !bp.claimedRewards.free.includes(l);
-            const premClaimable = bp.isPremium && isPassed && !bp.claimedRewards.premium.includes(l);
-            return `
-              <div class="season-track-level ${isCurrent ? 'current' : ''} ${isPassed ? 'passed' : ''}">
-                <div class="season-track-num">${l}</div>
-                <div class="season-track-free ${freeClaimable ? 'ready' : bp.claimedRewards.free.includes(l) ? 'claimed' : ''}">
-                  <span>${rd ? rewardIcon(rd.free) : ''}</span>
-                  ${freeClaimable ? `<button class="season-mini-claim" onclick="App.claimBPReward(${l},'free')">!</button>` : ''}
-                </div>
-                <div class="season-track-premium ${!bp.isPremium ? 'locked' : ''} ${premClaimable ? 'ready' : bp.claimedRewards.premium.includes(l) ? 'claimed' : ''}">
-                  <span>${rd ? rewardIcon(rd.premium) : ''}</span>
-                  ${premClaimable ? `<button class="season-mini-claim" onclick="App.claimBPReward(${l},'premium')">!</button>` : ''}
-                  ${!bp.isPremium ? '<span class="season-lock">🔒</span>' : ''}
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-
-        ${!bp.isPremium ? `
-          <button class="season-premium-btn" onclick="App.buyBattlePass()">
-            👑 Pase Premium — 499 🪙
-          </button>
-        ` : `<div class="season-premium-owned">👑 Pase Premium Activo</div>`}
-      </div>
-
-      <!-- Misiones por Niveles -->
-      ${missions.map(tier => {
-        const isLocked = !tier.unlocked;
-        const allClaimed = tier.missions.every(m => m.claimed);
-        const tierBadgeClaimed = tier.badgeClaimed;
-        return `
-          <div class="season-missions-section ${isLocked ? 'tier-locked' : ''}" style="border-left: 4px solid ${tier.color};">
-            <h4 class="season-section-title">
-              ${tier.icon} ${tier.name}
-              ${isLocked ? ' 🔒' : ''}
-              ${allClaimed && !tierBadgeClaimed ? ` <span class="tier-badge-ready">🏅 Insignia disponible</span>` : ''}
-              ${tierBadgeClaimed ? ` <span class="tier-badge-done">🏅 Completado</span>` : ''}
-            </h4>
-            ${isLocked
-              ? `<div class="tier-locked-msg">Completa el nivel anterior para desbloquear</div>`
-              : tier.missions.map(m => missionBar(m)).join('')
-            }
-          </div>
-        `;
-      }).join('')}
-    `;
+      `;
+    }).join('');
   },
 
   claimMission(missionId) {
@@ -7860,38 +7777,12 @@ const App = {
     const result = SeasonSystem.claimMissionReward(missionId);
     if (result.success) {
       const coinsMsg = result.coins ? ` · +${result.coins} 🪙` : '';
-      this.showToast(`🎉 +${result.xp} XP${coinsMsg}`, 'success');
+      this.showToast(`🎉 Misión completada!${coinsMsg}`, 'success');
       this.updateCoinsDisplay();
       this.renderSeasonScreen();
     } else {
       this.showToast('❌ ' + (result.error || 'Error'), 'error');
     }
-  },
-
-  claimBPReward(level, type) {
-    if (typeof SeasonSystem === 'undefined') return;
-    const result = SeasonSystem.claimReward(level, type);
-    if (result.success) {
-      this.showToast('🎁 Recompensa reclamada!', 'success');
-      this.updateCoinsDisplay();
-      this.renderSeasonScreen();
-    } else {
-      this.showToast('❌ ' + (result.error || 'Error'), 'error');
-    }
-  },
-
-  buyBattlePass() {
-    if (typeof SeasonSystem === 'undefined') return;
-    const coins = Storage.getCoins();
-    if (coins.total < 499) {
-      this.showToast('❌ Necesitas 499 monedas para el Pase Premium', 'error');
-      return;
-    }
-    Storage.spendCoins(499);
-    SeasonSystem.buyBattlePassPremium();
-    this.showToast('👑 ¡Pase Premium activado!', 'success');
-    this.updateCoinsDisplay();
-    this.renderSeasonScreen();
   }
 };
 

@@ -669,7 +669,9 @@ window.Social = {
           totalPoints: localStats.totalPoints || 0,
           totalGames: localStats.totalGames || 0,
           level: localPlayer.level || 1,
-          photoURL: myProfile.photoURL || null
+          photoURL: myProfile.photoURL || null,
+          avatar: localPlayer.avatar || myProfile.avatar || '',
+          avatarColor: localPlayer.avatarColor || myProfile.avatarColor || 'indigo'
         };
         const myIndex = leaderboard.findIndex(u => u.id === myId);
         if (myIndex >= 0) {

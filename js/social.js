@@ -2,19 +2,20 @@
 // Manejo de UI para clasificación, amigos y retos
 
 function _renderAvatarHtml(avatarKey, avatarColor, photoURL, cssClass) {
-  const sz = cssClass === 'my-avatar' ? 52 : 40;
-  const imgStyle = `width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;display:block;flex-shrink:0;`;
-  if (photoURL) return `<img src="${photoURL}" alt="" style="${imgStyle}">`;
+  const sz = 40;
+  if (photoURL) {
+    return `<img src="${photoURL}" alt="" style="width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;display:block;">`;
+  }
   const chars = window.AVATAR_CHARACTERS || [];
   const ch = chars.find(c => c.key === avatarKey);
   if (ch) {
-    const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/png?size=128&seed=';
-    return `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="${imgStyle}">`;
+    const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+    return `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;display:block;">`;
   }
   const colors = window.AVATAR_COLORS || {};
   const grad = (colors[avatarColor] || colors.indigo || {}).grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
   const initial = avatarKey ? avatarKey[0].toUpperCase() : '?';
-  return `<span class="${cssClass}-placeholder" style="background:${grad};width:${sz}px;height:${sz}px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:${sz*0.4}px;">${initial}</span>`;
+  return `<span style="width:${sz}px;height:${sz}px;border-radius:50%;background:${grad};display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:16px;flex-shrink:0;">${initial}</span>`;
 }
 
 window.Social = {
@@ -1313,40 +1314,14 @@ window.Social = {
       myNameEl.textContent = profile?.displayName || localPlayer?.name || 'Jugador';
     }
 
-    // Mi avatar
+    // Mi avatar — reusa la misma función que funciona en configuración y progreso
     const myAvatarEl = document.getElementById('my-avatar');
-    if (myAvatarEl) {
-      const photoURL = profile?.photoURL;
-      const avatarKey = localPlayer?.avatar || profile?.avatar || '';
-      const avatarColor = localPlayer?.avatarColor || profile?.avatarColor || 'indigo';
-      const colors = window.AVATAR_COLORS || {};
-      const color = colors[avatarColor] || colors.indigo || {};
-      const grad = color.grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
-      const glow = color.glow || 'rgba(99,102,241,0.6)';
-      const chars = window.AVATAR_CHARACTERS || [];
-      const ch = chars.find(c => c.key === avatarKey);
-      if (photoURL) {
-        myAvatarEl.style.background = '';
-        myAvatarEl.style.boxShadow = '';
-        myAvatarEl.innerHTML = `<img src="${photoURL}" alt="" class="my-avatar-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
-      } else if (ch) {
-        const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/png?size=128&seed=';
-        myAvatarEl.style.background = 'transparent';
-        myAvatarEl.style.boxShadow = `0 0 0 3px ${glow}, 0 4px 20px ${glow}`;
-        myAvatarEl.style.overflow = 'hidden';
-        myAvatarEl.style.padding = '0';
-        myAvatarEl.innerHTML = `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="width:52px;height:52px;object-fit:cover;border-radius:50%;display:block;">`;
+    if (myAvatarEl && localPlayer) {
+      if (window.App?.applyAvatarStyle) {
+        window.App.applyAvatarStyle(myAvatarEl, localPlayer);
       } else {
         const displayName = profile?.displayName || localPlayer?.name || 'J';
-        myAvatarEl.style.background = grad;
-        myAvatarEl.style.boxShadow = `0 4px 20px ${glow}`;
-        myAvatarEl.innerHTML = '';
         myAvatarEl.textContent = displayName[0].toUpperCase();
-        myAvatarEl.style.fontSize = '1.8rem';
-        myAvatarEl.style.display = 'flex';
-        myAvatarEl.style.alignItems = 'center';
-        myAvatarEl.style.justifyContent = 'center';
-        myAvatarEl.style.color = '#fff';
       }
     }
 

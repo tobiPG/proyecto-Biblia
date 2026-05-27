@@ -236,7 +236,7 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
 // ============================================================
 // Avatar / Personaje customization data
 // ============================================================
-const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/png?size=128&seed=';
+const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
 const AVATAR_CHARACTERS = [
   // ── Hombres piel clara ──
   { key:'rodrigo',   seed:'ManRod2025',  p:'&skinColor[]=f5d0a9&hair[]=short01' },
@@ -3375,7 +3375,7 @@ const App = {
       el.style.boxShadow = `0 0 0 3px ${color.glow}, 0 6px 28px ${color.glow}`;
       el.style.overflow = 'hidden';
       el.style.padding = '0';
-      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" style="width:96px;height:96px;object-fit:cover;border-radius:50%;display:block;">`;
+      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
     } else {
       const figure = player.avatar || (player.name ? player.name.charAt(0).toUpperCase() : '?');
       el.innerHTML = '';
@@ -3394,7 +3394,7 @@ const App = {
     figGrid.innerHTML = AVATAR_CHARACTERS.map(ch =>
       `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}">
         <div class="char-figure-img-wrap">
-          <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" loading="lazy">
+          <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" loading="eager">
         </div>
       </button>`
     ).join('');
@@ -6732,7 +6732,7 @@ const App = {
       return `
         <div class="leaderboard-item">
           <span class="lb-rank">${rank}</span>
-          ${(() => { const _ch = AVATAR_CHARACTERS.find(c => c.key === entry.avatar); return _ch ? `<img class="lb-avatar-db" src="${DICEBEAR_BASE}${_ch.seed}${_ch.p||''}" alt="${_ch.label}" loading="lazy">` : `<span class="lb-avatar">${entry.avatar || '👤'}</span>`; })()}
+          ${(() => { const _ch = AVATAR_CHARACTERS.find(c => c.key === entry.avatar); return _ch ? `<img class="lb-avatar-db" src="${DICEBEAR_BASE}${_ch.seed}${_ch.p||''}" alt="">` : `<span class="lb-avatar">${entry.avatar || '👤'}</span>`; })()}
           <div class="lb-info">
             <div class="lb-name">${escapeHTML(entry.name || 'Jugador')}</div>
             <div class="lb-date">${d}</div>

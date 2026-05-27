@@ -1771,7 +1771,7 @@ const App = {
       card.setAttribute('tabindex', '0');
       card.setAttribute('aria-label', `Categoria: ${cat.name}`);
       card.innerHTML = `
-        <div class="cat-icon" style="background: ${cat.color}22">${cat.icon}</div>
+        <div class="cat-icon">${cat.svg || cat.icon}</div>
         <span class="cat-name">${escapeHTML(cat.name)}</span>
       `;
       const selectCat = () => {
@@ -5643,7 +5643,7 @@ const App = {
       const card = document.createElement('div');
       card.className = `category-card ${key === 'aleatorio' ? 'random-card' : ''}`;
       card.innerHTML = `
-        <div class="cat-icon" style="background: ${cat.color}22">${cat.icon}</div>
+        <div class="cat-icon">${cat.svg || cat.icon}</div>
         <span class="cat-name">${cat.name}</span>
       `;
       card.addEventListener('click', () => {
@@ -7085,22 +7085,13 @@ const App = {
     const grid = document.getElementById('impostor-category-grid');
     grid.innerHTML = '';
     // Las categorias de palabras del impostor (no incluir 'aleatorio' como categoria separada)
-    const impostorCats = {
-      personajes: { name: "Personajes", icon: "&#129489;", color: "#4CAF50" },
-      libros: { name: "Libros", icon: "&#128214;", color: "#2196F3" },
-      historias: { name: "Historias", icon: "&#128220;", color: "#FF9800" },
-      reyes: { name: "Reyes", icon: "&#128081;", color: "#9C27B0" },
-      profetas: { name: "Profetas", icon: "&#128227;", color: "#F44336" },
-      vida_jesus: { name: "Vida de Jesus", icon: "&#10013;", color: "#E91E63" },
-      milagros: { name: "Milagros", icon: "&#10024;", color: "#00BCD4" },
-      cartas: { name: "Cartas", icon: "&#9993;", color: "#795548" },
-      aleatorio: { name: "Aleatorio", icon: "&#127922;", color: "#607D8B" }
-    };
-    Object.entries(impostorCats).forEach(([key, cat]) => {
+    const impostorCats = ['personajes','libros','historias','reyes','profetas','vida_jesus','milagros','cartas','aleatorio'];
+    const impostorEntries = impostorCats.map(k => [k, CATEGORIES[k]]).filter(([,v]) => v);
+    impostorEntries.forEach(([key, cat]) => {
       const card = document.createElement('div');
       card.className = `category-card ${key === 'aleatorio' ? 'random-card' : ''}`;
       card.innerHTML = `
-        <div class="cat-icon" style="background: ${cat.color}22">${cat.icon}</div>
+        <div class="cat-icon">${cat.svg || cat.icon}</div>
         <span class="cat-name">${cat.name}</span>
       `;
       card.addEventListener('click', () => {

@@ -236,23 +236,42 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
 // ============================================================
 // Avatar / Personaje customization data
 // ============================================================
-const AVATAR_FIGURES = [
-  '🧔','👸','🤴','🧙','👼','💂',
-  '🦁','🐯','🦅','🕊️','🦊','🐺',
-  '⭐','🌟','🏆','🎯','🔥','💎',
-  '🦋','🌈','✨','🌙','☀️','🎭'
+const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+const AVATAR_CHARACTERS = [
+  { key:'elias',    seed:'Elias2025',    label:'Elías'    },
+  { key:'ester',    seed:'Ester2025',    label:'Ester'    },
+  { key:'moises',   seed:'Moses2025',    label:'Moisés'   },
+  { key:'debora',   seed:'Debora2025',   label:'Débora'   },
+  { key:'david',    seed:'David2025',    label:'David'    },
+  { key:'abigail',  seed:'Abigail2025',  label:'Abigail'  },
+  { key:'salomon',  seed:'Solomon2025',  label:'Salomón'  },
+  { key:'rut',      seed:'Ruth2025',     label:'Rut'      },
+  { key:'eliseo',   seed:'Eliseo2025',   label:'Eliseó'   },
+  { key:'maria',    seed:'Maria2025',    label:'María'    },
+  { key:'pablo',    seed:'Pablo2025',    label:'Pablo'    },
+  { key:'priscila', seed:'Priscila2025', label:'Priscila' },
+  { key:'josue',    seed:'Joshua2025',   label:'Josué'    },
+  { key:'rahab',    seed:'Rahab2025',    label:'Rahab'    },
+  { key:'nehemias', seed:'Nehemiah2025', label:'Nehemías' },
+  { key:'ana',      seed:'AnaFaith2025', label:'Ana'      },
+  { key:'sanson',   seed:'Samson2025',   label:'Sansón'   },
+  { key:'miriam',   seed:'Miriam2025',   label:'Miriam'   },
+  { key:'joel',     seed:'Joel2025',     label:'Joel'     },
+  { key:'lidia',    seed:'Lydia2025',    label:'Lidia'    },
 ];
+window.AVATAR_CHARACTERS = AVATAR_CHARACTERS;
+window.DICEBEAR_BASE = DICEBEAR_BASE;
 const AVATAR_COLORS = {
-  indigo:  { name:'Índigo',    grad:'linear-gradient(135deg,#6366f1,#8b5cf6)' },
-  sky:     { name:'Cielo',     grad:'linear-gradient(135deg,#3b82f6,#06b6d4)' },
-  emerald: { name:'Esmeralda', grad:'linear-gradient(135deg,#10b981,#059669)' },
-  rose:    { name:'Rosa',      grad:'linear-gradient(135deg,#ec4899,#db2777)' },
-  orange:  { name:'Naranja',   grad:'linear-gradient(135deg,#f97316,#f59e0b)' },
-  gold:    { name:'Dorado',    grad:'linear-gradient(135deg,#f59e0b,#d97706)' },
-  red:     { name:'Rojo',      grad:'linear-gradient(135deg,#ef4444,#dc2626)' },
-  lime:    { name:'Lima',      grad:'linear-gradient(135deg,#84cc16,#16a34a)' },
-  violet:  { name:'Violeta',   grad:'linear-gradient(135deg,#a855f7,#7e22ce)' },
-  slate:   { name:'Noche',     grad:'linear-gradient(135deg,#475569,#1e293b)' },
+  indigo:  { name:'Índigo',    grad:'linear-gradient(135deg,#6366f1,#8b5cf6)', glow:'rgba(99,102,241,0.7)'  },
+  sky:     { name:'Cielo',     grad:'linear-gradient(135deg,#3b82f6,#06b6d4)', glow:'rgba(59,130,246,0.7)'  },
+  emerald: { name:'Esmeralda', grad:'linear-gradient(135deg,#10b981,#059669)', glow:'rgba(16,185,129,0.7)'  },
+  rose:    { name:'Rosa',      grad:'linear-gradient(135deg,#ec4899,#db2777)', glow:'rgba(236,72,153,0.7)'  },
+  orange:  { name:'Naranja',   grad:'linear-gradient(135deg,#f97316,#f59e0b)', glow:'rgba(249,115,22,0.7)'  },
+  gold:    { name:'Dorado',    grad:'linear-gradient(135deg,#f59e0b,#d97706)', glow:'rgba(245,158,11,0.7)'  },
+  red:     { name:'Rojo',      grad:'linear-gradient(135deg,#ef4444,#dc2626)', glow:'rgba(239,68,68,0.7)'   },
+  lime:    { name:'Lima',      grad:'linear-gradient(135deg,#84cc16,#16a34a)', glow:'rgba(132,204,22,0.7)'  },
+  violet:  { name:'Violeta',   grad:'linear-gradient(135deg,#a855f7,#7e22ce)', glow:'rgba(168,85,247,0.7)'  },
+  slate:   { name:'Noche',     grad:'linear-gradient(135deg,#475569,#1e293b)', glow:'rgba(71,85,105,0.7)'   },
 };
 window.AVATAR_COLORS = AVATAR_COLORS;
 
@@ -3323,24 +3342,39 @@ const App = {
     document.getElementById('phase-overlay').classList.add('hidden');
     this.renderQuestion();
   },
-  // Aplica emoji + gradiente de color a un elemento de avatar
   applyAvatarStyle(el, player) {
     if (!el) return;
     const colorKey = player.avatarColor || 'indigo';
     const color = AVATAR_COLORS[colorKey] || AVATAR_COLORS.indigo;
-    const figure = player.avatar || (player.name ? player.name.charAt(0).toUpperCase() : '?');
-    el.textContent = figure;
-    el.style.background = color.grad;
-    el.style.color = '#fff';
+    const ch = AVATAR_CHARACTERS.find(c => c.key === player.avatar);
+    if (ch) {
+      el.style.background = '#1a1a2e';
+      el.style.boxShadow = `0 0 0 3px ${color.glow}, 0 6px 28px ${color.glow}`;
+      el.style.overflow = 'hidden';
+      el.style.padding = '0';
+      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}" alt="${ch.label}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+    } else {
+      const figure = player.avatar || (player.name ? player.name.charAt(0).toUpperCase() : '?');
+      el.innerHTML = '';
+      el.textContent = figure;
+      el.style.background = color.grad;
+      el.style.boxShadow = `0 4px 24px ${color.glow}`;
+      el.style.color = '#fff';
+      el.style.overflow = '';
+      el.style.padding = '';
+    }
   },
-  // Construye y enlaza el selector de figura y color en configuración
   buildCharacterPicker() {
     const player = Storage.getPlayer();
-    // Figures
     const figGrid = document.getElementById('avatar-grid');
     if (!figGrid) return;
-    figGrid.innerHTML = AVATAR_FIGURES.map(fig =>
-      `<button class="char-figure-btn${player.avatar === fig ? ' selected' : ''}" data-figure="${fig}">${fig}</button>`
+    figGrid.innerHTML = AVATAR_CHARACTERS.map(ch =>
+      `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}" title="${ch.label}">
+        <div class="char-figure-img-wrap">
+          <img src="${DICEBEAR_BASE}${ch.seed}" alt="${ch.label}" loading="lazy">
+        </div>
+        <span class="char-figure-label">${ch.label}</span>
+      </button>`
     ).join('');
     figGrid.querySelectorAll('.char-figure-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -3352,24 +3386,33 @@ const App = {
         this.applyAvatarStyle(document.getElementById('avatar-preview'), p);
       });
     });
-    // Colors
     const colGrid = document.getElementById('avatar-color-grid');
     if (!colGrid) return;
     const currentColor = player.avatarColor || 'indigo';
     colGrid.innerHTML = Object.entries(AVATAR_COLORS).map(([key, c]) =>
-      `<button class="char-color-btn${currentColor === key ? ' selected' : ''}" data-color="${key}" style="background:${c.grad}" title="${c.name}"></button>`
+      `<button class="char-color-btn${currentColor === key ? ' selected' : ''}" data-color="${key}" style="background:${c.grad}" title="${c.name}">
+        <span class="char-color-shine"></span>
+        ${currentColor === key ? '<span class="char-color-check">✓</span>' : ''}
+      </button>`
     ).join('');
     colGrid.querySelectorAll('.char-color-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const p = Storage.getPlayer();
         p.avatarColor = btn.dataset.color;
         Storage.savePlayer(p);
-        colGrid.querySelectorAll('.char-color-btn').forEach(b => b.classList.remove('selected'));
+        colGrid.querySelectorAll('.char-color-btn').forEach(b => {
+          b.classList.remove('selected');
+          const chk = b.querySelector('.char-color-check');
+          if (chk) chk.remove();
+        });
         btn.classList.add('selected');
+        const chk = document.createElement('span');
+        chk.className = 'char-color-check';
+        chk.textContent = '✓';
+        btn.appendChild(chk);
         this.applyAvatarStyle(document.getElementById('avatar-preview'), p);
       });
     });
-    // Preview inicial
     this.applyAvatarStyle(document.getElementById('avatar-preview'), player);
   },
   // Normaliza texto de pregunta para comparar duplicados semánticos
@@ -6083,7 +6126,9 @@ const App = {
     // Player info
     ctx.font = '16px Nunito, sans-serif';
     ctx.fillStyle = '#888';
-    ctx.fillText(`${player.avatar} ${player.name} - Nivel ${player.level}`, 300, 330);
+    const _avCh = AVATAR_CHARACTERS.find(c => c.key === player.avatar);
+    const _avLabel = _avCh ? _avCh.label : (player.avatar || '');
+    ctx.fillText(`${_avLabel ? _avLabel + ' · ' : ''}${player.name} - Nivel ${player.level}`, 300, 330);
     
     // Call to action
     ctx.font = 'italic 14px Nunito, sans-serif';
@@ -6663,7 +6708,7 @@ const App = {
       return `
         <div class="leaderboard-item">
           <span class="lb-rank">${rank}</span>
-          <span class="lb-avatar">${entry.avatar || ''}</span>
+          ${(() => { const _ch = AVATAR_CHARACTERS.find(c => c.key === entry.avatar); return _ch ? `<img class="lb-avatar-db" src="${DICEBEAR_BASE}${_ch.seed}" alt="${_ch.label}" loading="lazy">` : `<span class="lb-avatar">${entry.avatar || '👤'}</span>`; })()}
           <div class="lb-info">
             <div class="lb-name">${escapeHTML(entry.name || 'Jugador')}</div>
             <div class="lb-date">${d}</div>

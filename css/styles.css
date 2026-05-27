@@ -3104,6 +3104,18 @@ select {
   margin-bottom: var(--space-4);
 }
 @media (min-width: 360px) { .char-figure-grid { grid-template-columns: repeat(5, 1fr); } }
+.char-group-label {
+  grid-column: 1 / -1;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 6px 0 2px;
+  border-top: 1px solid rgba(99,102,241,0.18);
+  margin-top: 4px;
+}
+.char-group-label:first-child { border-top: none; margin-top: 0; padding-top: 0; }
 .char-figure-btn {
   display: flex;
   flex-direction: column;

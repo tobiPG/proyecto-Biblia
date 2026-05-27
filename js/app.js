@@ -237,27 +237,51 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
 // Avatar / Personaje customization data
 // ============================================================
 const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+// p = extra URL params (skinColor, hairColor, etc.)
 const AVATAR_CHARACTERS = [
-  { key:'elias',    seed:'Elias2025',    label:'Elías'    },
-  { key:'ester',    seed:'Ester2025',    label:'Ester'    },
-  { key:'moises',   seed:'Moses2025',    label:'Moisés'   },
-  { key:'debora',   seed:'Debora2025',   label:'Débora'   },
-  { key:'david',    seed:'David2025',    label:'David'    },
-  { key:'abigail',  seed:'Abigail2025',  label:'Abigail'  },
-  { key:'salomon',  seed:'Solomon2025',  label:'Salomón'  },
-  { key:'rut',      seed:'Ruth2025',     label:'Rut'      },
-  { key:'eliseo',   seed:'Eliseo2025',   label:'Eliseó'   },
-  { key:'maria',    seed:'Maria2025',    label:'María'    },
-  { key:'pablo',    seed:'Pablo2025',    label:'Pablo'    },
-  { key:'priscila', seed:'Priscila2025', label:'Priscila' },
-  { key:'josue',    seed:'Joshua2025',   label:'Josué'    },
-  { key:'rahab',    seed:'Rahab2025',    label:'Rahab'    },
-  { key:'nehemias', seed:'Nehemiah2025', label:'Nehemías' },
-  { key:'ana',      seed:'AnaFaith2025', label:'Ana'      },
-  { key:'sanson',   seed:'Samson2025',   label:'Sansón'   },
-  { key:'miriam',   seed:'Miriam2025',   label:'Miriam'   },
-  { key:'joel',     seed:'Joel2025',     label:'Joel'     },
-  { key:'lidia',    seed:'Lydia2025',    label:'Lidia'    },
+  // ── Hombres piel clara ──
+  { key:'pedro',    seed:'Pedro2025',    p:'&skinColor[]=f5d0a9',  label:'Pedro'    },
+  { key:'juan',     seed:'JuanAp2025',   p:'&skinColor[]=eac393',  label:'Juan'     },
+  { key:'mateo',    seed:'Mateo2025',    p:'&skinColor[]=f5d0a9',  label:'Mateo'    },
+  { key:'tomas',    seed:'Thomas2025',   p:'&skinColor[]=f5d0a9',  label:'Tomás'    },
+  { key:'felipe',   seed:'Felipe2025',   p:'&skinColor[]=d4a574',  label:'Felipe'   },
+  { key:'cornelio', seed:'Cornelio25',   p:'&skinColor[]=f5d0a9',  label:'Cornelio' },
+  { key:'lucas',    seed:'Lucas2025',    p:'&skinColor[]=eac393',  label:'Lucas'    },
+  { key:'marcos',   seed:'Marcos2025',   p:'&skinColor[]=d4a574',  label:'Marcos'   },
+  { key:'pablo',    seed:'Pablo2025',    p:'&skinColor[]=eac393',  label:'Pablo'    },
+  { key:'elias',    seed:'Elias2025',    p:'&skinColor[]=d4a574',  label:'Elías'    },
+  // ── Hombres piel morena / oscura ──
+  { key:'david',    seed:'David2025',    p:'&skinColor[]=c68642',  label:'David'    },
+  { key:'moises',   seed:'Moses2025',    p:'&skinColor[]=c68642',  label:'Moisés'   },
+  { key:'noe',      seed:'Noah2025',     p:'&skinColor[]=8d5524',  label:'Noé'      },
+  { key:'abraham',  seed:'Abraham2025',  p:'&skinColor[]=c68642',  label:'Abraham'  },
+  { key:'amos',     seed:'Amos2025',     p:'&skinColor[]=8d5524',  label:'Amós'     },
+  { key:'josue',    seed:'Joshua2025',   p:'&skinColor[]=c68642',  label:'Josué'    },
+  { key:'sanson',   seed:'Samson2025',   p:'&skinColor[]=8d5524',  label:'Sansón'   },
+  { key:'joel',     seed:'Joel2025',     p:'&skinColor[]=6b3e2e',  label:'Joel'     },
+  { key:'nehemias', seed:'Nehemiah2025', p:'&skinColor[]=8d5524',  label:'Nehemías' },
+  { key:'salomon',  seed:'Solomon2025',  p:'&skinColor[]=c68642',  label:'Salomón'  },
+  { key:'eliseo',   seed:'Eliseo2025',   p:'&skinColor[]=d4a574',  label:'Eliseó'   },
+  { key:'ezequiel', seed:'Ezekiel2025',  p:'&skinColor[]=6b3e2e',  label:'Ezequiel' },
+  // ── Mujeres piel clara ──
+  { key:'ester',    seed:'Ester2025',    p:'&skinColor[]=f5d0a9',  label:'Ester'    },
+  { key:'maria',    seed:'Maria2025',    p:'&skinColor[]=eac393',  label:'María'    },
+  { key:'priscila', seed:'Priscila2025', p:'&skinColor[]=f5d0a9',  label:'Priscila' },
+  { key:'tabita',   seed:'Tabitha2025',  p:'&skinColor[]=f5d0a9',  label:'Tabita'   },
+  { key:'febe',     seed:'Phoebe2025',   p:'&skinColor[]=eac393',  label:'Febe'     },
+  { key:'lidia',    seed:'Lydia2025',    p:'&skinColor[]=d4a574',  label:'Lidia'    },
+  { key:'abigail',  seed:'Abigail2025',  p:'&skinColor[]=eac393',  label:'Abigail'  },
+  { key:'debora',   seed:'Debora2025',   p:'&skinColor[]=d4a574',  label:'Débora'   },
+  { key:'dorcas',   seed:'Dorcas2025',   p:'&skinColor[]=f5d0a9',  label:'Dorcas'   },
+  // ── Mujeres piel morena / oscura ──
+  { key:'rut',      seed:'Ruth2025',     p:'&skinColor[]=c68642',  label:'Rut'      },
+  { key:'miriam',   seed:'Miriam2025',   p:'&skinColor[]=8d5524',  label:'Miriam'   },
+  { key:'ana',      seed:'AnaFaith2025', p:'&skinColor[]=c68642',  label:'Ana'      },
+  { key:'rahab',    seed:'Rahab2025',    p:'&skinColor[]=8d5524',  label:'Rahab'    },
+  { key:'sefora',   seed:'Zipporah2025', p:'&skinColor[]=c68642',  label:'Séfora'   },
+  { key:'judit',    seed:'Judith2025',   p:'&skinColor[]=8d5524',  label:'Judit'    },
+  { key:'zilpa',    seed:'Zilpah2025',   p:'&skinColor[]=6b3e2e',  label:'Zilpa'    },
+  { key:'noemí',    seed:'Naomi2025',    p:'&skinColor[]=c68642',  label:'Noemí'    },
 ];
 window.AVATAR_CHARACTERS = AVATAR_CHARACTERS;
 window.DICEBEAR_BASE = DICEBEAR_BASE;
@@ -3352,7 +3376,7 @@ const App = {
       el.style.boxShadow = `0 0 0 3px ${color.glow}, 0 6px 28px ${color.glow}`;
       el.style.overflow = 'hidden';
       el.style.padding = '0';
-      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}" alt="${ch.label}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
     } else {
       const figure = player.avatar || (player.name ? player.name.charAt(0).toUpperCase() : '?');
       el.innerHTML = '';
@@ -3368,14 +3392,24 @@ const App = {
     const player = Storage.getPlayer();
     const figGrid = document.getElementById('avatar-grid');
     if (!figGrid) return;
-    figGrid.innerHTML = AVATAR_CHARACTERS.map(ch =>
-      `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}" title="${ch.label}">
-        <div class="char-figure-img-wrap">
-          <img src="${DICEBEAR_BASE}${ch.seed}" alt="${ch.label}" loading="lazy">
-        </div>
-        <span class="char-figure-label">${ch.label}</span>
-      </button>`
-    ).join('');
+    const sections = [
+      { label: 'Hombres · Piel Clara', keys: ['pedro','juan','mateo','tomas','felipe','cornelio','lucas','marcos','pablo','elias'] },
+      { label: 'Hombres · Piel Morena', keys: ['david','moises','noe','abraham','amos','josue','sanson','joel','nehemias','salomon','eliseo','ezequiel'] },
+      { label: 'Mujeres · Piel Clara', keys: ['ester','maria','priscila','tabita','febe','lidia','abigail','debora','dorcas'] },
+      { label: 'Mujeres · Piel Morena', keys: ['rut','miriam','ana','rahab','sefora','judit','zilpa','noemí'] },
+    ];
+    figGrid.innerHTML = sections.map(sec => {
+      const chars = sec.keys.map(k => AVATAR_CHARACTERS.find(c => c.key === k)).filter(Boolean);
+      return `<div class="char-group-label">${sec.label}</div>` +
+        chars.map(ch =>
+          `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}" title="${ch.label}">
+            <div class="char-figure-img-wrap">
+              <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" loading="lazy">
+            </div>
+            <span class="char-figure-label">${ch.label}</span>
+          </button>`
+        ).join('');
+    }).join('');
     figGrid.querySelectorAll('.char-figure-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const p = Storage.getPlayer();
@@ -6708,7 +6742,7 @@ const App = {
       return `
         <div class="leaderboard-item">
           <span class="lb-rank">${rank}</span>
-          ${(() => { const _ch = AVATAR_CHARACTERS.find(c => c.key === entry.avatar); return _ch ? `<img class="lb-avatar-db" src="${DICEBEAR_BASE}${_ch.seed}" alt="${_ch.label}" loading="lazy">` : `<span class="lb-avatar">${entry.avatar || '👤'}</span>`; })()}
+          ${(() => { const _ch = AVATAR_CHARACTERS.find(c => c.key === entry.avatar); return _ch ? `<img class="lb-avatar-db" src="${DICEBEAR_BASE}${_ch.seed}${_ch.p||''}" alt="${_ch.label}" loading="lazy">` : `<span class="lb-avatar">${entry.avatar || '👤'}</span>`; })()}
           <div class="lb-info">
             <div class="lb-name">${escapeHTML(entry.name || 'Jugador')}</div>
             <div class="lb-date">${d}</div>

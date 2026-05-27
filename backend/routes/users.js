@@ -607,13 +607,21 @@ router.get('/me/progress', authMiddleware, async (req, res) => {
 // ============================================
 // ENDPOINTS ADMIN — requieren X-Admin-Password
 // ============================================
-const ADMIN_PASSWORD = 'biblia2024';
-
 function requireAdmin(req, res, next) {
   const pw = req.headers['x-admin-password'];
-  if (pw !== ADMIN_PASSWORD) return res.status(403).json({ error: 'No autorizado' });
+  if (!pw || pw !== process.env.ADMIN_PASSWORD) return res.status(403).json({ error: 'No autorizado' });
   next();
 }
+
+// Verificar contraseña admin (no expone la clave, solo devuelve ok/error)
+router.post('/admin/verify', (req, res) => {
+  const { password } = req.body;
+  if (password === process.env.ADMIN_PASSWORD) {
+    res.json({ ok: true });
+  } else {
+    res.status(403).json({ ok: false, error: 'Contraseña incorrecta' });
+  }
+});
 
 // Listar todos los usuarios (para gestión)
 router.get('/admin/users', requireAdmin, async (req, res) => {

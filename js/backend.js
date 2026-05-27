@@ -488,6 +488,43 @@ window.BackendService = {
     } catch (e) { return { success: false, error: e.message }; }
   },
 
+  // Obtener solicitudes de amistad pendientes
+  async getPendingRequests() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/friend-requests`, {
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      if (!response.ok) return [];
+      return await response.json();
+    } catch (e) { return []; }
+  },
+
+  // Aceptar solicitud de amistad
+  async acceptFriendRequest(fromUserId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/friend-request/${fromUserId}/accept`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      const data = await response.json();
+      if (!response.ok) return { success: false, error: data.error };
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  },
+
+  // Rechazar solicitud de amistad
+  async rejectFriendRequest(fromUserId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/friend-request/${fromUserId}/reject`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      const data = await response.json();
+      if (!response.ok) return { success: false, error: data.error };
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  },
+
   // Obtener avatares por lista de UIDs
   async getAvatarsByUids(uids) {
     try {

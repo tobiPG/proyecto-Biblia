@@ -740,21 +740,22 @@ window.Social = {
 
     container.innerHTML = '<div class="loading-spinner">Cargando...</div>';
 
-    // Verificar que Firebase esté listo y el perfil cargado
-    if (!FirebaseService.isReady || !FirebaseService.userProfile) {
-      console.log('[Social] Esperando a Firebase...');
-      container.innerHTML = '<p class="empty-friends">Cargando perfil...</p>';
-      return;
-    }
-
     try {
-      // IMPORTANTE: Recargar perfil desde Firestore para ver cambios recientes
-      // (por ejemplo, si alguien aceptó nuestra solicitud de amistad)
-      await FirebaseService.reloadProfile();
+      // Recargar perfil de Firebase si está disponible (para ver cambios recientes)
+      if (FirebaseService.isReady && FirebaseService.userProfile) {
+        await FirebaseService.reloadProfile();
+      }
       console.log('[Social] Perfil recargado, amigos:', FirebaseService.userProfile?.friends?.length || 0);
 
-      // Cargar solicitudes pendientes
-      const pendingRequests = await FirebaseService.getPendingRequests();
+      // Cargar solicitudes pendientes (Firebase + MongoDB, sin duplicados)
+      const [firebaseReqs, backendReqs] = await Promise.all([
+        FirebaseService.getPendingRequests().catch(() => []),
+        window.BackendService?.getPendingRequests?.() || Promise.resolve([])
+      ]);
+      const reqMap = new Map();
+      [...firebaseReqs, ...backendReqs].forEach(u => reqMap.set(u.id, u));
+      const pendingRequests = [...reqMap.values()];
+
       if (requestsContainer) {
         if (pendingRequests.length > 0) {
           requestsContainer.innerHTML = `
@@ -1081,18 +1082,21 @@ window.Social = {
     try {
       // Buscar primero en Firebase, luego en MongoDB como fallback
       let user = await FirebaseService.findUserByCode(code);
+      let userSource = user ? 'firebase' : 'mongodb';
       if (!user && window.BackendService?.findUserByCode) {
         user = await window.BackendService.findUserByCode(code);
       }
-      
+
       if (!user) {
         resultContainer.innerHTML = '<p class="search-error">No se encontró ningún usuario con ese código</p>';
         return;
       }
 
-      // Verificar si ya es amigo
-      const isAlreadyFriend = FirebaseService.userProfile?.friends?.includes(user.id);
-      const hasPendingRequest = FirebaseService.userProfile?.sentRequests?.includes(user.id);
+      // Verificar si ya es amigo (Firebase o backend)
+      const isAlreadyFriend = FirebaseService.userProfile?.friends?.includes(user.id)
+        || (window.BackendService?.userProfile?.friends || []).includes(user.id);
+      const hasPendingRequest = FirebaseService.userProfile?.sentRequests?.includes(user.id)
+        || (window.BackendService?.userProfile?.sentRequests || []).includes(user.id);
 
       resultContainer.innerHTML = `
         <div class="search-result-item">
@@ -1103,11 +1107,11 @@ window.Social = {
             <span class="sr-name">${this.escapeHtml(user.displayName || 'Jugador')}</span>
             <span class="sr-stats">Nivel ${user.level || 1} • ${(user.totalPoints || 0).toLocaleString()} pts</span>
           </div>
-          ${isAlreadyFriend 
+          ${isAlreadyFriend
             ? '<span class="sr-status already-friend">✓ Ya son amigos</span>'
             : hasPendingRequest
               ? '<span class="sr-status pending">⏳ Solicitud enviada</span>'
-              : `<button class="btn-add-friend" onclick="Social.sendFriendRequest('${user.id}')">➕ Agregar</button>`
+              : `<button class="btn-add-friend" onclick="Social.sendFriendRequest('${user.id}','${userSource}')">➕ Agregar</button>`
           }
         </div>
       `;
@@ -1119,11 +1123,15 @@ window.Social = {
   },
 
   // Enviar solicitud de amistad
-  async sendFriendRequest(userId) {
-    // Intentar Firebase primero; si no hay sesión Firebase, usar backend
-    let result = FirebaseService.currentUser
-      ? await FirebaseService.sendFriendRequest(userId)
-      : { success: false };
+  async sendFriendRequest(userId, source = 'firebase') {
+    let result;
+    // Usar backend directamente si el usuario fue encontrado en MongoDB
+    // o si no hay sesión Firebase activa
+    const useBackend = source === 'mongodb' || !FirebaseService.currentUser;
+    if (!useBackend) {
+      result = await FirebaseService.sendFriendRequest(userId);
+    }
+    // Fallback o uso directo del backend
     if (!result?.success && window.BackendService?.sendFriendRequest) {
       result = await window.BackendService.sendFriendRequest(userId);
     }
@@ -1145,26 +1153,34 @@ window.Social = {
 
   // Aceptar solicitud de amistad
   async acceptFriendRequest(userId) {
-    const result = await FirebaseService.acceptFriendRequest(userId);
-    
-    if (result.success) {
+    let result = FirebaseService.currentUser
+      ? await FirebaseService.acceptFriendRequest(userId)
+      : { success: false };
+    if (!result?.success && window.BackendService?.acceptFriendRequest) {
+      result = await window.BackendService.acceptFriendRequest(userId);
+    }
+    if (result?.success) {
       this.showToast('Amigo agregado', 'success');
       this.loadFriends();
       this.updateNotificationBadges();
     } else {
-      this.showToast(result.error || 'Error al aceptar solicitud', 'error');
+      this.showToast(result?.error || 'Error al aceptar solicitud', 'error');
     }
   },
 
   // Rechazar solicitud de amistad
   async rejectFriendRequest(userId) {
-    const result = await FirebaseService.rejectFriendRequest(userId);
-    
-    if (result.success) {
+    let result = FirebaseService.currentUser
+      ? await FirebaseService.rejectFriendRequest(userId)
+      : { success: false };
+    if (!result?.success && window.BackendService?.rejectFriendRequest) {
+      result = await window.BackendService.rejectFriendRequest(userId);
+    }
+    if (result?.success) {
       this.loadFriends();
       this.updateNotificationBadges();
     } else {
-      this.showToast(result.error || 'Error al rechazar solicitud', 'error');
+      this.showToast(result?.error || 'Error al rechazar solicitud', 'error');
     }
   },
 

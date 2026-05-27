@@ -782,10 +782,19 @@ window.Social = {
         }
       }
 
-      // Cargar amigos (Firebase) y enriquecer con avatares de MongoDB
-      const friends = await FirebaseService.getFriendsList();
-      if (friends.length > 0 && window.BackendService?.getAvatarsByUids) {
-        const avatarData = await window.BackendService.getAvatarsByUids(friends.map(f => f.id));
+      // Cargar amigos de Firebase y MongoDB, combinar sin duplicados
+      const [firebaseFriends, backendFriends] = await Promise.all([
+        FirebaseService.getFriendsList().catch(() => []),
+        window.BackendService?.getFriendsList?.().catch(() => []) || Promise.resolve([])
+      ]);
+      const friendMap = new Map();
+      [...firebaseFriends, ...backendFriends].forEach(f => friendMap.set(f.id, f));
+      const friends = [...friendMap.values()].sort((a, b) => (b.totalPoints || 0) - (a.totalPoints || 0));
+
+      // Enriquecer con avatares de MongoDB si hace falta
+      const needsAvatar = friends.filter(f => !f.avatar);
+      if (needsAvatar.length > 0 && window.BackendService?.getAvatarsByUids) {
+        const avatarData = await window.BackendService.getAvatarsByUids(needsAvatar.map(f => f.id));
         friends.forEach(f => {
           const av = avatarData.find(a => a.id === f.id);
           if (av) {

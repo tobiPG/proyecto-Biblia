@@ -256,6 +256,22 @@ const AVATAR_COLORS = {
 };
 window.AVATAR_COLORS = AVATAR_COLORS;
 
+// ============================================================
+// SVG Game Icons
+// ============================================================
+const _H = 'http://www.w3.org/2000/svg';
+const ICON_SVG = {
+  heartActive: `<svg class="icon-heart active" viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+  heartEmpty:  `<svg class="icon-heart empty"  viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
+  fire:        `<svg class="icon-fire"         viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-1 .23-1.97.75-2.73 1.44-2.67 2.43-3.34 6.3-1.81 9.46-1.57-.44-1.68-1.43-1.72-2.3-.64 1.06-.82 2.38-.59 3.62.24 1.3 1.01 2.43 2.01 3.23 1.98 1.53 4.64 1.28 6.7.17 2.72-1.47 3.62-4.86 2.84-7.42z"/></svg>`,
+  fireLg:      `<svg class="icon-fire lg"      viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M17.66 11.2c-.23-.3-.51-.56-.77-.82-.67-.6-1.43-1.03-2.07-1.66C13.33 7.26 13 4.85 13.95 3c-1 .23-1.97.75-2.73 1.44-2.67 2.43-3.34 6.3-1.81 9.46-1.57-.44-1.68-1.43-1.72-2.3-.64 1.06-.82 2.38-.59 3.62.24 1.3 1.01 2.43 2.01 3.23 1.98 1.53 4.64 1.28 6.7.17 2.72-1.47 3.62-4.86 2.84-7.42z"/></svg>`,
+  crownLg:     `<svg class="icon-crown lg"     viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></svg>`,
+  lightningLg: `<svg class="icon-lightning lg" viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>`,
+  star:        `<svg class="icon-star"         viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`,
+  trophy:      `<svg class="icon-trophy"       viewBox="0 0 24 24" xmlns="${_H}" aria-hidden="true"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94C8.02 14.5 9.37 15.77 11 16v2H7v2h10v-2h-4v-2c1.63-.23 2.98-1.5 3.61-3.06C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>`,
+};
+window.ICON_SVG = ICON_SVG;
+
 const App = {
   // --- Estado ---
   // Sistema de vidas
@@ -2683,7 +2699,7 @@ const App = {
         <div class="leaderboard-item ${isMe ? 'me' : ''} ${posClass}">
           <span class="leaderboard-position">${posLabel}</span>
           <span class="leaderboard-name">${isMe ? `<strong>${player.name}</strong>` : player.name}</span>
-          <div class="leaderboard-trophies">🏆 ${player.trophies}</div>
+          <div class="leaderboard-trophies">${ICON_SVG.trophy} ${player.trophies}</div>
           <span class="leaderboard-stats" style="color:${rank.color}">${rank.icon}</span>
         </div>
       `;
@@ -2710,7 +2726,8 @@ const App = {
     const current = this.currentQuestionIndex + 1;
     // Update top bar
     document.getElementById('question-counter').textContent = `${current}/${total}`;
-    document.getElementById('quiz-points').textContent = `P ${this.sessionPoints}`;
+    const ptsNum = document.getElementById('quiz-points-num');
+    if (ptsNum) ptsNum.textContent = this.sessionPoints;
     // Phase badge
     const diffInfo = DIFFICULTIES[this.activeDifficulty || this.selectedDifficulty];
     const phaseBadge = document.getElementById('quiz-phase-badge');
@@ -2721,7 +2738,8 @@ const App = {
     }
     const streakEl = document.getElementById('quiz-streak');
     if (this.currentStreak >= 3) {
-      streakEl.textContent = ` ${this.currentStreak}`;
+      const sNum = document.getElementById('quiz-streak-num');
+      if (sNum) sNum.textContent = this.currentStreak;
       streakEl.classList.remove('hidden');
     } else {
       streakEl.classList.add('hidden');
@@ -3038,10 +3056,12 @@ const App = {
     // Update streak display
     const streakEl = document.getElementById('quiz-streak');
     if (this.currentStreak >= 3) {
-      streakEl.textContent = ` ${this.currentStreak}`;
+      const sNum = document.getElementById('quiz-streak-num');
+      if (sNum) sNum.textContent = this.currentStreak;
       streakEl.classList.remove('hidden');
     }
-    document.getElementById('quiz-points').textContent = `P ${this.sessionPoints}`;
+    const ptsNum2 = document.getElementById('quiz-points-num');
+    if (ptsNum2) ptsNum2.textContent = this.sessionPoints;
     // Sound & Vibrate (variable vibration based on streak)
     this.playSound('correct');
     if (this.currentStreak >= 10) {
@@ -3417,12 +3437,12 @@ const App = {
     const livesEl = document.getElementById('quiz-lives');
     if (!livesEl) return;
     if (this.infiniteLives) {
-      livesEl.innerHTML = '<span style="color:#ffd700">&#8734;</span>';
+      livesEl.innerHTML = '<span class="icon-lives-inf">∞</span>';
       return;
     }
     let hearts = '';
     for (let i = 0; i < this.maxLives; i++) {
-      hearts += i < this.lives ? '<span style="color:#e74c3c">&#9829;</span>' : '<span style="color:#555">&#9829;</span>';
+      hearts += i < this.lives ? ICON_SVG.heartActive : ICON_SVG.heartEmpty;
     }
     livesEl.innerHTML = hearts;
   },
@@ -3835,19 +3855,25 @@ const App = {
     if (!countEl) return;
     
     if (this.infiniteLives) {
-      countEl.textContent = '∞ Infinitas';
+      const heartsEl = document.getElementById('home-lives-hearts');
+      if (heartsEl) heartsEl.innerHTML = '<span class="icon-lives-inf">∞</span>';
+      countEl.textContent = 'Infinitas';
       if (timerWrap) timerWrap.classList.add('hidden');
       if (card) card.classList.add('infinite-active');
       return;
     }
     if (card) card.classList.remove('infinite-active');
-    
-    // Mostrar vidas con corazones en el texto
-    let heartsText = '';
-    for (let i = 0; i < this.lives; i++) {
-      heartsText += '❤️';
+
+    // SVG hearts
+    const heartsEl = document.getElementById('home-lives-hearts');
+    if (heartsEl) {
+      let hearts = '';
+      for (let i = 0; i < this.maxLives; i++) {
+        hearts += i < this.lives ? ICON_SVG.heartActive : ICON_SVG.heartEmpty;
+      }
+      heartsEl.innerHTML = hearts;
     }
-    countEl.textContent = heartsText || `${this.lives}/${this.maxLives}`;
+    countEl.textContent = `${this.lives}/${this.maxLives}`;
     
     // Show/hide timer
     if (this.lives < this.maxLives && timerWrap) {
@@ -6368,23 +6394,23 @@ const App = {
     const iconEl = card.querySelector('.streak-card-icon');
     if (streak.days >= 30) {
       document.getElementById('streak-card-title').textContent = '¡Racha legendaria!';
-      if (iconEl) iconEl.textContent = '👑';
+      if (iconEl) iconEl.innerHTML = ICON_SVG.crownLg;
       card.dataset.milestone = '30';
     } else if (streak.days >= 14) {
       document.getElementById('streak-card-title').textContent = '¡Racha increíble!';
-      if (iconEl) iconEl.textContent = '⚡';
+      if (iconEl) iconEl.innerHTML = ICON_SVG.lightningLg;
       card.dataset.milestone = '14';
     } else if (streak.days >= 7) {
       document.getElementById('streak-card-title').textContent = '¡Racha semanal!';
-      if (iconEl) iconEl.textContent = '🔥';
+      if (iconEl) iconEl.innerHTML = ICON_SVG.fireLg;
       card.dataset.milestone = '7';
     } else if (streak.days >= 3) {
       document.getElementById('streak-card-title').textContent = '¡Vas bien!';
-      if (iconEl) iconEl.textContent = '🔥';
+      if (iconEl) iconEl.innerHTML = ICON_SVG.fireLg;
       card.dataset.milestone = '';
     } else {
       document.getElementById('streak-card-title').textContent = 'Racha diaria';
-      if (iconEl) iconEl.textContent = '🔥';
+      if (iconEl) iconEl.innerHTML = ICON_SVG.fireLg;
       card.dataset.milestone = '';
     }
     document.getElementById('streak-card-desc').textContent =

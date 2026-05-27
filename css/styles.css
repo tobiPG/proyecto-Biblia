@@ -7147,3 +7147,117 @@ select {
 .clan-form-actions .btn-secondary {
   flex: 1;
 }
+
+/* ============================================================
+   SVG GAME ICONS
+   ============================================================ */
+.icon-heart, .icon-fire, .icon-star, .icon-trophy,
+.icon-crown, .icon-lightning {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* Sizes */
+.icon-heart  { width: 18px; height: 18px; }
+.icon-fire   { width: 16px; height: 16px; }
+.icon-star   { width: 16px; height: 16px; }
+.icon-trophy { width: 18px; height: 18px; }
+.icon-fire.lg, .icon-crown.lg, .icon-lightning.lg { width: 38px; height: 38px; }
+
+/* Hearts */
+.icon-heart.active path {
+  fill: #e74c3c;
+  filter: drop-shadow(0 1px 5px rgba(231,76,60,0.8));
+}
+.icon-heart.empty path { fill: #2d2d50; }
+
+/* Fire */
+.icon-fire path {
+  fill: #ff8c00;
+  filter: drop-shadow(0 0 6px #ff4500);
+}
+
+/* Star */
+.icon-star path {
+  fill: #ffd700;
+  filter: drop-shadow(0 0 5px rgba(255,215,0,0.8));
+}
+
+/* Trophy */
+.icon-trophy path {
+  fill: #ffd700;
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.9));
+}
+
+/* Crown */
+.icon-crown path { fill: #ffd700; filter: drop-shadow(0 0 8px rgba(255,215,0,1)); }
+
+/* Lightning */
+.icon-lightning path { fill: #a78bfa; filter: drop-shadow(0 0 8px rgba(167,139,250,0.9)); }
+
+/* Infinite lives */
+.icon-lives-inf {
+  color: #ffd700;
+  font-size: 1.3em;
+  font-weight: 900;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.8));
+}
+
+/* ── Animations ── */
+@keyframes icon-heartbeat {
+  0%,100% { transform: scale(1); }
+  30%     { transform: scale(1.4); }
+  60%     { transform: scale(1.1); }
+}
+.icon-heart.active { animation: icon-heartbeat 1.8s ease infinite; }
+
+@keyframes icon-flicker {
+  0%,100% { transform: scaleX(1)   scaleY(1); }
+  25%     { transform: scaleX(.92) scaleY(1.07); }
+  75%     { transform: scaleX(1.07) scaleY(.95); }
+}
+.icon-fire { animation: icon-flicker 0.85s ease-in-out infinite; }
+
+@keyframes icon-trophy-glow {
+  0%,100% { filter: drop-shadow(0 0 4px rgba(255,215,0,0.4)); }
+  50%     { filter: drop-shadow(0 0 14px rgba(255,215,0,1)); }
+}
+.icon-trophy { animation: icon-trophy-glow 2.5s ease infinite; }
+
+@keyframes icon-star-pulse {
+  0%,100% { transform: scale(1)    rotate(0deg); }
+  50%     { transform: scale(1.18) rotate(10deg); }
+}
+.icon-star { animation: icon-star-pulse 2.2s ease infinite; }
+
+@keyframes icon-crown-shine {
+  0%,100% { filter: drop-shadow(0 0 6px rgba(255,215,0,0.6)); }
+  50%     { filter: drop-shadow(0 0 18px rgba(255,215,0,1)) brightness(1.3); }
+}
+.icon-crown { animation: icon-crown-shine 1.8s ease infinite; }
+
+@keyframes icon-lightning-zap {
+  0%,80%,100% { opacity: 1; transform: scale(1); }
+  90%         { opacity: 0.6; transform: scale(1.15); }
+}
+.icon-lightning { animation: icon-lightning-zap 1.4s ease infinite; }
+
+/* Alinear iconos en quiz header */
+.quiz-streak, .quiz-points {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Home lives hearts container */
+.home-lives-hearts {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Streak card icon when using SVG */
+.streak-card-icon { display: flex; align-items: center; justify-content: center; }

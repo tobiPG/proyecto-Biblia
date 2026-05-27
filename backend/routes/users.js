@@ -400,7 +400,7 @@ router.post('/me/progress/sync', authMiddleware, async (req, res) => {
 
     const {
       // Perfil
-      displayName, photoURL,
+      displayName, photoURL, avatar, avatarColor,
       // Progresión
       level, xp, xpToNext, totalPoints, totalCorrect, totalWrong, totalAnswered,
       totalGames, bestStreak, perfectGames, expertCorrect, categoriesPlayed,
@@ -438,7 +438,9 @@ router.post('/me/progress/sync', authMiddleware, async (req, res) => {
     
     // Perfil
     if (displayName) updateData.displayName = displayName;
-    if (photoURL) updateData.photoURL = photoURL;
+    if (photoURL && photoURL.startsWith('http')) updateData.photoURL = photoURL;
+    if (avatar !== undefined) updateData.avatar = avatar;
+    if (avatarColor !== undefined) updateData.avatarColor = avatarColor;
     
     // Progresión
     if (level !== undefined) updateData.level = level;
@@ -536,9 +538,11 @@ router.get('/me/progress', authMiddleware, async (req, res) => {
     // Devolver TODOS los datos de progreso
     res.json({
       id: user.uid,
-      uid: user.uid, // Asegurar que ambos campos existan
+      uid: user.uid,
       displayName: user.displayName,
       photoURL: user.photoURL,
+      avatar: user.avatar || '',
+      avatarColor: user.avatarColor || 'indigo',
       email: user.email,
       isAnonymous: user.isAnonymous,
       

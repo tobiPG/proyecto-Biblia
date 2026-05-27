@@ -3,7 +3,7 @@
 
 function _renderAvatarHtml(avatarKey, avatarColor, photoURL, cssClass) {
   const sz = 40;
-  if (photoURL) {
+  if (photoURL && photoURL.startsWith('http')) {
     return `<img src="${photoURL}" alt="" style="width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;display:block;">`;
   }
   const chars = window.AVATAR_CHARACTERS || [];

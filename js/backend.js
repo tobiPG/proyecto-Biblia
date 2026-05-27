@@ -842,7 +842,8 @@ window.BackendService = {
       Storage.savePlayer({
         ...currentPlayer,
         name: progress.displayName || currentPlayer.name,
-        avatar: progress.photoURL || currentPlayer.avatar,
+        avatar: progress.avatar || currentPlayer.avatar,
+        avatarColor: progress.avatarColor || currentPlayer.avatarColor || 'indigo',
         email: progress.email,
         level: progress.level || currentPlayer.level || 1,
         xp: progress.xp || currentPlayer.xp || 0,
@@ -967,7 +968,8 @@ window.BackendService = {
         body: JSON.stringify({
           // Perfil
           displayName: player.name,
-          photoURL: player.avatar,
+          avatar: player.avatar || '',
+          avatarColor: player.avatarColor || 'indigo',
           
           // Progresión
           level: player.level || 1,

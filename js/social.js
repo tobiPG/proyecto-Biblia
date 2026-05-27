@@ -1308,8 +1308,21 @@ window.Social = {
     if (myAvatarEl) {
       if (profile.photoURL) {
         myAvatarEl.innerHTML = `<img src="${profile.photoURL}" alt="" class="my-avatar-img">`;
+        myAvatarEl.style.background = '';
       } else {
-        myAvatarEl.innerHTML = `<span class="my-avatar-placeholder">${(profile.displayName || 'J')[0].toUpperCase()}</span>`;
+        const localPlayer = Storage.getPlayer();
+        const figure = localPlayer.avatar || (profile.displayName || 'J')[0].toUpperCase();
+        const colorKey = localPlayer.avatarColor || 'indigo';
+        const colors = window.AVATAR_COLORS || {};
+        const grad = (colors[colorKey] || {}).grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
+        myAvatarEl.innerHTML = '';
+        myAvatarEl.textContent = figure;
+        myAvatarEl.style.background = grad;
+        myAvatarEl.style.fontSize = '1.8rem';
+        myAvatarEl.style.display = 'flex';
+        myAvatarEl.style.alignItems = 'center';
+        myAvatarEl.style.justifyContent = 'center';
+        myAvatarEl.style.color = '#fff';
       }
     }
 

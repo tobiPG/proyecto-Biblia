@@ -81,6 +81,7 @@ const Storage = {
     return {
       name: 'Jugador',
       avatar: '',
+      avatarColor: 'indigo',
       email: '',
       age: null,
       gender: '',

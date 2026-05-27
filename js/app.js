@@ -232,6 +232,30 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
     this.closePath();
   };
 }
+
+// ============================================================
+// Avatar / Personaje customization data
+// ============================================================
+const AVATAR_FIGURES = [
+  '🧔','👸','🤴','🧙','👼','💂',
+  '🦁','🐯','🦅','🕊️','🦊','🐺',
+  '⭐','🌟','🏆','🎯','🔥','💎',
+  '🦋','🌈','✨','🌙','☀️','🎭'
+];
+const AVATAR_COLORS = {
+  indigo:  { name:'Índigo',    grad:'linear-gradient(135deg,#6366f1,#8b5cf6)' },
+  sky:     { name:'Cielo',     grad:'linear-gradient(135deg,#3b82f6,#06b6d4)' },
+  emerald: { name:'Esmeralda', grad:'linear-gradient(135deg,#10b981,#059669)' },
+  rose:    { name:'Rosa',      grad:'linear-gradient(135deg,#ec4899,#db2777)' },
+  orange:  { name:'Naranja',   grad:'linear-gradient(135deg,#f97316,#f59e0b)' },
+  gold:    { name:'Dorado',    grad:'linear-gradient(135deg,#f59e0b,#d97706)' },
+  red:     { name:'Rojo',      grad:'linear-gradient(135deg,#ef4444,#dc2626)' },
+  lime:    { name:'Lima',      grad:'linear-gradient(135deg,#84cc16,#16a34a)' },
+  violet:  { name:'Violeta',   grad:'linear-gradient(135deg,#a855f7,#7e22ce)' },
+  slate:   { name:'Noche',     grad:'linear-gradient(135deg,#475569,#1e293b)' },
+};
+window.AVATAR_COLORS = AVATAR_COLORS;
+
 const App = {
   // --- Estado ---
   // Sistema de vidas
@@ -262,6 +286,7 @@ const App = {
   phaseCorrect: 0,
   phaseWrong: 0,
   allUsedQuestionIds: [],
+  allUsedQuestionTexts: [],
   categoryExhausted: false,
   diffCompletedInSession: [],
   answered: false,
@@ -1349,22 +1374,7 @@ const App = {
         this.updateThemeButtons(val);
       });
     });
-    // Avatar picker
-    document.getElementById('btn-change-avatar').addEventListener('click', () => {
-      document.getElementById('avatar-grid').classList.toggle('hidden');
-    });
-    document.querySelectorAll('.avatar-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const avatar = btn.dataset.avatar;
-        const player = Storage.getPlayer();
-        player.avatar = avatar;
-        Storage.savePlayer(player);
-        document.getElementById('avatar-preview').textContent = avatar;
-        document.querySelectorAll('.avatar-option').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        document.getElementById('avatar-grid').classList.add('hidden');
-      });
-    });
+    // Character picker is built dynamically in loadSettingsUI → buildCharacterPicker()
     // Notification toggle
     document.getElementById('setting-notifications').addEventListener('change', (e) => {
       if (e.target.checked) {
@@ -1747,6 +1757,14 @@ const App = {
       const extra = QUESTIONS_DB.filter(q => q.difficulty === this.selectedDifficulty && !pool.includes(q));
       pool = [...pool, ...extra];
     }
+    // Deduplicar pool por texto normalizado (elimina preguntas equivalentes con distinto ID)
+    const _seenTexts = new Set();
+    pool = pool.filter(q => {
+      const t = this._normalizeQ(q.question);
+      if (_seenTexts.has(t)) return false;
+      _seenTexts.add(t);
+      return true;
+    });
     // Shuffle
     pool = this.shuffle(pool);
     const numQuestions = Math.min(settings.questionsPerGame, pool.length);
@@ -1766,7 +1784,8 @@ const App = {
     this.currentPhase = 1;
     this.phaseCorrect = 0;
     this.phaseWrong = 0;
-    this.allUsedQuestionIds = pool.slice(0, numQuestions).map(q => q.id);
+    this.allUsedQuestionIds = this.currentQuestions.map(q => q.id);
+    this.allUsedQuestionTexts = this.currentQuestions.map(q => this._normalizeQ(q.question));
     this.initialDifficulty = this.selectedDifficulty;
     this.activeDifficulty = this.selectedDifficulty;
     this.categoryExhausted = false;
@@ -3266,10 +3285,11 @@ const App = {
     // Si aun no hay suficientes  categoria agotada, mezclar todas las categorias
     if (pool.length < 5) {
       this.categoryExhausted = true;
-      pool = QUESTIONS_DB.filter(q => !this.allUsedQuestionIds.includes(q.id));
+      pool = QUESTIONS_DB.filter(q => !this.allUsedQuestionIds.includes(q.id) && !this.allUsedQuestionTexts.includes(this._normalizeQ(q.question)));
       // Si todas las preguntas estan usadas, resetear
       if (pool.length < 5) {
         this.allUsedQuestionIds = [];
+        this.allUsedQuestionTexts = [];
         pool = QUESTIONS_DB.slice();
       }
     }
@@ -3277,10 +3297,67 @@ const App = {
     const count = Math.min(numQuestions, pool.length);
     this.currentQuestions = pool.slice(0, count);
     this.allUsedQuestionIds.push(...this.currentQuestions.map(q => q.id));
+    this.allUsedQuestionTexts.push(...this.currentQuestions.map(q => this._normalizeQ(q.question)));
     this.currentQuestionIndex = 0;
     // Ocultar overlay y mostrar siguiente pregunta
     document.getElementById('phase-overlay').classList.add('hidden');
     this.renderQuestion();
+  },
+  // Aplica emoji + gradiente de color a un elemento de avatar
+  applyAvatarStyle(el, player) {
+    if (!el) return;
+    const colorKey = player.avatarColor || 'indigo';
+    const color = AVATAR_COLORS[colorKey] || AVATAR_COLORS.indigo;
+    const figure = player.avatar || (player.name ? player.name.charAt(0).toUpperCase() : '?');
+    el.textContent = figure;
+    el.style.background = color.grad;
+    el.style.color = '#fff';
+  },
+  // Construye y enlaza el selector de figura y color en configuración
+  buildCharacterPicker() {
+    const player = Storage.getPlayer();
+    // Figures
+    const figGrid = document.getElementById('avatar-grid');
+    if (!figGrid) return;
+    figGrid.innerHTML = AVATAR_FIGURES.map(fig =>
+      `<button class="char-figure-btn${player.avatar === fig ? ' selected' : ''}" data-figure="${fig}">${fig}</button>`
+    ).join('');
+    figGrid.querySelectorAll('.char-figure-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = Storage.getPlayer();
+        p.avatar = btn.dataset.figure;
+        Storage.savePlayer(p);
+        figGrid.querySelectorAll('.char-figure-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.applyAvatarStyle(document.getElementById('avatar-preview'), p);
+      });
+    });
+    // Colors
+    const colGrid = document.getElementById('avatar-color-grid');
+    if (!colGrid) return;
+    const currentColor = player.avatarColor || 'indigo';
+    colGrid.innerHTML = Object.entries(AVATAR_COLORS).map(([key, c]) =>
+      `<button class="char-color-btn${currentColor === key ? ' selected' : ''}" data-color="${key}" style="background:${c.grad}" title="${c.name}"></button>`
+    ).join('');
+    colGrid.querySelectorAll('.char-color-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = Storage.getPlayer();
+        p.avatarColor = btn.dataset.color;
+        Storage.savePlayer(p);
+        colGrid.querySelectorAll('.char-color-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        this.applyAvatarStyle(document.getElementById('avatar-preview'), p);
+      });
+    });
+    // Preview inicial
+    this.applyAvatarStyle(document.getElementById('avatar-preview'), player);
+  },
+  // Normaliza texto de pregunta para comparar duplicados semánticos
+  _normalizeQ(text) {
+    return text.toLowerCase()
+      .replace(/[áàä]/g,'a').replace(/[éèë]/g,'e').replace(/[íìï]/g,'i')
+      .replace(/[óòö]/g,'o').replace(/[úùü]/g,'u').replace(/ñ/g,'n')
+      .replace(/[¿¡?!.,;:'"-]/g,'').replace(/\s+/g,' ').trim();
   },
   // Obtener preguntas disponibles para una dificultad y categoria
   getPoolForPhase(difficulty, category) {
@@ -3289,6 +3366,7 @@ const App = {
       pool = pool.filter(q => q.category === category);
     }
     pool = pool.filter(q => !this.allUsedQuestionIds.includes(q.id));
+    pool = pool.filter(q => !this.allUsedQuestionTexts.includes(this._normalizeQ(q.question)));
     return pool;
   },
   // ========== SISTEMA DE VIDAS ==========
@@ -4543,9 +4621,7 @@ const App = {
     const earnedBadges = Storage.getBadges();
     // Player card
     const avatarEl = document.getElementById('progress-avatar');
-    avatarEl.textContent = player.avatar || player.name?.charAt(0)?.toUpperCase() || '?';
-    avatarEl.style.background = player.avatar ? '' : 'linear-gradient(135deg,#667eea,#764ba2)';
-    avatarEl.style.color = player.avatar ? '' : '#fff';
+    this.applyAvatarStyle(avatarEl, player);
     document.getElementById('progress-name').textContent = player.name;
     document.getElementById('progress-email').textContent = player.email ? ` ${player.email}` : '';
     document.getElementById('progress-age').textContent = player.age ? ` ${player.age} anos` : '';
@@ -4926,12 +5002,8 @@ const App = {
     document.getElementById('setting-sound').checked = settings.sound;
     document.getElementById('setting-vibration').checked = settings.vibration;
     document.getElementById('setting-verse').checked = settings.showVerse;
-    // Avatar
-    document.getElementById('avatar-preview').textContent = player.avatar || '';
-    document.querySelectorAll('.avatar-option').forEach(btn => {
-      btn.classList.toggle('selected', btn.dataset.avatar === player.avatar);
-    });
-    document.getElementById('avatar-grid').classList.add('hidden');
+    // Character picker
+    this.buildCharacterPicker();
     // Theme 3-way
     this.updateThemeButtons(Storage.getTheme());
     // Notifications

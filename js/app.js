@@ -607,6 +607,13 @@ const App = {
           this.renderHome();
           this.loadSettings();
           this.initOnboarding();
+          // Sync local avatar to MongoDB on every startup (fire-and-forget)
+          try {
+            const _p = Storage.getPlayer();
+            if (_p.avatar && window.BackendService?.updateAvatar) {
+              window.BackendService.updateAvatar(_p.avatar, _p.avatarColor || 'indigo');
+            }
+          } catch(e) {}
         }
       }
       

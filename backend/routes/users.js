@@ -26,7 +26,9 @@ router.get('/me', authMiddleware, async (req, res) => {
       friendCode: req.user.friendCode,
       friends: req.user.friends || [],
       friendRequests: req.user.friendRequests || [],
-      isAnonymous: req.user.isAnonymous
+      isAnonymous: req.user.isAnonymous,
+      avatar: req.user.avatar || '',
+      avatarColor: req.user.avatarColor || 'indigo'
     });
   } catch (error) {
     res.status(500).json({ error: error.message });

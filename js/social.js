@@ -690,16 +690,19 @@ window.Social = {
       }
       let myRank = leaderboard.findIndex(u => u.id === myId) + 1;
 
+      const _localPlayer = window.Storage?.getPlayer?.() || {};
       container.innerHTML = leaderboard.map((user, index) => {
         const rank = index + 1;
         const isMe = user.id === myId;
         const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
-        
+        const avatarKey = (isMe && _localPlayer.avatar) ? _localPlayer.avatar : (user.avatar || '');
+        const avatarColor = (isMe && _localPlayer.avatarColor) ? _localPlayer.avatarColor : (user.avatarColor || 'indigo');
+
         return `
           <div class="leaderboard-item ${isMe ? 'is-me' : ''}" data-user-id="${user.id}">
             <span class="lb-rank ${rank <= 3 ? 'top-3' : ''}">${medal}</span>
             <div class="lb-avatar">
-              ${_renderAvatarHtml(user.avatar, user.avatarColor, user.photoURL, 'lb-avatar')}
+              ${_renderAvatarHtml(avatarKey, avatarColor, user.photoURL, 'lb-avatar')}
             </div>
             <div class="lb-info">
               <span class="lb-name">${this.escapeHtml(user.displayName || 'Jugador')}</span>

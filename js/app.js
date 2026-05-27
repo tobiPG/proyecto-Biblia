@@ -3392,24 +3392,14 @@ const App = {
     const player = Storage.getPlayer();
     const figGrid = document.getElementById('avatar-grid');
     if (!figGrid) return;
-    const sections = [
-      { label: 'Hombres · Piel Clara',  keys: ['rodrigo','andres','carlos','sebastian','diego','cristobal','alejandro','nicolas','gabriel','rafael'] },
-      { label: 'Hombres · Piel Morena', keys: ['oziel','matias','santiago','victor','simon','elian','bruno','dante','renzo','leonardo','ivan','franco'] },
-      { label: 'Mujeres · Piel Clara',  keys: ['valentina','camila','isabella','sofia','lucia','elena','clara','natalia','adriana'] },
-      { label: 'Mujeres · Piel Morena', keys: ['fernanda','valeria','daniela','paola','andrea','rebeca','catalina','samara'] },
-    ];
-    figGrid.innerHTML = sections.map(sec => {
-      const chars = sec.keys.map(k => AVATAR_CHARACTERS.find(c => c.key === k)).filter(Boolean);
-      return `<div class="char-group-label">${sec.label}</div>` +
-        chars.map(ch =>
-          `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}" title="${ch.label}">
-            <div class="char-figure-img-wrap">
-              <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" loading="lazy">
-            </div>
-            <span class="char-figure-label">${ch.label}</span>
-          </button>`
-        ).join('');
-    }).join('');
+    figGrid.innerHTML = AVATAR_CHARACTERS.map(ch =>
+      `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}" title="${ch.label}">
+        <div class="char-figure-img-wrap">
+          <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" loading="lazy">
+        </div>
+        <span class="char-figure-label">${ch.label}</span>
+      </button>`
+    ).join('');
     figGrid.querySelectorAll('.char-figure-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const p = Storage.getPlayer();

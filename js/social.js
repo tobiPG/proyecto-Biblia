@@ -1265,7 +1265,9 @@ window.Social = {
 
   // Cambiar nombre de usuario
   async changeDisplayName() {
-    const currentName = FirebaseService.userProfile?.displayName || '';
+    const currentName = window.BackendService?.userProfile?.displayName
+      || FirebaseService.userProfile?.displayName
+      || (typeof Storage !== 'undefined' ? Storage.getPlayer().name : '') || '';
     const newName = prompt('Ingresa tu nuevo nombre:', currentName);
     
     if (newName && newName.trim() && newName !== currentName) {
@@ -1282,37 +1284,42 @@ window.Social = {
 
   // Actualizar info del usuario en la UI
   updateUserInfo() {
-    const profile = FirebaseService.userProfile;
-    console.log('[Social] updateUserInfo llamado, perfil:', profile);
-    
-    if (!profile) {
+    // Prioridad: BackendService (MongoDB) → Firebase → Storage local
+    const backendProfile = window.BackendService?.userProfile;
+    const firebaseProfile = FirebaseService.userProfile;
+    const localPlayer = typeof Storage !== 'undefined' ? Storage.getPlayer() : null;
+
+    // Usar el perfil más completo disponible
+    const profile = backendProfile || firebaseProfile;
+
+    if (!profile && !localPlayer) {
       console.warn('[Social] No hay perfil disponible');
       return;
     }
 
-    // Mi código
+    // Mi código (puede venir del perfil Firebase o backend)
     const myCodeEl = document.getElementById('my-friend-code');
-    console.log('[Social] Elemento my-friend-code:', myCodeEl, 'friendCode:', profile.friendCode);
     if (myCodeEl) {
-      myCodeEl.textContent = profile.friendCode || '------';
+      myCodeEl.textContent = profile?.friendCode || '------';
     }
 
-    // Mi nombre
+    // Mi nombre — usa el nombre registrado, con fallback al nombre local
     const myNameEl = document.getElementById('my-display-name');
     if (myNameEl) {
-      myNameEl.textContent = profile.displayName || 'Jugador';
+      myNameEl.textContent = profile?.displayName || localPlayer?.name || 'Jugador';
     }
 
     // Mi avatar
     const myAvatarEl = document.getElementById('my-avatar');
     if (myAvatarEl) {
-      if (profile.photoURL) {
-        myAvatarEl.innerHTML = `<img src="${profile.photoURL}" alt="" class="my-avatar-img">`;
+      const photoURL = profile?.photoURL;
+      if (photoURL) {
+        myAvatarEl.innerHTML = `<img src="${photoURL}" alt="" class="my-avatar-img">`;
         myAvatarEl.style.background = '';
       } else {
-        const localPlayer = Storage.getPlayer();
-        const figure = localPlayer.avatar || (profile.displayName || 'J')[0].toUpperCase();
-        const colorKey = localPlayer.avatarColor || 'indigo';
+        const displayName = profile?.displayName || localPlayer?.name || 'J';
+        const figure = localPlayer?.avatar || displayName[0].toUpperCase();
+        const colorKey = localPlayer?.avatarColor || 'indigo';
         const colors = window.AVATAR_COLORS || {};
         const grad = (colors[colorKey] || {}).grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
         myAvatarEl.innerHTML = '';

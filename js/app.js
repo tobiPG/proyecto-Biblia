@@ -3907,6 +3907,10 @@ const App = {
               localStorage.setItem(Billing.STORAGE_KEYS.ADS_REMOVED, 'true');
             }
           }
+        } else if (localStorage.getItem('bq_promo_infinite_lives') === 'true') {
+          // Promo local activa — respetar aunque el backend no lo sepa
+          this.infiniteLives = true;
+          localStorage.setItem('bq_infiniteLives', 'true');
         } else {
           // Usuario sin premium — resetear por si quedó de otra sesión
           this.infiniteLives = false;
@@ -6236,19 +6240,32 @@ const App = {
       case 'infinite_lives':
         this.infiniteLives = true;
         this.saveInfiniteLives();
+        localStorage.setItem('bq_promo_infinite_lives', 'true');
         this.renderHomeLives();
         message = `${promo.description} activadas!`;
         break;
-        
-      case 'premium_days':
-        // Agregar dias premium
-        const currentExpiry = localStorage.getItem('bq_premium_expiry');
-        const now = Date.now();
-        const baseDate = currentExpiry ? Math.max(parseInt(currentExpiry), now) : now;
-        const newExpiry = baseDate + (promo.days * 24 * 60 * 60 * 1000);
-        localStorage.setItem('bq_premium_expiry', newExpiry.toString());
+
+      case 'premium_days': {
+        const premiumExpiryKey = typeof Billing !== 'undefined' ? Billing.STORAGE_KEYS.PREMIUM_EXPIRY : 'bibliaquiz_premium_expiry';
+        const premiumKey = typeof Billing !== 'undefined' ? Billing.STORAGE_KEYS.PREMIUM : 'bibliaquiz_premium';
+        const currentExpiry = localStorage.getItem(premiumExpiryKey);
+        const nowMs = Date.now();
+        const baseMs = currentExpiry ? Math.max(new Date(currentExpiry).getTime(), nowMs) : nowMs;
+        const newExpiryISO = new Date(baseMs + (promo.days * 24 * 60 * 60 * 1000)).toISOString();
+        localStorage.setItem(premiumExpiryKey, newExpiryISO);
+        localStorage.setItem(premiumKey, 'true');
+        if (typeof Billing !== 'undefined') {
+          Billing.isPremium = true;
+          Billing.adsRemoved = true;
+          localStorage.setItem(Billing.STORAGE_KEYS.ADS_REMOVED, 'true');
+        }
+        this.infiniteLives = true;
+        this.saveInfiniteLives();
+        localStorage.setItem('bq_promo_infinite_lives', 'true');
+        this.renderHomeLives();
         message = `${promo.description} agregados!`;
         break;
+      }
         
       case 'lives':
         this.lives = Math.min(this.lives + promo.amount, this.maxLives);

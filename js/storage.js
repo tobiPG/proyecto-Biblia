@@ -298,6 +298,10 @@ const Storage = {
     localStorage.removeItem('bibliaquiz_onboarded');
     localStorage.removeItem('bibliaquiz_registered');
     localStorage.removeItem('bq_infiniteLives');
+    localStorage.removeItem('bq_used_promo_codes');
+    localStorage.removeItem('bq_promo_infinite_lives');
+    localStorage.removeItem('bibliaquiz_premium');
+    localStorage.removeItem('bibliaquiz_premium_expiry');
   },
 
   // --- LIVES ---

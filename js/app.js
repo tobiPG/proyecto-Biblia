@@ -237,51 +237,50 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
 // Avatar / Personaje customization data
 // ============================================================
 const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
-// p = extra URL params (skinColor, hairColor, etc.)
 const AVATAR_CHARACTERS = [
   // ── Hombres piel clara ──
-  { key:'rodrigo',   seed:'Pedro2025',    p:'&skinColor[]=f5d0a9',  label:'Rodrigo'   },
-  { key:'andres',    seed:'JuanAp2025',   p:'&skinColor[]=eac393',  label:'Andrés'    },
-  { key:'carlos',    seed:'Mateo2025',    p:'&skinColor[]=f5d0a9',  label:'Carlos'    },
-  { key:'sebastian', seed:'Thomas2025',   p:'&skinColor[]=f5d0a9',  label:'Sebastián' },
-  { key:'diego',     seed:'Felipe2025',   p:'&skinColor[]=d4a574',  label:'Diego'     },
-  { key:'cristobal', seed:'Cornelio25',   p:'&skinColor[]=f5d0a9',  label:'Cristóbal' },
-  { key:'alejandro', seed:'Lucas2025',    p:'&skinColor[]=eac393',  label:'Alejandro' },
-  { key:'nicolas',   seed:'Marcos2025',   p:'&skinColor[]=d4a574',  label:'Nicolás'   },
-  { key:'gabriel',   seed:'Pablo2025',    p:'&skinColor[]=eac393',  label:'Gabriel'   },
-  { key:'rafael',    seed:'Elias2025',    p:'&skinColor[]=d4a574',  label:'Rafael'    },
+  { key:'rodrigo',   seed:'ManRod2025',  p:'&skinColor[]=f5d0a9&hair[]=short01' },
+  { key:'andres',    seed:'ManAnd2025',  p:'&skinColor[]=eac393&hair[]=short03' },
+  { key:'carlos',    seed:'ManCar2025',  p:'&skinColor[]=f5d0a9&hair[]=short05' },
+  { key:'sebastian', seed:'ManSeb2025',  p:'&skinColor[]=f5d0a9&hair[]=short07' },
+  { key:'diego',     seed:'ManDie2025',  p:'&skinColor[]=d4a574&hair[]=short02' },
+  { key:'cristobal', seed:'ManCri2025',  p:'&skinColor[]=f5d0a9&hair[]=short04' },
+  { key:'alejandro', seed:'ManAle2025',  p:'&skinColor[]=eac393&hair[]=short06' },
+  { key:'nicolas',   seed:'ManNic2025',  p:'&skinColor[]=d4a574&hair[]=short08' },
+  { key:'gabriel',   seed:'ManGab2025',  p:'&skinColor[]=eac393&hair[]=short01' },
+  { key:'rafael',    seed:'ManRaf2025',  p:'&skinColor[]=d4a574&hair[]=short03' },
   // ── Hombres piel morena / oscura ──
-  { key:'oziel',     seed:'David2025',    p:'&skinColor[]=c68642',  label:'Oziel'     },
-  { key:'matias',    seed:'Moses2025',    p:'&skinColor[]=c68642',  label:'Matías'    },
-  { key:'santiago',  seed:'Noah2025',     p:'&skinColor[]=8d5524',  label:'Santiago'  },
-  { key:'victor',    seed:'Abraham2025',  p:'&skinColor[]=c68642',  label:'Víctor'    },
-  { key:'simon',     seed:'Amos2025',     p:'&skinColor[]=8d5524',  label:'Simón'     },
-  { key:'elian',     seed:'Joshua2025',   p:'&skinColor[]=c68642',  label:'Elian'     },
-  { key:'bruno',     seed:'Samson2025',   p:'&skinColor[]=8d5524',  label:'Bruno'     },
-  { key:'dante',     seed:'Joel2025',     p:'&skinColor[]=6b3e2e',  label:'Dante'     },
-  { key:'renzo',     seed:'Nehemiah2025', p:'&skinColor[]=8d5524',  label:'Renzo'     },
-  { key:'leonardo',  seed:'Solomon2025',  p:'&skinColor[]=c68642',  label:'Leonardo'  },
-  { key:'ivan',      seed:'Eliseo2025',   p:'&skinColor[]=d4a574',  label:'Iván'      },
-  { key:'franco',    seed:'Ezekiel2025',  p:'&skinColor[]=6b3e2e',  label:'Franco'    },
+  { key:'oziel',     seed:'ManOzi2025',  p:'&skinColor[]=c68642&hair[]=short05' },
+  { key:'matias',    seed:'ManMat2025',  p:'&skinColor[]=c68642&hair[]=short07' },
+  { key:'santiago',  seed:'ManSan2025',  p:'&skinColor[]=8d5524&hair[]=short02' },
+  { key:'victor',    seed:'ManVic2025',  p:'&skinColor[]=c68642&hair[]=short04' },
+  { key:'simon',     seed:'ManSim2025',  p:'&skinColor[]=8d5524&hair[]=short06' },
+  { key:'elian',     seed:'ManEli2025',  p:'&skinColor[]=c68642&hair[]=short08' },
+  { key:'bruno',     seed:'ManBru2025',  p:'&skinColor[]=8d5524&hair[]=short01' },
+  { key:'dante',     seed:'ManDan2025',  p:'&skinColor[]=6b3e2e&hair[]=short03' },
+  { key:'renzo',     seed:'ManRen2025',  p:'&skinColor[]=8d5524&hair[]=short05' },
+  { key:'leonardo',  seed:'ManLeo2025',  p:'&skinColor[]=c68642&hair[]=short07' },
+  { key:'ivan',      seed:'ManIva2025',  p:'&skinColor[]=d4a574&hair[]=short02' },
+  { key:'franco',    seed:'ManFra2025',  p:'&skinColor[]=6b3e2e&hair[]=short04' },
   // ── Mujeres piel clara ──
-  { key:'valentina', seed:'Ester2025',    p:'&skinColor[]=f5d0a9',  label:'Valentina' },
-  { key:'camila',    seed:'Maria2025',    p:'&skinColor[]=eac393',  label:'Camila'    },
-  { key:'isabella',  seed:'Priscila2025', p:'&skinColor[]=f5d0a9',  label:'Isabella'  },
-  { key:'sofia',     seed:'Tabitha2025',  p:'&skinColor[]=f5d0a9',  label:'Sofía'     },
-  { key:'lucia',     seed:'Phoebe2025',   p:'&skinColor[]=eac393',  label:'Lucía'     },
-  { key:'elena',     seed:'Lydia2025',    p:'&skinColor[]=d4a574',  label:'Elena'     },
-  { key:'clara',     seed:'Abigail2025',  p:'&skinColor[]=eac393',  label:'Clara'     },
-  { key:'natalia',   seed:'Debora2025',   p:'&skinColor[]=d4a574',  label:'Natalia'   },
-  { key:'adriana',   seed:'Dorcas2025',   p:'&skinColor[]=f5d0a9',  label:'Adriana'   },
+  { key:'valentina', seed:'WomVal2025',  p:'&skinColor[]=f5d0a9&hair[]=long01'  },
+  { key:'camila',    seed:'WomCam2025',  p:'&skinColor[]=eac393&hair[]=long03'  },
+  { key:'isabella',  seed:'WomIsa2025',  p:'&skinColor[]=f5d0a9&hair[]=long05'  },
+  { key:'sofia',     seed:'WomSof2025',  p:'&skinColor[]=f5d0a9&hair[]=long02'  },
+  { key:'lucia',     seed:'WomLuc2025',  p:'&skinColor[]=eac393&hair[]=long04'  },
+  { key:'elena',     seed:'WomEle2025',  p:'&skinColor[]=d4a574&hair[]=long06'  },
+  { key:'clara',     seed:'WomCla2025',  p:'&skinColor[]=eac393&hair[]=long01'  },
+  { key:'natalia',   seed:'WomNat2025',  p:'&skinColor[]=d4a574&hair[]=long03'  },
+  { key:'adriana',   seed:'WomAdr2025',  p:'&skinColor[]=f5d0a9&hair[]=long05'  },
   // ── Mujeres piel morena / oscura ──
-  { key:'fernanda',  seed:'Ruth2025',     p:'&skinColor[]=c68642',  label:'Fernanda'  },
-  { key:'valeria',   seed:'Miriam2025',   p:'&skinColor[]=8d5524',  label:'Valeria'   },
-  { key:'daniela',   seed:'AnaFaith2025', p:'&skinColor[]=c68642',  label:'Daniela'   },
-  { key:'paola',     seed:'Rahab2025',    p:'&skinColor[]=8d5524',  label:'Paola'     },
-  { key:'andrea',    seed:'Zipporah2025', p:'&skinColor[]=c68642',  label:'Andrea'    },
-  { key:'rebeca',    seed:'Judith2025',   p:'&skinColor[]=8d5524',  label:'Rebeca'    },
-  { key:'catalina',  seed:'Zilpah2025',   p:'&skinColor[]=6b3e2e',  label:'Catalina'  },
-  { key:'samara',    seed:'Naomi2025',    p:'&skinColor[]=c68642',  label:'Samara'    },
+  { key:'fernanda',  seed:'WomFer2025',  p:'&skinColor[]=c68642&hair[]=long02'  },
+  { key:'valeria',   seed:'WomVale2025', p:'&skinColor[]=8d5524&hair[]=long04'  },
+  { key:'daniela',   seed:'WomDan2025',  p:'&skinColor[]=c68642&hair[]=long06'  },
+  { key:'paola',     seed:'WomPao2025',  p:'&skinColor[]=8d5524&hair[]=long01'  },
+  { key:'andrea',    seed:'WomAnd2025',  p:'&skinColor[]=c68642&hair[]=long03'  },
+  { key:'rebeca',    seed:'WomReb2025',  p:'&skinColor[]=8d5524&hair[]=long05'  },
+  { key:'catalina',  seed:'WomCat2025',  p:'&skinColor[]=6b3e2e&hair[]=long02'  },
+  { key:'samara',    seed:'WomSam2025',  p:'&skinColor[]=c68642&hair[]=long04'  },
 ];
 window.AVATAR_CHARACTERS = AVATAR_CHARACTERS;
 window.DICEBEAR_BASE = DICEBEAR_BASE;
@@ -3393,11 +3392,10 @@ const App = {
     const figGrid = document.getElementById('avatar-grid');
     if (!figGrid) return;
     figGrid.innerHTML = AVATAR_CHARACTERS.map(ch =>
-      `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}" title="${ch.label}">
+      `<button class="char-figure-btn${player.avatar === ch.key ? ' selected' : ''}" data-figure="${ch.key}">
         <div class="char-figure-img-wrap">
-          <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" loading="lazy">
+          <img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" loading="lazy">
         </div>
-        <span class="char-figure-label">${ch.label}</span>
       </button>`
     ).join('');
     figGrid.querySelectorAll('.char-figure-btn').forEach(btn => {

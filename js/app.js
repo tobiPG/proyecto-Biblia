@@ -236,7 +236,7 @@ if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D
 // ============================================================
 // Avatar / Personaje customization data
 // ============================================================
-const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+const DICEBEAR_BASE = 'https://api.dicebear.com/9.x/adventurer/png?size=128&seed=';
 const AVATAR_CHARACTERS = [
   // ── Hombres piel clara ──
   { key:'rodrigo',   seed:'ManRod2025',  p:'&skinColor[]=f5d0a9&hair[]=short01' },
@@ -3375,7 +3375,7 @@ const App = {
       el.style.boxShadow = `0 0 0 3px ${color.glow}, 0 6px 28px ${color.glow}`;
       el.style.overflow = 'hidden';
       el.style.padding = '0';
-      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+      el.innerHTML = `<img src="${DICEBEAR_BASE}${ch.seed}${ch.p||''}" alt="${ch.label}" style="width:96px;height:96px;object-fit:cover;border-radius:50%;display:block;">`;
     } else {
       const figure = player.avatar || (player.name ? player.name.charAt(0).toUpperCase() : '?');
       el.innerHTML = '';

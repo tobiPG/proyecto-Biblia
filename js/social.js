@@ -2,18 +2,19 @@
 // Manejo de UI para clasificación, amigos y retos
 
 function _renderAvatarHtml(avatarKey, avatarColor, photoURL, cssClass) {
-  const imgStyle = 'width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;';
+  const sz = cssClass === 'my-avatar' ? 52 : 40;
+  const imgStyle = `width:${sz}px;height:${sz}px;border-radius:50%;object-fit:cover;display:block;flex-shrink:0;`;
   if (photoURL) return `<img src="${photoURL}" alt="" style="${imgStyle}">`;
   const chars = window.AVATAR_CHARACTERS || [];
   const ch = chars.find(c => c.key === avatarKey);
   if (ch) {
-    const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
+    const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/png?size=128&seed=';
     return `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="${imgStyle}">`;
   }
   const colors = window.AVATAR_COLORS || {};
   const grad = (colors[avatarColor] || colors.indigo || {}).grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
   const initial = avatarKey ? avatarKey[0].toUpperCase() : '?';
-  return `<span class="${cssClass}-placeholder" style="background:${grad}">${initial}</span>`;
+  return `<span class="${cssClass}-placeholder" style="background:${grad};width:${sz}px;height:${sz}px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:${sz*0.4}px;">${initial}</span>`;
 }
 
 window.Social = {
@@ -1329,12 +1330,12 @@ window.Social = {
         myAvatarEl.style.boxShadow = '';
         myAvatarEl.innerHTML = `<img src="${photoURL}" alt="" class="my-avatar-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
       } else if (ch) {
-        const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
-        myAvatarEl.style.background = '#1a1a2e';
+        const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/png?size=128&seed=';
+        myAvatarEl.style.background = 'transparent';
         myAvatarEl.style.boxShadow = `0 0 0 3px ${glow}, 0 4px 20px ${glow}`;
         myAvatarEl.style.overflow = 'hidden';
         myAvatarEl.style.padding = '0';
-        myAvatarEl.innerHTML = `<img src="${base}${ch.seed}${ch.p||''}" alt="" width="52" height="52" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+        myAvatarEl.innerHTML = `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="width:52px;height:52px;object-fit:cover;border-radius:50%;display:block;">`;
       } else {
         const displayName = profile?.displayName || localPlayer?.name || 'J';
         myAvatarEl.style.background = grad;

@@ -2913,8 +2913,11 @@ select {
 
 .badge-item.locked { opacity: 0.4; filter: grayscale(100%); }
 
-.badge-icon { font-size: 2rem; transition: transform var(--transition-smooth); }
-.badge-item.earned .badge-icon { animation: badgePulse 2s ease-in-out infinite; }
+.badge-icon { width: 2.2rem; height: 2.2rem; display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: transform var(--transition-smooth); }
+.badge-icon svg { width: 100%; height: 100%; }
+.badge-item.earned .badge-icon { color: #f59e0b; animation: badgePulse 2s ease-in-out infinite; }
+.badge-item.earned .badge-icon svg { filter: drop-shadow(0 0 5px rgba(245,158,11,0.5)); }
+.badge-pill svg { width: 1.1em; height: 1.1em; vertical-align: middle; margin-right: 3px; color: #f59e0b; }
 
 .badge-name { font-size: 10px; font-weight: 700; color: var(--text-muted); line-height: 1.3; }
 .badge-item.earned .badge-name { color: var(--accent-light); }
@@ -6997,7 +7000,8 @@ select {
   color: rgba(255,255,255,0.9);
   letter-spacing: 0.5px;
 }
-.tbadge-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 2px; }
+.tbadge-icon { width: 2.4rem; height: 2.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2px; }
+.tbadge-icon svg { width: 100%; height: 100%; }
 .tbadge-name { font-size: 0.7rem; font-weight: 900; line-height: 1.2; }
 .tbadge-desc { font-size: 0.6rem; color: rgba(255,255,255,0.65); line-height: 1.3; margin-top: 2px; }
 

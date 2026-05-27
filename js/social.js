@@ -1069,7 +1069,8 @@ window.Social = {
     }
 
     // Verificar que no sea mi propio código
-    if (code === FirebaseService.userProfile?.friendCode) {
+    const myCode = FirebaseService.userProfile?.friendCode || window.BackendService?.userProfile?.friendCode;
+    if (code === myCode) {
       this.showToast('No puedes agregarte a ti mismo', 'error');
       return;
     }
@@ -1078,7 +1079,11 @@ window.Social = {
     resultContainer.classList.remove('hidden');
 
     try {
-      const user = await FirebaseService.findUserByCode(code);
+      // Buscar primero en Firebase, luego en MongoDB como fallback
+      let user = await FirebaseService.findUserByCode(code);
+      if (!user && window.BackendService?.findUserByCode) {
+        user = await window.BackendService.findUserByCode(code);
+      }
       
       if (!user) {
         resultContainer.innerHTML = '<p class="search-error">No se encontró ningún usuario con ese código</p>';
@@ -1115,7 +1120,13 @@ window.Social = {
 
   // Enviar solicitud de amistad
   async sendFriendRequest(userId) {
-    const result = await FirebaseService.sendFriendRequest(userId);
+    // Intentar Firebase primero; si no hay sesión Firebase, usar backend
+    let result = FirebaseService.currentUser
+      ? await FirebaseService.sendFriendRequest(userId)
+      : { success: false };
+    if (!result?.success && window.BackendService?.sendFriendRequest) {
+      result = await window.BackendService.sendFriendRequest(userId);
+    }
     
     if (result.success) {
       this.showToast('Solicitud enviada', 'success');

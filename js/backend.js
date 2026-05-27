@@ -475,6 +475,19 @@ window.BackendService = {
     }
   },
 
+  // Enviar solicitud de amistad
+  async sendFriendRequest(targetUserId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/friend-request/${targetUserId}`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${this.token}` }
+      });
+      const data = await response.json();
+      if (!response.ok) return { success: false, error: data.error };
+      return { success: true };
+    } catch (e) { return { success: false, error: e.message }; }
+  },
+
   // Obtener avatares por lista de UIDs
   async getAvatarsByUids(uids) {
     try {

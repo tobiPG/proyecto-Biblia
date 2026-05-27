@@ -144,6 +144,24 @@ router.put('/me/coins', authMiddleware, async (req, res) => {
   }
 });
 
+// Obtener avatares por lista de UIDs (para enriquecer datos de Firebase)
+router.post('/avatars', async (req, res) => {
+  try {
+    const { uids } = req.body;
+    if (!Array.isArray(uids) || uids.length === 0) return res.json([]);
+    const users = await User.find({ uid: { $in: uids.slice(0, 100) } })
+      .select('uid avatar avatarColor photoURL');
+    res.json(users.map(u => ({
+      id: u.uid,
+      avatar: u.avatar || '',
+      avatarColor: u.avatarColor || 'indigo',
+      photoURL: (u.photoURL && u.photoURL.startsWith('http')) ? u.photoURL : null
+    })));
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Obtener tabla de clasificación
 router.get('/leaderboard', async (req, res) => {
   try {

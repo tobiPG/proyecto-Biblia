@@ -475,6 +475,19 @@ window.BackendService = {
     }
   },
 
+  // Obtener avatares por lista de UIDs
+  async getAvatarsByUids(uids) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/users/avatars`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ uids })
+      });
+      if (!response.ok) return [];
+      return await response.json();
+    } catch (e) { return []; }
+  },
+
   // Obtener lista de amigos
   async getFriendsList() {
     try {

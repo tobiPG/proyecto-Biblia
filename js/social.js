@@ -781,8 +781,19 @@ window.Social = {
         }
       }
 
-      // Cargar amigos
+      // Cargar amigos (Firebase) y enriquecer con avatares de MongoDB
       const friends = await FirebaseService.getFriendsList();
+      if (friends.length > 0 && window.BackendService?.getAvatarsByUids) {
+        const avatarData = await window.BackendService.getAvatarsByUids(friends.map(f => f.id));
+        friends.forEach(f => {
+          const av = avatarData.find(a => a.id === f.id);
+          if (av) {
+            f.avatar = av.avatar || f.avatar || '';
+            f.avatarColor = av.avatarColor || f.avatarColor || 'indigo';
+            if (av.photoURL) f.photoURL = av.photoURL;
+          }
+        });
+      }
       this.cachedFriends = friends;
 
       if (friends.length === 0) {

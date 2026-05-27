@@ -176,32 +176,17 @@
 
   let db;
 
-  let _adminPw = '';
+  const ADMIN_PASSWORD = '20053010';
 
-  async function checkPassword() {
+  function checkPassword() {
     const val = document.getElementById('pw-input').value;
-    const btn = document.querySelector('#gate button');
-    btn.textContent = 'Verificando...';
-    btn.disabled = true;
-    try {
-      const res = await fetch(`${API}/users/admin/verify`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: val })
-      });
-      if (res.ok) {
-        _adminPw = val;
-        document.getElementById('gate').style.display = 'none';
-        document.getElementById('app').style.display = 'block';
-        initFirebase();
-      } else {
-        document.getElementById('gate-error').textContent = 'Contraseña incorrecta';
-      }
-    } catch (e) {
-      document.getElementById('gate-error').textContent = 'Error de conexión con el servidor';
+    if (val === ADMIN_PASSWORD) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      initFirebase();
+    } else {
+      document.getElementById('gate-error').textContent = 'Contraseña incorrecta';
     }
-    btn.textContent = 'Entrar';
-    btn.disabled = false;
   }
 
   document.getElementById('pw-input').addEventListener('keydown', e => {
@@ -325,7 +310,7 @@
   async function adminFetch(path, method = 'GET', body = null) {
     const opts = {
       method,
-      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': _adminPw }
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': ADMIN_PASSWORD }
     };
     if (body) opts.body = JSON.stringify(body);
     const r = await fetch(`${API}${path}`, opts);

@@ -2,15 +2,18 @@
 // Manejo de UI para clasificación, amigos y retos
 
 function _renderAvatarHtml(avatarKey, avatarColor, photoURL, cssClass) {
-  if (photoURL) return `<img src="${photoURL}" alt="" class="${cssClass}-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+  const imgStyle = 'width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;';
+  if (photoURL) return `<img src="${photoURL}" alt="" style="${imgStyle}">`;
   const chars = window.AVATAR_CHARACTERS || [];
   const ch = chars.find(c => c.key === avatarKey);
   if (ch) {
     const base = window.DICEBEAR_BASE || 'https://api.dicebear.com/9.x/adventurer/svg?seed=';
-    return `<img src="${base}${ch.seed}${ch.p||''}" alt="" class="${cssClass}-img" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" loading="lazy">`;
+    return `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="${imgStyle}">`;
   }
-  const initial = (avatarKey && avatarKey.length === 1) ? avatarKey : '?';
-  return `<span class="${cssClass}-placeholder">${initial}</span>`;
+  const colors = window.AVATAR_COLORS || {};
+  const grad = (colors[avatarColor] || colors.indigo || {}).grad || 'linear-gradient(135deg,#6366f1,#8b5cf6)';
+  const initial = avatarKey ? avatarKey[0].toUpperCase() : '?';
+  return `<span class="${cssClass}-placeholder" style="background:${grad}">${initial}</span>`;
 }
 
 window.Social = {
@@ -1330,7 +1333,8 @@ window.Social = {
         myAvatarEl.style.background = '#1a1a2e';
         myAvatarEl.style.boxShadow = `0 0 0 3px ${glow}, 0 4px 20px ${glow}`;
         myAvatarEl.style.overflow = 'hidden';
-        myAvatarEl.innerHTML = `<img src="${base}${ch.seed}${ch.p||''}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+        myAvatarEl.style.padding = '0';
+        myAvatarEl.innerHTML = `<img src="${base}${ch.seed}${ch.p||''}" alt="" width="52" height="52" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
       } else {
         const displayName = profile?.displayName || localPlayer?.name || 'J';
         myAvatarEl.style.background = grad;

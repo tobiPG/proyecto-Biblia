@@ -607,6 +607,7 @@ const App = {
           this.renderHome();
           this.loadSettings();
           this.initOnboarding();
+          this._initHomeBannerAd();
           // Sync local avatar to MongoDB on every startup (fire-and-forget)
           try {
             const _p = Storage.getPlayer();
@@ -2486,15 +2487,20 @@ const App = {
     if (trophyEl) trophyEl.style.display = 'none';
 
     // Bot match: calcular resultado localmente sin socket
-    if (this.rankedMatchData?.isBot) {
-      const category = this.rankedMatchData.category;
+    const isBotMatch = this.rankedMatchData?.isBot || !!window.Ranked?._botMatchData;
+    if (isBotMatch) {
+      const category = this.rankedMatchData?.category || this._rankedCategory || 'aleatorio';
       this._rankedCategory = category;
       this.isRankedMatch = false;
       this.rankedMatchData = null;
       this.rankedMatchStartTime = null;
       this.infiniteLives = false;
       document.getElementById('ranked-opponent-bar')?.classList.add('hidden');
-      setTimeout(() => { if (window.Ranked) window.Ranked.finalizeBotMatch(score, category); }, 400);
+      console.log('[App] Bot match detectado, llamando finalizeBotMatch en 400ms. score:', score, 'category:', category);
+      setTimeout(() => {
+        if (window.Ranked) window.Ranked.finalizeBotMatch(score, category);
+        else console.error('[App] window.Ranked no disponible para finalizeBotMatch');
+      }, 400);
       return;
     }
     if (typeof SeasonSystem !== 'undefined') {
@@ -3314,8 +3320,7 @@ const App = {
   },
   startNextPhase() {
     // Mostrar anuncio cada 2 fases completadas (solo si no es premium)
-    const canShowAds = typeof Billing === 'undefined' || Billing.canShowAds();
-    if (this.currentPhase % 2 === 0 && canShowAds) {
+    if (this.currentPhase % 2 === 0 && this._canShowAds()) {
       document.getElementById('phase-overlay').classList.add('hidden');
       this.showAdOverlay(() => {
         this._doStartNextPhase();
@@ -4349,10 +4354,39 @@ const App = {
     });
   },
   // ========== ANUNCIOS ==========
+
+  _canShowAds() {
+    return typeof Billing === 'undefined' || Billing.canShowAds();
+  },
+
+  _pushAd(el) {
+    if (!el || el.dataset.adsbygoogleStatus) return;
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  },
+
+  _initHomeBannerAd() {
+    if (!this._canShowAds()) {
+      const banner = document.getElementById('home-ad-banner');
+      if (banner) banner.style.display = 'none';
+      return;
+    }
+    const ins = document.querySelector('#home-ad-banner .adsbygoogle');
+    this._pushAd(ins);
+  },
+
+  _pushResultsAd() {
+    if (!this._canShowAds()) {
+      const container = document.getElementById('results-ad-container');
+      if (container) container.style.display = 'none';
+      return;
+    }
+    const ins = document.querySelector('#results-ad-container .adsbygoogle');
+    this._pushAd(ins);
+  },
+
   showAdOverlay(onComplete) {
     // Si el usuario es premium, no mostrar anuncios
-    const canShowAds = typeof Billing === 'undefined' || Billing.canShowAds();
-    if (!canShowAds) {
+    if (!this._canShowAds()) {
       if (onComplete) onComplete();
       return;
     }
@@ -4364,12 +4398,7 @@ const App = {
     closeBtn.classList.add('hidden');
     closeBtn.disabled = true;
     // Cargar anuncio AdSense
-    try {
-      const adUnit = overlay.querySelector('.adsbygoogle');
-      if (adUnit && !adUnit.dataset.adsbygoogleStatus) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch(e) {}
+    this._pushAd(overlay.querySelector('.adsbygoogle'));
     closeBtn.setAttribute('aria-disabled', 'true');
     overlay.classList.remove('hidden');
     // Bloquear cierre con Escape o click fuera
@@ -4671,6 +4700,7 @@ const App = {
     // Render results
     this.renderResults(newBadges);
     this.showScreen('results');
+    this._pushResultsAd();
     // Confetti on good performance
     const percentage = (this.sessionCorrect / totalQ) * 100;
     if (percentage >= 80) {

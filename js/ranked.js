@@ -763,11 +763,19 @@ window.Ranked = {
 
   finalizeBotMatch(myScore, category) {
     const data = this._botMatchData;
-    if (!data) return;
     this.cancelBotSimulation();
     const botScore = (this._botCorrectCount || 0) * 10;
     const isWinner = myScore > botScore;
     const isTie = myScore === botScore;
+
+    if (!data) {
+      // _botMatchData se perdió (carrera o error previo) — mostrar resultado sin cambio de trofeos
+      if (window.App?.showRankedResult) {
+        window.App.showRankedResult({ isWinner, isTie, opponentScore: botScore, newTrophies: 0, trophyChange: 0 });
+      }
+      return;
+    }
+
     let trophyChange;
     if (isTie)         trophyChange = RANKED_CONFIG.trophiesTie;
     else if (isWinner) trophyChange = RANKED_CONFIG.trophiesWin;

@@ -2234,6 +2234,22 @@ select {
   padding: 0 var(--space-4) var(--space-4);
   min-height: 60px;
 }
+.home-ad-banner .adsbygoogle { min-height: 60px; }
+.home-ad-banner .adsbygoogle:not([data-adsbygoogle-status]) {
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.home-ad-banner .adsbygoogle:not([data-adsbygoogle-status])::after {
+  content: 'Publicidad';
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 
 /* Anuncio fin de partida (pantalla results) */
 .results-ad-container {
@@ -2243,6 +2259,22 @@ select {
   min-height: 90px;
   border-radius: var(--radius-md);
   overflow: hidden;
+}
+.results-ad-container .adsbygoogle { min-height: 90px; }
+.results-ad-container .adsbygoogle:not([data-adsbygoogle-status]) {
+  background: rgba(255,255,255,0.05);
+  border: 1px dashed rgba(255,255,255,0.15);
+  border-radius: var(--radius-md);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.results-ad-container .adsbygoogle:not([data-adsbygoogle-status])::after {
+  content: 'Publicidad';
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* Challenge result card */

@@ -2054,7 +2054,7 @@ const App = {
     document.getElementById('my-challenge-time').textContent = `${timeSpent}s`;
     
     // Nombre del oponente (creatorId es Firebase UID, usar Firebase para comparar)
-    const myUid = FirebaseService.currentUser?.uid || BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const myUid = window.FirebaseService?.currentUser?.uid || BackendService.currentUser?.uid || BackendService.currentUser?.id;
     const isCreator = this.socialChallengeData.creatorId === myUid;
     const opponentName = isCreator ? this.socialChallengeData.opponentName : this.socialChallengeData.creatorName;
     document.getElementById('opponent-name').textContent = opponentName || 'Oponente';
@@ -2072,7 +2072,8 @@ const App = {
     
     // Enviar resultado a Firebase (los retos viven en Firestore)
     try {
-      const result = await FirebaseService.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
+      if (!window.FirebaseService) throw new Error('Firebase no disponible');
+      const result = await window.FirebaseService.submitChallengeResult(challengeId, score, timeSpent, correctAnswers);
       console.log('[App] Resultado enviado:', result);
 
       if (result.success && result.completed) {
@@ -2119,10 +2120,11 @@ const App = {
       this._challengePollingInterval = null;
     }
 
-    const myUid = FirebaseService.currentUser?.uid;
+    const myUid = window.FirebaseService?.currentUser?.uid;
 
     // Listener en tiempo real — Firestore notifica en cuanto el oponente termina
-    const unsubscribe = FirebaseService.subscribeToChallenge(challengeId, (challenge) => {
+    if (!window.FirebaseService) return;
+    const unsubscribe = window.FirebaseService.subscribeToChallenge(challengeId, (challenge) => {
       if (challenge.status !== 'completed') return;
 
       unsubscribe();
@@ -2168,7 +2170,7 @@ const App = {
     myCard.classList.remove('winner', 'loser');
     opponentCard.classList.remove('winner', 'loser');
     
-    const myUid = FirebaseService.currentUser?.uid || BackendService.currentUser?.uid || BackendService.currentUser?.id;
+    const myUid = window.FirebaseService?.currentUser?.uid || BackendService.currentUser?.uid || BackendService.currentUser?.id;
     const iWon = result.winner === myUid;
     const isTie = result.winner === 'tie';
     
@@ -4638,7 +4640,7 @@ const App = {
     
     // Sincronizar puntos con Firestore para el leaderboard social
     if (window.FirebaseService?.currentUser) {
-      FirebaseService.updateStats({
+      window.FirebaseService.updateStats({
         points: this.sessionPoints,
         totalCorrect: this.sessionCorrect,
         totalGames: 1,
@@ -5178,7 +5180,7 @@ const App = {
     localStorage.removeItem('backend_user');
     // Sign out from Firebase too if available
     if (window.FirebaseService?.auth) {
-      try { await FirebaseService.auth.signOut(); } catch (e) {}
+      try { await window.FirebaseService.auth.signOut(); } catch (e) {}
     }
     location.reload();
   },
@@ -5601,7 +5603,7 @@ const App = {
 
     // Sincronizar puntos con Firestore para el leaderboard social
     if (window.FirebaseService?.currentUser) {
-      FirebaseService.updateStats({
+      window.FirebaseService.updateStats({
         points: this.challengePoints,
         totalCorrect: this.challengeCorrect,
         totalGames: 1,

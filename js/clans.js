@@ -22,17 +22,40 @@ const ClanManager = {
 
   // Load user's clan from backend
   async loadClan() {
+    // Show cached data immediately while fetching
+    const cached = this._loadCached();
+    if (cached && !this.myClan) {
+      this.myClan = cached;
+      this.renderClanHome();
+    }
     try {
       const res = await fetch(this.apiBase + '/clans/my', { headers: this.headers });
       if (!res.ok) throw new Error('Error al cargar clan');
       const data = await res.json();
       this.myClan = data.clan;
+      this._saveCache(data.clan);
       this.renderClanHome();
     } catch (err) {
       console.error('[Clans] Error loading clan:', err);
-      this.myClan = null;
-      this.renderClanHome();
+      // Only reset to null if we have nothing cached — don't destroy good data on network errors
+      if (!this.myClan) {
+        this.renderClanHome();
+      }
     }
+  },
+
+  _saveCache(clan) {
+    try {
+      if (clan) localStorage.setItem('clan_cache', JSON.stringify(clan));
+      else localStorage.removeItem('clan_cache');
+    } catch (e) {}
+  },
+
+  _loadCached() {
+    try {
+      const raw = localStorage.getItem('clan_cache');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
   },
 
   // Render clan home screen
@@ -178,6 +201,7 @@ const ClanManager = {
       if (!res.ok) throw new Error(data.error || 'Error al crear clan');
 
       this.myClan = data.clan;
+      this._saveCache(data.clan);
       App.showToast('✅ Clan creado correctamente');
       this.renderClanHome();
     } catch (err) {
@@ -252,6 +276,7 @@ const ClanManager = {
       if (!res.ok) throw new Error(data.error || 'Error al unirse al clan');
 
       this.myClan = data.clan;
+      this._saveCache(data.clan);
       App.showToast('✅ Te has unido al clan ' + data.clan.name);
       App.showScreen('clans');
       this.renderClanHome();
@@ -273,6 +298,7 @@ const ClanManager = {
       if (!res.ok) throw new Error(data.error || 'Error al salir del clan');
 
       this.myClan = null;
+      this._saveCache(null);
       App.showToast('Has salido del clan');
       this.renderClanHome();
     } catch (err) {
@@ -303,9 +329,11 @@ const ClanManager = {
         return;
       }
 
+      const rankClass = (i) => i === 0 ? 'clan-lb-rank-gold' : i === 1 ? 'clan-lb-rank-silver' : i === 2 ? 'clan-lb-rank-bronze' : '';
+      const rankLabel = (i) => i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1;
       container.innerHTML = clans.map((clan, i) => `
         <div class="clan-lb-row ${clan.tag === this.myClan?.tag ? 'my-clan' : ''}">
-          <div class="clan-lb-rank">${i + 1}</div>
+          <div class="clan-lb-rank ${rankClass(i)}">${rankLabel(i)}</div>
           <div class="clan-lb-emoji">${clan.emoji || '⛪'}</div>
           <div class="clan-lb-info">
             <div class="clan-lb-name">${clan.name}</div>

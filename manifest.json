@@ -1,7 +1,7 @@
 {
   "name": "BibliaQuiz – Aprende Jugando",
   "short_name": "BibliaQuiz",
-  "description": "Aprende la Biblia jugando con preguntas por niveles y categorías. Más de 1600 preguntas en 8 categorías.",
+  "description": "Quiz bíblico interactivo con más de 3.300 preguntas en 13 categorías. Aprende la Biblia jugando con modos competitivos, desafío diario y campaña. ¡Gratis!",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0F0E17",

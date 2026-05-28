@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /reset.html
+Disallow: /backend/
+Disallow: /register.json
+
+Sitemap: https://tobipg.github.io/proyecto-Biblia/sitemap.xml

@@ -465,43 +465,82 @@ window.Ranked = {
     return this.generateRankedQuestions(category, trophies, count, seed);
   },
 
+  // Fisher-Yates usando RNG determinista o Math.random
+  _shuffle(arr, rng) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  },
+
+  // Historial de preguntas recientes por categoría (evita repetición)
+  _getSeenIds(category) {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(`ranked_seen_${category}`) || '[]'));
+    } catch { return new Set(); }
+  },
+  _saveSeenIds(category, ids) {
+    // Guardar solo los últimos 60 para no crecer indefinidamente
+    const prev = JSON.parse(localStorage.getItem(`ranked_seen_${category}`) || '[]');
+    const merged = [...new Set([...prev, ...ids])];
+    localStorage.setItem(`ranked_seen_${category}`, JSON.stringify(merged.slice(-60)));
+  },
+
   generateRankedQuestions(category, trophies = 0, count = RANKED_CONFIG.questionsPerMatch, seed = null) {
     if (!window.QUESTIONS_DB) return [];
 
-    // Mapeo: ID de categoría ranked → nombre de categoría en questions.js
     const categoryMap = { 'eventos': 'historias' };
     const qCategory = categoryMap[category] || category;
 
     const diffDist = this.getDifficultyByTrophies(trophies);
+    const rng = seed !== null ? this._seededRng(seed) : () => Math.random();
 
-    let pool = qCategory === 'aleatorio'
+    let fullPool = qCategory === 'aleatorio'
       ? [...window.QUESTIONS_DB]
       : window.QUESTIONS_DB.filter(q => q.category === qCategory);
+
+    // Separar preguntas frescas (no vistas recientemente) de las ya vistas
+    // Solo aplica en partidas sin seed (partidas locales/bot)
+    let pool = fullPool;
+    if (seed === null) {
+      const seenIds = this._getSeenIds(qCategory === 'aleatorio' ? 'aleatorio' : category);
+      const fresh = fullPool.filter(q => !seenIds.has(q.id));
+      // Usar frescas si hay suficientes; si no, mezclar con vistas
+      pool = fresh.length >= count ? fresh : fullPool;
+    }
 
     const easy   = pool.filter(q => q.difficulty === 'facil');
     const medium = pool.filter(q => q.difficulty === 'intermedio');
     const hard   = pool.filter(q => q.difficulty === 'dificil' || q.difficulty === 'experto');
-
-    const rng = seed !== null ? this._seededRng(seed) : Math.random.bind(Math);
-    const shuffle = arr => [...arr].sort(() => rng() - 0.5);
 
     let numEasy   = Math.round(count * diffDist.easy / 100);
     let numMedium = Math.round(count * diffDist.medium / 100);
     let numHard   = count - numEasy - numMedium;
 
     let questions = [
-      ...shuffle(easy).slice(0, numEasy),
-      ...shuffle(medium).slice(0, numMedium),
-      ...shuffle(hard).slice(0, numHard)
+      ...this._shuffle(easy, rng).slice(0, numEasy),
+      ...this._shuffle(medium, rng).slice(0, numMedium),
+      ...this._shuffle(hard, rng).slice(0, numHard)
     ];
 
+    // Completar si algún nivel de dificultad tenía pocas preguntas
     if (questions.length < count) {
       const usedIds = new Set(questions.map(q => q.id));
-      const extras = shuffle(pool.filter(q => !usedIds.has(q.id))).slice(0, count - questions.length);
+      const extras = this._shuffle(pool.filter(q => !usedIds.has(q.id)), rng)
+        .slice(0, count - questions.length);
       questions = [...questions, ...extras];
     }
 
-    return shuffle(questions).slice(0, count);
+    const result = this._shuffle(questions, rng).slice(0, count);
+
+    // Guardar IDs usados en historial (solo partidas sin seed = locales/bot)
+    if (seed === null) {
+      this._saveSeenIds(qCategory === 'aleatorio' ? 'aleatorio' : category, result.map(q => q.id));
+    }
+
+    return result;
   },
 
   // ============================================

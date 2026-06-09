@@ -1133,10 +1133,12 @@ const App = {
     });
     // Ranked result buttons
     document.getElementById('btn-ranked-play-again')?.addEventListener('click', () => {
+      if (this._rankedResultTimeout) { clearTimeout(this._rankedResultTimeout); this._rankedResultTimeout = null; }
       document.getElementById('ranked-result-overlay').classList.add('hidden');
       this.openRankedScreen();
     });
     document.getElementById('btn-ranked-done')?.addEventListener('click', () => {
+      if (this._rankedResultTimeout) { clearTimeout(this._rankedResultTimeout); this._rankedResultTimeout = null; }
       document.getElementById('ranked-result-overlay').classList.add('hidden');
       this.showScreen('home');
     });
@@ -2595,8 +2597,6 @@ const App = {
     if (typeof SeasonSystem !== 'undefined') {
       SeasonSystem.updateMissionProgress('ranked', 1);
     }
-    // Partida online: enviar resultado al servidor via socket
-    window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers);
 
     // Guardar categoría para showRankedResult
     this._rankedCategory = this.rankedMatchData?.category;
@@ -2610,11 +2610,42 @@ const App = {
     this.rankedMatchStartTime = null;
     this.infiniteLives = false;
 
-    // Botones (handlers están en init() via addEventListener)
+    // Partida online: enviar resultado al servidor via socket
+    const socketSent = window.Ranked?.socket?.connected
+      ? (window.Ranked.submitResult(matchId, score, timeSpent, correctAnswers), true)
+      : false;
+
+    // Fallback: si game_over no llega en 30s (socket caído, oponente desconectado, server error)
+    const _forceResult = () => {
+      const statusEl = document.getElementById('ranked-status-message');
+      if (!statusEl || statusEl.classList.contains('hidden')) return; // ya resuelto
+      const category = this._rankedCategory || 'aleatorio';
+      const myTrophies = window.Ranked?.getLocalTrophies(category) || 0;
+      const oppScore = (window.Ranked?._botCorrectCount || 0) * 10;
+      const isWinner = score > oppScore;
+      const isTie = score === oppScore;
+      const rc = window.RANKED_CONFIG || { trophiesWin: 30, trophiesLose: 20, trophiesTie: 5 };
+      const trophyChange = isTie ? rc.trophiesTie : isWinner ? rc.trophiesWin : -rc.trophiesLose;
+      const newTrophies = Math.max(0, myTrophies + trophyChange);
+      window.Ranked?.saveLocalTrophies(category, newTrophies);
+      this.showRankedResult({ isWinner, isTie, opponentScore: oppScore, newTrophies, trophyChange });
+    };
+
+    if (!socketSent) {
+      // Socket no disponible — resolver en 800ms para dar tiempo al render del overlay
+      this._rankedResultTimeout = setTimeout(_forceResult, 800);
+    } else {
+      // Socket envió resultado — esperar máximo 30s antes de forzar
+      this._rankedResultTimeout = setTimeout(_forceResult, 30000);
+    }
   },
 
   // Llamado por socket 'game_over' — resultado calculado por el servidor
   showRankedResult(result) {
+    if (this._rankedResultTimeout) {
+      clearTimeout(this._rankedResultTimeout);
+      this._rankedResultTimeout = null;
+    }
     console.log('[App] Resultado final del servidor:', result);
     const category = this._rankedCategory || 'aleatorio';
 

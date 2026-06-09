@@ -6682,6 +6682,58 @@ select {
 .ranked-category-rank { font-size: var(--font-size-xs); font-weight: 900; }
 .ranked-cat-to-next { font-size: 10px; color: var(--text-muted); }
 
+.ranked-card-actions {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+  margin-top: var(--space-1);
+}
+.ranked-card-play-btn {
+  flex: 1;
+  padding: 7px var(--space-2);
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: var(--transition-base);
+}
+.ranked-card-play-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.ranked-card-rank-btn {
+  width: 34px;
+  padding: 7px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-base);
+  flex-shrink: 0;
+}
+.ranked-card-rank-btn:hover { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); }
+
+/* Leaderboard: separador y posición del jugador */
+.lb-separator {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  letter-spacing: 4px;
+  padding: var(--space-2) 0;
+  opacity: 0.5;
+}
+.lb-my-pos { border-style: dashed; }
+.lb-my-pos-label {
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: var(--space-2);
+}
+
 /* ---- Rank List Items (ranks overview) ---- */
 .rank-item {
   display: flex;

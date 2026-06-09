@@ -2341,11 +2341,11 @@ const App = {
     this.renderRankedCategories(myRankings);
   },
 
-  // Renderizar categoras de ranked
+  // Renderizar categorías de ranked
   renderRankedCategories(myRankings) {
     const grid = document.getElementById('ranked-categories-grid');
     if (!grid || !window.RANKED_CATEGORIES) return;
-    
+
     grid.innerHTML = window.RANKED_CATEGORIES.map(cat => {
       const ranking = myRankings[cat.id] || { trophies: 0 };
       const t = ranking.trophies;
@@ -2363,17 +2363,43 @@ const App = {
           </div>
           <span class="ranked-category-rank" style="color:${rank.color}">${rank.icon} ${rank.name}</span>
           ${toNext ? `<span class="ranked-cat-to-next">${toNext}</span>` : ''}
+          <div class="ranked-card-actions">
+            <button class="ranked-card-play-btn" data-category="${cat.id}">▶ Jugar</button>
+            <button class="ranked-card-rank-btn" data-category="${cat.id}" title="Ver ranking">📊</button>
+          </div>
         </div>
       `;
     }).join('');
-    
-    // Event listeners para cada categor�a
-    grid.querySelectorAll('.ranked-category-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const category = card.dataset.category;
-        this.startRankedSearch(category);
+
+    grid.querySelectorAll('.ranked-card-play-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        this.startRankedSearch(btn.dataset.category);
       });
     });
+    grid.querySelectorAll('.ranked-card-rank-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        this._switchToRankedLeaderboard(btn.dataset.category);
+      });
+    });
+    grid.querySelectorAll('.ranked-category-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (!e.target.closest('.ranked-card-actions')) {
+          this.startRankedSearch(card.dataset.category);
+        }
+      });
+    });
+  },
+
+  _switchToRankedLeaderboard(category) {
+    document.getElementById('tab-ranked-leaderboard').classList.add('active');
+    document.getElementById('tab-ranked-play').classList.remove('active');
+    document.getElementById('ranked-leaderboard-content').classList.remove('hidden');
+    document.getElementById('ranked-play-content').classList.add('hidden');
+    const sel = document.getElementById('leaderboard-category-select');
+    if (sel) sel.value = category;
+    this.loadRankedLeaderboard();
   },
 
   // Iniciar búsqueda de partida ranked (bots cuando no hay servidor)
@@ -2773,56 +2799,100 @@ const App = {
   // Cargar leaderboard
   async loadRankedLeaderboard() {
     if (!window.Ranked) return;
-    
-    const category = document.getElementById('leaderboard-category-select')?.value || 'personajes';
-    const allCategories = ['personajes', 'lugares', 'eventos', 'profetas', 'reyes', 'milagros', 'parabolas', 'salmos-proverbios'];
-    
-    // Obtener trofeos del usuario (backend o local)
+
+    const category = document.getElementById('leaderboard-category-select')?.value || 'general';
+    const isGeneral = category === 'general';
+    const rankedCats = (window.RANKED_CATEGORIES || []).filter(c => c.id !== 'aleatorio');
+
+    // Obtener trofeos del usuario
     let myTrophies = 0;
-    if (window.BackendService?.token) {
-      if (category === 'aleatorio') {
+    if (isGeneral) {
+      if (window.BackendService?.token) {
         const allRankings = await window.BackendService.getMyRankings();
-        for (const cat of allCategories) myTrophies += allRankings[cat]?.trophies || 0;
+        for (const cat of rankedCats) myTrophies += allRankings[cat.id]?.trophies || 0;
       } else {
+        for (const cat of rankedCats) myTrophies += window.Ranked.getLocalTrophies(cat.id);
+      }
+    } else {
+      if (window.BackendService?.token) {
         const catRanking = await window.BackendService.getCategoryRanking(category);
         myTrophies = catRanking?.trophies || 0;
+      } else {
+        myTrophies = window.Ranked.getLocalTrophies(category);
       }
-    } else if (window.Ranked) {
-      myTrophies = window.Ranked.getLocalTrophies(category);
     }
-    
-    // Mostrar el rango actual en el t�tulo
+
+    // Mostrar rango actual en el título
     const myRank = window.Ranked.getRankByTrophies(myTrophies);
     const rankTitleEl = document.getElementById('leaderboard-current-rank');
-    if (rankTitleEl) {
-      rankTitleEl.textContent = `${myRank.icon} ${myRank.name}`;
+    if (rankTitleEl) rankTitleEl.textContent = `${myRank.icon} ${myRank.name}`;
+
+    // Obtener leaderboard
+    let leaderboard;
+    if (isGeneral) {
+      // Construir leaderboard general con total de trofeos
+      const spread = Math.max(myTrophies * 0.5, 300);
+      const bots = (window.Ranked.BOT_NAMES || []).slice(0, 19).map(n => ({
+        name: n.replace(/_/g, ' '),
+        trophies: Math.max(0, myTrophies + Math.floor((Math.random() - 0.5) * spread)),
+        wins: Math.floor(Math.random() * 40) + 2,
+        losses: Math.floor(Math.random() * 20) + 1,
+        gamesPlayed: 1
+      }));
+      bots.push({ name: '★ Tú', trophies: myTrophies, userId: 'local', wins: 0, losses: 0, gamesPlayed: 0 });
+      leaderboard = bots.sort((a, b) => b.trophies - a.trophies);
+    } else {
+      leaderboard = await window.Ranked.getLeaderboard(category);
     }
-    
-    const leaderboard = await window.Ranked.getLeaderboard(category);
-    
+
     const list = document.getElementById('ranked-leaderboard-list');
     if (!list) return;
 
+    if (leaderboard.length === 0) {
+      list.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:20px">Juega partidas para ver la clasificación</p>';
+      return;
+    }
+
     const medals = ['🥇', '🥈', '🥉'];
+    const myUid = window.FirebaseService?.currentUser?.uid;
+    const myBackendName = window.BackendService?.userProfile?.displayName || window.BackendService?.userProfile?.username;
+    const myLocalName = Storage.getPlayer()?.name || 'Tú';
+
+    const isPlayerEntry = p =>
+      p.userId === 'local' ||
+      p.name === '★ Tú' ||
+      (myUid && p.userId === myUid) ||
+      (myBackendName && (p.name === myBackendName || p.name === `★ ${myBackendName}`));
+
     list.innerHTML = leaderboard.map((player, index) => {
       const position = index + 1;
       const posClass = position === 1 ? 'gold' : position === 2 ? 'silver' : position === 3 ? 'bronze' : '';
-      const isMe = player.userId === 'local' || player.name === '★ Tú';
-      const rank = window.Ranked ? window.Ranked.getRankByTrophies(player.trophies) : { icon: '🥉', color: '#CD7F32' };
-      const posLabel = medals[index] || `${position}`;
-      const winRate = player.gamesPlayed > 0 ? Math.round((player.wins / player.gamesPlayed) * 100) : 0;
+      const isMe = isPlayerEntry(player);
+      const rank = window.Ranked.getRankByTrophies(player.trophies);
+      const posLabel = medals[index] || `#${position}`;
       return `
         <div class="leaderboard-item ${isMe ? 'me' : ''} ${posClass}">
           <span class="leaderboard-position">${posLabel}</span>
-          <span class="leaderboard-name">${isMe ? `<strong>${player.name}</strong>` : player.name}</span>
+          <span class="leaderboard-name">${isMe ? `<strong>${player.name}</strong>` : escapeHTML(player.name)}</span>
           <div class="leaderboard-trophies">${ICON_SVG.trophy} ${player.trophies}</div>
           <span class="leaderboard-stats" style="color:${rank.color}">${rank.icon}</span>
         </div>
       `;
     }).join('');
 
-    if (leaderboard.length === 0) {
-      list.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:20px">Juega partidas para ver la clasificación</p>';
+    // Si el usuario no aparece en la lista, mostrar su posición estimada al final
+    const userInList = leaderboard.some(isPlayerEntry);
+    if (!userInList) {
+      const posEstimate = leaderboard.filter(p => p.trophies > myTrophies).length + 1;
+      list.innerHTML += `
+        <div class="lb-separator">· · ·</div>
+        <div class="leaderboard-item me lb-my-pos">
+          <span class="leaderboard-position">#${posEstimate}+</span>
+          <span class="leaderboard-name"><strong>★ ${escapeHTML(myLocalName)}</strong> <span class="lb-my-pos-label">Tu posición</span></span>
+          <div class="leaderboard-trophies">${ICON_SVG.trophy} ${myTrophies}</div>
+          <span class="leaderboard-stats" style="color:${myRank.color}">${myRank.icon}</span>
+        </div>
+      `;
     }
   },
   

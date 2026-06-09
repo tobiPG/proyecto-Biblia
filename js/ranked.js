@@ -788,10 +788,10 @@ window.Ranked = {
     window.FirebaseService?.updateRankedTrophies?.(category, newTrophies);
     // Misiones de temporada para partidas con bot
     if (typeof SeasonSystem !== 'undefined') {
-      SeasonSystem.addBattlePassXP(75);
-      SeasonSystem.updateMissionProgress('ranked', 1);
-      if (isWinner) SeasonSystem.updateMissionProgress('ranked_wins', 1);
-      SeasonSystem.updateMissionProgress('trophies_max', newTrophies);
+      SeasonSystem.addBattlePassXP?.(75);
+      SeasonSystem.updateMissionProgress?.('ranked', 1);
+      if (isWinner) SeasonSystem.updateMissionProgress?.('ranked_wins', 1);
+      SeasonSystem.updateMissionProgress?.('trophies_max', newTrophies);
     }
     // Sincronizar trofeos al backend
     if (window.BackendService?.token) {

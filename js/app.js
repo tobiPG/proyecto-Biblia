@@ -621,6 +621,18 @@ const App = {
       this.initOfflineDetection();
       this.initKeyboard();
       this.initDailyStreak();
+      this._lastVisibleDate = new Date().toDateString();
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          const today = new Date().toDateString();
+          if (today !== this._lastVisibleDate) {
+            this._lastVisibleDate = today;
+            this.initDailyStreak();
+            this.renderDailyChallengeCard();
+            this._refreshDailyContent();
+          }
+        }
+      });
       this.renderDailyChallengeCard();
       this.scheduleMidnightRefresh();
       this.initNotifications();
@@ -1640,11 +1652,60 @@ const App = {
   },
   // === PANTALLA VERS�CULOS ===
   versesFilter: 'all',
+  _getDayVerse() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const dayOfYear = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+    return { verse: DAILY_VERSES[dayOfYear % DAILY_VERSES.length], now };
+  },
   renderVerses() {
     const container = document.getElementById('verses-list');
-    const emptyState = document.getElementById('verses-empty');
     if (!container) return;
-    
+
+    if (typeof DAILY_VERSES !== 'undefined' && DAILY_VERSES.length > 0) {
+      const { verse: todayVerse, now } = this._getDayVerse();
+      const dailyText = document.getElementById('verses-daily-text');
+      const dailyRef = document.getElementById('verses-daily-ref');
+      const dailyDate = document.getElementById('verses-daily-date');
+      if (dailyText && todayVerse) {
+        dailyText.textContent = `"${todayVerse.text}"`;
+        dailyRef.textContent = todayVerse.ref;
+        if (dailyDate) {
+          dailyDate.textContent = now.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+        }
+        const favBtn = document.getElementById('btn-verses-daily-fav');
+        if (favBtn) {
+          const updateFavBtn = () => {
+            const isFav = Storage.isFavoriteVerse(todayVerse.text);
+            favBtn.textContent = isFav ? '\u{2764}\u{FE0F}' : '\u{1F90D}';
+            favBtn.classList.toggle('active', isFav);
+          };
+          updateFavBtn();
+          favBtn.onclick = () => {
+            if (Storage.isFavoriteVerse(todayVerse.text)) {
+              Storage.removeFavoriteVerse(todayVerse.text);
+              this.showToast('\u{1F494} Eliminado de favoritos');
+            } else {
+              Storage.addFavoriteVerse(todayVerse);
+              this.showToast('\u{2764}\u{FE0F} Agregado a favoritos');
+            }
+            updateFavBtn();
+          };
+        }
+        const shareBtn = document.getElementById('btn-verses-daily-share');
+        if (shareBtn) {
+          shareBtn.onclick = () => {
+            const shareText = `"${todayVerse.text}" — ${todayVerse.ref}\n\n📖 BibliaQuiz`;
+            if (navigator.share) {
+              navigator.share({ text: shareText });
+            } else {
+              navigator.clipboard?.writeText(shareText).then(() => this.showToast('\u{1F4CB} Copiado al portapapeles'));
+            }
+          };
+        }
+      }
+    }
+
     // Bind filter buttons
     document.querySelectorAll('.verses-filter-btn').forEach(btn => {
       btn.onclick = () => {
@@ -1654,7 +1715,7 @@ const App = {
         this.renderVersesList();
       };
     });
-    
+
     this.renderVersesList();
   },
   renderVersesList() {
@@ -6666,8 +6727,13 @@ const App = {
     this._midnightRefreshTimeout = setTimeout(() => {
       this.initDailyStreak();
       this.renderDailyChallengeCard();
+      this._refreshDailyContent();
       this.scheduleMidnightRefresh();
     }, ms);
+  },
+  _refreshDailyContent() {
+    if (this.currentScreen === 'home') this.showDailyVerse();
+    if (this.currentScreen === 'verses') this.renderVerses();
   },
   // ============================================================
   // SPEED STATISTICS

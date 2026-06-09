@@ -4855,15 +4855,69 @@ select {
    ============================================================ */
 .verses-container { padding-bottom: var(--space-8); }
 
-.verses-intro {
-  text-align: center;
+.verses-daily-section {
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: var(--radius-xl);
   padding: var(--space-5);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.5s cubic-bezier(0,0,0.2,1);
+}
+.verses-daily-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.6), transparent);
+}
+.verses-daily-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+.verses-daily-badge {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-weight: 800;
+}
+.verses-daily-date {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.verses-daily-text {
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  color: var(--text-primary);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+}
+.verses-daily-ref {
+  font-size: var(--font-size-sm);
+  color: var(--accent);
+  font-weight: 800;
+  margin-bottom: var(--space-3);
+}
+.verses-daily-actions {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: flex-end;
 }
 
-.verses-intro-icon { font-size: 3rem; margin-bottom: var(--space-3); }
-.verses-intro h3 { font-size: var(--font-size-xl); font-weight: 800; color: var(--text-primary); margin-bottom: var(--space-2); }
-.verses-intro p { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.verses-intro {
+  text-align: center;
+  padding: var(--space-2) var(--space-5) var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.verses-intro h3 { font-size: var(--font-size-lg); font-weight: 800; color: var(--text-secondary); margin-bottom: var(--space-1); }
+.verses-intro p { font-size: var(--font-size-sm); color: var(--text-muted); }
 
 .verses-filters {
   display: flex;

@@ -1676,12 +1676,24 @@
       <h2 class="section-title"><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="st-vrs" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fde68a"/><stop offset="1" stop-color="#92400e"/></linearGradient></defs><rect width="28" height="28" rx="7" fill="url(#st-vrs)"/><line x1="14" y1="5" x2="14" y2="23" stroke="white" stroke-width="4.5" stroke-linecap="round"/><line x1="8" y1="12" x2="20" y2="12" stroke="white" stroke-width="4.5" stroke-linecap="round"/></svg> Versículos</h2>
     </div>
     <div class="verses-container">
+      <div id="verses-daily-section" class="verses-daily-section">
+        <div class="verses-daily-header">
+          <span class="verses-daily-badge">📅 Versículo de hoy</span>
+          <span id="verses-daily-date" class="verses-daily-date"></span>
+        </div>
+        <p id="verses-daily-text" class="verses-daily-text"></p>
+        <p id="verses-daily-ref" class="verses-daily-ref"></p>
+        <div class="verses-daily-actions">
+          <button id="btn-verses-daily-fav" class="verse-item-btn" aria-label="Guardar en favoritos">🤍</button>
+          <button id="btn-verses-daily-share" class="verse-item-btn" aria-label="Compartir versículo">📤</button>
+        </div>
+      </div>
+
       <div class="verses-intro">
-        <div class="verses-intro-icon">📖</div>
-        <h3>Versículos para Memorizar</h3>
+        <h3>Todos los versículos</h3>
         <p>Aprende y guarda versículos bíblicos en tu corazón</p>
       </div>
-      
+
       <div class="verses-filters">
         <button class="verses-filter-btn active" data-filter="all">Todos</button>
         <button class="verses-filter-btn" data-filter="favorites">⭐ Favoritos</button>
@@ -2358,7 +2370,7 @@
 <script src="js/clans.js?v=3" defer></script>
 <script src="js/tournament.js?v=3" defer></script>
 <script src="js/sounds.js?v=1" defer></script>
-<script src="js/app.js?v=127" defer></script>
+<script src="js/app.js?v=128" defer></script>
 
 <script>
   if ('serviceWorker' in navigator) {

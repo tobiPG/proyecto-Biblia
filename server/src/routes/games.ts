@@ -2,7 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import { CATEGORY_IDS, DIFFICULTY_IDS } from "../data/catalog";
 import { currentUser, requireAuth } from "../middleware/auth";
-import { answerQuestion, getGame, startDailyGame, startSoloGame } from "../services/games";
+import { answerQuestion, getGame, startDailyGame, startQuestion, startSoloGame } from "../services/games";
 import type { Difficulty } from "../types";
 import { asyncHandler, parseBody } from "../utils/http";
 
@@ -35,6 +35,15 @@ gamesRouter.get(
   "/games/:id",
   asyncHandler((req, res) => {
     res.json({ game: getGame(req.params.id, currentUser(req).id) });
+  })
+);
+
+gamesRouter.post(
+  "/games/:id/questions/:index/start",
+  asyncHandler((req, res) => {
+    const index = Number(req.params.index);
+    if (!Number.isInteger(index) || index < 0) return res.status(400).json({ error: "Índice inválido" });
+    res.json({ game: startQuestion(currentUser(req).id, req.params.id, index) });
   })
 );
 

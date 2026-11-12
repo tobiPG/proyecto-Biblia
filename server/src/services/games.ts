@@ -55,9 +55,12 @@ export interface PublicGame {
   streak: number;
   status: GameRow["status"];
   secondsPerQuestion: number;
-  /** Segundos que le quedan a la pregunta actual (útil al reanudar). */
+  /** true si el reloj de la pregunta actual ya corre (al reanudar). */
+  questionStarted: boolean;
+  /** Segundos que le quedan a la pregunta actual. */
   secondsLeft: number;
-  questions: PublicQuestion[];
+  /** Solo la pregunta actual: las siguientes no se revelan hasta abrirlas. */
+  question: PublicQuestion | null;
 }
 
 export function pointsFor(difficulty: Difficulty, timeMs: number): number {
@@ -69,7 +72,9 @@ export function pointsFor(difficulty: Difficulty, timeMs: number): number {
 
 function toPublicGame(g: GameRow): PublicGame {
   const stored = JSON.parse(g.questions) as StoredQuestion[];
-  const elapsed = Date.now() - g.question_started_at;
+  const started = g.question_started_at > 0;
+  const elapsed = started ? Date.now() - g.question_started_at : 0;
+  const current = g.status === "active" ? stored[g.current_index] : undefined;
   return {
     id: g.id,
     mode: g.mode,
@@ -83,8 +88,9 @@ function toPublicGame(g: GameRow): PublicGame {
     streak: g.current_streak,
     status: g.status,
     secondsPerQuestion: QUESTION_SECONDS,
+    questionStarted: started,
     secondsLeft: Math.max(0, Math.ceil((QUESTION_SECONDS * 1000 - elapsed) / 1000)),
-    questions: stored.map((s) => toPublic(getQuestion(s.id)!, s.order)),
+    question: current ? toPublic(getQuestion(current.id)!, current.order) : null,
   };
 }
 
@@ -135,7 +141,7 @@ function insertGame(params: {
     params.dailyDate ?? null,
     JSON.stringify(stored),
     stored.length,
-    Date.now()
+    0 // el reloj arranca cuando el jugador abre la pregunta
   );
   return db.prepare("SELECT * FROM games WHERE id = ?").get(id) as GameRow;
 }
@@ -206,6 +212,20 @@ export function startChallengeGame(
   );
 }
 
+/** Abre la pregunta actual y arranca su reloj (si ya estaba abierta, lo mantiene). */
+export function startQuestion(userId: number, gameId: string, questionIndex: number): PublicGame {
+  const g = loadGame(gameId, userId);
+  if (g.status !== "active") throw new HttpError(409, "La partida ya terminó");
+  if (questionIndex !== g.current_index) throw new HttpError(409, "Esa no es la pregunta actual");
+  if (g.question_started_at === 0) {
+    db.prepare("UPDATE games SET question_started_at = ? WHERE id = ? AND question_started_at = 0").run(
+      Date.now(),
+      gameId
+    );
+  }
+  return toPublicGame(loadGame(gameId, userId));
+}
+
 export interface AnswerResult {
   questionIndex: number;
   correct: boolean;
@@ -265,6 +285,7 @@ export function answerQuestion(userId: number, gameId: string, questionIndex: nu
 
     if (g.status !== "active") throw new HttpError(409, "La partida ya terminó");
     if (questionIndex !== g.current_index) throw new HttpError(409, "Esa no es la pregunta actual");
+    if (g.question_started_at === 0) throw new HttpError(409, "Abre la pregunta antes de responder");
 
     const { id, order } = stored[questionIndex];
     const q = getQuestion(id)!;
@@ -272,8 +293,7 @@ export function answerQuestion(userId: number, gameId: string, questionIndex: nu
       throw new HttpError(400, "Opción inválida");
     }
 
-    const now = Date.now();
-    const timeMs = Math.max(0, now - g.question_started_at);
+    const timeMs = Math.max(0, Date.now() - g.question_started_at);
     const timedOut = chosen === -1 || timeMs > QUESTION_SECONDS * 1000 + LATENCY_GRACE_MS;
     const effectiveChosen = timedOut ? -1 : chosen;
     const correct = !timedOut && order[chosen] === q.correct;
@@ -292,7 +312,7 @@ export function answerQuestion(userId: number, gameId: string, questionIndex: nu
          current_streak = ?, best_streak = MAX(best_streak, ?), total_time_ms = total_time_ms + ?,
          question_started_at = ?
        WHERE id = ?`
-    ).run(questionIndex + 1, points, correct ? 1 : 0, streak, streak, countedTime, now, gameId);
+    ).run(questionIndex + 1, points, correct ? 1 : 0, streak, streak, countedTime, 0, gameId);
 
     const result: AnswerResult = {
       questionIndex,

@@ -89,6 +89,7 @@ export function toPublic(q: Question, order: number[]): PublicQuestion {
     difficulty: q.difficulty,
     question: q.question,
     options: order.map((i) => q.options[i]),
+    ...(q.image ? { image: `/${q.image.replace(/^\/+/, "")}` } : {}),
   };
 }
 

@@ -46,17 +46,33 @@ async function registered(name: string) {
   return { client: c, user: r.body.user };
 }
 
-/** Responde una partida completa usando el servidor (acierta las preguntas pares). */
-async function playThrough(c: Client, game: { id: string; total: number; questions: { id: number; options: string[] }[] }) {
+type PubGame = { id: string; total: number; question: { id: number; options: string[] } | null };
+
+/** Abre la pregunta i y devuelve el índice (en el orden mostrado) de la opción correcta. */
+async function open(c: Client, gameId: string, i: number) {
+  const r = await c.call("POST", `/games/${gameId}/questions/${i}/start`);
+  assert.equal(r.status, 200, JSON.stringify(r.body));
+  const shown = r.body.game.question as { id: number; options: string[] };
+  const q = getQuestion(shown.id)!;
+  return { shown, right: shown.options.indexOf(q.options[q.correct]) };
+}
+
+/** Ids de preguntas guardadas para una partida (para comparar partidas). */
+const questionIds = (gameId: string) =>
+  (JSON.parse((db.prepare("SELECT questions FROM games WHERE id = ?").get(gameId) as { questions: string }).questions) as {
+    id: number;
+  }[]).map((q) => q.id);
+
+/** Juega una partida completa: acierta las pares (o ninguna si allWrong). */
+async function playThrough(c: Client, game: PubGame, allWrong = false) {
   let last;
   for (let i = 0; i < game.total; i++) {
-    const q = getQuestion(game.questions[i].id)!;
-    const correctText = q.options[q.correct];
-    const right = game.questions[i].options.indexOf(correctText);
-    const chosen = i % 2 === 0 ? right : (right + 1) % game.questions[i].options.length;
+    const { shown, right } = await open(c, game.id, i);
+    const hit = !allWrong && i % 2 === 0;
+    const chosen = hit ? right : (right + 1) % shown.options.length;
     last = await c.call("POST", `/games/${game.id}/answers`, { questionIndex: i, chosen });
     assert.equal(last.status, 200, JSON.stringify(last.body));
-    assert.equal(last.body.correct, i % 2 === 0);
+    assert.equal(last.body.correct, hit);
   }
   return last!.body;
 }
@@ -116,10 +132,12 @@ describe("partidas", () => {
     assert.equal(start.status, 201);
     const game = start.body.game;
     assert.equal(game.total, 10);
-    assert.equal("correct" in game.questions[0], false, "no debe enviar la respuesta correcta");
+    assert.equal("correct" in game.question, false, "no debe enviar la respuesta correcta");
+    assert.equal(game.questionStarted, false);
 
-    // No se puede saltar preguntas
-    assert.equal((await client.call("POST", `/games/${game.id}/answers`, { questionIndex: 3, chosen: 0 })).status, 409);
+    // No se puede responder sin abrir la pregunta ni saltar preguntas
+    assert.equal((await client.call("POST", `/games/${game.id}/answers`, { questionIndex: 0, chosen: 0 })).status, 409);
+    assert.equal((await client.call("POST", `/games/${game.id}/questions/3/start`)).status, 409);
 
     const last = await playThrough(client, game);
     assert.equal(last.finished, true);
@@ -148,9 +166,8 @@ describe("partidas", () => {
   it("cuenta como fallo una respuesta fuera de tiempo", async () => {
     const { client } = await registered("lento");
     const g = (await client.call("POST", "/games", { mode: "solo", category: "libros", difficulty: "facil" })).body.game;
+    const { right } = await open(client, g.id, 0);
     db.prepare("UPDATE games SET question_started_at = ? WHERE id = ?").run(Date.now() - 60_000, g.id);
-    const q = getQuestion(g.questions[0].id)!;
-    const right = g.questions[0].options.indexOf(q.options[q.correct]);
     const r = await client.call("POST", `/games/${g.id}/answers`, { questionIndex: 0, chosen: right });
     assert.equal(r.body.correct, false);
     assert.equal(r.body.timedOut, true);
@@ -161,10 +178,7 @@ describe("partidas", () => {
     const b = await registered("diario2");
     const ga = (await a.client.call("POST", "/games", { mode: "daily" })).body.game;
     const gb = (await b.client.call("POST", "/games", { mode: "daily" })).body.game;
-    assert.deepEqual(
-      ga.questions.map((q: { id: number }) => q.id),
-      gb.questions.map((q: { id: number }) => q.id)
-    );
+    assert.deepEqual(questionIds(ga.id), questionIds(gb.id));
     await playThrough(a.client, ga);
     assert.equal((await a.client.call("POST", "/games", { mode: "daily" })).status, 409);
     const me = await a.client.call("GET", "/me");
@@ -205,17 +219,8 @@ describe("amigos y retos 1 vs 1", () => {
 
     assert.equal((await b.client.call("POST", `/challenges/${id}/accept`)).status, 200);
     const gb = (await b.client.call("POST", `/challenges/${id}/play`)).body.game;
-    assert.deepEqual(
-      ga.questions.map((q: { id: number }) => q.id),
-      gb.questions.map((q: { id: number }) => q.id),
-      "ambos juegan las mismas preguntas"
-    );
-    // B falla todas
-    for (let i = 0; i < gb.total; i++) {
-      const q = getQuestion(gb.questions[i].id)!;
-      const right = gb.questions[i].options.indexOf(q.options[q.correct]);
-      await b.client.call("POST", `/games/${gb.id}/answers`, { questionIndex: i, chosen: (right + 1) % gb.questions[i].options.length });
-    }
+    assert.deepEqual(questionIds(ga.id), questionIds(gb.id), "ambos juegan las mismas preguntas");
+    await playThrough(b.client, gb, true); // B falla todas
 
     const list = await a.client.call("GET", "/challenges");
     const ch = list.body.challenges.find((x: { id: number }) => x.id === id);

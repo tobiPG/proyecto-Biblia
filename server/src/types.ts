@@ -24,6 +24,8 @@ export interface Question {
   correct: number;
   reference: string;
   explanation: string;
+  /** Imagen opcional (mapas), ruta relativa a web/public. */
+  image?: string;
 }
 
 export interface Verse {
@@ -38,6 +40,7 @@ export interface PublicQuestion {
   difficulty: Difficulty;
   question: string;
   options: string[];
+  image?: string;
 }
 
 export type GameMode = "solo" | "daily" | "challenge";

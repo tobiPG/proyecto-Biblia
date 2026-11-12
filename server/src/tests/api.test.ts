@@ -6,6 +6,9 @@ import type { AddressInfo } from "node:net";
 import { after, before, describe, it } from "node:test";
 import { createApp } from "../app";
 import { db } from "../db";
+import { CAMPAIGN_WORLDS } from "../data/campaign";
+import { CHRONOLOGY } from "../data/chronology";
+import { chapterPool } from "../services/campaign";
 import { getQuestion } from "../services/questionBank";
 
 let base = "";
@@ -63,12 +66,13 @@ const questionIds = (gameId: string) =>
     id: number;
   }[]).map((q) => q.id);
 
-/** Juega una partida completa: acierta las pares (o ninguna si allWrong). */
-async function playThrough(c: Client, game: PubGame, allWrong = false) {
+/** Juega una partida completa: acierta las pares; "wrong" falla todas y "right" acierta todas. */
+async function playThrough(c: Client, game: PubGame, mode: boolean | "right" | "wrong" = false) {
+  const allWrong = mode === true || mode === "wrong";
   let last;
   for (let i = 0; i < game.total; i++) {
     const { shown, right } = await open(c, game.id, i);
-    const hit = !allWrong && i % 2 === 0;
+    const hit = mode === "right" || (!allWrong && i % 2 === 0);
     const chosen = hit ? right : (right + 1) % shown.options.length;
     last = await c.call("POST", `/games/${game.id}/answers`, { questionIndex: i, chosen });
     assert.equal(last.status, 200, JSON.stringify(last.body));
@@ -231,23 +235,64 @@ describe("amigos y retos 1 vs 1", () => {
   });
 });
 
-describe("clanes", () => {
-  it("crear, unirse y salir", async () => {
-    const a = await registered("lider");
-    const b = await registered("miembro");
-    const created = await a.client.call("POST", "/clans", { name: "Los Fieles", description: "Hola" });
-    assert.equal(created.status, 201);
-    const tag = created.body.clan.tag;
-    assert.equal((await b.client.call("POST", "/clans/join", { tag })).status, 200);
-    assert.equal((await b.client.call("POST", "/clans/join", { tag })).status, 409);
-    const mine = await b.client.call("GET", "/clans/mine");
-    assert.equal(mine.body.clan.memberCount, 2);
-    assert.equal((await a.client.call("POST", "/clans/leave")).status, 204);
-    const after = await b.client.call("GET", "/clans/mine");
-    assert.equal(after.body.clan.leaderId, b.user.id);
+describe("campaña", () => {
+  it("todos los capítulos tienen al menos 10 preguntas", () => {
+    for (const w of CAMPAIGN_WORLDS) {
+      for (const c of w.chapters) assert.ok(chapterPool(w, c).length >= 10, `${c.id} sin preguntas suficientes`);
+    }
+  });
+
+  it("bloqueos, estrellas y desbloqueo del siguiente capítulo", async () => {
+    const { client } = await registered("campana");
+    const before = (await client.call("GET", "/campaign")).body;
+    assert.equal(before.worlds[0].chapters[0].unlocked, true);
+    assert.equal(before.worlds[0].chapters[1].unlocked, false);
+    assert.equal(before.worlds[1].unlocked, false);
+    assert.equal((await client.call("POST", "/campaign/play", { chapterId: "w1c2" })).status, 403);
+
+    const g = (await client.call("POST", "/campaign/play", { chapterId: "w1c1" })).body.game;
+    assert.equal(g.chapter.id, "w1c1");
+    const last = await playThrough(client, g, "right");
+    assert.equal(last.summary.stars, 3);
+
+    const after = (await client.call("GET", "/campaign")).body;
+    assert.equal(after.totalStars, 3);
+    assert.equal(after.worlds[0].chapters[0].stars, 3);
+    assert.equal(after.worlds[0].chapters[1].unlocked, true);
+
+    // Un peor resultado no baja las estrellas
+    const g2 = (await client.call("POST", "/campaign/play", { chapterId: "w1c1" })).body.game;
+    await playThrough(client, g2, "wrong");
+    assert.equal((await client.call("GET", "/campaign")).body.worlds[0].chapters[0].stars, 3);
+  });
+});
+
+describe("cronología", () => {
+  it("corrige el orden en el servidor y suma puntos", async () => {
+    const { client } = await registered("cronista");
+    const start = await client.call("POST", "/chronology");
+    assert.equal(start.status, 201);
+    let game = start.body.game;
+    assert.equal(game.total, 10);
+
+    // Orden incompleto: error
     assert.equal(
-      (await a.client.call("POST", "/clans", { name: "<script>", description: "" })).status,
+      (await client.call("POST", `/chronology/${game.id}/answers`, { index: 0, order: [0, 1] })).status,
       400
     );
+
+    let last;
+    for (let i = 0; i < game.total; i++) {
+      const shown: string[] = game.puzzle.items;
+      const puzzle = CHRONOLOGY.find((p) => p.question === game.puzzle.question)!;
+      const order = puzzle.items.map((item) => shown.indexOf(item)); // orden correcto
+      last = (await client.call("POST", `/chronology/${game.id}/answers`, { index: i, order })).body;
+      assert.equal(last.perfect, true);
+      if (!last.finished) game = (await client.call("GET", `/chronology/${game.id}`)).body.game;
+    }
+    assert.equal(last.summary.score, 200);
+    assert.ok(last.summary.newBadges.some((b: { id: string }) => b.id === "chrono_5"));
+    const stats = (await client.call("GET", "/me/stats")).body;
+    assert.equal(stats.stats.totalPoints, 200);
   });
 });

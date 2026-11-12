@@ -109,18 +109,7 @@ meRouter.delete("/me/favorite-verses/:ref", (req, res) => {
 /** Borra la cuenta y todos sus datos (cascada en SQLite). */
 meRouter.delete("/me", (req, res) => {
   const userId = currentUser(req).id;
-  db.transaction(() => {
-    // Si lidera un clan, pasa el liderazgo o lo elimina.
-    const led = db.prepare("SELECT id FROM clans WHERE leader_id = ?").all(userId) as { id: number }[];
-    for (const c of led) {
-      const next = db
-        .prepare("SELECT user_id FROM clan_members WHERE clan_id = ? AND user_id <> ? ORDER BY joined_at LIMIT 1")
-        .get(c.id, userId) as { user_id: number } | undefined;
-      if (next) db.prepare("UPDATE clans SET leader_id = ? WHERE id = ?").run(next.user_id, c.id);
-      else db.prepare("DELETE FROM clans WHERE id = ?").run(c.id);
-    }
-    db.prepare("DELETE FROM users WHERE id = ?").run(userId);
-  })();
+  db.prepare("DELETE FROM users WHERE id = ?").run(userId);
   res.clearCookie(SESSION_COOKIE, { path: "/" });
   res.status(204).end();
 });

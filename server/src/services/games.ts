@@ -10,6 +10,8 @@ import { db } from "../db";
 import type { Difficulty, GameMode, PublicQuestion } from "../types";
 import { HttpError } from "../utils/http";
 import { seededRandInt, todayKey } from "../utils/random";
+import { CAMPAIGN_CHAPTERS } from "../data/campaign";
+import { recordChapterResult, resolvePlayableChapter } from "./campaign";
 import { resolveChallengeIfDone } from "./challenges";
 import { getQuestion, pickQuestions, poolFor, randomOptionOrder, toPublic } from "./questionBank";
 import { awardBadges, getStatsRow, levelFor } from "./stats";
@@ -30,6 +32,7 @@ interface GameRow {
   difficulty: string;
   challenge_id: number | null;
   daily_date: string | null;
+  chapter_id: string | null;
   questions: string;
   total: number;
   current_index: number;
@@ -48,6 +51,8 @@ export interface PublicGame {
   category: string;
   difficulty: string;
   challengeId: number | null;
+  /** Capítulo de campaña, si aplica. */
+  chapter: { id: string; name: string; worldName: string } | null;
   total: number;
   currentIndex: number;
   score: number;
@@ -81,6 +86,7 @@ function toPublicGame(g: GameRow): PublicGame {
     category: g.category,
     difficulty: g.difficulty,
     challengeId: g.challenge_id,
+    chapter: chapterInfo(g.chapter_id),
     total: g.total,
     currentIndex: g.current_index,
     score: g.score,
@@ -92,6 +98,11 @@ function toPublicGame(g: GameRow): PublicGame {
     secondsLeft: Math.max(0, Math.ceil((QUESTION_SECONDS * 1000 - elapsed) / 1000)),
     question: current ? toPublic(getQuestion(current.id)!, current.order) : null,
   };
+}
+
+function chapterInfo(chapterId: string | null) {
+  const entry = chapterId ? CAMPAIGN_CHAPTERS.get(chapterId) : undefined;
+  return entry ? { id: entry.chapter.id, name: entry.chapter.name, worldName: entry.world.name } : null;
 }
 
 function loadGame(gameId: string, userId: number): GameRow {
@@ -119,6 +130,7 @@ function insertGame(params: {
   questionIds: number[];
   challengeId?: number;
   dailyDate?: string;
+  chapterId?: string;
 }): GameRow {
   const stored: StoredQuestion[] = params.questionIds.map((id) => {
     const q = getQuestion(id);
@@ -129,8 +141,9 @@ function insertGame(params: {
 
   const id = crypto.randomUUID();
   db.prepare(
-    `INSERT INTO games (id, user_id, mode, category, difficulty, challenge_id, daily_date, questions, total, question_started_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    `INSERT INTO games (id, user_id, mode, category, difficulty, challenge_id, daily_date, chapter_id, questions, total,
+       question_started_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   ).run(
     id,
     params.userId,
@@ -139,6 +152,7 @@ function insertGame(params: {
     params.difficulty,
     params.challengeId ?? null,
     params.dailyDate ?? null,
+    params.chapterId ?? null,
     JSON.stringify(stored),
     stored.length,
     0 // el reloj arranca cuando el jugador abre la pregunta
@@ -146,9 +160,9 @@ function insertGame(params: {
   return db.prepare("SELECT * FROM games WHERE id = ?").get(id) as GameRow;
 }
 
-/** Abandona partidas sueltas (solo) que quedaron a medias; las de reto y diario se pueden reanudar. */
+/** Abandona partidas sueltas (solo/campaña) que quedaron a medias; las de reto y diario se pueden reanudar. */
 function abandonStaleSoloGames(userId: number) {
-  db.prepare("UPDATE games SET status = 'abandoned' WHERE user_id = ? AND status = 'active' AND mode = 'solo'").run(
+  db.prepare("UPDATE games SET status = 'abandoned' WHERE user_id = ? AND status = 'active' AND mode IN ('solo','campaign')").run(
     userId
   );
 }
@@ -158,6 +172,22 @@ export function startSoloGame(userId: number, category: CategoryOrRandom, diffic
   const picked = pickQuestions(poolFor(category, difficulty), QUESTIONS_PER_GAME, seenSet(userId));
   return toPublicGame(
     insertGame({ userId, mode: "solo", category, difficulty, questionIds: picked.map((q) => q.id) })
+  );
+}
+
+export function startCampaignGame(userId: number, chapterId: string): PublicGame {
+  const { chapter, pool } = resolvePlayableChapter(userId, chapterId);
+  abandonStaleSoloGames(userId);
+  const picked = pickQuestions(pool, QUESTIONS_PER_GAME, seenSet(userId));
+  return toPublicGame(
+    insertGame({
+      userId,
+      mode: "campaign",
+      category: chapter.categories[0],
+      difficulty: chapter.difficulty,
+      questionIds: picked.map((q) => q.id),
+      chapterId,
+    })
   );
 }
 
@@ -252,6 +282,9 @@ export interface GameSummary {
   totalPoints: number;
   newBadges: { id: string; name: string; icon: string; description: string }[];
   challengeId: number | null;
+  /** Estrellas conseguidas en esta partida (solo campaña). */
+  stars: number | null;
+  chapter: { id: string; name: string; worldName: string } | null;
 }
 
 /**
@@ -396,6 +429,7 @@ function finishGame(gameId: string): GameSummary {
   }
 
   if (g.challenge_id) resolveChallengeIfDone(g.challenge_id);
+  const stars = g.chapter_id ? recordChapterResult(g.user_id, g.chapter_id, g.correct_count, g.total, g.score) : null;
 
   const newBadges = awardBadges(g.user_id);
   const stats = getStatsRow(g.user_id);
@@ -411,5 +445,7 @@ function finishGame(gameId: string): GameSummary {
     totalPoints: stats.total_points,
     newBadges,
     challengeId: g.challenge_id,
+    stars,
+    chapter: chapterInfo(g.chapter_id),
   };
 }

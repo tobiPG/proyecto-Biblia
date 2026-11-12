@@ -48,6 +48,9 @@ export interface BadgeStats {
   dailyCompleted: number;
   challengesWon: number;
   categoriesPlayed: number;
+  campaignStars: number;
+  campaignWorldsCompleted: number;
+  chronologyPerfect: number;
   /** Categorías con todas sus preguntas respondidas al menos una vez. */
   categoriesCompleted: string[];
 }
@@ -90,6 +93,12 @@ export const BADGES: Badge[] = [
   { id: "streak_30", name: "Constante", icon: "🗓️", description: "Racha de 30 días seguidos con el desafío diario", condition: (s) => s.dailyStreak >= 30 },
   { id: "challenge_win", name: "Retador", icon: "🤝", description: "Gana un reto 1 vs 1 contra un amigo", condition: (s) => s.challengesWon >= 1 },
   { id: "challenge_10", name: "Invicto", icon: "🥇", description: "Gana 10 retos 1 vs 1", condition: (s) => s.challengesWon >= 10 },
+  { id: "campaign_world1", name: "Peregrino", icon: "🥾", description: "Completa el primer mundo de la campaña", condition: (s) => s.campaignWorldsCompleted >= 1 },
+  { id: "campaign_half", name: "Caminante de la Palabra", icon: "🗺️", description: "Completa 4 mundos de la campaña", condition: (s) => s.campaignWorldsCompleted >= 4 },
+  { id: "campaign_all", name: "Gran Viajero", icon: "🌍", description: "Completa los 8 mundos de la campaña", condition: (s) => s.campaignWorldsCompleted >= 8 },
+  { id: "campaign_stars_60", name: "Coleccionista de Estrellas", icon: "🌠", description: "Consigue 60 estrellas en la campaña", condition: (s) => s.campaignStars >= 60 },
+  { id: "chrono_5", name: "Cronista", icon: "⏳", description: "Ordena perfectamente 5 cronologías", condition: (s) => s.chronologyPerfect >= 5 },
+  { id: "chrono_25", name: "Historiador", icon: "🏺", description: "Ordena perfectamente 25 cronologías", condition: (s) => s.chronologyPerfect >= 25 },
   categoryBadge("personajes", "Maestro de Personajes", "🧑‍🤝‍🧑"),
   categoryBadge("libros", "Maestro de Libros", "📚"),
   categoryBadge("historias", "Maestro de Historias", "📜"),

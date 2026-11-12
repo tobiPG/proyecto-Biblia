@@ -1,9 +1,10 @@
 import type {
   AnswerResult,
   Catalog,
+  Campaign,
   Challenge,
-  Clan,
-  ClanDetail,
+  ChronologyAnswer,
+  ChronologyGame,
   Game,
   MeResponse,
   Player,
@@ -91,12 +92,13 @@ export const api = {
   leaderboard: (scope: "global" | "friends", period: "all" | "week") =>
     request<{ players: Player[]; myRank: number | null }>(`/leaderboard?scope=${scope}&period=${period}`),
 
-  // Clanes
-  myClan: () => request<{ clan: ClanDetail | null }>("/clans/mine"),
-  clanLeaderboard: () => request<{ clans: Clan[] }>("/clans/leaderboard"),
-  searchClans: (q: string) => request<{ clans: Clan[] }>(`/clans/search?q=${encodeURIComponent(q)}`),
-  createClan: (data: { name: string; emoji: string; description: string; isOpen: boolean }) =>
-    post<{ clan: ClanDetail }>("/clans", data),
-  joinClan: (tag: string) => post<{ clan: ClanDetail }>("/clans/join", { tag }),
-  leaveClan: () => post<void>("/clans/leave"),
+  // Campaña
+  campaign: () => request<Campaign>("/campaign"),
+  playChapter: (chapterId: string) => post<{ game: Game }>("/campaign/play", { chapterId }),
+
+  // Cronología
+  startChronology: () => post<{ game: ChronologyGame }>("/chronology"),
+  chronology: (id: string) => request<{ game: ChronologyGame }>(`/chronology/${id}`),
+  answerChronology: (id: string, index: number, order: number[]) =>
+    post<ChronologyAnswer>(`/chronology/${id}/answers`, { index, order }),
 };

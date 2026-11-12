@@ -55,7 +55,8 @@ const MIGRATIONS: string[] = [
     daily_best_streak INTEGER NOT NULL DEFAULT 0,
     last_daily_date TEXT,
     daily_completed INTEGER NOT NULL DEFAULT 0,
-    challenges_won INTEGER NOT NULL DEFAULT 0
+    challenges_won INTEGER NOT NULL DEFAULT 0,
+    chronology_perfect INTEGER NOT NULL DEFAULT 0
   );
 
   CREATE TABLE user_category_stats (
@@ -121,11 +122,12 @@ const MIGRATIONS: string[] = [
   CREATE TABLE games (
     id TEXT PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    mode TEXT NOT NULL CHECK (mode IN ('solo','daily','challenge')),
+    mode TEXT NOT NULL CHECK (mode IN ('solo','daily','challenge','campaign')),
     category TEXT NOT NULL,
     difficulty TEXT NOT NULL,
     challenge_id INTEGER REFERENCES challenges(id) ON DELETE CASCADE,
     daily_date TEXT,
+    chapter_id TEXT,                   -- capítulo de campaña
     questions TEXT NOT NULL,           -- JSON: [{ id, order: [índices originales] }]
     total INTEGER NOT NULL,
     current_index INTEGER NOT NULL DEFAULT 0,
@@ -155,23 +157,30 @@ const MIGRATIONS: string[] = [
     PRIMARY KEY (game_id, question_index)
   );
 
-  CREATE TABLE clans (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE COLLATE NOCASE,
-    tag TEXT NOT NULL UNIQUE,
-    emoji TEXT NOT NULL DEFAULT '⛪',
-    description TEXT NOT NULL DEFAULT '',
-    is_open INTEGER NOT NULL DEFAULT 1,
-    leader_id INTEGER NOT NULL REFERENCES users(id),
-    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+  -- Campaña: mejor resultado por capítulo
+  CREATE TABLE campaign_progress (
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    chapter_id TEXT NOT NULL,
+    stars INTEGER NOT NULL DEFAULT 0 CHECK (stars BETWEEN 0 AND 3),
+    best_score INTEGER NOT NULL DEFAULT 0,
+    updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+    PRIMARY KEY (user_id, chapter_id)
   );
 
-  CREATE TABLE clan_members (
-    clan_id INTEGER NOT NULL REFERENCES clans(id) ON DELETE CASCADE,
-    user_id INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-    joined_at TEXT NOT NULL DEFAULT (datetime('now')),
-    PRIMARY KEY (clan_id, user_id)
+  -- Cronología: partidas de ordenar eventos (sin reloj)
+  CREATE TABLE chronology_games (
+    id TEXT PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    puzzles TEXT NOT NULL,             -- JSON: [{ id, shown: [índices originales en el orden mostrado] }]
+    total INTEGER NOT NULL,
+    current_index INTEGER NOT NULL DEFAULT 0,
+    score INTEGER NOT NULL DEFAULT 0,
+    perfect_count INTEGER NOT NULL DEFAULT 0,
+    status TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active','finished','abandoned')),
+    started_at TEXT NOT NULL DEFAULT (datetime('now')),
+    finished_at TEXT
   );
+  CREATE INDEX idx_chrono_user ON chronology_games(user_id, status);
   `,
 ];
 

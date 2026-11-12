@@ -115,7 +115,10 @@ export default function GamePage() {
     <div>
       <div className="mb-3 flex items-center justify-between text-sm text-slate-400">
         <span>
-          {category?.icon} {category?.name ?? "Mixto"} · {difficultyName(catalog, game.difficulty)}
+          {game.chapter
+            ? `🗺️ ${game.chapter.name}`
+            : `${category?.icon ?? "🎲"} ${category?.name ?? "Mixto"}`}{" "}
+          · {difficultyName(catalog, game.difficulty)}
         </span>
         <span>
           {game.currentIndex + 1} / {game.total}
@@ -207,7 +210,24 @@ function Results({ summary }: { summary: GameSummary }) {
   const title = pct === 100 ? "¡Perfecto! 🎉" : pct >= 70 ? "¡Muy bien! 👏" : pct >= 40 ? "¡Buen intento!" : "¡Sigue practicando!";
   return (
     <div className="space-y-4 text-center">
+      {summary.chapter && (
+        <p className="text-sm text-slate-400">
+          {summary.chapter.worldName} · {summary.chapter.name}
+        </p>
+      )}
       <h1 className="text-3xl font-bold">{title}</h1>
+      {summary.stars !== null && (
+        <div className="text-4xl tracking-widest" aria-label={`${summary.stars} de 3 estrellas`}>
+          {[0, 1, 2].map((i) => (
+            <span key={i} className={i < summary.stars! ? "" : "opacity-20 grayscale"}>
+              ⭐
+            </span>
+          ))}
+          {summary.stars === 0 && (
+            <p className="mt-1 text-sm tracking-normal text-slate-400">Necesitas 6 aciertos para ganar una estrella.</p>
+          )}
+        </div>
+      )}
       <div className="card grid grid-cols-3 gap-2">
         <Stat label="Puntos" value={summary.score} />
         <Stat label="Aciertos" value={`${summary.correct}/${summary.total}`} />
@@ -244,6 +264,10 @@ function Results({ summary }: { summary: GameSummary }) {
         {summary.mode === "challenge" ? (
           <Link to="/retos" className="btn-primary">
             Ver mis retos
+          </Link>
+        ) : summary.mode === "campaign" ? (
+          <Link to="/campana" className="btn-primary">
+            Volver a la campaña
           </Link>
         ) : (
           <Link to="/jugar" className="btn-primary">

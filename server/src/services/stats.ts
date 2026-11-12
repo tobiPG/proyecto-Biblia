@@ -1,6 +1,7 @@
 import { BADGES, CATEGORY_IDS, type BadgeStats } from "../data/catalog";
 import { db } from "../db";
 import type { CategoryId } from "../types";
+import { campaignBadgeStats } from "./campaign";
 import { getQuestion, totalByCategory } from "./questionBank";
 
 export function levelFor(points: number): { level: number; current: number; next: number } {
@@ -22,6 +23,7 @@ interface StatsRow {
   last_daily_date: string | null;
   daily_completed: number;
   challenges_won: number;
+  chronology_perfect: number;
 }
 
 export function getStatsRow(userId: number): StatsRow {
@@ -45,6 +47,7 @@ function categoriesCompleted(userId: number): string[] {
 
 export function badgeStats(userId: number): BadgeStats {
   const s = getStatsRow(userId);
+  const campaign = campaignBadgeStats(userId);
   const played = db
     .prepare("SELECT COUNT(*) AS n FROM user_category_stats WHERE user_id = ? AND games > 0")
     .get(userId) as { n: number };
@@ -62,6 +65,9 @@ export function badgeStats(userId: number): BadgeStats {
     challengesWon: s.challenges_won,
     categoriesPlayed: played.n,
     categoriesCompleted: categoriesCompleted(userId),
+    campaignStars: campaign.stars,
+    campaignWorldsCompleted: campaign.worldsCompleted,
+    chronologyPerfect: s.chronology_perfect,
   };
 }
 

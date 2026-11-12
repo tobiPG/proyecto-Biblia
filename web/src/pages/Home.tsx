@@ -50,6 +50,19 @@ export default function Home() {
         <div className="text-sm text-slate-300">Elige categoría y dificultad. 10 preguntas por partida.</div>
       </Link>
 
+      <div className="grid grid-cols-2 gap-3">
+        <Link to="/campana" className="card hover:border-brand-400">
+          <div className="text-2xl">🗺️</div>
+          <div className="font-bold">Campaña</div>
+          <div className="text-xs text-slate-400">8 mundos, de Génesis a Apocalipsis</div>
+        </Link>
+        <Link to="/cronologia" className="card hover:border-brand-400">
+          <div className="text-2xl">⏳</div>
+          <div className="font-bold">Cronología</div>
+          <div className="text-xs text-slate-400">Ordena los eventos bíblicos</div>
+        </Link>
+      </div>
+
       <div className="card">
         <div className="flex items-start justify-between gap-3">
           <div>

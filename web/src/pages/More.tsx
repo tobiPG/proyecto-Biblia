@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 const items = [
   { to: "/retos", icon: "⚔️", label: "Retos 1 vs 1", desc: "Tus retos con amigos" },
   { to: "/clasificacion", icon: "🏆", label: "Clasificación", desc: "Global y entre amigos" },
-  { to: "/clanes", icon: "🛡️", label: "Clanes", desc: "Juega en equipo" },
+  { to: "/campana", icon: "🗺️", label: "Campaña", desc: "Recorre la Biblia en 8 mundos" },
+  { to: "/cronologia", icon: "⏳", label: "Cronología", desc: "Ordena los eventos bíblicos" },
   { to: "/versiculos", icon: "📖", label: "Versículos", desc: "Versículo del día y favoritos" },
   { to: "/estudio", icon: "🎓", label: "Modo estudio", desc: "Repasa preguntas con su respuesta" },
   { to: "/ajustes", icon: "⚙️", label: "Ajustes", desc: "Perfil, sonido y cuenta" },

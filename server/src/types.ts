@@ -43,7 +43,7 @@ export interface PublicQuestion {
   image?: string;
 }
 
-export type GameMode = "solo" | "daily" | "challenge";
+export type GameMode = "solo" | "daily" | "challenge" | "campaign";
 
 export interface AuthUser {
   id: number;

@@ -6,7 +6,8 @@ import path from "path";
 import { config } from "./config";
 import { authRouter } from "./routes/auth";
 import { catalogRouter } from "./routes/catalog";
-import { clansRouter } from "./routes/clans";
+import { campaignRouter } from "./routes/campaign";
+import { chronologyRouter } from "./routes/chronology";
 import { gamesRouter } from "./routes/games";
 import { meRouter } from "./routes/me";
 import { socialRouter } from "./routes/social";
@@ -49,7 +50,8 @@ export function createApp() {
   app.use("/api", meRouter);
   app.use("/api", gamesRouter);
   app.use("/api", socialRouter);
-  app.use("/api", clansRouter);
+  app.use("/api", campaignRouter);
+  app.use("/api", chronologyRouter);
   app.use("/api", (_req, res) => res.status(404).json({ error: "Ruta no encontrada" }));
 
   // En producción el mismo servidor entrega el frontend compilado (web/dist).

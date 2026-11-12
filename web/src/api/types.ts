@@ -60,7 +60,7 @@ export interface PublicQuestion {
   image?: string;
 }
 
-export type GameMode = "solo" | "daily" | "challenge";
+export type GameMode = "solo" | "daily" | "challenge" | "campaign";
 
 export interface Game {
   id: string;
@@ -68,6 +68,7 @@ export interface Game {
   category: string;
   difficulty: string;
   challengeId: number | null;
+  chapter: { id: string; name: string; worldName: string } | null;
   total: number;
   currentIndex: number;
   score: number;
@@ -92,6 +93,8 @@ export interface GameSummary {
   totalPoints: number;
   newBadges: BadgeDef[];
   challengeId: number | null;
+  stars: number | null;
+  chapter: { id: string; name: string; worldName: string } | null;
 }
 
 export interface AnswerResult {
@@ -182,18 +185,54 @@ export interface StudyQuestion {
   explanation: string;
 }
 
-export interface Clan {
-  id: number;
+export interface CampaignChapter {
+  id: string;
   name: string;
-  tag: string;
-  emoji: string;
-  description: string;
-  isOpen: boolean;
-  leaderId: number;
-  memberCount: number;
-  weeklyPoints: number;
+  difficulty: string;
+  categories: string[];
+  stars: number;
+  bestScore: number;
+  unlocked: boolean;
 }
 
-export interface ClanDetail extends Clan {
-  members: (Player & { weeklyPoints: number })[];
+export interface CampaignWorld {
+  id: string;
+  name: string;
+  icon: string;
+  subtitle: string;
+  requiredStars: number;
+  unlocked: boolean;
+  chapters: CampaignChapter[];
+}
+
+export interface Campaign {
+  totalStars: number;
+  maxStars: number;
+  worlds: CampaignWorld[];
+}
+
+export interface ChronologyGame {
+  id: string;
+  total: number;
+  currentIndex: number;
+  score: number;
+  status: "active" | "finished" | "abandoned";
+  puzzle: { question: string; items: string[] } | null;
+}
+
+export interface ChronologyAnswer {
+  perfect: boolean;
+  positionsRight: number;
+  points: number;
+  correctOrder: number[];
+  score: number;
+  finished: boolean;
+  summary?: {
+    score: number;
+    perfect: number;
+    total: number;
+    level: number;
+    totalPoints: number;
+    newBadges: BadgeDef[];
+  };
 }

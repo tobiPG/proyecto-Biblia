@@ -3,7 +3,8 @@ import { Layout } from "./components/Layout";
 import { Loading } from "./components/ui";
 import { useAuth } from "./lib/auth";
 import Challenges from "./pages/Challenges";
-import Clans from "./pages/Clans";
+import CampaignPage from "./pages/Campaign";
+import Chronology from "./pages/Chronology";
 import Friends from "./pages/Friends";
 import GamePage from "./pages/Game";
 import Home from "./pages/Home";
@@ -44,7 +45,8 @@ export default function App() {
         <Route path="/clasificacion" element={<Leaderboard />} />
         <Route path="/versiculos" element={<Verses />} />
         <Route path="/estudio" element={<Study />} />
-        <Route path="/clanes" element={<Clans />} />
+        <Route path="/campana" element={<CampaignPage />} />
+        <Route path="/cronologia" element={<Chronology />} />
         <Route path="/ajustes" element={<Settings />} />
         <Route path="/mas" element={<More />} />
       </Route>

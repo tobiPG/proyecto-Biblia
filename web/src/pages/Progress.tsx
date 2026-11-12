@@ -3,7 +3,7 @@ import { Empty, ErrorBox, Loading, Section, formatDate } from "../components/ui"
 import { RANDOM_CATEGORY, useCatalog } from "../lib/catalog";
 import { useAsync } from "../lib/useAsync";
 
-const MODE_LABEL = { solo: "Partida", daily: "Diario", challenge: "Reto" } as const;
+const MODE_LABEL = { solo: "Partida", daily: "Diario", challenge: "Reto", campaign: "Campaña" } as const;
 
 export default function Progress() {
   const catalog = useCatalog();

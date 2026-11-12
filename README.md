@@ -16,6 +16,8 @@ cronología, desafío diario, retos 1 vs 1 entre amigos, insignias, versículos 
 - **Desafío diario**: las mismas 10 preguntas para todos cada día (UTC), una vez por día, con racha.
 - **Retos 1 vs 1 entre amigos** (asíncronos): ambos juegan las mismas preguntas; gana quien hace más
   puntos y, en empate, el más rápido. El rival tiene 48 h; si no juega, gana quien sí jugó.
+- **App instalable (PWA)**: se puede añadir a la pantalla de inicio y abre aunque no haya conexión
+  (muestra un aviso; para jugar hace falta internet).
 - **Amigos** por código, **clasificación** global o de amigos (semanal o histórica), **insignias**,
   **versículo del día** con favoritos y **modo estudio**.
 
@@ -48,6 +50,8 @@ En producción un único proceso sirve el API (`/api`) y el frontend compilado (
 - Helmet con CSP estricta; las peticiones que modifican datos desde otros orígenes se rechazan.
 - Los nombres de jugador solo aceptan letras, números y `_ . -`; React escapa todo el texto.
 - Borrado de cuenta desde Ajustes (elimina todos los datos en cascada).
+
+Todos los jugadores empiezan desde cero: no se importan cuentas de la versión anterior.
 
 ## Cómo correrlo
 

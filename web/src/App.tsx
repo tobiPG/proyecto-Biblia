@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { OfflineBanner } from "./components/OfflineBanner";
 import { Loading } from "./components/ui";
 import { useAuth } from "./lib/auth";
 import Challenges from "./pages/Challenges";
@@ -18,16 +19,30 @@ import Study from "./pages/Study";
 import Verses from "./pages/Verses";
 
 function RequireAuth({ children }: { children: JSX.Element }) {
-  const { me, loading } = useAuth();
+  const { me, loading, unreachable, refresh } = useAuth();
   const location = useLocation();
   if (loading) return <Loading />;
+  if (!me && unreachable) {
+    return (
+      <div className="mx-auto flex min-h-dvh max-w-sm flex-col items-center justify-center gap-4 px-4 text-center">
+        <div className="text-5xl">📡</div>
+        <h1 className="text-2xl font-bold">Sin conexión</h1>
+        <p className="text-slate-400">BibliaQuiz necesita internet para jugar y guardar tu progreso.</p>
+        <button className="btn-primary" onClick={() => refresh().catch(() => undefined)}>
+          Reintentar
+        </button>
+      </div>
+    );
+  }
   if (!me) return <Navigate to="/entrar" replace state={{ from: location.pathname }} />;
   return children;
 }
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <OfflineBanner />
+      <Routes>
       <Route path="/entrar" element={<Login />} />
       <Route
         element={
@@ -51,6 +66,7 @@ export default function App() {
         <Route path="/mas" element={<More />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+      </Routes>
+    </>
   );
 }

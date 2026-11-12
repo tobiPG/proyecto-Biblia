@@ -56,8 +56,21 @@ export function createApp() {
 
   // En producción el mismo servidor entrega el frontend compilado (web/dist).
   if (fs.existsSync(config.webDist)) {
-    app.use(express.static(config.webDist, { index: false, maxAge: "1h" }));
-    app.get("*", (_req, res) => res.sendFile(path.join(config.webDist, "index.html")));
+    app.use(
+      express.static(config.webDist, {
+        index: false,
+        setHeaders(res, filePath) {
+          // Archivos con hash: caché larga. sw.js y el resto: revalidar siempre.
+          if (filePath.includes(`${path.sep}assets${path.sep}`)) {
+            res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+          } else res.setHeader("Cache-Control", "no-cache");
+        },
+      })
+    );
+    app.get("*", (_req, res) => {
+      res.setHeader("Cache-Control", "no-cache");
+      res.sendFile(path.join(config.webDist, "index.html"));
+    });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

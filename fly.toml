@@ -1,0 +1,26 @@
+# Cambia "app" por el nombre de tu app en Fly (fly launch lo rellena).
+app = "bibliaquiz"
+primary_region = "mia"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  DB_PATH = "/data/bibliaquiz.db"
+
+[[mounts]]
+  source = "bibliaquiz_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 4000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    path = "/api/health"
+    interval = "30s"
+    timeout = "5s"
